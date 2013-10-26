@@ -50,6 +50,11 @@ class Join : public BinaryAlgebraNodeBase
 	
 };
 
+class AntiJoin : public BinaryAlgebraNodeBase
+{
+	
+};
+
 class Selection : public UnaryAlgebraNodeBase
 {
 	
