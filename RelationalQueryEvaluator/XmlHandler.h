@@ -55,6 +55,7 @@ class ParserErrorHandler : public ErrorHandler
 private:
 	void reportParseException(const SAXParseException& ex)
 	{
+		errors++;
 		char* msg = XMLString::transcode(ex.getMessage());
 		fprintf(stderr, "at line %llu column %llu, %s\n", 
 			ex.getColumnNumber(), ex.getLineNumber(), msg);
@@ -62,6 +63,13 @@ private:
 	}
 
 public:
+	int errors;
+
+	ParserErrorHandler()
+	{
+		errors = 0;
+	}
+
 	void warning(const SAXParseException& ex)
 	{
 		reportParseException(ex);
@@ -79,6 +87,7 @@ public:
 
 	void resetErrors()
 	{
+		errors = 0;
 	}
 };
 class XmlHandler
@@ -97,25 +106,12 @@ public:
 		domParser.setValidationConstraintFatal(true);
 
 		domParser.parse(xmlFilePath);
-		if (domParser.getErrorCount() == 0)
+		if (domParser.getErrorCount() == 0 && parserErrorHandler.errors == 0)
 		{
+			printf("XML file validated against the schema successfully\n");
 			DOMDocument* xmlDoc = domParser.getDocument();
 			DOMElement* elementRoot = xmlDoc->getDocumentElement();
-			DOMNodeList* children = elementRoot->getChildNodes();
-
-			for(XMLSize_t i=0;i<children->getLength();i++)
-			{
-				switch (children->item(i)->getNodeType())
-				{
-				case  DOMNode::ELEMENT_NODE :
-					std::cout << "a";
-					break;
-				}
-			}
-
-			printf("XML file validated against the schema successfully\n");
-
-			return new AlgebraNodeBase();
+			return new Sort(elementRoot);
 		}
 		else
 		{
