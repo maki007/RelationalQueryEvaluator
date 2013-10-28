@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+    <parameter column="revenue" direction="desc" />
+    <parameter column="o_orderdate" direction="asc" />
+  </parameters>
+  <input>
+    <group>
+      <parameters>
+        <group_by column="l_orderkey"/>
+        <group_by column="o_orderdate"/>
+        <group_by column="o_shippriority"/>
+        <sum argument="x" output="revenue"/>
+      </parameters>
+      <input>
+        <column_operations>
+          <parameters>
+            <column name="l_orderkey"></column>
+            <column name="o_orderdate"></column>
+            <column name="o_shippriority"></column>
+            <column name="x">
+              <equals>
+                <times>
+                  <column name="l_extendedprice"/>
+                  <minus>
+                    <costant type="double" value="1"/>
+                    <column name="l_discount"/>
+                  </minus>
+                </times>
+              </equals>
+            </column>
+          </parameters>
+          <input>
+            <join>
+              <parameters>
+                <equal_condition>
+                  <column name="c_custkey"/>
+                  <column name="o_custkey"/>
+                </equal_condition>
+                <column name="l_orderkey" input="second"/>
+                <column name="o_orderdate" input="second"/>
+                <column name="o_shippriority" input="second"/>
+                <column name="l_extendedprice" input="second"/>
+                <column name="l_discount" input="second"/>
+              </parameters>
+              <input>
+                <selection>
+                  <parameters>
+                    <condtion>
+                      <equals>
+                        <column name="c_mktsegment"/>
+                        <costant type="string" value="SEGMENT"/>
+                      </equals>
+                    </condtion>
+                  </parameters>
+                  <input>
+                    <table name="customer">
+                      <column name="c_custkey" />
+                      <column name="c_mktsegment"/>
+                    </table>
+                  </input>
+                </selection>
+                <join>
+                  <parameters>
+                    <equal_condition>
+                      <column name="l_orderkey"/>
+                      <column name="o_orderkey"/>
+                    </equal_condition>
+                    <column name="l_orderkey" input="first"/>
+                    <column name="o_orderdate" input="second"/>
+                    <column name="o_shippriority" input="second"/>
+                    <column name="l_extendedprice" input="first"/>
+                    <column name="l_discount" input="first"/>
+                  </parameters>
+                  <input>
+                    <selection>
+                      <parameters>
+                        <condtion>
+                          <lower>
+                            <costant type="date" value="today"/>
+                            <column name="l_shipdate"/>
+                          </lower>
+                        </condtion>
+                      </parameters>
+                      <input>
+                        <table name="lineitem">
+                          <column name="l_orderkey"></column>
+                          <column name="l_shipdate"/>
+                          <column name="l_extendedprice"/>
+                          <column name="l_discount"/>
+                        </table>
+                      </input>
+                    </selection>
+                    <selection>
+                      <parameters>
+                        <condtion>
+                          <lower>
+                            <column name="o_orderdate"/>
+                            <costant type="date" value="today"/>
+                          </lower>
+                        </condtion>
+                      </parameters>
+                      <input>
+                        <table name="orders">
+                          <column name="o_orderdate"/>
+                          <column name="o_shippriority"/>
+                          <column name="o_orderkey"/>
+                        </table>
+                      </input>
+                    </selection>
+                  </input>
+                </join>
+              </input>
+            </join>
+          </input>
+        </column_operations>
+      </input>
+    </group>
+  </input>
+</sort>

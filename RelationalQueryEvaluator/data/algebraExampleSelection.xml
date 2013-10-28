@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <selection>
+      <parameters>
+        <condtion>
+          <not>
+            <or>
+              <equals>
+                <column name="a"/>
+                <costant type="int" value="4"/>
+              </equals>
+              <lower>
+                <column name="a"/>
+                <costant type="int" value="-1"/>
+              </lower>
+            </or>
+          </not>
+        </condtion>
+      </parameters>
+      <input>
+        <table name="users">
+          <column name="a" />
+        </table>
+      </input>
+    </selection>
+  </input>
+</sort>

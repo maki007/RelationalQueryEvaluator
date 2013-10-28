@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+    <parameter column="country" direction="desc"></parameter>
+  </parameters>
+  <input>
+    <group>
+      <parameters>
+        <group_by column="country"/>
+        <count output="count" />
+      </parameters>
+      <input>
+        <table name="people" numberOfRows="1000">
+          <column name="user_name" number_of_unique_values="410"/>
+          <column name="country" />
+        </table>
+      </input>
+    </group>
+  </input>
+</sort>

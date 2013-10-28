@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <cross_join>
+      <input>
+        <table name="people_from_city">
+          <column name="name"/>
+        </table>
+        <table name="people_from_city">
+          <column name="name" unique="true" />
+        </table>
+      </input>
+    </cross_join>
+  </input>
+</sort>

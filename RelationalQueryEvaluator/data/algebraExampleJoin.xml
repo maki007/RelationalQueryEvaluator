@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <join>
+      <parameters>
+        <equal_condition>
+          <column name="country_id"/>
+          <column name="id"/>
+        </equal_condition>
+        <column name="name" input="first"/>
+        <column name="name" newName="country_name" input="second"/>
+      </parameters>
+      <input>
+        <table name="users">
+          <column name="name"/>
+          <column name="country_id"/>
+        </table>
+        <table name="countries"> 
+          <column name="id"/>
+          <column name="name" />
+        </table>
+      </input>
+    </join>
+  </input>
+</sort>

@@ -95,6 +95,15 @@ public:
 	void accept(AlgebraVisitor &v);
 };
 
+class CrossJoin : public BinaryAlgebraNodeBase
+{
+public:
+	CrossJoin(DOMElement * element);
+	void accept(AlgebraVisitor &v);
+};
+
+
+
 class AntiJoin : public BinaryAlgebraNodeBase
 {
 public:
@@ -136,32 +145,43 @@ public:
 
 	virtual void visit(Sort * node)
 	{
-
+		node->child->accept(*this);
 	}
 
 	virtual void visit(Group * node)
 	{
-
+		node->child->accept(*this);
 	}
+
 	virtual void visit(ColumnOperations * node)
 	{
-
+		node->child->accept(*this);
 	}
 
 	virtual void visit(Join * node)
 	{
+		node->leftChild->accept(*this);
+		node->rightChild->accept(*this);
+	}
 
+	virtual void visit(CrossJoin * node)
+	{
+		node->leftChild->accept(*this);
+		node->rightChild->accept(*this);
 	}
 
 	virtual void visit(AntiJoin * node)
 	{
-
+		node->leftChild->accept(*this);
+		node->rightChild->accept(*this);
 	}
 
 	virtual void visit(Selection * node)
 	{
-
+		node->child->accept(*this);
 	}
+
+
 
 };
 
@@ -256,6 +276,11 @@ public:
 	void visit(Selection * node)
 	{
 		generateText("Selection",node);
+	}
+
+	void visit(CrossJoin * node)
+	{
+		generateText("Cross Join",node);
 	}
 
 };

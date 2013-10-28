@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- agregation -->
+  <xs:complexType name="unary_agregate_type">
+    <xs:attribute name="argument" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="output" type="xs:string" use="required"></xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="nulary_agregate_type">
+    <xs:attribute name="output" type="xs:string" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <!-- boolean condition -->
+  <xs:complexType name="bool_condition">
+    <xs:choice>
+      <xs:element name="not" type="bool_condition"></xs:element>
+      <xs:element name="or" type="binary_bool_condition"></xs:element>
+      <xs:element name="and" type="binary_bool_condition"></xs:element>
+      <xs:element name="equals" type="bool_operator"></xs:element>
+      <xs:element name="lower" type="bool_operator"></xs:element>
+      <xs:element name="boolean_predicate" type="boolean_predicate"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="binary_bool_condition">
+    <xs:choice minOccurs="2" maxOccurs="2">
+      <xs:element name="not" type="bool_condition"></xs:element>
+      <xs:element name="or" type="binary_bool_condition"></xs:element>
+      <xs:element name="and" type="binary_bool_condition"></xs:element>
+      <xs:element name="equals" type="bool_operator"></xs:element>
+      <xs:element name="lower" type="bool_operator"></xs:element>
+      <xs:element name="boolean_predicate" type="boolean_predicate"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="bool_operator">
+    <xs:choice minOccurs="2" maxOccurs="2">
+      <xs:element name="column" type="column"></xs:element>
+      <xs:element name="costant" type="constant"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="column">
+    <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="constant">
+    <xs:attribute name="type" use="required"></xs:attribute>
+    <xs:attribute name="value" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="boolean_predicate">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="argument" type="bool_condition"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <!-- aritmetic expression -->
+  <xs:complexType name="unary_aritmetic_expression">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:element name="plus" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="minus" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="times" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="divide" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="aritmetic_function" type="aritmetic_function"></xs:element>
+      <xs:element name="column" type="column"></xs:element>
+      <xs:element name="costant" type="constant"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="binary_aritmetic_expression">
+    <xs:choice minOccurs="2" maxOccurs="2">
+      <xs:element name="plus" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="minus" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="times" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="divide" type="binary_aritmetic_expression"></xs:element>
+      <xs:element name="aritmetic_function" type="aritmetic_function"></xs:element>
+      <xs:element name="column" type="column"></xs:element>
+      <xs:element name="costant" type="constant"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="aritmetic_function">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="argument" type="unary_aritmetic_expression"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <!-- group -->
+  <xs:complexType name="group">
+    <xs:sequence>
+      <xs:element name="parameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="group_by" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="column" use="required"></xs:attribute>
+              </xs:complexType>
+            </xs:element>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="sum" type="unary_agregate_type"></xs:element>
+              <xs:element name="min" type="unary_agregate_type"></xs:element>
+              <xs:element name="max" type="unary_agregate_type"></xs:element>
+              <xs:element name="count"  type="nulary_agregate_type"></xs:element>
+            </xs:choice>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="input" type="unaryoperator"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- unary operator -->
+  <xs:complexType name="unaryoperator">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:element name="join" type="join"></xs:element>
+      <xs:element name="group" type="group"></xs:element>
+      <xs:element name="selection" type="selection"></xs:element>
+      <xs:element name="table" type="table"></xs:element>
+      <xs:element name="union" type="union"></xs:element>
+      <xs:element name="difference" type="difference"></xs:element>
+      <xs:element name="antijoin" type="join"></xs:element>
+      <xs:element name="column_operations" type="column_operations"></xs:element>
+      <xs:element name="cross_join" type="cross_join"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <!-- binary operator -->
+  <xs:complexType name="binaryoperator">
+    <xs:choice minOccurs="2" maxOccurs="2">
+      <xs:element name="join" type="join"></xs:element>
+      <xs:element name="group" type="group"></xs:element>
+      <xs:element name="selection" type="selection"></xs:element>
+      <xs:element name="table" type="table"></xs:element>
+      <xs:element name="union" type="union"></xs:element>
+      <xs:element name="difference" type="difference"></xs:element>
+      <xs:element name="antijoin" type="join"></xs:element>
+      <xs:element name="column_operations" type="column_operations"></xs:element>
+      <xs:element name="cross_join" type="cross_join"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+  <!-- union -->
+  <xs:complexType name="union">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="input" type="binaryoperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <!-- difference -->
+  <xs:complexType name="difference">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="input" type="binaryoperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <!-- table -->
+  <xs:complexType name="table">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="column">
+        <xs:complexType>
+          <xs:attribute name="name" use="required"></xs:attribute>
+          <xs:attribute name="number_of_unique_values" use="optional"></xs:attribute>
+          <xs:attribute name="index" use="optional">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="clustered"></xs:enumeration>
+                <xs:enumeration value="non-clustered"></xs:enumeration>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+          <xs:attribute name="unique" default="false" type="xs:boolean" use="optional"></xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute use="optional" name="numberOfRows"></xs:attribute>
+    <xs:attribute use="required" name="name"></xs:attribute>
+  </xs:complexType>
+  <!-- join -->
+  <xs:complexType name="join">
+    <xs:sequence>
+      <xs:element name="parameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:choice>
+              <xs:element name="equal_condition" type="equal_condition"></xs:element>
+              <xs:element name="less_condition" type="less_condition"></xs:element>
+            </xs:choice>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+              <!-- name of output columns with optional rename-->
+              <xs:element name="column">
+                <xs:complexType>
+                  <xs:attribute name="name" use="required"></xs:attribute>
+                  <xs:attribute name="newName" use="optional"></xs:attribute>
+                  <!-- from which input is this column -->
+                  <xs:attribute name="input" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="first"></xs:enumeration>
+                        <xs:enumeration value="second"></xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="input" type="binaryoperator"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- cross join -->
+  <xs:complexType name="cross_join">
+    <xs:sequence>
+      <xs:element name="input" type="binaryoperator"></xs:element>
+    </xs:sequence>
+  </xs:complexType> 
+  
+  
+  <xs:complexType name="equal_condition">
+    <xs:sequence minOccurs="2" maxOccurs="2">
+      <xs:element name="column" type="column"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="less_condition">
+    <xs:sequence minOccurs="2" maxOccurs="3">
+      <xs:element name="column" type="column"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- selection -->
+  <xs:complexType name="selection">
+    <xs:sequence>
+      <xs:element name="parameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="condtion" type="bool_condition"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="input" type="unaryoperator"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <!-- column operation-->
+  <xs:complexType name="column_operations">
+    <xs:sequence>
+      <xs:element name="parameters">
+        <xs:complexType>
+          <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="column">
+              <xs:complexType>
+                <xs:sequence minOccurs="0" maxOccurs="1">
+                  <xs:element name="equals" type="unary_aritmetic_expression"></xs:element>
+                </xs:sequence>
+                <xs:attribute name="name"></xs:attribute>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="input" type="unaryoperator"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- sort - root element-->
+  <xs:element name="sort">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="parameters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="parameter" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="direction" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="asc"></xs:enumeration>
+                        <xs:enumeration value="desc"></xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="column" type="xs:string" use="required"></xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="input" type="unaryoperator"></xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
