@@ -16,6 +16,9 @@
 #include <xercesc/dom/DOMText.hpp>
 
 #include <iostream>
+#include <string>
+#include <sstream>
+#include "XmlUtils.h"
 
 
 XERCES_CPP_NAMESPACE_USE
@@ -23,14 +26,14 @@ XERCES_CPP_NAMESPACE_USE
 #ifndef AlgebraHPP
 #define AlgebraHPP
 
+class AlgebraVisitor;
+
 class AlgebraNodeBase
 {
 public:
-	AlgebraNodeBase()
-	{
-	
-	}
-
+	AlgebraNodeBase();
+	AlgebraNodeBase * ConstructChildren(DOMElement * node);
+	virtual void accept(AlgebraVisitor &v) = 0;
 };
 
 class UnaryAlgebraNodeBase : public AlgebraNodeBase
@@ -38,41 +41,10 @@ class UnaryAlgebraNodeBase : public AlgebraNodeBase
 public:
 	AlgebraNodeBase * child;
 
-	UnaryAlgebraNodeBase(DOMElement * element)
-	{
-
-
-		XMLCh *input = XMLString::transcode("input");
-
-		DOMNodeList * childs=element->getChildNodes();
-		for(XMLSize_t i=0;i<childs->getLength();++i)
-		{
-			if(childs->item(i)->getNodeType() == DOMElement::ELEMENT_NODE)
-			{
-				if(XMLString::compareString(childs->item(i)->getNodeName(), input)==0)
-				{
-					DOMNodeList * inputChildren = childs->item(i)->getChildNodes();
-					for(XMLSize_t j=0;j<inputChildren->getLength();++j)
-					{
-						if(inputChildren->item(j)->getNodeType() == DOMElement::ELEMENT_NODE)
-						{
-							const XMLCh * elementName = inputChildren->item(j)->getNodeName();
-							if(XMLString::compareString(elementName,XMLString::transcode("group"))==0)
-							{
-								std::cout << "ok" << std::endl;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-	~UnaryAlgebraNodeBase()
-	{
-		delete child;
-	}
-	
+	UnaryAlgebraNodeBase(DOMElement * element);
+	UnaryAlgebraNodeBase();
+	~UnaryAlgebraNodeBase();	
+	virtual void accept(AlgebraVisitor &v) = 0;
 };
 
 class BinaryAlgebraNodeBase : public AlgebraNodeBase
@@ -81,76 +53,212 @@ public:
 	AlgebraNodeBase * leftChild;
 	AlgebraNodeBase * rightChild;
 
-	BinaryAlgebraNodeBase(DOMElement * element)
-	{
-	
-	}
-
-	~BinaryAlgebraNodeBase()
-	{
-		delete leftChild;
-		delete rightChild;
-	}
+	BinaryAlgebraNodeBase(DOMElement * element);
+	BinaryAlgebraNodeBase();
+	~BinaryAlgebraNodeBase();
+	virtual void accept(AlgebraVisitor &v) = 0;
 };
 
 class Table : public AlgebraNodeBase
 {
 public:
+public:
+	Table(DOMElement * element);
+	void accept(AlgebraVisitor &v);
 };
 
 class Sort : public UnaryAlgebraNodeBase
 {
 public:
-	Sort(DOMElement * element) : UnaryAlgebraNodeBase(element)
-	{
-
-	}
+	Sort(DOMElement * element);
+	void accept(AlgebraVisitor &v);
 };
 
 class Group : public UnaryAlgebraNodeBase
 {
 public:
-	Group(DOMElement * element) : UnaryAlgebraNodeBase(element)
-	{
-		
-	}
+	Group(DOMElement * element);
+	void accept(AlgebraVisitor &v);
 };
 
 class ColumnOperations: public UnaryAlgebraNodeBase
 {
 public:
-	ColumnOperations(DOMElement * element) : UnaryAlgebraNodeBase(element)
-	{
-		
-	}
+	ColumnOperations(DOMElement * element);
+	void accept(AlgebraVisitor &v);
 };
 
 class Join : public BinaryAlgebraNodeBase
 {
 public:
-	Join(DOMElement * element)  : BinaryAlgebraNodeBase(element)
-	{
-		
-	}
+	Join(DOMElement * element);
+	void accept(AlgebraVisitor &v);
 };
 
 class AntiJoin : public BinaryAlgebraNodeBase
 {
 public:
-	AntiJoin(DOMElement * element) : BinaryAlgebraNodeBase(element)
-	{
-		
-	}
+	AntiJoin(DOMElement * element);
+	void accept(AlgebraVisitor &v);
 };
 
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
-	Selection(DOMElement * element) : UnaryAlgebraNodeBase(element)
-	{
-		
-	}
+	Selection(DOMElement * element);
+	void accept(AlgebraVisitor &v);
 };
 
 
+
+class AlgebraVisitor
+{
+public:
+	virtual void visit(AlgebraNodeBase * node)
+	{
+		node->accept(*this);
+	}
+
+	virtual void visit(UnaryAlgebraNodeBase * node)
+	{
+		node->accept(*this);
+	}
+
+	virtual void visit(BinaryAlgebraNodeBase * node)
+	{
+		node->accept(*this);
+	}
+
+	virtual void visit(Table * node)
+	{
+
+	}
+
+	virtual void visit(Sort * node)
+	{
+
+	}
+
+	virtual void visit(Group * node)
+	{
+
+	}
+	virtual void visit(ColumnOperations * node)
+	{
+
+	}
+
+	virtual void visit(Join * node)
+	{
+
+	}
+
+	virtual void visit(AntiJoin * node)
+	{
+
+	}
+
+	virtual void visit(Selection * node)
+	{
+
+	}
+
+};
+
+class GraphDrawingVisitor : public AlgebraVisitor
+{
+public:
+	std::string result;
+	int nodeCounter;
+	GraphDrawingVisitor()
+	{
+		result="";
+		nodeCounter=0;
+	}
+
+	void generateText(std::string name ,UnaryAlgebraNodeBase * node)
+	{
+		int identifier=nodeCounter;
+
+		result.append("node");
+		result.append(std::to_string(nodeCounter));
+		result.append("[label=\""+name+"\"]\n");
+		int childIdentifier=++nodeCounter;
+		node->child->accept(*this);
+
+		result.append("node");
+		result.append(std::to_string(childIdentifier));
+		result.append(" -> node");
+		result.append(std::to_string(identifier));
+		result.append("[headport=s, tailport=n,label=\"   \"]\n");
+
+	}
+
+	void generateText(std::string name , BinaryAlgebraNodeBase * node)
+	{
+		int identifier=nodeCounter;
+
+		result.append("node");
+		result.append(std::to_string(nodeCounter));
+		result.append("[label=\""+name+"\"]\n");
+
+		int childIdentifier=++nodeCounter;
+		node->leftChild->accept(*this);
+		result.append("node");
+		result.append(std::to_string(childIdentifier));
+		result.append(" -> node");
+		result.append(std::to_string(identifier));
+		result.append("[headport=s, tailport=n,label=\"   \"]\n");
+
+		childIdentifier=++nodeCounter;
+		node->rightChild->accept(*this);
+		result.append("node");
+		result.append(std::to_string(childIdentifier));
+		result.append(" -> node");
+		result.append(std::to_string(identifier));
+		result.append("[headport=s, tailport=n,label=\"   \"]\n");
+
+	}
+
+	void visit(Sort * node)
+	{
+		result="digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
+		generateText("Sort",node);
+		result+="\n}";
+	}
+
+	void visit(Group * node)
+	{
+		generateText("Group",node);
+	}
+
+	void visit(Table * node)
+	{
+		result.append("node");
+		result.append(std::to_string(nodeCounter));
+		result.append("[label=\"Table\"]\n");
+	}
+
+	void visit(ColumnOperations * node)
+	{
+		generateText("ColumnOperations",node);
+	}
+	void visit(Join * node)
+	{
+		generateText("Join",node);
+	}
+
+	void visit(AntiJoin * node)
+	{
+		generateText("AntiJoin",node);
+	}
+
+	void visit(Selection * node)
+	{
+		generateText("Selection",node);
+	}
+
+};
 #endif
+
+

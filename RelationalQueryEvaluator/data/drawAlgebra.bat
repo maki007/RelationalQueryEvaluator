@@ -1,0 +1,1 @@
+dot.exe -Tpng example.txt > g.png

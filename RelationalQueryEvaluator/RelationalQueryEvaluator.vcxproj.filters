@@ -32,5 +32,8 @@
     <ClInclude Include="XmlHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="XmlUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
