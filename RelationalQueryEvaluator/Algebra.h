@@ -176,13 +176,13 @@ public:
 		nodeCounter=0;
 	}
 
-	void generateText(std::string name ,UnaryAlgebraNodeBase * node)
+	void generateText(std::string label ,UnaryAlgebraNodeBase * node)
 	{
 		int identifier=nodeCounter;
 
 		result.append("node");
 		result.append(std::to_string(nodeCounter));
-		result.append("[label=\""+name+"\"]\n");
+		result.append("[label=\""+label+"\"]\n");
 		int childIdentifier=++nodeCounter;
 		node->child->accept(*this);
 
@@ -194,13 +194,13 @@ public:
 
 	}
 
-	void generateText(std::string name , BinaryAlgebraNodeBase * node)
+	void generateText(std::string label , BinaryAlgebraNodeBase * node)
 	{
 		int identifier=nodeCounter;
 
 		result.append("node");
 		result.append(std::to_string(nodeCounter));
-		result.append("[label=\""+name+"\"]\n");
+		result.append("[label=\""+label+"\"]\n");
 
 		int childIdentifier=++nodeCounter;
 		node->leftChild->accept(*this);
