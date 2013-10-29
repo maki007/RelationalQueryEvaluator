@@ -145,16 +145,6 @@ void Join::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-CrossJoin::CrossJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
-{
-
-}
-
-void CrossJoin::accept(AlgebraVisitor &v)
-{
-	v.visit(this);
-}
-
 AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
 

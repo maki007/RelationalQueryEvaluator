@@ -122,7 +122,6 @@
       <xs:element name="difference" type="difference"></xs:element>
       <xs:element name="antijoin" type="join"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
-      <xs:element name="cross_join" type="cross_join"></xs:element>
     </xs:choice>
   </xs:complexType>
   <!-- binary operator -->
@@ -136,7 +135,6 @@
       <xs:element name="difference" type="difference"></xs:element>
       <xs:element name="antijoin" type="join"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
-      <xs:element name="cross_join" type="cross_join"></xs:element>
     </xs:choice>
   </xs:complexType>
   <!-- union -->
@@ -179,7 +177,7 @@
       <xs:element name="parameters">
         <xs:complexType>
           <xs:sequence>
-            <xs:choice>
+            <xs:choice minOccurs="0" maxOccurs="1">
               <xs:element name="equal_condition" type="equal_condition"></xs:element>
               <xs:element name="less_condition" type="less_condition"></xs:element>
             </xs:choice>
@@ -207,13 +205,6 @@
       <xs:element name="input" type="binaryoperator"></xs:element>
     </xs:sequence>
   </xs:complexType>
-
-  <!-- cross join -->
-  <xs:complexType name="cross_join">
-    <xs:sequence>
-      <xs:element name="input" type="binaryoperator"></xs:element>
-    </xs:sequence>
-  </xs:complexType> 
   
   
   <xs:complexType name="equal_condition">
