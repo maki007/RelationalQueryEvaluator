@@ -155,6 +155,26 @@ void AntiJoin::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
+Union::Union(DOMElement * element) :BinaryAlgebraNodeBase(element)
+{
+
+}
+
+void Union::accept(AlgebraVisitor &v)
+{
+	v.visit(this);
+}
+
+Difference::Difference(DOMElement * element) :BinaryAlgebraNodeBase(element)
+{
+
+}
+
+void Difference::accept(AlgebraVisitor &v)
+{
+	v.visit(this);
+}
+
 Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
 {
 

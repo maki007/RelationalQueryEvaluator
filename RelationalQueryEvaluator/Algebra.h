@@ -102,6 +102,20 @@ public:
 	void accept(AlgebraVisitor &v);
 };
 
+class Union : public BinaryAlgebraNodeBase
+{
+public:
+	Union(DOMElement * element);
+	void accept(AlgebraVisitor &v);
+};
+
+class Difference : public BinaryAlgebraNodeBase
+{
+public:
+	Difference(DOMElement * element);
+	void accept(AlgebraVisitor &v);
+};
+
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
@@ -156,6 +170,18 @@ public:
 	}
 
 	virtual void visit(AntiJoin * node)
+	{
+		node->leftChild->accept(*this);
+		node->rightChild->accept(*this);
+	}
+
+	virtual void visit(Difference * node)
+	{
+		node->leftChild->accept(*this);
+		node->rightChild->accept(*this);
+	}
+
+	virtual void visit(Union * node)
 	{
 		node->leftChild->accept(*this);
 		node->rightChild->accept(*this);
@@ -257,12 +283,21 @@ public:
 	{
 		generateText("AntiJoin",node);
 	}
+	void visit(Difference * node)
+	{
+		generateText("Difference",node);
+	}
+
+	void visit(Union * node)
+	{
+		generateText("Union",node);
+	}
 
 	void visit(Selection * node)
 	{
 		generateText("Selection",node);
 	}
-
+	
 };
 #endif
 
