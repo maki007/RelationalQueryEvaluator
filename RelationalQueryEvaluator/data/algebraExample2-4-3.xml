@@ -8,7 +8,7 @@
     <group>
       <parameters>
         <group_by column="l_orderkey"/>
-        <group_by column="o_orderdate"/>
+        <group_by column="o_orderdate" />
         <group_by column="o_shippriority"/>
         <sum argument="x" output="revenue"/>
       </parameters>
@@ -46,12 +46,12 @@
               <input>
                 <selection>
                   <parameters>
-                    <condtion>
+                    <condition>
                       <equals>
                         <column name="c_mktsegment"/>
                         <costant type="string" value="SEGMENT"/>
                       </equals>
-                    </condtion>
+                    </condition>
                   </parameters>
                   <input>
                     <table name="customer">
@@ -75,12 +75,12 @@
                   <input>
                     <selection>
                       <parameters>
-                        <condtion>
+                        <condition>
                           <lower>
                             <costant type="date" value="today"/>
                             <column name="l_shipdate"/>
                           </lower>
-                        </condtion>
+                        </condition>
                       </parameters>
                       <input>
                         <table name="lineitem">
@@ -93,12 +93,12 @@
                     </selection>
                     <selection>
                       <parameters>
-                        <condtion>
+                        <condition>
                           <lower>
                             <column name="o_orderdate"/>
                             <costant type="date" value="today"/>
                           </lower>
-                        </condtion>
+                        </condition>
                       </parameters>
                       <input>
                         <table name="orders">

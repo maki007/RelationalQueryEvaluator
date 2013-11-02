@@ -1,3 +1,6 @@
+#ifndef AlgebraHPP
+#define AlgebraHPP
+
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/LocalFileInputSource.hpp>
@@ -23,14 +26,50 @@
 
 XERCES_CPP_NAMESPACE_USE
 
-#ifndef AlgebraHPP
-#define AlgebraHPP
+
+
+typedef unsigned long long int ulong;
+typedef unsigned int uint;
+
 
 class AlgebraVisitor;
 
+class SortParameter
+{
+public: 
+	std::string column;
+	bool ascending;
+};
+enum AgregateFunction
+{
+	SUM,MIN,MAX,COUNT
+};
+
+class AgregateFunctionInfo
+{
+public:
+	AgregateFunction function;
+	std::string parameter;
+	std::string output;
+};
+
+class ColumnInfo
+{
+	std::string name;
+	ulong numberOfUniqueValues;
+};
+
+//todo indexes
+class IndexInfo
+{
+
+};
+
+//nodes
 class AlgebraNodeBase
 {
 public:
+	AlgebraNodeBase * parent;
 	AlgebraNodeBase();
 	AlgebraNodeBase * ConstructChildren(DOMElement * node);
 	virtual void accept(AlgebraVisitor &v) = 0;
@@ -62,7 +101,10 @@ public:
 class Table : public AlgebraNodeBase
 {
 public:
-public:
+	std::string name;
+	std::vector<ColumnInfo>columns;
+	ulong numberOfRows;
+	std::vector<IndexInfo> indices;
 	Table(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -70,6 +112,7 @@ public:
 class Sort : public UnaryAlgebraNodeBase
 {
 public:
+	std::vector<SortParameter> parameters;
 	Sort(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -77,6 +120,8 @@ public:
 class Group : public UnaryAlgebraNodeBase
 {
 public:
+	std::vector<std::string> groupColumns;
+	std::vector<AgregateFunctionInfo> agregateFunctions;
 	Group(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -115,13 +160,14 @@ public:
 	Difference(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
-
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
+
 	Selection(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
+
 
 
 

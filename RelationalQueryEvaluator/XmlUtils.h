@@ -1,3 +1,6 @@
+#ifndef XmlUtilsHPP
+#define XmlUtilsHPP
+
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/LocalFileInputSource.hpp>
@@ -15,6 +18,7 @@
 #include <xercesc/dom/DOMNodeList.hpp>
 #include <xercesc/dom/DOMText.hpp>
 #include <vector>
+
 XERCES_CPP_NAMESPACE_USE
 
 class XmlUtils
@@ -37,3 +41,4 @@ public:
 		return 0;
 	}
 };
+#endif

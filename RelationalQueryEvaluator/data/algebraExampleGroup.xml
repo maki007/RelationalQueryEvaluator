@@ -6,13 +6,17 @@
   <input>
     <group>
       <parameters>
-        <group_by column="country"/>
+        <group_by column="s"/>
         <count output="count" />
       </parameters>
       <input>
         <table name="people" numberOfRows="1000">
           <column name="user_name" number_of_unique_values="410"/>
           <column name="country" />
+          <index type="clustered">
+            <column name="col" />
+            <column name="as" />
+          </index>
         </table>
       </input>
     </group>

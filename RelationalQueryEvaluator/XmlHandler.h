@@ -1,16 +1,12 @@
 #ifndef XmlHandlerHPP
 #define XmlHandlerHPP
 
-#include <iostream>
-#include <stdio.h>
-
 #include <xercesc/util/XMLString.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
 #include <xercesc/framework/LocalFileInputSource.hpp>
 #include <xercesc/sax/ErrorHandler.hpp>
 #include <xercesc/sax/SAXParseException.hpp>
 #include <xercesc/validators/common/Grammar.hpp>
-
 
 #include <xercesc/dom/DOM.hpp>
 #include <xercesc/dom/DOMDocument.hpp>
@@ -21,6 +17,9 @@
 #include <xercesc/dom/DOMNodeIterator.hpp>
 #include <xercesc/dom/DOMNodeList.hpp>
 #include <xercesc/dom/DOMText.hpp>
+
+#include <iostream>
+#include <stdio.h>
 
 
 
@@ -108,14 +107,19 @@ public:
 		domParser.parse(xmlFilePath);
 		if (domParser.getErrorCount() == 0 && parserErrorHandler.errors == 0)
 		{
-			printf("XML file validated against the schema successfully\n");
-			DOMDocument* xmlDoc = domParser.getDocument();
+			printf("XML file ");
+			printf(xmlFilePath);
+			printf(" validated against the schema successfully\n");
+			
+			DOMDocument * xmlDoc = domParser.getDocument();
 			DOMElement* elementRoot = xmlDoc->getDocumentElement();
 			return new Sort(elementRoot);
 		}
 		else
 		{
-			printf("XML file doesn't conform to the schema\n");
+			printf("XML file ");
+			printf(xmlFilePath);
+			printf("  doesn't conform to the schema\n");
 		}
 		return 0;
 	}

@@ -5,7 +5,7 @@
   <input>
     <selection>
       <parameters>
-        <condtion>
+        <condition>
           <not>
             <or>
               <equals>
@@ -18,7 +18,7 @@
               </lower>
             </or>
           </not>
-        </condtion>
+        </condition>
       </parameters>
       <input>
         <table name="users">

@@ -18,6 +18,7 @@
       <xs:element name="and" type="binary_bool_condition"></xs:element>
       <xs:element name="equals" type="bool_operator"></xs:element>
       <xs:element name="lower" type="bool_operator"></xs:element>
+      <xs:element name="lower_or_equals" type="bool_operator"></xs:element>
       <xs:element name="boolean_predicate" type="boolean_predicate"></xs:element>
     </xs:choice>
   </xs:complexType>
@@ -29,6 +30,7 @@
       <xs:element name="and" type="binary_bool_condition"></xs:element>
       <xs:element name="equals" type="bool_operator"></xs:element>
       <xs:element name="lower" type="bool_operator"></xs:element>
+      <xs:element name="lower_or_equals" type="bool_operator"></xs:element>
       <xs:element name="boolean_predicate" type="boolean_predicate"></xs:element>
     </xs:choice>
   </xs:complexType>
@@ -42,6 +44,20 @@
 
   <xs:complexType name="column">
     <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="index">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="column" type="column"></xs:element>
+    </xs:sequence>
+    <xs:attribute name="type">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="clustered"/>
+          <xs:enumeration value="nonclustered"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="constant">
@@ -120,7 +136,7 @@
       <xs:element name="table" type="table"></xs:element>
       <xs:element name="union" type="union"></xs:element>
       <xs:element name="difference" type="difference"></xs:element>
-      <xs:element name="antijoin" type="join"></xs:element>
+      <xs:element name="antijoin" type="antijoin"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
     </xs:choice>
   </xs:complexType>
@@ -133,7 +149,7 @@
       <xs:element name="table" type="table"></xs:element>
       <xs:element name="union" type="union"></xs:element>
       <xs:element name="difference" type="difference"></xs:element>
-      <xs:element name="antijoin" type="join"></xs:element>
+      <xs:element name="antijoin" type="antijoin"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
     </xs:choice>
   </xs:complexType>
@@ -155,18 +171,13 @@
       <xs:element name="column">
         <xs:complexType>
           <xs:attribute name="name" use="required"></xs:attribute>
-          <xs:attribute name="number_of_unique_values" use="optional"></xs:attribute>
-          <xs:attribute name="index" use="optional">
-            <xs:simpleType>
-              <xs:restriction base="xs:string">
-                <xs:enumeration value="clustered"></xs:enumeration>
-                <xs:enumeration value="non-clustered"></xs:enumeration>
-              </xs:restriction>
-            </xs:simpleType>
-          </xs:attribute>
-          <xs:attribute name="unique" default="false" type="xs:boolean" use="optional"></xs:attribute>
-        </xs:complexType>
+          <xs:attribute name="number_of_unique_values" use="optional" type="xs:long"></xs:attribute>
+          <xs:attribute name="unique" use="optional" type="xs:boolean" default="false"></xs:attribute>
+        </xs:complexType>      
       </xs:element>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="index" type="index"/>
+      </xs:choice>
     </xs:sequence>
     <xs:attribute use="optional" name="numberOfRows"></xs:attribute>
     <xs:attribute use="required" name="name"></xs:attribute>
@@ -205,27 +216,78 @@
       <xs:element name="input" type="binaryoperator"></xs:element>
     </xs:sequence>
   </xs:complexType>
-  
-  
+
+  <!-- anti join -->
+  <xs:complexType name="antijoin">
+    <xs:sequence>
+      <xs:element name="parameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:choice minOccurs="1" maxOccurs="1">
+              <xs:element name="equal_condition" type="equal_condition"></xs:element>
+              <xs:element name="less_condition" type="less_condition"></xs:element>
+            </xs:choice>
+            <xs:sequence minOccurs="1" maxOccurs="unbounded">
+              <!-- name of output columns with optional rename-->
+              <xs:element name="column">
+                <xs:complexType>
+                  <xs:attribute name="name" use="required"></xs:attribute>
+                  <xs:attribute name="newName" use="optional"></xs:attribute>
+                  <!-- from which input is this column -->
+                  <xs:attribute name="input" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="first"></xs:enumeration>
+                        <xs:enumeration value="second"></xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="input" type="binaryoperator"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+
   <xs:complexType name="equal_condition">
     <xs:sequence minOccurs="2" maxOccurs="2">
       <xs:element name="column" type="column"></xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="less_condition">
-    <xs:sequence minOccurs="2" maxOccurs="3">
+  <xs:complexType name="less_or_equals_in_join">
+    <xs:sequence minOccurs="2" maxOccurs="2">
       <xs:element name="column" type="column"></xs:element>
     </xs:sequence>
   </xs:complexType>
 
+
+  <xs:complexType name="less_condition">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:element name="and">
+        <xs:complexType>
+          <xs:choice minOccurs="2" maxOccurs="2">
+            <xs:element name="less" type="less_or_equals_in_join"></xs:element>
+            <xs:element name="less_or_equals" type="less_or_equals_in_join"></xs:element>
+          </xs:choice>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="less" type="less_or_equals_in_join"></xs:element>
+      <xs:element name="less_or_equals" type="less_or_equals_in_join"></xs:element>
+    </xs:choice>
+  </xs:complexType>
+  
   <!-- selection -->
   <xs:complexType name="selection">
     <xs:sequence>
       <xs:element name="parameters">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="condtion" type="bool_condition"></xs:element>
+            <xs:element name="condition" type="bool_condition"></xs:element>
           </xs:sequence>
         </xs:complexType>
       </xs:element>

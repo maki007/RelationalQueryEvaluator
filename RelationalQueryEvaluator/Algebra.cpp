@@ -1,3 +1,5 @@
+
+
 #include "Algebra.h"
 
 
@@ -14,7 +16,10 @@ AlgebraNodeBase *  AlgebraNodeBase::ConstructChildren(DOMElement * node)
 	XMLCh * columnOperationsName = XMLString::transcode("column_operations");
 	XMLCh * tableName = XMLString::transcode("table");
 	XMLCh * selectionName = XMLString::transcode("selection");
-
+	XMLCh * unionName = XMLString::transcode("union");
+	XMLCh * differenceName = XMLString::transcode("difference");
+	XMLCh * antijoinName = XMLString::transcode("antijoin");
+	
 	if(XMLString::compareString(node->getNodeName(),groupName)==0)
 	{
 		child = new Group((DOMElement *)node);
@@ -35,6 +40,18 @@ AlgebraNodeBase *  AlgebraNodeBase::ConstructChildren(DOMElement * node)
 	{
 		child = new Selection((DOMElement *)node);
 	}
+	else if(XMLString::compareString(node->getNodeName(),unionName)==0)
+	{
+		child = new Union((DOMElement *)node);
+	}
+	else if(XMLString::compareString(node->getNodeName(),differenceName)==0)
+	{
+		child = new Difference((DOMElement *)node);
+	}
+	else if(XMLString::compareString(node->getNodeName(),antijoinName)==0)
+	{
+		child = new AntiJoin((DOMElement *)node);
+	}
 	return child;
 }
 UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()
@@ -43,6 +60,7 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()
 
 UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 {
+	parent=0;
 	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"input");
 	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
 	{
@@ -50,8 +68,10 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
 			child=ConstructChildren((DOMElement*)node);
+			child->parent=this;
 		}
 	}
+
 }
 
 UnaryAlgebraNodeBase::~UnaryAlgebraNodeBase()
@@ -66,7 +86,7 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase()
 BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 {
 	bool leftChildInitialized=false;
-
+	parent=0;
 	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"input");
 	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
 	{
@@ -77,10 +97,12 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 			{
 				leftChild=ConstructChildren((DOMElement*)node);
 				leftChildInitialized=true;
+				leftChild->parent=this;
 			}
 			else
 			{
 				rightChild=ConstructChildren((DOMElement*)node);
+				rightChild->parent=this;
 			}
 		}
 	}
@@ -184,3 +206,4 @@ void Selection::accept(AlgebraVisitor &v)
 {
 	v.visit(this);
 }
+

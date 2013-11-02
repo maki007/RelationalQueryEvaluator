@@ -1,26 +1,45 @@
 #include <stdio.h>
+#include <cstdlib>
+#include <iostream>
+#include <string.h>
+#include <fstream>
+#include <vector>
+#include <string>
+
 
 #include "XmlHandler.h"
-#include <fstream>
 
 int main(int argc, const char *argv[])
 {
-	if (argc != 2)
+	if (argc < 2)
 	{
-		printf("SchemaValidator <xml file>\n");
+		printf("SchemaValidator <xml file> <xml file> <xml file> ... \n");
 		return 0;
 	}
 
-    AlgebraNodeBase * algebraRoot = XmlHandler::GenerateRelationalAlgebra(argv[1]);
-	GraphDrawingVisitor * visitor=new GraphDrawingVisitor();
-	algebraRoot->accept(*visitor);
+	for(int i=1;i<argc;++i)
+	{
+		AlgebraNodeBase * algebraRoot = XmlHandler::GenerateRelationalAlgebra(argv[i]);
+		if(algebraRoot==0)
+		{
+			return 1;
+		}
 
-	std::ofstream myfile;
-	myfile.open ("data/example.txt");
-	myfile << visitor->result ;
-	myfile.close();
+		GraphDrawingVisitor * visitor=new GraphDrawingVisitor();
+		algebraRoot->accept(*visitor);
 
-	delete algebraRoot;
-	delete visitor;
+		std::ofstream myfile;
+		std::string s("");
+		s.append(argv[i]);
+		s.append(".txt");
+
+		myfile.open (s.c_str());
+		myfile << visitor->result ;
+		myfile.close();
+
+		delete algebraRoot;
+		delete visitor;
+	}
+	system("drawAlgebra.bat");
 	return 0;
 }
