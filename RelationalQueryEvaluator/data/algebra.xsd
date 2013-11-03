@@ -138,6 +138,7 @@
       <xs:element name="table" type="table"></xs:element>
       <xs:element name="union" type="union"></xs:element>
       <xs:element name="difference" type="difference"></xs:element>
+      <xs:element name="intersection" type="intersection"></xs:element>
       <xs:element name="antijoin" type="antijoin"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
     </xs:choice>
@@ -151,6 +152,7 @@
       <xs:element name="table" type="table"></xs:element>
       <xs:element name="union" type="union"></xs:element>
       <xs:element name="difference" type="difference"></xs:element>
+      <xs:element name="intersection" type="intersection"></xs:element>
       <xs:element name="antijoin" type="antijoin"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
     </xs:choice>
@@ -163,6 +165,12 @@
   </xs:complexType>
   <!-- difference -->
   <xs:complexType name="difference">
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="input" type="binaryoperator" />
+    </xs:sequence>
+  </xs:complexType>
+  <!-- intersection -->
+  <xs:complexType name="intersection">
     <xs:sequence minOccurs="1" maxOccurs="1">
       <xs:element name="input" type="binaryoperator" />
     </xs:sequence>

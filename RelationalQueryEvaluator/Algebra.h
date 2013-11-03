@@ -171,6 +171,15 @@ public:
 	Difference(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
+
+class Intersection : public BinaryAlgebraNodeBase
+{
+public:
+	Intersection(DOMElement * element);
+	void accept(AlgebraVisitor &v);
+};
+
+
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
@@ -178,7 +187,6 @@ public:
 	Selection(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
-
 
 
 
@@ -249,7 +257,11 @@ public:
 		node->child->accept(*this);
 	}
 
-
+	virtual void visit(Intersection * node)
+	{
+		node->leftChild->accept(*this);
+		node->rightChild->accept(*this);
+	}
 
 };
 
@@ -356,6 +368,10 @@ public:
 	void visit(Selection * node)
 	{
 		generateText("Selection",node);
+	}
+	void visit(Intersection * node)
+	{
+		generateText("Intersection",node);
 	}
 	
 };
