@@ -23,7 +23,7 @@
 #include <sstream>
 #include "XmlUtils.h"
 #include "AlgebraExpressions.h";
-
+#include <memory>
 XERCES_CPP_NAMESPACE_USE
 
 
@@ -68,7 +68,7 @@ class IndexInfo
 class ColumnOperation
 {
 	std::string result;
-	Expression * expression;
+	std::shared_ptr<Expression> expression;
 };
 
 
@@ -77,7 +77,7 @@ class ColumnOperation
 class AlgebraNodeBase
 {
 public:
-	AlgebraNodeBase * parent;
+	std::shared_ptr<AlgebraNodeBase> parent;
 	AlgebraNodeBase();
 	AlgebraNodeBase * ConstructChildren(DOMElement * node);
 	virtual void accept(AlgebraVisitor &v) = 0;
@@ -86,23 +86,20 @@ public:
 class UnaryAlgebraNodeBase : public AlgebraNodeBase
 {
 public:
-	AlgebraNodeBase * child;
-
+	std::shared_ptr<AlgebraNodeBase> child;
 	UnaryAlgebraNodeBase(DOMElement * element);
-	UnaryAlgebraNodeBase();
-	~UnaryAlgebraNodeBase();	
+	UnaryAlgebraNodeBase();	
 	virtual void accept(AlgebraVisitor &v) = 0;
 };
 
 class BinaryAlgebraNodeBase : public AlgebraNodeBase
 {
 public:
-	AlgebraNodeBase * leftChild;
-	AlgebraNodeBase * rightChild;
+	std::shared_ptr<AlgebraNodeBase> leftChild;
+	std::shared_ptr<AlgebraNodeBase> rightChild;
 
 	BinaryAlgebraNodeBase(DOMElement * element);
 	BinaryAlgebraNodeBase();
-	~BinaryAlgebraNodeBase();
 	virtual void accept(AlgebraVisitor &v) = 0;
 };
 
@@ -145,7 +142,7 @@ public:
 class Join : public BinaryAlgebraNodeBase
 {
 public:
-	Expression * condition;
+	std::shared_ptr<Expression> condition;
 	Join(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -153,7 +150,7 @@ public:
 class AntiJoin : public BinaryAlgebraNodeBase
 {
 public:
-	Expression * condition;
+	std::shared_ptr<Expression> condition;
 	AntiJoin(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -183,7 +180,7 @@ public:
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
-	Expression * condition;
+	std::shared_ptr<Expression> condition;
 	Selection(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };

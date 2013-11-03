@@ -71,17 +71,13 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 		DOMNode * node = inputNode->getChildNodes()->item(i);
 		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
-			child=ConstructChildren((DOMElement*)node);
-			child->parent=this;
+			child=std::shared_ptr<AlgebraNodeBase>(ConstructChildren((DOMElement*)node));
+			child->parent=std::shared_ptr<AlgebraNodeBase>(this);
 		}
 	}
 
 }
 
-UnaryAlgebraNodeBase::~UnaryAlgebraNodeBase()
-{
-	delete child;
-}
 
 BinaryAlgebraNodeBase::BinaryAlgebraNodeBase()
 {
@@ -99,25 +95,18 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 		{
 			if(leftChildInitialized==false)
 			{
-				leftChild=ConstructChildren((DOMElement*)node);
+				leftChild=std::shared_ptr<AlgebraNodeBase>(ConstructChildren((DOMElement*)node));
 				leftChildInitialized=true;
-				leftChild->parent=this;
+				leftChild->parent=std::shared_ptr<AlgebraNodeBase>(this);
 			}
 			else
 			{
-				rightChild=ConstructChildren((DOMElement*)node);
-				rightChild->parent=this;
+				rightChild=std::shared_ptr<AlgebraNodeBase>(ConstructChildren((DOMElement*)node));
+				rightChild->parent=std::shared_ptr<AlgebraNodeBase>(this);
 			}
 		}
 	}
 }
-
-BinaryAlgebraNodeBase::~BinaryAlgebraNodeBase()
-{
-	delete leftChild;
-	delete rightChild;
-}
-
 
 Table::Table(DOMElement * element)
 {
