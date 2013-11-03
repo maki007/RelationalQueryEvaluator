@@ -22,7 +22,7 @@
 #include <string>
 #include <sstream>
 #include "XmlUtils.h"
-
+#include "AlgebraExpressions.h";
 
 XERCES_CPP_NAMESPACE_USE
 
@@ -65,6 +65,14 @@ class IndexInfo
 
 };
 
+class ColumnOperation
+{
+	std::string result;
+	Expression * expression;
+};
+
+
+
 //nodes
 class AlgebraNodeBase
 {
@@ -102,7 +110,7 @@ class Table : public AlgebraNodeBase
 {
 public:
 	std::string name;
-	std::vector<ColumnInfo>columns;
+	std::vector<ColumnInfo> columns;
 	ulong numberOfRows;
 	std::vector<IndexInfo> indices;
 	Table(DOMElement * element);
@@ -129,6 +137,7 @@ public:
 class ColumnOperations: public UnaryAlgebraNodeBase
 {
 public:
+	std::vector<ColumnOperation> operations; 
 	ColumnOperations(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -136,6 +145,7 @@ public:
 class Join : public BinaryAlgebraNodeBase
 {
 public:
+	Expression * condition;
 	Join(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -143,6 +153,7 @@ public:
 class AntiJoin : public BinaryAlgebraNodeBase
 {
 public:
+	Expression * condition;
 	AntiJoin(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -163,7 +174,7 @@ public:
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
-
+	Expression * condition;
 	Selection(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -300,7 +311,10 @@ public:
 	void visit(Sort * node)
 	{
 		result="digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
-		generateText("Sort",node);
+		std::string label;
+		label="Sort";
+		generateText(label.c_str(),node);
+
 		result+="\n}";
 	}
 

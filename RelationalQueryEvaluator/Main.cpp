@@ -40,6 +40,7 @@ int main(int argc, const char *argv[])
 		delete algebraRoot;
 		delete visitor;
 	}
+
 	system("drawAlgebra.bat");
 	return 0;
 }

@@ -17,6 +17,7 @@
       <xs:element name="or" type="binary_bool_condition"></xs:element>
       <xs:element name="and" type="binary_bool_condition"></xs:element>
       <xs:element name="equals" type="bool_operator"></xs:element>
+      <xs:element name="not_equals" type="bool_operator"></xs:element>
       <xs:element name="lower" type="bool_operator"></xs:element>
       <xs:element name="lower_or_equals" type="bool_operator"></xs:element>
       <xs:element name="boolean_predicate" type="boolean_predicate"></xs:element>
@@ -29,6 +30,7 @@
       <xs:element name="or" type="binary_bool_condition"></xs:element>
       <xs:element name="and" type="binary_bool_condition"></xs:element>
       <xs:element name="equals" type="bool_operator"></xs:element>
+      <xs:element name="not_equals" type="bool_operator"></xs:element>
       <xs:element name="lower" type="bool_operator"></xs:element>
       <xs:element name="lower_or_equals" type="bool_operator"></xs:element>
       <xs:element name="boolean_predicate" type="boolean_predicate"></xs:element>
