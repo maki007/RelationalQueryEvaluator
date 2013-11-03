@@ -35,5 +35,8 @@
     <ClInclude Include="XmlUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AlgebraExpressions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

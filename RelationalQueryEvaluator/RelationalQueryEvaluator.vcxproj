@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algebra.h" />
+    <ClInclude Include="AlgebraExpressions.h" />
     <ClInclude Include="XmlHandler.h" />
     <ClInclude Include="XmlUtils.h" />
   </ItemGroup>
