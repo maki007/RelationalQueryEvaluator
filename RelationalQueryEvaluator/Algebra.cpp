@@ -211,6 +211,17 @@ void ColumnOperations::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
+Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
+{
+
+}
+
+void Selection::accept(AlgebraVisitor &v)
+{
+	v.visit(this);
+}
+
+
 Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
 
@@ -262,13 +273,4 @@ void Intersection::accept(AlgebraVisitor &v)
 }
 
 
-Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
-{
-
-}
-
-void Selection::accept(AlgebraVisitor &v)
-{
-	v.visit(this);
-}
 

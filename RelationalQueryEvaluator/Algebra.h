@@ -139,6 +139,15 @@ public:
 	void accept(AlgebraVisitor &v);
 };
 
+
+class Selection : public UnaryAlgebraNodeBase
+{
+public:
+	std::shared_ptr<Expression> condition;
+	Selection(DOMElement * element);
+	void accept(AlgebraVisitor &v);
+};
+
 class Join : public BinaryAlgebraNodeBase
 {
 public:
@@ -173,15 +182,6 @@ class Intersection : public BinaryAlgebraNodeBase
 {
 public:
 	Intersection(DOMElement * element);
-	void accept(AlgebraVisitor &v);
-};
-
-
-class Selection : public UnaryAlgebraNodeBase
-{
-public:
-	std::shared_ptr<Expression> condition;
-	Selection(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
 

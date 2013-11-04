@@ -21,60 +21,26 @@ public:
 		node->accept(*this);
 	}
 
-	virtual void visit(Table * node)
-	{
+	virtual void visit(Table * node)=0;
 
-	}
+	virtual void visit(Sort * node)=0;
 
-	virtual void visit(Sort * node)
-	{
-		node->child->accept(*this);
-	}
+	virtual void visit(Group * node)=0;
 
-	virtual void visit(Group * node)
-	{
-		node->child->accept(*this);
-	}
+	virtual void visit(ColumnOperations * node)=0;
 
-	virtual void visit(ColumnOperations * node)
-	{
-		node->child->accept(*this);
-	}
+	virtual void visit(Selection * node)=0;
 
-	virtual void visit(Join * node)
-	{
-		node->leftChild->accept(*this);
-		node->rightChild->accept(*this);
-	}
+	virtual void visit(Join * node)=0;
 
-	virtual void visit(AntiJoin * node)
-	{
-		node->leftChild->accept(*this);
-		node->rightChild->accept(*this);
-	}
+	virtual void visit(AntiJoin * node)=0;
 
-	virtual void visit(Difference * node)
-	{
-		node->leftChild->accept(*this);
-		node->rightChild->accept(*this);
-	}
+	virtual void visit(Difference * node)=0;
 
-	virtual void visit(Union * node)
-	{
-		node->leftChild->accept(*this);
-		node->rightChild->accept(*this);
-	}
+	virtual void visit(Union * node)=0;
 
-	virtual void visit(Selection * node)
-	{
-		node->child->accept(*this);
-	}
+	virtual void visit(Intersection * node)=0;
 
-	virtual void visit(Intersection * node)
-	{
-		node->leftChild->accept(*this);
-		node->rightChild->accept(*this);
-	}
 
 };
 
@@ -192,6 +158,12 @@ public:
 	{
 		generateText("ColumnOperations",node);
 	}
+
+	void visit(Selection * node)
+	{
+		generateText("Selection",node);
+	}
+
 	void visit(Join * node)
 	{
 		generateText("Join",node);
@@ -211,10 +183,6 @@ public:
 		generateText("Union",node);
 	}
 
-	void visit(Selection * node)
-	{
-		generateText("Selection",node);
-	}
 	void visit(Intersection * node)
 	{
 		generateText("Intersection",node);
