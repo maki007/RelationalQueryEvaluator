@@ -21,9 +21,9 @@
       </parameters>
       <input>
         <table name="users">
-          <column name="a" />
-          <column name="b" />
-          <column name="c" />
+          <column name="a" type="int" />
+          <column name="b" type="int" />
+          <column name="c"  type="int" />
         </table>
       </input>
     </column_operations>

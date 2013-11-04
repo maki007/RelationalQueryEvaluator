@@ -1,46 +1,61 @@
 #include <stdio.h>
 #include <cstdlib>
-#include <iostream>
+#include<iostream>
+#include<fstream>
 #include <string.h>
 #include <fstream>
 #include <vector>
 #include <string>
 
-
+#include "Algebra.h"
+#include "AlgebraVisitor.h"
 #include "XmlHandler.h"
+
+using namespace std;
 
 int main(int argc, const char *argv[])
 {
-	if (argc < 2)
+	if (argc != 2)
 	{
-		printf("SchemaValidator <xml file> <xml file> <xml file> ... \n");
+		printf("SchemaValidator <file containg xml file>\n");
 		return 0;
 	}
 
-	for(int i=1;i<argc;++i)
+	ifstream reader;
+	reader.open(argv[1]);
+	if (reader.is_open()) 
 	{
-		AlgebraNodeBase * algebraRoot = XmlHandler::GenerateRelationalAlgebra(argv[i]);
-		if(algebraRoot==0)
+		while (!reader.eof()) 
 		{
-			return 1;
+			string line;
+			getline(reader,line);
+			if(line.size()==0)
+				continue;
+
+			line="data/"+line;
+			unique_ptr<AlgebraNodeBase> algebraRoot = XmlHandler::GenerateRelationalAlgebra(line.c_str());
+			if(algebraRoot==0)
+			{
+				return 1;
+			}
+
+			GraphDrawingVisitor * visitor=new GraphDrawingVisitor();
+			algebraRoot->accept(*visitor);
+
+			ofstream myfile;
+			string s("");
+			s.append(line);
+			s.append(".txt");
+
+			myfile.open (s.c_str());
+			myfile << visitor->result ;
+			myfile.close();
+
+			delete visitor;
+			
 		}
-
-		GraphDrawingVisitor * visitor=new GraphDrawingVisitor();
-		algebraRoot->accept(*visitor);
-
-		std::ofstream myfile;
-		std::string s("");
-		s.append(argv[i]);
-		s.append(".txt");
-
-		myfile.open (s.c_str());
-		myfile << visitor->result ;
-		myfile.close();
-
-		delete algebraRoot;
-		delete visitor;
 	}
-
 	system("drawAlgebra.bat");
+	getchar();
 	return 0;
 }

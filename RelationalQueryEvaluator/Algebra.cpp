@@ -1,7 +1,7 @@
 
 
 #include "Algebra.h"
-
+#include "AlgebraVisitor.h"
 
 AlgebraNodeBase::AlgebraNodeBase()
 {
@@ -120,7 +120,27 @@ void Table::accept(AlgebraVisitor &v)
 
 Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
-
+	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"parameters");
+	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
+	{
+		DOMNode * node = inputNode->getChildNodes()->item(i);
+		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
+		{
+			SortParameter parameter;
+			DOMElement * parameterElement=(DOMElement *)node;
+			parameter.column=XmlUtils::ReadAttribute(parameterElement,"column");
+			std::string direction=XmlUtils::ReadAttribute(parameterElement,"column");
+			if(direction=="asc")
+			{
+				parameter.ascending=true;
+			}
+			else if(direction=="desc")
+			{
+				parameter.ascending=false;
+			}
+			parameters.push_back(parameter);
+		}
+	}
 }
 
 void Sort::accept(AlgebraVisitor &v)

@@ -40,5 +40,10 @@ public:
 		}
 		return 0;
 	}
+
+	static std::string ReadAttribute(DOMElement * element,const char * atribute)
+	{
+		return XMLString::transcode(element->getAttribute(XMLString::transcode(atribute)));
+	}
 };
 #endif

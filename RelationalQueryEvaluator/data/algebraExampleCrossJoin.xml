@@ -10,12 +10,12 @@
       </parameters>
       <input>
         <table name="users">
-          <column name="name"/>
-          <column name="country_id"/>
+          <column name="name" type="string" />
+          <column name="country_id" type="int" />
         </table>
         <table name="countries"> 
-          <column name="id"/>
-          <column name="name" />
+          <column name="id" type="int"/>
+          <column name="name" type="string" />
         </table>
       </input>
     </join>

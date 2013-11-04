@@ -22,7 +22,7 @@
       </parameters>
       <input>
         <table name="users">
-          <column name="a" />
+          <column name="a" type="int" />
         </table>
       </input>
     </selection>

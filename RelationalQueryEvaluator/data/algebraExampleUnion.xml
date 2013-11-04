@@ -6,10 +6,10 @@
     <union>
       <input>
         <table name="people_from_city">
-          <column name="name"/>
+          <column name="name" type="string"/>
         </table>
         <table name="people_from_city">
-          <column name="name" unique="true" />
+          <column name="name" type="string" />
         </table>
       </input>
     </union>

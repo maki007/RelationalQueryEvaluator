@@ -92,7 +92,7 @@ public:
 class XmlHandler
 {
 public:
-	static AlgebraNodeBase * ValidateSchema(const char* xmlFilePath)
+	static std::unique_ptr<AlgebraNodeBase>   ValidateSchema(const char* xmlFilePath)
 	{
 		XercesDOMParser domParser;
 
@@ -113,7 +113,7 @@ public:
 			
 			DOMDocument * xmlDoc = domParser.getDocument();
 			DOMElement* elementRoot = xmlDoc->getDocumentElement();
-			return new Sort(elementRoot);
+			return std::unique_ptr<AlgebraNodeBase>(new Sort(elementRoot));
 		}
 		else
 		{
@@ -124,7 +124,7 @@ public:
 		return 0;
 	}
 
-	static AlgebraNodeBase * GenerateRelationalAlgebra(const char *filename)
+	static std::unique_ptr<AlgebraNodeBase> GenerateRelationalAlgebra(const char *filename)
 	{
 		XMLPlatformUtils::Initialize();
 		return ValidateSchema(filename);

@@ -1,6 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Sort"]
+node0[label="Sort
+country asc"]
 node1[label="Group"]
 node2[label="Table"]
 node2 -> node1[headport=s, tailport=n,label="   "]

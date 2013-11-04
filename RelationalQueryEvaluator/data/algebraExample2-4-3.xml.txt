@@ -1,6 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Sort"]
+node0[label="Sort
+revenue asc, o_orderdate asc"]
 node1[label="Group"]
 node2[label="ColumnOperations"]
 node3[label="Join"]

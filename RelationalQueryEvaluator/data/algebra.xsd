@@ -68,9 +68,10 @@
   </xs:complexType>
 
   <xs:complexType name="boolean_predicate">
-    <xs:sequence minOccurs="1" maxOccurs="unbounded">
-      <xs:element name="argument" type="bool_condition"></xs:element>
-    </xs:sequence>
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="column" type="column"></xs:element>
+      <xs:element name="costant" type="constant"></xs:element>
+    </xs:choice>
     <xs:attribute name="name" use="required"></xs:attribute>
   </xs:complexType>
 
@@ -182,7 +183,7 @@
         <xs:complexType>
           <xs:attribute name="name" use="required"></xs:attribute>
           <xs:attribute name="number_of_unique_values" use="optional" type="xs:long"></xs:attribute>
-          <xs:attribute name="unique" use="optional" type="xs:boolean" default="false"></xs:attribute>
+          <xs:attribute name="type" use="required" type="xs:string"></xs:attribute>
         </xs:complexType>      
       </xs:element>
       <xs:choice minOccurs="0" maxOccurs="unbounded">

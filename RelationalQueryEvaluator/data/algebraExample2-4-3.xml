@@ -55,8 +55,8 @@
                   </parameters>
                   <input>
                     <table name="customer">
-                      <column name="c_custkey" />
-                      <column name="c_mktsegment"/>
+                      <column name="c_custkey" type="int" />
+                      <column name="c_mktsegment" type="int"/>
                     </table>
                   </input>
                 </selection>
@@ -84,10 +84,10 @@
                       </parameters>
                       <input>
                         <table name="lineitem">
-                          <column name="l_orderkey"></column>
-                          <column name="l_shipdate"/>
-                          <column name="l_extendedprice"/>
-                          <column name="l_discount"/>
+                          <column name="l_orderkey" type="int"></column>
+                          <column name="l_shipdate" type="int"/>
+                          <column name="l_extendedprice" type="int"/>
+                          <column name="l_discount" type="int"/>
                         </table>
                       </input>
                     </selection>
@@ -102,9 +102,9 @@
                       </parameters>
                       <input>
                         <table name="orders">
-                          <column name="o_orderdate"/>
-                          <column name="o_shippriority"/>
-                          <column name="o_orderkey"/>
+                          <column name="o_orderdate" type="int"/>
+                          <column name="o_shippriority" type="int"/>
+                          <column name="o_orderkey" type="int"/>
                         </table>
                       </input>
                     </selection>
