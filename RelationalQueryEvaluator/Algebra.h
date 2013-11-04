@@ -47,6 +47,7 @@ class AgregateFunctionInfo
 {
 public:
 	AgregateFunction function;
+	std::string functionName;
 	std::string parameter;
 	std::string output;
 };

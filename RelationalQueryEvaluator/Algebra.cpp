@@ -151,7 +151,48 @@ void Sort::accept(AlgebraVisitor &v)
 
 Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
-
+	
+	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"parameters");
+	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
+	{
+		DOMNode * node = inputNode->getChildNodes()->item(i);
+		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
+		{
+			DOMElement * parameterElement=(DOMElement *)node;
+			std::string elementName=XMLString::transcode(parameterElement->getLocalName());
+			
+			if(elementName=="group_by")
+			{
+				groupColumns.push_back(XmlUtils::ReadAttribute(parameterElement,"column"));
+			}
+			else
+			{
+				AgregateFunctionInfo function;
+				function.functionName=elementName;
+				if(elementName == "max")
+				{
+					function.parameter=XmlUtils::ReadAttribute(parameterElement,"argument");
+					function.function=AgregateFunction::MAX;
+				}
+				if(elementName == "min")
+				{
+					function.parameter=XmlUtils::ReadAttribute(parameterElement,"argument");
+					function.function=AgregateFunction::MIN;
+				}
+				if(elementName == "sum")
+				{
+					function.parameter=XmlUtils::ReadAttribute(parameterElement,"argument");
+					function.function=AgregateFunction::SUM;
+				}
+				if(elementName == "count")
+				{
+					function.function=AgregateFunction::COUNT;
+				}
+				function.output=XmlUtils::ReadAttribute(parameterElement,"output");
+				agregateFunctions.push_back(function);
+			}
+		}
+	}
 }
 
 void Group::accept(AlgebraVisitor &v)

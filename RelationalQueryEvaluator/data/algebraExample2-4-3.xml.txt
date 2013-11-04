@@ -2,7 +2,8 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
 revenue asc, o_orderdate asc"]
-node1[label="Group"]
+node1[label="Group
+groupBy l_orderkey, o_orderdate, o_shippriority, revenue=sum(x);"]
 node2[label="ColumnOperations"]
 node3[label="Join"]
 node4[label="Selection"]

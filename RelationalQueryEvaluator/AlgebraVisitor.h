@@ -136,8 +136,7 @@ public:
 	void visit(Sort * node)
 	{
 		result="digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
-		std::string label;
-		label="Sort";
+		std::string label="Sort";
 		if(node->parameters.size()!=0)
 		{
 			label+="\n";
@@ -163,7 +162,23 @@ public:
 
 	void visit(Group * node)
 	{
-		generateText("Group",node);
+		std::string label="Group\n";
+		label+="groupBy ";
+		for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
+		{
+			label+=*it;
+			label+=", ";
+		}
+		for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
+		{
+			label+=it->output;
+			label+="=";
+			label+=it->functionName;
+			label+="("+it->parameter+")";
+			label+=";";
+		}
+
+		generateText(label,node);
 	}
 
 	void visit(Table * node)
