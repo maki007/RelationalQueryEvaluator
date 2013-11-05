@@ -82,12 +82,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algebra.cpp" />
+    <ClCompile Include="AlgebraVisitor.cpp" />
+    <ClCompile Include="Expressions.cpp" />
+    <ClCompile Include="ExpressionVisitor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="XmlHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algebra.h" />
-    <ClInclude Include="AlgebraExpressions.h" />
+    <ClInclude Include="Expressions.h" />
+    <ClInclude Include="ExpressionVisitor.h" />
     <ClInclude Include="AlgebraVisitor.h" />
     <ClInclude Include="XmlHandler.h" />
     <ClInclude Include="XmlUtils.h" />

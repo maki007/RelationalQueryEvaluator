@@ -22,12 +22,12 @@
 #include <string>
 #include <sstream>
 #include "XmlUtils.h"
-#include "AlgebraExpressions.h"
+#include "Expressions.h"
 #include <memory>
 
 XERCES_CPP_NAMESPACE_USE
 
-	typedef unsigned long long int ulong;
+typedef unsigned long long int ulong;
 typedef unsigned int uint;
 
 class AlgebraVisitor;
@@ -79,7 +79,7 @@ class AlgebraNodeBase
 public:
 	std::shared_ptr <AlgebraNodeBase> parent;
 	AlgebraNodeBase();
-	AlgebraNodeBase * ConstructChildren(DOMElement * node);
+	AlgebraNodeBase * constructChildren(DOMElement * node);
 	virtual void accept(AlgebraVisitor &v) = 0;
 };
 

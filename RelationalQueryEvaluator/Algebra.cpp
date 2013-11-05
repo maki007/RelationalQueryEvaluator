@@ -8,7 +8,7 @@ AlgebraNodeBase::AlgebraNodeBase()
 
 }
 
-AlgebraNodeBase *  AlgebraNodeBase::ConstructChildren(DOMElement * node)
+AlgebraNodeBase *  AlgebraNodeBase::constructChildren(DOMElement * node)
 {
 	AlgebraNodeBase * child=0;
 	XMLCh * groupName = XMLString::transcode("group");
@@ -71,7 +71,7 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 		DOMNode * node = inputNode->getChildNodes()->item(i);
 		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
-			child=std::shared_ptr<AlgebraNodeBase>(ConstructChildren((DOMElement*)node));
+			child=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
 			child->parent=std::shared_ptr<AlgebraNodeBase>(this);
 		}
 	}
@@ -95,13 +95,13 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 		{
 			if(leftChildInitialized==false)
 			{
-				leftChild=std::shared_ptr<AlgebraNodeBase>(ConstructChildren((DOMElement*)node));
+				leftChild=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
 				leftChildInitialized=true;
 				leftChild->parent=std::shared_ptr<AlgebraNodeBase>(this);
 			}
 			else
 			{
-				rightChild=std::shared_ptr<AlgebraNodeBase>(ConstructChildren((DOMElement*)node));
+				rightChild=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
 				rightChild->parent=std::shared_ptr<AlgebraNodeBase>(this);
 			}
 		}
