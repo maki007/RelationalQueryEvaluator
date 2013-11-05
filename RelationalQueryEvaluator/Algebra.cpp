@@ -83,6 +83,7 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase()
 {
 
 }
+
 BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 {
 	bool leftChildInitialized=false;
@@ -213,6 +214,9 @@ void ColumnOperations::accept(AlgebraVisitor &v)
 
 Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
 {
+	DOMNode * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
+	DOMNode * conditionNode=XmlUtils::GetChildElementByName((DOMElement *)parametersNode,"condition");
+	condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement((DOMElement *)conditionNode)));
 
 }
 

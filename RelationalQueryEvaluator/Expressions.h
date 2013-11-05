@@ -21,6 +21,7 @@
 #include <xercesc/dom/DOMNodeList.hpp>
 #include <xercesc/dom/DOMText.hpp>
 
+#include "XmlUtils.h"
 
 XERCES_CPP_NAMESPACE_USE
 
@@ -38,35 +39,15 @@ class ExpressionVisitorBase;
 class Expression
 {
 public:
-	virtual void accept(ExpressionVisitorBase &v);
-	Expression * constructChildren(DOMElement * node);
-	
-	/*
-	not
-	or
-	and
-	equals
-	not_equals
-	lower
-	lower_or_equal
-	boolean_predicate
-	plus
-	minus
-	times
-	divide
-	aritmetic_function
-	column
-	costant
-	  */
-
-
-	
+	virtual void accept(ExpressionVisitorBase &v)=0;
+	static Expression * constructChildren(DOMElement * node);
 };
 class UnaryExpression : public Expression
 {
 public:
 	UnaryOperator operation;
 	std::shared_ptr<Expression> child;
+	UnaryExpression(DOMElement * node,UnaryOperator op);
 	void accept(ExpressionVisitorBase &v);
 };
 
@@ -76,6 +57,7 @@ public:
 	BinaryOperator operation;
 	std::shared_ptr<Expression> leftChild;
 	std::shared_ptr<Expression> rightChild;
+	BinaryExpression(DOMElement * node,BinaryOperator op);
 	void accept(ExpressionVisitorBase &v);
 };
 
@@ -84,6 +66,7 @@ class NnaryExpression : public Expression
 public:
 	std::string name;
 	std::vector<std::shared_ptr<Expression>> arguments;
+	NnaryExpression(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
 };
 
@@ -92,6 +75,7 @@ class Constant : public Expression
 public:
 	std::string value;
 	std::string type;
+	Constant(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
 };
 
@@ -101,6 +85,7 @@ public:
 	std::string name;
 	std::string tableName;
 	std::string type;
+	Column(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
 };
 

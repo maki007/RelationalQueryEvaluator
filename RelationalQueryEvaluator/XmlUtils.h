@@ -41,6 +41,33 @@ public:
 		return 0;
 	}
 
+	static DOMElement * GetFirstChildElement(DOMElement * element)
+	{
+		DOMNodeList * childs=element->getChildNodes();
+		for(XMLSize_t i=0;i<childs->getLength();++i)
+		{
+			if(childs->item(i)->getNodeType() == DOMElement::ELEMENT_NODE)
+			{
+				return (DOMElement *)childs->item(i);
+			}
+		}
+		return 0;
+	}
+
+	static std::vector<DOMElement *> GetChildElements(DOMElement * element)
+	{
+		std::vector<DOMElement *> result;
+		DOMNodeList * childs=element->getChildNodes();
+		for(XMLSize_t i=0;i<childs->getLength();++i)
+		{
+			if(childs->item(i)->getNodeType() == DOMElement::ELEMENT_NODE)
+			{
+				result.push_back((DOMElement *)childs->item(i));
+			}
+		}
+		return result;
+	}
+
 	static std::string ReadAttribute(DOMElement * element,const char * atribute)
 	{
 		return XMLString::transcode(element->getAttribute(XMLString::transcode(atribute)));

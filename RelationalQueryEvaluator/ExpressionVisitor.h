@@ -19,7 +19,7 @@ public:
 	virtual void visit(Column * expression);
 };
 
-class WritingExpressionVisitor : ExpressionVisitorBase
+class WritingExpressionVisitor : public ExpressionVisitorBase
 {
 public:
 	std::string result;
