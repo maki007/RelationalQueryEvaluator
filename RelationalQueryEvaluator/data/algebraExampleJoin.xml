@@ -6,8 +6,10 @@
     <join>
       <parameters>
         <equal_condition>
-          <column name="country_id"/>
-          <column name="id"/>
+          <equals>
+            <column name="country_id"/>
+            <column name="id"/>
+           </equals>            
         </equal_condition>
         <column name="name" input="first" />
         <column name="name" newName="country_name" input="second"/>
@@ -17,7 +19,7 @@
           <column name="name" type="string"/>
           <column name="country_id" type="int" />
         </table>
-        <table name="countries"> 
+        <table name="countries">
           <column name="id" type="int"/>
           <column name="name" type="string" />
         </table>

@@ -1,10 +1,11 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-country asc"]
+country desc"]
 node1[label="Group
 groupBy s, count=count();"]
-node2[label="Table"]
+node2[label="Table
+people"]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 

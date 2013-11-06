@@ -111,7 +111,43 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 
 Table::Table(DOMElement * element)
 {
-	
+	/*
+	<table name="users" numberOfRows="10000">
+          <column name="a" type="int" number_of_unique_values="1000" />
+          <index>
+            <column name="a"/>
+          </index>
+        </table>
+	*/
+	name=XmlUtils::ReadAttribute(element,"name");
+	if(XmlUtils::ReadAttribute(element,"numberOfRows")=="")
+	{
+		numberOfRows=1000;
+	}
+	else
+	{
+		std::istringstream ( XmlUtils::ReadAttribute(element,"numberOfRows") ) >> numberOfRows;
+	}
+	std::vector<DOMElement *> parameters=XmlUtils::GetChildElements(element);
+	for(auto it=parameters.begin();it!=parameters.end();++it)
+	{
+		if(XmlUtils::GetElementName(*it)=="column")
+		{
+			ColumnInfo info;
+			info.type=XmlUtils::ReadAttribute(*it,"type");
+			info.type=XmlUtils::ReadAttribute(*it,"name");
+			if(XmlUtils::ReadAttribute(*it,"number_of_unique_values")=="")
+			{
+				info.numberOfUniqueValues=numberOfRows;
+			}
+			else
+			{
+				std::istringstream ( XmlUtils::ReadAttribute(*it,"number_of_unique_values") ) >> numberOfRows;
+			}
+			columns.push_back(info);
+		}
+	}
+	//todo indices
 }
 
 void Table::accept(AlgebraVisitor &v)
@@ -130,12 +166,12 @@ Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 			SortParameter parameter;
 			DOMElement * parameterElement=(DOMElement *)node;
 			parameter.column=XmlUtils::ReadAttribute(parameterElement,"column");
-			std::string direction=XmlUtils::ReadAttribute(parameterElement,"column");
+			std::string direction=XmlUtils::ReadAttribute(parameterElement,"direction");
 			if(direction=="asc")
 			{
 				parameter.ascending=true;
 			}
-			else if(direction=="desc")
+			else
 			{
 				parameter.ascending=false;
 			}
@@ -204,7 +240,22 @@ void Group::accept(AlgebraVisitor &v)
 
 ColumnOperations::ColumnOperations(DOMElement * element):UnaryAlgebraNodeBase(element)
 {
-
+	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
+	std::vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
+	for(auto it=columns.begin();it!=columns.end();++it)
+	{
+		ColumnOperation op;
+		op.result=XmlUtils::ReadAttribute(*it,"name");
+		if(XmlUtils::GetFirstChildElement(*it)!=0)
+		{
+			op.expression=std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(XmlUtils::GetFirstChildElement(*it))));
+		}
+		else
+		{
+			op.expression=std::shared_ptr<Expression>(0);
+		}
+		operations.push_back(op);
+	}
 }
 
 void ColumnOperations::accept(AlgebraVisitor &v)
@@ -214,9 +265,9 @@ void ColumnOperations::accept(AlgebraVisitor &v)
 
 Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
 {
-	DOMNode * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
-	DOMNode * conditionNode=XmlUtils::GetChildElementByName((DOMElement *)parametersNode,"condition");
-	condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement((DOMElement *)conditionNode)));
+	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
+	DOMElement * conditionNode=XmlUtils::GetChildElementByName(parametersNode,"condition");
+	condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
 
 }
 
@@ -228,7 +279,38 @@ void Selection::accept(AlgebraVisitor &v)
 
 Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
-
+	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
+	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
+	int start=0;
+	if(XmlUtils::GetFirstChildElement(conditionNode)!=0)
+	{
+		start=1;
+		condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
+	}
+	else
+	{
+		condition=0;
+	}
+	std::vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
+	for(auto it=columns.begin()+start;it!=columns.end();++it)
+	{
+		JoinColumnInfo info;
+		info.newName=XmlUtils::ReadAttribute(*it,"newName");
+		info.name=XmlUtils::ReadAttribute(*it,"name");
+		if(info.newName=="")
+		{
+			info.newName=info.name;
+		}
+		if(XmlUtils::ReadAttribute(*it,"input")=="first")
+		{
+			info.input=0;
+		}
+		else
+		{
+			info.input=1;
+		}
+		outputColumns.push_back(info);
+	}
 }
 
 void Join::accept(AlgebraVisitor &v)
@@ -238,6 +320,29 @@ void Join::accept(AlgebraVisitor &v)
 
 AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
+	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
+	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
+	condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
+	std::vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
+	for(auto it=columns.begin()+1;it!=columns.end();++it)
+	{
+		JoinColumnInfo info;
+		info.newName=XmlUtils::ReadAttribute(*it,"newName");
+		info.name=XmlUtils::ReadAttribute(*it,"name");
+		if(info.newName=="")
+		{
+			info.newName=info.name;
+		}
+		if(XmlUtils::ReadAttribute(*it,"input")=="first")
+		{
+			info.input=0;
+		}
+		else
+		{
+			info.input=1;
+		}
+		outputColumns.push_back(info);
+	}
 
 }
 

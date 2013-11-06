@@ -1,13 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <xs:simpleType name="non_empty_string">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"></xs:minLength>
+    </xs:restriction>
+  </xs:simpleType>
+  
   <!-- agregation -->
   <xs:complexType name="unary_agregate_type">
-    <xs:attribute name="argument" type="xs:string" use="required"></xs:attribute>
-    <xs:attribute name="output" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="argument" type="non_empty_string" use="required"></xs:attribute>
+    <xs:attribute name="output" type="non_empty_string" use="required"></xs:attribute>
   </xs:complexType>
   <xs:complexType name="nulary_agregate_type">
-    <xs:attribute name="output" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="output" type="non_empty_string" use="required"></xs:attribute>
   </xs:complexType>
 
   <!-- boolean condition -->
@@ -45,7 +51,7 @@
   </xs:complexType>
 
   <xs:complexType name="column">
-    <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+    <xs:attribute name="name" type="non_empty_string" use="required"></xs:attribute>
   </xs:complexType>
 
   <xs:complexType name="index">
@@ -182,15 +188,15 @@
       <xs:element name="column">
         <xs:complexType>
           <xs:attribute name="name" use="required"></xs:attribute>
-          <xs:attribute name="number_of_unique_values" use="optional" type="xs:long"></xs:attribute>
-          <xs:attribute name="type" use="required" type="xs:string"></xs:attribute>
-        </xs:complexType>      
+          <xs:attribute name="number_of_unique_values" use="optional" type="xs:unsignedLong"></xs:attribute>
+          <xs:attribute name="type" use="required" type="non_empty_string"></xs:attribute>
+        </xs:complexType>
       </xs:element>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="index" type="index"/>
       </xs:choice>
     </xs:sequence>
-    <xs:attribute use="optional" name="numberOfRows"></xs:attribute>
+    <xs:attribute use="optional" name="numberOfRows" type="xs:unsignedLong"></xs:attribute>
     <xs:attribute use="required" name="name"></xs:attribute>
   </xs:complexType>
   <!-- join -->
@@ -265,8 +271,14 @@
 
 
   <xs:complexType name="equal_condition">
-    <xs:sequence minOccurs="2" maxOccurs="2">
-      <xs:element name="column" type="column"></xs:element>
+    <xs:sequence minOccurs="1" maxOccurs="1">
+      <xs:element name="equals">
+        <xs:complexType>
+          <xs:sequence minOccurs="2" maxOccurs="2">
+            <xs:element name="column" type="column"></xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
 
@@ -291,7 +303,7 @@
       <xs:element name="less_or_equals" type="less_or_equals_in_join"></xs:element>
     </xs:choice>
   </xs:complexType>
-  
+
   <!-- selection -->
   <xs:complexType name="selection">
     <xs:sequence>
@@ -343,7 +355,7 @@
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:attribute>
-                  <xs:attribute name="column" type="xs:string" use="required"></xs:attribute>
+                  <xs:attribute name="column" type="non_empty_string" use="required"></xs:attribute>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

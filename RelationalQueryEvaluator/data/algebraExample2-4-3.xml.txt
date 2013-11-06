@@ -1,25 +1,31 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-revenue asc, o_orderdate asc"]
+revenue desc, o_orderdate asc"]
 node1[label="Group
 groupBy l_orderkey, o_orderdate, o_shippriority, revenue=sum(x);"]
-node2[label="ColumnOperations"]
-node3[label="Join"]
+node2[label="ColumnOperations
+l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice * (1 - l_discount))"]
+node3[label="Join
+(c_custkey == o_custkey)"]
 node4[label="Selection
-( == )"]
-node5[label="Table"]
+(c_mktsegment == SEGMENT)"]
+node5[label="Table
+customer"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
-node6[label="Join"]
+node6[label="Join
+(l_orderkey == o_orderkey)"]
 node7[label="Selection
-( < )"]
-node8[label="Table"]
+(today < l_shipdate)"]
+node8[label="Table
+lineitem"]
 node8 -> node7[headport=s, tailport=n,label="   "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node9[label="Selection
-( < )"]
-node10[label="Table"]
+(o_orderdate < today)"]
+node10[label="Table
+orders"]
 node10 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]

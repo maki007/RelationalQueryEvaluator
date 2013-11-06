@@ -21,8 +21,11 @@
         </condition>
       </parameters>
       <input>
-        <table name="users">
-          <column name="a" type="int" />
+        <table name="users" numberOfRows="10000">
+          <column name="a" type="int" number_of_unique_values="1000" />
+          <index>
+            <column name="a"/>
+          </index>
         </table>
       </input>
     </selection>

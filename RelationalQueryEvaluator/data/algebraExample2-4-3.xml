@@ -34,8 +34,10 @@
             <join>
               <parameters>
                 <equal_condition>
-                  <column name="c_custkey"/>
-                  <column name="o_custkey"/>
+                  <equals>
+                    <column name="c_custkey"/>
+                    <column name="o_custkey"/>
+                  </equals>
                 </equal_condition>
                 <column name="l_orderkey" input="second"/>
                 <column name="o_orderdate" input="second"/>
@@ -63,8 +65,10 @@
                 <join>
                   <parameters>
                     <equal_condition>
-                      <column name="l_orderkey"/>
-                      <column name="o_orderkey"/>
+                      <equals>
+                        <column name="l_orderkey"/>
+                        <column name="o_orderkey"/>
+                      </equals>
                     </equal_condition>
                     <column name="l_orderkey" input="first"/>
                     <column name="o_orderdate" input="second"/>

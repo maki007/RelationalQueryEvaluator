@@ -175,18 +175,38 @@ void GraphDrawingVisitor::visit(Table * node)
 {
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
-	result.append("[label=\"Table\"]\n");
+	std::string label="[label=\"Table\n";
+	label+=node->name;
+	label+="\"]\n";
+	result.append(label);
 }
 
 void GraphDrawingVisitor::visit(ColumnOperations * node)
 {
-	generateText("ColumnOperations",node);
+	std::string label="ColumnOperations\n";
+	for(auto it=node->operations.begin();it!=node->operations.end();++it)
+	{
+		label+=it->result;
+		if(it->expression!=0)
+		{
+			std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+			it->expression->accept(*visitor);
+			label+=" = ";
+			label+=visitor->result;
+		}
+		if(it!=node->operations.end()-1)
+		{
+		label+=", ";
+		}
+	}
+	generateText(label,node);
+
 }
 
 void GraphDrawingVisitor::visit(Selection * node)
 {
 	std::string label="Selection\n";
-	WritingExpressionVisitor * visitor= new WritingExpressionVisitor();
+	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 	node->condition->accept(*visitor);
 	label+=visitor->result;
 	generateText(label,node);
@@ -194,12 +214,24 @@ void GraphDrawingVisitor::visit(Selection * node)
 
 void GraphDrawingVisitor::visit(Join * node)
 {
-	generateText("Join",node);
+	std::string label="Join\n";
+	//crossjoin
+	if(node->condition!=0)
+	{
+	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+	node->condition->accept(*visitor);
+	label+=visitor->result;
+	}
+	generateText(label,node);
 }
 
 void GraphDrawingVisitor::visit(AntiJoin * node)
 {
-	generateText("AntiJoin",node);
+	std::string label="AntiJoin\n";
+	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+	node->condition->accept(*visitor);
+	label+=visitor->result;
+	generateText(label,node);
 }
 void GraphDrawingVisitor::visit(Difference * node)
 {

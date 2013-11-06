@@ -54,7 +54,9 @@ public:
 
 class ColumnInfo
 {
+public:
 	std::string name;
+	std::string type;
 	ulong numberOfUniqueValues;
 };
 
@@ -64,10 +66,19 @@ class IndexInfo
 
 };
 
+class JoinColumnInfo
+{
+public:
+	uint input;
+	std::string name;
+	std::string newName;
+};
+
 class ColumnOperation
 {
+public:
 	std::string result;
-	std::weak_ptr <Expression> expression;
+	std::shared_ptr <Expression> expression;
 	std::string type;
 };
 
@@ -152,6 +163,7 @@ class Join : public BinaryAlgebraNodeBase
 {
 public:
 	std::shared_ptr<Expression> condition;
+	std::vector<JoinColumnInfo> outputColumns;
 	Join(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -160,6 +172,7 @@ class AntiJoin : public BinaryAlgebraNodeBase
 {
 public:
 	std::shared_ptr<Expression> condition;
+	std::vector<JoinColumnInfo> outputColumns;
 	AntiJoin(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };

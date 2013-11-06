@@ -132,7 +132,7 @@ void NnaryExpression::accept(ExpressionVisitorBase &v)
 
 Constant::Constant(DOMElement * node)
 {
-
+	this->value=XmlUtils::ReadAttribute(node,"value");
 }
 
 void Constant::accept(ExpressionVisitorBase &v)
@@ -142,7 +142,7 @@ void Constant::accept(ExpressionVisitorBase &v)
 
 Column::Column(DOMElement * node)
 {
-
+	this->name=XmlUtils::ReadAttribute(node,"name");
 }
 
 void Column::accept(ExpressionVisitorBase &v)

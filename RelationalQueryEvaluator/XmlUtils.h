@@ -24,7 +24,7 @@ XERCES_CPP_NAMESPACE_USE
 class XmlUtils
 {
 public:
-	static DOMNode * GetChildElementByName(DOMElement * element,const char * elementName)
+	static DOMElement * GetChildElementByName(DOMElement * element,const char * elementName)
 	{
 		XMLCh * name = XMLString::transcode(elementName);
 		DOMNodeList * childs=element->getChildNodes();
@@ -34,7 +34,7 @@ public:
 			{
 				if(XMLString::compareString(childs->item(i)->getNodeName(), name)==0)
 				{
-					return childs->item(i);
+					return (DOMElement *)(childs->item(i));
 				}
 			}
 		}
@@ -71,6 +71,11 @@ public:
 	static std::string ReadAttribute(DOMElement * element,const char * atribute)
 	{
 		return XMLString::transcode(element->getAttribute(XMLString::transcode(atribute)));
+	}
+
+	static std::string GetElementName(DOMElement * element)
+	{
+		return std::string(XMLString::transcode(element->getNodeName()));
 	}
 };
 #endif
