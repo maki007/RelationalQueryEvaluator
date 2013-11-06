@@ -176,7 +176,7 @@ void GraphDrawingVisitor::visit(Table * node)
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
 	std::string label="[label=\"Table\n";
-	label+=node->name;
+	label+=node->name; 
 	label+="\"]\n";
 	result.append(label);
 }
