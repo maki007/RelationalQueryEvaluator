@@ -52,6 +52,20 @@ public:
 	std::string output;
 };
 
+enum IndexType
+{
+CLUSTERED,UNCLUSTERED
+};
+
+class ColumnInfo;
+
+class IndexInfo
+{
+public:
+	IndexType type;
+	std::vector<std::string> columns;
+};
+
 class ColumnInfo
 {
 public:
@@ -60,11 +74,7 @@ public:
 	ulong numberOfUniqueValues;
 };
 
-//todo indexes
-class IndexInfo
-{
 
-};
 
 class JoinColumnInfo
 {

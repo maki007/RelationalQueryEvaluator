@@ -175,8 +175,53 @@ void GraphDrawingVisitor::visit(Table * node)
 {
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
-	std::string label="[label=\"Table\n";
-	label+=node->name; 
+	std::string label="[label=\"Table ";
+	label+=node->name;
+	label+="\n number of rows: ";
+	label+=std::to_string(node->numberOfRows);
+	label+="\n columns: ";
+	for(auto it=node->columns.begin();it!=node->columns.end();++it)
+	{
+		label+=it->name;
+		label+= "(";
+		label+=it->type;
+		label+=",";
+		label+=std::to_string(it->numberOfUniqueValues);
+		label+= ")";
+		
+		if(it!=node->columns.end()-1)
+		{
+		label+=", ";
+		}
+	}
+	label+="\n indices: ";
+	
+	for(auto it=node->indices.begin();it!=node->indices.end();++it)
+	{
+		if(it->type==IndexType::CLUSTERED)
+		{
+			label+="CLUSTERED";
+		}
+		else
+		{
+			label+="UNCLUSTERED";
+		}
+		label+= "(";
+		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
+		{
+			label+=*it2;
+			if(it2!=it->columns.end()-1)
+			{
+				label+=", ";
+			}
+		}
+		label+= ")";
+		if(it!=node->indices.end()-1)
+		{
+		label+=", ";
+		}
+	}
+
 	label+="\"]\n";
 	result.append(label);
 }

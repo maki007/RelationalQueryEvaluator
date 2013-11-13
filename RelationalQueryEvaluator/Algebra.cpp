@@ -135,16 +135,35 @@ Table::Table(DOMElement * element)
 		{
 			ColumnInfo info;
 			info.type=XmlUtils::ReadAttribute(*it,"type");
-			info.type=XmlUtils::ReadAttribute(*it,"name");
+			info.name=XmlUtils::ReadAttribute(*it,"name");
 			if(XmlUtils::ReadAttribute(*it,"number_of_unique_values")=="")
 			{
-				info.numberOfUniqueValues=numberOfRows;
+				info.numberOfUniqueValues=numberOfRows/3;
 			}
 			else
 			{
-				std::istringstream ( XmlUtils::ReadAttribute(*it,"number_of_unique_values") ) >> numberOfRows;
+				std::istringstream ( XmlUtils::ReadAttribute(*it,"number_of_unique_values") ) >> info.numberOfUniqueValues;
+				info.numberOfUniqueValues = std::min(info.numberOfUniqueValues,numberOfRows);
 			}
 			columns.push_back(info);
+		}
+		else if(XmlUtils::GetElementName(*it)=="index")
+		{
+			IndexInfo index;
+			if(XmlUtils::ReadAttribute(*it,"type")=="clustered")
+			{
+				index.type=IndexType::CLUSTERED;
+			}
+			else
+			{
+				index.type=IndexType::UNCLUSTERED;
+			}
+			std::vector<DOMElement *> columnsElement=XmlUtils::GetChildElements(*it);
+			for(auto it2=columnsElement.begin();it2!=columnsElement.end();++it2)
+			{
+				index.columns.push_back(std::string(XmlUtils::ReadAttribute(*it2,"name")));
+			}
+			indices.push_back(index);
 		}
 	}
 	//todo indices

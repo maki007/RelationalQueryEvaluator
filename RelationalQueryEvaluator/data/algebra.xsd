@@ -62,7 +62,7 @@
       <xs:simpleType>
         <xs:restriction base="xs:string">
           <xs:enumeration value="clustered"/>
-          <xs:enumeration value="nonclustered"/>
+          <xs:enumeration value="unclustered"/>
         </xs:restriction>
       </xs:simpleType>
     </xs:attribute>

@@ -3,8 +3,10 @@ digraph g {node [shape=box]
 node0[label="Sort"]
 node1[label="Selection
 !(((a == 4) or (a < -1)))"]
-node2[label="Table
-users"]
+node2[label="Table users
+ number of rows: 10000
+ columns: a(int,1000)
+ indices: UNCLUSTERED(a)"]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 

@@ -59,6 +59,9 @@
                     <table name="customer">
                       <column name="c_custkey" type="int" />
                       <column name="c_mktsegment" type="int"/>
+                      <index type="unclustered">
+                        <column name="c_mktsegment"/>
+                      </index>
                     </table>
                   </input>
                 </selection>
@@ -109,6 +112,10 @@
                           <column name="o_orderdate" type="int"/>
                           <column name="o_shippriority" type="int"/>
                           <column name="o_orderkey" type="int"/>
+                          <index type="clustered">
+                            <column name="o_orderdate"/>
+                            <column name="o_shippriority"/>
+                          </index>
                         </table>
                       </input>
                     </selection>
