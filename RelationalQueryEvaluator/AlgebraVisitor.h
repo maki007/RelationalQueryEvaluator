@@ -31,6 +31,16 @@ public:
 
 	virtual void visit(Intersection * node);
 
+	virtual void visit(GroupedAlgebraNode * node);
+
+	virtual void visit(GroupedIntersection * node);
+
+	virtual void visit(GroupedUnion * node);
+
+	virtual void visit(GroupedDifference * node);
+
+	virtual void visit(GroupedJoin * node);
+
 };
 
 class GraphDrawingVisitor : public AlgebraVisitor
@@ -43,6 +53,8 @@ public:
 	void generateText(std::string label ,UnaryAlgebraNodeBase * node);
 
 	void generateText(std::string label , BinaryAlgebraNodeBase * node);
+
+	void generateText(std::string label , GroupedAlgebraNode * node);
 
 	void visit(Sort * node);
 
@@ -64,6 +76,32 @@ public:
 
 	void visit(Intersection * node);
 
+	void visit(GroupedIntersection * node);
+
+	void visit(GroupedUnion * node);
+
+	void visit(GroupedDifference * node);
+
+	void visit(GroupedJoin * node);
+
 };
+
+
+class GroupingVisitor : public AlgebraVisitor
+{
+public:
+	GroupingVisitor();
+
+	void visit(Intersection * node);
+
+	void visit(Union * node);
+
+	void visit(Difference * node);
+
+	void visit(Join * node);
+
+	void visit(AntiJoin * node);
+};
+
 
 #endif

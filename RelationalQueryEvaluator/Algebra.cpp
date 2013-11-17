@@ -1,5 +1,3 @@
-
-
 #include "Algebra.h"
 #include "AlgebraVisitor.h"
 
@@ -58,10 +56,26 @@ AlgebraNodeBase *  AlgebraNodeBase::constructChildren(DOMElement * node)
 	}
 	return child;
 }
+
+void AlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+{
+}
+
 UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()
 {
 }
 
+void UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+{
+	if(child.get()==oldChild)
+	{
+		child=std::shared_ptr<AlgebraNodeBase>(newChild);
+	}
+	else
+	{
+		//exception
+	}
+}
 UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 {
 	parent=0;
@@ -82,6 +96,22 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 BinaryAlgebraNodeBase::BinaryAlgebraNodeBase()
 {
 
+}
+
+void BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+{
+	if(leftChild.get()==oldChild)
+	{
+		leftChild=std::shared_ptr<AlgebraNodeBase>(newChild);
+	}
+	else if(rightChild.get()==oldChild)
+	{
+		rightChild=std::shared_ptr<AlgebraNodeBase>(newChild);
+	}
+	else
+	{
+		//exception
+	}
 }
 
 BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
@@ -107,6 +137,19 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 			}
 		}
 	}
+}
+
+GroupedAlgebraNode::GroupedAlgebraNode(BinaryAlgebraNodeBase *node)
+{
+	parent=node->parent;
+	children.push_back(node->leftChild);
+	children.push_back(node->rightChild);
+
+}
+
+void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+{
+	
 }
 
 Table::Table(DOMElement * element)
@@ -204,7 +247,6 @@ void Sort::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-
 Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
 	
@@ -256,7 +298,6 @@ void Group::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-
 ColumnOperations::ColumnOperations(DOMElement * element):UnaryAlgebraNodeBase(element)
 {
 	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
@@ -294,7 +335,6 @@ void Selection::accept(AlgebraVisitor &v)
 {
 	v.visit(this);
 }
-
 
 Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
@@ -400,5 +440,48 @@ void Intersection::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
+GroupedJoin::GroupedJoin(Join * node) : GroupedAlgebraNode(node)
+{
 
+}
+
+GroupedJoin::GroupedJoin(AntiJoin * node) : GroupedAlgebraNode(node)
+{
+
+}
+
+void GroupedJoin::accept(AlgebraVisitor &v)
+{
+	v.visit(this);
+}
+
+GroupedUnion::GroupedUnion(Union * node) : GroupedAlgebraNode(node)
+{
+
+}
+
+void GroupedUnion::accept(AlgebraVisitor &v)
+{
+	v.visit(this);
+}
+
+GroupedDifference::GroupedDifference(Difference * node) : GroupedAlgebraNode(node)
+{
+
+}
+
+void GroupedDifference::accept(AlgebraVisitor &v)
+{
+	v.visit(this);
+}
+
+GroupedIntersection::GroupedIntersection(Intersection * node) : GroupedAlgebraNode(node)
+{
+
+}
+
+void GroupedIntersection::accept(AlgebraVisitor &v)
+{
+	v.visit(this);
+}
 

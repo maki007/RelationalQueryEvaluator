@@ -13,6 +13,21 @@
 
 using namespace std;
 
+void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
+{
+	std::unique_ptr<GraphDrawingVisitor> visitor(new GraphDrawingVisitor());
+	algebraRoot->accept(*visitor);
+
+	ofstream myfile;
+	string s("");
+	s.append(line);
+	s.append(".txt");
+	myfile.open (s.c_str());
+	myfile << visitor->result ;
+	myfile.close();
+}
+
+
 int main(int argc, const char *argv[])
 {
 	if (argc != 2)
@@ -33,26 +48,16 @@ int main(int argc, const char *argv[])
 				continue;
 
 			line="data/"+line;
-			unique_ptr<AlgebraNodeBase> algebraRoot = XmlHandler::GenerateRelationalAlgebra(line.c_str());
+			shared_ptr<AlgebraNodeBase> algebraRoot = XmlHandler::GenerateRelationalAlgebra(line.c_str());
 			if(algebraRoot==0)
 			{
 				return 1;
 			}
+			drawAlgebra(algebraRoot,line);
+			std::unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
+			algebraRoot->accept(*groupVisitor);
 
-			GraphDrawingVisitor * visitor=new GraphDrawingVisitor();
-			algebraRoot->accept(*visitor);
-
-			ofstream myfile;
-			string s("");
-			s.append(line);
-			s.append(".txt");
-
-			myfile.open (s.c_str());
-			myfile << visitor->result ;
-			myfile.close();
-
-			delete visitor;
-			
+			drawAlgebra(algebraRoot,line+std::string(".group"));
 		}
 	}
 	system("drawAlgebra.bat");

@@ -19,7 +19,10 @@ void  AlgebraVisitor::visit(BinaryAlgebraNodeBase * node)
 {
 	node->accept(*this);
 }
-
+void AlgebraVisitor::visit(GroupedAlgebraNode * node)
+{
+	node->accept(*this);
+}
 void  AlgebraVisitor::visit(Table * node){}
 
 void  AlgebraVisitor::visit(Sort * node)
@@ -70,6 +73,35 @@ void  AlgebraVisitor::visit(Intersection * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
+}
+
+void AlgebraVisitor::visit(GroupedIntersection * node)
+{
+	for(auto it=node->children.begin();it!=node->children.end();++it)
+	{
+		(*it)->accept(*this);
+	}
+}
+void AlgebraVisitor::visit(GroupedUnion * node)
+{
+	for(auto it=node->children.begin();it!=node->children.end();++it)
+	{
+		(*it)->accept(*this);
+	}
+}
+void AlgebraVisitor::visit(GroupedDifference * node)
+{
+	for(auto it=node->children.begin();it!=node->children.end();++it)
+	{
+		(*it)->accept(*this);
+	}
+}
+void AlgebraVisitor::visit(GroupedJoin * node)
+{
+	for(auto it=node->children.begin();it!=node->children.end();++it)
+	{
+		(*it)->accept(*this);
+	}
 }
 
 
@@ -188,14 +220,14 @@ void GraphDrawingVisitor::visit(Table * node)
 		label+=",";
 		label+=std::to_string(it->numberOfUniqueValues);
 		label+= ")";
-		
+
 		if(it!=node->columns.end()-1)
 		{
-		label+=", ";
+			label+=", ";
 		}
 	}
 	label+="\n indices: ";
-	
+
 	for(auto it=node->indices.begin();it!=node->indices.end();++it)
 	{
 		if(it->type==IndexType::CLUSTERED)
@@ -218,7 +250,7 @@ void GraphDrawingVisitor::visit(Table * node)
 		label+= ")";
 		if(it!=node->indices.end()-1)
 		{
-		label+=", ";
+			label+=", ";
 		}
 	}
 
@@ -241,7 +273,7 @@ void GraphDrawingVisitor::visit(ColumnOperations * node)
 		}
 		if(it!=node->operations.end()-1)
 		{
-		label+=", ";
+			label+=", ";
 		}
 	}
 	generateText(label,node);
@@ -263,9 +295,9 @@ void GraphDrawingVisitor::visit(Join * node)
 	//crossjoin
 	if(node->condition!=0)
 	{
-	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
-	node->condition->accept(*visitor);
-	label+=visitor->result;
+		std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+		node->condition->accept(*visitor);
+		label+=visitor->result;
 	}
 	generateText(label,node);
 }
@@ -291,6 +323,82 @@ void GraphDrawingVisitor::visit(Union * node)
 void GraphDrawingVisitor::visit(Intersection * node)
 {
 	generateText("Intersection",node);
+}
+
+void GraphDrawingVisitor::generateText(std::string label , GroupedAlgebraNode * node)
+{
+	int identifier=nodeCounter;
+
+	result.append("node");
+	result.append(std::to_string(nodeCounter));
+	result.append("[label=\""+label+"\"]\n");
+
+
+	int childIdentifier;
+	for(auto it=node->children.begin();it!=node->children.end();++it)
+	{
+		childIdentifier=++nodeCounter;
+		(*it)->accept(*this);
+		result.append("node");
+		result.append(std::to_string(childIdentifier));
+		result.append(" -> node");
+		result.append(std::to_string(identifier));
+		result.append("[headport=s, tailport=n,label=\"   \"]\n");
+	}
+
+}
+
+void GraphDrawingVisitor::visit(GroupedIntersection * node)
+{
+	generateText("GroupedIntersection",node);
+}
+void GraphDrawingVisitor::visit(GroupedUnion * node)
+{
+	generateText("GroupedUnion",node);
+}
+void GraphDrawingVisitor::visit(GroupedDifference * node)
+{
+	generateText("GroupedDifference",node);
+}
+void GraphDrawingVisitor::visit(GroupedJoin * node)
+{
+	std::string label="GroupedJoin\n";
+	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+	node->condition->accept(*visitor);
+	label+=visitor->result;
+	generateText(label,node);
+}
+
+GroupingVisitor::GroupingVisitor()
+{
+
+}
+
+void GroupingVisitor::visit(Intersection * node)
+{
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
+	GroupedIntersection * groupedOperator = new GroupedIntersection(node);
+}
+
+void GroupingVisitor::visit(Union * node)
+{
+	GroupedUnion * groupedOperator = new GroupedUnion(node);
+}
+
+void GroupingVisitor::visit(Difference * node)
+{
+	GroupedDifference * groupedOperator = new GroupedDifference(node);
+}
+
+void GroupingVisitor::visit(Join * node)
+{
+
+}
+
+void GroupingVisitor::visit(AntiJoin * node)
+{
+
 }
 
 
