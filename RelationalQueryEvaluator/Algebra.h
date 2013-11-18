@@ -244,12 +244,6 @@ public:
 
 };
 
-class GroupedDifference : public GroupedAlgebraNode
-{
-public:
-	void accept(AlgebraVisitor &v);
-};
-
 class GroupedIntersection : public GroupedAlgebraNode
 {
 public:

@@ -6,11 +6,18 @@
     <union>
       <input>
         <table name="people_from_city">
-          <column name="name" type="string"/>
-        </table>
-        <table name="people_from_city">
           <column name="name" type="string" />
         </table>
+        <union>
+          <input>
+            <table name="people_from_city">
+              <column name="name" type="string"/>
+            </table>
+            <table name="people_from_city">
+              <column name="name" type="string" />
+            </table>
+          </input>
+        </union>   
       </input>
     </union>
   </input>

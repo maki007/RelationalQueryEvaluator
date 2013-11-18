@@ -40,8 +40,6 @@ public:
 
 	virtual void visit(GroupedUnion * node);
 
-	virtual void visit(GroupedDifference * node);
-
 	virtual void visit(GroupedJoin * node);
 
 };
@@ -83,8 +81,6 @@ public:
 
 	void visit(GroupedUnion * node);
 
-	void visit(GroupedDifference * node);
-
 	void visit(GroupedJoin * node);
 
 };
@@ -100,8 +96,6 @@ public:
 	void visit(Intersection * node);
 
 	void visit(Union * node);
-
-	void visit(Difference * node);
 
 	void visit(Join * node);
 
