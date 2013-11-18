@@ -23,7 +23,14 @@ void AlgebraVisitor::visit(GroupedAlgebraNode * node)
 {
 	node->accept(*this);
 }
-void  AlgebraVisitor::visit(Table * node){}
+void AlgebraVisitor::visit(NullaryAlgebraNodeBase * node)
+{
+	node->accept(*this);
+}
+void  AlgebraVisitor::visit(Table * node)
+{
+
+}
 
 void  AlgebraVisitor::visit(Sort * node)
 {
@@ -378,17 +385,33 @@ void GroupingVisitor::visit(Intersection * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
-	GroupedIntersection * groupedOperator = new GroupedIntersection(node);
+	GroupedIntersection * groupedOperator = new GroupedIntersection();
+	if(typeid(*(node->leftChild)) == typeid(GroupedIntersection))
+	{
+		
+		std::vector<std::shared_ptr<AlgebraNodeBase>> children=std::dynamic_pointer_cast<GroupedIntersection>(node->leftChild)->children;
+		for(auto it=children.begin();it!=children.end();++it)
+		{
+			groupedOperator->children.push_back(*it);
+		}
+	}
+	else
+	{
+		groupedOperator->children.push_back(node->leftChild);
+	}
+	groupedOperator->children.push_back(node->rightChild);
+	groupedOperator->parent=node->parent;
+	node->parent->replaceChild(node,groupedOperator);
 }
 
 void GroupingVisitor::visit(Union * node)
 {
-	GroupedUnion * groupedOperator = new GroupedUnion(node);
+	GroupedUnion * groupedOperator = new GroupedUnion();
 }
 
 void GroupingVisitor::visit(Difference * node)
 {
-	GroupedDifference * groupedOperator = new GroupedDifference(node);
+	GroupedDifference * groupedOperator = new GroupedDifference();
 }
 
 void GroupingVisitor::visit(Join * node)

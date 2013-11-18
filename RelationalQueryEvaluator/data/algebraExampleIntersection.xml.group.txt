@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
-node1[label="Intersection"]
+node1[label="GroupedIntersection"]
 node2[label="Table people_from_city
  number of rows: 1000
  columns: name(string,333)

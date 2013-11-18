@@ -7,9 +7,12 @@ class AlgebraVisitor
 {
 public:
 	virtual void visit(AlgebraNodeBase * node);
+
 	virtual void visit(UnaryAlgebraNodeBase * node);
 
 	virtual void visit(BinaryAlgebraNodeBase * node);
+
+	virtual void visit(NullaryAlgebraNodeBase * node);
 
 	virtual void visit(Table * node);
 
@@ -89,6 +92,8 @@ public:
 
 class GroupingVisitor : public AlgebraVisitor
 {
+private:
+
 public:
 	GroupingVisitor();
 

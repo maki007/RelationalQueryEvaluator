@@ -102,7 +102,7 @@ public:
 	AlgebraNodeBase();
 	AlgebraNodeBase * constructChildren(DOMElement * node);
 	virtual void accept(AlgebraVisitor &v) = 0;
-	virtual void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
+	virtual void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild) = 0;
 };
 
 class UnaryAlgebraNodeBase : public AlgebraNodeBase
@@ -132,12 +132,18 @@ class GroupedAlgebraNode : public AlgebraNodeBase
 public:
 	std::vector<std::shared_ptr<AlgebraNodeBase>> children;
 	virtual void accept(AlgebraVisitor &v) = 0;
-	GroupedAlgebraNode(BinaryAlgebraNodeBase * node);
 	void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
 };
 
+class NullaryAlgebraNodeBase : public AlgebraNodeBase
+{
+public:
 
-class Table : public AlgebraNodeBase
+	virtual void accept(AlgebraVisitor &v) = 0;
+	void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
+};
+
+class Table : public NullaryAlgebraNodeBase
 {
 public:
 	std::string name;
@@ -227,10 +233,6 @@ class GroupedJoin : public GroupedAlgebraNode
 public:
 	std::shared_ptr<Expression> condition;
 	std::vector<JoinColumnInfo> outputColumns;
-
-	GroupedJoin(Join * node);
-	GroupedJoin(AntiJoin * node);
-
 	void accept(AlgebraVisitor &v);
 };
 
@@ -238,7 +240,6 @@ public:
 class GroupedUnion : public GroupedAlgebraNode
 {
 public:
-	GroupedUnion(Union * node);
 	void accept(AlgebraVisitor &v);
 
 };
@@ -246,14 +247,12 @@ public:
 class GroupedDifference : public GroupedAlgebraNode
 {
 public:
-	GroupedDifference(Difference * node);
 	void accept(AlgebraVisitor &v);
 };
 
 class GroupedIntersection : public GroupedAlgebraNode
 {
 public:
-	GroupedIntersection(Intersection * node);
 	void accept(AlgebraVisitor &v);
 };
 

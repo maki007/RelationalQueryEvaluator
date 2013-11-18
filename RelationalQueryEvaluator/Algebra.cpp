@@ -57,10 +57,6 @@ AlgebraNodeBase *  AlgebraNodeBase::constructChildren(DOMElement * node)
 	return child;
 }
 
-void AlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
-{
-}
-
 UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()
 {
 }
@@ -139,12 +135,8 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 	}
 }
 
-GroupedAlgebraNode::GroupedAlgebraNode(BinaryAlgebraNodeBase *node)
+void NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
 {
-	parent=node->parent;
-	children.push_back(node->leftChild);
-	children.push_back(node->rightChild);
-
 }
 
 void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
@@ -440,34 +432,15 @@ void Intersection::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-GroupedJoin::GroupedJoin(Join * node) : GroupedAlgebraNode(node)
-{
-
-}
-
-GroupedJoin::GroupedJoin(AntiJoin * node) : GroupedAlgebraNode(node)
-{
-
-}
-
 void GroupedJoin::accept(AlgebraVisitor &v)
 {
 	v.visit(this);
 }
 
-GroupedUnion::GroupedUnion(Union * node) : GroupedAlgebraNode(node)
-{
-
-}
 
 void GroupedUnion::accept(AlgebraVisitor &v)
 {
 	v.visit(this);
-}
-
-GroupedDifference::GroupedDifference(Difference * node) : GroupedAlgebraNode(node)
-{
-
 }
 
 void GroupedDifference::accept(AlgebraVisitor &v)
@@ -475,10 +448,6 @@ void GroupedDifference::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-GroupedIntersection::GroupedIntersection(Intersection * node) : GroupedAlgebraNode(node)
-{
-
-}
 
 void GroupedIntersection::accept(AlgebraVisitor &v)
 {
