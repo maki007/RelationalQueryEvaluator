@@ -6,8 +6,8 @@ node1[label="Group
 groupBy l_orderkey, o_orderdate, o_shippriority, revenue=sum(x);"]
 node2[label="ColumnOperations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice * (1 - l_discount))"]
-node3[label="Join
-(c_custkey == o_custkey)"]
+node3[label="GroupedJoin
+((l_orderkey == o_orderkey) and (c_custkey == o_custkey))"]
 node4[label="Selection
 (c_mktsegment == SEGMENT)"]
 node5[label="Table customer
@@ -16,25 +16,22 @@ node5[label="Table customer
  indices: UNCLUSTERED(c_mktsegment)"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
-node6[label="Join
-(l_orderkey == o_orderkey)"]
-node7[label="Selection
+node6[label="Selection
 (today < l_shipdate)"]
-node8[label="Table lineitem
+node7[label="Table lineitem
  number of rows: 1000
  columns: l_orderkey(int,333), l_shipdate(int,333), l_extendedprice(int,333), l_discount(int,333)
  indices: "]
-node8 -> node7[headport=s, tailport=n,label="   "]
 node7 -> node6[headport=s, tailport=n,label="   "]
-node9[label="Selection
+node6 -> node3[headport=s, tailport=n,label="   "]
+node8[label="Selection
 (o_orderdate < today)"]
-node10[label="Table orders
+node9[label="Table orders
  number of rows: 1000
  columns: o_orderdate(int,333), o_shippriority(int,333), o_orderkey(int,333)
  indices: CLUSTERED(o_orderdate, o_shippriority)"]
-node10 -> node9[headport=s, tailport=n,label="   "]
-node9 -> node6[headport=s, tailport=n,label="   "]
-node6 -> node3[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

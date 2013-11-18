@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
-node1[label="Join
+node1[label="GroupedJoin
 "]
 node2[label="Table users
  number of rows: 1000

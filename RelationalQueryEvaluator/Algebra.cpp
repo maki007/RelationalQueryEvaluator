@@ -437,12 +437,6 @@ void GroupedJoin::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-
-void GroupedUnion::accept(AlgebraVisitor &v)
-{
-	v.visit(this);
-}
-
 void GroupedIntersection::accept(AlgebraVisitor &v)
 {
 	v.visit(this);

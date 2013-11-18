@@ -89,13 +89,7 @@ void AlgebraVisitor::visit(GroupedIntersection * node)
 		(*it)->accept(*this);
 	}
 }
-void AlgebraVisitor::visit(GroupedUnion * node)
-{
-	for(auto it=node->children.begin();it!=node->children.end();++it)
-	{
-		(*it)->accept(*this);
-	}
-}
+
 
 void AlgebraVisitor::visit(GroupedJoin * node)
 {
@@ -353,16 +347,16 @@ void GraphDrawingVisitor::visit(GroupedIntersection * node)
 {
 	generateText("GroupedIntersection",node);
 }
-void GraphDrawingVisitor::visit(GroupedUnion * node)
-{
-	generateText("GroupedUnion",node);
-}
+
 void GraphDrawingVisitor::visit(GroupedJoin * node)
 {
 	std::string label="GroupedJoin\n";
 	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
-	node->condition->accept(*visitor);
+	if(node->condition!=0)
+	{
+		node->condition->accept(*visitor);
 	label+=visitor->result;
+	}
 	generateText(label,node);
 }
 
@@ -401,22 +395,44 @@ void GroupingVisitor::visit(Intersection * node)
 	node->parent->replaceChild(node,groupedOperator);
 }
 
-void GroupingVisitor::visit(Union * node)
+void GroupingVisitor::visit(Join * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
-	GroupedUnion * groupedOperator = new GroupedUnion();
+	GroupedJoin * groupedOperator = new GroupedJoin();
+	groupedOperator->condition=node->condition;
 	std::vector<std::shared_ptr<AlgebraNodeBase> > oldChildren;
 	oldChildren.resize(2);
 	oldChildren[0]=node->leftChild;
 	oldChildren[1]=node->rightChild;
+	resolveJoins(node,groupedOperator,oldChildren);
+}
 
+void GroupingVisitor::visit(AntiJoin * node)
+{
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
+	GroupedJoin * groupedOperator = new GroupedJoin();
+	groupedOperator->condition=std::shared_ptr<Expression>(new UnaryExpression(node->condition,UnaryOperator::NOT));
+
+	std::vector<std::shared_ptr<AlgebraNodeBase> > oldChildren;
+	oldChildren.resize(2);
+	oldChildren[0]=node->leftChild;
+	oldChildren[1]=node->rightChild;
+	resolveJoins(node,groupedOperator,oldChildren);
+
+}
+
+void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren)
+{
 	for(std::size_t i=0;i<2;++i)
 	{
-		if(typeid(*(oldChildren[i])) == typeid(GroupedUnion))
+		if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 		{
 		
-			std::vector<std::shared_ptr<AlgebraNodeBase>> children=std::dynamic_pointer_cast<GroupedUnion>(oldChildren[i])->children;
+			std::shared_ptr<GroupedJoin> newNode= std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
+			std::vector<std::shared_ptr<AlgebraNodeBase>> children=newNode->children;
+			groupedOperator->condition=std::shared_ptr<Expression>(new BinaryExpression(newNode->condition,groupedOperator->condition,BinaryOperator::AND));
 			for(auto it=children.begin();it!=children.end();++it)
 			{
 				groupedOperator->children.push_back(*it);
@@ -430,15 +446,4 @@ void GroupingVisitor::visit(Union * node)
 	groupedOperator->parent=node->parent;
 	node->parent->replaceChild(node,groupedOperator);
 }
-
-void GroupingVisitor::visit(Join * node)
-{
-
-}
-
-void GroupingVisitor::visit(AntiJoin * node)
-{
-
-}
-
 

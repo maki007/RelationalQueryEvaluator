@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <antijoin>
+      <parameters>
+        <equal_condition>
+          <equals>
+            <column name="a"/>
+            <column name="b"/>
+          </equals>
+        </equal_condition>
+        <column input="first" name="a"/>
+      </parameters>
+      <input>
+        <antijoin>
+          <parameters>
+            <equal_condition>
+              <equals>
+                <column name="a"/>
+                <column name="c"/>
+              </equals>
+            </equal_condition>
+            <column input="first" name="a"/>
+          </parameters>
+          <input>
+            <table name="x">
+              <column name="a" type="int"/>
+            </table>
+            <table name="z">
+              <column name="c" type="int"/>
+            </table>
+          </input>
+          
+        </antijoin>
+        <table name="y">
+          <column name="b" type="int"/>
+        </table>
+      </input>
+    </antijoin>
+  </input>
+</sort>

@@ -236,14 +236,6 @@ public:
 	void accept(AlgebraVisitor &v);
 };
 
-
-class GroupedUnion : public GroupedAlgebraNode
-{
-public:
-	void accept(AlgebraVisitor &v);
-
-};
-
 class GroupedIntersection : public GroupedAlgebraNode
 {
 public:

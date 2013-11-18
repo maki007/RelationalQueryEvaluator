@@ -48,6 +48,7 @@ public:
 	UnaryOperator operation;
 	std::shared_ptr<Expression> child;
 	UnaryExpression(DOMElement * node,UnaryOperator op);
+	UnaryExpression(std::shared_ptr<Expression> node,UnaryOperator op);
 	void accept(ExpressionVisitorBase &v);
 };
 
@@ -58,6 +59,7 @@ public:
 	std::shared_ptr<Expression> leftChild;
 	std::shared_ptr<Expression> rightChild;
 	BinaryExpression(DOMElement * node,BinaryOperator op);
+	BinaryExpression(std::shared_ptr<Expression> leftChild,std::shared_ptr<Expression> rightChild,BinaryOperator op);
 	void accept(ExpressionVisitorBase &v);
 };
 

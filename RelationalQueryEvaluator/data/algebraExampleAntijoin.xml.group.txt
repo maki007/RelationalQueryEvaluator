@@ -2,17 +2,22 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="GroupedJoin
-(country_id == id)"]
-node2[label="Table users
+(!((a == c)) and !((a == b)))"]
+node2[label="Table x
  number of rows: 1000
- columns: name(string,333), country_id(int,333)
+ columns: a(int,333)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
-node3[label="Table countries
+node3[label="Table z
  number of rows: 1000
- columns: id(int,333), name(string,333)
+ columns: c(int,333)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
+node4[label="Table y
+ number of rows: 1000
+ columns: b(int,333)
+ indices: "]
+node4 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 
 }

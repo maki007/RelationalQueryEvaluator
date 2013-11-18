@@ -98,6 +98,11 @@ UnaryExpression::UnaryExpression(DOMElement * node,UnaryOperator op)
 	child = std::shared_ptr<Expression>(constructChildren(childNode));
 }
 
+UnaryExpression::UnaryExpression(std::shared_ptr<Expression> node,UnaryOperator op)
+{
+	child=node;
+	operation=op;
+}
 void UnaryExpression::accept(ExpressionVisitorBase &v)
 {
 	v.visit(this);
@@ -109,6 +114,13 @@ BinaryExpression::BinaryExpression(DOMElement * node,BinaryOperator op)
 	leftChild = std::shared_ptr<Expression>(constructChildren(childNodes[0]));
 	rightChild = std::shared_ptr<Expression>(constructChildren(childNodes[1]));
 	operation=op;
+}
+
+BinaryExpression::BinaryExpression(std::shared_ptr<Expression> leftChild,std::shared_ptr<Expression> rightChild,BinaryOperator op)
+{
+	this->leftChild=leftChild;
+	this->rightChild=rightChild;
+	this->operation=op;
 }
 
 void BinaryExpression::accept(ExpressionVisitorBase &v)

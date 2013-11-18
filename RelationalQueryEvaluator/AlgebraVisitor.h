@@ -38,7 +38,6 @@ public:
 
 	virtual void visit(GroupedIntersection * node);
 
-	virtual void visit(GroupedUnion * node);
 
 	virtual void visit(GroupedJoin * node);
 
@@ -79,7 +78,6 @@ public:
 
 	void visit(GroupedIntersection * node);
 
-	void visit(GroupedUnion * node);
 
 	void visit(GroupedJoin * node);
 
@@ -95,11 +93,11 @@ public:
 
 	void visit(Intersection * node);
 
-	void visit(Union * node);
-
 	void visit(Join * node);
 
 	void visit(AntiJoin * node);
+
+	void resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren);
 };
 
 
