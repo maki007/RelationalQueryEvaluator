@@ -271,7 +271,7 @@
 
 
   <xs:complexType name="equal_condition">
-    <xs:sequence minOccurs="1" maxOccurs="1">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
       <xs:element name="equals">
         <xs:complexType>
           <xs:sequence minOccurs="2" maxOccurs="2">

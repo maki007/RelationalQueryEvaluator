@@ -141,18 +141,18 @@ void NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNode
 
 void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
 {
-	
+
 }
 
 Table::Table(DOMElement * element)
 {
 	/*
 	<table name="users" numberOfRows="10000">
-          <column name="a" type="int" number_of_unique_values="1000" />
-          <index>
-            <column name="a"/>
-          </index>
-        </table>
+	<column name="a" type="int" number_of_unique_values="1000" />
+	<index>
+	<column name="a"/>
+	</index>
+	</table>
 	*/
 	name=XmlUtils::ReadAttribute(element,"name");
 	if(XmlUtils::ReadAttribute(element,"numberOfRows")=="")
@@ -241,7 +241,7 @@ void Sort::accept(AlgebraVisitor &v)
 
 Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
-	
+
 	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"parameters");
 	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
 	{
@@ -250,7 +250,7 @@ Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 		{
 			DOMElement * parameterElement=(DOMElement *)node;
 			std::string elementName=XMLString::transcode(parameterElement->getLocalName());
-			
+
 			if(elementName=="group_by")
 			{
 				groupColumns.push_back(XmlUtils::ReadAttribute(parameterElement,"column"));
@@ -337,6 +337,12 @@ Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 	{
 		start=1;
 		condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
+		std::vector<DOMElement *> conditions=XmlUtils::GetChildElements(conditionNode);
+		for(auto it=conditions.begin()+1;it!=conditions.end();++it)
+		{
+			std::shared_ptr<Expression> newCondition(Expression::constructChildren(*it));
+			condition = std::shared_ptr<Expression>(new BinaryExpression(condition,newCondition,BinaryOperator::AND));
+		}
 	}
 	else
 	{
@@ -374,6 +380,13 @@ AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
 	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
 	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
 	condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
+	std::vector<DOMElement *> conditions=XmlUtils::GetChildElements(conditionNode);
+	for(auto it=conditions.begin()+1;it!=conditions.end();++it)
+	{
+		std::shared_ptr<Expression> newCondition(Expression::constructChildren(*it));
+		condition = std::shared_ptr<Expression>(new BinaryExpression(condition,newCondition,BinaryOperator::AND));
+	}
+
 	std::vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
 	for(auto it=columns.begin()+1;it!=columns.end();++it)
 	{

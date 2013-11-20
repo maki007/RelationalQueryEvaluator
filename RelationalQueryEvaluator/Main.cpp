@@ -53,11 +53,11 @@ int main(int argc, const char *argv[])
 			{
 				return 1;
 			}
-			drawAlgebra(algebraRoot,line);
+			drawAlgebra(algebraRoot,line+std::string("._1"));
 			std::unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
 			algebraRoot->accept(*groupVisitor);
 
-			drawAlgebra(algebraRoot,line+std::string(".group"));
+			drawAlgebra(algebraRoot,line+std::string("._2"));
 		}
 	}
 	system("drawAlgebra.bat");

@@ -5,6 +5,7 @@ algebraExampleCrossJoin.xml
 algebraExampleGroup.xml
 algebraExampleIntersection.xml
 algebraExampleJoin.xml
+algebraExampleJoinOnMultipleColumns.xml
 algebraExampleMulitpleIntersection.xml
 algebraExampleSelection.xml
 algebraExampleUnion.xml

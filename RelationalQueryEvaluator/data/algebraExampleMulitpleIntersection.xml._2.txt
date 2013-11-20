@@ -1,0 +1,22 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="GroupedIntersection"]
+node2[label="Table people_from_city
+ number of rows: 1000
+ columns: name(string,333)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table people_from_city
+ number of rows: 1000
+ columns: name(string,333)
+ indices: "]
+node3 -> node1[headport=s, tailport=n,label="   "]
+node4[label="Table people_from_city
+ number of rows: 1000
+ columns: name(string,333)
+ indices: "]
+node4 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}
