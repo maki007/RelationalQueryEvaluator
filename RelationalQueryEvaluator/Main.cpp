@@ -60,7 +60,7 @@ int main(int argc, const char *argv[])
 			drawAlgebra(algebraRoot,line+std::string("._2"));
 		}
 	}
-	system("drawAlgebra.bat");
+	//system("drawAlgebra.bat");
 	getchar();
 	return 0;
 }
