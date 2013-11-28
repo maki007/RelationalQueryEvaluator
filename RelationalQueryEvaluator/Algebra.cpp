@@ -1,5 +1,6 @@
 #include "Algebra.h"
 #include "AlgebraVisitor.h"
+#include "ExpressionVisitor.h"
 
 AlgebraNodeBase::AlgebraNodeBase()
 {
@@ -328,7 +329,7 @@ void Selection::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
+void AlgebraNodeBase::constructJoinParameters(DOMElement * element,std::shared_ptr<Expression> & condition,std::vector<JoinColumnInfo> & outputColumns)
 {
 	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
 	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
@@ -336,11 +337,13 @@ Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 	if(XmlUtils::GetFirstChildElement(conditionNode)!=0)
 	{
 		start=1;
-		condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
+		condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));	
+		condition->accept(NumberColumnsInJoinVisitor());
 		std::vector<DOMElement *> conditions=XmlUtils::GetChildElements(conditionNode);
 		for(auto it=conditions.begin()+1;it!=conditions.end();++it)
 		{
 			std::shared_ptr<Expression> newCondition(Expression::constructChildren(*it));
+			newCondition->accept(NumberColumnsInJoinVisitor());
 			condition = std::shared_ptr<Expression>(new BinaryExpression(condition,newCondition,BinaryOperator::AND));
 		}
 	}
@@ -368,6 +371,11 @@ Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 		}
 		outputColumns.push_back(info);
 	}
+
+}
+Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
+{
+	constructJoinParameters(element,condition,outputColumns);
 }
 
 void Join::accept(AlgebraVisitor &v)
@@ -377,37 +385,7 @@ void Join::accept(AlgebraVisitor &v)
 
 AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
-	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
-	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
-	condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
-	std::vector<DOMElement *> conditions=XmlUtils::GetChildElements(conditionNode);
-	for(auto it=conditions.begin()+1;it!=conditions.end();++it)
-	{
-		std::shared_ptr<Expression> newCondition(Expression::constructChildren(*it));
-		condition = std::shared_ptr<Expression>(new BinaryExpression(condition,newCondition,BinaryOperator::AND));
-	}
-
-	std::vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
-	for(auto it=columns.begin()+1;it!=columns.end();++it)
-	{
-		JoinColumnInfo info;
-		info.newName=XmlUtils::ReadAttribute(*it,"newName");
-		info.name=XmlUtils::ReadAttribute(*it,"name");
-		if(info.newName=="")
-		{
-			info.newName=info.name;
-		}
-		if(XmlUtils::ReadAttribute(*it,"input")=="first")
-		{
-			info.input=0;
-		}
-		else
-		{
-			info.input=1;
-		}
-		outputColumns.push_back(info);
-	}
-
+	constructJoinParameters(element,condition,outputColumns);
 }
 
 void AntiJoin::accept(AlgebraVisitor &v)

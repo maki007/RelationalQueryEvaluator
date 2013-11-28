@@ -101,6 +101,7 @@ public:
 	std::shared_ptr <AlgebraNodeBase> parent;
 	AlgebraNodeBase();
 	AlgebraNodeBase * constructChildren(DOMElement * node);
+	void constructJoinParameters(DOMElement * node,std::shared_ptr<Expression> & condition,std::vector<JoinColumnInfo> & outputColumns);
 	virtual void accept(AlgebraVisitor &v) = 0;
 	virtual void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild) = 0;
 };

@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="Join
-(country_id == id)"]
+(country_id(0) == id(1))"]
 node2[label="Table users
  number of rows: 1000
  columns: name(string,333), country_id(int,333)

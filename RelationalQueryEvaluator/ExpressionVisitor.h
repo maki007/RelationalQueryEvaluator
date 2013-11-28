@@ -34,4 +34,20 @@ public:
 	void visit(Column * expression);
 };
 
+
+class NumberColumnsInJoinVisitor : public ExpressionVisitorBase
+{
+public:
+	int lastNumberedColumn;
+	NumberColumnsInJoinVisitor();
+	void visit(Column * expression);
+};
+
+class GetColumnsNodesVisitor : public ExpressionVisitorBase
+{
+public:
+	std::vector<Column *> nodes;
+	void visit(Column * expression);
+};
+
 #endif

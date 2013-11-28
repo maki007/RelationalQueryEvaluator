@@ -87,6 +87,7 @@ public:
 	std::string name;
 	std::string tableName;
 	std::string type;
+	int input;
 	Column(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
 };

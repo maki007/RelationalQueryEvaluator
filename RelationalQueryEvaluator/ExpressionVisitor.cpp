@@ -109,5 +109,35 @@ void WritingExpressionVisitor::visit(Constant * expression)
 void WritingExpressionVisitor::visit(Column * expression)
 {
 	result+=expression->name;
+	if(expression->input>=0)
+	{
+		result+="(";
+		result+=std::to_string(expression->input);
+		result+=")";
+	}
+}
+
+NumberColumnsInJoinVisitor::NumberColumnsInJoinVisitor()
+{
+	lastNumberedColumn=1;
+}
+void NumberColumnsInJoinVisitor::visit(Column * expression)
+{
+	if(lastNumberedColumn==1)
+	{
+		expression->input=0;
+		lastNumberedColumn=0;
+	}
+	else
+	{
+		expression->input=1;
+		lastNumberedColumn=1;
+	}
+}
+
+
+void GetColumnsNodesVisitor::visit(Column * expression)
+{
+	this->nodes.push_back(expression);
 }
 

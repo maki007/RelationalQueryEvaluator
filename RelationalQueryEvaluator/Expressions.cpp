@@ -155,6 +155,7 @@ void Constant::accept(ExpressionVisitorBase &v)
 Column::Column(DOMElement * node)
 {
 	this->name=XmlUtils::ReadAttribute(node,"name");
+	this->input=-1;
 }
 
 void Column::accept(ExpressionVisitorBase &v)
