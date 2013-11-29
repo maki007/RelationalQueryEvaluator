@@ -429,6 +429,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 {
 
 	std::shared_ptr<Expression> newCondition=0;
+	std::size_t numberOfChildreninFirstChild=0;
 	for(std::size_t i=0;i<2;++i)
 	{
 		if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
@@ -470,13 +471,18 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 		{
 			groupedOperator->children.push_back(oldChildren[i]);
 		}
+		if(i==0)
+		{
+			numberOfChildreninFirstChild=groupedOperator->children.size();
+		}
 	}
+
+
 	if(groupedOperator->condition!=0)
 	{
-		std::size_t existingChildren=0;
 		GetColumnsNodesVisitor visitor;
 		groupedOperator->condition->accept(visitor);
-		for(std::size_t i=0;i<2;++i)
+		for(long long int i=1;i>=0;--i)
 		{
 			if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 			{
@@ -488,17 +494,25 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 					{
 						if((*it2)->name==name)
 						{
-							(*it2)->input+=it->input+existingChildren;
+							(*it2)->input+=it->input+numberOfChildreninFirstChild;
 						}
 					}
 				}
-				existingChildren+=join->children.size();
 			}
 			else
 			{
-				existingChildren++;
+				for(auto it2=visitor.nodes.begin();it2!=visitor.nodes.end();++it2)
+				{
+					if((*it2)->input==i)
+					{
+						(*it2)->input=numberOfChildreninFirstChild;
+					}
+				}
 			}
+			numberOfChildreninFirstChild=0;
+
 		}
+		
 	}
 
 	if(newCondition==0)
