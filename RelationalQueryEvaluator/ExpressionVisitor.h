@@ -17,6 +17,8 @@ public:
 	virtual void visit(Constant * expression);
 
 	virtual void visit(Column * expression);
+
+	virtual void visit(GroupedExpression * expression);
 };
 
 class WritingExpressionVisitor : public ExpressionVisitorBase
@@ -32,6 +34,8 @@ public:
 	void visit(Constant * expression);
 
 	void visit(Column * expression);
+
+	void visit(GroupedExpression * expression);
 };
 
 
@@ -48,6 +52,15 @@ class GetColumnsNodesVisitor : public ExpressionVisitorBase
 public:
 	std::vector<Column *> nodes;
 	void visit(Column * expression);
+};
+
+class GroupingExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	std::shared_ptr<Expression> * root;
+	GroupingExpressionVisitor(std::shared_ptr<Expression> * x);
+	void visit(BinaryExpression * expression);
+
 };
 
 #endif

@@ -96,13 +96,25 @@ UnaryExpression::UnaryExpression(DOMElement * node,UnaryOperator op)
 {
 	DOMElement * childNode =  XmlUtils::GetFirstChildElement(node);
 	child = std::shared_ptr<Expression>(constructChildren(childNode));
+	child->parent=std::shared_ptr<Expression>(this);
 }
 
 UnaryExpression::UnaryExpression(std::shared_ptr<Expression> node,UnaryOperator op)
 {
 	child=node;
+	child->parent=std::shared_ptr<Expression>(this);
 	operation=op;
 }
+
+void UnaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
+{
+	if(child.get()==oldChild)
+	{
+		child=std::shared_ptr<Expression>(newChild);
+	}
+}
+
+
 void UnaryExpression::accept(ExpressionVisitorBase &v)
 {
 	v.visit(this);
@@ -113,6 +125,8 @@ BinaryExpression::BinaryExpression(DOMElement * node,BinaryOperator op)
 	std::vector<DOMElement *> childNodes =  XmlUtils::GetChildElements(node);
 	leftChild = std::shared_ptr<Expression>(constructChildren(childNodes[0]));
 	rightChild = std::shared_ptr<Expression>(constructChildren(childNodes[1]));
+	leftChild->parent=std::shared_ptr<Expression>(this);
+	rightChild->parent=std::shared_ptr<Expression>(this);
 	operation=op;
 }
 
@@ -120,7 +134,21 @@ BinaryExpression::BinaryExpression(std::shared_ptr<Expression> leftChild,std::sh
 {
 	this->leftChild=leftChild;
 	this->rightChild=rightChild;
-	this->operation=op;
+	leftChild->parent=std::shared_ptr<Expression>(this);
+	rightChild->parent=std::shared_ptr<Expression>(this);
+	operation=op;
+}
+
+void BinaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
+{
+	if(leftChild.get()==oldChild)
+	{
+		leftChild=std::shared_ptr<Expression>(newChild);
+	}
+	if(rightChild.get()==oldChild)
+	{
+		rightChild=std::shared_ptr<Expression>(newChild);
+	}
 }
 
 void BinaryExpression::accept(ExpressionVisitorBase &v)
@@ -134,6 +162,18 @@ NnaryExpression::NnaryExpression(DOMElement * node)
 	for(auto it=childNodes.begin();it!=childNodes.end();++it)
 	{
 		arguments.push_back(std::shared_ptr<Expression>(constructChildren(*it)));
+		arguments.back()->parent=std::shared_ptr<Expression>(this);
+	}
+}
+
+void NnaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
+{
+	for(auto it=arguments.begin();it!=arguments.end();++it)
+	{
+		if(it->get()==oldChild)
+		{
+			*it=std::shared_ptr<Expression>(newChild);
+		}
 	}
 }
 
@@ -147,6 +187,11 @@ Constant::Constant(DOMElement * node)
 	this->value=XmlUtils::ReadAttribute(node,"value");
 }
 
+void Constant::replaceChild(Expression * oldChild,Expression * newChild)
+{
+
+}
+
 void Constant::accept(ExpressionVisitorBase &v)
 {
 	v.visit(this);
@@ -158,8 +203,28 @@ Column::Column(DOMElement * node)
 	this->input=-1;
 }
 
+void Column::replaceChild(Expression * oldChild,Expression * newChild)
+{
+
+}
+
 void Column::accept(ExpressionVisitorBase &v)
 {
 	v.visit(this);
 }
 
+void GroupedExpression::replaceChild(Expression * oldChild,Expression * newChild)
+{
+	for(auto it=children.begin();it!=children.end();++it)
+	{
+		if(it->get()==oldChild)
+		{
+			*it=std::shared_ptr<Expression>(newChild);
+		}
+	}
+}
+
+void GroupedExpression::accept(ExpressionVisitorBase &v)
+{
+	v.visit(this);
+}

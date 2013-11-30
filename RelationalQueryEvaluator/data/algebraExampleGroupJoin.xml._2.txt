@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="GroupedJoin
-((c(2) == d(3)) and ((a(0) == c(2)) and (a(0) == b(1))))"]
+AND ((c(2) == d(3)),(a(0) == c(2)),(a(0) == b(1)))"]
 node2[label="Table a
  number of rows: 1000
  columns: a(int,333)

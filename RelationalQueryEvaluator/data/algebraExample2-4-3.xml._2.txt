@@ -7,7 +7,7 @@ groupBy l_orderkey, o_orderdate, o_shippriority, revenue=sum(x);"]
 node2[label="ColumnOperations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice * (1 - l_discount))"]
 node3[label="GroupedJoin
-((c_custkey(0) == o_custkey(2)) and (l_orderkey(1) == o_orderkey(2)))"]
+AND ((c_custkey(0) == o_custkey(2)),(l_orderkey(1) == o_orderkey(2)))"]
 node4[label="Selection
 (c_mktsegment == SEGMENT)"]
 node5[label="Table customer

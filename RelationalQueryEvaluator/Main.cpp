@@ -61,6 +61,5 @@ int main(int argc, const char *argv[])
 		}
 	}
 	//system("drawAlgebra.bat");
-	getchar();
 	return 0;
 }

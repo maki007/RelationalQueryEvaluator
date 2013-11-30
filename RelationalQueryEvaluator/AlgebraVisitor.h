@@ -91,6 +91,10 @@ private:
 public:
 	GroupingVisitor();
 
+	void visit(ColumnOperations * node);
+
+	void visit(Selection * node);
+
 	void visit(Intersection * node);
 
 	void visit(Join * node);
