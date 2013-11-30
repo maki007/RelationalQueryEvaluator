@@ -3,6 +3,8 @@ algebraExampleAntijoin.xml
 algebraExampleColumnOperations.xml
 algebraExampleCrossJoin.xml
 algebraExampleGroup.xml
+algebraExampleGroupJoin.xml
+algebraExampleGroupJoin2.xml
 algebraExampleIntersection.xml
 algebraExampleJoin.xml
 algebraExampleJoinOnMultipleColumns.xml

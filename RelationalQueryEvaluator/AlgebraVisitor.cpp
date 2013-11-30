@@ -494,7 +494,14 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 					{
 						if((*it2)->name==name)
 						{
-							(*it2)->input+=it->input+numberOfChildreninFirstChild;
+							(*it2)->input=it->input+numberOfChildreninFirstChild;
+						}
+					}
+					for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
+					{
+						if((it2)->newName==name && it2->input==i)
+						{
+							(it2)->input=it->input+numberOfChildreninFirstChild;;
 						}
 					}
 				}
@@ -508,6 +515,14 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 						(*it2)->input=numberOfChildreninFirstChild;
 					}
 				}
+				for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
+				{
+					if((it2)->input==i)
+					{
+						(it2)->input=numberOfChildreninFirstChild;
+					}
+				}
+
 			}
 			numberOfChildreninFirstChild=0;
 

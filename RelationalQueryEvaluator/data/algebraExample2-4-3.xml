@@ -78,7 +78,7 @@
                     <column name="o_shippriority" input="second"/>
                     <column name="l_extendedprice" input="first"/>
                     <column name="l_discount" input="first"/>
-					<column name="o_custkey" input="first"/>
+					<column name="o_custkey" input="second"/>
                   </parameters>
                   <input>
                     <selection>

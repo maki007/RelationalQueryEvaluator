@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <join>
+      <parameters>
+        <equal_condition>
+          <equals>
+            <column name="c"/>
+            <column name="d"/>
+          </equals>
+        </equal_condition>
+        <column input="first" name="a"/>
+        <column input="first" name="b"/>
+        <column input="first" name="c"/>
+        <column input="second" name="d"/>
+      </parameters>
+      <input>
+        <join>
+          <parameters>
+            <equal_condition>
+              <equals>
+                <column name="a"/>
+                <column name="c"/>
+              </equals>
+            </equal_condition>
+            <column input="first" name="a"/>
+            <column input="first" name="b"/>
+            <column input="second" name="c"/>
+          </parameters>
+          <input>
+            <join>
+              <parameters>
+                <equal_condition>
+                  <equals>
+                    <column name="a"/>
+                    <column name="b"/>
+                  </equals>
+                </equal_condition>
+                <column input="first" name="a"/>
+                <column input="second" name="b"/>
+              </parameters>
+              <input>
+                <table name="a">
+                  <column name="a" type="int"/>
+                </table>
+                <table name="b">
+                  <column name="b" type="int"/>
+                </table>
+              </input>
+            </join>
+            <table name="c">
+              <column name="c" type="int"/>
+            </table>
+          </input>
+        </join>
+        <table name="d">
+          <column name="d" type="int"/>
+        </table>
+      </input>
+    </join>
+  </input>
+</sort>
