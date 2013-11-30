@@ -499,7 +499,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 					}
 					for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
 					{
-						if((it2)->newName==name && it2->input==i)
+						if((it2)->newName==name)
 						{
 							(it2)->input=it->input+numberOfChildreninFirstChild;;
 						}

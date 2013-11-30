@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="AntiJoin
-(a(0) == b(1))"]
+(c(0) == b(1))"]
 node2[label="AntiJoin
 (a(0) == c(1))"]
 node3[label="Table x

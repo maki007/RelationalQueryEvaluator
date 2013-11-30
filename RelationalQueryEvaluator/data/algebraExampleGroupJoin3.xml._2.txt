@@ -2,22 +2,27 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="GroupedJoin
-(!((c(1) == b(2))) and !((a(0) == c(1))))"]
-node2[label="Table x
+((d(0) == c(3)) and ((a(1) == c(3)) and (a(1) == b(2))))"]
+node2[label="Table d
+ number of rows: 1000
+ columns: d(int,333)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table a
  number of rows: 1000
  columns: a(int,333)
  indices: "]
-node2 -> node1[headport=s, tailport=n,label="   "]
-node3[label="Table z
- number of rows: 1000
- columns: c(int,333)
- indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
-node4[label="Table y
+node4[label="Table b
  number of rows: 1000
  columns: b(int,333)
  indices: "]
 node4 -> node1[headport=s, tailport=n,label="   "]
+node5[label="Table c
+ number of rows: 1000
+ columns: c(int,333)
+ indices: "]
+node5 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 
 }
