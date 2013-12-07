@@ -353,13 +353,13 @@ void AlgebraNodeBase::constructJoinParameters(DOMElement * element,std::shared_p
 		{
 			info.newName=info.name;
 		}
-		if(XmlUtils::ReadAttribute(*it,"input")=="first")
+		if(XmlUtils::ReadAttribute(*it,"input")=="second")
 		{
-			info.input=0;
+			info.input=1;
 		}
 		else
 		{
-			info.input=1;
+			info.input=0;
 		}
 		outputColumns.push_back(info);
 	}

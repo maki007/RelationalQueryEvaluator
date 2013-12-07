@@ -26,6 +26,11 @@ class Filter : UnaryPhysicalOperator
 
 };
 
+class IndexScan : UnaryPhysicalOperator
+{
+
+};
+
 class Sort : UnaryPhysicalOperator
 {
 
@@ -56,10 +61,20 @@ class Union : BinaryPhysicalOperator
 
 };
 
+class HashGroup : UnaryPhysicalOperator
+{
 
+};
+
+class SortedGroup :UnaryPhysicalOperator
+{
+			 
+};
 //columns operations
 //scans
 //groups
+
+
 
 #endif
 
