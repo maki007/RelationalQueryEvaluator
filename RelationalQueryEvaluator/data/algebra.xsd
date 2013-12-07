@@ -144,8 +144,6 @@
       <xs:element name="selection" type="selection"></xs:element>
       <xs:element name="table" type="table"></xs:element>
       <xs:element name="union" type="union"></xs:element>
-      <xs:element name="difference" type="difference"></xs:element>
-      <xs:element name="intersection" type="intersection"></xs:element>
       <xs:element name="antijoin" type="antijoin"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
     </xs:choice>
@@ -158,26 +156,12 @@
       <xs:element name="selection" type="selection"></xs:element>
       <xs:element name="table" type="table"></xs:element>
       <xs:element name="union" type="union"></xs:element>
-      <xs:element name="difference" type="difference"></xs:element>
-      <xs:element name="intersection" type="intersection"></xs:element>
       <xs:element name="antijoin" type="antijoin"></xs:element>
       <xs:element name="column_operations" type="column_operations"></xs:element>
     </xs:choice>
   </xs:complexType>
   <!-- union -->
   <xs:complexType name="union">
-    <xs:sequence minOccurs="1" maxOccurs="1">
-      <xs:element name="input" type="binaryoperator" />
-    </xs:sequence>
-  </xs:complexType>
-  <!-- difference -->
-  <xs:complexType name="difference">
-    <xs:sequence minOccurs="1" maxOccurs="1">
-      <xs:element name="input" type="binaryoperator" />
-    </xs:sequence>
-  </xs:complexType>
-  <!-- intersection -->
-  <xs:complexType name="intersection">
     <xs:sequence minOccurs="1" maxOccurs="1">
       <xs:element name="input" type="binaryoperator" />
     </xs:sequence>
@@ -242,7 +226,6 @@
           <xs:sequence>
             <xs:choice minOccurs="1" maxOccurs="1">
               <xs:element name="equal_condition" type="equal_condition"></xs:element>
-              <xs:element name="less_condition" type="less_condition"></xs:element>
             </xs:choice>
             <xs:sequence minOccurs="1" maxOccurs="unbounded">
               <!-- name of output columns with optional rename-->
@@ -251,14 +234,6 @@
                   <xs:attribute name="name" use="required"></xs:attribute>
                   <xs:attribute name="newName" use="optional"></xs:attribute>
                   <!-- from which input is this column -->
-                  <xs:attribute name="input" use="required">
-                    <xs:simpleType>
-                      <xs:restriction base="xs:string">
-                        <xs:enumeration value="first"></xs:enumeration>
-                        <xs:enumeration value="second"></xs:enumeration>
-                      </xs:restriction>
-                    </xs:simpleType>
-                  </xs:attribute>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

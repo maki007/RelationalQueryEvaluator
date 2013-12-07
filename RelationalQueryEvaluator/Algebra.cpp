@@ -43,17 +43,9 @@ AlgebraNodeBase *  AlgebraNodeBase::constructChildren(DOMElement * node)
 	{
 		child = new Union((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),differenceName)==0)
-	{
-		child = new Difference((DOMElement *)node);
-	}
 	else if(XMLString::compareString(node->getNodeName(),antijoinName)==0)
 	{
 		child = new AntiJoin((DOMElement *)node);
-	}
-	else if(XMLString::compareString(node->getNodeName(),intersectionName)==0)
-	{
-		child = new Intersection((DOMElement *)node);
 	}
 	return child;
 }
@@ -403,32 +395,7 @@ void Union::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-Difference::Difference(DOMElement * element) :BinaryAlgebraNodeBase(element)
-{
-
-}
-
-void Difference::accept(AlgebraVisitor &v)
-{
-	v.visit(this);
-}
-
-Intersection::Intersection(DOMElement * element) : BinaryAlgebraNodeBase(element)
-{
-
-}
-
-void Intersection::accept(AlgebraVisitor &v)
-{
-	v.visit(this);
-}
-
 void GroupedJoin::accept(AlgebraVisitor &v)
-{
-	v.visit(this);
-}
-
-void GroupedIntersection::accept(AlgebraVisitor &v)
 {
 	v.visit(this);
 }

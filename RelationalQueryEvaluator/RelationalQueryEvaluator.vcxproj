@@ -161,6 +161,7 @@
     <ClInclude Include="Expressions.h" />
     <ClInclude Include="ExpressionVisitor.h" />
     <ClInclude Include="AlgebraVisitor.h" />
+    <ClInclude Include="PhysicalOperator.h" />
     <ClInclude Include="XmlHandler.h" />
     <ClInclude Include="XmlUtils.h" />
   </ItemGroup>

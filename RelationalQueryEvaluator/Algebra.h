@@ -214,21 +214,6 @@ public:
 	void accept(AlgebraVisitor &v);
 };
 
-class Difference : public BinaryAlgebraNodeBase
-{
-public:
-	Difference(DOMElement * element);
-	void accept(AlgebraVisitor &v);
-};
-
-class Intersection : public BinaryAlgebraNodeBase
-{
-public:
-	Intersection(DOMElement * element);
-	void accept(AlgebraVisitor &v);
-};
-
-
 class GroupedJoin : public GroupedAlgebraNode
 {
 public:
@@ -236,13 +221,6 @@ public:
 	std::vector<JoinColumnInfo> outputColumns;
 	void accept(AlgebraVisitor &v);
 };
-
-class GroupedIntersection : public GroupedAlgebraNode
-{
-public:
-	void accept(AlgebraVisitor &v);
-};
-
 
 #endif
 

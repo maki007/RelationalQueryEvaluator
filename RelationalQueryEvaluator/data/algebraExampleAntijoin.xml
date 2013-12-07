@@ -11,7 +11,7 @@
             <column name="b"/>
           </equals>
         </equal_condition>
-        <column input="first" name="c"/>
+        <column name="c"/>
       </parameters>
       <input>
         <antijoin>
@@ -22,7 +22,7 @@
                 <column name="c"/>
               </equals>
             </equal_condition>
-            <column input="second" name="c"/>
+            <column name="c"/>
           </parameters>
           <input>
             <table name="x">

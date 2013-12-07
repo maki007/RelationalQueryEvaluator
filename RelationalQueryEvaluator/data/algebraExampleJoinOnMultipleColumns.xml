@@ -15,8 +15,8 @@
             <column name="b2"/>
           </equals>
         </equal_condition>
-        <column name="a1" input="first"/>
-        <column name="b2" input="second"/>
+        <column name="a1"/>
+        <column name="b2"/>
       </parameters>
       <input>
         <table name="a">
