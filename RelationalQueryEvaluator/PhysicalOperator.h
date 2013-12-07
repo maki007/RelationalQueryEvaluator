@@ -26,12 +26,12 @@ class Filter : UnaryPhysicalOperator
 
 };
 
-class IndexScan : UnaryPhysicalOperator
+class FilterNotChangingOrder : UnaryPhysicalOperator
 {
 
 };
 
-class Sort : UnaryPhysicalOperator
+class SortOperator : UnaryPhysicalOperator
 {
 
 };
@@ -56,7 +56,7 @@ class HashJoin : BinaryPhysicalOperator
 
 };
 
-class Union : BinaryPhysicalOperator
+class UnionOperator : BinaryPhysicalOperator
 {
 
 };
@@ -66,14 +66,40 @@ class HashGroup : UnaryPhysicalOperator
 
 };
 
-class SortedGroup :UnaryPhysicalOperator
+class SortedGroup : UnaryPhysicalOperator
 {
 			 
 };
-//columns operations
-//scans
-//groups
 
+class ColumnsOperationsOperator : UnaryPhysicalOperator
+{
+			 
+};
+
+class ScanAndSortByIndex : NullaryPhysicalOperator
+{
+
+};
+
+class TableScan : NullaryPhysicalOperator
+{
+
+};
+
+class IndexScan : NullaryPhysicalOperator
+{
+
+};
+
+class PhysicalPlan
+{
+	//columns
+	//indices
+	//sorted by
+	//time
+	//size
+	//std::sharedptr<PhysicalOperator>
+};
 
 
 #endif
