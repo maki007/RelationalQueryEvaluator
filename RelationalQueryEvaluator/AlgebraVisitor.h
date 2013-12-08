@@ -2,6 +2,8 @@
 #define AlgebraVisitorHPP
 
 #include "Algebra.h"
+#include "PhysicalOperator.h"
+
 
 class AlgebraVisitor
 {
@@ -69,6 +71,31 @@ public:
 
 };
 
+class SemanticChecker : public AlgebraVisitor
+{
+public:
+	bool containsErrors;
+	
+	SemanticChecker();
+	
+	void visit(Table * node);
+
+	void visit(Sort * node);
+
+	void visit(Group * node);
+
+	void visit(ColumnOperations * node);
+
+	void visit(Selection * node);
+
+	void visit(Join * node);
+
+	void visit(AntiJoin * node);
+	
+	void visit(Union * node);
+
+	void visit(GroupedJoin * node);
+};
 
 class GroupingVisitor : public AlgebraVisitor
 {
@@ -88,23 +115,25 @@ public:
 
 class AlgebraCompiler : public AlgebraVisitor
 {
-	virtual void visit(Table * node);
+	std::vector<std::shared_ptr<PhysicalPlan> > result;
 
-	virtual void visit(Sort * node);
+	void visit(Table * node);
 
-	virtual void visit(Group * node);
+	void visit(Sort * node);
 
-	virtual void visit(ColumnOperations * node);
+	void visit(Group * node);
 
-	virtual void visit(Selection * node);
+	void visit(ColumnOperations * node);
 
-	virtual void visit(Join * node);
+	void visit(Selection * node);
 
-	virtual void visit(AntiJoin * node);
+	void visit(Join * node);
+
+	void visit(AntiJoin * node);
 	
-	virtual void visit(Union * node);
+	void visit(Union * node);
 
-	virtual void visit(GroupedJoin * node);
+	void visit(GroupedJoin * node);
 
 };
 

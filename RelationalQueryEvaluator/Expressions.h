@@ -99,7 +99,7 @@ public:
 	std::string name;
 	std::string tableName;
 	std::string type;
-	int input;
+	std::size_t input;
 	Column(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
 	void replaceChild(Expression * oldChild,Expression * newChild);

@@ -3,9 +3,11 @@
 #ifndef PhysicalAlgorithmsHPP
 #define PhysicalAlgorithmsHPP
 
-static class TimeComplexityConstants
+class TimeComplexityConstants
 {
-
+public:
+	static const double TABLE_SCAN;
+	static const double SORT_SCAN;
 };
 
 class PhysicalOperator
@@ -13,89 +15,89 @@ class PhysicalOperator
 
 };
 
-class NullaryPhysicalOperator : PhysicalOperator
+class NullaryPhysicalOperator : public PhysicalOperator
 {
 
 };
 
-class UnaryPhysicalOperator : PhysicalOperator
+class UnaryPhysicalOperator : public PhysicalOperator
 {
 	std::shared_ptr<PhysicalOperator> child;
 
 };
 
-class BinaryPhysicalOperator : PhysicalOperator
+class BinaryPhysicalOperator : public PhysicalOperator
 {
 	std::shared_ptr<PhysicalOperator> leftChild;
 	std::shared_ptr<PhysicalOperator> rightChild;
 };
 
-class Filter : UnaryPhysicalOperator
+class Filter : public UnaryPhysicalOperator
 {
 
 };
 
-class FilterNotChangingOrder : UnaryPhysicalOperator
+class FilterNotChangingOrder : public UnaryPhysicalOperator
 {
 
 };
 
-class SortOperator : UnaryPhysicalOperator
+class SortOperator : public UnaryPhysicalOperator
 {
 
 };
 
-class MergeJoin : BinaryPhysicalOperator
+class MergeJoin : public BinaryPhysicalOperator
 {
 
 };
 
-class IndexJoin : BinaryPhysicalOperator
+class IndexJoin : public BinaryPhysicalOperator
 {
 
 };
 
-class CrossJoin : BinaryPhysicalOperator
+class CrossJoin : public BinaryPhysicalOperator
 {
 
 };
 
-class HashJoin : BinaryPhysicalOperator
+class HashJoin : public BinaryPhysicalOperator
 {
 
 };
 
-class UnionOperator : BinaryPhysicalOperator
+class UnionOperator : public BinaryPhysicalOperator
 {
 
 };
 
-class HashGroup : UnaryPhysicalOperator
+class HashGroup : public UnaryPhysicalOperator
 {
 
 };
 
-class SortedGroup : UnaryPhysicalOperator
-{
-			 
-};
-
-class ColumnsOperationsOperator : UnaryPhysicalOperator
+class SortedGroup : public UnaryPhysicalOperator
 {
 			 
 };
 
-class ScanAndSortByIndex : NullaryPhysicalOperator
+class ColumnsOperationsOperator : public UnaryPhysicalOperator
+{
+			 
+};
+
+class ScanAndSortByIndex : public NullaryPhysicalOperator
 {
 
 };
 
-class TableScan : NullaryPhysicalOperator
+class TableScan : public NullaryPhysicalOperator
 {
 
 };
 
-class IndexScan : NullaryPhysicalOperator
+class IndexScan : public NullaryPhysicalOperator
 {
 
 };
@@ -109,6 +111,12 @@ public:
 	double timeComplexity;
 	double size;
 	std::shared_ptr<PhysicalOperator> plan;
+	PhysicalPlan()
+	{
+		size=0;
+		timeComplexity=0;
+	
+	}
 };
 
 

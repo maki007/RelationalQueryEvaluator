@@ -79,7 +79,7 @@ public:
 class JoinColumnInfo
 {
 public:
-	uint input;
+	std::size_t input;
 	std::string name;
 	std::string newName;
 };

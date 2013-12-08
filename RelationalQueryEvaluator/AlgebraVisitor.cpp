@@ -327,6 +327,58 @@ void GraphDrawingVisitor::visit(GroupedJoin * node)
 	generateText(label,node);
 }
 
+
+SemanticChecker::SemanticChecker()
+{
+	containsErrors=false;
+}
+
+void SemanticChecker::visit(Table * node)
+{
+
+}
+
+void SemanticChecker::visit(Sort * node)
+{
+
+}
+
+void SemanticChecker::visit(Group * node)
+{
+
+}
+
+void SemanticChecker::visit(ColumnOperations * node)
+{
+
+}
+
+void SemanticChecker::visit(Selection * node)
+{
+
+}
+
+void SemanticChecker::visit(Join * node)
+{
+
+}
+
+void SemanticChecker::visit(AntiJoin * node)
+{
+
+}
+	
+void SemanticChecker::visit(Union * node)
+{
+
+}
+
+void SemanticChecker::visit(GroupedJoin * node)
+{
+	throw new std::exception("Not Suported: GroupedJoin cannot be in input algebra");
+}
+
+
 GroupingVisitor::GroupingVisitor()
 {
 
@@ -497,6 +549,14 @@ void GroupingVisitor::visit(Selection * node)
 
 void AlgebraCompiler::visit(Table * node)
 {
+
+
+	result.clear();
+	PhysicalPlan * physicalPlan=new PhysicalPlan();
+	physicalPlan->plan=std::shared_ptr<PhysicalOperator>(new TableScan());
+	physicalPlan->size=(double)node->numberOfRows;
+	physicalPlan->timeComplexity= TimeComplexityConstants::TABLE_SCAN*node->numberOfRows;
+	result.push_back(std::shared_ptr<PhysicalPlan>(physicalPlan));
 
 }
 

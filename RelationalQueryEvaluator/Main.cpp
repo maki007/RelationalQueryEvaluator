@@ -54,6 +54,15 @@ int main(int argc, const char *argv[])
 				return 1;
 			}
 			drawAlgebra(algebraRoot,line+std::string("._1"));
+
+			std::unique_ptr<SemanticChecker> semanticChecker(new SemanticChecker());
+			algebraRoot->accept(*semanticChecker);
+			if(semanticChecker->containsErrors==true)
+			{
+				cout << "semantic error in " << line << std::endl;
+				return 1;
+			}
+			
 			std::unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
 			algebraRoot->accept(*groupVisitor);
 			drawAlgebra(algebraRoot,line+std::string("._2"));
