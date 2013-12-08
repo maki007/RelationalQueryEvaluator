@@ -8,7 +8,7 @@
 #include <string>
 
 #include "Algebra.h"
-#include "AlgebraVisitor.h"
+#include "AlgebraVisitors.h"
 #include "XmlHandler.h"
 
 using namespace std;

@@ -1,6 +1,6 @@
 #include "Algebra.h"
-#include "AlgebraVisitor.h"
-#include "ExpressionVisitor.h"
+#include "AlgebraVisitors.h"
+#include "ExpressionVisitors.h"
 
 AlgebraNodeBase::AlgebraNodeBase()
 {

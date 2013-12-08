@@ -150,18 +150,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algebra.cpp" />
-    <ClCompile Include="AlgebraVisitor.cpp" />
+    <ClCompile Include="AlgebraCompiler.cpp" />
+    <ClCompile Include="AlgebraVisitors.cpp" />
     <ClCompile Include="Expressions.cpp" />
-    <ClCompile Include="ExpressionVisitor.cpp" />
+    <ClCompile Include="ExpressionVisitors.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PhysicalOperatorcpp.cpp" />
+    <ClCompile Include="SemanticChecker.cpp" />
     <ClCompile Include="XmlHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algebra.h" />
     <ClInclude Include="Expressions.h" />
-    <ClInclude Include="ExpressionVisitor.h" />
-    <ClInclude Include="AlgebraVisitor.h" />
+    <ClInclude Include="ExpressionVisitors.h" />
+    <ClInclude Include="AlgebraVisitors.h" />
     <ClInclude Include="PhysicalOperator.h" />
     <ClInclude Include="XmlHandler.h" />
     <ClInclude Include="XmlUtils.h" />

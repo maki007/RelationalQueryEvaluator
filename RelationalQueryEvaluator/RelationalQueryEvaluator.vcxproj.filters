@@ -24,16 +24,22 @@
     <ClCompile Include="Algebra.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlgebraVisitor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Expressions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExpressionVisitor.cpp">
+    <ClCompile Include="PhysicalOperatorcpp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicalOperatorcpp.cpp">
+    <ClCompile Include="SemanticChecker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlgebraCompiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AlgebraVisitors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpressionVisitors.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,16 +53,16 @@
     <ClInclude Include="XmlUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AlgebraVisitor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ExpressionVisitor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Expressions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PhysicalOperator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AlgebraVisitors.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpressionVisitors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
