@@ -14,6 +14,8 @@ public:
 
 	virtual void visit(NullaryAlgebraNodeBase * node);
 
+	virtual void visit(GroupedAlgebraNode * node);
+
 	virtual void visit(Table * node);
 
 	virtual void visit(Sort * node);
@@ -29,8 +31,6 @@ public:
 	virtual void visit(AntiJoin * node);
 	
 	virtual void visit(Union * node);
-
-	virtual void visit(GroupedAlgebraNode * node);
 
 	virtual void visit(GroupedJoin * node);
 
@@ -86,5 +86,26 @@ public:
 	void resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren);
 };
 
+class AlgebraCompiler : public AlgebraVisitor
+{
+	virtual void visit(Table * node);
+
+	virtual void visit(Sort * node);
+
+	virtual void visit(Group * node);
+
+	virtual void visit(ColumnOperations * node);
+
+	virtual void visit(Selection * node);
+
+	virtual void visit(Join * node);
+
+	virtual void visit(AntiJoin * node);
+	
+	virtual void visit(Union * node);
+
+	virtual void visit(GroupedJoin * node);
+
+};
 
 #endif

@@ -56,8 +56,10 @@ int main(int argc, const char *argv[])
 			drawAlgebra(algebraRoot,line+std::string("._1"));
 			std::unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
 			algebraRoot->accept(*groupVisitor);
-
 			drawAlgebra(algebraRoot,line+std::string("._2"));
+			
+			std::unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
+			algebraRoot->accept(*algebraCompiler);
 		}
 	}
 	//system("drawAlgebra.bat");

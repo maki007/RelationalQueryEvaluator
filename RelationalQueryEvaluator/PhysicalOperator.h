@@ -1,5 +1,12 @@
+#include <memory>
+
 #ifndef PhysicalAlgorithmsHPP
 #define PhysicalAlgorithmsHPP
+
+static class TimeComplexityConstants
+{
+
+};
 
 class PhysicalOperator
 {
@@ -13,12 +20,14 @@ class NullaryPhysicalOperator : PhysicalOperator
 
 class UnaryPhysicalOperator : PhysicalOperator
 {
+	std::shared_ptr<PhysicalOperator> child;
 
 };
 
 class BinaryPhysicalOperator : PhysicalOperator
 {
-
+	std::shared_ptr<PhysicalOperator> leftChild;
+	std::shared_ptr<PhysicalOperator> rightChild;
 };
 
 class Filter : UnaryPhysicalOperator
@@ -93,12 +102,13 @@ class IndexScan : NullaryPhysicalOperator
 
 class PhysicalPlan
 {
+public:
 	//columns
 	//indices
 	//sorted by
-	//time
-	//size
-	//std::sharedptr<PhysicalOperator>
+	double timeComplexity;
+	double size;
+	std::shared_ptr<PhysicalOperator> plan;
 };
 
 

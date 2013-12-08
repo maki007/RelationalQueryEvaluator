@@ -4,6 +4,8 @@
 #include "AlgebraVisitor.h"
 #include "Expressions.h"
 #include "ExpressionVisitor.h"
+#include <exception>
+
 
 void AlgebraVisitor::visit(AlgebraNodeBase * node)
 {
@@ -491,3 +493,56 @@ void GroupingVisitor::visit(Selection * node)
 	node->condition->accept(GroupingExpressionVisitor(&(node->condition)));
 	node->child->accept(*this);
 }
+
+
+void AlgebraCompiler::visit(Table * node)
+{
+
+}
+
+void AlgebraCompiler::visit(Sort * node)
+{
+	node->child->accept(*this);
+}
+
+void AlgebraCompiler::visit(Group * node)
+{
+	node->child->accept(*this);
+}
+
+void AlgebraCompiler::visit(ColumnOperations * node)
+{
+	node->child->accept(*this);
+}
+
+void AlgebraCompiler::visit(Selection * node)
+{
+	node->child->accept(*this);
+}
+
+void AlgebraCompiler::visit(Join * node)
+{
+	throw new std::exception("Not Suported: join should be replaced with groupedJoin");
+}
+
+void AlgebraCompiler::visit(AntiJoin * node)
+{
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
+}
+	
+void AlgebraCompiler::visit(Union * node)
+{
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
+}
+
+void AlgebraCompiler::visit(GroupedJoin * node)
+{
+	for(auto it=node->children.begin();it!=node->children.end();++it)
+	{
+		(*it)->accept(*this);	
+	}
+}
+
+
