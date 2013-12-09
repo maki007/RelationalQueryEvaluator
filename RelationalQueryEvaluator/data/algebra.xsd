@@ -177,12 +177,14 @@
         </xs:complexType>
       </xs:element>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="index" type="index"/>
+        <xs:element name="index" type="index" />
       </xs:choice>
     </xs:sequence>
     <xs:attribute use="optional" name="numberOfRows" type="xs:unsignedLong"></xs:attribute>
     <xs:attribute use="required" name="name"></xs:attribute>
   </xs:complexType>
+  
+  
   <!-- join -->
   <xs:complexType name="join">
     <xs:sequence>

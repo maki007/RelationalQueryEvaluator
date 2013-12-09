@@ -72,6 +72,17 @@ public:
 	std::string name;
 	std::string type;
 	ulong numberOfUniqueValues;
+	ColumnInfo(std::string name,std::string type)
+	{
+		this->name=name;
+		this->type=type;
+	}
+	ColumnInfo()
+	{
+		name="";
+		type="";
+		numberOfUniqueValues=0;
+	}
 };
 
 

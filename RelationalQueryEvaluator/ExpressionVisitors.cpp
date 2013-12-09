@@ -231,3 +231,26 @@ void GroupingExpressionVisitor::visit(BinaryExpression * expression)
 		}
 	}
 }
+
+SemanticExpressionVisitor::SemanticExpressionVisitor()
+{
+	containsErrors=false;
+}
+
+void SemanticExpressionVisitor::visit(Column * expression)
+{
+	if(expression->input==0)
+	{
+		if(outputColumns0.find(expression->name)==outputColumns0.end())
+		{
+			containsErrors=true;
+		}
+	}
+	if(expression->input==1)
+	{
+		if(outputColumns1.find(expression->name)==outputColumns1.end())
+		{
+			containsErrors=true;
+		}
+	}
+}

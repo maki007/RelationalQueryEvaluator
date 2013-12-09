@@ -200,7 +200,7 @@ void Constant::accept(ExpressionVisitorBase &v)
 Column::Column(DOMElement * node)
 {
 	this->name=XmlUtils::ReadAttribute(node,"name");
-	this->input=-1;
+	this->input=0;
 }
 
 void Column::replaceChild(Expression * oldChild,Expression * newChild)

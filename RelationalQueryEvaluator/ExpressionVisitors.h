@@ -2,6 +2,9 @@
 #define ExpressionVisitorHPP
 
 #include "Expressions.h"
+#include <map>
+#include "Algebra.h"
+
 
 class ExpressionVisitorBase
 {
@@ -61,6 +64,16 @@ public:
 	GroupingExpressionVisitor(std::shared_ptr<Expression> * x);
 	void visit(BinaryExpression * expression);
 
+};
+
+class SemanticExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	bool containsErrors;
+	std::map<std::string,ColumnInfo> outputColumns0; 
+	std::map<std::string,ColumnInfo> outputColumns1; 
+	SemanticExpressionVisitor();
+	void visit(Column * expression);
 };
 
 #endif

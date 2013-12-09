@@ -3,7 +3,7 @@
 
 #include "Algebra.h"
 #include "PhysicalOperator.h"
-
+#include <map>
 
 class AlgebraVisitor
 {
@@ -71,8 +71,12 @@ public:
 
 };
 
+
 class SemanticChecker : public AlgebraVisitor
 {
+private:
+	void ReportError(const char * error);
+	std::map<std::string,ColumnInfo> outputColumns; 
 public:
 	bool containsErrors;
 	
@@ -95,6 +99,7 @@ public:
 	void visit(Union * node);
 
 	void visit(GroupedJoin * node);
+
 };
 
 class GroupingVisitor : public AlgebraVisitor

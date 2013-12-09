@@ -6,7 +6,7 @@
   <input>
     <group>
       <parameters>
-        <group_by column="s"/>
+        <group_by column="country"/>
         <count output="count" />
       </parameters>
       <input>
@@ -14,8 +14,7 @@
           <column name="user_name" type="string" number_of_unique_values="410"/>
           <column name="country" type="string" />
           <index type="clustered">
-            <column name="col" />
-            <column name="as" />
+            <column name="user_name" />
           </index>
         </table>
       </input>

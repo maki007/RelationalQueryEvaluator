@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="Selection
-!(((a(18446744073709551615) == 4) or (a(18446744073709551615) < -1)))"]
+!(((a(0) == 4) or (a(0) < -1)))"]
 node2[label="Table users
  number of rows: 10000
  columns: a(int,1000)

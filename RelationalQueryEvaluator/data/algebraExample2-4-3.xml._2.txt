@@ -5,11 +5,11 @@ revenue desc, o_orderdate asc"]
 node1[label="Group
 groupBy l_orderkey, o_orderdate, o_shippriority, revenue=sum(x);"]
 node2[label="ColumnOperations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(18446744073709551615) * (1 - l_discount(18446744073709551615)))"]
+l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))"]
 node3[label="GroupedJoin
 AND ((c_custkey(0) == o_custkey(2)),(l_orderkey(1) == o_orderkey(2)))"]
 node4[label="Selection
-(c_mktsegment(18446744073709551615) == SEGMENT)"]
+(c_mktsegment(0) == SEGMENT)"]
 node5[label="Table customer
  number of rows: 1000
  columns: c_custkey(int,333), c_mktsegment(int,333)
@@ -17,7 +17,7 @@ node5[label="Table customer
 node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node6[label="Selection
-(today < l_shipdate(18446744073709551615))"]
+(today < l_shipdate(0))"]
 node7[label="Table lineitem
  number of rows: 1000
  columns: l_orderkey(int,333), l_shipdate(int,333), l_extendedprice(int,333), l_discount(int,333)
@@ -25,7 +25,7 @@ node7[label="Table lineitem
 node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]
 node8[label="Selection
-(o_orderdate(18446744073709551615) < today)"]
+(o_orderdate(0) < today)"]
 node9[label="Table orders
  number of rows: 1000
  columns: o_orderdate(int,333), o_shippriority(int,333), o_orderkey(int,333)
