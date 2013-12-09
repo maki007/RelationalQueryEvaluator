@@ -18,18 +18,18 @@
           <parameters>
             <equal_condition>
               <equals>
-                <column name="a"/>
                 <column name="c"/>
+                <column name="a"/>
               </equals>
             </equal_condition>
             <column name="c"/>
           </parameters>
           <input>
-            <table name="x">
-              <column name="a" type="int"/>
-            </table>
             <table name="z">
               <column name="c" type="int"/>
+            </table>
+			<table name="x">
+              <column name="a" type="int"/>
             </table>
           </input>
           

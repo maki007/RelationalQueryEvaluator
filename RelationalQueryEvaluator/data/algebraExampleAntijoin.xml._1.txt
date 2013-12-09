@@ -4,15 +4,15 @@ node0[label="Sort"]
 node1[label="AntiJoin
 (c(0) == b(1))"]
 node2[label="AntiJoin
-(a(0) == c(1))"]
-node3[label="Table x
- number of rows: 1000
- columns: a(int,333)
- indices: "]
-node3 -> node2[headport=s, tailport=n,label="   "]
-node4[label="Table z
+(c(0) == a(1))"]
+node3[label="Table z
  number of rows: 1000
  columns: c(int,333)
+ indices: "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node4[label="Table x
+ number of rows: 1000
+ columns: a(int,333)
  indices: "]
 node4 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
