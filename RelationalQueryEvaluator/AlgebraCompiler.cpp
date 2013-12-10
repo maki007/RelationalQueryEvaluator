@@ -3,15 +3,35 @@
 
 void AlgebraCompiler::visit(Table * node)
 {
-
-
 	result.clear();
 	PhysicalPlan * physicalPlan=new PhysicalPlan();
 	physicalPlan->plan=std::shared_ptr<PhysicalOperator>(new TableScan());
 	physicalPlan->size=(double)node->numberOfRows;
 	physicalPlan->timeComplexity= TimeComplexityConstants::TABLE_SCAN*node->numberOfRows;
+	physicalPlan->columns=node->columns;
+	physicalPlan->indices=node->indices;
+	for(auto it=node->indices.begin();it!=node->indices.end();++it)
+	{
+		if(it->type==CLUSTERED)
+		{
+			physicalPlan->sortedBy=it->columns;
+		}
+	}
 	result.push_back(std::shared_ptr<PhysicalPlan>(physicalPlan));
 
+	for(auto it=node->indices.begin();it!=node->indices.end();++it)
+	{
+		if(it->type==UNCLUSTERED)
+		{
+			PhysicalPlan * physicalPlan=new PhysicalPlan();
+			physicalPlan->plan=std::shared_ptr<PhysicalOperator>(new ScanAndSortByIndex());
+			physicalPlan->size=(double)node->numberOfRows;
+			physicalPlan->timeComplexity= TimeComplexityConstants::SORT_SCAN*node->numberOfRows;
+			physicalPlan->columns=node->columns;
+			physicalPlan->sortedBy=it->columns;
+			result.push_back(std::shared_ptr<PhysicalPlan>(physicalPlan));
+		}	
+	}
 }
 
 void AlgebraCompiler::visit(Sort * node)

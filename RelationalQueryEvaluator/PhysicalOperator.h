@@ -1,7 +1,9 @@
-#include <memory>
-
 #ifndef PhysicalAlgorithmsHPP
 #define PhysicalAlgorithmsHPP
+
+#include <memory>
+#include <map>
+#include "Algebra.h"
 
 class TimeComplexityConstants
 {
@@ -105,9 +107,9 @@ class IndexScan : public NullaryPhysicalOperator
 class PhysicalPlan
 {
 public:
-	//columns
-	//indices
-	//sorted by
+	std::vector<ColumnInfo> columns;
+	std::vector<IndexInfo> indices;
+	std::vector<std::string> sortedBy;
 	double timeComplexity;
 	double size;
 	std::shared_ptr<PhysicalOperator> plan;
@@ -115,7 +117,7 @@ public:
 	{
 		size=0;
 		timeComplexity=0;
-	
+		plan=0;
 	}
 };
 
