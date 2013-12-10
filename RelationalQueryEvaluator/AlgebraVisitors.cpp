@@ -142,7 +142,7 @@ void GraphDrawingVisitor::visit(Sort * node)
 	for(auto it=node->parameters.begin();it!=node->parameters.end();++it)
 	{
 		label+=it->column;
-		if(it->ascending)
+		if(it->order==ASCENDING)
 		{
 			label+=" asc";
 		}

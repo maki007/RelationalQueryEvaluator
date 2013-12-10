@@ -155,7 +155,7 @@
     <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="ExpressionVisitors.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="PhysicalOperatorcpp.cpp" />
+    <ClCompile Include="PhysicalOperator.cpp" />
     <ClCompile Include="SemanticChecker.cpp" />
     <ClCompile Include="XmlHandler.cpp" />
   </ItemGroup>

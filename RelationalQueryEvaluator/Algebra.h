@@ -32,11 +32,15 @@ typedef unsigned int uint;
 
 class AlgebraVisitor;
 
+enum SortOrder
+{
+	ASCENDING,DESCENDING
+};
 class SortParameter
 {
 public: 
 	std::string column;
-	bool ascending;
+	SortOrder order;
 };
 enum AgregateFunction
 {

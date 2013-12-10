@@ -216,11 +216,11 @@ Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 			std::string direction=XmlUtils::ReadAttribute(parameterElement,"direction");
 			if(direction=="asc")
 			{
-				parameter.ascending=true;
+				parameter.order=ASCENDING;
 			}
 			else
 			{
-				parameter.ascending=false;
+				parameter.order=DESCENDING;
 			}
 			parameters.push_back(parameter);
 		}

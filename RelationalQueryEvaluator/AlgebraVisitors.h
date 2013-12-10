@@ -140,6 +140,8 @@ class AlgebraCompiler : public AlgebraVisitor
 
 	void visit(GroupedJoin * node);
 
+	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters,const std::shared_ptr<PhysicalPlan> & result);
+
 };
 
 #endif
