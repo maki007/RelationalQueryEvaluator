@@ -141,6 +141,30 @@ public:
 	double size;
 	std::shared_ptr<PhysicalOperator> plan;
 	PhysicalPlan();
+	PhysicalPlan(NullaryPhysicalOperator * op,double numberOfColumns,double time,std::vector<ColumnInfo> & cols)
+	{
+		
+		plan=std::shared_ptr<PhysicalOperator>(op);
+		size=numberOfColumns;
+		plan->size=size;
+		timeComplexity=time;
+		plan->timeComplexity=time;
+		for(auto it2=cols.begin();it2!=cols.end();++it2)
+		{
+			columns[it2->name]=*it2;
+		}
+	}
+
+	PhysicalPlan(UnaryPhysicalOperator * op,double newSize,double time,const std::shared_ptr<PhysicalPlan> & oldPlan)
+	{
+		op->child=oldPlan->plan;
+		columns=oldPlan->columns;
+		plan=std::shared_ptr<PhysicalOperator>(op);
+		size=newSize;
+		plan->size=size;	
+		plan->timeComplexity=time;
+		timeComplexity=oldPlan->timeComplexity+ plan->timeComplexity;
+	}
 };
 
 
