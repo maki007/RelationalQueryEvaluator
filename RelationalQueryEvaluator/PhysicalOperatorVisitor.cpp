@@ -106,7 +106,7 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,NullaryPhy
 {
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
-	result.append("[label=\""+label+"\"]\n");
+	result.append("[label=\""+label+"\n time:"+std::to_string((ulong)node->timeComplexity)+"\n size:"+std::to_string((ulong)node->size)+"\"]\n");
 }
 
 void PhysicalOperatorDrawingVisitor::generateText(std::string & label,UnaryPhysicalOperator * node)
@@ -115,7 +115,7 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,UnaryPhysi
 
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
-	result.append("[label=\""+label+"\"]\n");
+	result.append("[label=\""+label+"\n time:"+std::to_string((ulong)node->timeComplexity)+"\n size:"+std::to_string((ulong)node->size)+"\"]\n");
 	int childIdentifier=++nodeCounter;
 	node->child->accept(*this);
 
@@ -133,7 +133,7 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,BinaryPhys
 
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
-	result.append("[label=\""+label+"\"]\n");
+	result.append("[label=\""+label+"\n time:"+std::to_string((ulong)node->timeComplexity)+"\n size:"+std::to_string((ulong)node->size)+"\"]\n");
 
 	int childIdentifier=++nodeCounter;
 	node->leftChild->accept(*this);

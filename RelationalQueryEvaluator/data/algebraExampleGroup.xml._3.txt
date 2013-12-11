@@ -1,21 +1,43 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Sorted Group"]
-node1[label="Sort by index Scan"]
+node0[label="Sorted Group
+ time:3333
+ size:3333"]
+node1[label="Sort by index Scan
+ time:30000
+ size:10000"]
 node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Sorted Group"]
-node3[label="Sort"]
-node4[label="Table Scan"]
+node2[label="Sort
+ time:78009
+ size:3333"]
+node3[label="Hash group
+ time:19998
+ size:3333"]
+node4[label="Table Scan
+ time:10000
+ size:10000"]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node2[headport=s, tailport=n,label="   "]
-node5[label="Sort"]
-node6[label="Hash group"]
-node7[label="Table Scan"]
+node5[label="Sort
+ time:78009
+ size:3333"]
+node6[label="Hash group
+ time:19998
+ size:3333"]
+node7[label="Sort by index Scan
+ time:30000
+ size:10000"]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node5[headport=s, tailport=n,label="   "]
-node8[label="Sort"]
-node9[label="Hash group"]
-node10[label="Sort by index Scan"]
+node8[label="Sorted Group
+ time:3333
+ size:3333"]
+node9[label="Sort
+ time:265754
+ size:10000"]
+node10[label="Table Scan
+ time:10000
+ size:10000"]
 node10 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node8[headport=s, tailport=n,label="   "]
 

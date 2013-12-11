@@ -21,6 +21,9 @@ public:
 class PhysicalOperator
 {
 public:
+	double timeComplexity;
+	double size;
+
 	virtual void accept(PhysicalOperatorVisitor &v) = 0;
 };
 
@@ -131,7 +134,7 @@ public:
 class PhysicalPlan
 {
 public:
-	std::vector<ColumnInfo> columns;
+	std::map<std::string,ColumnInfo> columns;
 	std::vector<IndexInfo> indices;
 	std::vector<SortParameter> sortedBy;
 	double timeComplexity;
