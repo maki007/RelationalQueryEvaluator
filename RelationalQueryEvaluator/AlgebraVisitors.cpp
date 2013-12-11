@@ -87,7 +87,7 @@ GraphDrawingVisitor::GraphDrawingVisitor()
 	nodeCounter=0;
 }
 
-void GraphDrawingVisitor::generateText(std::string label ,UnaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(std::string & label ,UnaryAlgebraNodeBase * node)
 {
 	int identifier=nodeCounter;
 
@@ -105,7 +105,7 @@ void GraphDrawingVisitor::generateText(std::string label ,UnaryAlgebraNodeBase *
 
 }
 
-void GraphDrawingVisitor::generateText(std::string label , BinaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(std::string & label , BinaryAlgebraNodeBase * node)
 {
 	int identifier=nodeCounter;
 
@@ -153,7 +153,7 @@ void GraphDrawingVisitor::visit(Sort * node)
 		if(it!=node->parameters.end()-1)
 			label+=", ";
 	}
-	generateText(label.c_str(),node);
+	generateText(label,node);
 
 	result+="\n}";
 }
@@ -289,10 +289,10 @@ void GraphDrawingVisitor::visit(AntiJoin * node)
 
 void GraphDrawingVisitor::visit(Union * node)
 {
-	generateText("Union",node);
+	generateText(std::string("Union"),node);
 }
 
-void GraphDrawingVisitor::generateText(std::string label , GroupedAlgebraNode * node)
+void GraphDrawingVisitor::generateText(std::string & label , GroupedAlgebraNode * node)
 {
 	int identifier=nodeCounter;
 

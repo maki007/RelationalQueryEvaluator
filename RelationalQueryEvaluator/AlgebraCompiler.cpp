@@ -133,25 +133,27 @@ void AlgebraCompiler::visit(Group * node)
 		newResult.push_back(sortedGroup);
 
 		std::shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan());
-		hashedGroup->columns=sortedPlan->columns;
-		hashedGroup->size=sortedPlan->size;//todo
-		hashedGroup->timeComplexity=sortedPlan->timeComplexity+TimeComplexityConstants::HASHED_GROUP*hashedGroup->size;
+		hashedGroup->columns=(*it)->columns;
+		hashedGroup->size=(*it)->size;//todo
+		hashedGroup->timeComplexity=(*it)->timeComplexity+TimeComplexityConstants::HASHED_GROUP*hashedGroup->size;
 		HashGroup *h=new HashGroup();
-		h->child=sortedPlan->plan;
+		h->child=(*it)->plan;
 		hashedGroup->plan=std::shared_ptr<PhysicalOperator>(h);
 		newResult.push_back(hashedGroup);
 	}
-	newResult=result;
+	result=newResult;
 }
 
 void AlgebraCompiler::visit(ColumnOperations * node)
 {
 	node->child->accept(*this);
+	result.clear();
 }
 
 void AlgebraCompiler::visit(Selection * node)
 {
 	node->child->accept(*this);
+	result.clear();
 }
 
 void AlgebraCompiler::visit(Join * node)
@@ -163,12 +165,14 @@ void AlgebraCompiler::visit(AntiJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
+	result.clear();
 }
 	
 void AlgebraCompiler::visit(Union * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
+	result.clear();
 }
 
 void AlgebraCompiler::visit(GroupedJoin * node)
@@ -177,4 +181,5 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 	{
 		(*it)->accept(*this);	
 	}
+	result.clear();
 }

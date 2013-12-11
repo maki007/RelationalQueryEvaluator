@@ -6,10 +6,12 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 #include "Algebra.h"
 #include "AlgebraVisitors.h"
 #include "XmlHandler.h"
+#include "PhysicalOperatorVisitor.h"
 
 using namespace std;
 
@@ -27,6 +29,34 @@ void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 	myfile.close();
 }
 
+bool palnComparator (std::shared_ptr<PhysicalPlan> & i,std::shared_ptr<PhysicalPlan> & j)
+{
+	return (i->timeComplexity<j->timeComplexity); 
+}
+
+void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
+{
+	std::unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
+	algebraRoot->accept(*algebraCompiler);
+	
+	std::unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
+	std::sort(algebraCompiler->result.begin(),algebraCompiler->result.end(),palnComparator);
+	for(auto it=algebraCompiler->result.begin();it!=algebraCompiler->result.end();++it)
+	{
+		(*it)->plan->accept(*planDrawer);
+		planDrawer->nodeCounter++;
+	}
+	planDrawer->result+="\n}";
+
+	ofstream myfile;
+	string s("");
+	s.append(line);
+	s.append(".txt");
+	myfile.open (s.c_str());
+	myfile << planDrawer->result ;
+	myfile.close();
+
+}
 
 int main(int argc, const char *argv[])
 {
@@ -67,8 +97,7 @@ int main(int argc, const char *argv[])
 			algebraRoot->accept(*groupVisitor);
 			drawAlgebra(algebraRoot,line+std::string("._2"));
 			
-			std::unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
-			algebraRoot->accept(*algebraCompiler);
+			drawPlan(algebraRoot,line+std::string("._3"));;
 		}
 	}
 	//system("drawAlgebra.bat");

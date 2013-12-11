@@ -45,11 +45,11 @@ public:
 	int nodeCounter;
 	GraphDrawingVisitor();
 
-	void generateText(std::string label ,UnaryAlgebraNodeBase * node);
+	void generateText(std::string & label ,UnaryAlgebraNodeBase * node);
 
-	void generateText(std::string label , BinaryAlgebraNodeBase * node);
+	void generateText(std::string & label , BinaryAlgebraNodeBase * node);
 
-	void generateText(std::string label , GroupedAlgebraNode * node);
+	void generateText(std::string & label , GroupedAlgebraNode * node);
 
 	void visit(Sort * node);
 
@@ -120,6 +120,7 @@ public:
 
 class AlgebraCompiler : public AlgebraVisitor
 {
+public:
 	std::vector<std::shared_ptr<PhysicalPlan> > result;
 
 	void visit(Table * node);
