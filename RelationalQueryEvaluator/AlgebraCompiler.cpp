@@ -68,8 +68,6 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 	{
 		if(matchedColumns==0)
 		{
-			//todo make into function
-
 			double size=plan->size;
 			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new SortOperator(),size,TimeComplexityConstants::SORT*size * std::log(size)/std::log(2),plan));
 			newPlan->sortedBy=parameters;
@@ -133,7 +131,15 @@ void AlgebraCompiler::visit(Group * node)
 void AlgebraCompiler::visit(ColumnOperations * node)
 {
 	node->child->accept(*this);
-	result.clear();
+	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
+	
+	for(auto it=result.begin();it!=result.end();++it)
+	{
+		std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(),(*it)->size,0,*it));
+		newResult.push_back(newPlan);
+	}
+	
+	result=newResult;
 }
 
 void AlgebraCompiler::visit(Selection * node)
@@ -157,8 +163,22 @@ void AlgebraCompiler::visit(AntiJoin * node)
 void AlgebraCompiler::visit(Union * node)
 {
 	node->leftChild->accept(*this);
+	std::vector<std::shared_ptr<PhysicalPlan>> leftInput=result;
 	node->rightChild->accept(*this);
-	result.clear();
+	std::vector<std::shared_ptr<PhysicalPlan>> rightInput=result;
+	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
+
+	for(auto leftIt=leftInput.begin();leftIt!=leftInput.end();++leftIt)
+	{
+		for(auto rightIt=rightInput.begin();rightIt!=rightInput.end();++rightIt)
+		{
+			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new UnionOperator(),(*leftIt)->size+(*rightIt)->size,
+				0,(*leftIt)->columns,*leftIt,*rightIt));
+			newResult.push_back(newPlan);
+		}
+	}
+
+	result=newResult;
 }
 
 void AlgebraCompiler::visit(GroupedJoin * node)

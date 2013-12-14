@@ -165,6 +165,20 @@ public:
 		plan->timeComplexity=time;
 		timeComplexity=oldPlan->timeComplexity+ plan->timeComplexity;
 	}
+
+	PhysicalPlan(BinaryPhysicalOperator * op,double newSize,double time,const std::map<std::string,ColumnInfo> & oldColumns,const std::shared_ptr<PhysicalPlan> & oldPlan1,const std::shared_ptr<PhysicalPlan> & oldPlan2)
+	{
+		op->leftChild=oldPlan1->plan;
+		op->rightChild=oldPlan2->plan;
+		columns=oldColumns;
+		plan=std::shared_ptr<PhysicalOperator>(op);
+		size=newSize;
+		plan->size=size;	
+		plan->timeComplexity=time;
+		timeComplexity=oldPlan1->timeComplexity+oldPlan2->timeComplexity+ plan->timeComplexity;
+
+	}
+
 };
 
 

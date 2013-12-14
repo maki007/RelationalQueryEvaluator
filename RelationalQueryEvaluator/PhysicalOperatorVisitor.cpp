@@ -191,7 +191,8 @@ void PhysicalOperatorDrawingVisitor::visit(HashJoin * node)
 
 void PhysicalOperatorDrawingVisitor::visit(UnionOperator * node)
 {
-
+	std::string label="Union";
+	generateText(label,node);
 }
 
 void PhysicalOperatorDrawingVisitor::visit(HashGroup * node)
@@ -208,7 +209,8 @@ void PhysicalOperatorDrawingVisitor::visit(SortedGroup * node)
 
 void PhysicalOperatorDrawingVisitor::visit(ColumnsOperationsOperator * node)
 {
-
+	std::string label="Columns Operations";
+	generateText(label,node);
 }
 
 void PhysicalOperatorDrawingVisitor::visit(ScanAndSortByIndex * node)
