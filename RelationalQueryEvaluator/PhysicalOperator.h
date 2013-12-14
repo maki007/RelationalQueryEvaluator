@@ -15,6 +15,8 @@ public:
 	static const double SORT;
 	static const double SORTED_GROUP;
 	static const double HASHED_GROUP;
+	static const double FILTER;
+	static const double FILTER_KEEPING_ORDER;
 
 };
 
@@ -54,7 +56,7 @@ public:
 	void accept(PhysicalOperatorVisitor &v);
 };
 
-class FilterNotChangingOrder : public UnaryPhysicalOperator
+class FilterKeepingOrder : public UnaryPhysicalOperator
 {
 public:
 	void accept(PhysicalOperatorVisitor &v);
@@ -155,10 +157,10 @@ public:
 		}
 	}
 
-	PhysicalPlan(UnaryPhysicalOperator * op,double newSize,double time,const std::shared_ptr<PhysicalPlan> & oldPlan)
+	PhysicalPlan(UnaryPhysicalOperator * op,double newSize,double time,const std::map<std::string,ColumnInfo> & newColumns,const std::shared_ptr<PhysicalPlan> & oldPlan)
 	{
 		op->child=oldPlan->plan;
-		columns=oldPlan->columns;
+		columns=newColumns;
 		plan=std::shared_ptr<PhysicalOperator>(op);
 		size=newSize;
 		plan->size=size;	
@@ -166,11 +168,11 @@ public:
 		timeComplexity=oldPlan->timeComplexity+ plan->timeComplexity;
 	}
 
-	PhysicalPlan(BinaryPhysicalOperator * op,double newSize,double time,const std::map<std::string,ColumnInfo> & oldColumns,const std::shared_ptr<PhysicalPlan> & oldPlan1,const std::shared_ptr<PhysicalPlan> & oldPlan2)
+	PhysicalPlan(BinaryPhysicalOperator * op,double newSize,double time,const std::map<std::string,ColumnInfo> & newColumns,const std::shared_ptr<PhysicalPlan> & oldPlan1,const std::shared_ptr<PhysicalPlan> & oldPlan2)
 	{
 		op->leftChild=oldPlan1->plan;
 		op->rightChild=oldPlan2->plan;
-		columns=oldColumns;
+		columns=newColumns;
 		plan=std::shared_ptr<PhysicalOperator>(op);
 		size=newSize;
 		plan->size=size;	

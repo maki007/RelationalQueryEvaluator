@@ -24,7 +24,7 @@ void PhysicalOperatorVisitor::visit(Filter * node)
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(FilterNotChangingOrder * node)
+void PhysicalOperatorVisitor::visit(FilterKeepingOrder * node)
 {
 	node->child->accept(*this);
 }
@@ -111,12 +111,12 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,NullaryPhy
 
 void PhysicalOperatorDrawingVisitor::generateText(std::string & label,UnaryPhysicalOperator * node)
 {
-	int identifier=nodeCounter;
+	std::size_t identifier=nodeCounter;
 
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
 	result.append("[label=\""+label+"\n time:"+std::to_string((ulong)node->timeComplexity)+"\n size:"+std::to_string((ulong)node->size)+"\"]\n");
-	int childIdentifier=++nodeCounter;
+	std::size_t childIdentifier=++nodeCounter;
 	node->child->accept(*this);
 
 	result.append("node");
@@ -129,13 +129,13 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,UnaryPhysi
 
 void PhysicalOperatorDrawingVisitor::generateText(std::string & label,BinaryPhysicalOperator * node)
 {
-	int identifier=nodeCounter;
+	std::size_t identifier=nodeCounter;
 
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
 	result.append("[label=\""+label+"\n time:"+std::to_string((ulong)node->timeComplexity)+"\n size:"+std::to_string((ulong)node->size)+"\"]\n");
 
-	int childIdentifier=++nodeCounter;
+	std::size_t childIdentifier=++nodeCounter;
 	node->leftChild->accept(*this);
 	result.append("node");
 	result.append(std::to_string(childIdentifier));
@@ -155,12 +155,14 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,BinaryPhys
 
 void PhysicalOperatorDrawingVisitor::visit(Filter * node)
 {
-
+	std::string label="Filter";
+	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(FilterNotChangingOrder * node)
+void PhysicalOperatorDrawingVisitor::visit(FilterKeepingOrder * node)
 {
-
+	std::string label="Filter Keeping Order";
+	generateText(label,node);
 }
 
 void PhysicalOperatorDrawingVisitor::visit(SortOperator * node)
@@ -197,7 +199,7 @@ void PhysicalOperatorDrawingVisitor::visit(UnionOperator * node)
 
 void PhysicalOperatorDrawingVisitor::visit(HashGroup * node)
 {
-	std::string label="Hash group";
+	std::string label="Hash Group";
 	generateText(label,node);
 }
 
@@ -227,7 +229,8 @@ void PhysicalOperatorDrawingVisitor::visit(TableScan * node)
 
 void PhysicalOperatorDrawingVisitor::visit(IndexScan * node)
 {
-
+	std::string label="Index Scan";
+	generateText(label,node);
 }
 
 

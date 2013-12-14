@@ -58,7 +58,7 @@
     <xs:sequence minOccurs="1" maxOccurs="unbounded">
       <xs:element name="column" type="column"></xs:element>
     </xs:sequence>
-    <xs:attribute name="type">
+    <xs:attribute name="type" use="required">
       <xs:simpleType>
         <xs:restriction base="xs:string">
           <xs:enumeration value="clustered"/>

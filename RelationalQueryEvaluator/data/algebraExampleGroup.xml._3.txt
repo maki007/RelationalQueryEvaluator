@@ -10,7 +10,7 @@ node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Sort
  time:78009
  size:3333"]
-node3[label="Hash group
+node3[label="Hash Group
  time:19998
  size:3333"]
 node4[label="Table Scan
@@ -21,7 +21,7 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node5[label="Sort
  time:78009
  size:3333"]
-node6[label="Hash group
+node6[label="Hash Group
  time:19998
  size:3333"]
 node7[label="Sort by index Scan

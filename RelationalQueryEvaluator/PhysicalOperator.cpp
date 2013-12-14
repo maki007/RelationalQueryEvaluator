@@ -8,6 +8,8 @@ const double TimeComplexityConstants::SORT_SCAN=3.0;
 const double TimeComplexityConstants::SORT=2.0;
 const double TimeComplexityConstants::SORTED_GROUP=1;
 const double TimeComplexityConstants::HASHED_GROUP=6;
+const double TimeComplexityConstants::FILTER=1;
+const double TimeComplexityConstants::FILTER_KEEPING_ORDER=1.3;
 
 
 void Filter::accept(PhysicalOperatorVisitor &v)
@@ -15,7 +17,7 @@ void Filter::accept(PhysicalOperatorVisitor &v)
 	v.visit(this);
 }
 
-void FilterNotChangingOrder::accept(PhysicalOperatorVisitor &v)
+void FilterKeepingOrder::accept(PhysicalOperatorVisitor &v)
 {
 	v.visit(this);
 }

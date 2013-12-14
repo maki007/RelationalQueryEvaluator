@@ -69,13 +69,13 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 		if(matchedColumns==0)
 		{
 			double size=plan->size;
-			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new SortOperator(),size,TimeComplexityConstants::SORT*size * std::log(size)/std::log(2),plan));
+			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new SortOperator(),size,TimeComplexityConstants::SORT*size * std::log(size)/std::log(2),plan->columns,plan));
 			newPlan->sortedBy=parameters;
 			return newPlan;
 		}
 		else
 		{
-			//add partial sort
+			//TODO: add partial sort
 			return plan;
 		}
 	}
@@ -116,14 +116,30 @@ void AlgebraCompiler::visit(Group * node)
 		{
 			newSize*=(*it)->columns[(*it2)].numberOfUniqueValues;
 		}
+		std::map<std::string,ColumnInfo> hashedGroupColumns,sortedGroupColumns;
+		for(auto column=node->groupColumns.begin();column!=node->groupColumns.end();++column)
+		{
+			ColumnInfo newColumn(*column,(*it)->columns[*column].numberOfUniqueValues);
+			hashedGroupColumns[*column]=newColumn;
+			sortedGroupColumns[*column]=newColumn;
+		}
+		for(auto function=node->agregateFunctions.begin();function!=node->agregateFunctions.end();++function)
+		{
+			ColumnInfo newColumn(function->output,newSize);
+			hashedGroupColumns[function->output]=newColumn;
+			sortedGroupColumns[function->output]=newColumn;
+		}
 
 		std::shared_ptr<PhysicalPlan> sortedPlan=generateSortParameters(parameters,*it);
-		std::shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(),newSize,TimeComplexityConstants::SORTED_GROUP*newSize,sortedPlan));
+		std::shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(),newSize,TimeComplexityConstants::SORTED_GROUP*newSize,
+			sortedGroupColumns,sortedPlan));
 		sortedGroup->sortedBy=sortedPlan->sortedBy;	
-		newResult.push_back(sortedGroup);
-
-		std::shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(),newSize,TimeComplexityConstants::HASHED_GROUP*newSize,*it));
+		
+		std::shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(),newSize,TimeComplexityConstants::HASHED_GROUP*newSize,
+			hashedGroupColumns,*it));
+				
 		newResult.push_back(hashedGroup);
+		newResult.push_back(sortedGroup);
 	}
 	result=newResult;
 }
@@ -135,7 +151,13 @@ void AlgebraCompiler::visit(ColumnOperations * node)
 	
 	for(auto it=result.begin();it!=result.end();++it)
 	{
-		std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(),(*it)->size,0,*it));
+		std::map<std::string,ColumnInfo> columns;
+		for(auto operation=node->operations.begin();operation!=node->operations.end();++operation)
+		{
+			ColumnInfo newColumn(operation->result,(*it)->size);
+			columns[operation->result]=newColumn;
+		}
+		std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(),(*it)->size,0,columns,*it));
 		newResult.push_back(newPlan);
 	}
 	
@@ -145,7 +167,25 @@ void AlgebraCompiler::visit(ColumnOperations * node)
 void AlgebraCompiler::visit(Selection * node)
 {
 	node->child->accept(*this);
-	result.clear();
+	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
+	for(auto it=result.begin();it!=result.end();++it)
+	{
+		//if((*it)->indices.size()==0)
+		{
+			if((*it)->sortedBy.size()!=0)
+			{
+				std::shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(),(*it)->size,
+					TimeComplexityConstants::FILTER_KEEPING_ORDER*(*it)->size,(*it)->columns,*it));
+				sortedPlan->sortedBy=(*it)->sortedBy;
+				newResult.push_back(sortedPlan);
+			}
+			std::shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(),(*it)->size,
+				TimeComplexityConstants::FILTER*(*it)->size,(*it)->columns,*it));
+			newResult.push_back(unsortedPlan);
+		}
+	}
+	
+	result=newResult;
 }
 
 void AlgebraCompiler::visit(Join * node)

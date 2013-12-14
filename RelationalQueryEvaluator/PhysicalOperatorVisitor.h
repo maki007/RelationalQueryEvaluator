@@ -16,7 +16,7 @@ public:
 
 	virtual void visit(Filter * node);
 
-	virtual void visit(FilterNotChangingOrder * node);
+	virtual void visit(FilterKeepingOrder * node);
 
 	virtual void visit(SortOperator * node);
 
@@ -58,7 +58,7 @@ public:
 
 	void visit(Filter * node);
 
-	void visit(FilterNotChangingOrder * node);
+	void visit(FilterKeepingOrder * node);
 
 	void visit(SortOperator * node);
 
