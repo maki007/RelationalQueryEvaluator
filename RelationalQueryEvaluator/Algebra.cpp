@@ -2,6 +2,8 @@
 #include "AlgebraVisitors.h"
 #include "ExpressionVisitors.h"
 
+#include <algorithm>
+
 AlgebraNodeBase::AlgebraNodeBase()
 {
 

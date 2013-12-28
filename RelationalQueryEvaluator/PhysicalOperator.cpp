@@ -10,7 +10,7 @@ const double TimeComplexityConstants::SORTED_GROUP=1;
 const double TimeComplexityConstants::HASHED_GROUP=6;
 const double TimeComplexityConstants::FILTER=1;
 const double TimeComplexityConstants::FILTER_KEEPING_ORDER=1.3;
-
+const double TimeComplexityConstants::INDEX_SCAN = 6;
 
 void Filter::accept(PhysicalOperatorVisitor &v)
 {

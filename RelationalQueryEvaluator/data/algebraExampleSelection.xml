@@ -6,8 +6,7 @@
     <selection>
       <parameters>
         <condition>
-          <not>
-            <or>
+          <and>
               <equals>
                 <column name="a"/>
                 <costant type="int" value="4"/>
@@ -16,8 +15,7 @@
                 <column name="a"/>
                 <costant type="int" value="-1"/>
               </lower>
-            </or>
-          </not>
+            </and>
         </condition>
       </parameters>
       <input>

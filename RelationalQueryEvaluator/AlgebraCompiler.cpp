@@ -170,19 +170,24 @@ void AlgebraCompiler::visit(Selection * node)
 	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
 	for(auto it=result.begin();it!=result.end();++it)
 	{
-		//if((*it)->indices.size()==0)
+		if((*it)->indices.size()!=0)
 		{
-			if((*it)->sortedBy.size()!=0)
-			{
-				std::shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(),(*it)->size,
-					TimeComplexityConstants::FILTER_KEEPING_ORDER*(*it)->size,(*it)->columns,*it));
-				sortedPlan->sortedBy=(*it)->sortedBy;
-				newResult.push_back(sortedPlan);
-			}
-			std::shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(),(*it)->size,
-				TimeComplexityConstants::FILTER*(*it)->size,(*it)->columns,*it));
-			newResult.push_back(unsortedPlan);
+			std::shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(), (*it)->size,
+				TimeComplexityConstants::INDEX_SCAN*std::log2((*it)->size), (*it)->columns));
+			indexPlan->sortedBy = (*it)->sortedBy;
+			newResult.push_back(indexPlan);
 		}
+			
+		if((*it)->sortedBy.size()!=0)
+		{
+			std::shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(),(*it)->size,
+				TimeComplexityConstants::FILTER_KEEPING_ORDER*(*it)->size,(*it)->columns,*it));
+			sortedPlan->sortedBy=(*it)->sortedBy;
+			newResult.push_back(sortedPlan);
+		}
+		std::shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(),(*it)->size,
+			TimeComplexityConstants::FILTER*(*it)->size,(*it)->columns,*it));
+		newResult.push_back(unsortedPlan);
 	}
 	
 	result=newResult;

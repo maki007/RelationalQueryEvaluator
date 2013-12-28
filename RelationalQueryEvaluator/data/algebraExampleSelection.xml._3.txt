@@ -1,25 +1,28 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Filter
+node0[label="Index Scan
+ time:79
+ size:10000"]
+node1[label="Filter
  time:10000
  size:10000"]
-node1[label="Table Scan
+node2[label="Table Scan
  time:10000
  size:10000"]
-node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Filter
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Filter
  time:10000
  size:10000"]
-node3[label="Sort by index Scan
+node4[label="Sort by index Scan
  time:30000
  size:10000"]
-node3 -> node2[headport=s, tailport=n,label="   "]
-node4[label="Filter Keeping Order
+node4 -> node3[headport=s, tailport=n,label="   "]
+node5[label="Filter Keeping Order
  time:13000
  size:10000"]
-node5[label="Sort by index Scan
+node6[label="Sort by index Scan
  time:30000
  size:10000"]
-node5 -> node4[headport=s, tailport=n,label="   "]
+node6 -> node5[headport=s, tailport=n,label="   "]
 
 }

@@ -17,7 +17,7 @@ public:
 	static const double HASHED_GROUP;
 	static const double FILTER;
 	static const double FILTER_KEEPING_ORDER;
-
+	static const double INDEX_SCAN;
 };
 
 class PhysicalOperator
@@ -143,11 +143,11 @@ public:
 	double size;
 	std::shared_ptr<PhysicalOperator> plan;
 	PhysicalPlan();
-	PhysicalPlan(NullaryPhysicalOperator * op,double numberOfColumns,double time,std::vector<ColumnInfo> & cols)
+	PhysicalPlan(NullaryPhysicalOperator * op,double numberOfRows,double time,std::vector<ColumnInfo> & cols)
 	{
 		
 		plan=std::shared_ptr<PhysicalOperator>(op);
-		size=numberOfColumns;
+		size = numberOfRows;
 		plan->size=size;
 		timeComplexity=time;
 		plan->timeComplexity=time;
@@ -156,6 +156,18 @@ public:
 			columns[it2->name]=*it2;
 		}
 	}
+
+	PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, const std::map<std::string, ColumnInfo> & newColumns)
+	{
+
+		plan = std::shared_ptr<PhysicalOperator>(op);
+		size = numberOfRows;
+		plan->size = size;
+		timeComplexity = time;
+		plan->timeComplexity = time;
+		columns = newColumns;
+	}
+
 
 	PhysicalPlan(UnaryPhysicalOperator * op,double newSize,double time,const std::map<std::string,ColumnInfo> & newColumns,const std::shared_ptr<PhysicalPlan> & oldPlan)
 	{
