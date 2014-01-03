@@ -5,12 +5,12 @@ node1[label="AntiJoin
 ((a1(0) == b1(1)) and (a2(0) == b2(1)))"]
 node2[label="Table a
  number of rows: 1000
- columns: a1(int,333), a2(int,333)
+ columns: a1(int,500), a2(int,500)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table b
  number of rows: 1000
- columns: b1(int,333), b2(int,333)
+ columns: b1(int,500), b2(int,500)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

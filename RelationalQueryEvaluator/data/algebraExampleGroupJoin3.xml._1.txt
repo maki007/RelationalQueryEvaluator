@@ -5,7 +5,7 @@ node1[label="Join
 (d(0) == c(1))"]
 node2[label="Table d
  number of rows: 1000
- columns: d(int,333)
+ columns: d(int,500)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Join
@@ -14,18 +14,18 @@ node4[label="Join
 (a(0) == b(1))"]
 node5[label="Table a
  number of rows: 1000
- columns: a(int,333)
+ columns: a(int,500)
  indices: "]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node6[label="Table b
  number of rows: 1000
- columns: b(int,333)
+ columns: b(int,500)
  indices: "]
 node6 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node7[label="Table c
  number of rows: 1000
- columns: c(int,333)
+ columns: c(int,500)
  indices: "]
 node7 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node1[headport=s, tailport=n,label="   "]

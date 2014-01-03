@@ -32,7 +32,7 @@ void MergeJoin::accept(PhysicalOperatorVisitor &v)
 	v.visit(this);
 }
 
-void IndexJoin::accept(PhysicalOperatorVisitor &v)
+void NestedLoopJoin::accept(PhysicalOperatorVisitor &v)
 {
 	v.visit(this);
 }

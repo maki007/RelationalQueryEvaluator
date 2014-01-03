@@ -6,7 +6,7 @@ node1[label="Group
 groupBy country, count=count();"]
 node2[label="Table people
  number of rows: 10000
- columns: user_name(string,410), country(string,3333)
+ columns: user_name(string,410), country(string,5000)
  indices: UNCLUSTERED(country)"]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

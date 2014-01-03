@@ -22,7 +22,7 @@ public:
 
 	virtual void visit(MergeJoin * node);
 
-	virtual void visit(IndexJoin * node);
+	virtual void visit(NestedLoopJoin * node);
 
 	virtual void visit(CrossJoin * node);
 
@@ -64,7 +64,7 @@ public:
 
 	void visit(MergeJoin * node);
 
-	void visit(IndexJoin * node);
+	void visit(NestedLoopJoin * node);
 
 	void visit(CrossJoin * node);
 

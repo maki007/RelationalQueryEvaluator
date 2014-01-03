@@ -12,7 +12,7 @@ node4[label="Selection
 (c_mktsegment(0) == SEGMENT)"]
 node5[label="Table customer
  number of rows: 1000
- columns: c_custkey(int,333), c_mktsegment(int,333)
+ columns: c_custkey(int,500), c_mktsegment(int,500)
  indices: UNCLUSTERED(c_mktsegment)"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
@@ -20,7 +20,7 @@ node6[label="Selection
 (today < l_shipdate(0))"]
 node7[label="Table lineitem
  number of rows: 1000
- columns: l_orderkey(int,333), l_shipdate(int,333), l_extendedprice(int,333), l_discount(int,333)
+ columns: l_orderkey(int,500), l_shipdate(int,500), l_extendedprice(int,500), l_discount(int,500)
  indices: "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]
@@ -28,7 +28,7 @@ node8[label="Selection
 (o_orderdate(0) < today)"]
 node9[label="Table orders
  number of rows: 1000
- columns: o_orderdate(int,333), o_shippriority(int,333), o_orderkey(int,333)
+ columns: o_orderdate(int,500), o_shippriority(int,500), o_orderkey(int,500)
  indices: CLUSTERED(o_orderdate, o_shippriority)"]
 node9 -> node8[headport=s, tailport=n,label="   "]
 node8 -> node3[headport=s, tailport=n,label="   "]

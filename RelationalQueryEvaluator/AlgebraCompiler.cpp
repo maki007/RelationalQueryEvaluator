@@ -1,6 +1,7 @@
 #include "AlgebraVisitors.h"
+#include "ExpressionVisitors.h"
 #include <math.h>
-
+#include <algorithm>
 void AlgebraCompiler::visit(Table * node)
 {
 	result.clear();
@@ -62,6 +63,7 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 	}
 	if(matchedColumns==parameters.size())
 	{
+		//no sort needed
 		return plan;
 	}
 	else
@@ -69,13 +71,26 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 		if(matchedColumns==0)
 		{
 			double size=plan->size;
-			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new SortOperator(),size,TimeComplexityConstants::SORT*size * std::log(size)/std::log(2),plan->columns,plan));
+			SortOperator * op = new SortOperator(std::vector<std::string>(), parameters);
+			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexityConstants::SORT*size * std::log(size) / std::log(2), plan->columns, plan));
 			newPlan->sortedBy=parameters;
 			return newPlan;
 		}
 		else
 		{
-			//TODO: add partial sort
+			//only partial sort is needed
+			double size = plan->size;
+			double numberOfUniqueSortedValues = 1;
+			std::vector<std::string> sortedBy;
+			for (std::size_t i = 0; i < matchedColumns; ++i)
+			{
+				sortedBy.push_back(parameters[i].column);
+				numberOfUniqueSortedValues *= plan->columns[parameters[i].column].numberOfUniqueValues;
+			}
+			numberOfUniqueSortedValues = std::min(numberOfUniqueSortedValues, size / 2);
+			SortOperator * op = new SortOperator(sortedBy, std::vector<SortParameter>(parameters.begin() + matchedColumns , parameters.end()));
+			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, numberOfUniqueSortedValues*(TimeComplexityConstants::SORT*size / numberOfUniqueSortedValues * std::log(size*numberOfUniqueSortedValues) / std::log(2)), plan->columns, plan));
+			newPlan->sortedBy = parameters;
 			return plan;
 		}
 	}
@@ -116,6 +131,7 @@ void AlgebraCompiler::visit(Group * node)
 		{
 			newSize*=(*it)->columns[(*it2)].numberOfUniqueValues;
 		}
+		newSize = std::max(newSize, (*it)->size / 2);
 		std::map<std::string,ColumnInfo> hashedGroupColumns,sortedGroupColumns;
 		for(auto column=node->groupColumns.begin();column!=node->groupColumns.end();++column)
 		{
@@ -178,14 +194,16 @@ void AlgebraCompiler::visit(Selection * node)
 			newResult.push_back(indexPlan);
 		}
 			
+		SizeEstimatingExpressionVisitor sizeVisitor((*it)->size, &((*it)->columns));
+		node->condition->accept(sizeVisitor);
 		if((*it)->sortedBy.size()!=0)
 		{
-			std::shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(),(*it)->size,
+			std::shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), (*it)->size*sizeVisitor.size,
 				TimeComplexityConstants::FILTER_KEEPING_ORDER*(*it)->size,(*it)->columns,*it));
 			sortedPlan->sortedBy=(*it)->sortedBy;
 			newResult.push_back(sortedPlan);
 		}
-		std::shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(),(*it)->size,
+		std::shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(node->condition), (*it)->size*sizeVisitor.size,
 			TimeComplexityConstants::FILTER*(*it)->size,(*it)->columns,*it));
 		newResult.push_back(unsortedPlan);
 	}
@@ -198,13 +216,6 @@ void AlgebraCompiler::visit(Join * node)
 	throw new std::exception("Not Suported: join should be replaced with groupedJoin");
 }
 
-void AlgebraCompiler::visit(AntiJoin * node)
-{
-	node->leftChild->accept(*this);
-	node->rightChild->accept(*this);
-	result.clear();
-}
-	
 void AlgebraCompiler::visit(Union * node)
 {
 	node->leftChild->accept(*this);
@@ -232,5 +243,12 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 	{
 		(*it)->accept(*this);	
 	}
+	result.clear();
+}
+
+void AlgebraCompiler::visit(AntiJoin * node)
+{
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
 	result.clear();
 }

@@ -75,7 +75,7 @@ class ColumnInfo
 public:
 	std::string name;
 	std::string type;
-	ulong numberOfUniqueValues;
+	double numberOfUniqueValues;
 	ColumnInfo(std::string name,std::string type)
 	{
 		this->name=name;
@@ -87,7 +87,7 @@ public:
 		type="";
 		numberOfUniqueValues=0;
 	}
-	ColumnInfo(std::string name,ulong numberOfUniqueValues)
+	ColumnInfo(std::string name, double numberOfUniqueValues)
 	{
 		this->name=name;
 		this->numberOfUniqueValues=numberOfUniqueValues;

@@ -53,19 +53,36 @@ public:
 class Filter : public UnaryPhysicalOperator
 {
 public:
+	std::shared_ptr<Expression> condition;
+	Filter(const std::shared_ptr<Expression> & condition)
+	{
+		this->condition = condition;
+	}
 	void accept(PhysicalOperatorVisitor &v);
 };
 
 class FilterKeepingOrder : public UnaryPhysicalOperator
 {
 public:
+	std::shared_ptr<Expression> condition;
+	FilterKeepingOrder(const std::shared_ptr<Expression> & condition)
+	{
+		this->condition = condition;
+	}
 	void accept(PhysicalOperatorVisitor &v);
 };
 
 class SortOperator : public UnaryPhysicalOperator
 {
 public:
+	std::vector<std::string> sortedBy;
+	std::vector<SortParameter> sortBy;
 	void accept(PhysicalOperatorVisitor &v);
+	SortOperator(const std::vector<std::string> &  sortedBy, const std::vector<SortParameter> & sortBy)
+	{
+		this->sortedBy = sortedBy;
+		this->sortBy = sortBy;
+	}
 };
 
 class MergeJoin : public BinaryPhysicalOperator
@@ -74,7 +91,7 @@ public:
 	void accept(PhysicalOperatorVisitor &v);
 };
 
-class IndexJoin : public BinaryPhysicalOperator
+class NestedLoopJoin : public BinaryPhysicalOperator
 {
 public:
 	void accept(PhysicalOperatorVisitor &v);

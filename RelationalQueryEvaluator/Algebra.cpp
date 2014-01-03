@@ -168,12 +168,12 @@ Table::Table(DOMElement * element)
 			info.name=XmlUtils::ReadAttribute(*it,"name");
 			if(XmlUtils::ReadAttribute(*it,"number_of_unique_values")=="")
 			{
-				info.numberOfUniqueValues=numberOfRows/3;
+				info.numberOfUniqueValues=double(numberOfRows)/2;
 			}
 			else
 			{
 				std::istringstream ( XmlUtils::ReadAttribute(*it,"number_of_unique_values") ) >> info.numberOfUniqueValues;
-				info.numberOfUniqueValues = std::min(info.numberOfUniqueValues,numberOfRows);
+				info.numberOfUniqueValues = std::min(info.numberOfUniqueValues,double(numberOfRows));
 			}
 			columns.push_back(info);
 		}

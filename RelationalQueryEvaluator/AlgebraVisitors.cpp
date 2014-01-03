@@ -194,7 +194,7 @@ void GraphDrawingVisitor::visit(Table * node)
 		label+= "(";
 		label+=it->type;
 		label+=",";
-		label+=std::to_string(it->numberOfUniqueValues);
+		label+=std::to_string((ulong)it->numberOfUniqueValues);
 		label+= ")";
 
 		if(it!=node->columns.end()-1)

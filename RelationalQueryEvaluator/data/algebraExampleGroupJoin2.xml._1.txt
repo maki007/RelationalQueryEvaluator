@@ -5,26 +5,26 @@ node1[label="Join
 (d(0) == c(1))"]
 node2[label="Table d
  number of rows: 1000
- columns: d(int,333)
+ columns: d(int,500)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Join
 (c(0) == a(1))"]
 node4[label="Table c
  number of rows: 1000
- columns: c(int,333)
+ columns: c(int,500)
  indices: "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node5[label="Join
 (a(0) == b(1))"]
 node6[label="Table a
  number of rows: 1000
- columns: a(int,333)
+ columns: a(int,500)
  indices: "]
 node6 -> node5[headport=s, tailport=n,label="   "]
 node7[label="Table b
  number of rows: 1000
- columns: b(int,333)
+ columns: b(int,500)
  indices: "]
 node7 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node3[headport=s, tailport=n,label="   "]

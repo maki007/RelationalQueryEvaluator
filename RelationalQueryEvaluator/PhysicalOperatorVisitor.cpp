@@ -40,7 +40,7 @@ void PhysicalOperatorVisitor::visit(MergeJoin * node)
 	node->rightChild->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(IndexJoin * node)
+void PhysicalOperatorVisitor::visit(NestedLoopJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
@@ -176,7 +176,7 @@ void PhysicalOperatorDrawingVisitor::visit(MergeJoin * node)
 
 }
 
-void PhysicalOperatorDrawingVisitor::visit(IndexJoin * node)
+void PhysicalOperatorDrawingVisitor::visit(NestedLoopJoin * node)
 {
 
 }
