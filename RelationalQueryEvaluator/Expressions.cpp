@@ -134,8 +134,8 @@ BinaryExpression::BinaryExpression(std::shared_ptr<Expression> & leftChild, std:
 {
 	this->leftChild=leftChild;
 	this->rightChild=rightChild;
-	leftChild->parent=std::shared_ptr<Expression>(this);
-	rightChild->parent=std::shared_ptr<Expression>(this);
+	//leftChild->parent = std::shared_ptr<Expression>(this);
+	//rightChild->parent = std::shared_ptr<Expression>(this);
 	operation=op;
 }
 

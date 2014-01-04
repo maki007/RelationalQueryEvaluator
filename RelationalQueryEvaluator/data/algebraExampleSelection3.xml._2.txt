@@ -1,0 +1,13 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="Selection
+AND ((a(0) == 4),(b(0) == 10),(a(0) < -1),(b(0) < 8000))"]
+node2[label="Table users
+ number of rows: 10000000
+ columns: a(int,1000), b(int,1000)
+ indices: UNCLUSTERED(a, b)"]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}
