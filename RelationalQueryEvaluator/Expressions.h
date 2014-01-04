@@ -67,7 +67,7 @@ public:
 	std::shared_ptr<Expression> leftChild;
 	std::shared_ptr<Expression> rightChild;
 	BinaryExpression(DOMElement * node,BinaryOperator op);
-	BinaryExpression(std::shared_ptr<Expression> leftChild,std::shared_ptr<Expression> rightChild,BinaryOperator op);
+	BinaryExpression(std::shared_ptr<Expression> & leftChild, std::shared_ptr<Expression> & rightChild, BinaryOperator op);
 	void accept(ExpressionVisitorBase &v);
 	void replaceChild(Expression * oldChild,Expression * newChild);
 };
@@ -110,6 +110,8 @@ class GroupedExpression : public Expression
 public:
 	GroupedOperator operation;
 	std::vector<std::shared_ptr<Expression>> children;
+	GroupedExpression();
+	GroupedExpression(GroupedOperator operation, const std::vector<std::shared_ptr<Expression>> & children);
 	void accept(ExpressionVisitorBase &v);
 	void replaceChild(Expression * oldChild,Expression * newChild);
 };

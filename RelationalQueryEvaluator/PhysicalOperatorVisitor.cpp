@@ -1,4 +1,5 @@
 #include "PhysicalOperatorVisitor.h"
+#include "ExpressionVisitors.h"
 
 void PhysicalOperatorVisitor::visit(PhysicalOperator * node)
 {
@@ -155,13 +156,19 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,BinaryPhys
 
 void PhysicalOperatorDrawingVisitor::visit(Filter * node)
 {
-	std::string label="Filter";
+	std::string label="Filter\n";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
 	generateText(label,node);
 }
 
 void PhysicalOperatorDrawingVisitor::visit(FilterKeepingOrder * node)
 {
-	std::string label="Filter Keeping Order";
+	std::string label="Filter Keeping Order\n";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
 	generateText(label,node);
 }
 
@@ -229,7 +236,10 @@ void PhysicalOperatorDrawingVisitor::visit(TableScan * node)
 
 void PhysicalOperatorDrawingVisitor::visit(IndexScan * node)
 {
-	std::string label="Index Scan";
+	std::string label="Index Scan\n";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
 	generateText(label,node);
 }
 

@@ -147,6 +147,11 @@ public:
 class IndexScan : public NullaryPhysicalOperator
 {
 public:
+	std::shared_ptr<Expression> condition;
+	IndexScan(const std::shared_ptr<Expression> & condition)
+	{
+		this->condition = condition;
+	}
 	void accept(PhysicalOperatorVisitor &v);
 };
 
@@ -209,6 +214,14 @@ public:
 		timeComplexity=oldPlan1->timeComplexity+oldPlan2->timeComplexity+ plan->timeComplexity;
 
 	}
+
+	static bool Comparator(std::shared_ptr<PhysicalPlan> & i, std::shared_ptr<PhysicalPlan> & j)
+	{
+		return (i->timeComplexity<j->timeComplexity);
+	}
+
+	
+
 
 };
 

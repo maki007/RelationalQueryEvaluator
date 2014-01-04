@@ -121,6 +121,8 @@ public:
 class AlgebraCompiler : public AlgebraVisitor
 {
 public:
+	static const ulong NUMBER_OF_PLANS;
+
 	std::vector<std::shared_ptr<PhysicalPlan> > result;
 
 	void visit(Table * node);
@@ -140,8 +142,14 @@ public:
 	void visit(Union * node);
 
 	void visit(GroupedJoin * node);
-
+private:
 	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters,const std::shared_ptr<PhysicalPlan> & result);
+
+	std::vector<std::shared_ptr<PhysicalPlan> > getBestPlans(std::vector<std::shared_ptr<PhysicalPlan> > & plans);
+	
+	std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
+
+	std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 
 };
 

@@ -130,7 +130,7 @@ BinaryExpression::BinaryExpression(DOMElement * node,BinaryOperator op)
 	operation=op;
 }
 
-BinaryExpression::BinaryExpression(std::shared_ptr<Expression> leftChild,std::shared_ptr<Expression> rightChild,BinaryOperator op)
+BinaryExpression::BinaryExpression(std::shared_ptr<Expression> & leftChild, std::shared_ptr<Expression> & rightChild, BinaryOperator op)
 {
 	this->leftChild=leftChild;
 	this->rightChild=rightChild;
@@ -213,6 +213,16 @@ void Column::accept(ExpressionVisitorBase &v)
 	v.visit(this);
 }
 
+GroupedExpression::GroupedExpression()
+{
+}
+
+GroupedExpression::GroupedExpression(GroupedOperator operation, const std::vector<std::shared_ptr<Expression>> & children)
+{
+	this->operation = operation;
+	this->children = children;
+
+}
 void GroupedExpression::replaceChild(Expression * oldChild,Expression * newChild)
 {
 	for(auto it=children.begin();it!=children.end();++it)

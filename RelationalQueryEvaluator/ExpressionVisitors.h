@@ -79,13 +79,11 @@ public:
 class SizeEstimatingExpressionVisitor : public ExpressionVisitorBase
 {
 public:
-	double originalSize;
 	const std::map<std::string, ColumnInfo> * columns;
 	double size;
-	SizeEstimatingExpressionVisitor(double originalSize,const std::map<std::string, ColumnInfo> * columns)
+	SizeEstimatingExpressionVisitor(const std::map<std::string, ColumnInfo> * columns)
 	{
 		size = 1;
-		this->originalSize = originalSize;
 		this->columns = columns;
 	}
 
@@ -114,7 +112,7 @@ public:
 				{
 					std::shared_ptr<Constant> constant = std::dynamic_pointer_cast<Constant>(expression->rightChild);
 					std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(expression->leftChild);
-					size = columns->at(column->name).numberOfUniqueValues / originalSize;
+					size = 1/columns->at(column->name).numberOfUniqueValues;
 				}
 			
 			}
@@ -124,7 +122,7 @@ public:
 				{
 					std::shared_ptr<Constant> constant = std::dynamic_pointer_cast<Constant>(expression->leftChild);
 					std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(expression->rightChild);
-					size = columns->at(column->name).numberOfUniqueValues / originalSize;
+					size = 1 / columns->at(column->name).numberOfUniqueValues;
 
 				}
 				else

@@ -29,10 +29,7 @@ void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 	myfile.close();
 }
 
-bool palnComparator (std::shared_ptr<PhysicalPlan> & i,std::shared_ptr<PhysicalPlan> & j)
-{
-	return (i->timeComplexity<j->timeComplexity); 
-}
+
 
 void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 {
@@ -40,7 +37,7 @@ void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 	algebraRoot->accept(*algebraCompiler);
 	
 	std::unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
-	std::sort(algebraCompiler->result.begin(),algebraCompiler->result.end(),palnComparator);
+	std::sort(algebraCompiler->result.begin(), algebraCompiler->result.end(), PhysicalPlan::Comparator);
 	for(auto it=algebraCompiler->result.begin();it!=algebraCompiler->result.end();++it)
 	{
 		(*it)->plan->accept(*planDrawer);
