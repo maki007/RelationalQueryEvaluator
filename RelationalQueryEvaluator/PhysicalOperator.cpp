@@ -1,16 +1,52 @@
 #include "PhysicalOperator.h"
 #include "PhysicalOperatorVisitor.h"
 
-const double TimeComplexityConstants::TABLE_SCAN=1.0;
+const double TimeComplexity::CLUSTERED_SCAN = 1.0;
+const double TimeComplexity::UNCLUSTERED_SCAN = 3.0;
+const double TimeComplexity::SORT=2.0;
+const double TimeComplexity::SORTED_GROUP=1;
+const double TimeComplexity::HASH=8;
+const double TimeComplexity::FILTER=1;
+const double TimeComplexity::FILTER_KEEPING_ORDER=1.3;
+const double TimeComplexity::INDEX_SEARCH = 6;
+const double TimeComplexity::AGGREGATE = 0.3;
+double TimeComplexity::sort(double size)
+{
+	return SORT*size*log2(size);
+}
+double TimeComplexity::filter(double size)
+{
+	return FILTER*size;
+}
+double TimeComplexity::filterKeppeingOrder(double size)
+{
+	return FILTER_KEEPING_ORDER*size;
+}
+double TimeComplexity::clusteredScan(double size)
+{
+	return CLUSTERED_SCAN*size;
+}
+double TimeComplexity::unClusteredScan(double size)
+{
+	return UNCLUSTERED_SCAN*size;
+}
+double TimeComplexity::indexSearch(double size)
+{
+	return INDEX_SEARCH*log2(size);
+}
+double TimeComplexity::hash(double size)
+{
+	return HASH*size;
+}
+double TimeComplexity::sortedGroup(double size)
+{
+	return SORTED_GROUP*size;
+}
+double TimeComplexity::aggregate(double size, ulong numberOfagregateFuntions)
+{
+	return AGGREGATE*size;
+}
 
-const double TimeComplexityConstants::SORT_SCAN=3.0;
-
-const double TimeComplexityConstants::SORT=2.0;
-const double TimeComplexityConstants::SORTED_GROUP=1;
-const double TimeComplexityConstants::HASHED_GROUP=6;
-const double TimeComplexityConstants::FILTER=1;
-const double TimeComplexityConstants::FILTER_KEEPING_ORDER=1.3;
-const double TimeComplexityConstants::INDEX_SCAN = 6;
 
 void Filter::accept(PhysicalOperatorVisitor &v)
 {

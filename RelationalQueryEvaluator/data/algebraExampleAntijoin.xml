@@ -28,11 +28,11 @@
             <table name="z">
               <column name="c" type="int"/>
             </table>
-			<table name="x">
+            <table name="x">
               <column name="a" type="int"/>
             </table>
           </input>
-          
+
         </antijoin>
         <table name="y">
           <column name="b" type="int"/>

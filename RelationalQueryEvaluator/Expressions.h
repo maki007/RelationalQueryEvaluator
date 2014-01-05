@@ -44,7 +44,7 @@ class ExpressionVisitorBase;
 class Expression
 {
 public:
-	std::shared_ptr <Expression> parent;
+	Expression * parent;
 	virtual void accept(ExpressionVisitorBase &v)=0;
 	static Expression * constructChildren(DOMElement * node);
 	virtual void replaceChild(Expression * oldChild,Expression * newChild) = 0;

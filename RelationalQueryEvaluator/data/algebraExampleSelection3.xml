@@ -10,21 +10,21 @@
             <and>
               <equals>
                 <column name="a"/>
-                <costant type="int" value="4"/>
+                <constant type="int" value="4"/>
               </equals>
               <equals>
                 <column name="b"/>
-                <costant type="int" value="10"/>
+                <constant type="int" value="10"/>
               </equals>
             </and>
             <and>
               <lower>
                 <column name="a"/>
-                <costant type="int" value="-1"/>
+                <constant type="int" value="-1"/>
               </lower>
               <lower>
                 <column name="b"/>
-                <costant type="int" value="8000"/>
+                <constant type="int" value="8000"/>
               </lower>
             </and>
           </and>

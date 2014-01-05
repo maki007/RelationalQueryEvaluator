@@ -9,11 +9,11 @@
           <or>
               <equals>
                 <column name="a"/>
-                <costant type="int" value="4"/>
+                <constant type="int" value="4"/>
               </equals>
               <lower>
                 <column name="a"/>
-                <costant type="int" value="-1"/>
+                <constant type="int" value="-1"/>
               </lower>
             </or>
         </condition>

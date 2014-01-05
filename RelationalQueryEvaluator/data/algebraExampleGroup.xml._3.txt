@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sorted Group
- time:5000
+ time:13000
  size:5000"]
 node1[label="Sort by index Scan
  time:30000
@@ -11,7 +11,7 @@ node2[label="Sort
  time:122877
  size:5000"]
 node3[label="Hash Group
- time:30000
+ time:83000
  size:5000"]
 node4[label="Table Scan
  time:10000
@@ -22,7 +22,7 @@ node5[label="Sort
  time:122877
  size:5000"]
 node6[label="Hash Group
- time:30000
+ time:83000
  size:5000"]
 node7[label="Sort by index Scan
  time:30000
@@ -30,7 +30,7 @@ node7[label="Sort by index Scan
 node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node5[headport=s, tailport=n,label="   "]
 node8[label="Sorted Group
- time:5000
+ time:13000
  size:5000"]
 node9[label="Sort
  time:265754

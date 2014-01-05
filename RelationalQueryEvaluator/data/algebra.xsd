@@ -46,7 +46,7 @@
   <xs:complexType name="bool_operator">
     <xs:choice minOccurs="2" maxOccurs="2">
       <xs:element name="column" type="column"></xs:element>
-      <xs:element name="costant" type="constant"></xs:element>
+      <xs:element name="constant" type="constant"></xs:element>
     </xs:choice>
   </xs:complexType>
 
@@ -76,7 +76,7 @@
   <xs:complexType name="boolean_predicate">
     <xs:choice minOccurs="1" maxOccurs="unbounded">
       <xs:element name="column" type="column"></xs:element>
-      <xs:element name="costant" type="constant"></xs:element>
+      <xs:element name="constant" type="constant"></xs:element>
     </xs:choice>
     <xs:attribute name="name" use="required"></xs:attribute>
   </xs:complexType>
@@ -90,7 +90,7 @@
       <xs:element name="divide" type="binary_aritmetic_expression"></xs:element>
       <xs:element name="aritmetic_function" type="aritmetic_function"></xs:element>
       <xs:element name="column" type="column"></xs:element>
-      <xs:element name="costant" type="constant"></xs:element>
+      <xs:element name="constant" type="constant"></xs:element>
     </xs:choice>
   </xs:complexType>
 
@@ -102,7 +102,7 @@
       <xs:element name="divide" type="binary_aritmetic_expression"></xs:element>
       <xs:element name="aritmetic_function" type="aritmetic_function"></xs:element>
       <xs:element name="column" type="column"></xs:element>
-      <xs:element name="costant" type="constant"></xs:element>
+      <xs:element name="constant" type="constant"></xs:element>
     </xs:choice>
   </xs:complexType>
 

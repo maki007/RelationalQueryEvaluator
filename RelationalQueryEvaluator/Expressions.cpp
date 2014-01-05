@@ -17,7 +17,7 @@ Expression * Expression::constructChildren(DOMElement * node)
 	XMLCh * equalsName = XMLString::transcode("equals");
 	XMLCh * notEqualsName = XMLString::transcode("not_equals");
 	XMLCh * lowerName = XMLString::transcode("lower");
-	XMLCh * lowerEqualsName = XMLString::transcode("lower_or_equal");
+	XMLCh * lowerEqualsName = XMLString::transcode("lower_or_equals");
 	XMLCh * booleanPredicateName = XMLString::transcode("boolean_predicate");
 	XMLCh * plusName = XMLString::transcode("plus");
 	XMLCh * minusName = XMLString::transcode("minus");
@@ -25,7 +25,7 @@ Expression * Expression::constructChildren(DOMElement * node)
 	XMLCh * divideName = XMLString::transcode("divide");
 	XMLCh * aritmeticFunctionName = XMLString::transcode("aritmetic_function");
 	XMLCh * columnName = XMLString::transcode("column");
-	XMLCh * costantName = XMLString::transcode("costant");
+	XMLCh * constantName = XMLString::transcode("constant");
 
 	if(XMLString::compareString(node->getNodeName(),notName)==0)
 	{
@@ -83,9 +83,13 @@ Expression * Expression::constructChildren(DOMElement * node)
 	{
 		child = new Column((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),costantName)==0)
+	else if(XMLString::compareString(node->getNodeName(),constantName)==0)
 	{
 		child = new Constant((DOMElement *)node);
+	}
+	else
+	{
+		throw new std::exception("not valid");
 	}
 
 
@@ -96,13 +100,13 @@ UnaryExpression::UnaryExpression(DOMElement * node,UnaryOperator op)
 {
 	DOMElement * childNode =  XmlUtils::GetFirstChildElement(node);
 	child = std::shared_ptr<Expression>(constructChildren(childNode));
-	child->parent=std::shared_ptr<Expression>(this);
+	child->parent=this;
 }
 
 UnaryExpression::UnaryExpression(std::shared_ptr<Expression> node,UnaryOperator op)
 {
 	child=node;
-	child->parent=std::shared_ptr<Expression>(this);
+	child->parent=this;
 	operation=op;
 }
 
@@ -125,8 +129,8 @@ BinaryExpression::BinaryExpression(DOMElement * node,BinaryOperator op)
 	std::vector<DOMElement *> childNodes =  XmlUtils::GetChildElements(node);
 	leftChild = std::shared_ptr<Expression>(constructChildren(childNodes[0]));
 	rightChild = std::shared_ptr<Expression>(constructChildren(childNodes[1]));
-	leftChild->parent=std::shared_ptr<Expression>(this);
-	rightChild->parent=std::shared_ptr<Expression>(this);
+	leftChild->parent=this;
+	rightChild->parent=this;
 	operation=op;
 }
 
@@ -162,7 +166,7 @@ NnaryExpression::NnaryExpression(DOMElement * node)
 	for(auto it=childNodes.begin();it!=childNodes.end();++it)
 	{
 		arguments.push_back(std::shared_ptr<Expression>(constructChildren(*it)));
-		arguments.back()->parent=std::shared_ptr<Expression>(this);
+		arguments.back()->parent=this;
 	}
 }
 

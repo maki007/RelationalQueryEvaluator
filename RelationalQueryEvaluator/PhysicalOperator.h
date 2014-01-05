@@ -7,17 +7,27 @@
 
 class PhysicalOperatorVisitor;
 
-class TimeComplexityConstants
+class TimeComplexity
 {
 public:
-	static const double TABLE_SCAN;
-	static const double SORT_SCAN;
+	static const double UNCLUSTERED_SCAN;
+	static const double CLUSTERED_SCAN;
 	static const double SORT;
 	static const double SORTED_GROUP;
-	static const double HASHED_GROUP;
+	static const double HASH;
 	static const double FILTER;
 	static const double FILTER_KEEPING_ORDER;
-	static const double INDEX_SCAN;
+	static const double INDEX_SEARCH;
+	static const double AGGREGATE;
+	static double sort(double size);
+	static double filter(double size);
+	static double filterKeppeingOrder(double size);
+	static double clusteredScan(double size);
+	static double unClusteredScan(double size);
+	static double indexSearch(double size);
+	static double hash(double size);
+	static double sortedGroup(double size);
+	static double aggregate(double size,ulong numberOfagregateFuntions);
 };
 
 class PhysicalOperator
