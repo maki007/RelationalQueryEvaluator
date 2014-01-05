@@ -77,7 +77,7 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
 			child=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
-			child->parent=std::shared_ptr<AlgebraNodeBase>(this);
+			child->parent=this;
 		}
 	}
 
@@ -119,12 +119,12 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 			{
 				leftChild=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
 				leftChildInitialized=true;
-				leftChild->parent=std::shared_ptr<AlgebraNodeBase>(this);
+				leftChild->parent=this;
 			}
 			else
 			{
 				rightChild=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
-				rightChild->parent=std::shared_ptr<AlgebraNodeBase>(this);
+				rightChild->parent=this;
 			}
 		}
 	}

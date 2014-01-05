@@ -118,7 +118,7 @@ public:
 class AlgebraNodeBase
 {
 public:
-	std::shared_ptr <AlgebraNodeBase> parent;
+	AlgebraNodeBase * parent;
 	AlgebraNodeBase();
 	AlgebraNodeBase * constructChildren(DOMElement * node);
 	void constructJoinParameters(DOMElement * node,std::shared_ptr<Expression> & condition,std::vector<JoinColumnInfo> & outputColumns);
