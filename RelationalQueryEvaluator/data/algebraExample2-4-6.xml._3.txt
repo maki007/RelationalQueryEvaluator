@@ -4,6 +4,7 @@ node0[label="Sorted Group
  time:32098
  size:1"]
 node1[label="Columns Operations
+x = (l_extendedprice(0) * l_discount(0))
  time:0
  size:24691"]
 node2[label="Filter
@@ -20,6 +21,7 @@ node4[label="Hash Group
  time:204938
  size:1"]
 node5[label="Columns Operations
+x = (l_extendedprice(0) * l_discount(0))
  time:0
  size:24691"]
 node6[label="Filter

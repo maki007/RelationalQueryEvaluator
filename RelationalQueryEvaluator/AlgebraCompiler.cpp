@@ -225,7 +225,7 @@ void AlgebraCompiler::visit(ColumnOperations * node)
 			ColumnInfo newColumn(operation->result,(*it)->size);
 			columns[operation->result]=newColumn;
 		}
-		std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(),(*it)->size,0,columns,*it));
+		std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations),(*it)->size,0,columns,*it));
 		newResult.push_back(newPlan);
 	}
 	

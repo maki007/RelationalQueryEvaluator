@@ -218,7 +218,22 @@ void PhysicalOperatorDrawingVisitor::visit(SortedGroup * node)
 
 void PhysicalOperatorDrawingVisitor::visit(ColumnsOperationsOperator * node)
 {
-	std::string label="Columns Operations";
+	std::string label="Columns Operations\n";
+	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
+	{
+		label += it->result;
+		if (it->expression != 0)
+		{
+			std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+			it->expression->accept(*visitor);
+			label += " = ";
+			label += visitor->result;
+		}
+		if (it != node->operations.end() - 1)
+		{
+			label += ", ";
+		}
+	}
 	generateText(label,node);
 }
 

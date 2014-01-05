@@ -139,6 +139,12 @@ public:
 
 class ColumnsOperationsOperator : public UnaryPhysicalOperator
 {
+public:
+	std::vector<ColumnOperation> operations;
+	ColumnsOperationsOperator(const std::vector<ColumnOperation> & operations)
+	{
+		this->operations = operations;
+	}
 	void accept(PhysicalOperatorVisitor &v);		 
 };
 
