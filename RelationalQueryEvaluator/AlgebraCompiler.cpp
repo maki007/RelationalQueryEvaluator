@@ -407,15 +407,57 @@ void AlgebraCompiler::visit(Union * node)
 	result = getBestPlans(newResult);
 }
 
-std::size_t AlgebraCompiler::setIndex(const std::set<std::size_t> input) const
-{
-	std::size_t result = 0;
 
-	for (auto it = input.begin(); it != input.end();++it)
+
+
+std::vector<std::size_t> AlgebraCompiler::getAllSubsets(std::vector<std::size_t> & arr, std::size_t n, std::size_t k) const 
+{
+	std::vector<std::size_t> result;
+	// current subset is given by array of indexes
+	std::size_t combinationNumber = 1;
+
+	for (std::size_t a = n; a >= n - k + 1; --a)
 	{
-		result |= 1 << (*it);
+		combinationNumber *= a;
 	}
 
+	for (std::size_t a = 1; a <= k ; ++a)
+	{
+		combinationNumber /= a;
+	}
+
+	std::vector<std::size_t> idx;
+	idx.resize(k);
+	for (std::size_t i = 0; i < k; i++) idx[i] = i;
+
+	// loop through all subsets 
+	std::size_t count = 0;
+	while (true)
+	{
+		++count;
+		result.push_back(setIndex(idx));
+
+		if (k * 2 == n && count == combinationNumber / 2)
+			break;
+
+
+		// check for termination 
+		if (idx[0] == n - k) break;
+
+		// advance to next subset 
+		for (int i = 0; i < k; i++) {
+			// if idx[i] has room to increment 
+			if (i + 1 == k || idx[i] + 1 < idx[i + 1]) {
+				// increment index and stop here 
+				idx[i]++;
+				break;
+			}
+			else {
+				// otherwise reset index 
+				idx[i] = i;
+			}
+		}
+	}
 
 	return result;
 }
@@ -454,35 +496,18 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 	{
 		std::vector<JoinInfo> allSubsets;
 		allSubsets.resize(1 << n);
-
+		
+		std::vector<JoinInfo *> lastInsertedPlans;
 		//insert plans with one join
 		for (auto it = plans.begin(); it != plans.end(); ++it)
 		{
-			allSubsets[setIndex(it->processedPlans)] = *it;
-		}
-		std::vector<JoinInfo *> lastInsertedPlans;
-		//insert plans with two joins
-		for (auto it = plans.begin(); it != plans.end(); ++it)
-		{
-			std::set<std::size_t>::iterator max = (it->processedPlans.end());
-			--max;
-			for (auto it2 = it->unProcessedPlans.find((*max)+1); it2 != it->unProcessedPlans.end(); ++it2)
-			{
-				JoinInfo newPlans;
-				newPlans.processedPlans = it->processedPlans;
-				newPlans.unProcessedPlans = it->unProcessedPlans;
-				newPlans.processedPlans.insert(*it2);
-				newPlans.unProcessedPlans.erase(*it2);
-				std::set<std::size_t> set;
-				set.insert(*it2);
-				join(*it, allSubsets[setIndex(set)], newPlans);
-				std::size_t newIndex = setIndex(newPlans.processedPlans);
-				allSubsets[newIndex] = newPlans;
-				lastInsertedPlans.push_back(&allSubsets[newIndex]);
-			}
+			std::size_t newIndex = setIndex(it->processedPlans);
+			allSubsets[newIndex] = *it;
+			lastInsertedPlans.push_back(&allSubsets[newIndex]);
 		}
 
-		for (std::size_t i = 2; i < n; ++i)
+		
+		for (std::size_t i = 1; i < n; ++i)
 		{
 			std::vector<JoinInfo *> currentPlans;
 			for (auto it = lastInsertedPlans.begin(); it != lastInsertedPlans.end(); ++it)
@@ -506,18 +531,41 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 			for (auto it = currentPlans.begin(); it != currentPlans.end(); ++it)
 			{
 				JoinInfo * current = *it;
+				for (std::size_t j = 1; j <= current->processedPlans.size() / 2; ++j)
+				{
+					std::vector<std::size_t> input;
+					for (auto it2 = current->processedPlans.begin(); it2 != current->processedPlans.end(); ++it2)
+					{
+						input.push_back(*it2);
+					}
+					std::vector<std::size_t> subsets = getAllSubsets(input, i+1, j);
+					for (auto it2 = subsets.begin(); it2 != subsets.end(); ++it2)
+					{
+						std::size_t  leftIndex = *it2;
+						std::size_t rightIndex = setIndex(allSubsets[*it2].unProcessedPlans);
 
+						join(allSubsets[leftIndex], allSubsets[rightIndex], **it);
+					}
+				}
 			}
-
 		}
-
 	}
 	else
 	{
 		//greedy algorithm	
 	}
+
+	std::vector<std::size_t> sets;
+	for (int i = 1; i < 6; i++)
+	{
+		sets.push_back(i);
+	}
+
+	
+
 	result.clear();
 }
+
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
 

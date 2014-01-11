@@ -160,7 +160,20 @@ private:
 
 	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
-	std::size_t setIndex(const std::set<std::size_t> input) const;
+	std::vector<std::size_t> getAllSubsets(std::vector<std::size_t> & arr, std::size_t n, std::size_t k) const;
+
+	template< typename T>
+	std::size_t setIndex(const T input) const
+	{
+		std::size_t result = 0;
+
+		for (auto it = input.begin(); it != input.end(); ++it)
+		{
+			result |= 1 << (*it);
+		}
+
+		return result;
+	}
 };
 
 #endif
