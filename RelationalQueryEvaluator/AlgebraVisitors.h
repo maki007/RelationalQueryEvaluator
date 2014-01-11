@@ -4,6 +4,7 @@
 #include "Algebra.h"
 #include "PhysicalOperator.h"
 #include <map>
+#include <set>
 
 class AlgebraVisitor
 {
@@ -117,12 +118,18 @@ public:
 
 	void resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren);
 };
-
+class JoinInfo
+{
+public:
+	std::vector<std::shared_ptr<PhysicalPlan> > plans;
+	std::set<std::size_t> processedPlans;
+	std::set<std::size_t> unProcessedPlans;
+};
 class AlgebraCompiler : public AlgebraVisitor
 {
 public:
 	static const ulong NUMBER_OF_PLANS;
-
+	static const ulong  LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM;
 	std::vector<std::shared_ptr<PhysicalPlan> > result;
 
 	void visit(Table * node);
@@ -151,6 +158,9 @@ private:
 
 	std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 
+	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
+
+	std::size_t setIndex(const std::set<std::size_t> input) const;
 };
 
 #endif

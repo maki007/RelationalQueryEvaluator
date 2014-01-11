@@ -141,14 +141,6 @@ void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase
 
 Table::Table(DOMElement * element)
 {
-	/*
-	<table name="users" numberOfRows="10000">
-	<column name="a" type="int" number_of_unique_values="1000" />
-	<index>
-	<column name="a"/>
-	</index>
-	</table>
-	*/
 	name=XmlUtils::ReadAttribute(element,"name");
 	if(XmlUtils::ReadAttribute(element,"numberOfRows")=="")
 	{

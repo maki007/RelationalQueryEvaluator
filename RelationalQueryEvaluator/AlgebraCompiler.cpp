@@ -6,6 +6,8 @@
 
 const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
+const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 7;
+
 std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std::vector<SortParameter> & parameters, const std::shared_ptr<PhysicalPlan> & plan)
 {
 	std::size_t matchedColumns = 0;
@@ -111,7 +113,7 @@ void AlgebraCompiler::visit(Table * node)
 	result.clear();
 	
 	PhysicalPlan * physicalPlan=new PhysicalPlan(new TableScan(),(double)node->numberOfRows,
-				TimeComplexity::clusteredScan(node->numberOfRows), node->columns);
+				TimeComplexity::clusteredScan(double(node->numberOfRows)), node->columns);
 	
 	physicalPlan->indices=node->indices;
 	for(auto it=node->indices.begin();it!=node->indices.end();++it)
@@ -135,7 +137,7 @@ void AlgebraCompiler::visit(Table * node)
 		{
 
 			PhysicalPlan * physicalPlan=new PhysicalPlan(new ScanAndSortByIndex(),(double)node->numberOfRows,
-				TimeComplexity::unClusteredScan(node->numberOfRows), node->columns);
+				TimeComplexity::unClusteredScan(double(node->numberOfRows)), node->columns);
 		
 			for(auto index=it->columns.begin();index!=it->columns.end();++index)
 			{
@@ -405,15 +407,122 @@ void AlgebraCompiler::visit(Union * node)
 	result = getBestPlans(newResult);
 }
 
+std::size_t AlgebraCompiler::setIndex(const std::set<std::size_t> input) const
+{
+	std::size_t result = 0;
+
+	for (auto it = input.begin(); it != input.end();++it)
+	{
+		result |= 1 << (*it);
+	}
+
+
+	return result;
+}
+
 void AlgebraCompiler::visit(GroupedJoin * node)
 {
+	std::vector < std::vector<std::shared_ptr<PhysicalPlan>>> results;
 	for(auto it=node->children.begin();it!=node->children.end();++it)
 	{
 		(*it)->accept(*this);	
+		results.push_back(result);
+	}
+
+	std::size_t n = results.size();
+
+	std::vector<JoinInfo> plans;
+	std::size_t input = 0;
+	for (auto it = results.begin(); it != results.end(); ++it)
+	{
+		JoinInfo newPlans;
+		newPlans.plans = *it;
+		newPlans.processedPlans.insert(input);
+
+		for (std::size_t j = 0; j < n; ++j)
+		{
+			if (j != input)
+			{
+				newPlans.unProcessedPlans.insert(j);
+			}
+		}
+		plans.push_back(newPlans);
+		++input;
+	}
+
+	if (n <= LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM)
+	{
+		std::vector<JoinInfo> allSubsets;
+		allSubsets.resize(1 << n);
+
+		//insert plans with one join
+		for (auto it = plans.begin(); it != plans.end(); ++it)
+		{
+			allSubsets[setIndex(it->processedPlans)] = *it;
+		}
+		std::vector<JoinInfo *> lastInsertedPlans;
+		//insert plans with two joins
+		for (auto it = plans.begin(); it != plans.end(); ++it)
+		{
+			std::set<std::size_t>::iterator max = (it->processedPlans.end());
+			--max;
+			for (auto it2 = it->unProcessedPlans.find((*max)+1); it2 != it->unProcessedPlans.end(); ++it2)
+			{
+				JoinInfo newPlans;
+				newPlans.processedPlans = it->processedPlans;
+				newPlans.unProcessedPlans = it->unProcessedPlans;
+				newPlans.processedPlans.insert(*it2);
+				newPlans.unProcessedPlans.erase(*it2);
+				std::set<std::size_t> set;
+				set.insert(*it2);
+				join(*it, allSubsets[setIndex(set)], newPlans);
+				std::size_t newIndex = setIndex(newPlans.processedPlans);
+				allSubsets[newIndex] = newPlans;
+				lastInsertedPlans.push_back(&allSubsets[newIndex]);
+			}
+		}
+
+		for (std::size_t i = 2; i < n; ++i)
+		{
+			std::vector<JoinInfo *> currentPlans;
+			for (auto it = lastInsertedPlans.begin(); it != lastInsertedPlans.end(); ++it)
+			{
+				JoinInfo * current = *it;
+				std::set<std::size_t>::iterator max = (current->processedPlans.end());
+				--max;
+				for (auto it2 = current->unProcessedPlans.find((*max) + 1); it2 != current->unProcessedPlans.end(); ++it2)
+				{
+					JoinInfo newPlans;
+					newPlans.processedPlans = current->processedPlans;
+					newPlans.unProcessedPlans = current->unProcessedPlans;
+					newPlans.processedPlans.insert(*it2);
+					newPlans.unProcessedPlans.erase(*it2);
+					std::size_t newIndex = setIndex(newPlans.processedPlans);
+					allSubsets[newIndex] = newPlans;
+					currentPlans.push_back(&allSubsets[newIndex]);
+				}
+			}
+			lastInsertedPlans = currentPlans;
+			for (auto it = currentPlans.begin(); it != currentPlans.end(); ++it)
+			{
+				JoinInfo * current = *it;
+
+			}
+
+		}
+
+	}
+	else
+	{
+		//greedy algorithm	
 	}
 	result.clear();
 }
+void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
+{
 
+
+}
 void AlgebraCompiler::visit(AntiJoin * node)
 {
 	node->leftChild->accept(*this);
