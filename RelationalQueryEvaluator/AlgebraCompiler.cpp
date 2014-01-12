@@ -6,7 +6,10 @@
 
 const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
-const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 7;
+const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 1;
+
+const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
+
 
 std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std::vector<SortParameter> & parameters, const std::shared_ptr<PhysicalPlan> & plan)
 {
@@ -553,18 +556,68 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 	else
 	{
 		//greedy algorithm	
+		std::vector<JoinInfo> heap;
+
+		for (auto it = plans.begin(); it != plans.end(); ++it)
+		{
+			auto end=it->processedPlans.end();
+			--end;
+			std::size_t max = *end;
+			for (auto it2 = it->unProcessedPlans.find(max+1); it2 != it->unProcessedPlans.end(); ++it2)
+			{
+				greedyJoin(it, it2, plans, heap);
+			}
+
+		}
+
+		std::vector<JoinInfo> lastPlans;
+		lastPlans.clear();
+		lastPlans.swap(heap);
+		
+		for (std::size_t i = 2; i < n; ++i)
+		{
+			for (auto it = lastPlans.begin(); it != lastPlans.end(); ++it)
+			{
+				for (auto it2 = it->unProcessedPlans.begin(); it2 != it->unProcessedPlans.end(); ++it2)
+				{
+					greedyJoin(it, it2, plans, heap);
+				}
+			}
+			lastPlans.clear();
+			lastPlans.swap(heap);
+		}
 	}
 
-	std::vector<std::size_t> sets;
-	for (int i = 1; i < 6; i++)
-	{
-		sets.push_back(i);
-	}
-
-	
 
 	result.clear();
 }
+
+
+void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<std::size_t>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap)
+{
+	JoinInfo newPlans;
+	newPlans.processedPlans = it->processedPlans;
+	newPlans.unProcessedPlans = it->unProcessedPlans;
+	newPlans.processedPlans.insert(*it2);
+	newPlans.unProcessedPlans.erase(*it2);
+	join(*it, plans[*it2], newPlans);
+	for (auto it3 = newPlans.plans.begin(); it3 != newPlans.plans.end(); ++it3)
+	{
+		JoinInfo insertedPlan;
+		insertedPlan.processedPlans = newPlans.processedPlans;
+		insertedPlan.unProcessedPlans = newPlans.unProcessedPlans;
+		insertedPlan.plans.push_back(*it3);
+		heap.push_back(insertedPlan);
+		std::push_heap(heap.begin(), heap.end(), JoinInfo::compare);
+		while (heap.size() > MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM)
+		{
+			std::pop_heap(heap.begin(), heap.end(), JoinInfo::compare);
+			heap.pop_back();
+		}
+	}
+
+}
+
 
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {

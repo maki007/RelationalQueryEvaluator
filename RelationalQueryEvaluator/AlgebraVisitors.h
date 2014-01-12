@@ -124,12 +124,17 @@ public:
 	std::vector<std::shared_ptr<PhysicalPlan> > plans;
 	std::set<std::size_t> processedPlans;
 	std::set<std::size_t> unProcessedPlans;
+	static bool compare (const JoinInfo& lhs, const JoinInfo&rhs)
+	{
+		return (lhs.plans[0]->timeComplexity<rhs.plans[0]->timeComplexity);
+	}
 };
 class AlgebraCompiler : public AlgebraVisitor
 {
 public:
 	static const ulong NUMBER_OF_PLANS;
 	static const ulong  LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM;
+	static const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM;
 	std::vector<std::shared_ptr<PhysicalPlan> > result;
 
 	void visit(Table * node);
@@ -149,6 +154,8 @@ public:
 	void visit(Union * node);
 
 	void visit(GroupedJoin * node);
+
+
 private:
 	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters,const std::shared_ptr<PhysicalPlan> & result);
 
@@ -162,6 +169,8 @@ private:
 
 	std::vector<std::size_t> getAllSubsets(std::vector<std::size_t> & arr, std::size_t n, std::size_t k) const;
 
+	void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<std::size_t>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
+
 	template< typename T>
 	std::size_t setIndex(const T input) const
 	{
@@ -169,7 +178,7 @@ private:
 
 		for (auto it = input.begin(); it != input.end(); ++it)
 		{
-			result |= 1 << (*it);
+			result |= ulong(1) << (*it);
 		}
 
 		return result;
