@@ -468,6 +468,7 @@ std::vector<std::size_t> AlgebraCompiler::getAllSubsets(std::vector<std::size_t>
 void AlgebraCompiler::visit(GroupedJoin * node)
 {
 	std::vector < std::vector<std::shared_ptr<PhysicalPlan>>> results;
+	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
 	for(auto it=node->children.begin();it!=node->children.end();++it)
 	{
 		(*it)->accept(*this);	
@@ -552,6 +553,10 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 				}
 			}
 		}
+		for (auto it = allSubsets.back().plans.begin(); it != allSubsets.back().plans.end(); ++it)
+		{
+			newResult.push_back(*it);
+		}
 	}
 	else
 	{
@@ -586,10 +591,14 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 			lastPlans.clear();
 			lastPlans.swap(heap);
 		}
+		for (auto it = lastPlans.begin(); it != lastPlans.end(); ++it)
+		{
+			newResult.push_back(it->plans[0]);
+		}
 	}
 
 
-	result.clear();
+	result = getBestPlans(newResult);
 }
 
 
