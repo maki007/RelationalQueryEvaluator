@@ -643,7 +643,9 @@ void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<s
 
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
-	std::vector<std::shared_ptr<ConditionInfo>> useConditions;
+	std::vector<std::shared_ptr<ConditionInfo>> equalConditions;
+	std::vector<std::shared_ptr<ConditionInfo>> lowerConditions;
+	std::vector<std::shared_ptr<ConditionInfo>> otherConditions;
 	for (auto it = left.condition.begin(); it != left.condition.end();++it)
 	{
 		bool containsLeft=false, constainsRight = false;
@@ -664,7 +666,18 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		}
 		if (containsLeft && constainsRight)
 		{
-			useConditions.push_back(*it);
+			switch ((*it)->type)
+			{
+			case ConditionType::EQUALS:
+				equalConditions.push_back(*it);
+				break;
+			case ConditionType::LOWER:
+				lowerConditions.push_back(*it);
+				break;
+			default:
+				otherConditions.push_back(*it);
+				break;
+			}
 		}
 		else
 		{
