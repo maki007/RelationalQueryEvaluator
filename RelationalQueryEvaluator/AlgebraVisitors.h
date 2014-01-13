@@ -118,17 +118,6 @@ public:
 
 	void resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren);
 };
-class JoinInfo
-{
-public:
-	std::vector<std::shared_ptr<PhysicalPlan> > plans;
-	std::set<std::size_t> processedPlans;
-	std::set<std::size_t> unProcessedPlans;
-	static bool compare (const JoinInfo& lhs, const JoinInfo&rhs)
-	{
-		return (lhs.plans[0]->timeComplexity<rhs.plans[0]->timeComplexity);
-	}
-};
 
 enum class ConditionType
 {
@@ -145,6 +134,21 @@ public:
 	std::vector<bool> inputs;
 	ConditionType type;
 };
+
+class JoinInfo
+{
+public:
+	std::vector<std::shared_ptr<PhysicalPlan> > plans;
+	std::set<std::size_t> processedPlans;
+	std::set<std::size_t> unProcessedPlans;
+	std::vector<std::shared_ptr<ConditionInfo>> condition;
+	static bool Comparator (const JoinInfo& lhs, const JoinInfo&rhs)
+	{
+		return (lhs.plans[0]->timeComplexity<rhs.plans[0]->timeComplexity);
+	}
+};
+
+
 
 class AlgebraCompiler : public AlgebraVisitor
 {
@@ -174,9 +178,9 @@ public:
 
 
 private:
-	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters,const std::shared_ptr<PhysicalPlan> & result);
+	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
-	std::vector<std::shared_ptr<PhysicalPlan> > getBestPlans(std::vector<std::shared_ptr<PhysicalPlan> > & plans);
+	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters,const std::shared_ptr<PhysicalPlan> & result);
 	
 	std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
 
