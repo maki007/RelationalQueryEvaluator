@@ -6,7 +6,7 @@
 
 const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
-const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 1;
+const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
 
 const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
 
@@ -79,7 +79,7 @@ std::vector<std::shared_ptr<Expression> > AlgebraCompiler::serializeExpression(s
 	if ((typeid(*(condition)) == typeid(GroupedExpression)))
 	{
 		std::shared_ptr<GroupedExpression> groupedCondition = std::dynamic_pointer_cast<GroupedExpression>(condition);
-		if (groupedCondition->operation == GROUPED_AND)
+		if (groupedCondition->operation == GroupedOperator::AND)
 		{
 			result = groupedCondition->children;
 		}
@@ -107,7 +107,7 @@ std::shared_ptr<Expression> AlgebraCompiler::deserializeExpression(const std::ve
 	}
 	else
 	{
-		return std::shared_ptr<Expression>(new GroupedExpression(GROUPED_AND, condition));
+		return std::shared_ptr<Expression>(new GroupedExpression(GroupedOperator::AND, condition));
 	}
 }
 
@@ -262,9 +262,9 @@ void AlgebraCompiler::visit(Selection * node)
 							std::shared_ptr<BinaryExpression> expression = std::dynamic_pointer_cast<BinaryExpression>(*conditionPart);
 							switch (expression->operation)
 							{
-							case LOWER:
-							case LOWER_OR_EQUAL:
-							case EQUALS:
+							case BinaryOperator::LOWER:
+							case BinaryOperator::LOWER_OR_EQUAL:
+							case BinaryOperator::EQUALS:
 
 								if (typeid(*(expression->leftChild)) == typeid(Column))
 								{
@@ -467,6 +467,22 @@ std::vector<std::size_t> AlgebraCompiler::getAllSubsets(std::vector<std::size_t>
 
 void AlgebraCompiler::visit(GroupedJoin * node)
 {
+	std::vector<ConditionInfo> conditions;
+	std::vector<std::shared_ptr<Expression>> cond;
+	if (node->condition != 0)
+	{
+		cond = serializeExpression(node->condition);
+	}
+
+	for (auto it = cond.begin(); it != cond.end();++it)
+	{
+		ConditionInfo info;
+		info.condition=*it;
+		info.inputs.resize(node->children.size());
+		info.condition->accept(JoinInfoReadingExpressionVisitor(&info.inputs,&info.type));
+		conditions.push_back(info);
+	}
+
 	std::vector < std::vector<std::shared_ptr<PhysicalPlan>>> results;
 	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
 	for(auto it=node->children.begin();it!=node->children.end();++it)
@@ -630,8 +646,7 @@ void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<s
 
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
-
-
+	
 }
 void AlgebraCompiler::visit(AntiJoin * node)
 {

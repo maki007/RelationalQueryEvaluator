@@ -59,34 +59,34 @@ void WritingExpressionVisitor::visit(BinaryExpression * expression)
 	expression->leftChild->accept(*this); 
 	switch (expression->operation)
 	{
-	case AND:
+	case BinaryOperator::AND:
 		result+=" and ";
 		break;
-	case OR:
+	case BinaryOperator::OR:
 		result+=" or ";
 		break;
-	case PLUS:
+	case BinaryOperator::PLUS:
 		result+=" + ";
 		break;
-	case MINUS:
+	case BinaryOperator::MINUS:
 		result+=" - ";
 		break;
-	case TIMES:
+	case BinaryOperator::TIMES:
 		result+=" * ";
 		break;
-	case DIVIDE:
+	case BinaryOperator::DIVIDE:
 		result+=" / ";
 		break;
-	case EQUALS:
+	case BinaryOperator::EQUALS:
 		result+=" == ";
 		break;
-	case NOT_EQUALS:
+	case BinaryOperator::NOT_EQUALS:
 		result+=" != ";
 		break;
-	case LOWER:
+	case BinaryOperator::LOWER:
 		result+=" < ";
 		break;
-	case LOWER_OR_EQUAL:
+	case BinaryOperator::LOWER_OR_EQUAL:
 		result+=" <= ";
 		break;
 	}
@@ -129,10 +129,10 @@ void WritingExpressionVisitor::visit(GroupedExpression * expression)
 {
 	switch (expression->operation)
 	{
-	case GROUPED_AND:
+	case GroupedOperator::AND:
 		result+="AND (";
 		break;
-	case GROUPED_OR:
+	case GroupedOperator::OR:
 		result+="OR (";
 		break;
 	}
@@ -180,7 +180,7 @@ void GroupingExpressionVisitor::visit(BinaryExpression * expression)
 {
 	expression->leftChild->accept(*this); 
 	expression->rightChild->accept(*this);
-	if((expression->operation == AND) || (expression->operation==OR))
+	if ((expression->operation == BinaryOperator::AND) || (expression->operation == BinaryOperator::OR))
 	{
 		std::vector<std::shared_ptr<Expression> > oldChildren;
 		oldChildren.resize(2);
@@ -189,13 +189,13 @@ void GroupingExpressionVisitor::visit(BinaryExpression * expression)
 		GroupedExpression * newNode=new GroupedExpression();
 		newNode->parent=expression->parent;
 		
-		if(expression->operation == AND)
+		if (expression->operation == BinaryOperator::AND)
 		{
-			newNode->operation=GroupedOperator::GROUPED_AND;
+			newNode->operation=GroupedOperator::AND;
 		}
-		else if(expression->operation == OR)
+		else if (expression->operation == BinaryOperator::OR)
 		{
-			newNode->operation=GroupedOperator::GROUPED_OR;
+			newNode->operation=GroupedOperator::OR;
 		}
 		
 		if(newNode->parent==0)

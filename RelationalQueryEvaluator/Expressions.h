@@ -25,17 +25,17 @@
 
 XERCES_CPP_NAMESPACE_USE
 
-enum UnaryOperator
+enum class UnaryOperator
 {
 	NOT
 };
-enum BinaryOperator
+enum class BinaryOperator
 {
 	AND,OR,PLUS,MINUS,TIMES,DIVIDE,EQUALS,NOT_EQUALS,LOWER,LOWER_OR_EQUAL
 };
-enum GroupedOperator
+enum class GroupedOperator
 {
-	GROUPED_AND,GROUPED_OR
+	AND,OR
 };
 
 

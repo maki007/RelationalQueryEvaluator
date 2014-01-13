@@ -4,6 +4,8 @@
 #include "Expressions.h"
 #include <map>
 #include "Algebra.h"
+#include "AlgebraVisitors.h"
+#include <vector>
 
 
 class ExpressionVisitorBase
@@ -98,8 +100,8 @@ public:
 	{
 		switch (expression->operation)
 		{
-		case EQUALS:
-		case NOT_EQUALS:
+		case BinaryOperator::EQUALS:
+		case BinaryOperator::NOT_EQUALS:
 			if ((typeid(*((expression->leftChild))) == typeid(Column)))
 			{
 				if ((typeid(*((expression->rightChild))) == typeid(Column)))
@@ -139,15 +141,15 @@ public:
 					}
 				}
 			}
-			if (expression->operation == NOT_EQUALS)
+			if (expression->operation == BinaryOperator::NOT_EQUALS)
 			{
 				size = 1 - size;
 			}
 			break;
-		case LOWER:
+		case BinaryOperator::LOWER:
 			size = double(1)/ 3;
 			break;
-		case LOWER_OR_EQUAL:
+		case BinaryOperator::LOWER_OR_EQUAL:
 			size = double(1) / 3;
 			break;
 		default:
@@ -167,14 +169,14 @@ public:
 
 		switch (expression->operation)
 		{
-		case GROUPED_AND:
+		case GroupedOperator::AND:
 			for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
 			{
 				(*it)->accept(*this);
 				newSize *= size;
 			}
 			break;
-		case GROUPED_OR :
+		case GroupedOperator::OR:
 			for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
 			{
 				(*it)->accept(*this);
@@ -184,6 +186,64 @@ public:
 			break;
 		}
 		size = newSize;
+	}
+
+};
+
+
+class JoinInfoReadingExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	std::vector<bool> * data;
+	ConditionType * conditionType;
+	JoinInfoReadingExpressionVisitor(std::vector<bool> * data,ConditionType * type)
+	{
+		this->data = data;
+		this->conditionType = type;
+	}
+	
+	void visit(Column * expression)
+	{
+		data->at(expression->input) = true;
+	}
+	
+	void visit(UnaryExpression * expression)
+	{
+		(*conditionType) = ConditionType::OTHER;
+	}
+
+	void visit(BinaryExpression * expression)
+	{
+		switch (expression->operation)
+		{
+		case BinaryOperator::EQUALS:
+			(*conditionType) = ConditionType::EQUALS;
+			break;
+		case BinaryOperator::LOWER:
+		case BinaryOperator::LOWER_OR_EQUAL:
+			(*conditionType) = ConditionType::LOWER;
+			break;
+		default:
+			(*conditionType) = ConditionType::OTHER;
+			break;
+		}
+
+		
+	}
+
+	void visit(NnaryExpression * expression)
+	{
+		(*conditionType) = ConditionType::OTHER;
+	}
+
+	void visit(Constant * expression)
+	{
+		throw new std::exception("constant shouldnt be in joins");
+	}
+
+	void visit(GroupedExpression * expression)
+	{
+		(*conditionType) = ConditionType::OTHER;
 	}
 
 };

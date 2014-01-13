@@ -129,6 +129,23 @@ public:
 		return (lhs.plans[0]->timeComplexity<rhs.plans[0]->timeComplexity);
 	}
 };
+
+enum class ConditionType
+{
+	EQUALS,
+	LOWER,
+	OTHER
+
+};
+
+class ConditionInfo
+{
+public:
+	std::shared_ptr<Expression> condition;
+	std::vector<bool> inputs;
+	ConditionType type;
+};
+
 class AlgebraCompiler : public AlgebraVisitor
 {
 public:
