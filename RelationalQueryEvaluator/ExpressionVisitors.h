@@ -248,4 +248,34 @@ public:
 
 };
 
+
+class RenamingJoinConditionExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	ulong n;
+	std::vector<JoinColumnInfo> * inputColumns;
+	RenamingJoinConditionExpressionVisitor(ulong i, std::vector<JoinColumnInfo> * inputColumns)
+	{
+		n = i;
+		this->inputColumns = inputColumns;
+	}
+	void visit(Column * expression)
+	{
+		if (expression->input == n)
+		{
+			for (auto it = inputColumns->begin(); it != inputColumns->end();++it)
+			{
+				if (it->name != it->newName)
+				{
+					if (it->newName == expression->name)
+					{
+						expression->name = it->name;
+					}
+				}
+			}
+		}
+		
+	}
+};
+
 #endif

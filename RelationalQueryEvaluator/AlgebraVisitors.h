@@ -139,8 +139,8 @@ class JoinInfo
 {
 public:
 	std::vector<std::shared_ptr<PhysicalPlan> > plans;
-	std::set<std::size_t> processedPlans;
-	std::set<std::size_t> unProcessedPlans;
+	std::set<ulong> processedPlans;
+	std::set<ulong> unProcessedPlans;
 	std::vector<std::shared_ptr<ConditionInfo>> condition;
 	static bool Comparator (const JoinInfo& lhs, const JoinInfo&rhs)
 	{
@@ -188,14 +188,14 @@ private:
 
 	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
-	std::vector<std::size_t> getAllSubsets(std::vector<std::size_t> & arr, std::size_t n, std::size_t k) const;
+	std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;
 
-	void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<std::size_t>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
+	void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
 
 	template< typename T>
-	std::size_t setIndex(const T input) const
+	ulong setIndex(const T input) const
 	{
-		std::size_t result = 0;
+		ulong result = 0;
 
 		for (auto it = input.begin(); it != input.end(); ++it)
 		{

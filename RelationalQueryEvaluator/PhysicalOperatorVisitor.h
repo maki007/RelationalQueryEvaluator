@@ -47,7 +47,7 @@ class PhysicalOperatorDrawingVisitor : public PhysicalOperatorVisitor
 {
 public:
 	std::string result;
-	std::size_t nodeCounter;
+	ulong nodeCounter;
 	PhysicalOperatorDrawingVisitor();
 
 	void generateText(std::string & label,NullaryPhysicalOperator * node);

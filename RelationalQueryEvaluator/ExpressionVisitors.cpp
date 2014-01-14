@@ -207,7 +207,7 @@ void GroupingExpressionVisitor::visit(BinaryExpression * expression)
 			newNode->parent->replaceChild(expression,newNode);
 		}
 
-		for(std::size_t i=0;i<2;++i)
+		for(ulong i=0;i<2;++i)
 		{
 			if(typeid(*(oldChildren[i])) == typeid(GroupedExpression))
 			{

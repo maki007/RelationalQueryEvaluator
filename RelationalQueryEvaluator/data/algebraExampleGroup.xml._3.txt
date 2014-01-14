@@ -11,7 +11,7 @@ node2[label="Sort
  time:122877
  size:5000"]
 node3[label="Hash Group
- time:83000
+ time:103000
  size:5000"]
 node4[label="Table Scan
  time:10000
@@ -22,7 +22,7 @@ node5[label="Sort
  time:122877
  size:5000"]
 node6[label="Hash Group
- time:83000
+ time:103000
  size:5000"]
 node7[label="Sort by index Scan
  time:30000

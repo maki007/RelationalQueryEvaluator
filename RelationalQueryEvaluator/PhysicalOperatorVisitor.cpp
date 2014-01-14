@@ -112,12 +112,12 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,NullaryPhy
 
 void PhysicalOperatorDrawingVisitor::generateText(std::string & label,UnaryPhysicalOperator * node)
 {
-	std::size_t identifier=nodeCounter;
+	ulong identifier=nodeCounter;
 
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
 	result.append("[label=\""+label+"\n time:"+std::to_string((ulong)node->timeComplexity)+"\n size:"+std::to_string((ulong)node->size)+"\"]\n");
-	std::size_t childIdentifier=++nodeCounter;
+	ulong childIdentifier=++nodeCounter;
 	node->child->accept(*this);
 
 	result.append("node");
@@ -130,13 +130,13 @@ void PhysicalOperatorDrawingVisitor::generateText(std::string & label,UnaryPhysi
 
 void PhysicalOperatorDrawingVisitor::generateText(std::string & label,BinaryPhysicalOperator * node)
 {
-	std::size_t identifier=nodeCounter;
+	ulong identifier=nodeCounter;
 
 	result.append("node");
 	result.append(std::to_string(nodeCounter));
 	result.append("[label=\""+label+"\n time:"+std::to_string((ulong)node->timeComplexity)+"\n size:"+std::to_string((ulong)node->size)+"\"]\n");
 
-	std::size_t childIdentifier=++nodeCounter;
+	ulong childIdentifier=++nodeCounter;
 	node->leftChild->accept(*this);
 	result.append("node");
 	result.append(std::to_string(childIdentifier));
@@ -180,7 +180,8 @@ void PhysicalOperatorDrawingVisitor::visit(SortOperator * node)
 
 void PhysicalOperatorDrawingVisitor::visit(MergeJoin * node)
 {
-
+	std::string label = "Merge Join";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visit(NestedLoopJoin * node)
@@ -190,12 +191,14 @@ void PhysicalOperatorDrawingVisitor::visit(NestedLoopJoin * node)
 
 void PhysicalOperatorDrawingVisitor::visit(CrossJoin * node)
 {
-
+	std::string label = "Cross Join";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visit(HashJoin * node)
 {
-	
+	std::string label = "Hash Join";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visit(UnionOperator * node)

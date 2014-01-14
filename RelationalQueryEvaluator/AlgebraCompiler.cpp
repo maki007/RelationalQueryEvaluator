@@ -13,8 +13,8 @@ const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
 
 std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std::vector<SortParameter> & parameters, const std::shared_ptr<PhysicalPlan> & plan)
 {
-	std::size_t matchedColumns = 0;
-	for (std::size_t i = 0; i<parameters.size() && i<plan->sortedBy.size(); ++i)
+	ulong matchedColumns = 0;
+	for (ulong i = 0; i<parameters.size() && i<plan->sortedBy.size(); ++i)
 	{
 		SortParameter sortParameter = parameters[i];
 		SortParameter sortedBy = plan->sortedBy[i];
@@ -48,7 +48,7 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 			double size = plan->size;
 			double numberOfUniqueSortedValues = 1;
 			std::vector<std::string> sortedBy;
-			for (std::size_t i = 0; i < matchedColumns; ++i)
+			for (ulong i = 0; i < matchedColumns; ++i)
 			{
 				sortedBy.push_back(parameters[i].column);
 				numberOfUniqueSortedValues *= plan->columns[parameters[i].column].numberOfUniqueValues;
@@ -296,7 +296,7 @@ void AlgebraCompiler::visit(Selection * node)
 						}
 					}
 				}
-				std::size_t i= 0;
+				ulong i= 0;
 				std::vector<std::shared_ptr<Expression>> indexConditions;
 				while (i<possibleConditions.size() && possibleConditions[i].size()>0)
 				{
@@ -310,9 +310,9 @@ void AlgebraCompiler::visit(Selection * node)
 					}
 					else
 					{
-						for (std::size_t j=0; j<indexConditions.size(); ++j)
+						for (ulong j=0; j<indexConditions.size(); ++j)
 						{
-							for (std::size_t k = 0; k<possibleConditions[i].size(); ++k)
+							for (ulong k = 0; k<possibleConditions[i].size(); ++k)
 							{
 								newIndexConditions.push_back(std::shared_ptr<Expression>(new BinaryExpression(indexConditions[j], possibleConditions[i][k], BinaryOperator::AND)));
 							}
@@ -410,28 +410,28 @@ void AlgebraCompiler::visit(Union * node)
 
 
 
-std::vector<std::size_t> AlgebraCompiler::getAllSubsets(std::vector<std::size_t> & arr, std::size_t n, std::size_t k) const 
+std::vector<ulong> AlgebraCompiler::getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const 
 {
-	std::vector<std::size_t> result;
+	std::vector<ulong> result;
 	// current subset is given by array of indexes
-	std::size_t combinationNumber = 1;
+	ulong combinationNumber = 1;
 
-	for (std::size_t a = n; a >= n - k + 1; --a)
+	for (ulong a = n; a >= n - k + 1; --a)
 	{
 		combinationNumber *= a;
 	}
 
-	for (std::size_t a = 1; a <= k ; ++a)
+	for (ulong a = 1; a <= k ; ++a)
 	{
 		combinationNumber /= a;
 	}
 
-	std::vector<std::size_t> idx;
+	std::vector<ulong> idx;
 	idx.resize(k);
-	for (std::size_t i = 0; i < k; i++) idx[i] = i;
+	for (ulong i = 0; i < k; i++) idx[i] = i;
 
 	// loop through all subsets 
-	std::size_t count = 0;
+	ulong count = 0;
 	while (true)
 	{
 		++count;
@@ -488,17 +488,17 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 		results.push_back(result);
 	}
 
-	std::size_t n = results.size();
+	ulong n = results.size();
 
 	std::vector<JoinInfo> plans;
-	std::size_t input = 0;
+	ulong input = 0;
 	for (auto it = results.begin(); it != results.end(); ++it)
 	{
 		JoinInfo newPlans;
 		newPlans.plans = *it;
 		newPlans.processedPlans.insert(input);
 
-		for (std::size_t j = 0; j < n; ++j)
+		for (ulong j = 0; j < n; ++j)
 		{
 			if (j != input)
 			{
@@ -519,19 +519,19 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 		//insert plans with one join
 		for (auto it = plans.begin(); it != plans.end(); ++it)
 		{
-			std::size_t newIndex = setIndex(it->processedPlans);
+			ulong newIndex = setIndex(it->processedPlans);
 			allSubsets[newIndex] = *it;
 			lastInsertedPlans.push_back(&allSubsets[newIndex]);
 		}
 
 		
-		for (std::size_t i = 1; i < n; ++i)
+		for (ulong i = 1; i < n; ++i)
 		{
 			std::vector<JoinInfo *> currentPlans;
 			for (auto it = lastInsertedPlans.begin(); it != lastInsertedPlans.end(); ++it)
 			{
 				JoinInfo * current = *it;
-				std::set<std::size_t>::iterator max = (current->processedPlans.end());
+				std::set<ulong>::iterator max = (current->processedPlans.end());
 				--max;
 				for (auto it2 = current->unProcessedPlans.find((*max) + 1); it2 != current->unProcessedPlans.end(); ++it2)
 				{
@@ -540,7 +540,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 					newPlans.unProcessedPlans = current->unProcessedPlans;
 					newPlans.processedPlans.insert(*it2);
 					newPlans.unProcessedPlans.erase(*it2);
-					std::size_t newIndex = setIndex(newPlans.processedPlans);
+					ulong newIndex = setIndex(newPlans.processedPlans);
 					allSubsets[newIndex] = newPlans;
 					currentPlans.push_back(&allSubsets[newIndex]);
 				}
@@ -549,18 +549,21 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 			for (auto it = currentPlans.begin(); it != currentPlans.end(); ++it)
 			{
 				JoinInfo * current = *it;
-				for (std::size_t j = 1; j <= current->processedPlans.size() / 2; ++j)
+				for (ulong j = 1; j <= current->processedPlans.size() / 2; ++j)
 				{
-					std::vector<std::size_t> input;
+					std::vector<ulong> input;
+					ulong wholeSet = 0;
 					for (auto it2 = current->processedPlans.begin(); it2 != current->processedPlans.end(); ++it2)
 					{
 						input.push_back(*it2);
+						wholeSet |= ulong(1) << *it2;
 					}
-					std::vector<std::size_t> subsets = getAllSubsets(input, i+1, j);
+					std::vector<ulong> subsets = getAllSubsets(input, i+1, j);
 					for (auto it2 = subsets.begin(); it2 != subsets.end(); ++it2)
 					{
-						std::size_t  leftIndex = *it2;
-						std::size_t rightIndex = setIndex(allSubsets[*it2].unProcessedPlans);
+						ulong  leftIndex = *it2;
+						ulong rightIndex = wholeSet&(~leftIndex);
+						
 
 						join(allSubsets[leftIndex], allSubsets[rightIndex], **it);
 					}
@@ -581,7 +584,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 		{
 			auto end=it->processedPlans.end();
 			--end;
-			std::size_t max = *end;
+			ulong max = *end;
 			for (auto it2 = it->unProcessedPlans.find(max+1); it2 != it->unProcessedPlans.end(); ++it2)
 			{
 				greedyJoin(it, it2, plans, heap);
@@ -593,7 +596,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 		lastPlans.clear();
 		lastPlans.swap(heap);
 		
-		for (std::size_t i = 2; i < n; ++i)
+		for (ulong i = 2; i < n; ++i)
 		{
 			for (auto it = lastPlans.begin(); it != lastPlans.end(); ++it)
 			{
@@ -615,7 +618,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 }
 
 
-void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<std::size_t>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap)
+void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap)
 {
 	JoinInfo newPlans;
 	newPlans.processedPlans = it->processedPlans;
@@ -683,8 +686,42 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		{
 			newPlan.condition.push_back(*it);
 		}
-				
+
 	}
+
+	if (equalConditions.size() > 0)
+	{
+		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)
+		{
+			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
+			{
+				HashJoin * hashJoin = new HashJoin();
+				double newSize = 0;
+				std::shared_ptr<PhysicalPlan> hashedInput;
+				std::shared_ptr<PhysicalPlan> notHashedInput;
+				
+				if ((*first)->size < (*second)->size)
+				{
+					hashedInput = *first;
+					notHashedInput = *second;
+				}
+				else
+				{
+					hashedInput = *second;
+					notHashedInput = *first;
+				}
+				double time = TimeComplexity::hashjoin(std::min((*first)->size, (*second)->size), std::max((*first)->size, (*second)->size));
+				std::shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, std::map<std::string,ColumnInfo>(), hashedInput, notHashedInput));
+
+				//std::shared_ptr<MergeJoin> mergePlan(0);
+
+
+
+
+			}
+		}
+	}
+
 }
 void AlgebraCompiler::visit(AntiJoin * node)
 {

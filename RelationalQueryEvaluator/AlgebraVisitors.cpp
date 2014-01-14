@@ -358,13 +358,21 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 {
 
 	std::shared_ptr<Expression> newCondition=0;
-	std::size_t numberOfChildreninFirstChild=0;
-	for(std::size_t i=0;i<2;++i)
+	ulong numberOfChildreninFirstChild=0;
+	for(ulong i=0;i<2;++i)
 	{
 		if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 		{
+			std::shared_ptr<GroupedJoin> newNode = std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
+			if (groupedOperator->condition != 0)
+			{
+				groupedOperator->condition->accept(RenamingJoinConditionExpressionVisitor(i, &newNode->outputColumns));
 
-			std::shared_ptr<GroupedJoin> newNode= std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
+			}
+
+
+
+			
 			if(i==1)
 			{
 				if(newNode->condition!=0)

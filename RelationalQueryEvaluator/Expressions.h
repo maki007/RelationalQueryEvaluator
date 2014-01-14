@@ -25,6 +25,8 @@
 
 XERCES_CPP_NAMESPACE_USE
 
+typedef unsigned long long int ulong;
+
 enum class UnaryOperator
 {
 	NOT
@@ -99,7 +101,7 @@ public:
 	std::string name;
 	std::string tableName;
 	std::string type;
-	std::size_t input;
+	ulong input;
 	Column(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
 	void replaceChild(Expression * oldChild,Expression * newChild);

@@ -18,7 +18,7 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Hash Group
- time:204938
+ time:254320
  size:1"]
 node5[label="Columns Operations
 x = (l_extendedprice(0) * l_discount(0))

@@ -10,6 +10,7 @@ const double TimeComplexity::FILTER=1;
 const double TimeComplexity::FILTER_KEEPING_ORDER=1.3;
 const double TimeComplexity::INDEX_SEARCH = 6;
 const double TimeComplexity::AGGREGATE = 0.3;
+const double TimeComplexity::READ_HASH_TABLE = 2;
 double TimeComplexity::sort(double size)
 {
 	return SORT*size*log2(size);
@@ -36,7 +37,7 @@ double TimeComplexity::indexSearch(double size)
 }
 double TimeComplexity::hash(double size)
 {
-	return HASH*size;
+	return (HASH + READ_HASH_TABLE) * size;
 }
 double TimeComplexity::sortedGroup(double size)
 {
@@ -46,7 +47,10 @@ double TimeComplexity::aggregate(double size, ulong numberOfagregateFuntions)
 {
 	return AGGREGATE*size;
 }
-
+double TimeComplexity::hashjoin(double hashSize, double readSize)
+{
+	return HASH*hashSize + READ_HASH_TABLE*readSize;
+}
 
 void Filter::accept(PhysicalOperatorVisitor &v)
 {

@@ -19,6 +19,7 @@ public:
 	static const double FILTER_KEEPING_ORDER;
 	static const double INDEX_SEARCH;
 	static const double AGGREGATE;
+	static const double READ_HASH_TABLE;
 	static double sort(double size);
 	static double filter(double size);
 	static double filterKeppeingOrder(double size);
@@ -28,6 +29,7 @@ public:
 	static double hash(double size);
 	static double sortedGroup(double size);
 	static double aggregate(double size,ulong numberOfagregateFuntions);
+	static double hashjoin(double hashSize, double readSize);
 };
 
 class PhysicalOperator

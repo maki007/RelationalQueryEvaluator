@@ -7,13 +7,13 @@
       <parameters>
         <equal_condition>
           <equals>
-            <column name="c"/>
+            <column name="e"/>
             <column name="d"/>
           </equals>
         </equal_condition>
         <column input="first" name="a"/>
         <column input="first" name="b"/>
-        <column input="first" name="c"/>
+        <column input="first" name="e"/>
         <column input="second" name="d"/>
       </parameters>
       <input>
@@ -27,7 +27,7 @@
             </equal_condition>
             <column input="first" name="a"/>
             <column input="first" name="b"/>
-            <column input="second" name="c"/>
+            <column input="second" name="c" newName="e"/>
           </parameters>
           <input>
             <join>
