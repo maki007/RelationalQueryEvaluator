@@ -131,7 +131,7 @@ class ConditionInfo
 {
 public:
 	std::shared_ptr<Expression> condition;
-	std::vector<bool> inputs;
+	std::set<ulong> inputs;
 	ConditionType type;
 };
 
@@ -142,6 +142,7 @@ public:
 	std::set<ulong> processedPlans;
 	std::set<ulong> unProcessedPlans;
 	std::vector<std::shared_ptr<ConditionInfo>> condition;
+	std::vector <JoinColumnInfo> columns;
 	static bool Comparator (const JoinInfo& lhs, const JoinInfo&rhs)
 	{
 		return (lhs.plans[0]->timeComplexity<rhs.plans[0]->timeComplexity);

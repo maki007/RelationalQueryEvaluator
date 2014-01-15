@@ -118,6 +118,11 @@ public:
 class HashJoin : public BinaryPhysicalOperator
 {
 public:
+	std::shared_ptr<Expression> condition;
+	HashJoin(const std::shared_ptr<Expression> & condition)
+	{
+		this->condition = condition;
+	}
 	void accept(PhysicalOperatorVisitor &v);
 };
 

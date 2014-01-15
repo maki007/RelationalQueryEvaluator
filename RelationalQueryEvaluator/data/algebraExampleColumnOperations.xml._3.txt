@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Columns Operations
-a, x = (a(0) + (b(0) * 5)), c
+a, x = (a(0) + (b(0) * 5)), d = c(0)
  time:0
  size:1000"]
 node1[label="Table Scan

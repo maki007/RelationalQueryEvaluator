@@ -17,7 +17,11 @@
             </plus>
           </equals>
         </column>
-        <column name="c"></column>
+        <column name="d">
+          <equals>
+            <column name="c" />
+          </equals>
+        </column>
       </parameters>
       <input>
         <table name="users">

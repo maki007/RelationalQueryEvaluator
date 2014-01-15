@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="ColumnOperations
-a, x = (a(0) + (b(0) * 5)), c"]
+a, x = (a(0) + (b(0) * 5)), d = c(0)"]
 node2[label="Table users
  number of rows: 1000
  columns: a(int,500), b(int,500), c(int,500)

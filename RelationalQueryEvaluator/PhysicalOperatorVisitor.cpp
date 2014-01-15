@@ -197,7 +197,10 @@ void PhysicalOperatorDrawingVisitor::visit(CrossJoin * node)
 
 void PhysicalOperatorDrawingVisitor::visit(HashJoin * node)
 {
-	std::string label = "Hash Join";
+	std::string label = "Hash Join\n";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
 	generateText(label, node);
 }
 

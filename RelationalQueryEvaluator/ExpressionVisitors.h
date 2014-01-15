@@ -6,7 +6,7 @@
 #include "Algebra.h"
 #include "AlgebraVisitors.h"
 #include <vector>
-
+#include <algorithm>
 
 class ExpressionVisitorBase
 {
@@ -108,7 +108,9 @@ public:
 				{
 					std::shared_ptr<Column> leftColumn = std::dynamic_pointer_cast<Column>(expression->leftChild);
 					std::shared_ptr<Column> rightColumn = std::dynamic_pointer_cast<Column>(expression->rightChild);
-					size = double(1) / 2;
+					//todo change
+					size = 1 / std::max(columns->at(leftColumn->name).numberOfUniqueValues, columns->at(rightColumn->name).numberOfUniqueValues);
+					//, columns->at(rightColumn->name));
 				}
 				else
 				{
@@ -194,9 +196,9 @@ public:
 class JoinInfoReadingExpressionVisitor : public ExpressionVisitorBase
 {
 public:
-	std::vector<bool> * data;
+	std::set<ulong> * data;
 	ConditionType * conditionType;
-	JoinInfoReadingExpressionVisitor(std::vector<bool> * data,ConditionType * type)
+	JoinInfoReadingExpressionVisitor(std::set<ulong> * data,ConditionType * type)
 	{
 		this->data = data;
 		this->conditionType = type;
@@ -204,12 +206,13 @@ public:
 	
 	void visit(Column * expression)
 	{
-		data->at(expression->input) = true;
+		data->insert(expression->input);
 	}
 	
 	void visit(UnaryExpression * expression)
 	{
 		(*conditionType) = ConditionType::OTHER;
+		expression->child->accept(*this);
 	}
 
 	void visit(BinaryExpression * expression)
@@ -227,7 +230,8 @@ public:
 			(*conditionType) = ConditionType::OTHER;
 			break;
 		}
-
+		expression->leftChild->accept(*this);
+		expression->rightChild->accept(*this);
 		
 	}
 
