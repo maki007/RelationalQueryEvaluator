@@ -37,13 +37,64 @@ AND ((a(0) < -1),(b(0) == 10))
  size:3333"]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node8[label="Filter Keeping Order
-AND ((a(0) == 4),(b(0) < 8000))
+AND ((b(0) == 10),(a(0) < -1))
  time:4333
  size:1"]
 node9[label="Index Scan
-AND ((a(0) < -1),(b(0) == 10))
+AND ((a(0) == 4),(b(0) < 8000))
  time:10139
  size:3333"]
 node9 -> node8[headport=s, tailport=n,label="   "]
+node10[label="Filter Keeping Order
+AND ((a(0) == 4),(b(0) < 8000))
+ time:4333
+ size:1"]
+node11[label="Index Scan
+AND ((a(0) < -1),(b(0) == 10))
+ time:10139
+ size:3333"]
+node11 -> node10[headport=s, tailport=n,label="   "]
+node12[label="Filter
+AND ((a(0) == 4),(b(0) == 10))
+ time:1111111
+ size:1"]
+node13[label="Index Scan
+AND ((a(0) < -1),(b(0) < 8000))
+ time:3333472
+ size:1111111"]
+node13 -> node12[headport=s, tailport=n,label="   "]
+node14[label="Filter Keeping Order
+AND ((a(0) == 4),(b(0) == 10))
+ time:1444444
+ size:1"]
+node15[label="Index Scan
+AND ((a(0) < -1),(b(0) < 8000))
+ time:3333472
+ size:1111111"]
+node15 -> node14[headport=s, tailport=n,label="   "]
+node16[label="Filter
+AND ((a(0) == 4),(b(0) == 10),(a(0) < -1),(b(0) < 8000))
+ time:10000000
+ size:1"]
+node17[label="Table Scan
+ time:10000000
+ size:10000000"]
+node17 -> node16[headport=s, tailport=n,label="   "]
+node18[label="Filter
+AND ((a(0) == 4),(b(0) == 10),(a(0) < -1),(b(0) < 8000))
+ time:10000000
+ size:1"]
+node19[label="Sort by index Scan
+ time:30000000
+ size:10000000"]
+node19 -> node18[headport=s, tailport=n,label="   "]
+node20[label="Filter Keeping Order
+AND ((a(0) == 4),(b(0) == 10),(a(0) < -1),(b(0) < 8000))
+ time:13000000
+ size:1"]
+node21[label="Sort by index Scan
+ time:30000000
+ size:10000000"]
+node21 -> node20[headport=s, tailport=n,label="   "]
 
 }

@@ -4,7 +4,7 @@
 #include <algorithm>
 
 
-const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
+const ulong AlgebraCompiler::NUMBER_OF_PLANS = 500;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
 
@@ -444,7 +444,7 @@ std::vector<ulong> AlgebraCompiler::getAllSubsets(std::vector<ulong> & arr, ulon
 	idx.resize(k);
 	for (ulong i = 0; i < k; i++) idx[i] = i;
 	std::vector<ulong> res;
-	res.resize(arr.size());
+	res.resize(k);
 	// loop through all subsets 
 	ulong count = 0;
 	while (true)
@@ -594,7 +594,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 						ulong leftIndex = *it2;
 						ulong rightIndex = wholeSet&(~leftIndex);
 						
-						std::cout << i+1 << " " << wholeSet  << " " << leftIndex << " " << rightIndex << std::endl;
+						std::cout << i + 1 << " " << wholeSet << "==" << (leftIndex|rightIndex) << " " << leftIndex << " " << rightIndex << std::endl;
 						join(allSubsets[leftIndex], allSubsets[rightIndex], **it);
 						
 					}
