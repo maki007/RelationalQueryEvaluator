@@ -426,7 +426,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 				std::shared_ptr<GroupedJoin> join=std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
 				for(auto it=join->outputColumns.begin();it!=join->outputColumns.end();++it)
 				{
-					std::string name=it->newName;
+					std::string name = it->name;
 					for(auto it2=visitor.nodes.begin();it2!=visitor.nodes.end();++it2)
 					{
 						if((*it2)->name==name)
@@ -436,7 +436,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 					}
 					for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
 					{
-						if((it2)->newName==name)
+						if((it2)->name==name)
 						{
 							(it2)->input=it->input+numberOfChildreninFirstChild;;
 						}

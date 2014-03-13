@@ -44,21 +44,5 @@ node9[label="Table Scan
  time:10000
  size:10000"]
 node9 -> node8[headport=s, tailport=n,label="   "]
-node10[label="Filter
-AND ((a(0) == 4),(a(0) < -1))
- time:10000
- size:1"]
-node11[label="Sort by index Scan
- time:30000
- size:10000"]
-node11 -> node10[headport=s, tailport=n,label="   "]
-node12[label="Filter Keeping Order
-AND ((a(0) == 4),(a(0) < -1))
- time:13000
- size:1"]
-node13[label="Sort by index Scan
- time:30000
- size:10000"]
-node13 -> node12[headport=s, tailport=n,label="   "]
 
 }

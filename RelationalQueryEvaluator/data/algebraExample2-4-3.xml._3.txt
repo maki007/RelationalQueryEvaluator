@@ -1,1228 +1,249 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
- time:3724809
- size:111111"]
+ time:79726274277296
+ size:1000000000000"]
 node1[label="Hash Group
- time:2288888
- size:111111"]
+ time:20600000000000
+ size:1000000000000"]
 node2[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
  time:0
- size:222222"]
+ size:2000000000000"]
 node3[label="Hash Join
 (l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node4[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node5[label="Table Scan
- time:1000
- size:1000"]
-node5 -> node4[headport=s, tailport=n,label="   "]
-node4 -> node3[headport=s, tailport=n,label="   "]
-node6[label="Hash Join
+ time:12000000
+ size:2000000000000"]
+node4[label="Hash Join
 (c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node7[label="Filter
+ time:1000016
+ size:1000000"]
+node5[label="Filter
 (c_mktsegment(0) == SEGMENT)
- time:1000
+ time:150000
  size:2"]
-node8[label="Table Scan
- time:1000
- size:1000"]
-node8 -> node7[headport=s, tailport=n,label="   "]
-node7 -> node6[headport=s, tailport=n,label="   "]
-node9[label="Filter
+node6[label="Table Scan
+ time:150000
+ size:150000"]
+node6 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node7[label="Filter
 (o_orderdate(0) < today)
- time:1000
- size:333"]
+ time:1500000
+ size:500000"]
+node8[label="Table Scan
+ time:1500000
+ size:1500000"]
+node8 -> node7[headport=s, tailport=n,label="   "]
+node7 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node9[label="Filter
+(today < l_shipdate(0))
+ time:6000000
+ size:2000000"]
 node10[label="Table Scan
- time:1000
- size:1000"]
+ time:6000000
+ size:6000000"]
 node10 -> node9[headport=s, tailport=n,label="   "]
-node9 -> node6[headport=s, tailport=n,label="   "]
-node6 -> node3[headport=s, tailport=n,label="   "]
+node9 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node11[label="Sort
- time:3724809
- size:111111"]
+ time:79726274277296
+ size:1000000000000"]
 node12[label="Hash Group
- time:2288888
- size:111111"]
+ time:20600000000000
+ size:1000000000000"]
 node13[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
  time:0
- size:222222"]
+ size:2000000000000"]
 node14[label="Hash Join
 (l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node15[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node16[label="Table Scan
- time:1000
- size:1000"]
-node16 -> node15[headport=s, tailport=n,label="   "]
-node15 -> node14[headport=s, tailport=n,label="   "]
-node17[label="Hash Join
+ time:12000000
+ size:2000000000000"]
+node15[label="Hash Join
 (c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node18[label="Filter
+ time:1000016
+ size:1000000"]
+node16[label="Filter
 (c_mktsegment(0) == SEGMENT)
- time:1000
+ time:150000
  size:2"]
-node19[label="Table Scan
- time:1000
- size:1000"]
-node19 -> node18[headport=s, tailport=n,label="   "]
-node18 -> node17[headport=s, tailport=n,label="   "]
-node20[label="Filter Keeping Order
+node17[label="Sort by index Scan
+ time:450000
+ size:150000"]
+node17 -> node16[headport=s, tailport=n,label="   "]
+node16 -> node15[headport=s, tailport=n,label="   "]
+node18[label="Filter
 (o_orderdate(0) < today)
- time:1300
- size:333"]
+ time:1500000
+ size:500000"]
+node19[label="Table Scan
+ time:1500000
+ size:1500000"]
+node19 -> node18[headport=s, tailport=n,label="   "]
+node18 -> node15[headport=s, tailport=n,label="   "]
+node15 -> node14[headport=s, tailport=n,label="   "]
+node20[label="Filter
+(today < l_shipdate(0))
+ time:6000000
+ size:2000000"]
 node21[label="Table Scan
- time:1000
- size:1000"]
+ time:6000000
+ size:6000000"]
 node21 -> node20[headport=s, tailport=n,label="   "]
-node20 -> node17[headport=s, tailport=n,label="   "]
-node17 -> node14[headport=s, tailport=n,label="   "]
+node20 -> node14[headport=s, tailport=n,label="   "]
 node14 -> node13[headport=s, tailport=n,label="   "]
 node13 -> node12[headport=s, tailport=n,label="   "]
 node12 -> node11[headport=s, tailport=n,label="   "]
 node22[label="Sort
- time:3724809
- size:111111"]
+ time:79726274277296
+ size:1000000000000"]
 node23[label="Hash Group
- time:2288888
- size:111111"]
+ time:20600000000000
+ size:1000000000000"]
 node24[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
  time:0
- size:222222"]
+ size:2000000000000"]
 node25[label="Hash Join
 (l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node26[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node27[label="Table Scan
- time:1000
- size:1000"]
-node27 -> node26[headport=s, tailport=n,label="   "]
-node26 -> node25[headport=s, tailport=n,label="   "]
-node28[label="Hash Join
+ time:12000000
+ size:2000000000000"]
+node26[label="Hash Join
 (c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node29[label="Filter
+ time:1000016
+ size:1000000"]
+node27[label="Filter Keeping Order
 (c_mktsegment(0) == SEGMENT)
- time:1000
+ time:195000
  size:2"]
-node30[label="Sort by index Scan
- time:3000
- size:1000"]
-node30 -> node29[headport=s, tailport=n,label="   "]
-node29 -> node28[headport=s, tailport=n,label="   "]
-node31[label="Filter
+node28[label="Sort by index Scan
+ time:450000
+ size:150000"]
+node28 -> node27[headport=s, tailport=n,label="   "]
+node27 -> node26[headport=s, tailport=n,label="   "]
+node29[label="Filter
 (o_orderdate(0) < today)
- time:1000
- size:333"]
+ time:1500000
+ size:500000"]
+node30[label="Table Scan
+ time:1500000
+ size:1500000"]
+node30 -> node29[headport=s, tailport=n,label="   "]
+node29 -> node26[headport=s, tailport=n,label="   "]
+node26 -> node25[headport=s, tailport=n,label="   "]
+node31[label="Filter
+(today < l_shipdate(0))
+ time:6000000
+ size:2000000"]
 node32[label="Table Scan
- time:1000
- size:1000"]
+ time:6000000
+ size:6000000"]
 node32 -> node31[headport=s, tailport=n,label="   "]
-node31 -> node28[headport=s, tailport=n,label="   "]
-node28 -> node25[headport=s, tailport=n,label="   "]
+node31 -> node25[headport=s, tailport=n,label="   "]
 node25 -> node24[headport=s, tailport=n,label="   "]
 node24 -> node23[headport=s, tailport=n,label="   "]
 node23 -> node22[headport=s, tailport=n,label="   "]
 node33[label="Sort
- time:3724809
- size:111111"]
+ time:79726274277296
+ size:1000000000000"]
 node34[label="Hash Group
- time:2288888
- size:111111"]
+ time:20600000000000
+ size:1000000000000"]
 node35[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
  time:0
- size:222222"]
+ size:2000000000000"]
 node36[label="Hash Join
 (l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node37[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node38[label="Table Scan
- time:1000
- size:1000"]
-node38 -> node37[headport=s, tailport=n,label="   "]
-node37 -> node36[headport=s, tailport=n,label="   "]
-node39[label="Hash Join
+ time:12000000
+ size:2000000000000"]
+node37[label="Hash Join
 (c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node40[label="Filter Keeping Order
+ time:1000016
+ size:1000000"]
+node38[label="Filter
 (c_mktsegment(0) == SEGMENT)
- time:1300
+ time:150000
  size:2"]
-node41[label="Sort by index Scan
- time:3000
- size:1000"]
-node41 -> node40[headport=s, tailport=n,label="   "]
-node40 -> node39[headport=s, tailport=n,label="   "]
-node42[label="Filter
+node39[label="Table Scan
+ time:150000
+ size:150000"]
+node39 -> node38[headport=s, tailport=n,label="   "]
+node38 -> node37[headport=s, tailport=n,label="   "]
+node40[label="Filter Keeping Order
 (o_orderdate(0) < today)
- time:1000
- size:333"]
+ time:1950000
+ size:500000"]
+node41[label="Table Scan
+ time:1500000
+ size:1500000"]
+node41 -> node40[headport=s, tailport=n,label="   "]
+node40 -> node37[headport=s, tailport=n,label="   "]
+node37 -> node36[headport=s, tailport=n,label="   "]
+node42[label="Filter
+(today < l_shipdate(0))
+ time:6000000
+ size:2000000"]
 node43[label="Table Scan
- time:1000
- size:1000"]
+ time:6000000
+ size:6000000"]
 node43 -> node42[headport=s, tailport=n,label="   "]
-node42 -> node39[headport=s, tailport=n,label="   "]
-node39 -> node36[headport=s, tailport=n,label="   "]
+node42 -> node36[headport=s, tailport=n,label="   "]
 node36 -> node35[headport=s, tailport=n,label="   "]
 node35 -> node34[headport=s, tailport=n,label="   "]
 node34 -> node33[headport=s, tailport=n,label="   "]
 node44[label="Sort
- time:3724809
- size:111111"]
+ time:79726274277296
+ size:1000000000000"]
 node45[label="Hash Group
- time:2288888
- size:111111"]
+ time:20600000000000
+ size:1000000000000"]
 node46[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
  time:0
- size:222222"]
+ size:2000000000000"]
 node47[label="Hash Join
 (l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node48[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node49[label="Table Scan
- time:1000
- size:1000"]
-node49 -> node48[headport=s, tailport=n,label="   "]
-node48 -> node47[headport=s, tailport=n,label="   "]
-node50[label="Hash Join
+ time:12000000
+ size:2000000000000"]
+node48[label="Hash Join
 (c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node51[label="Filter
+ time:1000016
+ size:1000000"]
+node49[label="Filter
 (c_mktsegment(0) == SEGMENT)
- time:1000
+ time:150000
  size:2"]
-node52[label="Sort by index Scan
- time:3000
- size:1000"]
-node52 -> node51[headport=s, tailport=n,label="   "]
-node51 -> node50[headport=s, tailport=n,label="   "]
-node53[label="Filter Keeping Order
+node50[label="Sort by index Scan
+ time:450000
+ size:150000"]
+node50 -> node49[headport=s, tailport=n,label="   "]
+node49 -> node48[headport=s, tailport=n,label="   "]
+node51[label="Filter Keeping Order
 (o_orderdate(0) < today)
- time:1300
- size:333"]
+ time:1950000
+ size:500000"]
+node52[label="Table Scan
+ time:1500000
+ size:1500000"]
+node52 -> node51[headport=s, tailport=n,label="   "]
+node51 -> node48[headport=s, tailport=n,label="   "]
+node48 -> node47[headport=s, tailport=n,label="   "]
+node53[label="Filter
+(today < l_shipdate(0))
+ time:6000000
+ size:2000000"]
 node54[label="Table Scan
- time:1000
- size:1000"]
+ time:6000000
+ size:6000000"]
 node54 -> node53[headport=s, tailport=n,label="   "]
-node53 -> node50[headport=s, tailport=n,label="   "]
-node50 -> node47[headport=s, tailport=n,label="   "]
+node53 -> node47[headport=s, tailport=n,label="   "]
 node47 -> node46[headport=s, tailport=n,label="   "]
 node46 -> node45[headport=s, tailport=n,label="   "]
 node45 -> node44[headport=s, tailport=n,label="   "]
-node55[label="Sort
- time:3724809
- size:111111"]
-node56[label="Hash Group
- time:2288888
- size:111111"]
-node57[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node58[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node59[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node60[label="Table Scan
- time:1000
- size:1000"]
-node60 -> node59[headport=s, tailport=n,label="   "]
-node59 -> node58[headport=s, tailport=n,label="   "]
-node61[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node62[label="Filter Keeping Order
-(c_mktsegment(0) == SEGMENT)
- time:1300
- size:2"]
-node63[label="Sort by index Scan
- time:3000
- size:1000"]
-node63 -> node62[headport=s, tailport=n,label="   "]
-node62 -> node61[headport=s, tailport=n,label="   "]
-node64[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node65[label="Table Scan
- time:1000
- size:1000"]
-node65 -> node64[headport=s, tailport=n,label="   "]
-node64 -> node61[headport=s, tailport=n,label="   "]
-node61 -> node58[headport=s, tailport=n,label="   "]
-node58 -> node57[headport=s, tailport=n,label="   "]
-node57 -> node56[headport=s, tailport=n,label="   "]
-node56 -> node55[headport=s, tailport=n,label="   "]
-node66[label="Sort
- time:3724809
- size:111111"]
-node67[label="Hash Group
- time:2288888
- size:111111"]
-node68[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node69[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node70[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node71[label="Table Scan
- time:1000
- size:1000"]
-node71 -> node70[headport=s, tailport=n,label="   "]
-node70 -> node69[headport=s, tailport=n,label="   "]
-node72[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node73[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node74[label="Table Scan
- time:1000
- size:1000"]
-node74 -> node73[headport=s, tailport=n,label="   "]
-node73 -> node72[headport=s, tailport=n,label="   "]
-node75[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node76[label="Table Scan
- time:1000
- size:1000"]
-node76 -> node75[headport=s, tailport=n,label="   "]
-node75 -> node72[headport=s, tailport=n,label="   "]
-node72 -> node69[headport=s, tailport=n,label="   "]
-node69 -> node68[headport=s, tailport=n,label="   "]
-node68 -> node67[headport=s, tailport=n,label="   "]
-node67 -> node66[headport=s, tailport=n,label="   "]
-node77[label="Sort
- time:3724809
- size:111111"]
-node78[label="Hash Group
- time:2288888
- size:111111"]
-node79[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node80[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node81[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node82[label="Table Scan
- time:1000
- size:1000"]
-node82 -> node81[headport=s, tailport=n,label="   "]
-node81 -> node80[headport=s, tailport=n,label="   "]
-node83[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node84[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node85[label="Table Scan
- time:1000
- size:1000"]
-node85 -> node84[headport=s, tailport=n,label="   "]
-node84 -> node83[headport=s, tailport=n,label="   "]
-node86[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node87[label="Table Scan
- time:1000
- size:1000"]
-node87 -> node86[headport=s, tailport=n,label="   "]
-node86 -> node83[headport=s, tailport=n,label="   "]
-node83 -> node80[headport=s, tailport=n,label="   "]
-node80 -> node79[headport=s, tailport=n,label="   "]
-node79 -> node78[headport=s, tailport=n,label="   "]
-node78 -> node77[headport=s, tailport=n,label="   "]
-node88[label="Sort
- time:3724809
- size:111111"]
-node89[label="Hash Group
- time:2288888
- size:111111"]
-node90[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node91[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node92[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node93[label="Sort by index Scan
- time:3000
- size:1000"]
-node93 -> node92[headport=s, tailport=n,label="   "]
-node92 -> node91[headport=s, tailport=n,label="   "]
-node94[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node95[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node96[label="Table Scan
- time:1000
- size:1000"]
-node96 -> node95[headport=s, tailport=n,label="   "]
-node95 -> node94[headport=s, tailport=n,label="   "]
-node97[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node98[label="Table Scan
- time:1000
- size:1000"]
-node98 -> node97[headport=s, tailport=n,label="   "]
-node97 -> node94[headport=s, tailport=n,label="   "]
-node94 -> node91[headport=s, tailport=n,label="   "]
-node91 -> node90[headport=s, tailport=n,label="   "]
-node90 -> node89[headport=s, tailport=n,label="   "]
-node89 -> node88[headport=s, tailport=n,label="   "]
-node99[label="Sort
- time:3724809
- size:111111"]
-node100[label="Hash Group
- time:2288888
- size:111111"]
-node101[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node102[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node103[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node104[label="Sort by index Scan
- time:3000
- size:1000"]
-node104 -> node103[headport=s, tailport=n,label="   "]
-node103 -> node102[headport=s, tailport=n,label="   "]
-node105[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node106[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node107[label="Table Scan
- time:1000
- size:1000"]
-node107 -> node106[headport=s, tailport=n,label="   "]
-node106 -> node105[headport=s, tailport=n,label="   "]
-node108[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node109[label="Table Scan
- time:1000
- size:1000"]
-node109 -> node108[headport=s, tailport=n,label="   "]
-node108 -> node105[headport=s, tailport=n,label="   "]
-node105 -> node102[headport=s, tailport=n,label="   "]
-node102 -> node101[headport=s, tailport=n,label="   "]
-node101 -> node100[headport=s, tailport=n,label="   "]
-node100 -> node99[headport=s, tailport=n,label="   "]
-node110[label="Sort
- time:3724809
- size:111111"]
-node111[label="Hash Group
- time:2288888
- size:111111"]
-node112[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node113[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node114[label="Filter Keeping Order
-(c_mktsegment(0) == SEGMENT)
- time:1300
- size:2"]
-node115[label="Sort by index Scan
- time:3000
- size:1000"]
-node115 -> node114[headport=s, tailport=n,label="   "]
-node114 -> node113[headport=s, tailport=n,label="   "]
-node116[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node117[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node118[label="Table Scan
- time:1000
- size:1000"]
-node118 -> node117[headport=s, tailport=n,label="   "]
-node117 -> node116[headport=s, tailport=n,label="   "]
-node119[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node120[label="Table Scan
- time:1000
- size:1000"]
-node120 -> node119[headport=s, tailport=n,label="   "]
-node119 -> node116[headport=s, tailport=n,label="   "]
-node116 -> node113[headport=s, tailport=n,label="   "]
-node113 -> node112[headport=s, tailport=n,label="   "]
-node112 -> node111[headport=s, tailport=n,label="   "]
-node111 -> node110[headport=s, tailport=n,label="   "]
-node121[label="Sort
- time:3724809
- size:111111"]
-node122[label="Hash Group
- time:2288888
- size:111111"]
-node123[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node124[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node125[label="Filter Keeping Order
-(c_mktsegment(0) == SEGMENT)
- time:1300
- size:2"]
-node126[label="Sort by index Scan
- time:3000
- size:1000"]
-node126 -> node125[headport=s, tailport=n,label="   "]
-node125 -> node124[headport=s, tailport=n,label="   "]
-node127[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node128[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node129[label="Table Scan
- time:1000
- size:1000"]
-node129 -> node128[headport=s, tailport=n,label="   "]
-node128 -> node127[headport=s, tailport=n,label="   "]
-node130[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node131[label="Table Scan
- time:1000
- size:1000"]
-node131 -> node130[headport=s, tailport=n,label="   "]
-node130 -> node127[headport=s, tailport=n,label="   "]
-node127 -> node124[headport=s, tailport=n,label="   "]
-node124 -> node123[headport=s, tailport=n,label="   "]
-node123 -> node122[headport=s, tailport=n,label="   "]
-node122 -> node121[headport=s, tailport=n,label="   "]
-node132[label="Sort
- time:3724809
- size:111111"]
-node133[label="Sorted Group
- time:288888
- size:111111"]
-node134[label="Sort
- time:7894063
- size:222222"]
-node135[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node136[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node137[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node138[label="Table Scan
- time:1000
- size:1000"]
-node138 -> node137[headport=s, tailport=n,label="   "]
-node137 -> node136[headport=s, tailport=n,label="   "]
-node139[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node140[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node141[label="Table Scan
- time:1000
- size:1000"]
-node141 -> node140[headport=s, tailport=n,label="   "]
-node140 -> node139[headport=s, tailport=n,label="   "]
-node142[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node143[label="Table Scan
- time:1000
- size:1000"]
-node143 -> node142[headport=s, tailport=n,label="   "]
-node142 -> node139[headport=s, tailport=n,label="   "]
-node139 -> node136[headport=s, tailport=n,label="   "]
-node136 -> node135[headport=s, tailport=n,label="   "]
-node135 -> node134[headport=s, tailport=n,label="   "]
-node134 -> node133[headport=s, tailport=n,label="   "]
-node133 -> node132[headport=s, tailport=n,label="   "]
-node144[label="Sort
- time:3724809
- size:111111"]
-node145[label="Sorted Group
- time:288888
- size:111111"]
-node146[label="Sort
- time:7894063
- size:222222"]
-node147[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node148[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node149[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node150[label="Table Scan
- time:1000
- size:1000"]
-node150 -> node149[headport=s, tailport=n,label="   "]
-node149 -> node148[headport=s, tailport=n,label="   "]
-node151[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node152[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node153[label="Table Scan
- time:1000
- size:1000"]
-node153 -> node152[headport=s, tailport=n,label="   "]
-node152 -> node151[headport=s, tailport=n,label="   "]
-node154[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node155[label="Table Scan
- time:1000
- size:1000"]
-node155 -> node154[headport=s, tailport=n,label="   "]
-node154 -> node151[headport=s, tailport=n,label="   "]
-node151 -> node148[headport=s, tailport=n,label="   "]
-node148 -> node147[headport=s, tailport=n,label="   "]
-node147 -> node146[headport=s, tailport=n,label="   "]
-node146 -> node145[headport=s, tailport=n,label="   "]
-node145 -> node144[headport=s, tailport=n,label="   "]
-node156[label="Sort
- time:3724809
- size:111111"]
-node157[label="Sorted Group
- time:288888
- size:111111"]
-node158[label="Sort
- time:7894063
- size:222222"]
-node159[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node160[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node161[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node162[label="Table Scan
- time:1000
- size:1000"]
-node162 -> node161[headport=s, tailport=n,label="   "]
-node161 -> node160[headport=s, tailport=n,label="   "]
-node163[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node164[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node165[label="Sort by index Scan
- time:3000
- size:1000"]
-node165 -> node164[headport=s, tailport=n,label="   "]
-node164 -> node163[headport=s, tailport=n,label="   "]
-node166[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node167[label="Table Scan
- time:1000
- size:1000"]
-node167 -> node166[headport=s, tailport=n,label="   "]
-node166 -> node163[headport=s, tailport=n,label="   "]
-node163 -> node160[headport=s, tailport=n,label="   "]
-node160 -> node159[headport=s, tailport=n,label="   "]
-node159 -> node158[headport=s, tailport=n,label="   "]
-node158 -> node157[headport=s, tailport=n,label="   "]
-node157 -> node156[headport=s, tailport=n,label="   "]
-node168[label="Sort
- time:3724809
- size:111111"]
-node169[label="Sorted Group
- time:288888
- size:111111"]
-node170[label="Sort
- time:7894063
- size:222222"]
-node171[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node172[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node173[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node174[label="Table Scan
- time:1000
- size:1000"]
-node174 -> node173[headport=s, tailport=n,label="   "]
-node173 -> node172[headport=s, tailport=n,label="   "]
-node175[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node176[label="Filter Keeping Order
-(c_mktsegment(0) == SEGMENT)
- time:1300
- size:2"]
-node177[label="Sort by index Scan
- time:3000
- size:1000"]
-node177 -> node176[headport=s, tailport=n,label="   "]
-node176 -> node175[headport=s, tailport=n,label="   "]
-node178[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node179[label="Table Scan
- time:1000
- size:1000"]
-node179 -> node178[headport=s, tailport=n,label="   "]
-node178 -> node175[headport=s, tailport=n,label="   "]
-node175 -> node172[headport=s, tailport=n,label="   "]
-node172 -> node171[headport=s, tailport=n,label="   "]
-node171 -> node170[headport=s, tailport=n,label="   "]
-node170 -> node169[headport=s, tailport=n,label="   "]
-node169 -> node168[headport=s, tailport=n,label="   "]
-node180[label="Sort
- time:3724809
- size:111111"]
-node181[label="Sorted Group
- time:288888
- size:111111"]
-node182[label="Sort
- time:7894063
- size:222222"]
-node183[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node184[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node185[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node186[label="Table Scan
- time:1000
- size:1000"]
-node186 -> node185[headport=s, tailport=n,label="   "]
-node185 -> node184[headport=s, tailport=n,label="   "]
-node187[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node188[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node189[label="Sort by index Scan
- time:3000
- size:1000"]
-node189 -> node188[headport=s, tailport=n,label="   "]
-node188 -> node187[headport=s, tailport=n,label="   "]
-node190[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node191[label="Table Scan
- time:1000
- size:1000"]
-node191 -> node190[headport=s, tailport=n,label="   "]
-node190 -> node187[headport=s, tailport=n,label="   "]
-node187 -> node184[headport=s, tailport=n,label="   "]
-node184 -> node183[headport=s, tailport=n,label="   "]
-node183 -> node182[headport=s, tailport=n,label="   "]
-node182 -> node181[headport=s, tailport=n,label="   "]
-node181 -> node180[headport=s, tailport=n,label="   "]
-node192[label="Sort
- time:3724809
- size:111111"]
-node193[label="Sorted Group
- time:288888
- size:111111"]
-node194[label="Sort
- time:7894063
- size:222222"]
-node195[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node196[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:4000
- size:222222"]
-node197[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node198[label="Table Scan
- time:1000
- size:1000"]
-node198 -> node197[headport=s, tailport=n,label="   "]
-node197 -> node196[headport=s, tailport=n,label="   "]
-node199[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:682
- size:666"]
-node200[label="Filter Keeping Order
-(c_mktsegment(0) == SEGMENT)
- time:1300
- size:2"]
-node201[label="Sort by index Scan
- time:3000
- size:1000"]
-node201 -> node200[headport=s, tailport=n,label="   "]
-node200 -> node199[headport=s, tailport=n,label="   "]
-node202[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node203[label="Table Scan
- time:1000
- size:1000"]
-node203 -> node202[headport=s, tailport=n,label="   "]
-node202 -> node199[headport=s, tailport=n,label="   "]
-node199 -> node196[headport=s, tailport=n,label="   "]
-node196 -> node195[headport=s, tailport=n,label="   "]
-node195 -> node194[headport=s, tailport=n,label="   "]
-node194 -> node193[headport=s, tailport=n,label="   "]
-node193 -> node192[headport=s, tailport=n,label="   "]
-node204[label="Sort
- time:3724809
- size:111111"]
-node205[label="Sorted Group
- time:288888
- size:111111"]
-node206[label="Sort
- time:7894063
- size:222222"]
-node207[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node208[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node209[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node210[label="Table Scan
- time:1000
- size:1000"]
-node210 -> node209[headport=s, tailport=n,label="   "]
-node209 -> node208[headport=s, tailport=n,label="   "]
-node211[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node212[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node213[label="Table Scan
- time:1000
- size:1000"]
-node213 -> node212[headport=s, tailport=n,label="   "]
-node212 -> node211[headport=s, tailport=n,label="   "]
-node214[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node215[label="Table Scan
- time:1000
- size:1000"]
-node215 -> node214[headport=s, tailport=n,label="   "]
-node214 -> node211[headport=s, tailport=n,label="   "]
-node211 -> node208[headport=s, tailport=n,label="   "]
-node208 -> node207[headport=s, tailport=n,label="   "]
-node207 -> node206[headport=s, tailport=n,label="   "]
-node206 -> node205[headport=s, tailport=n,label="   "]
-node205 -> node204[headport=s, tailport=n,label="   "]
-node216[label="Sort
- time:3724809
- size:111111"]
-node217[label="Sorted Group
- time:288888
- size:111111"]
-node218[label="Sort
- time:7894063
- size:222222"]
-node219[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node220[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node221[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node222[label="Table Scan
- time:1000
- size:1000"]
-node222 -> node221[headport=s, tailport=n,label="   "]
-node221 -> node220[headport=s, tailport=n,label="   "]
-node223[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node224[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node225[label="Table Scan
- time:1000
- size:1000"]
-node225 -> node224[headport=s, tailport=n,label="   "]
-node224 -> node223[headport=s, tailport=n,label="   "]
-node226[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node227[label="Table Scan
- time:1000
- size:1000"]
-node227 -> node226[headport=s, tailport=n,label="   "]
-node226 -> node223[headport=s, tailport=n,label="   "]
-node223 -> node220[headport=s, tailport=n,label="   "]
-node220 -> node219[headport=s, tailport=n,label="   "]
-node219 -> node218[headport=s, tailport=n,label="   "]
-node218 -> node217[headport=s, tailport=n,label="   "]
-node217 -> node216[headport=s, tailport=n,label="   "]
-node228[label="Sort
- time:3724809
- size:111111"]
-node229[label="Sorted Group
- time:288888
- size:111111"]
-node230[label="Sort
- time:7894063
- size:222222"]
-node231[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node232[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node233[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node234[label="Sort by index Scan
- time:3000
- size:1000"]
-node234 -> node233[headport=s, tailport=n,label="   "]
-node233 -> node232[headport=s, tailport=n,label="   "]
-node235[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node236[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node237[label="Table Scan
- time:1000
- size:1000"]
-node237 -> node236[headport=s, tailport=n,label="   "]
-node236 -> node235[headport=s, tailport=n,label="   "]
-node238[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node239[label="Table Scan
- time:1000
- size:1000"]
-node239 -> node238[headport=s, tailport=n,label="   "]
-node238 -> node235[headport=s, tailport=n,label="   "]
-node235 -> node232[headport=s, tailport=n,label="   "]
-node232 -> node231[headport=s, tailport=n,label="   "]
-node231 -> node230[headport=s, tailport=n,label="   "]
-node230 -> node229[headport=s, tailport=n,label="   "]
-node229 -> node228[headport=s, tailport=n,label="   "]
-node240[label="Sort
- time:3724809
- size:111111"]
-node241[label="Sorted Group
- time:288888
- size:111111"]
-node242[label="Sort
- time:7894063
- size:222222"]
-node243[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node244[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node245[label="Filter Keeping Order
-(c_mktsegment(0) == SEGMENT)
- time:1300
- size:2"]
-node246[label="Sort by index Scan
- time:3000
- size:1000"]
-node246 -> node245[headport=s, tailport=n,label="   "]
-node245 -> node244[headport=s, tailport=n,label="   "]
-node247[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node248[label="Filter
-(o_orderdate(0) < today)
- time:1000
- size:333"]
-node249[label="Table Scan
- time:1000
- size:1000"]
-node249 -> node248[headport=s, tailport=n,label="   "]
-node248 -> node247[headport=s, tailport=n,label="   "]
-node250[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node251[label="Table Scan
- time:1000
- size:1000"]
-node251 -> node250[headport=s, tailport=n,label="   "]
-node250 -> node247[headport=s, tailport=n,label="   "]
-node247 -> node244[headport=s, tailport=n,label="   "]
-node244 -> node243[headport=s, tailport=n,label="   "]
-node243 -> node242[headport=s, tailport=n,label="   "]
-node242 -> node241[headport=s, tailport=n,label="   "]
-node241 -> node240[headport=s, tailport=n,label="   "]
-node252[label="Sort
- time:3724809
- size:111111"]
-node253[label="Sorted Group
- time:288888
- size:111111"]
-node254[label="Sort
- time:7894063
- size:222222"]
-node255[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node256[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node257[label="Filter
-(c_mktsegment(0) == SEGMENT)
- time:1000
- size:2"]
-node258[label="Sort by index Scan
- time:3000
- size:1000"]
-node258 -> node257[headport=s, tailport=n,label="   "]
-node257 -> node256[headport=s, tailport=n,label="   "]
-node259[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node260[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node261[label="Table Scan
- time:1000
- size:1000"]
-node261 -> node260[headport=s, tailport=n,label="   "]
-node260 -> node259[headport=s, tailport=n,label="   "]
-node262[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node263[label="Table Scan
- time:1000
- size:1000"]
-node263 -> node262[headport=s, tailport=n,label="   "]
-node262 -> node259[headport=s, tailport=n,label="   "]
-node259 -> node256[headport=s, tailport=n,label="   "]
-node256 -> node255[headport=s, tailport=n,label="   "]
-node255 -> node254[headport=s, tailport=n,label="   "]
-node254 -> node253[headport=s, tailport=n,label="   "]
-node253 -> node252[headport=s, tailport=n,label="   "]
-node264[label="Sort
- time:3724809
- size:111111"]
-node265[label="Sorted Group
- time:288888
- size:111111"]
-node266[label="Sort
- time:7894063
- size:222222"]
-node267[label="Columns Operations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))
- time:0
- size:222222"]
-node268[label="Hash Join
-(c_custkey(0) == o_custkey(2))
- time:222238
- size:222222"]
-node269[label="Filter Keeping Order
-(c_mktsegment(0) == SEGMENT)
- time:1300
- size:2"]
-node270[label="Sort by index Scan
- time:3000
- size:1000"]
-node270 -> node269[headport=s, tailport=n,label="   "]
-node269 -> node268[headport=s, tailport=n,label="   "]
-node271[label="Hash Join
-(l_orderkey(1) == o_orderkey(2))
- time:3333
- size:111111"]
-node272[label="Filter Keeping Order
-(o_orderdate(0) < today)
- time:1300
- size:333"]
-node273[label="Table Scan
- time:1000
- size:1000"]
-node273 -> node272[headport=s, tailport=n,label="   "]
-node272 -> node271[headport=s, tailport=n,label="   "]
-node274[label="Filter
-(today < l_shipdate(0))
- time:1000
- size:333"]
-node275[label="Table Scan
- time:1000
- size:1000"]
-node275 -> node274[headport=s, tailport=n,label="   "]
-node274 -> node271[headport=s, tailport=n,label="   "]
-node271 -> node268[headport=s, tailport=n,label="   "]
-node268 -> node267[headport=s, tailport=n,label="   "]
-node267 -> node266[headport=s, tailport=n,label="   "]
-node266 -> node265[headport=s, tailport=n,label="   "]
-node265 -> node264[headport=s, tailport=n,label="   "]
 
 }

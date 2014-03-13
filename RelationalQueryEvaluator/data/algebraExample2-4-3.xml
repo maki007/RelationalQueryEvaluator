@@ -56,8 +56,8 @@
                     </condition>
                   </parameters>
                   <input>
-                    <table name="customer">
-                      <column name="c_custkey" type="int" />
+                    <table name="customer" numberOfRows="150000">
+                      <column name="c_custkey" type="int" number_of_unique_values="150000" />
                       <column name="c_mktsegment" type="int"/>
                       <index type="unclustered">
                         <column name="c_mktsegment"/>
@@ -91,8 +91,8 @@
                         </condition>
                       </parameters>
                       <input>
-                        <table name="lineitem">
-                          <column name="l_orderkey" type="int"></column>
+                        <table name="lineitem" numberOfRows="6000000">
+                          <column name="l_orderkey" type="int" number_of_unique_values="6000000"></column>
                           <column name="l_shipdate" type="int"/>
                           <column name="l_extendedprice" type="int"/>
                           <column name="l_discount" type="int"/>
@@ -109,10 +109,10 @@
                         </condition>
                       </parameters>
                       <input>
-                        <table name="orders">
-                          <column name="o_orderdate" type="int"/>
+                        <table name="orders" numberOfRows="1500000">
+                          <column name="o_orderdate" type="int" number_of_unique_values="1500000" />
                           <column name="o_shippriority" type="int"/>
-                          <column name="o_orderkey" type="int"/>
+                          <column name="o_orderkey" type="int" number_of_unique_values="150000"/>
                           <index type="clustered">
                             <column name="o_orderdate"/>
                             <column name="o_shippriority"/>
