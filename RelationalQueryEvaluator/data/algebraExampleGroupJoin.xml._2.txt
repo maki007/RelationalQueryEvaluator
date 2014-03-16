@@ -1,8 +1,9 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Sort"]
+node0[label="Sort
+e_3 asc"]
 node1[label="GroupedJoin
-AND ((c_3(2) == d_4(3)),(a_1(0) == c_3(2)),(a_1(0) == b_2(1)))"]
+AND ((c_3(0) == d_4(3)),(a_1(0) == c_3(2)),(a_1(0) == b_2(1)))"]
 node2[label="Table a
  number of rows: 1000
  columns: a_1(int,500)

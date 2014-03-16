@@ -374,11 +374,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 			if (groupedOperator->condition != 0)
 			{
 				groupedOperator->condition->accept(RenamingJoinConditionExpressionVisitor(i, &newNode->outputColumns));
-
 			}
-
-
-
 			
 			if(i==1)
 			{
@@ -433,17 +429,17 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 				std::shared_ptr<GroupedJoin> join=std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
 				for(auto it=join->outputColumns.begin();it!=join->outputColumns.end();++it)
 				{
-					std::string name = it->column.name;
+					int columnId = it->column.id;
 					for(auto it2=visitor.nodes.begin();it2!=visitor.nodes.end();++it2)
 					{
-						if ((*it2)->column.name == name)
+						if ((*it2)->column.id == columnId)
 						{
 							(*it2)->input=it->input+numberOfChildreninFirstChild;
 						}
 					}
 					for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
 					{
-						if ((it2)->column.name == name)
+						if ((it2)->column.id == columnId)
 						{
 							(it2)->input=it->input+numberOfChildreninFirstChild;;
 						}
