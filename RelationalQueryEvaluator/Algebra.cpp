@@ -157,7 +157,7 @@ Table::Table(DOMElement * element)
 		{
 			ColumnInfo info;
 			info.type=XmlUtils::ReadAttribute(*it,"type");
-			info.name=XmlUtils::ReadAttribute(*it,"name");
+			info.column = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
 			if(XmlUtils::ReadAttribute(*it,"number_of_unique_values")=="")
 			{
 				info.numberOfUniqueValues=double(numberOfRows)/2;
@@ -183,7 +183,7 @@ Table::Table(DOMElement * element)
 			std::vector<DOMElement *> columnsElement=XmlUtils::GetChildElements(*it);
 			for(auto it2=columnsElement.begin();it2!=columnsElement.end();++it2)
 			{
-				index.columns.push_back(std::string(XmlUtils::ReadAttribute(*it2,"name")));
+				index.columns.push_back(ColumnIdentifier(std::string(XmlUtils::ReadAttribute(*it2, "name"))));
 			}
 			indices.push_back(index);
 		}
@@ -206,7 +206,7 @@ Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 		{
 			SortParameter parameter;
 			DOMElement * parameterElement=(DOMElement *)node;
-			parameter.column=XmlUtils::ReadAttribute(parameterElement,"column");
+			parameter.column= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"column"));
 			std::string direction=XmlUtils::ReadAttribute(parameterElement,"direction");
 			if(direction=="asc")
 			{
@@ -248,24 +248,24 @@ Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 				function.functionName=elementName;
 				if(elementName == "max")
 				{
-					function.parameter=XmlUtils::ReadAttribute(parameterElement,"argument");
+					function.parameter= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"argument"));
 					function.function=AgregateFunction::MAX;
 				}
 				if(elementName == "min")
 				{
-					function.parameter=XmlUtils::ReadAttribute(parameterElement,"argument");
+					function.parameter = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "argument"));
 					function.function=AgregateFunction::MIN;
 				}
 				if(elementName == "sum")
 				{
-					function.parameter=XmlUtils::ReadAttribute(parameterElement,"argument");
+					function.parameter = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "argument"));
 					function.function=AgregateFunction::SUM;
 				}
 				if(elementName == "count")
 				{
 					function.function=AgregateFunction::COUNT;
 				}
-				function.output=XmlUtils::ReadAttribute(parameterElement,"output");
+				function.output= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"output"));
 				agregateFunctions.push_back(function);
 			}
 		}
@@ -284,7 +284,7 @@ ColumnOperations::ColumnOperations(DOMElement * element):UnaryAlgebraNodeBase(el
 	for(auto it=columns.begin();it!=columns.end();++it)
 	{
 		ColumnOperation op;
-		op.result=XmlUtils::ReadAttribute(*it,"name");
+		op.result = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
 		if(XmlUtils::GetFirstChildElement(*it)!=0)
 		{
 			op.expression=std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(XmlUtils::GetFirstChildElement(*it))));
@@ -341,11 +341,11 @@ void AlgebraNodeBase::constructJoinParameters(DOMElement * element,std::shared_p
 	for(auto it=columns.begin()+start;it!=columns.end();++it)
 	{
 		JoinColumnInfo info;
-		info.newName=XmlUtils::ReadAttribute(*it,"newName");
-		info.name=XmlUtils::ReadAttribute(*it,"name");
-		if(info.newName=="")
+		info.newColumn=ColumnIdentifier(XmlUtils::ReadAttribute(*it,"newName"));
+		info.column = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
+		if (info.newColumn.name== "")
 		{
-			info.newName=info.name;
+			info.newColumn = info.column;
 		}
 		if(XmlUtils::ReadAttribute(*it,"input")=="second")
 		{

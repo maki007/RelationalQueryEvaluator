@@ -109,14 +109,14 @@ public:
 					std::shared_ptr<Column> leftColumn = std::dynamic_pointer_cast<Column>(expression->leftChild);
 					std::shared_ptr<Column> rightColumn = std::dynamic_pointer_cast<Column>(expression->rightChild);
 					//todo change
-					size = 1 / std::max(columns->at(leftColumn->name).numberOfUniqueValues, columns->at(rightColumn->name).numberOfUniqueValues);
+					size = 1 / std::max(columns->at(leftColumn->column.name).numberOfUniqueValues, columns->at(rightColumn->column.name).numberOfUniqueValues);
 					//, columns->at(rightColumn->name));
 				}
 				else
 				{
 					std::shared_ptr<Constant> constant = std::dynamic_pointer_cast<Constant>(expression->rightChild);
 					std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(expression->leftChild);
-					size = 1/columns->at(column->name).numberOfUniqueValues;
+					size = 1 / columns->at(column->column.name).numberOfUniqueValues;
 				}
 			
 			}
@@ -126,7 +126,7 @@ public:
 				{
 					std::shared_ptr<Constant> constant = std::dynamic_pointer_cast<Constant>(expression->leftChild);
 					std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(expression->rightChild);
-					size = 1 / columns->at(column->name).numberOfUniqueValues;
+					size = 1 / columns->at(column->column.name).numberOfUniqueValues;
 
 				}
 				else
@@ -269,11 +269,11 @@ public:
 		{
 			for (auto it = inputColumns->begin(); it != inputColumns->end();++it)
 			{
-				if (it->name != it->newName)
+				if (it->column.name != it->newColumn.name)
 				{
-					if (it->newName == expression->name)
+					if (it->newColumn.name == expression->column.name)
 					{
-						expression->name = it->name;
+						expression->column.name = it->column.name;
 					}
 				}
 			}

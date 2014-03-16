@@ -2,15 +2,15 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="Join
-(country_id(0) == id(1))"]
+(country_id_-1(0) == id_-1(1))"]
 node2[label="Table users
  number of rows: 1000
- columns: name(string,500), country_id(int,500)
+ columns: name_-1(string,500), country_id_-1(int,500)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table countries
  number of rows: 1000
- columns: id(int,500), name(string,500)
+ columns: id_-1(int,500), name_-1(string,500)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

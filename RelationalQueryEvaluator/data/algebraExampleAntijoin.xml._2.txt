@@ -2,23 +2,23 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="AntiJoin
-(c(0) == b(1))"]
+(c_1(0) == b_3(1))"]
 node2[label="AntiJoin
-(c(0) == a(1))"]
+(c_1(0) == a_2(1))"]
 node3[label="Table z
  number of rows: 1000
- columns: c(int,500)
+ columns: c_1(int,500)
  indices: "]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Table x
  number of rows: 1000
- columns: a(int,500)
+ columns: a_2(int,500)
  indices: "]
 node4 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node5[label="Table y
  number of rows: 1000
- columns: b(int,500)
+ columns: b_3(int,500)
  indices: "]
 node5 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

@@ -33,7 +33,7 @@ void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 
 void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 {
-	std::unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
+/*	std::unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
 	algebraRoot->accept(*algebraCompiler);
 	
 	std::unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
@@ -51,7 +51,7 @@ void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 	s.append(".txt");
 	myfile.open (s.c_str());
 	myfile << planDrawer->result ;
-	myfile.close();
+	myfile.close();*/
 
 }
 
@@ -97,6 +97,6 @@ int main(int argc, const char *argv[])
 			drawPlan(algebraRoot,line+std::string("._3"));;
 		}
 	}
-	//system("drawAlgebra.bat");
+	system("drawAlgebra.bat");
 	return 0;
 }

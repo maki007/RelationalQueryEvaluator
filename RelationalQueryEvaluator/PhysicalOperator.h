@@ -87,10 +87,10 @@ public:
 class SortOperator : public UnaryPhysicalOperator
 {
 public:
-	std::vector<std::string> sortedBy;
+	std::vector<ColumnIdentifier> sortedBy;
 	std::vector<SortParameter> sortBy;
 	void accept(PhysicalOperatorVisitor &v);
-	SortOperator(const std::vector<std::string> &  sortedBy, const std::vector<SortParameter> & sortBy)
+	SortOperator(const std::vector<ColumnIdentifier> &  sortedBy, const std::vector<SortParameter> & sortBy)
 	{
 		this->sortedBy = sortedBy;
 		this->sortBy = sortBy;
@@ -198,7 +198,7 @@ public:
 		plan->timeComplexity=time;
 		for(auto it2=cols.begin();it2!=cols.end();++it2)
 		{
-			columns[it2->name]=*it2;
+			columns[it2->column.name]=*it2;
 		}
 	}
 

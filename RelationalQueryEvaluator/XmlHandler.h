@@ -92,7 +92,7 @@ public:
 class XmlHandler
 {
 public:
-	static std::unique_ptr<AlgebraNodeBase>   ValidateSchema(const char* xmlFilePath)
+	static std::unique_ptr<AlgebraNodeBase> ValidateSchema(const char* xmlFilePath)
 	{
 		XercesDOMParser domParser;
 
@@ -127,8 +127,9 @@ public:
 	static std::unique_ptr<AlgebraNodeBase> GenerateRelationalAlgebra(const char *filename)
 	{
 		XMLPlatformUtils::Initialize();
-		return ValidateSchema(filename);
+		std::unique_ptr<AlgebraNodeBase> result= ValidateSchema(filename);
 		XMLPlatformUtils::Terminate();
+		return result;
 	}
 };
 #endif

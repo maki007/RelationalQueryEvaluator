@@ -7,6 +7,12 @@
 SemanticChecker::SemanticChecker()
 {
 	containsErrors=false;
+	lastId = 1;
+}
+
+int SemanticChecker::nextId()
+{
+	return lastId++;
 }
 
 void SemanticChecker::visit(Table * node)
@@ -16,16 +22,19 @@ void SemanticChecker::visit(Table * node)
 	std::set<std::string> hashSet;
 	for(auto it=node->columns.begin();it!=node->columns.end();++it)
 	{
-		if(hashSet.find(it->name)==hashSet.end())
+		if (hashSet.find(it->column.name) == hashSet.end())
 		{
-			hashSet.insert(it->name);
-			outputColumns[it->name]=ColumnInfo(it->name,it->type);
+			hashSet.insert(it->column.name);
+			outputColumns[it->column.name] = ColumnInfo(it->column.name, it->type);
+			outputColumns[it->column.name].column.id = nextId();
+			it->column = outputColumns[it->column.name].column;
 		}
 		else
 		{
 			ReportError("Column names should be unique");
 		}
 	}
+
 	bool containsClusteredIndex=false;
 	for(auto it=node->indices.begin();it!=node->indices.end();++it)
 	{
@@ -43,13 +52,17 @@ void SemanticChecker::visit(Table * node)
 		std::set<std::string>  indexSet;
 		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
 		{
-			if(hashSet.find(*it2)==hashSet.end())
+			if(hashSet.find(it2->name)==hashSet.end())
 			{
 				ReportError("Index cannot be on non-existing column");
 			}
-			if(indexSet.find(*it2)==indexSet.end())
+			else
 			{
-				indexSet.insert(*it2);
+				it2->id = outputColumns[it2->name].column.id;
+			}
+			if (indexSet.find(it2->name) == indexSet.end())
+			{
+				indexSet.insert(it2->name);
 			}
 			else
 			{
@@ -65,9 +78,13 @@ void SemanticChecker::visit(Sort * node)
 	node->child->accept(*this);
 	for(auto it=node->parameters.begin();it!=node->parameters.end();++it)
 	{
-		if(outputColumns.find(it->column)==outputColumns.end())
+		if(outputColumns.find(it->column.name)==outputColumns.end())
 		{
 			ReportError("Column doesn't exist");
+		}
+		else
+		{
+			it->column.id = outputColumns[it->column.name].column.id;
 		}
 	}
 }
@@ -79,30 +96,46 @@ void SemanticChecker::visit(Group * node)
 	{
 		if(it->function!=COUNT)
 		{
-			if(outputColumns.find(it->parameter)==outputColumns.end())
+			if(outputColumns.find(it->parameter.name)==outputColumns.end())
 			{
 				ReportError("Column doesn't exist");
 			}
+			else
+			{
+				it->parameter.id = outputColumns[it->parameter.name].column.id;
+			}
 		}
 	}
-
-	outputColumns.clear();
+	std::map<std::string, ColumnInfo> groupColumns;
 	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
 	{
-		if(outputColumns.find(*it)==outputColumns.end())
+		if(outputColumns.find(it->name)==outputColumns.end())
 		{
-			outputColumns[*it]=ColumnInfo(*it,"");
+			ReportError("Column doesn't exist");
 		}
 		else
 		{
-			ReportError("Cannot group by same column twice");
+			if (groupColumns.find(it->name) == groupColumns.end())
+			{
+				groupColumns[it->name] = ColumnInfo(it->name, "");
+				groupColumns[it->name].column = outputColumns[it->name].column;
+				it->id = outputColumns[it->name].column.id;
+			}
+			else
+			{
+				ReportError("Cannot group by same column twice");
+			}
 		}
+		
 	}
+	outputColumns = groupColumns;
 	for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
 	{
-		if(outputColumns.find(it->output)==outputColumns.end())
+		if(outputColumns.find(it->output.name)==outputColumns.end())
 		{
-			outputColumns[it->output]=ColumnInfo(it->output,"");
+			outputColumns[it->output.name] = ColumnInfo(it->output.name, "");
+			outputColumns[it->output.name].column.id = nextId();
+			it->output.id = outputColumns[it->output.name].column.id;
 		}
 		else
 		{
@@ -131,19 +164,32 @@ void SemanticChecker::visit(ColumnOperations * node)
 		}
 		else
 		{
-			if(outputColumns.find(it->result)==outputColumns.end())
+			if (outputColumns.find(it->result.name) == outputColumns.end())
 			{
 				ReportError("Column not found");
+			}
+			else
+			{
+				it->result.id = outputColumns[it->result.name].column.id;
 			}
 		}
 	}
 
 	outputColumns.clear();
-	for(auto it=node->operations.begin();it!=node->operations.end();++it)
+	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
 	{
-		if(outputColumns.find(it->result)==outputColumns.end())
+		if (outputColumns.find(it->result.name) == outputColumns.end())
 		{
-			outputColumns[it->result]=ColumnInfo(it->result,"");
+			outputColumns[it->result.name] = ColumnInfo(it->result.name, "");
+			if (it->expression != 0)
+			{
+				outputColumns[it->result.name].column.id = nextId();
+				it->result.id = outputColumns[it->result.name].column.id;
+			}
+			else
+			{
+				outputColumns[it->result.name].column.id = it->result.id;
+			}
 		}
 		else
 		{
@@ -179,18 +225,9 @@ void SemanticChecker::visit(Join * node)
 		node->condition->accept(*expresionVisitor);
 		containsErrors|=expresionVisitor->containsErrors;
 	}
-	outputColumns.clear();
-	for(auto it=node->outputColumns.begin();it!=node->outputColumns.end();++it)
-	{
-		if(outputColumns.find(it->newName)==outputColumns.end())
-		{
-			outputColumns[it->newName]=ColumnInfo(it->newName,"");
-		}
-		else
-		{
-			ReportError("Columns must have different name"); 
-		}
-	}
+
+	checkJoinOutPutParameters(outputColumns0, outputColumns1, node);
+
 }
 
 void SemanticChecker::visit(AntiJoin * node)
@@ -208,47 +245,11 @@ void SemanticChecker::visit(AntiJoin * node)
 	node->condition->accept(*expresionVisitor);
 	containsErrors|=expresionVisitor->containsErrors;
 
-	outputColumns.clear();
-	for(auto it=node->outputColumns.begin();it!=node->outputColumns.end();++it)
-	{
-		if(outputColumns.find(it->newName)==outputColumns.end())
-		{
-			if(it->input==0)
-			{
-				if(outputColumns0.find(it->newName)==outputColumns0.end())
-				{
-					ReportError("Column not found in input 0"); 
-				}
-				else
-				{
-					outputColumns[it->newName]=ColumnInfo(it->newName,"");
-				}
-			}
-			else if(it->input==1)
-			{
-				if(outputColumns1.find(it->newName)==outputColumns1.end())
-				{
-					ReportError("Column not found in input 1"); 
-				}
-				else
-				{
-					outputColumns[it->newName]=ColumnInfo(it->newName,"");
-				}
-			}
-			else
-			{
-				throw new std::exception("Error");
-			}
-
-			
-		}
-		else
-		{
-			ReportError("Columns must have different name"); 
-		}
-	}
+	checkJoinOutPutParameters(outputColumns0, outputColumns1,node);
 }
-	
+
+
+
 void SemanticChecker::visit(Union * node)
 {
 	std::map<std::string,ColumnInfo> outputColumns0,outputColumns1;

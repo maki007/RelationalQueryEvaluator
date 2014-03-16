@@ -39,7 +39,7 @@ enum SortOrder
 class SortParameter
 {
 public: 
-	std::string column;
+	ColumnIdentifier column;
 	SortOrder order;
 };
 enum AgregateFunction
@@ -47,13 +47,15 @@ enum AgregateFunction
 	SUM,MIN,MAX,COUNT
 };
 
+
+
 class AgregateFunctionInfo
 {
 public:
 	AgregateFunction function;
 	std::string functionName;
-	std::string parameter;
-	std::string output;
+	ColumnIdentifier parameter;
+	ColumnIdentifier output;
 };
 
 enum IndexType
@@ -67,29 +69,29 @@ class IndexInfo
 {
 public:
 	IndexType type;
-	std::vector<std::string> columns;
+	std::vector<ColumnIdentifier> columns;
 };
 
 class ColumnInfo
 {
 public:
-	std::string name;
+	ColumnIdentifier column;
 	std::string type;
 	double numberOfUniqueValues;
 	ColumnInfo(std::string name,std::string type)
 	{
-		this->name=name;
+		this->column = ColumnIdentifier(name);
 		this->type=type;
 	}
 	ColumnInfo()
 	{
-		name="";
+		this->column = ColumnIdentifier("");
 		type="";
 		numberOfUniqueValues=0;
 	}
 	ColumnInfo(std::string name, double numberOfUniqueValues)
 	{
-		this->name=name;
+		this->column = ColumnIdentifier(name);
 		this->numberOfUniqueValues=numberOfUniqueValues;
 	}
 };
@@ -100,14 +102,14 @@ class JoinColumnInfo
 {
 public:
 	ulong input;
-	std::string name;
-	std::string newName;
+	ColumnIdentifier column;
+	ColumnIdentifier newColumn;
 };
 
 class ColumnOperation
 {
 public:
-	std::string result;
+	ColumnIdentifier result;
 	std::shared_ptr <Expression> expression;
 	std::string type;
 };
@@ -186,7 +188,7 @@ public:
 class Group : public UnaryAlgebraNodeBase
 {
 public:
-	std::vector<std::string> groupColumns;
+	std::vector<ColumnIdentifier> groupColumns;
 	std::vector<AgregateFunctionInfo> agregateFunctions;
 	Group(DOMElement * element);
 	void accept(AlgebraVisitor &v);

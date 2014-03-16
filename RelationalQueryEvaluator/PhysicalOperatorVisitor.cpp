@@ -227,7 +227,7 @@ void PhysicalOperatorDrawingVisitor::visit(ColumnsOperationsOperator * node)
 	std::string label="Columns Operations\n";
 	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
 	{
-		label += it->result;
+		label += it->result.name;
 		if (it->expression != 0)
 		{
 			std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());

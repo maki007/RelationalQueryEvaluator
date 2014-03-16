@@ -116,7 +116,7 @@ void WritingExpressionVisitor::visit(Constant * expression)
 
 void WritingExpressionVisitor::visit(Column * expression)
 {
-	result+=expression->name;
+	result+=expression->column.toString();
 	if(expression->input>=0)
 	{
 		result+="(";
@@ -241,16 +241,24 @@ void SemanticExpressionVisitor::visit(Column * expression)
 {
 	if(expression->input==0)
 	{
-		if(outputColumns0.find(expression->name)==outputColumns0.end())
+		if(outputColumns0.find(expression->column.name)==outputColumns0.end())
 		{
 			containsErrors=true;
+		}
+		else
+		{
+			expression->column.id = outputColumns0[expression->column.name].column.id;
 		}
 	}
 	if(expression->input==1)
 	{
-		if(outputColumns1.find(expression->name)==outputColumns1.end())
+		if (outputColumns1.find(expression->column.name) == outputColumns1.end())
 		{
 			containsErrors=true;
+		}
+		else
+		{
+			expression->column.id = outputColumns1[expression->column.name].column.id;
 		}
 	}
 }

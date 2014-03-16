@@ -2,6 +2,8 @@
 
 #include "Expressions.h"
 #include "ExpressionVisitors.h"
+#include "Algebra.h"
+
 /*
 void Expression::accept(ExpressionVisitorBase &v)
 {
@@ -203,7 +205,7 @@ void Constant::accept(ExpressionVisitorBase &v)
 
 Column::Column(DOMElement * node)
 {
-	this->name=XmlUtils::ReadAttribute(node,"name");
+	this->column=ColumnIdentifier(XmlUtils::ReadAttribute(node,"name"));
 	this->input=0;
 }
 

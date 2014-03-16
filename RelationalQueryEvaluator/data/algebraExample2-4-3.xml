@@ -113,6 +113,7 @@
                           <column name="o_orderdate" type="int" number_of_unique_values="1500000" />
                           <column name="o_shippriority" type="int"/>
                           <column name="o_orderkey" type="int" number_of_unique_values="150000"/>
+                          <column name="o_custkey" type="int" number_of_unique_values="150000"/>
                           <index type="clustered">
                             <column name="o_orderdate"/>
                             <column name="o_shippriority"/>

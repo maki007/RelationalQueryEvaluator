@@ -1,34 +1,34 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-revenue desc, o_orderdate asc"]
+revenue_12 desc, o_orderdate_7 asc"]
 node1[label="Group
-groupBy l_orderkey, o_orderdate, o_shippriority, revenue=sum(x);"]
+groupBy l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_12=sum(x_11);"]
 node2[label="ColumnOperations
-l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice(0) * (1 - l_discount(0)))"]
+l_orderkey_3, o_orderdate_7, o_shippriority_8, x_11 = (l_extendedprice_5(0) * (1 - l_discount_6(0)))"]
 node3[label="GroupedJoin
-AND ((c_custkey(0) == o_custkey(2)),(l_orderkey(1) == o_orderkey(2)))"]
+AND ((c_custkey_1(0) == o_custkey_10(2)),(l_orderkey_3(1) == o_orderkey_9(2)))"]
 node4[label="Selection
-(c_mktsegment(0) == SEGMENT)"]
+(c_mktsegment_2(0) == SEGMENT)"]
 node5[label="Table customer
  number of rows: 150000
- columns: c_custkey(int,150000), c_mktsegment(int,75000)
+ columns: c_custkey_1(int,150000), c_mktsegment_2(int,75000)
  indices: UNCLUSTERED(c_mktsegment)"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node6[label="Selection
-(today < l_shipdate(0))"]
+(today < l_shipdate_4(0))"]
 node7[label="Table lineitem
  number of rows: 6000000
- columns: l_orderkey(int,6000000), l_shipdate(int,3000000), l_extendedprice(int,3000000), l_discount(int,3000000)
+ columns: l_orderkey_3(int,6000000), l_shipdate_4(int,3000000), l_extendedprice_5(int,3000000), l_discount_6(int,3000000)
  indices: "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]
 node8[label="Selection
-(o_orderdate(0) < today)"]
+(o_orderdate_7(0) < today)"]
 node9[label="Table orders
  number of rows: 1500000
- columns: o_orderdate(int,1500000), o_shippriority(int,750000), o_orderkey(int,150000)
+ columns: o_orderdate_7(int,1500000), o_shippriority_8(int,750000), o_orderkey_9(int,150000), o_custkey_10(int,150000)
  indices: CLUSTERED(o_orderdate, o_shippriority)"]
 node9 -> node8[headport=s, tailport=n,label="   "]
 node8 -> node3[headport=s, tailport=n,label="   "]

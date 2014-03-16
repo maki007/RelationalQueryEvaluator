@@ -141,7 +141,7 @@ void GraphDrawingVisitor::visit(Sort * node)
 	}
 	for(auto it=node->parameters.begin();it!=node->parameters.end();++it)
 	{
-		label+=it->column;
+		label += it->column.toString();
 		if(it->order==ASCENDING)
 		{
 			label+=" asc";
@@ -164,15 +164,22 @@ void GraphDrawingVisitor::visit(Group * node)
 	label+="groupBy ";
 	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
 	{
-		label+=*it;
+		label+=it->toString();
 		label+=", ";
 	}
 	for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
 	{
-		label+=it->output;
+		label+=it->output.toString();
 		label+="=";
 		label+=it->functionName;
-		label+="("+it->parameter+")";
+		if (it->parameter.name == "")
+		{
+			label += "()";
+		}
+		else
+		{
+			label += "(" + it->parameter.toString() + ")";
+		}
 		label+=";";
 	}
 
@@ -190,7 +197,7 @@ void GraphDrawingVisitor::visit(Table * node)
 	label+="\n columns: ";
 	for(auto it=node->columns.begin();it!=node->columns.end();++it)
 	{
-		label+=it->name;
+		label += it->column.toString();
 		label+= "(";
 		label+=it->type;
 		label+=",";
@@ -217,7 +224,7 @@ void GraphDrawingVisitor::visit(Table * node)
 		label+= "(";
 		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
 		{
-			label+=*it2;
+			label+=it2->name;
 			if(it2!=it->columns.end()-1)
 			{
 				label+=", ";
@@ -239,7 +246,7 @@ void GraphDrawingVisitor::visit(ColumnOperations * node)
 	std::string label="ColumnOperations\n";
 	for(auto it=node->operations.begin();it!=node->operations.end();++it)
 	{
-		label+=it->result;
+		label+=it->result.toString();
 		if(it->expression!=0)
 		{
 			std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
@@ -426,17 +433,17 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 				std::shared_ptr<GroupedJoin> join=std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
 				for(auto it=join->outputColumns.begin();it!=join->outputColumns.end();++it)
 				{
-					std::string name = it->name;
+					std::string name = it->column.name;
 					for(auto it2=visitor.nodes.begin();it2!=visitor.nodes.end();++it2)
 					{
-						if((*it2)->name==name)
+						if ((*it2)->column.name == name)
 						{
 							(*it2)->input=it->input+numberOfChildreninFirstChild;
 						}
 					}
 					for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
 					{
-						if((it2)->name==name)
+						if ((it2)->column.name == name)
 						{
 							(it2)->input=it->input+numberOfChildreninFirstChild;;
 						}
