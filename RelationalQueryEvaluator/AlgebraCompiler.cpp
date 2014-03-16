@@ -525,7 +525,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 			JoinColumnInfo joinColumnInfo;
 			joinColumnInfo.input = input;
 			joinColumnInfo.column = col->second.column;
-			newPlans.columns.push_back(joinColumnInfo);
+			newPlans.columns[joinColumnInfo.column.id] = joinColumnInfo;
 		}
 
 		//newPlans.columns
@@ -720,6 +720,12 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 			newPlan.condition.push_back(*it);
 		}
 
+	}
+
+	newPlan.columns = left.columns;
+	for (auto it = right.columns.begin(); it != right.columns.end();++it)
+	{
+		newPlan.columns[it->first] = it->second;
 	}
 
 	if (equalConditions.size() > 0)

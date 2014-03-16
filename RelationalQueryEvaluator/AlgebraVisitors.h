@@ -193,7 +193,7 @@ public:
 	std::set<ulong> processedPlans;
 	std::set<ulong> unProcessedPlans;
 	std::vector<std::shared_ptr<ConditionInfo>> condition;
-	std::vector <JoinColumnInfo> columns;
+	std::map <int,JoinColumnInfo> columns;
 	static bool Comparator(const JoinInfo& lhs, const JoinInfo&rhs)
 	{
 		return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
@@ -205,57 +205,57 @@ public:
 class AlgebraCompiler : public AlgebraVisitor
 {
 public:
-static const ulong NUMBER_OF_PLANS;
-static const ulong  LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM;
-static const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM;
-std::vector<std::shared_ptr<PhysicalPlan> > result;
+	static const ulong NUMBER_OF_PLANS;
+	static const ulong  LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM;
+	static const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM;
+	std::vector<std::shared_ptr<PhysicalPlan> > result;
 
-void visit(Table * node);
+	void visit(Table * node);
 
-void visit(Sort * node);
+	void visit(Sort * node);
 
-void visit(Group * node);
+	void visit(Group * node);
 
-void visit(ColumnOperations * node);
+	void visit(ColumnOperations * node);
 
-void visit(Selection * node);
+	void visit(Selection * node);
 
-void visit(Join * node);
+	void visit(Join * node);
 
-void visit(AntiJoin * node);
+	void visit(AntiJoin * node);
 
-void visit(Union * node);
+	void visit(Union * node);
 
-void visit(GroupedJoin * node);
+	void visit(GroupedJoin * node);
 
 
 private:
-void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
+	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
-std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters,const std::shared_ptr<PhysicalPlan> & result);
+	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters, const std::shared_ptr<PhysicalPlan> & result);
 
-std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
+	std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
 
-std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
+	std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 
-void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
+	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
-std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;
+	std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;
 
-void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
+	void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
 
-template< typename T>
-ulong setIndex(const T input) const
-{
-ulong result = 0;
+	template< typename T>
+	ulong setIndex(const T input) const
+	{
+		ulong result = 0;
 
-for (auto it = input.begin(); it != input.end(); ++it)
-{
-result |= ulong(1) << (*it);
-}
+		for (auto it = input.begin(); it != input.end(); ++it)
+		{
+			result |= ulong(1) << (*it);
+		}
 
-return result;
-}
+		return result;
+	}
 };
 
 #endif
