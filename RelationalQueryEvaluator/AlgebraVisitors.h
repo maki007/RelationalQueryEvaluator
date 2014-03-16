@@ -201,7 +201,7 @@ public:
 };
 
 
-/*
+
 class AlgebraCompiler : public AlgebraVisitor
 {
 public:
@@ -256,6 +256,6 @@ result |= ulong(1) << (*it);
 
 return result;
 }
-};*/
+};
 
 #endif

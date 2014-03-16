@@ -5,7 +5,7 @@
 
 
 
-/*
+
 const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
@@ -53,7 +53,7 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 			for (ulong i = 0; i < matchedColumns; ++i)
 			{
 				sortedBy.push_back(parameters[i].column);
-				numberOfUniqueSortedValues *= plan->columns[parameters[i].column].numberOfUniqueValues;
+				numberOfUniqueSortedValues *= plan->columns[parameters[i].column.id].numberOfUniqueValues;
 			}
 			numberOfUniqueSortedValues = std::min(numberOfUniqueSortedValues, size / 2);
 			SortOperator * op = new SortOperator(sortedBy, std::vector<SortParameter>(parameters.begin() + matchedColumns, parameters.end()));
@@ -189,21 +189,21 @@ void AlgebraCompiler::visit(Group * node)
 		double newSize = 1;
 		for (auto it2 = node->groupColumns.begin(); it2 != node->groupColumns.end(); ++it2)
 		{
-			newSize *= (*it)->columns[(*it2)].numberOfUniqueValues;
+			newSize *= (*it)->columns[(*it2).id].numberOfUniqueValues;
 		}
 		newSize = std::min(newSize, (*it)->size / 2);
-		std::map<std::string, ColumnInfo> hashedGroupColumns, sortedGroupColumns;
+		std::map<int, ColumnInfo> hashedGroupColumns, sortedGroupColumns;
 		for (auto column = node->groupColumns.begin(); column != node->groupColumns.end(); ++column)
 		{
-			ColumnInfo newColumn(*column, (*it)->columns[*column].numberOfUniqueValues*(newSize / (*it)->size));
-			hashedGroupColumns[*column] = newColumn;
-			sortedGroupColumns[*column] = newColumn;
+			ColumnInfo newColumn(*column, (*it)->columns[column->id].numberOfUniqueValues*(newSize / (*it)->size));
+			hashedGroupColumns[column->id] = newColumn;
+			sortedGroupColumns[column->id] = newColumn;
 		}
 		for (auto function = node->agregateFunctions.begin(); function != node->agregateFunctions.end(); ++function)
 		{
 			ColumnInfo newColumn(function->output, newSize);
-			hashedGroupColumns[function->output] = newColumn;
-			sortedGroupColumns[function->output] = newColumn;
+			hashedGroupColumns[function->output.id] = newColumn;
+			sortedGroupColumns[function->output.id] = newColumn;
 		}
 
 		std::shared_ptr<PhysicalPlan> sortedPlan = generateSortParameters(parameters, *it);
@@ -226,16 +226,16 @@ void AlgebraCompiler::visit(ColumnOperations * node)
 
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
-		std::map<std::string, ColumnInfo> columns;
+		std::map<int, ColumnInfo> columns;
 		for (auto operation = node->operations.begin(); operation != node->operations.end(); ++operation)
 		{
 			ColumnInfo newColumn(operation->result, (*it)->size);
 			if (operation->expression != 0 && typeid(*(operation->expression)) == typeid(Column))
 			{
 				std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(operation->expression);
-				newColumn.numberOfUniqueValues = (*it)->columns[column->name].numberOfUniqueValues;
+				newColumn.numberOfUniqueValues = (*it)->columns[column->column.id].numberOfUniqueValues;
 			}
-			columns[operation->result] = newColumn;
+			columns[operation->result.id] = newColumn;
 		}
 		std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations), (*it)->size, 0, columns, *it));
 		insertPlan(newResult, newPlan);
@@ -277,7 +277,7 @@ void AlgebraCompiler::visit(Selection * node)
 									if (typeid(*(expression->rightChild)) == typeid(Constant))
 									{
 										std::shared_ptr<Column> condColumn = std::dynamic_pointer_cast<Column>(expression->leftChild);
-										if (condColumn->name == (*column))
+										if (condColumn->column.id == column->id)
 										{
 											possibleConditions.back().push_back(expression);
 										}
@@ -289,7 +289,7 @@ void AlgebraCompiler::visit(Selection * node)
 									if (typeid(*(expression->rightChild)) == typeid(Column))
 									{
 										std::shared_ptr<Column> condColumn = std::dynamic_pointer_cast<Column>(expression->rightChild);
-										if (condColumn->name == (*column))
+										if (condColumn->column.id == column->id)
 										{
 											possibleConditions.back().push_back(expression);
 										}
@@ -336,7 +336,7 @@ void AlgebraCompiler::visit(Selection * node)
 					SizeEstimatingExpressionVisitor sizeVisitor(&((*it)->columns));
 					(*expression)->accept(sizeVisitor);
 					size *= sizeVisitor.size;
-					std::map<std::string, ColumnInfo> newColumns = (*it)->columns;
+					std::map<int, ColumnInfo> newColumns = (*it)->columns;
 					for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
 					{
 						col->second.numberOfUniqueValues *= sizeVisitor.size;
@@ -750,7 +750,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					notHashedInput = *first;
 				}
 				double time = TimeComplexity::hashjoin(std::min((*first)->size, (*second)->size), std::max((*first)->size, (*second)->size));
-				std::shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, std::map<std::string, ColumnInfo>(), hashedInput, notHashedInput));
+				std::shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, std::map<int, ColumnInfo>(), hashedInput, notHashedInput));
 				insertPlan(newPlan.plans, hashPlan);
 				//std::shared_ptr<MergeJoin> mergePlan(0);
 
@@ -767,4 +767,4 @@ void AlgebraCompiler::visit(AntiJoin * node)
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 	result.clear();
-}*/
+}

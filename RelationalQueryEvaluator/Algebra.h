@@ -94,6 +94,11 @@ public:
 		this->column = ColumnIdentifier(name);
 		this->numberOfUniqueValues=numberOfUniqueValues;
 	}
+	ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues)
+	{
+		this->column = column;
+		this->numberOfUniqueValues = numberOfUniqueValues;
+	}
 };
 
 
