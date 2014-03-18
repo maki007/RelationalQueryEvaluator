@@ -678,7 +678,8 @@ void AlgebraCompiler::greedyJoin(vector<JoinInfo>::iterator &it, set<ulong>::ite
 
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
-
+	map<int, ColumnInfo> newColumns;
+	//pu them into plans
 	vector<shared_ptr<ConditionInfo>> equalConditions;
 	vector<shared_ptr<ConditionInfo>> lowerConditions;
 	vector<shared_ptr<ConditionInfo>> otherConditions;
@@ -757,11 +758,11 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					notHashedInput = *first;
 				}
 				double time = TimeComplexity::hashjoin(min((*first)->size, (*second)->size), max((*first)->size, (*second)->size));
-				shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, map<int, ColumnInfo>(), hashedInput, notHashedInput));
+				shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, newColumns, hashedInput, notHashedInput));
 				if (lowerConditions.size() + otherConditions.size() > 0)
 				{
 					time += TimeComplexity::filter(newSize);
-					shared_ptr<PhysicalPlan> filterPlan(new PhysicalPlan(new Filter(deserializeConditionInfo(lowerConditions, otherConditions)), newSize, time, map<int, ColumnInfo>(), hashPlan));
+					shared_ptr<PhysicalPlan> filterPlan(new PhysicalPlan(new Filter(deserializeConditionInfo(lowerConditions, otherConditions)), newSize, time, newColumns, hashPlan));
 					insertPlan(newPlan.plans, filterPlan);
 				}
 				else

@@ -42,12 +42,15 @@ public:
 	ColumnIdentifier column;
 	SortOrder order;
 };
+
+
+
+
+
 enum AgregateFunction
 {
 	SUM,MIN,MAX,COUNT
 };
-
-
 
 class AgregateFunctionInfo
 {
