@@ -4,6 +4,7 @@
 #include "ExpressionVisitors.h"
 #include "Algebra.h"
 
+using namespace std;
 /*
 void Expression::accept(ExpressionVisitorBase &v)
 {
@@ -91,7 +92,7 @@ Expression * Expression::constructChildren(DOMElement * node)
 	}
 	else
 	{
-		throw new std::exception("not valid");
+		throw new exception("not valid");
 	}
 
 
@@ -101,11 +102,11 @@ Expression * Expression::constructChildren(DOMElement * node)
 UnaryExpression::UnaryExpression(DOMElement * node,UnaryOperator op)
 {
 	DOMElement * childNode =  XmlUtils::GetFirstChildElement(node);
-	child = std::shared_ptr<Expression>(constructChildren(childNode));
+	child = shared_ptr<Expression>(constructChildren(childNode));
 	child->parent=this;
 }
 
-UnaryExpression::UnaryExpression(std::shared_ptr<Expression> node,UnaryOperator op)
+UnaryExpression::UnaryExpression(shared_ptr<Expression> node,UnaryOperator op)
 {
 	child=node;
 	child->parent=this;
@@ -116,7 +117,7 @@ void UnaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
 {
 	if(child.get()==oldChild)
 	{
-		child=std::shared_ptr<Expression>(newChild);
+		child=shared_ptr<Expression>(newChild);
 	}
 }
 
@@ -128,15 +129,15 @@ void UnaryExpression::accept(ExpressionVisitorBase &v)
 
 BinaryExpression::BinaryExpression(DOMElement * node,BinaryOperator op)
 {
-	std::vector<DOMElement *> childNodes =  XmlUtils::GetChildElements(node);
-	leftChild = std::shared_ptr<Expression>(constructChildren(childNodes[0]));
-	rightChild = std::shared_ptr<Expression>(constructChildren(childNodes[1]));
+	vector<DOMElement *> childNodes =  XmlUtils::GetChildElements(node);
+	leftChild = shared_ptr<Expression>(constructChildren(childNodes[0]));
+	rightChild = shared_ptr<Expression>(constructChildren(childNodes[1]));
 	leftChild->parent=this;
 	rightChild->parent=this;
 	operation=op;
 }
 
-BinaryExpression::BinaryExpression(std::shared_ptr<Expression> & leftChild, std::shared_ptr<Expression> & rightChild, BinaryOperator op)
+BinaryExpression::BinaryExpression(shared_ptr<Expression> & leftChild, shared_ptr<Expression> & rightChild, BinaryOperator op)
 {
 	this->leftChild=leftChild;
 	this->rightChild=rightChild;
@@ -149,11 +150,11 @@ void BinaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
 {
 	if(leftChild.get()==oldChild)
 	{
-		leftChild=std::shared_ptr<Expression>(newChild);
+		leftChild=shared_ptr<Expression>(newChild);
 	}
 	if(rightChild.get()==oldChild)
 	{
-		rightChild=std::shared_ptr<Expression>(newChild);
+		rightChild=shared_ptr<Expression>(newChild);
 	}
 }
 
@@ -164,10 +165,10 @@ void BinaryExpression::accept(ExpressionVisitorBase &v)
 
 NnaryExpression::NnaryExpression(DOMElement * node)
 {
-	std::vector<DOMElement *> childNodes =  XmlUtils::GetChildElements(node);
+	vector<DOMElement *> childNodes =  XmlUtils::GetChildElements(node);
 	for(auto it=childNodes.begin();it!=childNodes.end();++it)
 	{
-		arguments.push_back(std::shared_ptr<Expression>(constructChildren(*it)));
+		arguments.push_back(shared_ptr<Expression>(constructChildren(*it)));
 		arguments.back()->parent=this;
 	}
 }
@@ -178,7 +179,7 @@ void NnaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
 	{
 		if(it->get()==oldChild)
 		{
-			*it=std::shared_ptr<Expression>(newChild);
+			*it=shared_ptr<Expression>(newChild);
 		}
 	}
 }
@@ -223,7 +224,7 @@ GroupedExpression::GroupedExpression()
 {
 }
 
-GroupedExpression::GroupedExpression(GroupedOperator operation, const std::vector<std::shared_ptr<Expression>> & children)
+GroupedExpression::GroupedExpression(GroupedOperator operation, const vector<shared_ptr<Expression>> & children)
 {
 	this->operation = operation;
 	this->children = children;
@@ -235,7 +236,7 @@ void GroupedExpression::replaceChild(Expression * oldChild,Expression * newChild
 	{
 		if(it->get()==oldChild)
 		{
-			*it=std::shared_ptr<Expression>(newChild);
+			*it=shared_ptr<Expression>(newChild);
 		}
 	}
 }

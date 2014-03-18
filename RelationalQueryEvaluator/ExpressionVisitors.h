@@ -206,13 +206,12 @@ public:
 	
 	void visit(Column * expression)
 	{
-		data->insert(expression->input);
+		data->insert(expression->column.id);
 	}
 	
 	void visit(UnaryExpression * expression)
 	{
 		(*conditionType) = ConditionType::OTHER;
-		expression->child->accept(*this);
 	}
 
 	void visit(BinaryExpression * expression)

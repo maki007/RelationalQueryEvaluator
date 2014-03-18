@@ -4,6 +4,8 @@
 #include "ExpressionVisitors.h"
 
 
+using namespace std;
+
 void ExpressionVisitorBase::visit(Expression * expression)
 {
 	expression->accept(*this);
@@ -120,7 +122,7 @@ void WritingExpressionVisitor::visit(Column * expression)
 	if(expression->input>=0)
 	{
 		result+="(";
-		result+=std::to_string(expression->input);
+		result+=to_string(expression->input);
 		result+=")";
 	}
 }
@@ -171,7 +173,7 @@ void GetColumnsNodesVisitor::visit(Column * expression)
 	this->nodes.push_back(expression);
 }
 
-GroupingExpressionVisitor::GroupingExpressionVisitor(std::shared_ptr<Expression> * x)
+GroupingExpressionVisitor::GroupingExpressionVisitor(shared_ptr<Expression> * x)
 {
 	root=x;
 }
@@ -182,7 +184,7 @@ void GroupingExpressionVisitor::visit(BinaryExpression * expression)
 	expression->rightChild->accept(*this);
 	if ((expression->operation == BinaryOperator::AND) || (expression->operation == BinaryOperator::OR))
 	{
-		std::vector<std::shared_ptr<Expression> > oldChildren;
+		vector<shared_ptr<Expression> > oldChildren;
 		oldChildren.resize(2);
 		oldChildren[0]=expression->leftChild;
 		oldChildren[1]=expression->rightChild;
@@ -200,7 +202,7 @@ void GroupingExpressionVisitor::visit(BinaryExpression * expression)
 		
 		if(newNode->parent==0)
 		{
-			*root=std::shared_ptr<Expression>(newNode);
+			*root=shared_ptr<Expression>(newNode);
 		}
 		else
 		{
@@ -211,7 +213,7 @@ void GroupingExpressionVisitor::visit(BinaryExpression * expression)
 		{
 			if(typeid(*(oldChildren[i])) == typeid(GroupedExpression))
 			{
-				std::shared_ptr<GroupedExpression> expression=std::dynamic_pointer_cast<GroupedExpression>(oldChildren[i]);
+				shared_ptr<GroupedExpression> expression=dynamic_pointer_cast<GroupedExpression>(oldChildren[i]);
 				if(newNode->operation==expression->operation)
 				{
 					for(auto it=expression->children.begin();it!=expression->children.end();++it)

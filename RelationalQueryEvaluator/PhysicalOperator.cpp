@@ -1,6 +1,8 @@
 #include "PhysicalOperator.h"
 #include "PhysicalOperatorVisitor.h"
 
+using namespace std;
+
 const double TimeComplexity::CLUSTERED_SCAN = 1.0;
 const double TimeComplexity::UNCLUSTERED_SCAN = 3.0;
 const double TimeComplexity::SORT=2.0;

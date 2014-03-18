@@ -3,6 +3,7 @@
 #include "ExpressionVisitors.h"
 #include <exception>
 
+using namespace std;
 
 SemanticChecker::SemanticChecker()
 {
@@ -19,7 +20,7 @@ void SemanticChecker::visit(Table * node)
 {
 	outputColumns.clear();
 
-	std::set<std::string> hashSet;
+	set<string> hashSet;
 	for(auto it=node->columns.begin();it!=node->columns.end();++it)
 	{
 		if (hashSet.find(it->column.name) == hashSet.end())
@@ -49,7 +50,7 @@ void SemanticChecker::visit(Table * node)
 				ReportError("Table can contain only one clustered index");
 			}
 		}
-		std::set<std::string>  indexSet;
+		set<string>  indexSet;
 		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
 		{
 			if(hashSet.find(it2->name)==hashSet.end())
@@ -106,7 +107,7 @@ void SemanticChecker::visit(Group * node)
 			}
 		}
 	}
-	std::map<std::string, ColumnInfo> groupColumns;
+	map<string, ColumnInfo> groupColumns;
 	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
 	{
 		if(outputColumns.find(it->name)==outputColumns.end())
@@ -156,8 +157,8 @@ void SemanticChecker::visit(ColumnOperations * node)
 	{
 		if(it->expression!=0)
 		{
-			std::shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-			expresionVisitor=std::shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+			shared_ptr<SemanticExpressionVisitor> expresionVisitor;
+			expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
 			expresionVisitor->outputColumns0=outputColumns;
 			it->expression->accept(*expresionVisitor);
 			containsErrors|=expresionVisitor->containsErrors;
@@ -201,8 +202,8 @@ void SemanticChecker::visit(ColumnOperations * node)
 void SemanticChecker::visit(Selection * node)
 {
 	node->child->accept(*this);
-	std::shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-	expresionVisitor=std::shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+	shared_ptr<SemanticExpressionVisitor> expresionVisitor;
+	expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
 	expresionVisitor->outputColumns0=outputColumns;
 	node->condition->accept(*expresionVisitor);
 	containsErrors|=expresionVisitor->containsErrors;
@@ -210,7 +211,7 @@ void SemanticChecker::visit(Selection * node)
 
 void SemanticChecker::visit(Join * node)
 {
-	std::map<std::string,ColumnInfo> outputColumns0,outputColumns1;
+	map<string,ColumnInfo> outputColumns0,outputColumns1;
 	node->leftChild->accept(*this);
 	outputColumns0=outputColumns;
 	node->rightChild->accept(*this);
@@ -218,8 +219,8 @@ void SemanticChecker::visit(Join * node)
 
 	if(node->condition!=0)
 	{
-		std::shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-		expresionVisitor=std::shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+		shared_ptr<SemanticExpressionVisitor> expresionVisitor;
+		expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
 		expresionVisitor->outputColumns0=outputColumns0;
 		expresionVisitor->outputColumns1=outputColumns1;
 		node->condition->accept(*expresionVisitor);
@@ -232,14 +233,14 @@ void SemanticChecker::visit(Join * node)
 
 void SemanticChecker::visit(AntiJoin * node)
 {
-	std::map<std::string,ColumnInfo> outputColumns0,outputColumns1;
+	map<string,ColumnInfo> outputColumns0,outputColumns1;
 	node->leftChild->accept(*this);
 	outputColumns0=outputColumns;
 	node->rightChild->accept(*this);
 	outputColumns1=outputColumns;
 
-	std::shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-	expresionVisitor=std::shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+	shared_ptr<SemanticExpressionVisitor> expresionVisitor;
+	expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
 	expresionVisitor->outputColumns0=outputColumns0;
 	expresionVisitor->outputColumns1=outputColumns1;
 	node->condition->accept(*expresionVisitor);
@@ -252,7 +253,7 @@ void SemanticChecker::visit(AntiJoin * node)
 
 void SemanticChecker::visit(Union * node)
 {
-	std::map<std::string,ColumnInfo> outputColumns0,outputColumns1;
+	map<string,ColumnInfo> outputColumns0,outputColumns1;
 	node->leftChild->accept(*this);
 	outputColumns0=outputColumns;
 	node->rightChild->accept(*this);
@@ -274,11 +275,11 @@ void SemanticChecker::visit(Union * node)
 
 void SemanticChecker::visit(GroupedJoin * node)
 {
-	throw new std::exception("Not Suported: GroupedJoin cannot be in input algebra");
+	throw new exception("Not Suported: GroupedJoin cannot be in input algebra");
 }
 
 void SemanticChecker::ReportError(const char * error)
 {
 	containsErrors=true;
-	std::cout << error << std::endl;
+	cout << error << endl;
 }

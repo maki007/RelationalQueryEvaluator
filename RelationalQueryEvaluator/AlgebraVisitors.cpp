@@ -6,6 +6,7 @@
 #include "ExpressionVisitors.h"
 #include <exception>
 
+using namespace std;
 
 void AlgebraVisitor::visit(AlgebraNodeBase * node)
 {
@@ -87,46 +88,46 @@ GraphDrawingVisitor::GraphDrawingVisitor()
 	nodeCounter=0;
 }
 
-void GraphDrawingVisitor::generateText(std::string & label ,UnaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(string & label ,UnaryAlgebraNodeBase * node)
 {
 	int identifier=nodeCounter;
 
 	result.append("node");
-	result.append(std::to_string(nodeCounter));
+	result.append(to_string(nodeCounter));
 	result.append("[label=\""+label+"\"]\n");
 	int childIdentifier=++nodeCounter;
 	node->child->accept(*this);
 
 	result.append("node");
-	result.append(std::to_string(childIdentifier));
+	result.append(to_string(childIdentifier));
 	result.append(" -> node");
-	result.append(std::to_string(identifier));
+	result.append(to_string(identifier));
 	result.append("[headport=s, tailport=n,label=\"   \"]\n");
 
 }
 
-void GraphDrawingVisitor::generateText(std::string & label , BinaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(string & label , BinaryAlgebraNodeBase * node)
 {
 	int identifier=nodeCounter;
 
 	result.append("node");
-	result.append(std::to_string(nodeCounter));
+	result.append(to_string(nodeCounter));
 	result.append("[label=\""+label+"\"]\n");
 
 	int childIdentifier=++nodeCounter;
 	node->leftChild->accept(*this);
 	result.append("node");
-	result.append(std::to_string(childIdentifier));
+	result.append(to_string(childIdentifier));
 	result.append(" -> node");
-	result.append(std::to_string(identifier));
+	result.append(to_string(identifier));
 	result.append("[headport=s, tailport=n,label=\"   \"]\n");
 
 	childIdentifier=++nodeCounter;
 	node->rightChild->accept(*this);
 	result.append("node");
-	result.append(std::to_string(childIdentifier));
+	result.append(to_string(childIdentifier));
 	result.append(" -> node");
-	result.append(std::to_string(identifier));
+	result.append(to_string(identifier));
 	result.append("[headport=s, tailport=n,label=\"   \"]\n");
 
 }
@@ -134,7 +135,7 @@ void GraphDrawingVisitor::generateText(std::string & label , BinaryAlgebraNodeBa
 void GraphDrawingVisitor::visit(Sort * node)
 {
 	result="digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
-	std::string label="Sort";
+	string label="Sort";
 	if(node->parameters.size()!=0)
 	{
 		label+="\n";
@@ -160,7 +161,7 @@ void GraphDrawingVisitor::visit(Sort * node)
 
 void GraphDrawingVisitor::visit(Group * node)
 {
-	std::string label="Group\n";
+	string label="Group\n";
 	label+="groupBy ";
 	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
 	{
@@ -189,11 +190,11 @@ void GraphDrawingVisitor::visit(Group * node)
 void GraphDrawingVisitor::visit(Table * node)
 {
 	result.append("node");
-	result.append(std::to_string(nodeCounter));
-	std::string label="[label=\"Table ";
+	result.append(to_string(nodeCounter));
+	string label="[label=\"Table ";
 	label+=node->name;
 	label+="\n number of rows: ";
-	label+=std::to_string(node->numberOfRows);
+	label+=to_string(node->numberOfRows);
 	label+="\n columns: ";
 	for(auto it=node->columns.begin();it!=node->columns.end();++it)
 	{
@@ -201,7 +202,7 @@ void GraphDrawingVisitor::visit(Table * node)
 		label+= "(";
 		label+=it->type;
 		label+=",";
-		label+=std::to_string((ulong)it->numberOfUniqueValues);
+		label+=to_string((ulong)it->numberOfUniqueValues);
 		label+= ")";
 
 		if(it!=node->columns.end()-1)
@@ -243,13 +244,13 @@ void GraphDrawingVisitor::visit(Table * node)
 
 void GraphDrawingVisitor::visit(ColumnOperations * node)
 {
-	std::string label="ColumnOperations\n";
+	string label="ColumnOperations\n";
 	for(auto it=node->operations.begin();it!=node->operations.end();++it)
 	{
 		label+=it->result.toString();
 		if(it->expression!=0)
 		{
-			std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+			shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 			it->expression->accept(*visitor);
 			label+=" = ";
 			label+=visitor->result;
@@ -265,8 +266,8 @@ void GraphDrawingVisitor::visit(ColumnOperations * node)
 
 void GraphDrawingVisitor::visit(Selection * node)
 {
-	std::string label="Selection\n";
-	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+	string label="Selection\n";
+	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 	node->condition->accept(*visitor);
 	label+=visitor->result;
 	generateText(label,node);
@@ -274,11 +275,11 @@ void GraphDrawingVisitor::visit(Selection * node)
 
 void GraphDrawingVisitor::visit(Join * node)
 {
-	std::string label="Join\n";
+	string label="Join\n";
 	//crossjoin
 	if(node->condition!=0)
 	{
-		std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+		shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 		node->condition->accept(*visitor);
 		label+=visitor->result;
 	}
@@ -287,8 +288,8 @@ void GraphDrawingVisitor::visit(Join * node)
 
 void GraphDrawingVisitor::visit(AntiJoin * node)
 {
-	std::string label="AntiJoin\n";
-	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+	string label="AntiJoin\n";
+	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 	node->condition->accept(*visitor);
 	label+=visitor->result;
 	generateText(label,node);
@@ -296,15 +297,15 @@ void GraphDrawingVisitor::visit(AntiJoin * node)
 
 void GraphDrawingVisitor::visit(Union * node)
 {
-	generateText(std::string("Union"),node);
+	generateText(string("Union"),node);
 }
 
-void GraphDrawingVisitor::generateText(std::string & label , GroupedAlgebraNode * node)
+void GraphDrawingVisitor::generateText(string & label , GroupedAlgebraNode * node)
 {
 	int identifier=nodeCounter;
 
 	result.append("node");
-	result.append(std::to_string(nodeCounter));
+	result.append(to_string(nodeCounter));
 	result.append("[label=\""+label+"\"]\n");
 
 
@@ -314,9 +315,9 @@ void GraphDrawingVisitor::generateText(std::string & label , GroupedAlgebraNode 
 		childIdentifier=++nodeCounter;
 		(*it)->accept(*this);
 		result.append("node");
-		result.append(std::to_string(childIdentifier));
+		result.append(to_string(childIdentifier));
 		result.append(" -> node");
-		result.append(std::to_string(identifier));
+		result.append(to_string(identifier));
 		result.append("[headport=s, tailport=n,label=\"   \"]\n");
 	}
 
@@ -324,8 +325,8 @@ void GraphDrawingVisitor::generateText(std::string & label , GroupedAlgebraNode 
 
 void GraphDrawingVisitor::visit(GroupedJoin * node)
 {
-	std::string label="GroupedJoin\n";
-	std::shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
+	string label="GroupedJoin\n";
+	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 	if(node->condition!=0)
 	{
 		node->condition->accept(*visitor);
@@ -354,23 +355,23 @@ void GroupingVisitor::visit(Join * node)
 	GroupedJoin * groupedOperator = new GroupedJoin();
 	groupedOperator->outputColumns=node->outputColumns;
 	groupedOperator->condition=node->condition;
-	std::vector<std::shared_ptr<AlgebraNodeBase> > oldChildren;
+	vector<shared_ptr<AlgebraNodeBase> > oldChildren;
 	oldChildren.resize(2);
 	oldChildren[0]=node->leftChild;
 	oldChildren[1]=node->rightChild;
 	resolveJoins(node,groupedOperator,oldChildren);
 }
 
-void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren)
+void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,vector<shared_ptr<AlgebraNodeBase> > & oldChildren)
 {
 
-	std::shared_ptr<Expression> newCondition=0;
+	shared_ptr<Expression> newCondition=0;
 	ulong numberOfChildreninFirstChild=0;
 	for(ulong i=0;i<2;++i)
 	{
 		if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 		{
-			std::shared_ptr<GroupedJoin> newNode = std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
+			shared_ptr<GroupedJoin> newNode = dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
 			if (groupedOperator->condition != 0)
 			{
 				groupedOperator->condition->accept(RenamingJoinConditionExpressionVisitor(i, &newNode->outputColumns));
@@ -389,7 +390,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 				}
 			}
 
-			std::vector<std::shared_ptr<AlgebraNodeBase>> children=newNode->children;
+			vector<shared_ptr<AlgebraNodeBase>> children=newNode->children;
 			if(newCondition==0)
 			{
 				newCondition=newNode->condition;
@@ -398,7 +399,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 			{
 				if(newNode->condition!=0)
 				{
-					newCondition=std::shared_ptr<Expression>(new BinaryExpression(newNode->condition,newCondition,BinaryOperator::AND));
+					newCondition=shared_ptr<Expression>(new BinaryExpression(newNode->condition,newCondition,BinaryOperator::AND));
 				}
 			}
 
@@ -426,7 +427,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 		{
 			if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 			{
-				std::shared_ptr<GroupedJoin> join=std::dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
+				shared_ptr<GroupedJoin> join=dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
 				for(auto it=join->outputColumns.begin();it!=join->outputColumns.end();++it)
 				{
 					int columnId = it->column.id;
@@ -478,7 +479,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 	{
 		if(groupedOperator->condition.get()!=0)
 		{
-			newCondition=std::shared_ptr<Expression>(new BinaryExpression(groupedOperator->condition,newCondition,BinaryOperator::AND));
+			newCondition=shared_ptr<Expression>(new BinaryExpression(groupedOperator->condition,newCondition,BinaryOperator::AND));
 		}
 	}
 	groupedOperator->condition=newCondition;

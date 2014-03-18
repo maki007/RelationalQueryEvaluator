@@ -4,6 +4,9 @@
 
 #include <algorithm>
 
+
+using namespace std;
+
 AlgebraNodeBase::AlgebraNodeBase()
 {
 
@@ -60,7 +63,7 @@ void UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBa
 {
 	if(child.get()==oldChild)
 	{
-		child=std::shared_ptr<AlgebraNodeBase>(newChild);
+		child=shared_ptr<AlgebraNodeBase>(newChild);
 	}
 	else
 	{
@@ -76,7 +79,7 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 		DOMNode * node = inputNode->getChildNodes()->item(i);
 		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
-			child=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
+			child=shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
 			child->parent=this;
 		}
 	}
@@ -93,11 +96,11 @@ void BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeB
 {
 	if(leftChild.get()==oldChild)
 	{
-		leftChild=std::shared_ptr<AlgebraNodeBase>(newChild);
+		leftChild=shared_ptr<AlgebraNodeBase>(newChild);
 	}
 	else if(rightChild.get()==oldChild)
 	{
-		rightChild=std::shared_ptr<AlgebraNodeBase>(newChild);
+		rightChild=shared_ptr<AlgebraNodeBase>(newChild);
 	}
 	else
 	{
@@ -117,13 +120,13 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 		{
 			if(leftChildInitialized==false)
 			{
-				leftChild=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
+				leftChild=shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
 				leftChildInitialized=true;
 				leftChild->parent=this;
 			}
 			else
 			{
-				rightChild=std::shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
+				rightChild=shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
 				rightChild->parent=this;
 			}
 		}
@@ -148,9 +151,9 @@ Table::Table(DOMElement * element)
 	}
 	else
 	{
-		std::istringstream ( XmlUtils::ReadAttribute(element,"numberOfRows") ) >> numberOfRows;
+		istringstream ( XmlUtils::ReadAttribute(element,"numberOfRows") ) >> numberOfRows;
 	}
-	std::vector<DOMElement *> parameters=XmlUtils::GetChildElements(element);
+	vector<DOMElement *> parameters=XmlUtils::GetChildElements(element);
 	for(auto it=parameters.begin();it!=parameters.end();++it)
 	{
 		if(XmlUtils::GetElementName(*it)=="column")
@@ -164,8 +167,8 @@ Table::Table(DOMElement * element)
 			}
 			else
 			{
-				std::istringstream ( XmlUtils::ReadAttribute(*it,"number_of_unique_values") ) >> info.numberOfUniqueValues;
-				info.numberOfUniqueValues = std::min(info.numberOfUniqueValues,double(numberOfRows));
+				istringstream ( XmlUtils::ReadAttribute(*it,"number_of_unique_values") ) >> info.numberOfUniqueValues;
+				info.numberOfUniqueValues = min(info.numberOfUniqueValues,double(numberOfRows));
 			}
 			columns.push_back(info);
 		}
@@ -180,10 +183,10 @@ Table::Table(DOMElement * element)
 			{
 				index.type=IndexType::UNCLUSTERED;
 			}
-			std::vector<DOMElement *> columnsElement=XmlUtils::GetChildElements(*it);
+			vector<DOMElement *> columnsElement=XmlUtils::GetChildElements(*it);
 			for(auto it2=columnsElement.begin();it2!=columnsElement.end();++it2)
 			{
-				index.columns.push_back(ColumnIdentifier(std::string(XmlUtils::ReadAttribute(*it2, "name"))));
+				index.columns.push_back(ColumnIdentifier(string(XmlUtils::ReadAttribute(*it2, "name"))));
 			}
 			indices.push_back(index);
 		}
@@ -207,7 +210,7 @@ Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 			SortParameter parameter;
 			DOMElement * parameterElement=(DOMElement *)node;
 			parameter.column= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"column"));
-			std::string direction=XmlUtils::ReadAttribute(parameterElement,"direction");
+			string direction=XmlUtils::ReadAttribute(parameterElement,"direction");
 			if(direction=="asc")
 			{
 				parameter.order=ASCENDING;
@@ -236,7 +239,7 @@ Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
 			DOMElement * parameterElement=(DOMElement *)node;
-			std::string elementName=XMLString::transcode(parameterElement->getLocalName());
+			string elementName=XMLString::transcode(parameterElement->getLocalName());
 
 			if(elementName=="group_by")
 			{
@@ -280,18 +283,18 @@ void Group::accept(AlgebraVisitor &v)
 ColumnOperations::ColumnOperations(DOMElement * element):UnaryAlgebraNodeBase(element)
 {
 	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
-	std::vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
+	vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
 	for(auto it=columns.begin();it!=columns.end();++it)
 	{
 		ColumnOperation op;
 		op.result = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
 		if(XmlUtils::GetFirstChildElement(*it)!=0)
 		{
-			op.expression=std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(XmlUtils::GetFirstChildElement(*it))));
+			op.expression=shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(XmlUtils::GetFirstChildElement(*it))));
 		}
 		else
 		{
-			op.expression=std::shared_ptr<Expression>(0);
+			op.expression=shared_ptr<Expression>(0);
 		}
 		operations.push_back(op);
 	}
@@ -306,7 +309,7 @@ Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
 {
 	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
 	DOMElement * conditionNode=XmlUtils::GetChildElementByName(parametersNode,"condition");
-	condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
+	condition = shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
 
 }
 
@@ -315,7 +318,7 @@ void Selection::accept(AlgebraVisitor &v)
 	v.visit(this);
 }
 
-void AlgebraNodeBase::constructJoinParameters(DOMElement * element,std::shared_ptr<Expression> & condition,std::vector<JoinColumnInfo> & outputColumns)
+void AlgebraNodeBase::constructJoinParameters(DOMElement * element,shared_ptr<Expression> & condition,vector<JoinColumnInfo> & outputColumns)
 {
 	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
 	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
@@ -323,21 +326,21 @@ void AlgebraNodeBase::constructJoinParameters(DOMElement * element,std::shared_p
 	if(XmlUtils::GetFirstChildElement(conditionNode)!=0)
 	{
 		start=1;
-		condition = std::shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));	
+		condition = shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));	
 		condition->accept(NumberColumnsInJoinVisitor());
-		std::vector<DOMElement *> conditions=XmlUtils::GetChildElements(conditionNode);
+		vector<DOMElement *> conditions=XmlUtils::GetChildElements(conditionNode);
 		for(auto it=conditions.begin()+1;it!=conditions.end();++it)
 		{
-			std::shared_ptr<Expression> newCondition(Expression::constructChildren(*it));
+			shared_ptr<Expression> newCondition(Expression::constructChildren(*it));
 			newCondition->accept(NumberColumnsInJoinVisitor());
-			condition = std::shared_ptr<Expression>(new BinaryExpression(condition,newCondition,BinaryOperator::AND));
+			condition = shared_ptr<Expression>(new BinaryExpression(condition,newCondition,BinaryOperator::AND));
 		}
 	}
 	else
 	{
 		condition=0;
 	}
-	std::vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
+	vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
 	for(auto it=columns.begin()+start;it!=columns.end();++it)
 	{
 		JoinColumnInfo info;

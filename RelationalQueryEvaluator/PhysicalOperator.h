@@ -224,6 +224,8 @@ public:
 		plan->timeComplexity=time;
 		timeComplexity=oldPlan->timeComplexity+ plan->timeComplexity;
 	}
+	
+
 
 	PhysicalPlan(BinaryPhysicalOperator * op,double newSize,double time,const std::map<int,ColumnInfo> & newColumns,const std::shared_ptr<PhysicalPlan> & oldPlan1,const std::shared_ptr<PhysicalPlan> & oldPlan2)
 	{

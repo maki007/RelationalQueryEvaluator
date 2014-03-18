@@ -17,7 +17,7 @@ using namespace std;
 
 void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 {
-	std::unique_ptr<GraphDrawingVisitor> visitor(new GraphDrawingVisitor());
+	unique_ptr<GraphDrawingVisitor> visitor(new GraphDrawingVisitor());
 	algebraRoot->accept(*visitor);
 
 	ofstream myfile;
@@ -33,11 +33,11 @@ void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 
 void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 {
-/*	std::unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
+/*	unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
 	algebraRoot->accept(*algebraCompiler);
 	
-	std::unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
-	std::sort(algebraCompiler->result.begin(), algebraCompiler->result.end(), PhysicalPlan::Comparator);
+	unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
+	sort(algebraCompiler->result.begin(), algebraCompiler->result.end(), PhysicalPlan::Comparator);
 	for(auto it=algebraCompiler->result.begin();it!=algebraCompiler->result.end();++it)
 	{
 		(*it)->plan->accept(*planDrawer);
@@ -80,21 +80,21 @@ int main(int argc, const char *argv[])
 			{
 				return 1;
 			}
-			drawAlgebra(algebraRoot,line+std::string("._1"));
+			drawAlgebra(algebraRoot,line+string("._1"));
 
-			std::unique_ptr<SemanticChecker> semanticChecker(new SemanticChecker());
+			unique_ptr<SemanticChecker> semanticChecker(new SemanticChecker());
 			algebraRoot->accept(*semanticChecker);
 			if(semanticChecker->containsErrors==true)
 			{
-				cout << "semantic error in " << line << std::endl;
+				cout << "semantic error in " << line << endl;
 				return 1;
 			}
 			
-			std::unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
+			unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
 			algebraRoot->accept(*groupVisitor);
-			drawAlgebra(algebraRoot,line+std::string("._2"));
+			drawAlgebra(algebraRoot,line+string("._2"));
 			
-			drawPlan(algebraRoot,line+std::string("._3"));;
+			drawPlan(algebraRoot,line+string("._3"));;
 		}
 	}
 	system("drawAlgebra.bat");

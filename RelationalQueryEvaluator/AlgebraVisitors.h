@@ -244,6 +244,20 @@ private:
 
 	void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
 
+	std::shared_ptr<Expression> deserializeConditionInfo(const std::vector<std::shared_ptr<ConditionInfo>> & a, const std::vector<std::shared_ptr<ConditionInfo>> & b)
+	{
+		std::vector<std::shared_ptr<Expression> >  data;
+		for (auto it = a.begin(); it != a.end();++it)
+		{
+			data.push_back((*it)->condition);
+		}
+		for (auto it = b.begin(); it != b.end(); ++it)
+		{
+			data.push_back((*it)->condition);
+		}
+		return deserializeExpression(data);
+	}
+
 	template< typename T>
 	ulong setIndex(const T input) const
 	{

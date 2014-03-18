@@ -4,7 +4,7 @@
 #include <algorithm>
 
 
-
+using namespace std;
 
 const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
@@ -13,7 +13,7 @@ const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
 const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
 
 
-std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std::vector<SortParameter> & parameters, const std::shared_ptr<PhysicalPlan> & plan)
+shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const vector<SortParameter> & parameters, const shared_ptr<PhysicalPlan> & plan)
 {
 	ulong matchedColumns = 0;
 	for (ulong i = 0; i < parameters.size() && i < plan->sortedBy.size(); ++i)
@@ -39,8 +39,8 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 		if (matchedColumns == 0)
 		{
 			double size = plan->size;
-			SortOperator * op = new SortOperator(std::vector<ColumnIdentifier>(), parameters);
-			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), plan->columns, plan));
+			SortOperator * op = new SortOperator(vector<ColumnIdentifier>(), parameters);
+			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), plan->columns, plan));
 			newPlan->sortedBy = parameters;
 			return newPlan;
 		}
@@ -49,15 +49,15 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 			//only partial sort is needed
 			double size = plan->size;
 			double numberOfUniqueSortedValues = 1;
-			std::vector<ColumnIdentifier> sortedBy;
+			vector<ColumnIdentifier> sortedBy;
 			for (ulong i = 0; i < matchedColumns; ++i)
 			{
 				sortedBy.push_back(parameters[i].column);
 				numberOfUniqueSortedValues *= plan->columns[parameters[i].column.id].numberOfUniqueValues;
 			}
-			numberOfUniqueSortedValues = std::min(numberOfUniqueSortedValues, size / 2);
-			SortOperator * op = new SortOperator(sortedBy, std::vector<SortParameter>(parameters.begin() + matchedColumns, parameters.end()));
-			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues), plan->columns, plan));
+			numberOfUniqueSortedValues = min(numberOfUniqueSortedValues, size / 2);
+			SortOperator * op = new SortOperator(sortedBy, vector<SortParameter>(parameters.begin() + matchedColumns, parameters.end()));
+			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues), plan->columns, plan));
 			newPlan->sortedBy = parameters;
 			return plan;
 		}
@@ -65,12 +65,12 @@ std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const std:
 
 }
 
-std::vector<std::shared_ptr<Expression> > AlgebraCompiler::serializeExpression(std::shared_ptr<Expression> condition)
+vector<shared_ptr<Expression> > AlgebraCompiler::serializeExpression(shared_ptr<Expression> condition)
 {
-	std::vector<std::shared_ptr<Expression> > result;
+	vector<shared_ptr<Expression> > result;
 	if ((typeid(*(condition)) == typeid(GroupedExpression)))
 	{
-		std::shared_ptr<GroupedExpression> groupedCondition = std::dynamic_pointer_cast<GroupedExpression>(condition);
+		shared_ptr<GroupedExpression> groupedCondition = dynamic_pointer_cast<GroupedExpression>(condition);
 		if (groupedCondition->operation == GroupedOperator::AND)
 		{
 			result = groupedCondition->children;
@@ -87,11 +87,11 @@ std::vector<std::shared_ptr<Expression> > AlgebraCompiler::serializeExpression(s
 	return result;
 }
 
-std::shared_ptr<Expression> AlgebraCompiler::deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition)
+shared_ptr<Expression> AlgebraCompiler::deserializeExpression(const vector<shared_ptr<Expression> > & condition)
 {
 	if (condition.size() == 0)
 	{
-		return std::shared_ptr<Expression>(0);
+		return shared_ptr<Expression>(0);
 	}
 	if (condition.size() == 1)
 	{
@@ -99,17 +99,17 @@ std::shared_ptr<Expression> AlgebraCompiler::deserializeExpression(const std::ve
 	}
 	else
 	{
-		return std::shared_ptr<Expression>(new GroupedExpression(GroupedOperator::AND, condition));
+		return shared_ptr<Expression>(new GroupedExpression(GroupedOperator::AND, condition));
 	}
 }
 
-void AlgebraCompiler::insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan)
+void AlgebraCompiler::insertPlan(vector<shared_ptr<PhysicalPlan> > & plans, shared_ptr<PhysicalPlan> & plan)
 {
 	plans.push_back(plan);
-	std::push_heap(plans.begin(), plans.end(), PhysicalPlan::Comparator);
+	push_heap(plans.begin(), plans.end(), PhysicalPlan::Comparator);
 	while (plans.size() > NUMBER_OF_PLANS)
 	{
-		std::pop_heap(plans.begin(), plans.end(), PhysicalPlan::Comparator);
+		pop_heap(plans.begin(), plans.end(), PhysicalPlan::Comparator);
 		plans.pop_back();
 	}
 
@@ -136,7 +136,7 @@ void AlgebraCompiler::visit(Table * node)
 			}
 		}
 	}
-	result.push_back(std::shared_ptr<PhysicalPlan>(physicalPlan));
+	result.push_back(shared_ptr<PhysicalPlan>(physicalPlan));
 
 	for (auto it = node->indices.begin(); it != node->indices.end(); ++it)
 	{
@@ -153,7 +153,7 @@ void AlgebraCompiler::visit(Table * node)
 				parameter.column = *index;
 				physicalPlan->sortedBy.push_back(parameter);
 			}
-			result.push_back(std::shared_ptr<PhysicalPlan>(physicalPlan));
+			result.push_back(shared_ptr<PhysicalPlan>(physicalPlan));
 		}
 	}
 }
@@ -161,7 +161,7 @@ void AlgebraCompiler::visit(Table * node)
 void AlgebraCompiler::visit(Sort * node)
 {
 	node->child->accept(*this);
-	std::vector<std::shared_ptr<PhysicalPlan> > newResult;
+	vector<shared_ptr<PhysicalPlan> > newResult;
 
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
@@ -173,8 +173,8 @@ void AlgebraCompiler::visit(Sort * node)
 void AlgebraCompiler::visit(Group * node)
 {
 	node->child->accept(*this);
-	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
-	std::vector<SortParameter> parameters;
+	vector<shared_ptr<PhysicalPlan>> newResult;
+	vector<SortParameter> parameters;
 	for (auto it = node->groupColumns.begin(); it != node->groupColumns.end(); ++it)
 	{
 		SortParameter parameter;
@@ -191,8 +191,8 @@ void AlgebraCompiler::visit(Group * node)
 		{
 			newSize *= (*it)->columns[(*it2).id].numberOfUniqueValues;
 		}
-		newSize = std::min(newSize, (*it)->size / 2);
-		std::map<int, ColumnInfo> hashedGroupColumns, sortedGroupColumns;
+		newSize = min(newSize, (*it)->size / 2);
+		map<int, ColumnInfo> hashedGroupColumns, sortedGroupColumns;
 		for (auto column = node->groupColumns.begin(); column != node->groupColumns.end(); ++column)
 		{
 			ColumnInfo newColumn(*column, (*it)->columns[column->id].numberOfUniqueValues*(newSize / (*it)->size));
@@ -206,12 +206,12 @@ void AlgebraCompiler::visit(Group * node)
 			sortedGroupColumns[function->output.id] = newColumn;
 		}
 
-		std::shared_ptr<PhysicalPlan> sortedPlan = generateSortParameters(parameters, *it);
-		std::shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(), newSize, TimeComplexity::sortedGroup((*it)->size) + TimeComplexity::aggregate((*it)->size, node->agregateFunctions.size()),
+		shared_ptr<PhysicalPlan> sortedPlan = generateSortParameters(parameters, *it);
+		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(), newSize, TimeComplexity::sortedGroup((*it)->size) + TimeComplexity::aggregate((*it)->size, node->agregateFunctions.size()),
 			sortedGroupColumns, sortedPlan));
 		sortedGroup->sortedBy = sortedPlan->sortedBy;
 
-		std::shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(), newSize, TimeComplexity::hash((*it)->size) + TimeComplexity::aggregate((*it)->size, node->agregateFunctions.size()),
+		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(), newSize, TimeComplexity::hash((*it)->size) + TimeComplexity::aggregate((*it)->size, node->agregateFunctions.size()),
 			hashedGroupColumns, *it));
 		insertPlan(newResult, hashedGroup);
 		insertPlan(newResult, sortedGroup);
@@ -222,22 +222,22 @@ void AlgebraCompiler::visit(Group * node)
 void AlgebraCompiler::visit(ColumnOperations * node)
 {
 	node->child->accept(*this);
-	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
+	vector<shared_ptr<PhysicalPlan>> newResult;
 
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
-		std::map<int, ColumnInfo> columns;
+		map<int, ColumnInfo> columns;
 		for (auto operation = node->operations.begin(); operation != node->operations.end(); ++operation)
 		{
 			ColumnInfo newColumn(operation->result, (*it)->size);
 			if (operation->expression != 0 && typeid(*(operation->expression)) == typeid(Column))
 			{
-				std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(operation->expression);
+				shared_ptr<Column> column = dynamic_pointer_cast<Column>(operation->expression);
 				newColumn.numberOfUniqueValues = (*it)->columns[column->column.id].numberOfUniqueValues;
 			}
 			columns[operation->result.id] = newColumn;
 		}
-		std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations), (*it)->size, 0, columns, *it));
+		shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations), (*it)->size, 0, columns, *it));
 		insertPlan(newResult, newPlan);
 	}
 	result = newResult;
@@ -246,10 +246,10 @@ void AlgebraCompiler::visit(ColumnOperations * node)
 void AlgebraCompiler::visit(Selection * node)
 {
 	node->child->accept(*this);
-	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
+	vector<shared_ptr<PhysicalPlan>> newResult;
 
 
-	std::vector<std::shared_ptr<Expression> > condition = serializeExpression(node->condition);
+	vector<shared_ptr<Expression> > condition = serializeExpression(node->condition);
 
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
@@ -257,15 +257,15 @@ void AlgebraCompiler::visit(Selection * node)
 		{
 			for (auto index = (*it)->indices.begin(); index != (*it)->indices.end(); ++index)
 			{
-				std::vector<std::vector<std::shared_ptr<Expression> > > possibleConditions;
+				vector<vector<shared_ptr<Expression> > > possibleConditions;
 				for (auto column = index->columns.begin(); column != index->columns.end(); ++column)
 				{
-					possibleConditions.push_back(std::vector<std::shared_ptr<Expression> >());
+					possibleConditions.push_back(vector<shared_ptr<Expression> >());
 					for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
 					{
 						if (typeid(**conditionPart) == typeid(BinaryExpression))
 						{
-							std::shared_ptr<BinaryExpression> expression = std::dynamic_pointer_cast<BinaryExpression>(*conditionPart);
+							shared_ptr<BinaryExpression> expression = dynamic_pointer_cast<BinaryExpression>(*conditionPart);
 							switch (expression->operation)
 							{
 							case BinaryOperator::LOWER:
@@ -276,7 +276,7 @@ void AlgebraCompiler::visit(Selection * node)
 								{
 									if (typeid(*(expression->rightChild)) == typeid(Constant))
 									{
-										std::shared_ptr<Column> condColumn = std::dynamic_pointer_cast<Column>(expression->leftChild);
+										shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->leftChild);
 										if (condColumn->column.id == column->id)
 										{
 											possibleConditions.back().push_back(expression);
@@ -288,7 +288,7 @@ void AlgebraCompiler::visit(Selection * node)
 								{
 									if (typeid(*(expression->rightChild)) == typeid(Column))
 									{
-										std::shared_ptr<Column> condColumn = std::dynamic_pointer_cast<Column>(expression->rightChild);
+										shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->rightChild);
 										if (condColumn->column.id == column->id)
 										{
 											possibleConditions.back().push_back(expression);
@@ -304,10 +304,10 @@ void AlgebraCompiler::visit(Selection * node)
 					}
 				}
 				ulong i = 0;
-				std::vector<std::shared_ptr<Expression>> indexConditions;
+				vector<shared_ptr<Expression>> indexConditions;
 				while (i<possibleConditions.size() && possibleConditions[i].size()>0)
 				{
-					std::vector<std::shared_ptr<Expression>> newIndexConditions;
+					vector<shared_ptr<Expression>> newIndexConditions;
 					if (indexConditions.size() == 0)
 					{
 						for (auto conditionPart = possibleConditions[i].begin(); conditionPart != possibleConditions[i].end(); ++conditionPart)
@@ -321,7 +321,7 @@ void AlgebraCompiler::visit(Selection * node)
 						{
 							for (ulong k = 0; k < possibleConditions[i].size(); ++k)
 							{
-								newIndexConditions.push_back(std::shared_ptr<Expression>(new BinaryExpression(indexConditions[j], possibleConditions[i][k], BinaryOperator::AND)));
+								newIndexConditions.push_back(shared_ptr<Expression>(new BinaryExpression(indexConditions[j], possibleConditions[i][k], BinaryOperator::AND)));
 							}
 						}
 					}
@@ -336,19 +336,19 @@ void AlgebraCompiler::visit(Selection * node)
 					SizeEstimatingExpressionVisitor sizeVisitor(&((*it)->columns));
 					(*expression)->accept(sizeVisitor);
 					size *= sizeVisitor.size;
-					std::map<int, ColumnInfo> newColumns = (*it)->columns;
+					map<int, ColumnInfo> newColumns = (*it)->columns;
 					for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
 					{
 						col->second.numberOfUniqueValues *= sizeVisitor.size;
 					}
-					std::shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression), size,
+					shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression), size,
 						TimeComplexity::indexSearch((*it)->size) + TimeComplexity::unClusteredScan(size), (*it)->columns));
 					//TODO: to the filer keeping order
 					//indexPlan->sortedBy = (*it)->sortedBy;
 
 					double newSize = size;
-					std::vector<std::shared_ptr<Expression> > newCondition;
-					std::vector<std::shared_ptr<Expression> >  serialExpresion = serializeExpression(*expression);
+					vector<shared_ptr<Expression> > newCondition;
+					vector<shared_ptr<Expression> >  serialExpresion = serializeExpression(*expression);
 
 					for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
 					{
@@ -365,7 +365,7 @@ void AlgebraCompiler::visit(Selection * node)
 							newCondition.push_back(*conditionPart);
 						}
 					}
-					std::shared_ptr<Expression> filterCondition = deserializeExpression(newCondition);
+					shared_ptr<Expression> filterCondition = deserializeExpression(newCondition);
 					if (filterCondition != 0)
 					{
 						sizeVisitor = SizeEstimatingExpressionVisitor(&((*it)->columns));
@@ -375,8 +375,8 @@ void AlgebraCompiler::visit(Selection * node)
 						{
 							col->second.numberOfUniqueValues *= sizeVisitor.size;
 						}
-						insertPlan(newResult, std::shared_ptr<PhysicalPlan>(new PhysicalPlan(new Filter(filterCondition), newSize, TimeComplexity::filter(size), newColumns, indexPlan)));
-						insertPlan(newResult, std::shared_ptr<PhysicalPlan>(new PhysicalPlan(new FilterKeepingOrder(filterCondition), newSize, TimeComplexity::filterKeppeingOrder(size), newColumns, indexPlan)));
+						insertPlan(newResult, shared_ptr<PhysicalPlan>(new PhysicalPlan(new Filter(filterCondition), newSize, TimeComplexity::filter(size), newColumns, indexPlan)));
+						insertPlan(newResult, shared_ptr<PhysicalPlan>(new PhysicalPlan(new FilterKeepingOrder(filterCondition), newSize, TimeComplexity::filterKeppeingOrder(size), newColumns, indexPlan)));
 					}
 				}
 			}
@@ -386,12 +386,12 @@ void AlgebraCompiler::visit(Selection * node)
 		node->condition->accept(sizeVisitor);
 		if ((*it)->sortedBy.size() != 0)
 		{
-			std::shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), (*it)->size*sizeVisitor.size,
+			shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), (*it)->size*sizeVisitor.size,
 				TimeComplexity::filterKeppeingOrder((*it)->size), (*it)->columns, *it));
 			sortedPlan->sortedBy = (*it)->sortedBy;
 			insertPlan(newResult, sortedPlan);
 		}
-		std::shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(node->condition), (*it)->size*sizeVisitor.size,
+		shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(node->condition), (*it)->size*sizeVisitor.size,
 			TimeComplexity::filter((*it)->size), (*it)->columns, *it));
 		insertPlan(newResult, unsortedPlan);
 	}
@@ -400,22 +400,22 @@ void AlgebraCompiler::visit(Selection * node)
 
 void AlgebraCompiler::visit(Join * node)
 {
-	throw new std::exception("Not Suported: join should be replaced with groupedJoin");
+	throw new exception("Not Suported: join should be replaced with groupedJoin");
 }
 
 void AlgebraCompiler::visit(Union * node)
 {
 	node->leftChild->accept(*this);
-	std::vector<std::shared_ptr<PhysicalPlan>> leftInput = result;
+	vector<shared_ptr<PhysicalPlan>> leftInput = result;
 	node->rightChild->accept(*this);
-	std::vector<std::shared_ptr<PhysicalPlan>> rightInput = result;
-	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
+	vector<shared_ptr<PhysicalPlan>> rightInput = result;
+	vector<shared_ptr<PhysicalPlan>> newResult;
 
 	for (auto leftIt = leftInput.begin(); leftIt != leftInput.end(); ++leftIt)
 	{
 		for (auto rightIt = rightInput.begin(); rightIt != rightInput.end(); ++rightIt)
 		{
-			std::shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new UnionOperator(), (*leftIt)->size + (*rightIt)->size,
+			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new UnionOperator(), (*leftIt)->size + (*rightIt)->size,
 				0, (*leftIt)->columns, *leftIt, *rightIt));
 			insertPlan(newResult, newPlan);
 		}
@@ -426,9 +426,9 @@ void AlgebraCompiler::visit(Union * node)
 
 
 
-std::vector<ulong> AlgebraCompiler::getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const
+vector<ulong> AlgebraCompiler::getAllSubsets(vector<ulong> & arr, ulong n, ulong k) const
 {
-	std::vector<ulong> result;
+	vector<ulong> result;
 	// current subset is given by array of indexes
 	ulong combinationNumber = 1;
 
@@ -442,10 +442,10 @@ std::vector<ulong> AlgebraCompiler::getAllSubsets(std::vector<ulong> & arr, ulon
 		combinationNumber /= a;
 	}
 
-	std::vector<ulong> idx;
+	vector<ulong> idx;
 	idx.resize(k);
 	for (ulong i = 0; i < k; i++) idx[i] = i;
-	std::vector<ulong> res;
+	vector<ulong> res;
 	res.resize(k);
 	// loop through all subsets 
 	ulong count = 0;
@@ -487,24 +487,24 @@ std::vector<ulong> AlgebraCompiler::getAllSubsets(std::vector<ulong> & arr, ulon
 
 void AlgebraCompiler::visit(GroupedJoin * node)
 {
-	std::vector<std::shared_ptr<Expression>> cond;
+	vector<shared_ptr<Expression>> cond;
 	if (node->condition != 0)
 	{
 		cond = serializeExpression(node->condition);
 	}
 
-	std::vector<std::shared_ptr<ConditionInfo>> conditions;
+	vector<shared_ptr<ConditionInfo>> conditions;
 	for (auto it = cond.begin(); it != cond.end(); ++it)
 	{
-		std::shared_ptr<ConditionInfo> info = std::shared_ptr<ConditionInfo>(new ConditionInfo());
+		shared_ptr<ConditionInfo> info = shared_ptr<ConditionInfo>(new ConditionInfo());
 		info->condition = *it;
 		info->condition->accept(JoinInfoReadingExpressionVisitor(&info->inputs, &info->type));
 		conditions.push_back(info);
 	}
 
 	//calling subtrees
-	std::vector<std::vector<std::shared_ptr<PhysicalPlan>>> results;
-	std::vector<std::shared_ptr<PhysicalPlan>> newResult;
+	vector<vector<shared_ptr<PhysicalPlan>>> results;
+	vector<shared_ptr<PhysicalPlan>> newResult;
 	for (auto it = node->children.begin(); it != node->children.end(); ++it)
 	{
 		(*it)->accept(*this);
@@ -513,7 +513,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 
 	//insert subtrees into structure of join info
 	ulong n = results.size();
-	std::vector<JoinInfo> plans;
+	vector<JoinInfo> plans;
 	ulong input = 0;
 	for (auto it = results.begin(); it != results.end(); ++it)
 	{
@@ -545,10 +545,10 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 
 	if (n <= LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM)
 	{
-		std::vector<JoinInfo> allSubsets;
+		vector<JoinInfo> allSubsets;
 		allSubsets.resize(1 << n);
 
-		std::vector<JoinInfo *> lastInsertedPlans;
+		vector<JoinInfo *> lastInsertedPlans;
 		//insert plans with one join
 		for (auto it = plans.begin(); it != plans.end(); ++it)
 		{
@@ -560,11 +560,11 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 
 		for (ulong i = 1; i < n; ++i)
 		{
-			std::vector<JoinInfo *> currentPlans;
+			vector<JoinInfo *> currentPlans;
 			for (auto it = lastInsertedPlans.begin(); it != lastInsertedPlans.end(); ++it)
 			{
 				JoinInfo * current = *it;
-				std::set<ulong>::iterator max = (current->processedPlans.end());
+				set<ulong>::iterator max = (current->processedPlans.end());
 				--max;
 				for (auto it2 = current->unProcessedPlans.find((*max) + 1); it2 != current->unProcessedPlans.end(); ++it2)
 				{
@@ -584,20 +584,20 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 				JoinInfo * current = *it;
 				for (ulong j = 1; j <= current->processedPlans.size() / 2; ++j)
 				{
-					std::vector<ulong> input;
+					vector<ulong> input;
 					ulong wholeSet = 0;
 					for (auto it2 = current->processedPlans.begin(); it2 != current->processedPlans.end(); ++it2)
 					{
 						input.push_back(*it2);
 						wholeSet |= ulong(1) << (*it2);
 					}
-					std::vector<ulong> subsets = getAllSubsets(input, i + 1, j);
+					vector<ulong> subsets = getAllSubsets(input, i + 1, j);
 					for (auto it2 = subsets.begin(); it2 != subsets.end(); ++it2)
 					{
 						ulong leftIndex = *it2;
 						ulong rightIndex = wholeSet&(~leftIndex);
 
-						//std::cout << i + 1 << " " << wholeSet << "==" << (leftIndex | rightIndex) << " " << leftIndex << " " << rightIndex << std::endl;
+						//cout << i + 1 << " " << wholeSet << "==" << (leftIndex | rightIndex) << " " << leftIndex << " " << rightIndex << endl;
 						join(allSubsets[leftIndex], allSubsets[rightIndex], **it);
 
 					}
@@ -612,7 +612,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 	else
 	{
 		//greedy algorithm	
-		std::vector<JoinInfo> heap;
+		vector<JoinInfo> heap;
 
 		for (auto it = plans.begin(); it != plans.end(); ++it)
 		{
@@ -624,7 +624,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 			}
 		}
 
-		std::vector<JoinInfo> lastPlans;
+		vector<JoinInfo> lastPlans;
 		lastPlans.clear();
 		lastPlans.swap(heap);
 
@@ -650,7 +650,7 @@ void AlgebraCompiler::visit(GroupedJoin * node)
 }
 
 
-void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap)
+void AlgebraCompiler::greedyJoin(vector<JoinInfo>::iterator &it, set<ulong>::iterator &it2, vector<JoinInfo> & plans, vector<JoinInfo> & heap)
 {
 	JoinInfo newPlans;
 	newPlans.processedPlans = it->processedPlans;
@@ -665,10 +665,10 @@ void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<u
 		insertedPlan.unProcessedPlans = newPlans.unProcessedPlans;
 		insertedPlan.plans.push_back(*it3);
 		heap.push_back(insertedPlan);
-		std::push_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
+		push_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
 		while (heap.size() > MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM)
 		{
-			std::pop_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
+			pop_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
 			heap.pop_back();
 		}
 	}
@@ -679,9 +679,9 @@ void AlgebraCompiler::greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<u
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
 
-	std::vector<std::shared_ptr<ConditionInfo>> equalConditions;
-	std::vector<std::shared_ptr<ConditionInfo>> lowerConditions;
-	std::vector<std::shared_ptr<ConditionInfo>> otherConditions;
+	vector<shared_ptr<ConditionInfo>> equalConditions;
+	vector<shared_ptr<ConditionInfo>> lowerConditions;
+	vector<shared_ptr<ConditionInfo>> otherConditions;
 	for (auto it = left.condition.begin(); it != left.condition.end(); ++it)
 	{
 		bool containsLeft = false, constainsRight = false;
@@ -736,14 +736,15 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 			{
 
 				double newSize = (*first)->size * (*second)->size;
-				std::vector<std::shared_ptr<Expression>> expressions;
+
+				vector<shared_ptr<Expression>> expressions;
 				for (auto cond = equalConditions.begin(); cond != equalConditions.end(); ++cond)
 				{
 					expressions.push_back((*cond)->condition);
 				}
 				HashJoin * hashJoin = new HashJoin(deserializeExpression(expressions));
-				std::shared_ptr<PhysicalPlan> hashedInput;
-				std::shared_ptr<PhysicalPlan> notHashedInput;
+				shared_ptr<PhysicalPlan> hashedInput;
+				shared_ptr<PhysicalPlan> notHashedInput;
 
 				if ((*first)->size < (*second)->size)
 				{
@@ -755,19 +756,34 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					hashedInput = *second;
 					notHashedInput = *first;
 				}
-				double time = TimeComplexity::hashjoin(std::min((*first)->size, (*second)->size), std::max((*first)->size, (*second)->size));
-				std::shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, std::map<int, ColumnInfo>(), hashedInput, notHashedInput));
-				insertPlan(newPlan.plans, hashPlan);
-				//std::shared_ptr<MergeJoin> mergePlan(0);
+				double time = TimeComplexity::hashjoin(min((*first)->size, (*second)->size), max((*first)->size, (*second)->size));
+				shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, map<int, ColumnInfo>(), hashedInput, notHashedInput));
+				if (lowerConditions.size() + otherConditions.size() > 0)
+				{
+					time += TimeComplexity::filter(newSize);
+					shared_ptr<PhysicalPlan> filterPlan(new PhysicalPlan(new Filter(deserializeConditionInfo(lowerConditions, otherConditions)), newSize, time, map<int, ColumnInfo>(), hashPlan));
+					insertPlan(newPlan.plans, filterPlan);
+				}
+				else
+				{
+					insertPlan(newPlan.plans, hashPlan);
+				}
+				
 
-
-
-
+				//shared_ptr<MergeJoin> mergePlan(0);
 			}
 		}
 	}
 
+	if (lowerConditions.size() > 0)
+	{
+
+	}
+
 }
+
+
+
 void AlgebraCompiler::visit(AntiJoin * node)
 {
 	node->leftChild->accept(*this);
