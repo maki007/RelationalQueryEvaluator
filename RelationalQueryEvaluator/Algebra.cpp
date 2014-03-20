@@ -196,7 +196,7 @@ Table::Table(DOMElement * element)
 
 void Table::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitTable(this);
 }
 
 Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
@@ -226,7 +226,7 @@ Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 
 void Sort::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitSort(this);
 }
 
 Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
@@ -277,7 +277,7 @@ Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 
 void Group::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitGroup(this);
 }
 
 ColumnOperations::ColumnOperations(DOMElement * element):UnaryAlgebraNodeBase(element)
@@ -302,7 +302,7 @@ ColumnOperations::ColumnOperations(DOMElement * element):UnaryAlgebraNodeBase(el
 
 void ColumnOperations::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitColumnOperations(this);
 }
 
 Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
@@ -315,7 +315,7 @@ Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
 
 void Selection::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitSelection(this);
 }
 
 void AlgebraNodeBase::constructJoinParameters(DOMElement * element,shared_ptr<Expression> & condition,vector<JoinColumnInfo> & outputColumns)
@@ -369,7 +369,7 @@ Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 
 void Join::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitJoin(this);
 }
 
 AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
@@ -379,7 +379,7 @@ AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
 
 void AntiJoin::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitAntiJoin(this);
 }
 
 Union::Union(DOMElement * element) :BinaryAlgebraNodeBase(element)
@@ -389,11 +389,11 @@ Union::Union(DOMElement * element) :BinaryAlgebraNodeBase(element)
 
 void Union::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitUnion(this);
 }
 
 void GroupedJoin::accept(AlgebraVisitor &v)
 {
-	v.visit(this);
+	v.visitGroupedJoin(this);
 }
 

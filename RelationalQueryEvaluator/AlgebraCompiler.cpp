@@ -115,7 +115,7 @@ void AlgebraCompiler::insertPlan(vector<shared_ptr<PhysicalPlan> > & plans, shar
 
 }
 
-void AlgebraCompiler::visit(Table * node)
+void AlgebraCompiler::visitTable(Table * node)
 {
 	result.clear();
 
@@ -158,7 +158,7 @@ void AlgebraCompiler::visit(Table * node)
 	}
 }
 
-void AlgebraCompiler::visit(Sort * node)
+void AlgebraCompiler::visitSort(Sort * node)
 {
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan> > newResult;
@@ -170,7 +170,7 @@ void AlgebraCompiler::visit(Sort * node)
 	result = newResult;
 }
 
-void AlgebraCompiler::visit(Group * node)
+void AlgebraCompiler::visitGroup(Group * node)
 {
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> newResult;
@@ -219,7 +219,7 @@ void AlgebraCompiler::visit(Group * node)
 	result = newResult;
 }
 
-void AlgebraCompiler::visit(ColumnOperations * node)
+void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 {
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> newResult;
@@ -243,7 +243,7 @@ void AlgebraCompiler::visit(ColumnOperations * node)
 	result = newResult;
 }
 
-void AlgebraCompiler::visit(Selection * node)
+void AlgebraCompiler::visitSelection(Selection * node)
 {
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> newResult;
@@ -398,12 +398,12 @@ void AlgebraCompiler::visit(Selection * node)
 	result = newResult;
 }
 
-void AlgebraCompiler::visit(Join * node)
+void AlgebraCompiler::visitJoin(Join * node)
 {
 	throw new exception("Not Suported: join should be replaced with groupedJoin");
 }
 
-void AlgebraCompiler::visit(Union * node)
+void AlgebraCompiler::visitUnion(Union * node)
 {
 	node->leftChild->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> leftInput = result;
@@ -485,7 +485,7 @@ vector<ulong> AlgebraCompiler::getAllSubsets(vector<ulong> & arr, ulong n, ulong
 	return result;
 }
 
-void AlgebraCompiler::visit(GroupedJoin * node)
+void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 {
 	vector<shared_ptr<Expression>> cond;
 	if (node->condition != 0)
@@ -785,7 +785,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 
 
 
-void AlgebraCompiler::visit(AntiJoin * node)
+void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);

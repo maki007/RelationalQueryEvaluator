@@ -56,72 +56,72 @@ double TimeComplexity::hashjoin(double hashSize, double readSize)
 
 void Filter::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitFilter(this);
 }
 
 void FilterKeepingOrder::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitFilterKeepingOrder(this);
 }
 
 void SortOperator::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitSortOperator(this);
 }
 
 void MergeJoin::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitMergeJoin(this);
 }
 
 void NestedLoopJoin::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitNestedLoopJoin(this);
 }
 
 void CrossJoin::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitCrossJoin(this);
 }
 
 void HashJoin::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitHashJoin(this);
 }
 
 void UnionOperator::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitUnionOperator(this);
 }
 
 void HashGroup::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitHashGroup(this);
 }
 
 void SortedGroup::accept(PhysicalOperatorVisitor &v)	
 {
-	v.visit(this);
+	v.visitSortedGroup(this);
 }
 
 void ColumnsOperationsOperator::accept(PhysicalOperatorVisitor &v) 
 {
-	v.visit(this);
+	v.visitColumnsOperationsOperator(this);
 }
 
 void ScanAndSortByIndex::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitScanAndSortByIndex(this);
 }
 
 void TableScan::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitTableScan(this);
 }
 
 void IndexScan::accept(PhysicalOperatorVisitor &v)
 {
-	v.visit(this);
+	v.visitIndexScan(this);
 }
 
 PhysicalPlan::PhysicalPlan()

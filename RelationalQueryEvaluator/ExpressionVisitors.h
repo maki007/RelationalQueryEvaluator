@@ -11,36 +11,36 @@
 class ExpressionVisitorBase
 {
 public:
-	virtual void visit(Expression * expression);
+	virtual void visitExpression(Expression * expression);
 
-	virtual void visit(UnaryExpression * expression);
+	virtual void visitUnaryExpression(UnaryExpression * expression);
 
-	virtual void visit(BinaryExpression * expression);
+	virtual void visitBinaryExpression(BinaryExpression * expression);
 
-	virtual void visit(NnaryExpression * expression);
+	virtual void visitNnaryExpression(NnaryExpression * expression);
 
-	virtual void visit(Constant * expression);
+	virtual void visitConstant(Constant * expression);
 
-	virtual void visit(Column * expression);
+	virtual void visitColumn(Column * expression);
 
-	virtual void visit(GroupedExpression * expression);
+	virtual void visitGroupedExpression(GroupedExpression * expression);
 };
 
 class WritingExpressionVisitor : public ExpressionVisitorBase
 {
 public:
 	std::string result;
-	void visit(UnaryExpression * expression);
+	void visitUnaryExpression(UnaryExpression * expression);
 
-	void visit(BinaryExpression * expression);
+	void visitBinaryExpression(BinaryExpression * expression);
 
-	void visit(NnaryExpression * expression);
+	void visitNnaryExpression(NnaryExpression * expression);
 
-	void visit(Constant * expression);
+	void visitConstant(Constant * expression);
 
-	void visit(Column * expression);
+	void visitColumn(Column * expression);
 
-	void visit(GroupedExpression * expression);
+	void visitGroupedExpression(GroupedExpression * expression);
 };
 
 
@@ -49,14 +49,14 @@ class NumberColumnsInJoinVisitor : public ExpressionVisitorBase
 public:
 	int lastNumberedColumn;
 	NumberColumnsInJoinVisitor();
-	void visit(Column * expression);
+	void visitColumn(Column * expression);
 };
 
 class GetColumnsNodesVisitor : public ExpressionVisitorBase
 {
 public:
 	std::vector<Column *> nodes;
-	void visit(Column * expression);
+	void visitColumn(Column * expression);
 };
 
 class GroupingExpressionVisitor : public ExpressionVisitorBase
@@ -64,7 +64,7 @@ class GroupingExpressionVisitor : public ExpressionVisitorBase
 public:
 	std::shared_ptr<Expression> * root;
 	GroupingExpressionVisitor(std::shared_ptr<Expression> * x);
-	void visit(BinaryExpression * expression);
+	void visitBinaryExpression(BinaryExpression * expression);
 
 };
 
@@ -75,7 +75,7 @@ public:
 	std::map<std::string,ColumnInfo> outputColumns0; 
 	std::map<std::string,ColumnInfo> outputColumns1; 
 	SemanticExpressionVisitor();
-	void visit(Column * expression);
+	void visitColumn(Column * expression);
 };
 
 class SizeEstimatingExpressionVisitor : public ExpressionVisitorBase
@@ -89,14 +89,14 @@ public:
 		this->columns = columns;
 	}
 
-	void visit(UnaryExpression * expression)
+	void visitUnaryExpression(UnaryExpression * expression)
 	{
 		//NOT operator
 		expression->child->accept(*this);
 		size = 1 - size;
 	}
 
-	void visit(BinaryExpression * expression)
+	void visitBinaryExpression(BinaryExpression * expression)
 	{
 		switch (expression->operation)
 		{
@@ -159,13 +159,13 @@ public:
 		}
 	}
 
-	void visit(NnaryExpression * expression)
+	void visitNnaryExpression(NnaryExpression * expression)
 	{
 		size = 1/3;
 	}
 
 
-	void visit(GroupedExpression * expression)
+	void visitGroupedExpression(GroupedExpression * expression)
 	{
 		double newSize = 1;
 
@@ -204,17 +204,17 @@ public:
 		this->conditionType = type;
 	}
 	
-	void visit(Column * expression)
+	void visitColumn(Column * expression)
 	{
 		data->insert(expression->column.id);
 	}
 	
-	void visit(UnaryExpression * expression)
+	void visitUnaryExpression(UnaryExpression * expression)
 	{
 		(*conditionType) = ConditionType::OTHER;
 	}
 
-	void visit(BinaryExpression * expression)
+	void visitBinaryExpression(BinaryExpression * expression)
 	{
 		switch (expression->operation)
 		{
@@ -234,17 +234,17 @@ public:
 		
 	}
 
-	void visit(NnaryExpression * expression)
+	void visitNnaryExpression(NnaryExpression * expression)
 	{
 		(*conditionType) = ConditionType::OTHER;
 	}
 
-	void visit(Constant * expression)
+	void visitConstant(Constant * expression)
 	{
 		throw new std::exception("constant shouldnt be in joins");
 	}
 
-	void visit(GroupedExpression * expression)
+	void visitGroupedExpression(GroupedExpression * expression)
 	{
 		(*conditionType) = ConditionType::OTHER;
 	}
@@ -262,7 +262,7 @@ public:
 		n = i;
 		this->inputColumns = inputColumns;
 	}
-	void visit(Column * expression)
+	void visitColumn(Column * expression)
 	{
 		if (expression->input == n)
 		{

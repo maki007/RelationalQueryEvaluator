@@ -6,41 +6,41 @@
 class PhysicalOperatorVisitor
 {
 public:
-	virtual void visit(PhysicalOperator * node);
+	virtual void visitPhysicalOperator(PhysicalOperator * node);
 
-	virtual void visit(NullaryPhysicalOperator * node);
+	virtual void visitNullaryPhysicalOperator(NullaryPhysicalOperator * node);
 
-	virtual void visit(UnaryPhysicalOperator * node);
+	virtual void visitUnaryPhysicalOperator(UnaryPhysicalOperator * node);
 
-	virtual void visit(BinaryPhysicalOperator * node);
+	virtual void visitBinaryPhysicalOperator(BinaryPhysicalOperator * node);
 
-	virtual void visit(Filter * node);
+	virtual void visitFilter(Filter * node);
 
-	virtual void visit(FilterKeepingOrder * node);
+	virtual void visitFilterKeepingOrder(FilterKeepingOrder * node);
 
-	virtual void visit(SortOperator * node);
+	virtual void visitSortOperator(SortOperator * node);
 
-	virtual void visit(MergeJoin * node);
+	virtual void visitMergeJoin(MergeJoin * node);
 
-	virtual void visit(NestedLoopJoin * node);
+	virtual void visitNestedLoopJoin(NestedLoopJoin * node);
 
-	virtual void visit(CrossJoin * node);
+	virtual void visitCrossJoin(CrossJoin * node);
 
-	virtual void visit(HashJoin * node);
+	virtual void visitHashJoin(HashJoin * node);
 
-	virtual void visit(UnionOperator * node);
+	virtual void visitUnionOperator(UnionOperator * node);
 
-	virtual void visit(HashGroup * node);
+	virtual void visitHashGroup(HashGroup * node);
 
-	virtual void visit(SortedGroup * node);
+	virtual void visitSortedGroup(SortedGroup * node);
 
-	virtual void visit(ColumnsOperationsOperator * node);
+	virtual void visitColumnsOperationsOperator(ColumnsOperationsOperator * node);
 
-	virtual void visit(ScanAndSortByIndex * node);
+	virtual void visitScanAndSortByIndex(ScanAndSortByIndex * node);
 
-	virtual void visit(TableScan * node);
+	virtual void visitTableScan(TableScan * node);
 
-	virtual void visit(IndexScan * node);
+	virtual void visitIndexScan(IndexScan * node);
 };
 
 class PhysicalOperatorDrawingVisitor : public PhysicalOperatorVisitor
@@ -56,33 +56,33 @@ public:
 
 	void generateText(std::string & label,BinaryPhysicalOperator * node);
 
-	void visit(Filter * node);
+	void visitFilter(Filter * node);
 
-	void visit(FilterKeepingOrder * node);
+	void visitFilterKeepingOrder(FilterKeepingOrder * node);
 
-	void visit(SortOperator * node);
+	void visitSortOperator(SortOperator * node);
 
-	void visit(MergeJoin * node);
+	void visitMergeJoin(MergeJoin * node);
 
-	void visit(NestedLoopJoin * node);
+	void visitNestedLoopJoin(NestedLoopJoin * node);
 
-	void visit(CrossJoin * node);
+	void visitCrossJoin(CrossJoin * node);
 
-	void visit(HashJoin * node);
+	void visitHashJoin(HashJoin * node);
 
-	void visit(UnionOperator * node);
+	void visitUnionOperator(UnionOperator * node);
 
-	void visit(HashGroup * node);
+	void visitHashGroup(HashGroup * node);
 
-	void visit(SortedGroup * node);
+	void visitSortedGroup(SortedGroup * node);
 
-	void visit(ColumnsOperationsOperator * node);
+	void visitColumnsOperationsOperator(ColumnsOperationsOperator * node);
 
-	void visit(ScanAndSortByIndex * node);
+	void visitScanAndSortByIndex(ScanAndSortByIndex * node);
 
-	void visit(TableScan * node);
+	void visitTableScan(TableScan * node);
 
-	void visit(IndexScan * node);
+	void visitIndexScan(IndexScan * node);
 };
 
 

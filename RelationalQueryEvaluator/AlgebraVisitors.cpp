@@ -8,72 +8,72 @@
 
 using namespace std;
 
-void AlgebraVisitor::visit(AlgebraNodeBase * node)
+void AlgebraVisitor::visitAlgebraNodeBase(AlgebraNodeBase * node)
 {
 	node->accept(*this);
 }
 
-void  AlgebraVisitor::visit(UnaryAlgebraNodeBase * node)
+void  AlgebraVisitor::visitUnaryAlgebraNodeBase(UnaryAlgebraNodeBase * node)
 {
 	node->accept(*this);
 }
 
-void  AlgebraVisitor::visit(BinaryAlgebraNodeBase * node)
+void  AlgebraVisitor::visitBinaryAlgebraNodeBase(BinaryAlgebraNodeBase * node)
 {
 	node->accept(*this);
 }
-void AlgebraVisitor::visit(GroupedAlgebraNode * node)
+void AlgebraVisitor::visitGroupedAlgebraNode(GroupedAlgebraNode * node)
 {
 	node->accept(*this);
 }
-void AlgebraVisitor::visit(NullaryAlgebraNodeBase * node)
+void AlgebraVisitor::visitNullaryAlgebraNodeBase(NullaryAlgebraNodeBase * node)
 {
 	node->accept(*this);
 }
-void  AlgebraVisitor::visit(Table * node)
+void  AlgebraVisitor::visitTable(Table * node)
 {
 
 }
 
-void  AlgebraVisitor::visit(Sort * node)
+void  AlgebraVisitor::visitSort(Sort * node)
 {
 	node->child->accept(*this);
 }
 
-void  AlgebraVisitor::visit(Group * node)
+void  AlgebraVisitor::visitGroup(Group * node)
 {
 	node->child->accept(*this);
 }
 
-void  AlgebraVisitor::visit(ColumnOperations * node)
+void  AlgebraVisitor::visitColumnOperations(ColumnOperations * node)
 {
 	node->child->accept(*this);
 }
 
-void  AlgebraVisitor::visit(Selection * node)
+void  AlgebraVisitor::visitSelection(Selection * node)
 {
 	node->child->accept(*this);
 }
 
-void  AlgebraVisitor::visit(Join * node)
+void  AlgebraVisitor::visitJoin(Join * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void  AlgebraVisitor::visit(AntiJoin * node)
+void  AlgebraVisitor::visitAntiJoin(AntiJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void  AlgebraVisitor::visit(Union * node)
+void  AlgebraVisitor::visitUnion(Union * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void AlgebraVisitor::visit(GroupedJoin * node)
+void AlgebraVisitor::visitGroupedJoin(GroupedJoin * node)
 {
 	for(auto it=node->children.begin();it!=node->children.end();++it)
 	{
@@ -132,7 +132,7 @@ void GraphDrawingVisitor::generateText(string & label , BinaryAlgebraNodeBase * 
 
 }
 
-void GraphDrawingVisitor::visit(Sort * node)
+void GraphDrawingVisitor::visitSort(Sort * node)
 {
 	result="digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
 	string label="Sort";
@@ -159,7 +159,7 @@ void GraphDrawingVisitor::visit(Sort * node)
 	result+="\n}";
 }
 
-void GraphDrawingVisitor::visit(Group * node)
+void GraphDrawingVisitor::visitGroup(Group * node)
 {
 	string label="Group\n";
 	label+="groupBy ";
@@ -187,7 +187,7 @@ void GraphDrawingVisitor::visit(Group * node)
 	generateText(label,node);
 }
 
-void GraphDrawingVisitor::visit(Table * node)
+void GraphDrawingVisitor::visitTable(Table * node)
 {
 	result.append("node");
 	result.append(to_string(nodeCounter));
@@ -242,7 +242,7 @@ void GraphDrawingVisitor::visit(Table * node)
 	result.append(label);
 }
 
-void GraphDrawingVisitor::visit(ColumnOperations * node)
+void GraphDrawingVisitor::visitColumnOperations(ColumnOperations * node)
 {
 	string label="ColumnOperations\n";
 	for(auto it=node->operations.begin();it!=node->operations.end();++it)
@@ -264,7 +264,7 @@ void GraphDrawingVisitor::visit(ColumnOperations * node)
 
 }
 
-void GraphDrawingVisitor::visit(Selection * node)
+void GraphDrawingVisitor::visitSelection(Selection * node)
 {
 	string label="Selection\n";
 	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
@@ -273,7 +273,7 @@ void GraphDrawingVisitor::visit(Selection * node)
 	generateText(label,node);
 }
 
-void GraphDrawingVisitor::visit(Join * node)
+void GraphDrawingVisitor::visitJoin(Join * node)
 {
 	string label="Join\n";
 	//crossjoin
@@ -286,7 +286,7 @@ void GraphDrawingVisitor::visit(Join * node)
 	generateText(label,node);
 }
 
-void GraphDrawingVisitor::visit(AntiJoin * node)
+void GraphDrawingVisitor::visitAntiJoin(AntiJoin * node)
 {
 	string label="AntiJoin\n";
 	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
@@ -295,7 +295,7 @@ void GraphDrawingVisitor::visit(AntiJoin * node)
 	generateText(label,node);
 }
 
-void GraphDrawingVisitor::visit(Union * node)
+void GraphDrawingVisitor::visitUnion(Union * node)
 {
 	generateText(string("Union"),node);
 }
@@ -323,7 +323,7 @@ void GraphDrawingVisitor::generateText(string & label , GroupedAlgebraNode * nod
 
 }
 
-void GraphDrawingVisitor::visit(GroupedJoin * node)
+void GraphDrawingVisitor::visitGroupedJoin(GroupedJoin * node)
 {
 	string label="GroupedJoin\n";
 	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
@@ -344,7 +344,7 @@ GroupingVisitor::GroupingVisitor()
 }
 
 
-void GroupingVisitor::visit(Join * node)
+void GroupingVisitor::visitJoin(Join * node)
 {
 	if(node->condition.get()!=0)
 	{
@@ -491,7 +491,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 	}
 }
 
-void GroupingVisitor::visit(ColumnOperations * node)
+void GroupingVisitor::visitColumnOperations(ColumnOperations * node)
 {
 	for(auto it=node->operations.begin();it!=node->operations.end();++it)
 	{
@@ -503,7 +503,7 @@ void GroupingVisitor::visit(ColumnOperations * node)
 	node->child->accept(*this);
 }
 
-void GroupingVisitor::visit(Selection * node)
+void GroupingVisitor::visitSelection(Selection * node)
 {
 	node->condition->accept(GroupingExpressionVisitor(&(node->condition)));
 	node->child->accept(*this);

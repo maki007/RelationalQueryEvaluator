@@ -124,7 +124,7 @@ void UnaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
 
 void UnaryExpression::accept(ExpressionVisitorBase &v)
 {
-	v.visit(this);
+	v.visitUnaryExpression(this);
 }
 
 BinaryExpression::BinaryExpression(DOMElement * node,BinaryOperator op)
@@ -160,7 +160,7 @@ void BinaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
 
 void BinaryExpression::accept(ExpressionVisitorBase &v)
 {
-	v.visit(this);
+	v.visitBinaryExpression(this);
 }
 
 NnaryExpression::NnaryExpression(DOMElement * node)
@@ -186,7 +186,7 @@ void NnaryExpression::replaceChild(Expression * oldChild,Expression * newChild)
 
 void NnaryExpression::accept(ExpressionVisitorBase &v)
 {
-	v.visit(this);
+	v.visitNnaryExpression(this);
 }
 
 Constant::Constant(DOMElement * node)
@@ -201,7 +201,7 @@ void Constant::replaceChild(Expression * oldChild,Expression * newChild)
 
 void Constant::accept(ExpressionVisitorBase &v)
 {
-	v.visit(this);
+	v.visitConstant(this);
 }
 
 Column::Column(DOMElement * node)
@@ -217,7 +217,7 @@ void Column::replaceChild(Expression * oldChild,Expression * newChild)
 
 void Column::accept(ExpressionVisitorBase &v)
 {
-	v.visit(this);
+	v.visitColumn(this);
 }
 
 GroupedExpression::GroupedExpression()
@@ -243,5 +243,5 @@ void GroupedExpression::replaceChild(Expression * oldChild,Expression * newChild
 
 void GroupedExpression::accept(ExpressionVisitorBase &v)
 {
-	v.visit(this);
+	v.visitGroupedExpression(this);
 }

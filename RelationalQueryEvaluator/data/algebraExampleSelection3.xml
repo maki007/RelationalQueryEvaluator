@@ -34,7 +34,7 @@
         <table name="users" numberOfRows="10000000">
           <column name="a" type="int" number_of_unique_values="1000" />
           <column name="b" type="int" number_of_unique_values="1000" />
-          <index type="unclustered" >
+          <index type="unclustered" name="index">
             <column name="a" />
             <column name="b" />
           </index>

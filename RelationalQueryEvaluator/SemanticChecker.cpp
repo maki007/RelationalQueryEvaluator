@@ -16,7 +16,7 @@ int SemanticChecker::nextId()
 	return lastId++;
 }
 
-void SemanticChecker::visit(Table * node)
+void SemanticChecker::visitTable(Table * node)
 {
 	outputColumns.clear();
 
@@ -74,7 +74,7 @@ void SemanticChecker::visit(Table * node)
 
 }
 
-void SemanticChecker::visit(Sort * node)
+void SemanticChecker::visitSort(Sort * node)
 {
 	node->child->accept(*this);
 	for(auto it=node->parameters.begin();it!=node->parameters.end();++it)
@@ -90,7 +90,7 @@ void SemanticChecker::visit(Sort * node)
 	}
 }
 
-void SemanticChecker::visit(Group * node)
+void SemanticChecker::visitGroup(Group * node)
 {
 	node->child->accept(*this);
 	for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
@@ -149,7 +149,7 @@ void SemanticChecker::visit(Group * node)
 	}
 }
 
-void SemanticChecker::visit(ColumnOperations * node)
+void SemanticChecker::visitColumnOperations(ColumnOperations * node)
 {
 	node->child->accept(*this);
 
@@ -199,7 +199,7 @@ void SemanticChecker::visit(ColumnOperations * node)
 	}
 }
 
-void SemanticChecker::visit(Selection * node)
+void SemanticChecker::visitSelection(Selection * node)
 {
 	node->child->accept(*this);
 	shared_ptr<SemanticExpressionVisitor> expresionVisitor;
@@ -209,7 +209,7 @@ void SemanticChecker::visit(Selection * node)
 	containsErrors|=expresionVisitor->containsErrors;
 }
 
-void SemanticChecker::visit(Join * node)
+void SemanticChecker::visitJoin(Join * node)
 {
 	map<string,ColumnInfo> outputColumns0,outputColumns1;
 	node->leftChild->accept(*this);
@@ -231,7 +231,7 @@ void SemanticChecker::visit(Join * node)
 
 }
 
-void SemanticChecker::visit(AntiJoin * node)
+void SemanticChecker::visitAntiJoin(AntiJoin * node)
 {
 	map<string,ColumnInfo> outputColumns0,outputColumns1;
 	node->leftChild->accept(*this);
@@ -251,7 +251,7 @@ void SemanticChecker::visit(AntiJoin * node)
 
 
 
-void SemanticChecker::visit(Union * node)
+void SemanticChecker::visitUnion(Union * node)
 {
 	map<string,ColumnInfo> outputColumns0,outputColumns1;
 	node->leftChild->accept(*this);
@@ -273,7 +273,7 @@ void SemanticChecker::visit(Union * node)
 	}
 }
 
-void SemanticChecker::visit(GroupedJoin * node)
+void SemanticChecker::visitGroupedJoin(GroupedJoin * node)
 {
 	throw new exception("Not Suported: GroupedJoin cannot be in input algebra");
 }

@@ -71,5 +71,8 @@
     <ClInclude Include="PhysicalOperatorVisitor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AlgebraStructures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

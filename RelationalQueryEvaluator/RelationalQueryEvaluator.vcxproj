@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algebra.h" />
+    <ClInclude Include="AlgebraStructures.h" />
     <ClInclude Include="Expressions.h" />
     <ClInclude Include="ExpressionVisitors.h" />
     <ClInclude Include="AlgebraVisitors.h" />

@@ -3,96 +3,96 @@
 
 using namespace std;
 
-void PhysicalOperatorVisitor::visit(PhysicalOperator * node)
+void PhysicalOperatorVisitor::visitPhysicalOperator(PhysicalOperator * node)
 {
 	node->accept(*this);
 }
-void PhysicalOperatorVisitor::visit(NullaryPhysicalOperator * node)
-{
-	node->accept(*this);
-}
-
-void PhysicalOperatorVisitor::visit(UnaryPhysicalOperator * node)
+void PhysicalOperatorVisitor::visitNullaryPhysicalOperator(NullaryPhysicalOperator * node)
 {
 	node->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(BinaryPhysicalOperator * node)
+void PhysicalOperatorVisitor::visitUnaryPhysicalOperator(UnaryPhysicalOperator * node)
 {
 	node->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(Filter * node)
+void PhysicalOperatorVisitor::visitBinaryPhysicalOperator(BinaryPhysicalOperator * node)
+{
+	node->accept(*this);
+}
+
+void PhysicalOperatorVisitor::visitFilter(Filter * node)
 {
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(FilterKeepingOrder * node)
+void PhysicalOperatorVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
 {
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(SortOperator * node)
+void PhysicalOperatorVisitor::visitSortOperator(SortOperator * node)
 {
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(MergeJoin * node)
+void PhysicalOperatorVisitor::visitMergeJoin(MergeJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(NestedLoopJoin * node)
+void PhysicalOperatorVisitor::visitNestedLoopJoin(NestedLoopJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(CrossJoin * node)
+void PhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(HashJoin * node)
+void PhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(UnionOperator * node)
+void PhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(HashGroup * node)
+void PhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
 {
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(SortedGroup * node)
+void PhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 {
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(ColumnsOperationsOperator * node)
+void PhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visit(ScanAndSortByIndex * node)
+void PhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
 
 }
 
-void PhysicalOperatorVisitor::visit(TableScan * node)
+void PhysicalOperatorVisitor::visitTableScan(TableScan * node)
 {
 
 }
 
-void PhysicalOperatorVisitor::visit(IndexScan * node)
+void PhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 {
 
 }
@@ -156,7 +156,7 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label,BinaryPhysicalO
 
 }
 
-void PhysicalOperatorDrawingVisitor::visit(Filter * node)
+void PhysicalOperatorDrawingVisitor::visitFilter(Filter * node)
 {
 	string label="Filter\n";
 	WritingExpressionVisitor expresionWriter;
@@ -165,7 +165,7 @@ void PhysicalOperatorDrawingVisitor::visit(Filter * node)
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(FilterKeepingOrder * node)
+void PhysicalOperatorDrawingVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
 {
 	string label="Filter Keeping Order\n";
 	WritingExpressionVisitor expresionWriter;
@@ -174,30 +174,30 @@ void PhysicalOperatorDrawingVisitor::visit(FilterKeepingOrder * node)
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(SortOperator * node)
+void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 {
 	string label="Sort";
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(MergeJoin * node)
+void PhysicalOperatorDrawingVisitor::visitMergeJoin(MergeJoin * node)
 {
 	string label = "Merge Join";
 	generateText(label, node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(NestedLoopJoin * node)
+void PhysicalOperatorDrawingVisitor::visitNestedLoopJoin(NestedLoopJoin * node)
 {
 
 }
 
-void PhysicalOperatorDrawingVisitor::visit(CrossJoin * node)
+void PhysicalOperatorDrawingVisitor::visitCrossJoin(CrossJoin * node)
 {
 	string label = "Cross Join";
 	generateText(label, node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(HashJoin * node)
+void PhysicalOperatorDrawingVisitor::visitHashJoin(HashJoin * node)
 {
 	string label = "Hash Join\n";
 	WritingExpressionVisitor expresionWriter;
@@ -206,25 +206,25 @@ void PhysicalOperatorDrawingVisitor::visit(HashJoin * node)
 	generateText(label, node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(UnionOperator * node)
+void PhysicalOperatorDrawingVisitor::visitUnionOperator(UnionOperator * node)
 {
 	string label="Union";
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(HashGroup * node)
+void PhysicalOperatorDrawingVisitor::visitHashGroup(HashGroup * node)
 {
 	string label="Hash Group";
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(SortedGroup * node)
+void PhysicalOperatorDrawingVisitor::visitSortedGroup(SortedGroup * node)
 {
 	string label="Sorted Group";
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(ColumnsOperationsOperator * node)
+void PhysicalOperatorDrawingVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
 	string label="Columns Operations\n";
 	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
@@ -245,19 +245,19 @@ void PhysicalOperatorDrawingVisitor::visit(ColumnsOperationsOperator * node)
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(ScanAndSortByIndex * node)
+void PhysicalOperatorDrawingVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
 	string label="Sort by index Scan";
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(TableScan * node)
+void PhysicalOperatorDrawingVisitor::visitTableScan(TableScan * node)
 {
 	string label="Table Scan";
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visit(IndexScan * node)
+void PhysicalOperatorDrawingVisitor::visitIndexScan(IndexScan * node)
 {
 	string label="Index Scan\n";
 	WritingExpressionVisitor expresionWriter;

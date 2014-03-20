@@ -6,23 +6,23 @@
 
 using namespace std;
 
-void ExpressionVisitorBase::visit(Expression * expression)
+void ExpressionVisitorBase::visitExpression(Expression * expression)
 {
 	expression->accept(*this);
 }
 
-void ExpressionVisitorBase::visit(UnaryExpression * expression)
+void ExpressionVisitorBase::visitUnaryExpression(UnaryExpression * expression)
 {
 	expression->child->accept(*this); 
 }
 
-void ExpressionVisitorBase::visit(BinaryExpression * expression)
+void ExpressionVisitorBase::visitBinaryExpression(BinaryExpression * expression)
 {
 	expression->leftChild->accept(*this); 
 	expression->rightChild->accept(*this); 
 }
 
-void ExpressionVisitorBase::visit(NnaryExpression * expression)
+void ExpressionVisitorBase::visitNnaryExpression(NnaryExpression * expression)
 {
 	for (auto it=expression->arguments.begin();it!=expression->arguments.end();++it)
 	{
@@ -30,7 +30,7 @@ void ExpressionVisitorBase::visit(NnaryExpression * expression)
 	}
 }
 
-void ExpressionVisitorBase::visit(GroupedExpression * expression)
+void ExpressionVisitorBase::visitGroupedExpression(GroupedExpression * expression)
 {
 	for (auto it=expression->children.begin();it!=expression->children.end();++it)
 	{
@@ -38,24 +38,24 @@ void ExpressionVisitorBase::visit(GroupedExpression * expression)
 	}
 }
 
-void ExpressionVisitorBase::visit(Constant * expression)
+void ExpressionVisitorBase::visitConstant(Constant * expression)
 {
 
 }
 
-void ExpressionVisitorBase::visit(Column * expression)
+void ExpressionVisitorBase::visitColumn(Column * expression)
 {
 
 }
 
-void WritingExpressionVisitor::visit(UnaryExpression * expression)
+void WritingExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
 {
 	result+="!(";
 	expression->child->accept(*this); 
 	result+=")";
 }
 
-void WritingExpressionVisitor::visit(BinaryExpression * expression)
+void WritingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
 {
 	result+="(";
 	expression->leftChild->accept(*this); 
@@ -96,7 +96,7 @@ void WritingExpressionVisitor::visit(BinaryExpression * expression)
 	result+=")";
 }
 
-void WritingExpressionVisitor::visit(NnaryExpression * expression)
+void WritingExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
 {
 	result+=expression->name;
 	result+="(";
@@ -111,12 +111,12 @@ void WritingExpressionVisitor::visit(NnaryExpression * expression)
 	result+=")";
 }
 
-void WritingExpressionVisitor::visit(Constant * expression)
+void WritingExpressionVisitor::visitConstant(Constant * expression)
 {
 	result+=expression->value;
 }
 
-void WritingExpressionVisitor::visit(Column * expression)
+void WritingExpressionVisitor::visitColumn(Column * expression)
 {
 	result+=expression->column.toString();
 	if(expression->input>=0)
@@ -127,7 +127,7 @@ void WritingExpressionVisitor::visit(Column * expression)
 	}
 }
 
-void WritingExpressionVisitor::visit(GroupedExpression * expression)
+void WritingExpressionVisitor::visitGroupedExpression(GroupedExpression * expression)
 {
 	switch (expression->operation)
 	{
@@ -154,7 +154,7 @@ NumberColumnsInJoinVisitor::NumberColumnsInJoinVisitor()
 	lastNumberedColumn=1;
 }
 
-void NumberColumnsInJoinVisitor::visit(Column * expression)
+void NumberColumnsInJoinVisitor::visitColumn(Column * expression)
 {
 	if(lastNumberedColumn==1)
 	{
@@ -168,7 +168,7 @@ void NumberColumnsInJoinVisitor::visit(Column * expression)
 	}
 }
 
-void GetColumnsNodesVisitor::visit(Column * expression)
+void GetColumnsNodesVisitor::visitColumn(Column * expression)
 {
 	this->nodes.push_back(expression);
 }
@@ -178,7 +178,7 @@ GroupingExpressionVisitor::GroupingExpressionVisitor(shared_ptr<Expression> * x)
 	root=x;
 }
 
-void GroupingExpressionVisitor::visit(BinaryExpression * expression)
+void GroupingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
 {
 	expression->leftChild->accept(*this); 
 	expression->rightChild->accept(*this);
@@ -239,7 +239,7 @@ SemanticExpressionVisitor::SemanticExpressionVisitor()
 	containsErrors=false;
 }
 
-void SemanticExpressionVisitor::visit(Column * expression)
+void SemanticExpressionVisitor::visitColumn(Column * expression)
 {
 	if(expression->input==0)
 	{

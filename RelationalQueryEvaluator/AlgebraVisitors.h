@@ -9,33 +9,33 @@
 class AlgebraVisitor
 {
 public:
-	virtual void visit(AlgebraNodeBase * node);
+	virtual void visitAlgebraNodeBase(AlgebraNodeBase * node);
 
-	virtual void visit(UnaryAlgebraNodeBase * node);
+	virtual void visitUnaryAlgebraNodeBase(UnaryAlgebraNodeBase * node);
 
-	virtual void visit(BinaryAlgebraNodeBase * node);
+	virtual void visitBinaryAlgebraNodeBase(BinaryAlgebraNodeBase * node);
 
-	virtual void visit(NullaryAlgebraNodeBase * node);
+	virtual void visitNullaryAlgebraNodeBase(NullaryAlgebraNodeBase * node);
 
-	virtual void visit(GroupedAlgebraNode * node);
+	virtual void visitGroupedAlgebraNode(GroupedAlgebraNode * node);
 
-	virtual void visit(Table * node);
+	virtual void visitTable(Table * node);
 
-	virtual void visit(Sort * node);
+	virtual void visitSort(Sort * node);
 
-	virtual void visit(Group * node);
+	virtual void visitGroup(Group * node);
 
-	virtual void visit(ColumnOperations * node);
+	virtual void visitColumnOperations(ColumnOperations * node);
 
-	virtual void visit(Selection * node);
+	virtual void visitSelection(Selection * node);
 
-	virtual void visit(Join * node);
+	virtual void visitJoin(Join * node);
 
-	virtual void visit(AntiJoin * node);
+	virtual void visitAntiJoin(AntiJoin * node);
 
-	virtual void visit(Union * node);
+	virtual void visitUnion(Union * node);
 
-	virtual void visit(GroupedJoin * node);
+	virtual void visitGroupedJoin(GroupedJoin * node);
 
 };
 
@@ -52,23 +52,23 @@ public:
 
 	void generateText(std::string & label, GroupedAlgebraNode * node);
 
-	void visit(Sort * node);
+	void visitSort(Sort * node);
 
-	void visit(Group * node);
+	void visitGroup(Group * node);
 
-	void visit(Table * node);
+	void visitTable(Table * node);
 
-	void visit(ColumnOperations * node);
+	void visitColumnOperations(ColumnOperations * node);
 
-	void visit(Selection * node);
+	void visitSelection(Selection * node);
 
-	void visit(Join * node);
+	void visitJoin(Join * node);
 
-	void visit(AntiJoin * node);
+	void visitAntiJoin(AntiJoin * node);
 
-	void visit(Union * node);
+	void visitUnion(Union * node);
 
-	void visit(GroupedJoin * node);
+	void visitGroupedJoin(GroupedJoin * node);
 
 };
 
@@ -134,23 +134,23 @@ public:
 
 	}
 
-	void visit(Table * node);
+	void visitTable(Table * node);
 
-	void visit(Sort * node);
+	void visitSort(Sort * node);
 
-	void visit(Group * node);
+	void visitGroup(Group * node);
 
-	void visit(ColumnOperations * node);
+	void visitColumnOperations(ColumnOperations * node);
 
-	void visit(Selection * node);
+	void visitSelection(Selection * node);
 
-	void visit(Join * node);
+	void visitJoin(Join * node);
 
-	void visit(AntiJoin * node);
+	void visitAntiJoin(AntiJoin * node);
 
-	void visit(Union * node);
+	void visitUnion(Union * node);
 
-	void visit(GroupedJoin * node);
+	void visitGroupedJoin(GroupedJoin * node);
 
 };
 
@@ -161,11 +161,11 @@ private:
 public:
 	GroupingVisitor();
 
-	void visit(ColumnOperations * node);
+	void visitColumnOperations(ColumnOperations * node);
 
-	void visit(Selection * node);
+	void visitSelection(Selection * node);
 
-	void visit(Join * node);
+	void visitJoin(Join * node);
 
 	void resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * groupedOperator, std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren);
 };
@@ -210,23 +210,23 @@ public:
 	static const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM;
 	std::vector<std::shared_ptr<PhysicalPlan> > result;
 
-	void visit(Table * node);
+	void visitTable(Table * node);
 
-	void visit(Sort * node);
+	void visitSort(Sort * node);
 
-	void visit(Group * node);
+	void visitGroup(Group * node);
 
-	void visit(ColumnOperations * node);
+	void visitColumnOperations(ColumnOperations * node);
 
-	void visit(Selection * node);
+	void visitSelection(Selection * node);
 
-	void visit(Join * node);
+	void visitJoin(Join * node);
 
-	void visit(AntiJoin * node);
+	void visitAntiJoin(AntiJoin * node);
 
-	void visit(Union * node);
+	void visitUnion(Union * node);
 
-	void visit(GroupedJoin * node);
+	void visitGroupedJoin(GroupedJoin * node);
 
 
 private:

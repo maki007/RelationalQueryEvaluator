@@ -22,52 +22,14 @@
 #include <xercesc/dom/DOMText.hpp>
 
 #include "XmlUtils.h"
-
+#include "AlgebraStructures.h"
 
 XERCES_CPP_NAMESPACE_USE
 
 typedef unsigned long long int ulong;
 
-enum class UnaryOperator
-{
-	NOT
-};
-enum class BinaryOperator
-{
-	AND,OR,PLUS,MINUS,TIMES,DIVIDE,EQUALS,NOT_EQUALS,LOWER,LOWER_OR_EQUAL
-};
-enum class GroupedOperator
-{
-	AND,OR
-};
 
-class ColumnIdentifier
-{
-public:
-	std::string name;
-	int id;
-	ColumnIdentifier(std::string name, int id)
-	{
-		this->name = name;
-		this->id = id;
-	}
 
-	ColumnIdentifier(std::string name)
-	{
-		this->name = name;
-		this->id = -1;
-	}
-
-	ColumnIdentifier()
-	{
-		this->name = "";
-		this->id = -1;
-	}
-	std::string toString()
-	{
-		return name + "_" + std::to_string(id);
-	}
-};
 class ExpressionVisitorBase;
 
 class Expression
