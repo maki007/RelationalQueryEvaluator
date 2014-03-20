@@ -182,7 +182,7 @@ class PhysicalPlan
 {
 public:
 	std::map<int,ColumnInfo> columns;
-	std::vector<IndexInfo> indices;
+	std::vector<Index> indices;
 	std::vector<SortParameter> sortedBy;
 	double timeComplexity;
 	double size;

@@ -174,7 +174,7 @@ Table::Table(DOMElement * element)
 		}
 		else if(XmlUtils::GetElementName(*it)=="index")
 		{
-			IndexInfo index;
+			Index index;
 			if(XmlUtils::ReadAttribute(*it,"type")=="clustered")
 			{
 				index.type=IndexType::CLUSTERED;
@@ -183,6 +183,7 @@ Table::Table(DOMElement * element)
 			{
 				index.type=IndexType::UNCLUSTERED;
 			}
+			index.name = XmlUtils::ReadAttribute(*it, "name");
 			vector<DOMElement *> columnsElement=XmlUtils::GetChildElements(*it);
 			for(auto it2=columnsElement.begin();it2!=columnsElement.end();++it2)
 			{
@@ -191,7 +192,6 @@ Table::Table(DOMElement * element)
 			indices.push_back(index);
 		}
 	}
-	//todo indices
 }
 
 void Table::accept(AlgebraVisitor &v)
@@ -247,26 +247,26 @@ Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 			}
 			else
 			{
-				AgregateFunctionInfo function;
+				AgregateFunction function;
 				function.functionName=elementName;
 				if(elementName == "max")
 				{
 					function.parameter= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"argument"));
-					function.function=AgregateFunction::MAX;
+					function.function=AgregateFunctionType::MAX;
 				}
 				if(elementName == "min")
 				{
 					function.parameter = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "argument"));
-					function.function=AgregateFunction::MIN;
+					function.function=AgregateFunctionType::MIN;
 				}
 				if(elementName == "sum")
 				{
 					function.parameter = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "argument"));
-					function.function=AgregateFunction::SUM;
+					function.function=AgregateFunctionType::SUM;
 				}
 				if(elementName == "count")
 				{
-					function.function=AgregateFunction::COUNT;
+					function.function=AgregateFunctionType::COUNT;
 				}
 				function.output= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"output"));
 				agregateFunctions.push_back(function);

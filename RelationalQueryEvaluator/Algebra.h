@@ -89,7 +89,7 @@ public:
 	std::string name;
 	std::vector<ColumnInfo> columns;
 	ulong numberOfRows;
-	std::vector<IndexInfo> indices;
+	std::vector<Index> indices;
 	Table(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -106,7 +106,7 @@ class Group : public UnaryAlgebraNodeBase
 {
 public:
 	std::vector<ColumnIdentifier> groupColumns;
-	std::vector<AgregateFunctionInfo> agregateFunctions;
+	std::vector<AgregateFunction> agregateFunctions;
 	Group(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };

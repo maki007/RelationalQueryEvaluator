@@ -66,15 +66,15 @@ public:
 };
 
 
-enum AgregateFunction
+enum AgregateFunctionType
 {
 	SUM, MIN, MAX, COUNT
 };
 
-class AgregateFunctionInfo
+class AgregateFunction
 {
 public:
-	AgregateFunction function;
+	AgregateFunctionType function;
 	std::string functionName;
 	ColumnIdentifier parameter;
 	ColumnIdentifier output;
@@ -86,7 +86,7 @@ enum IndexType
 	CLUSTERED, UNCLUSTERED
 };
 
-class IndexInfo
+class Index
 {
 public:
 	IndexType type;
