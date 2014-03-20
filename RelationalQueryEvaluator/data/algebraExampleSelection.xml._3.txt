@@ -1,43 +1,43 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Filter
-(a(0) < -1)
+(a_1(0) < -1)
  time:3
  size:1"]
 node1[label="Index Scan
-(a(0) == 4)
+(a_1(0) == 4)
  time:89
  size:3"]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Filter Keeping Order
-(a(0) < -1)
+(a_1(0) < -1)
  time:4
  size:1"]
 node3[label="Index Scan
-(a(0) == 4)
+(a_1(0) == 4)
  time:89
  size:3"]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Filter
-(a(0) == 4)
+(a_1(0) == 4)
  time:3333
  size:1"]
 node5[label="Index Scan
-(a(0) < -1)
+(a_1(0) < -1)
  time:10079
  size:3333"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node6[label="Filter Keeping Order
-(a(0) == 4)
+(a_1(0) == 4)
  time:4333
  size:1"]
 node7[label="Index Scan
-(a(0) < -1)
+(a_1(0) < -1)
  time:10079
  size:3333"]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node8[label="Filter
-AND ((a(0) == 4),(a(0) < -1))
+AND ((a_1(0) == 4),(a_1(0) < -1))
  time:10000
  size:1"]
 node9[label="Table Scan

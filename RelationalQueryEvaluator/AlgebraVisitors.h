@@ -94,7 +94,7 @@ public:
 		outputColumns.clear();
 		for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
 		{
-			if (outputColumns.find(it->newColumn.name) == outputColumns.end())
+			if (outputColumns.find(it->newColumn) == outputColumns.end())
 			{
 				if (it->input == 0)
 				{
@@ -104,8 +104,8 @@ public:
 					}
 					else
 					{
-						outputColumns[it->newColumn.name] = ColumnInfo(it->newColumn.name, "");
-						outputColumns[it->newColumn.name].column.id = outputColumns0[it->column.name].column.id;
+						outputColumns[it->newColumn] = ColumnInfo(it->newColumn, "");
+						outputColumns[it->newColumn].column.id = outputColumns0[it->column.name].column.id;
 
 					}
 				}
@@ -117,8 +117,8 @@ public:
 					}
 					else
 					{
-						outputColumns[it->newColumn.name] = ColumnInfo(it->newColumn.name, "");
-						outputColumns[it->newColumn.name].column.id = outputColumns1[it->column.name].column.id;
+						outputColumns[it->newColumn] = ColumnInfo(it->newColumn, "");
+						outputColumns[it->newColumn].column.id = outputColumns1[it->column.name].column.id;
 					}
 				}
 				else

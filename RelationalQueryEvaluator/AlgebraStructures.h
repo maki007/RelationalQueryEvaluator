@@ -126,12 +126,21 @@ public:
 
 
 
-class JoinColumnInfo
+class JoinColumnInfo : public ColumnInfo
 {
 public:
 	ulong input;
-	ColumnIdentifier column;
-	ColumnIdentifier newColumn;
+	std::string newColumn;
+	JoinColumnInfo(const ColumnInfo & col)
+	{
+		column = col.column;
+		type = col.type;
+		numberOfUniqueValues = col.numberOfUniqueValues;
+	}
+	JoinColumnInfo()
+	{
+	
+	}
 };
 
 class ColumnOperation

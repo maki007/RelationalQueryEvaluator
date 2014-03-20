@@ -522,7 +522,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		newPlans.processedPlans.insert(input);
 		for (auto col = it->at(0)->columns.begin(); col != it->at(0)->columns.end(); ++col)
 		{
-			JoinColumnInfo joinColumnInfo;
+			JoinColumnInfo joinColumnInfo(col->second);
 			joinColumnInfo.input = input;
 			joinColumnInfo.column = col->second.column;
 			newPlans.columns[joinColumnInfo.column.id] = joinColumnInfo;
@@ -686,17 +686,17 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 	for (auto it = left.condition.begin(); it != left.condition.end(); ++it)
 	{
 		bool containsLeft = false, constainsRight = false;
-		for (auto it2 = left.processedPlans.begin(); it2 != left.processedPlans.end(); ++it2)
+		for (auto it2 = left.columns.begin(); it2 != left.columns.end(); ++it2)
 		{
-			if ((*it)->inputs.find(*it2) != (*it)->inputs.end())
+			if ((*it)->inputs.find((*it2).first) != (*it)->inputs.end())
 			{
 				containsLeft = true;
 			}
 		}
 
-		for (auto it3 = right.processedPlans.begin(); it3 != right.processedPlans.end(); ++it3)
+		for (auto it3 = right.columns.begin(); it3 != right.columns.end(); ++it3)
 		{
-			if ((*it)->inputs.find(*it3) != (*it)->inputs.end())
+			if ((*it)->inputs.find((*it3).first) != (*it)->inputs.end())
 			{
 				constainsRight = true;
 			}
@@ -737,7 +737,13 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 			{
 
 				double newSize = (*first)->size * (*second)->size;
-
+				for (auto it = equalConditions.begin(); it != equalConditions.end(); ++it)
+				{
+					ulong leftColumnIndex=*((*it)->inputs.begin());
+					ulong rightColumnIndex=*(--((*it)->inputs.end()));
+					newSize /= max(newPlan.columns[leftColumnIndex].numberOfUniqueValues, newPlan.columns[rightColumnIndex].numberOfUniqueValues);
+				}
+				newSize = max(double(1), newSize);
 				vector<shared_ptr<Expression>> expressions;
 				for (auto cond = equalConditions.begin(); cond != equalConditions.end(); ++cond)
 				{

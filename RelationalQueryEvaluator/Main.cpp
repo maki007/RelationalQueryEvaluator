@@ -33,7 +33,7 @@ void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 
 void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 {
-/*	unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
+	unique_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
 	algebraRoot->accept(*algebraCompiler);
 	
 	unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
@@ -51,7 +51,7 @@ void drawPlan(shared_ptr<AlgebraNodeBase> algebraRoot, string & line)
 	s.append(".txt");
 	myfile.open (s.c_str());
 	myfile << planDrawer->result ;
-	myfile.close();*/
+	myfile.close();
 
 }
 

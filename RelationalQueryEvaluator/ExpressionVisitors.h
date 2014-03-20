@@ -268,9 +268,9 @@ public:
 		{
 			for (auto it = inputColumns->begin(); it != inputColumns->end();++it)
 			{
-				if (it->column.name != it->newColumn.name)
+				if (it->column.name != it->newColumn)
 				{
-					if (it->newColumn.name == expression->column.name)
+					if (it->newColumn == expression->column.name)
 					{
 						expression->column.name = it->column.name;
 					}

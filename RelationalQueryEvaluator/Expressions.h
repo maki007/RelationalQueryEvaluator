@@ -88,7 +88,6 @@ class Column : public Expression
 {
 public:
 	ColumnIdentifier column;
-	std::string tableName;
 	std::string type;
 	ulong input;
 	Column(DOMElement * node);

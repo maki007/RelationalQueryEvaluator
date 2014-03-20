@@ -318,7 +318,7 @@ void Selection::accept(AlgebraVisitor &v)
 	v.visitSelection(this);
 }
 
-void AlgebraNodeBase::constructJoinParameters(DOMElement * element,shared_ptr<Expression> & condition,vector<JoinColumnInfo> & outputColumns)
+void BinaryAlgebraNodeBase::constructJoinParameters(DOMElement * element,shared_ptr<Expression> & condition,vector<JoinColumnInfo> & outputColumns)
 {
 	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
 	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
@@ -344,11 +344,11 @@ void AlgebraNodeBase::constructJoinParameters(DOMElement * element,shared_ptr<Ex
 	for(auto it=columns.begin()+start;it!=columns.end();++it)
 	{
 		JoinColumnInfo info;
-		info.newColumn=ColumnIdentifier(XmlUtils::ReadAttribute(*it,"newName"));
+		info.newColumn=XmlUtils::ReadAttribute(*it,"newName");
 		info.column = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
-		if (info.newColumn.name== "")
+		if (info.newColumn== "")
 		{
-			info.newColumn = info.column;
+			info.newColumn = info.column.name;
 		}
 		if(XmlUtils::ReadAttribute(*it,"input")=="second")
 		{

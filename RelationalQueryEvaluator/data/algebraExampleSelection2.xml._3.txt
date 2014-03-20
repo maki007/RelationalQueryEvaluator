@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Filter
-OR ((a(0) == 4),(a(0) < -1))
+OR ((a_1(0) == 4),(a_1(0) < -1))
  time:10000
  size:3335"]
 node1[label="Table Scan
@@ -9,7 +9,7 @@ node1[label="Table Scan
  size:10000"]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Filter
-OR ((a(0) == 4),(a(0) < -1))
+OR ((a_1(0) == 4),(a_1(0) < -1))
  time:10000
  size:3335"]
 node3[label="Sort by index Scan
@@ -17,7 +17,7 @@ node3[label="Sort by index Scan
  size:10000"]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Filter Keeping Order
-OR ((a(0) == 4),(a(0) < -1))
+OR ((a_1(0) == 4),(a_1(0) < -1))
  time:13000
  size:3335"]
 node5[label="Sort by index Scan

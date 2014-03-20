@@ -40,7 +40,6 @@ public:
 	AlgebraNodeBase * parent;
 	AlgebraNodeBase();
 	AlgebraNodeBase * constructChildren(DOMElement * node);
-	void constructJoinParameters(DOMElement * node,std::shared_ptr<Expression> & condition,std::vector<JoinColumnInfo> & outputColumns);
 	virtual void accept(AlgebraVisitor &v) = 0;
 	virtual void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild) = 0;
 };
@@ -64,6 +63,7 @@ public:
 	BinaryAlgebraNodeBase(DOMElement * element);
 	BinaryAlgebraNodeBase();
 	virtual void accept(AlgebraVisitor &v) = 0;
+	void constructJoinParameters(DOMElement * node, std::shared_ptr<Expression> & condition, std::vector<JoinColumnInfo> & outputColumns);
 	void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
 };
 
@@ -118,7 +118,6 @@ public:
 	ColumnOperations(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
-
 
 class Selection : public UnaryAlgebraNodeBase
 {
