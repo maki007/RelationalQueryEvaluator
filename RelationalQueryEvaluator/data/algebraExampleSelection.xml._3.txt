@@ -6,7 +6,7 @@ node0[label="Filter
  size:1"]
 node1[label="Index Scan
 (a_1(0) == 4)
- time:89
+ time:10
  size:3"]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Filter Keeping Order
@@ -15,7 +15,7 @@ node2[label="Filter Keeping Order
  size:1"]
 node3[label="Index Scan
 (a_1(0) == 4)
- time:89
+ time:10
  size:3"]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Filter
@@ -24,7 +24,7 @@ node4[label="Filter
  size:1"]
 node5[label="Index Scan
 (a_1(0) < -1)
- time:10079
+ time:3403
  size:3333"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node6[label="Filter Keeping Order
@@ -33,7 +33,7 @@ node6[label="Filter Keeping Order
  size:1"]
 node7[label="Index Scan
 (a_1(0) < -1)
- time:10079
+ time:3403
  size:3333"]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node8[label="Filter

@@ -12,7 +12,7 @@ node4[label="Selection
 (c_mktsegment_-1(0) == SEGMENT)"]
 node5[label="Table customer
  number of rows: 150000
- columns: c_custkey_-1(int,150000), c_mktsegment_-1(int,75000)
+ columns: c_custkey_-1(int,150000), c_mktsegment_-1(int,10)
  indices: UNCLUSTERED(c_mktsegment)"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]

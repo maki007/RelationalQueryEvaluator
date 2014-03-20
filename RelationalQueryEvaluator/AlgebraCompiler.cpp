@@ -342,7 +342,7 @@ void AlgebraCompiler::visitSelection(Selection * node)
 						col->second.numberOfUniqueValues *= sizeVisitor.size;
 					}
 					shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression), size,
-						TimeComplexity::indexSearch((*it)->size) + TimeComplexity::unClusteredScan(size), (*it)->columns));
+						TimeComplexity::indexSearch(size) + TimeComplexity::unClusteredScan(size* sizeVisitor.size), (*it)->columns));
 					//TODO: to the filer keeping order
 					//indexPlan->sortedBy = (*it)->sortedBy;
 
@@ -375,9 +375,15 @@ void AlgebraCompiler::visitSelection(Selection * node)
 						{
 							col->second.numberOfUniqueValues *= sizeVisitor.size;
 						}
+						
 						insertPlan(newResult, shared_ptr<PhysicalPlan>(new PhysicalPlan(new Filter(filterCondition), newSize, TimeComplexity::filter(size), newColumns, indexPlan)));
 						insertPlan(newResult, shared_ptr<PhysicalPlan>(new PhysicalPlan(new FilterKeepingOrder(filterCondition), newSize, TimeComplexity::filterKeppeingOrder(size), newColumns, indexPlan)));
 					}
+					else
+					{
+						insertPlan(newResult, indexPlan);
+					}
+					
 				}
 			}
 		}

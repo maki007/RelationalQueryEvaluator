@@ -6,7 +6,7 @@ AND ((a_1(0) < -1),(b_2(0) < 8000))
  size:1"]
 node1[label="Index Scan
 AND ((a_1(0) == 4),(b_2(0) == 10))
- time:169
+ time:19
  size:10"]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Filter Keeping Order
@@ -15,7 +15,7 @@ AND ((a_1(0) < -1),(b_2(0) < 8000))
  size:1"]
 node3[label="Index Scan
 AND ((a_1(0) == 4),(b_2(0) == 10))
- time:169
+ time:19
  size:10"]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Filter
@@ -24,7 +24,7 @@ AND ((b_2(0) == 10),(a_1(0) < -1))
  size:1"]
 node5[label="Index Scan
 AND ((a_1(0) == 4),(b_2(0) < 8000))
- time:10139
+ time:73
  size:3333"]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node6[label="Filter
@@ -33,7 +33,7 @@ AND ((a_1(0) == 4),(b_2(0) < 8000))
  size:1"]
 node7[label="Index Scan
 AND ((a_1(0) < -1),(b_2(0) == 10))
- time:10139
+ time:73
  size:3333"]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node8[label="Filter Keeping Order
@@ -42,7 +42,7 @@ AND ((a_1(0) == 4),(b_2(0) < 8000))
  size:1"]
 node9[label="Index Scan
 AND ((a_1(0) < -1),(b_2(0) == 10))
- time:10139
+ time:73
  size:3333"]
 node9 -> node8[headport=s, tailport=n,label="   "]
 
