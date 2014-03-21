@@ -19,29 +19,27 @@ node3[label="Index Scan
  size:3"]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Filter
-(a_1(0) == 4)
- time:3333
- size:1"]
-node5[label="Index Scan
-(a_1(0) < -1)
- time:3403
- size:3333"]
-node5 -> node4[headport=s, tailport=n,label="   "]
-node6[label="Filter Keeping Order
-(a_1(0) == 4)
- time:4333
- size:1"]
-node7[label="Index Scan
-(a_1(0) < -1)
- time:3403
- size:3333"]
-node7 -> node6[headport=s, tailport=n,label="   "]
-node8[label="Filter
 AND ((a_1(0) == 4),(a_1(0) < -1))
  time:10000
  size:1"]
-node9[label="Table Scan
+node5[label="Table Scan
  time:10000
+ size:10000"]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node6[label="Filter
+AND ((a_1(0) == 4),(a_1(0) < -1))
+ time:10000
+ size:1"]
+node7[label="Sort by index Scan
+ time:30000
+ size:10000"]
+node7 -> node6[headport=s, tailport=n,label="   "]
+node8[label="Filter Keeping Order
+AND ((a_1(0) == 4),(a_1(0) < -1))
+ time:13000
+ size:1"]
+node9[label="Sort by index Scan
+ time:30000
  size:10000"]
 node9 -> node8[headport=s, tailport=n,label="   "]
 

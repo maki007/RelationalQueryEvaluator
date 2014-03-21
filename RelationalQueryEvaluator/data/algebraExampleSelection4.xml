@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <selection>
+      <parameters>
+        <condition>
+          <and>
+            <lower>
+              <constant type="int" value="0"/>
+              <column name="a"/>
+            </lower>
+            <lower>
+              <column name="a"/>
+			  <constant type="int" value="8000"/>
+            </lower>
+          </and>
+        </condition>
+      </parameters>
+      <input>
+        <table name="users" numberOfRows="10000000">
+          <column name="a" type="int" number_of_unique_values="1000" />
+          <column name="b" type="int" number_of_unique_values="1000" />
+          <index type="unclustered" name="index">
+            <column name="a"  order="asc"  />
+            <column name="b"  order="asc"  />
+          </index>
+        </table>
+      </input>
+    </selection>
+  </input>
+</sort>

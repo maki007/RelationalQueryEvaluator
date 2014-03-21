@@ -254,6 +254,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 			possibleConditions.push_back(vector<shared_ptr<Expression> >());
 			for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
 			{
+				bool breakLoop = false;
 				if (typeid(**conditionPart) == typeid(BinaryExpression))
 				{
 					shared_ptr<BinaryExpression> expression = dynamic_pointer_cast<BinaryExpression>(*conditionPart);
@@ -262,7 +263,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 					case BinaryOperator::LOWER:
 					case BinaryOperator::LOWER_OR_EQUAL:
 					case BinaryOperator::EQUALS:
-
+						bool insertCondition = false;
 						if (typeid(*(expression->leftChild)) == typeid(Column))
 						{
 							if (typeid(*(expression->rightChild)) == typeid(Constant))
@@ -270,7 +271,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 								shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->leftChild);
 								if (condColumn->column.id == column->column.id)
 								{
-									possibleConditions.back().push_back(expression);
+									insertCondition = true;
 								}
 							}
 						}
@@ -282,16 +283,49 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 								shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->rightChild);
 								if (condColumn->column.id == column->column.id)
 								{
-									possibleConditions.back().push_back(expression);
+									
+									insertCondition = true;
 								}
 							}
 						}
-
-						break;
-					default:
+						
+						if (insertCondition)
+						{
+							if (expression->operation == BinaryOperator::EQUALS)
+							{
+								possibleConditions.back().clear();
+								possibleConditions.back().push_back(expression);
+								breakLoop = true;
+							}
+							else
+							{
+								possibleConditions.back().push_back(expression);
+							}
+						}
 						break;
 					}
 				}
+				if (breakLoop)
+				{
+					break;
+				}
+			}
+		}
+
+		//possibleConditions[i] contains one == condition or more <= < > >= conditions.
+		for (ulong i = 0; i < possibleConditions.size(); i++)
+		{
+			if (possibleConditions[i].size()>1)
+			{
+				vector<shared_ptr<Expression> > newExpressions;
+				for (ulong j = 0; j < possibleConditions[i].size(); j++)
+				{
+					for (ulong k = j+1; k < possibleConditions[i].size(); k++)
+					{
+						newExpressions.push_back(shared_ptr<Expression>(new BinaryExpression(possibleConditions[i][j], possibleConditions[i][k], BinaryOperator::AND)));
+					}
+				}
+				possibleConditions[i] = newExpressions;
 			}
 		}
 
