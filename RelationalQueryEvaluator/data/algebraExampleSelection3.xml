@@ -35,8 +35,8 @@
           <column name="a" type="int" number_of_unique_values="1000" />
           <column name="b" type="int" number_of_unique_values="1000" />
           <index type="unclustered" name="index">
-            <column name="a" />
-            <column name="b" />
+            <column name="a"  order="asc"  />
+            <column name="b"  order="asc"  />
           </index>
         </table>
       </input>

@@ -13,6 +13,8 @@ const double TimeComplexity::FILTER_KEEPING_ORDER=1.3;
 const double TimeComplexity::INDEX_SEARCH = 6;
 const double TimeComplexity::AGGREGATE = 0.3;
 const double TimeComplexity::READ_HASH_TABLE = 2;
+const double TimeComplexity::UNION = 0.3;
+
 double TimeComplexity::sort(double size)
 {
 	return SORT*size*log2(size);
@@ -52,6 +54,10 @@ double TimeComplexity::aggregate(double size, ulong numberOfagregateFuntions)
 double TimeComplexity::hashjoin(double hashSize, double readSize)
 {
 	return HASH*hashSize + READ_HASH_TABLE*readSize;
+}
+double TimeComplexity::Union(double leftSize, double rightSize)
+{
+	return UNION*leftSize + UNION*rightSize;
 }
 
 void Filter::accept(PhysicalOperatorVisitor &v)

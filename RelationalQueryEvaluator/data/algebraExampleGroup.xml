@@ -14,7 +14,7 @@
           <column name="user_name" type="string" number_of_unique_values="410"/>
           <column name="country" type="string" />
           <index type="unclustered" name="index">
-            <column name="country" />
+            <column name="country" order="asc" />
           </index>
         </table>
       </input>

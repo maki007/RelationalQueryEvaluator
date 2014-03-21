@@ -196,9 +196,9 @@ public:
 class JoinInfoReadingExpressionVisitor : public ExpressionVisitorBase
 {
 public:
-	std::set<ulong> * data;
+	std::set<uint> * data;
 	ConditionType * conditionType;
-	JoinInfoReadingExpressionVisitor(std::set<ulong> * data,ConditionType * type)
+	JoinInfoReadingExpressionVisitor(std::set<uint> * data, ConditionType * type)
 	{
 		this->data = data;
 		this->conditionType = type;

@@ -60,7 +60,7 @@
                       <column name="c_custkey" type="int" number_of_unique_values="150000" />
                       <column name="c_mktsegment" type="int" number_of_unique_values="10" />
                       <index type="unclustered" name="index2">
-                        <column name="c_mktsegment"/>
+                        <column name="c_mktsegment" order="asc" />
                       </index>
                     </table>
                   </input>
@@ -115,8 +115,8 @@
                           <column name="o_orderkey" type="int" number_of_unique_values="150000"/>
                           <column name="o_custkey" type="int" number_of_unique_values="150000"/>
                           <index type="clustered" name="index">
-                            <column name="o_orderdate"/>
-                            <column name="o_shippriority"/>
+                            <column name="o_orderdate" order="asc" />
+                            <column name="o_shippriority" order="asc" />
                           </index>
                         </table>
                       </input>

@@ -22,7 +22,7 @@
         <table name="users" numberOfRows="10000">
           <column name="a" type="int" number_of_unique_values="3000" />
           <index type="unclustered" name="index" >
-            <column name="a" />
+            <column name="a" order="asc" />
           </index>
         </table>
       </input>

@@ -225,7 +225,7 @@ void GraphDrawingVisitor::visitTable(Table * node)
 		label+= "(";
 		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
 		{
-			label+=it2->name;
+			label += it2->column.name;
 			if(it2!=it->columns.end()-1)
 			{
 				label+=", ";

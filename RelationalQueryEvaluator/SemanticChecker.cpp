@@ -53,17 +53,17 @@ void SemanticChecker::visitTable(Table * node)
 		set<string>  indexSet;
 		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
 		{
-			if(hashSet.find(it2->name)==hashSet.end())
+			if(hashSet.find(it2->column.name)==hashSet.end())
 			{
 				ReportError("Index cannot be on non-existing column");
 			}
 			else
 			{
-				it2->id = outputColumns[it2->name].column.id;
+				it2->column.id = outputColumns[it2->column.name].column.id;
 			}
-			if (indexSet.find(it2->name) == indexSet.end())
+			if (indexSet.find(it2->column.name) == indexSet.end())
 			{
-				indexSet.insert(it2->name);
+				indexSet.insert(it2->column.name);
 			}
 			else
 			{

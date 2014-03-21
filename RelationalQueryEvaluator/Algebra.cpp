@@ -187,8 +187,16 @@ Table::Table(DOMElement * element)
 			vector<DOMElement *> columnsElement=XmlUtils::GetChildElements(*it);
 			for(auto it2=columnsElement.begin();it2!=columnsElement.end();++it2)
 			{
-				index.columns.push_back(ColumnIdentifier(string(XmlUtils::ReadAttribute(*it2, "name"))));
+				SortParameter parameter;
+				parameter.column = ColumnIdentifier(string(XmlUtils::ReadAttribute(*it2, "name")));
+				if (XmlUtils::ReadAttribute(*it2, "order") == "asc")
+					parameter.order = SortOrder::ASCENDING;
+				else
+					parameter.order = SortOrder::DESCENDING;
+
+				index.columns.push_back(parameter);
 			}
+
 			indices.push_back(index);
 		}
 	}

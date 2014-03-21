@@ -182,7 +182,7 @@ class ConditionInfo
 {
 public:
 	std::shared_ptr<Expression> condition;
-	std::set<ulong> inputs;
+	std::set<uint> inputs;
 	ConditionType type;
 };
 
@@ -233,6 +233,8 @@ private:
 	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
 	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters, const std::shared_ptr<PhysicalPlan> & result);
+
+	void generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 
 	std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
 

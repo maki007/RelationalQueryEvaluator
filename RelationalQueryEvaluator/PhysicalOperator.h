@@ -20,6 +20,7 @@ public:
 	static const double INDEX_SEARCH;
 	static const double AGGREGATE;
 	static const double READ_HASH_TABLE;
+	static const double UNION;
 	static double sort(double size);
 	static double filter(double size);
 	static double filterKeppeingOrder(double size);
@@ -30,6 +31,7 @@ public:
 	static double sortedGroup(double size);
 	static double aggregate(double size,ulong numberOfagregateFuntions);
 	static double hashjoin(double hashSize, double readSize);
+	static double Union(double leftSize, double rightSize);
 };
 
 class PhysicalOperator
@@ -171,9 +173,11 @@ class IndexScan : public NullaryPhysicalOperator
 {
 public:
 	std::shared_ptr<Expression> condition;
-	IndexScan(const std::shared_ptr<Expression> & condition)
+	Index index;
+	IndexScan(const std::shared_ptr<Expression> & condition,const Index & index)
 	{
 		this->condition = condition;
+		this->index = index;
 	}
 	void accept(PhysicalOperatorVisitor &v);
 };

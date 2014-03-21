@@ -54,9 +54,22 @@
     <xs:attribute name="name" type="non_empty_string" use="required"></xs:attribute>
   </xs:complexType>
 
+  <xs:complexType name="indexcolumn">
+    <xs:attribute name="name" type="non_empty_string" use="required"></xs:attribute>
+    <xs:attribute name="order" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="asc"></xs:enumeration>
+          <xs:enumeration value="desc"></xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
   <xs:complexType name="index">
     <xs:sequence minOccurs="1" maxOccurs="unbounded">
-      <xs:element name="column" type="column"></xs:element>
+      <xs:element name="column" type="indexcolumn" />   
     </xs:sequence>
     <xs:attribute name="type" use="required">
       <xs:simpleType>

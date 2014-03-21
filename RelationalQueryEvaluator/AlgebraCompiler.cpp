@@ -130,8 +130,8 @@ void AlgebraCompiler::visitTable(Table * node)
 			for (auto index = it->columns.begin(); index != it->columns.end(); ++index)
 			{
 				SortParameter parameter;
-				parameter.order = ASCENDING;
-				parameter.column = *index;
+				parameter.order = index->order;
+				parameter.column = index->column;
 				physicalPlan->sortedBy.push_back(parameter);
 			}
 		}
@@ -142,15 +142,14 @@ void AlgebraCompiler::visitTable(Table * node)
 	{
 		if (it->type == UNCLUSTERED)
 		{
-
 			PhysicalPlan * physicalPlan = new PhysicalPlan(new ScanAndSortByIndex(), (double)node->numberOfRows,
 				TimeComplexity::unClusteredScan(double(node->numberOfRows)), node->columns);
 
 			for (auto index = it->columns.begin(); index != it->columns.end(); ++index)
 			{
 				SortParameter parameter;
-				parameter.order = ASCENDING;
-				parameter.column = *index;
+				parameter.order = index->order;
+				parameter.column = index->column;
 				physicalPlan->sortedBy.push_back(parameter);
 			}
 			result.push_back(shared_ptr<PhysicalPlan>(physicalPlan));
@@ -243,6 +242,152 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 	result = newResult;
 }
 
+
+void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, vector<shared_ptr<Expression> > & condition, vector<shared_ptr<PhysicalPlan>> & newResult)
+{
+	for (auto index = (*plan)->indices.begin(); index != (*plan)->indices.end(); ++index)
+	{
+		//posible conditions possibleConditions[i] -> i-th column conditions
+		vector<vector<shared_ptr<Expression> > > possibleConditions;
+		for (auto column = index->columns.begin(); column != index->columns.end(); ++column)
+		{
+			possibleConditions.push_back(vector<shared_ptr<Expression> >());
+			for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
+			{
+				if (typeid(**conditionPart) == typeid(BinaryExpression))
+				{
+					shared_ptr<BinaryExpression> expression = dynamic_pointer_cast<BinaryExpression>(*conditionPart);
+					switch (expression->operation)
+					{
+					case BinaryOperator::LOWER:
+					case BinaryOperator::LOWER_OR_EQUAL:
+					case BinaryOperator::EQUALS:
+
+						if (typeid(*(expression->leftChild)) == typeid(Column))
+						{
+							if (typeid(*(expression->rightChild)) == typeid(Constant))
+							{
+								shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->leftChild);
+								if (condColumn->column.id == column->column.id)
+								{
+									possibleConditions.back().push_back(expression);
+								}
+							}
+						}
+
+						if (typeid(*(expression->leftChild)) == typeid(Constant))
+						{
+							if (typeid(*(expression->rightChild)) == typeid(Column))
+							{
+								shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->rightChild);
+								if (condColumn->column.id == column->column.id)
+								{
+									possibleConditions.back().push_back(expression);
+								}
+							}
+						}
+
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		}
+
+		//generating all possible conditions
+		ulong i = 0;
+		vector<shared_ptr<Expression>> indexConditions;
+		while (i<possibleConditions.size() && possibleConditions[i].size()>0)
+		{
+			vector<shared_ptr<Expression>> newIndexConditions;
+			if (indexConditions.size() == 0)
+			{
+				for (auto conditionPart = possibleConditions[i].begin(); conditionPart != possibleConditions[i].end(); ++conditionPart)
+				{
+					newIndexConditions.push_back(*conditionPart);
+				}
+			}
+			else
+			{
+				for (ulong j = 0; j < indexConditions.size(); ++j)
+				{
+					for (ulong k = 0; k < possibleConditions[i].size(); ++k)
+					{
+						newIndexConditions.push_back(shared_ptr<Expression>(new BinaryExpression(indexConditions[j], possibleConditions[i][k], BinaryOperator::AND)));
+					}
+				}
+			}
+			indexConditions = newIndexConditions;
+			++i;
+		}
+
+		std::vector<SortParameter> sortedBy;
+		sortedBy = index->columns;
+
+
+		for (auto expression = indexConditions.begin(); expression != indexConditions.end(); ++expression)
+		{
+			(*expression)->accept(GroupingExpressionVisitor(&(*expression)));
+			double size = (*plan)->size;
+			SizeEstimatingExpressionVisitor sizeVisitor(&((*plan)->columns));
+			(*expression)->accept(sizeVisitor);
+			size *= sizeVisitor.size;
+			map<int, ColumnInfo> newColumns = (*plan)->columns;
+			for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
+			{
+				col->second.numberOfUniqueValues *= sizeVisitor.size;
+			}
+			shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression, *index), size,
+				TimeComplexity::indexSearch(size) + TimeComplexity::unClusteredScan(size* sizeVisitor.size), (*plan)->columns));
+			indexPlan->sortedBy = sortedBy;
+
+			double newSize = size;
+			vector<shared_ptr<Expression> > newCondition;
+			vector<shared_ptr<Expression> >  serialExpresion = serializeExpression(*expression);
+
+			for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
+			{
+				bool isMatch = false;
+				for (auto expressionPart = serialExpresion.begin(); expressionPart != serialExpresion.end(); ++expressionPart)
+				{
+					if (*expressionPart == *conditionPart)
+					{
+						isMatch = true;
+					}
+				}
+				if (isMatch == false)
+				{
+					newCondition.push_back(*conditionPart);
+				}
+			}
+			shared_ptr<Expression> filterCondition = deserializeExpression(newCondition);
+			if (filterCondition != 0)
+			{
+				sizeVisitor = SizeEstimatingExpressionVisitor(&((*plan)->columns));
+				filterCondition->accept(sizeVisitor);
+				newSize *= sizeVisitor.size;
+				for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
+				{
+					col->second.numberOfUniqueValues *= sizeVisitor.size;
+				}
+
+				shared_ptr<PhysicalPlan> filterWithOrder(new PhysicalPlan(new FilterKeepingOrder(filterCondition), newSize, TimeComplexity::filterKeppeingOrder(size), newColumns, indexPlan));
+				filterWithOrder->sortedBy = sortedBy;
+				insertPlan(newResult, shared_ptr<PhysicalPlan>(new PhysicalPlan(new Filter(filterCondition), newSize, TimeComplexity::filter(size), newColumns, indexPlan)));
+				insertPlan(newResult, filterWithOrder);
+
+			}
+			else
+			{
+				insertPlan(newResult, indexPlan);
+			}
+
+		}
+	}
+
+}
+
 void AlgebraCompiler::visitSelection(Selection * node)
 {
 	node->child->accept(*this);
@@ -255,139 +400,8 @@ void AlgebraCompiler::visitSelection(Selection * node)
 	{
 		if ((*it)->indices.size() != 0)
 		{
-			for (auto index = (*it)->indices.begin(); index != (*it)->indices.end(); ++index)
-			{
-				vector<vector<shared_ptr<Expression> > > possibleConditions;
-				for (auto column = index->columns.begin(); column != index->columns.end(); ++column)
-				{
-					possibleConditions.push_back(vector<shared_ptr<Expression> >());
-					for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
-					{
-						if (typeid(**conditionPart) == typeid(BinaryExpression))
-						{
-							shared_ptr<BinaryExpression> expression = dynamic_pointer_cast<BinaryExpression>(*conditionPart);
-							switch (expression->operation)
-							{
-							case BinaryOperator::LOWER:
-							case BinaryOperator::LOWER_OR_EQUAL:
-							case BinaryOperator::EQUALS:
-
-								if (typeid(*(expression->leftChild)) == typeid(Column))
-								{
-									if (typeid(*(expression->rightChild)) == typeid(Constant))
-									{
-										shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->leftChild);
-										if (condColumn->column.id == column->id)
-										{
-											possibleConditions.back().push_back(expression);
-										}
-									}
-								}
-
-								if (typeid(*(expression->leftChild)) == typeid(Constant))
-								{
-									if (typeid(*(expression->rightChild)) == typeid(Column))
-									{
-										shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->rightChild);
-										if (condColumn->column.id == column->id)
-										{
-											possibleConditions.back().push_back(expression);
-										}
-									}
-								}
-
-								break;
-							default:
-								break;
-							}
-						}
-					}
-				}
-				ulong i = 0;
-				vector<shared_ptr<Expression>> indexConditions;
-				while (i<possibleConditions.size() && possibleConditions[i].size()>0)
-				{
-					vector<shared_ptr<Expression>> newIndexConditions;
-					if (indexConditions.size() == 0)
-					{
-						for (auto conditionPart = possibleConditions[i].begin(); conditionPart != possibleConditions[i].end(); ++conditionPart)
-						{
-							newIndexConditions.push_back(*conditionPart);
-						}
-					}
-					else
-					{
-						for (ulong j = 0; j < indexConditions.size(); ++j)
-						{
-							for (ulong k = 0; k < possibleConditions[i].size(); ++k)
-							{
-								newIndexConditions.push_back(shared_ptr<Expression>(new BinaryExpression(indexConditions[j], possibleConditions[i][k], BinaryOperator::AND)));
-							}
-						}
-					}
-					indexConditions = newIndexConditions;
-					++i;
-				}
-
-				for (auto expression = indexConditions.begin(); expression != indexConditions.end(); ++expression)
-				{
-					(*expression)->accept(GroupingExpressionVisitor(&(*expression)));
-					double size = (*it)->size;
-					SizeEstimatingExpressionVisitor sizeVisitor(&((*it)->columns));
-					(*expression)->accept(sizeVisitor);
-					size *= sizeVisitor.size;
-					map<int, ColumnInfo> newColumns = (*it)->columns;
-					for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
-					{
-						col->second.numberOfUniqueValues *= sizeVisitor.size;
-					}
-					shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression), size,
-						TimeComplexity::indexSearch(size) + TimeComplexity::unClusteredScan(size* sizeVisitor.size), (*it)->columns));
-					//TODO: to the filer keeping order
-					//indexPlan->sortedBy = (*it)->sortedBy;
-
-					double newSize = size;
-					vector<shared_ptr<Expression> > newCondition;
-					vector<shared_ptr<Expression> >  serialExpresion = serializeExpression(*expression);
-
-					for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
-					{
-						bool isMatch = false;
-						for (auto expressionPart = serialExpresion.begin(); expressionPart != serialExpresion.end(); ++expressionPart)
-						{
-							if (*expressionPart == *conditionPart)
-							{
-								isMatch = true;
-							}
-						}
-						if (isMatch == false)
-						{
-							newCondition.push_back(*conditionPart);
-						}
-					}
-					shared_ptr<Expression> filterCondition = deserializeExpression(newCondition);
-					if (filterCondition != 0)
-					{
-						sizeVisitor = SizeEstimatingExpressionVisitor(&((*it)->columns));
-						filterCondition->accept(sizeVisitor);
-						newSize *= sizeVisitor.size;
-						for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
-						{
-							col->second.numberOfUniqueValues *= sizeVisitor.size;
-						}
-						
-						insertPlan(newResult, shared_ptr<PhysicalPlan>(new PhysicalPlan(new Filter(filterCondition), newSize, TimeComplexity::filter(size), newColumns, indexPlan)));
-						insertPlan(newResult, shared_ptr<PhysicalPlan>(new PhysicalPlan(new FilterKeepingOrder(filterCondition), newSize, TimeComplexity::filterKeppeingOrder(size), newColumns, indexPlan)));
-					}
-					else
-					{
-						insertPlan(newResult, indexPlan);
-					}
-					
-				}
-			}
+			generateIndexScan(it, condition, newResult);
 		}
-
 		SizeEstimatingExpressionVisitor sizeVisitor(&((*it)->columns));
 		node->condition->accept(sizeVisitor);
 		if ((*it)->sortedBy.size() != 0)
@@ -422,7 +436,7 @@ void AlgebraCompiler::visitUnion(Union * node)
 		for (auto rightIt = rightInput.begin(); rightIt != rightInput.end(); ++rightIt)
 		{
 			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new UnionOperator(), (*leftIt)->size + (*rightIt)->size,
-				0, (*leftIt)->columns, *leftIt, *rightIt));
+				TimeComplexity::Union((*leftIt)->size, (*rightIt)->size), (*leftIt)->columns, *leftIt, *rightIt));
 			insertPlan(newResult, newPlan);
 		}
 	}
@@ -730,7 +744,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 	}
 
 	newPlan.columns = left.columns;
-	for (auto it = right.columns.begin(); it != right.columns.end();++it)
+	for (auto it = right.columns.begin(); it != right.columns.end(); ++it)
 	{
 		newPlan.columns[it->first] = it->second;
 	}
@@ -745,8 +759,8 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				double newSize = (*first)->size * (*second)->size;
 				for (auto it = equalConditions.begin(); it != equalConditions.end(); ++it)
 				{
-					ulong leftColumnIndex=*((*it)->inputs.begin());
-					ulong rightColumnIndex=*(--((*it)->inputs.end()));
+					uint leftColumnIndex = *((*it)->inputs.begin());
+					uint rightColumnIndex = *(--((*it)->inputs.end()));
 					newSize /= max(newPlan.columns[leftColumnIndex].numberOfUniqueValues, newPlan.columns[rightColumnIndex].numberOfUniqueValues);
 				}
 				newSize = max(double(1), newSize);
@@ -781,7 +795,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				{
 					insertPlan(newPlan.plans, hashPlan);
 				}
-				
+
 
 				//shared_ptr<MergeJoin> mergePlan(0);
 			}

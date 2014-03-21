@@ -91,7 +91,7 @@ class Index
 public:
 	IndexType type;
 	std::string name;
-	std::vector<ColumnIdentifier> columns;
+	std::vector<SortParameter> columns;
 };
 
 
