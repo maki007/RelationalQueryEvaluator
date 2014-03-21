@@ -1,0 +1,14 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+a_-1 asc"]
+node1[label="Selection
+(a_-1(0) < 5)"]
+node2[label="Table x
+ number of rows: 100000
+ columns: a_-1(int,50000)
+ indices: UNCLUSTERED(a)"]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}
