@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
+const ulong AlgebraCompiler::NUMBER_OF_PLANS = 10;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
 
