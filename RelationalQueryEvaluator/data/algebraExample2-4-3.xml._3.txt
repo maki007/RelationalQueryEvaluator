@@ -1,11 +1,11 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
- time:217077
- size:8333"]
+ time:0
+ size:1"]
 node1[label="Hash Group
  time:171666
- size:8333"]
+ size:1"]
 node2[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
@@ -42,11 +42,11 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node9[label="Sort
- time:217077
- size:8333"]
+ time:0
+ size:1"]
 node10[label="Hash Group
  time:171666
- size:8333"]
+ size:1"]
 node11[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
@@ -87,11 +87,11 @@ node12 -> node11[headport=s, tailport=n,label="   "]
 node11 -> node10[headport=s, tailport=n,label="   "]
 node10 -> node9[headport=s, tailport=n,label="   "]
 node19[label="Sort
- time:217077
- size:8333"]
+ time:0
+ size:1"]
 node20[label="Sorted Group
  time:21666
- size:8333"]
+ size:1"]
 node21[label="Sort
  time:467489
  size:16666"]
@@ -132,11 +132,11 @@ node22 -> node21[headport=s, tailport=n,label="   "]
 node21 -> node20[headport=s, tailport=n,label="   "]
 node20 -> node19[headport=s, tailport=n,label="   "]
 node29[label="Sort
- time:217077
- size:8333"]
+ time:0
+ size:1"]
 node30[label="Hash Group
  time:171666
- size:8333"]
+ size:1"]
 node31[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
@@ -177,11 +177,11 @@ node32 -> node31[headport=s, tailport=n,label="   "]
 node31 -> node30[headport=s, tailport=n,label="   "]
 node30 -> node29[headport=s, tailport=n,label="   "]
 node39[label="Sort
- time:217077
- size:8333"]
+ time:0
+ size:1"]
 node40[label="Sorted Group
  time:21666
- size:8333"]
+ size:1"]
 node41[label="Sort
  time:467489
  size:16666"]

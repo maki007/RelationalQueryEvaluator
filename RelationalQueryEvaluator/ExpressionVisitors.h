@@ -281,4 +281,20 @@ public:
 	}
 };
 
+class MaxOfUniqueValuesExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	double result;
+	std::map<int, ColumnInfo> * columns;
+	MaxOfUniqueValuesExpressionVisitor(std::map<int, ColumnInfo> * cols)
+	{
+		this->result = 1;
+		columns = cols;
+	}
+
+	void visitColumn(Column * expression)
+	{
+		this->result = std::max(this->result, columns->at(expression->column.id).numberOfUniqueValues);
+	}
+};
 #endif

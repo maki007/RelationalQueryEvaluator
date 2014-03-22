@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClCompile Include="Algebra.cpp" />
     <ClCompile Include="AlgebraCompiler.cpp" />
+    <ClCompile Include="AlgebraStructures.cpp" />
     <ClCompile Include="AlgebraVisitors.cpp" />
     <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="ExpressionVisitors.cpp" />

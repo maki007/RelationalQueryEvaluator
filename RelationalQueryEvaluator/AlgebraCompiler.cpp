@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const ulong AlgebraCompiler::NUMBER_OF_PLANS = 10;
+const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
 
@@ -20,9 +20,22 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const vector<So
 	{
 		SortParameter sortParameter = parameters[i];
 		SortParameter sortedBy = plan->sortedBy[i];
-		if (sortedBy.column.name == sortParameter.column.name && sortedBy.order == sortParameter.order)
+		if (sortedBy.column.name == sortParameter.column.name)
 		{
-			++matchedColumns;
+			if (sortParameter.order == SortOrder::UNKNOWN)
+			{
+				sortParameter.order = sortedBy.order;
+				++matchedColumns;
+			}
+			else if (sortedBy.order == SortOrder::UNKNOWN)
+			{
+				++matchedColumns;
+			}
+			else if (sortedBy.order == sortParameter.order)
+			{
+				++matchedColumns;
+			}
+			
 		}
 		else
 		{
@@ -177,7 +190,7 @@ void AlgebraCompiler::visitGroup(Group * node)
 	for (auto it = node->groupColumns.begin(); it != node->groupColumns.end(); ++it)
 	{
 		SortParameter parameter;
-		parameter.order = ASCENDING;
+		parameter.order = SortOrder::UNKNOWN;
 		parameter.column = *it;
 		parameters.push_back(parameter);
 	}
@@ -233,6 +246,16 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 			{
 				shared_ptr<Column> column = dynamic_pointer_cast<Column>(operation->expression);
 				newColumn.numberOfUniqueValues = (*it)->columns[column->column.id].numberOfUniqueValues;
+			}
+			else if (operation->expression != 0)
+			{
+				MaxOfUniqueValuesExpressionVisitor visitor(&((*it)->columns));
+				operation->expression->accept(visitor);
+				newColumn.numberOfUniqueValues = visitor.result;
+			}
+			else
+			{
+				newColumn.numberOfUniqueValues = 1;
 			}
 			columns[operation->result.id] = newColumn;
 		}
@@ -781,6 +804,11 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 	for (auto it = right.columns.begin(); it != right.columns.end(); ++it)
 	{
 		newPlan.columns[it->first] = it->second;
+	}
+
+	for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
+	{
+		newColumns[it->first] = ColumnInfo(it->second);
 	}
 
 	if (equalConditions.size() > 0)

@@ -28,34 +28,20 @@ class ColumnIdentifier
 public:
 	std::string name;
 	int id;
-	ColumnIdentifier(std::string name, int id)
-	{
-		this->name = name;
-		this->id = id;
-	}
+	ColumnIdentifier(std::string name, int id);
+	
+	ColumnIdentifier(std::string name);
 
-	ColumnIdentifier(std::string name)
-	{
-		this->name = name;
-		this->id = -1;
-	}
-
-	ColumnIdentifier()
-	{
-		this->name = "";
-		this->id = -1;
-	}
-	std::string toString()
-	{
-		return name + "_" + std::to_string(id);
-	}
+	ColumnIdentifier();
+	
+	std::string toString();
 };
 
 
 
 enum SortOrder
 {
-	ASCENDING, DESCENDING
+	ASCENDING, DESCENDING, UNKNOWN
 };
 
 class SortParameter
@@ -94,6 +80,7 @@ public:
 	std::vector<SortParameter> columns;
 };
 
+class JoinColumnInfo;
 
 class ColumnInfo
 {
@@ -101,27 +88,16 @@ public:
 	ColumnIdentifier column;
 	std::string type;
 	double numberOfUniqueValues;
-	ColumnInfo(std::string name, std::string type)
-	{
-		this->column = ColumnIdentifier(name);
-		this->type = type;
-	}
-	ColumnInfo()
-	{
-		this->column = ColumnIdentifier("");
-		type = "";
-		numberOfUniqueValues = 0;
-	}
-	ColumnInfo(std::string name, double numberOfUniqueValues)
-	{
-		this->column = ColumnIdentifier(name);
-		this->numberOfUniqueValues = numberOfUniqueValues;
-	}
-	ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues)
-	{
-		this->column = column;
-		this->numberOfUniqueValues = numberOfUniqueValues;
-	}
+	ColumnInfo(std::string name, std::string type);
+
+	ColumnInfo();
+
+	ColumnInfo(std::string name, double numberOfUniqueValues);
+
+	ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues);
+
+	ColumnInfo(const JoinColumnInfo & info);
+
 };
 
 
@@ -131,16 +107,10 @@ class JoinColumnInfo : public ColumnInfo
 public:
 	ulong input;
 	std::string newColumn;
-	JoinColumnInfo(const ColumnInfo & col)
-	{
-		column = col.column;
-		type = col.type;
-		numberOfUniqueValues = col.numberOfUniqueValues;
-	}
-	JoinColumnInfo()
-	{
-	
-	}
+	JoinColumnInfo(const ColumnInfo & col);
+
+	JoinColumnInfo();
+		
 };
 
 class ColumnOperation
