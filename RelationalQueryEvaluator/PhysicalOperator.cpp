@@ -14,6 +14,7 @@ const double TimeComplexity::INDEX_SEARCH = 6;
 const double TimeComplexity::AGGREGATE = 0.3;
 const double TimeComplexity::READ_HASH_TABLE = 2;
 const double TimeComplexity::UNION = 0.3;
+const double TimeComplexity::CROSS_JOIN = 1;
 
 double TimeComplexity::sort(double size)
 {
@@ -59,7 +60,10 @@ double TimeComplexity::Union(double leftSize, double rightSize)
 {
 	return UNION*leftSize + UNION*rightSize;
 }
-
+double TimeComplexity::crossJoin(double leftSize, double rightSize)
+{
+	return TimeComplexity::CROSS_JOIN*leftSize*rightSize;
+}
 void Filter::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitFilter(this);

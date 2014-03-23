@@ -21,6 +21,7 @@ public:
 	static const double AGGREGATE;
 	static const double READ_HASH_TABLE;
 	static const double UNION;
+	static const double CROSS_JOIN;
 	static double sort(double size);
 	static double filter(double size);
 	static double filterKeppeingOrder(double size);
@@ -32,6 +33,7 @@ public:
 	static double aggregate(double size,ulong numberOfagregateFuntions);
 	static double hashjoin(double hashSize, double readSize);
 	static double Union(double leftSize, double rightSize);
+	static double crossJoin(double leftSize, double rightSize);
 };
 
 class PhysicalOperator

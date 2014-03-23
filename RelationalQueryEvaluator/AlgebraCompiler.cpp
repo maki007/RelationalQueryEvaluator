@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
+const ulong AlgebraCompiler::NUMBER_OF_PLANS = 10;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
 
@@ -22,16 +22,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const vector<So
 		SortParameter sortedBy = plan->sortedBy[i];
 		if (sortedBy.column.name == sortParameter.column.name)
 		{
-			if (sortParameter.order == SortOrder::UNKNOWN)
-			{
-				sortParameter.order = sortedBy.order;
-				++matchedColumns;
-			}
-			else if (sortedBy.order == SortOrder::UNKNOWN)
-			{
-				++matchedColumns;
-			}
-			else if (sortedBy.order == sortParameter.order)
+			if (sortedBy.order == sortParameter.order)
 			{
 				++matchedColumns;
 			}
@@ -190,7 +181,7 @@ void AlgebraCompiler::visitGroup(Group * node)
 	for (auto it = node->groupColumns.begin(); it != node->groupColumns.end(); ++it)
 	{
 		SortParameter parameter;
-		parameter.order = SortOrder::UNKNOWN;
+		parameter.order = SortOrder::ASCENDING;
 		parameter.column = *it;
 		parameters.push_back(parameter);
 	}
@@ -260,6 +251,18 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 			columns[operation->result.id] = newColumn;
 		}
 		shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations), (*it)->size, 0, columns, *it));
+
+		for (uint i = 0; i < (*it)->sortedBy.size(); ++i)
+		{
+			if (columns.find((*it)->sortedBy[i].column.id) == columns.end())
+			{
+				break;
+			}
+			else
+			{
+				newPlan->sortedBy.push_back((*it)->sortedBy[i]);
+			}
+		}
 		insertPlan(newResult, newPlan);
 	}
 	result = newResult;
@@ -858,17 +861,30 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					insertPlan(newPlan.plans, hashPlan);
 				}
 
-
-				//shared_ptr<MergeJoin> mergePlan(0);
 			}
 		}
 	}
-
 	if (lowerConditions.size() > 0)
 	{
-
 	}
 
+	if (otherConditions.size() > 0)
+	{
+		throw new exception("othoer condition should be empty");
+	}
+
+	
+	if (lowerConditions.size() + equalConditions.size() == 0)
+	{
+		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)
+		{
+			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
+			{
+				shared_ptr<PhysicalPlan> crossJoinPlan(new PhysicalPlan(new CrossJoin(), (*first)->size*(*second)->size, TimeComplexity::crossJoin((*first)->size,(*second)->size), newColumns, *first,*second));
+				insertPlan(newPlan.plans, crossJoinPlan);
+			}
+		}
+	}
 }
 
 

@@ -41,7 +41,7 @@ public:
 
 enum SortOrder
 {
-	ASCENDING, DESCENDING, UNKNOWN
+	ASCENDING, DESCENDING
 };
 
 class SortParameter

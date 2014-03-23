@@ -201,7 +201,8 @@ public:
 	JoinInfoReadingExpressionVisitor(std::set<uint> * data, ConditionType * type)
 	{
 		this->data = data;
-		this->conditionType = type;
+		conditionType = type;
+		(*conditionType) = ConditionType::OTHER;
 	}
 	
 	void visitColumn(Column * expression)
