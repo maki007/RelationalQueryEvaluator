@@ -58,7 +58,7 @@
                   <input>
                     <table name="customer" numberOfRows="150000">
                       <column name="c_custkey" type="int" number_of_unique_values="150000" />
-                      <column name="c_mktsegment" type="int" number_of_unique_values="10" />
+                      <column name="c_mktsegment" type="int" number_of_unique_values="15000" />
                       <index type="unclustered" name="index2">
                         <column name="c_mktsegment" order="asc" />
                       </index>

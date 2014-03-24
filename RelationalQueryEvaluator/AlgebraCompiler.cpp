@@ -395,10 +395,10 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 			map<int, ColumnInfo> newColumns = (*plan)->columns;
 			for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
 			{
-				col->second.numberOfUniqueValues *= sizeVisitor.size;
+				col->second.numberOfUniqueValues = min(col->second.numberOfUniqueValues,size);
 			}
 			shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression, *index), size,
-				TimeComplexity::indexSearch(size) + TimeComplexity::unClusteredScan(size* sizeVisitor.size), (*plan)->columns));
+				TimeComplexity::indexSearch(size) + TimeComplexity::unClusteredScan(size), newColumns));
 			indexPlan->sortedBy = sortedBy;
 
 			double newSize = size;
@@ -428,7 +428,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 				newSize *= sizeVisitor.size;
 				for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
 				{
-					col->second.numberOfUniqueValues *= sizeVisitor.size;
+					col->second.numberOfUniqueValues = min(newSize, col->second.numberOfUniqueValues);
 				}
 
 				shared_ptr<PhysicalPlan> filterWithOrder(new PhysicalPlan(new FilterKeepingOrder(filterCondition), newSize, TimeComplexity::filterKeppeingOrder(size), newColumns, indexPlan));
@@ -457,21 +457,29 @@ void AlgebraCompiler::visitSelection(Selection * node)
 
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
+		map<int, ColumnInfo> columns = (*it)->columns;
+		
+
 		if ((*it)->indices.size() != 0)
 		{
 			generateIndexScan(it, condition, newResult);
 		}
 		SizeEstimatingExpressionVisitor sizeVisitor(&((*it)->columns));
 		node->condition->accept(sizeVisitor);
+		double newSize = (*it)->size*sizeVisitor.size;
+		for (auto col = columns.begin(); col != columns.end();++col)
+		{
+			col->second.numberOfUniqueValues = min(col->second.numberOfUniqueValues, newSize);
+		}
 		if ((*it)->sortedBy.size() != 0)
 		{
-			shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), (*it)->size*sizeVisitor.size,
-				TimeComplexity::filterKeppeingOrder((*it)->size), (*it)->columns, *it));
+			shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), newSize,
+				TimeComplexity::filterKeppeingOrder((*it)->size), columns, *it));
 			sortedPlan->sortedBy = (*it)->sortedBy;
 			insertPlan(newResult, sortedPlan);
 		}
-		shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(node->condition), (*it)->size*sizeVisitor.size,
-			TimeComplexity::filter((*it)->size), (*it)->columns, *it));
+		shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(node->condition), newSize,
+			TimeComplexity::filter((*it)->size), columns, *it));
 		insertPlan(newResult, unsortedPlan);
 	}
 	result = newResult;

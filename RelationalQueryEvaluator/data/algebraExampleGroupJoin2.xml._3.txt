@@ -12,12 +12,14 @@ d_1 31622776,c_2 31622776,a_3 31622776,b_4 31622776,
 a_3 31622,b_4 31622,
 "]node2[label="Table Scan
  time:1000
- size:1000"]
-node2 -> node1[headport=s, tailport=n,label="   "]
+ size:1000
+b_4 31,
+"]node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table Scan
  time:1000
- size:1000"]
-node3 -> node1[headport=s, tailport=n,label="   "]
+ size:1000
+a_3 31,
+"]node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Hash Join
 (d_1(0) == c_2(1))
@@ -26,12 +28,14 @@ node4[label="Hash Join
 d_1 31622,c_2 31622,
 "]node5[label="Table Scan
  time:1000
- size:1000"]
-node5 -> node4[headport=s, tailport=n,label="   "]
+ size:1000
+c_2 31,
+"]node5 -> node4[headport=s, tailport=n,label="   "]
 node6[label="Table Scan
  time:1000
- size:1000"]
-node6 -> node4[headport=s, tailport=n,label="   "]
+ size:1000
+d_1 31,
+"]node6 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node0[headport=s, tailport=n,label="   "]
 node7[label="Hash Join
 (a_3(2) == b_4(3))
@@ -40,8 +44,9 @@ node7[label="Hash Join
 d_1 31622776,c_2 31622776,a_3 31622776,b_4 31622776,
 "]node8[label="Table Scan
  time:1000
- size:1000"]
-node8 -> node7[headport=s, tailport=n,label="   "]
+ size:1000
+b_4 31,
+"]node8 -> node7[headport=s, tailport=n,label="   "]
 node9[label="Hash Join
 (d_1(0) == c_2(1))
  time:71245
@@ -49,8 +54,9 @@ node9[label="Hash Join
 d_1 1000000,c_2 1000000,a_3 1000000,
 "]node10[label="Table Scan
  time:1000
- size:1000"]
-node10 -> node9[headport=s, tailport=n,label="   "]
+ size:1000
+d_1 31,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
 node11[label="Hash Join
 (c_2(1) == a_3(2))
  time:10000
@@ -58,12 +64,14 @@ node11[label="Hash Join
 c_2 31622,a_3 31622,
 "]node12[label="Table Scan
  time:1000
- size:1000"]
-node12 -> node11[headport=s, tailport=n,label="   "]
+ size:1000
+a_3 31,
+"]node12 -> node11[headport=s, tailport=n,label="   "]
 node13[label="Table Scan
  time:1000
- size:1000"]
-node13 -> node11[headport=s, tailport=n,label="   "]
+ size:1000
+c_2 31,
+"]node13 -> node11[headport=s, tailport=n,label="   "]
 node11 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node7[headport=s, tailport=n,label="   "]
 node14[label="Hash Join
@@ -73,8 +81,9 @@ node14[label="Hash Join
 d_1 31622776,c_2 31622776,a_3 31622776,b_4 31622776,
 "]node15[label="Table Scan
  time:1000
- size:1000"]
-node15 -> node14[headport=s, tailport=n,label="   "]
+ size:1000
+d_1 31,
+"]node15 -> node14[headport=s, tailport=n,label="   "]
 node16[label="Hash Join
 (a_3(2) == b_4(3))
  time:71245
@@ -82,8 +91,9 @@ node16[label="Hash Join
 c_2 1000000,a_3 1000000,b_4 1000000,
 "]node17[label="Table Scan
  time:1000
- size:1000"]
-node17 -> node16[headport=s, tailport=n,label="   "]
+ size:1000
+b_4 31,
+"]node17 -> node16[headport=s, tailport=n,label="   "]
 node18[label="Hash Join
 (c_2(1) == a_3(2))
  time:10000
@@ -91,12 +101,14 @@ node18[label="Hash Join
 c_2 31622,a_3 31622,
 "]node19[label="Table Scan
  time:1000
- size:1000"]
-node19 -> node18[headport=s, tailport=n,label="   "]
+ size:1000
+a_3 31,
+"]node19 -> node18[headport=s, tailport=n,label="   "]
 node20[label="Table Scan
  time:1000
- size:1000"]
-node20 -> node18[headport=s, tailport=n,label="   "]
+ size:1000
+c_2 31,
+"]node20 -> node18[headport=s, tailport=n,label="   "]
 node18 -> node16[headport=s, tailport=n,label="   "]
 node16 -> node14[headport=s, tailport=n,label="   "]
 node21[label="Hash Join
@@ -106,8 +118,9 @@ node21[label="Hash Join
 d_1 31622776,c_2 31622776,a_3 31622776,b_4 31622776,
 "]node22[label="Table Scan
  time:1000
- size:1000"]
-node22 -> node21[headport=s, tailport=n,label="   "]
+ size:1000
+d_1 31,
+"]node22 -> node21[headport=s, tailport=n,label="   "]
 node23[label="Hash Join
 (c_2(1) == a_3(2))
  time:71245
@@ -115,8 +128,9 @@ node23[label="Hash Join
 c_2 1000000,a_3 1000000,b_4 1000000,
 "]node24[label="Table Scan
  time:1000
- size:1000"]
-node24 -> node23[headport=s, tailport=n,label="   "]
+ size:1000
+c_2 31,
+"]node24 -> node23[headport=s, tailport=n,label="   "]
 node25[label="Hash Join
 (a_3(2) == b_4(3))
  time:10000
@@ -124,12 +138,14 @@ node25[label="Hash Join
 a_3 31622,b_4 31622,
 "]node26[label="Table Scan
  time:1000
- size:1000"]
-node26 -> node25[headport=s, tailport=n,label="   "]
+ size:1000
+b_4 31,
+"]node26 -> node25[headport=s, tailport=n,label="   "]
 node27[label="Table Scan
  time:1000
- size:1000"]
-node27 -> node25[headport=s, tailport=n,label="   "]
+ size:1000
+a_3 31,
+"]node27 -> node25[headport=s, tailport=n,label="   "]
 node25 -> node23[headport=s, tailport=n,label="   "]
 node23 -> node21[headport=s, tailport=n,label="   "]
 node28[label="Hash Join
@@ -139,8 +155,9 @@ node28[label="Hash Join
 d_1 31622776,c_2 31622776,a_3 31622776,b_4 31622776,
 "]node29[label="Table Scan
  time:1000
- size:1000"]
-node29 -> node28[headport=s, tailport=n,label="   "]
+ size:1000
+b_4 31,
+"]node29 -> node28[headport=s, tailport=n,label="   "]
 node30[label="Hash Join
 (c_2(1) == a_3(2))
  time:71245
@@ -148,8 +165,9 @@ node30[label="Hash Join
 d_1 1000000,c_2 1000000,a_3 1000000,
 "]node31[label="Table Scan
  time:1000
- size:1000"]
-node31 -> node30[headport=s, tailport=n,label="   "]
+ size:1000
+a_3 31,
+"]node31 -> node30[headport=s, tailport=n,label="   "]
 node32[label="Hash Join
 (d_1(0) == c_2(1))
  time:10000
@@ -157,12 +175,14 @@ node32[label="Hash Join
 d_1 31622,c_2 31622,
 "]node33[label="Table Scan
  time:1000
- size:1000"]
-node33 -> node32[headport=s, tailport=n,label="   "]
+ size:1000
+c_2 31,
+"]node33 -> node32[headport=s, tailport=n,label="   "]
 node34[label="Table Scan
  time:1000
- size:1000"]
-node34 -> node32[headport=s, tailport=n,label="   "]
+ size:1000
+d_1 31,
+"]node34 -> node32[headport=s, tailport=n,label="   "]
 node32 -> node30[headport=s, tailport=n,label="   "]
 node30 -> node28[headport=s, tailport=n,label="   "]
 

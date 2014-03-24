@@ -105,21 +105,23 @@ PhysicalOperatorDrawingVisitor::PhysicalOperatorDrawingVisitor()
 	nodeCounter=0;
 }
 
-void PhysicalOperatorDrawingVisitor::generateText(string & label,NullaryPhysicalOperator * node)
-{
-	result.append("node");
-	result.append(to_string(nodeCounter));
-	result.append("[label=\""+label+"\n time:"+to_string((ulong)node->timeComplexity)+"\n size:"+to_string((ulong)node->size)+"\"]\n");
-}
 string columns(std::map<int, ColumnInfo> & columns)
 {
-	string result="";
+	string result = "";
 	for (auto it = columns.begin(); it != columns.end(); ++it)
 	{
 		result += it->second.column.toString() + " " + to_string(int(it->second.numberOfUniqueValues)) + ",";
 	}
 	return result;
 }
+
+void PhysicalOperatorDrawingVisitor::generateText(string & label,NullaryPhysicalOperator * node)
+{
+	result.append("node");
+	result.append(to_string(nodeCounter));
+	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
+}
+
 void PhysicalOperatorDrawingVisitor::generateText(string & label,UnaryPhysicalOperator * node)
 {
 	ulong identifier=nodeCounter;
