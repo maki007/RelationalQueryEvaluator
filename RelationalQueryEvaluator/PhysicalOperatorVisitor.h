@@ -20,9 +20,9 @@ public:
 
 	virtual void visitSortOperator(SortOperator * node);
 
-	virtual void visitMergeJoin(MergeJoin * node);
+	virtual void visitMergeEquiJoin(MergeEquiJoin * node);
 
-	virtual void visitNestedLoopJoin(NestedLoopJoin * node);
+	virtual void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
 
 	virtual void visitCrossJoin(CrossJoin * node);
 
@@ -62,9 +62,9 @@ public:
 
 	void visitSortOperator(SortOperator * node);
 
-	void visitMergeJoin(MergeJoin * node);
+	virtual void visitMergeEquiJoin(MergeEquiJoin * node);
 
-	void visitNestedLoopJoin(NestedLoopJoin * node);
+	virtual void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
 
 	void visitCrossJoin(CrossJoin * node);
 

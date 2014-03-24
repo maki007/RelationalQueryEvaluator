@@ -37,13 +37,13 @@ void PhysicalOperatorVisitor::visitSortOperator(SortOperator * node)
 	node->child->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visitMergeJoin(MergeJoin * node)
+void PhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 }
 
-void PhysicalOperatorVisitor::visitNestedLoopJoin(NestedLoopJoin * node)
+void PhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
@@ -111,14 +111,22 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label,NullaryPhysical
 	result.append(to_string(nodeCounter));
 	result.append("[label=\""+label+"\n time:"+to_string((ulong)node->timeComplexity)+"\n size:"+to_string((ulong)node->size)+"\"]\n");
 }
-
+string columns(std::map<int, ColumnInfo> & columns)
+{
+	string result="";
+	for (auto it = columns.begin(); it != columns.end(); ++it)
+	{
+		result += it->second.column.toString() + " " + to_string(int(it->second.numberOfUniqueValues)) + ",";
+	}
+	return result;
+}
 void PhysicalOperatorDrawingVisitor::generateText(string & label,UnaryPhysicalOperator * node)
 {
 	ulong identifier=nodeCounter;
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\""+label+"\n time:"+to_string((ulong)node->timeComplexity)+"\n size:"+to_string((ulong)node->size)+"\"]\n");
+	result.append("[label=\""+label+"\n time:"+to_string((ulong)node->timeComplexity)+"\n size:"+to_string((ulong)node->size)+"\n"+columns(node->columns)+"\n\"]");
 	ulong childIdentifier=++nodeCounter;
 	node->child->accept(*this);
 
@@ -136,7 +144,7 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label,BinaryPhysicalO
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\""+label+"\n time:"+to_string((ulong)node->timeComplexity)+"\n size:"+to_string((ulong)node->size)+"\"]\n");
+	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
 
 	ulong childIdentifier=++nodeCounter;
 	node->leftChild->accept(*this);
@@ -176,20 +184,64 @@ void PhysicalOperatorDrawingVisitor::visitFilterKeepingOrder(FilterKeepingOrder 
 
 void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 {
-	string label="Sort";
+	string label="";
+	if (node->sortedBy.size() == 0)
+	{
+		label += "Sort";
+	}
+	else
+	{
+		label += "Partial Sort\n";
+		label += "Sorted by ";
+		for (auto it = node->sortedBy.begin(); it != node->sortedBy.end(); ++it)
+		{
+			string order = " asc";
+			if (it->order == SortOrder::DESCENDING)
+			{
+				order = " desc";
+			}
+			label += it->column.toString() + order;
+			if (it != node->sortedBy.end()-1)
+			{
+				label += " ,";
+			}
+		}
+	}
+	label += "\nSort by: ";
+	for (auto it = node->sortBy.begin(); it != node->sortBy.end(); ++it)
+	{
+		string order = " asc";
+		if (it->order == SortOrder::DESCENDING)
+		{
+			order = " desc";
+		}
+		label += it->column.toString() + order;
+		if (it != node->sortBy.end() - 1)
+		{
+			label += " ,";
+		}
+	}
 	generateText(label,node);
 }
 
-void PhysicalOperatorDrawingVisitor::visitMergeJoin(MergeJoin * node)
+void PhysicalOperatorDrawingVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
 	string label = "Merge Join";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
 	generateText(label, node);
 }
 
-void PhysicalOperatorDrawingVisitor::visitNestedLoopJoin(NestedLoopJoin * node)
+void PhysicalOperatorDrawingVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
-
+	string label = "Merge Join";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
+	generateText(label, node);
 }
+
 
 void PhysicalOperatorDrawingVisitor::visitCrossJoin(CrossJoin * node)
 {

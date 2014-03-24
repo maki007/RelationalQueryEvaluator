@@ -5,7 +5,7 @@ node1[label="ColumnOperations
 a_-1, x_-1 = (a_-1(0) + (b_-1(0) * 5)), d_-1 = c_-1(0)"]
 node2[label="Table users
  number of rows: 1000
- columns: a_-1(int,500), b_-1(int,500), c_-1(int,500)
+ columns: a_-1(int,31), b_-1(int,31), c_-1(int,31)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

@@ -5,12 +5,12 @@ node1[label="Join
 "]
 node2[label="Table users
  number of rows: 1000
- columns: name_-1(string,500), country_id_-1(int,500)
+ columns: name_-1(string,31), country_id_-1(int,31)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table countries
  number of rows: 1000
- columns: id_-1(int,500), name_-1(string,500)
+ columns: id_-1(int,31), name_-1(string,31)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

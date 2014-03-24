@@ -10,6 +10,7 @@ algebraExampleGroupJoin3.xml
 algebraExampleIndex.xml
 algebraExampleJoin.xml
 algebraExampleJoinOnMultipleColumns.xml
+algebraExamplePartialSort.xml
 algebraExampleSelection.xml
 algebraExampleSelection2.xml
 algebraExampleSelection3.xml

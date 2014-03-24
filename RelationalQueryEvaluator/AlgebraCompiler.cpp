@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const ulong AlgebraCompiler::NUMBER_OF_PLANS = 10;
+const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
 
@@ -26,7 +26,6 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const vector<So
 			{
 				++matchedColumns;
 			}
-			
 		}
 		else
 		{
@@ -43,7 +42,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const vector<So
 		if (matchedColumns == 0)
 		{
 			double size = plan->size;
-			SortOperator * op = new SortOperator(vector<ColumnIdentifier>(), parameters);
+			SortOperator * op = new SortOperator(vector<SortParameter>(), parameters);
 			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), plan->columns, plan));
 			newPlan->sortedBy = parameters;
 			return newPlan;
@@ -53,17 +52,17 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const vector<So
 			//only partial sort is needed
 			double size = plan->size;
 			double numberOfUniqueSortedValues = 1;
-			vector<ColumnIdentifier> sortedBy;
+			vector<SortParameter> sortedBy;
 			for (ulong i = 0; i < matchedColumns; ++i)
 			{
-				sortedBy.push_back(parameters[i].column);
+				sortedBy.push_back(parameters[i]);
 				numberOfUniqueSortedValues *= plan->columns[parameters[i].column.id].numberOfUniqueValues;
 			}
 			numberOfUniqueSortedValues = min(numberOfUniqueSortedValues, size / 2);
 			SortOperator * op = new SortOperator(sortedBy, vector<SortParameter>(parameters.begin() + matchedColumns, parameters.end()));
 			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues), plan->columns, plan));
 			newPlan->sortedBy = parameters;
-			return plan;
+			return newPlan;
 		}
 	}
 
@@ -246,7 +245,7 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 			}
 			else
 			{
-				newColumn.numberOfUniqueValues = 1;
+				newColumn.numberOfUniqueValues = (*it)->columns[operation->result.id].numberOfUniqueValues;
 			}
 			columns[operation->result.id] = newColumn;
 		}
@@ -756,10 +755,11 @@ void AlgebraCompiler::greedyJoin(vector<JoinInfo>::iterator &it, set<ulong>::ite
 }
 
 
+	
+
+
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
-	map<int, ColumnInfo> newColumns;
-	//pu them into plans
 	vector<shared_ptr<ConditionInfo>> equalConditions;
 	vector<shared_ptr<ConditionInfo>> lowerConditions;
 	vector<shared_ptr<ConditionInfo>> otherConditions;
@@ -809,10 +809,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		newPlan.columns[it->first] = it->second;
 	}
 
-	for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
-	{
-		newColumns[it->first] = ColumnInfo(it->second);
-	}
+	
 
 	if (equalConditions.size() > 0)
 	{
@@ -826,6 +823,9 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				{
 					uint leftColumnIndex = *((*it)->inputs.begin());
 					uint rightColumnIndex = *(--((*it)->inputs.end()));
+					int p = newPlan.columns[leftColumnIndex].numberOfUniqueValues;
+					int t = newPlan.columns[rightColumnIndex].numberOfUniqueValues;
+
 					newSize /= max(newPlan.columns[leftColumnIndex].numberOfUniqueValues, newPlan.columns[rightColumnIndex].numberOfUniqueValues);
 				}
 				newSize = max(double(1), newSize);
@@ -834,6 +834,21 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				{
 					expressions.push_back((*cond)->condition);
 				}
+				map<int, ColumnInfo> newColumns;
+				for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
+				{
+					newColumns[it->first] = ColumnInfo(it->second);
+					if ((*first)->columns.find(it->first) != (*first)->columns.end())
+					{
+						newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues,newSize);
+					}
+					else
+					{
+						newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
+					}
+				}
+
+
 				HashJoin * hashJoin = new HashJoin(deserializeExpression(expressions));
 				shared_ptr<PhysicalPlan> hashedInput;
 				shared_ptr<PhysicalPlan> notHashedInput;
@@ -860,7 +875,12 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				{
 					insertPlan(newPlan.plans, hashPlan);
 				}
+			
 
+				//MergeJoin * mergeJoin = new MergeJoin()
+
+
+				
 			}
 		}
 	}
@@ -870,7 +890,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 
 	if (otherConditions.size() > 0)
 	{
-		throw new exception("othoer condition should be empty");
+		throw new exception("other condition should be empty");
 	}
 
 	
@@ -880,6 +900,11 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		{
 			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
 			{
+				map<int, ColumnInfo> newColumns;
+				for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
+				{
+					newColumns[it->first] = ColumnInfo(it->second);
+				}
 				shared_ptr<PhysicalPlan> crossJoinPlan(new PhysicalPlan(new CrossJoin(), (*first)->size*(*second)->size, TimeComplexity::crossJoin((*first)->size,(*second)->size), newColumns, *first,*second));
 				insertPlan(newPlan.plans, crossJoinPlan);
 			}

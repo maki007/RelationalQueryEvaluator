@@ -2,8 +2,9 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Cross Join
  time:1000000
- size:1000000"]
-node1[label="Table Scan
+ size:1000000
+name_1 31,country_id_2 31,id_3 31,name_4 31,
+"]node1[label="Table Scan
  time:1000
  size:1000"]
 node1 -> node0[headport=s, tailport=n,label="   "]

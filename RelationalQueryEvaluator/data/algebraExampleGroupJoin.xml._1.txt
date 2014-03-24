@@ -10,24 +10,24 @@ node3[label="Join
 (a_-1(0) == b_-1(1))"]
 node4[label="Table a
  number of rows: 1000
- columns: a_-1(int,500)
+ columns: a_-1(int,31)
  indices: "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node5[label="Table b
  number of rows: 1000
- columns: b_-1(int,500)
+ columns: b_-1(int,31)
  indices: "]
 node5 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node6[label="Table c
  number of rows: 1000
- columns: c_-1(int,500)
+ columns: c_-1(int,31)
  indices: "]
 node6 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node7[label="Table d
  number of rows: 1000
- columns: d_-1(int,500)
+ columns: d_-1(int,31)
  indices: "]
 node7 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

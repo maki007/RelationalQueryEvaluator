@@ -3,8 +3,9 @@ digraph g {node [shape=box]
 node0[label="Columns Operations
 a, x = (a_1(0) + (b_2(0) * 5)), d = c_3(0)
  time:0
- size:1000"]
-node1[label="Table Scan
+ size:1000
+a_1 31,x_4 31,d_5 31,
+"]node1[label="Table Scan
  time:1000
  size:1000"]
 node1 -> node0[headport=s, tailport=n,label="   "]

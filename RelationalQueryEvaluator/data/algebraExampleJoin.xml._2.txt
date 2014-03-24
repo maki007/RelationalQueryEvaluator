@@ -5,12 +5,12 @@ node1[label="GroupedJoin
 (country_id_2(0) == id_3(1))"]
 node2[label="Table users
  number of rows: 1000
- columns: name_1(string,500), country_id_2(int,500)
+ columns: name_1(string,31), country_id_2(int,31)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table countries
  number of rows: 1000
- columns: id_3(int,500), name_4(string,500)
+ columns: id_3(int,31), name_4(string,31)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

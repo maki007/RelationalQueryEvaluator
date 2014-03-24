@@ -41,7 +41,7 @@ class PhysicalOperator
 public:
 	double timeComplexity;
 	double size;
-
+	std::map<int, ColumnInfo> columns;
 	virtual void accept(PhysicalOperatorVisitor &v) = 0;
 };
 
@@ -91,26 +91,36 @@ public:
 class SortOperator : public UnaryPhysicalOperator
 {
 public:
-	std::vector<ColumnIdentifier> sortedBy;
+	std::vector<SortParameter> sortedBy;
 	std::vector<SortParameter> sortBy;
 	void accept(PhysicalOperatorVisitor &v);
-	SortOperator(const std::vector<ColumnIdentifier> &  sortedBy, const std::vector<SortParameter> & sortBy)
+	SortOperator(const std::vector<SortParameter> &  sortedBy, const std::vector<SortParameter> & sortBy)
 	{
 		this->sortedBy = sortedBy;
 		this->sortBy = sortBy;
 	}
 };
 
-class MergeJoin : public BinaryPhysicalOperator
+class MergeEquiJoin : public BinaryPhysicalOperator
 {
 public:
+	std::shared_ptr<Expression> condition;
 	void accept(PhysicalOperatorVisitor &v);
+	MergeEquiJoin(const std::shared_ptr<Expression> & condition)
+	{
+		this->condition = condition;
+	}
 };
 
-class NestedLoopJoin : public BinaryPhysicalOperator
+class MergeNonEquiJoin : public BinaryPhysicalOperator
 {
 public:
+	std::shared_ptr<Expression> condition;
 	void accept(PhysicalOperatorVisitor &v);
+	MergeNonEquiJoin(const std::shared_ptr<Expression> & condition)
+	{
+		this->condition = condition;
+	}
 };
 
 class CrossJoin : public BinaryPhysicalOperator
@@ -206,6 +216,7 @@ public:
 		{
 			columns[it2->column.id]=*it2;
 		}
+		op->columns = columns;
 	}
 
 	PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, const std::map<int, ColumnInfo> & newColumns)
@@ -217,6 +228,7 @@ public:
 		timeComplexity = time;
 		plan->timeComplexity = time;
 		columns = newColumns;
+		op->columns = newColumns;
 	}
 
 
@@ -229,6 +241,7 @@ public:
 		plan->size=size;	
 		plan->timeComplexity=time;
 		timeComplexity=oldPlan->timeComplexity+ plan->timeComplexity;
+		op->columns = newColumns;
 	}
 	
 
@@ -243,6 +256,7 @@ public:
 		plan->size=size;	
 		plan->timeComplexity=time;
 		timeComplexity=oldPlan1->timeComplexity+oldPlan2->timeComplexity+ plan->timeComplexity;
+		op->columns = newColumns;
 
 	}
 

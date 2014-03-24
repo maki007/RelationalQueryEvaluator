@@ -2,15 +2,17 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Union
  time:900
- size:3000"]
-node1[label="Table Scan
+ size:3000
+name_1 31,
+"]node1[label="Table Scan
  time:1000
  size:1000"]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Union
  time:600
- size:2000"]
-node3[label="Table Scan
+ size:2000
+name_2 31,
+"]node3[label="Table Scan
  time:1000
  size:1000"]
 node3 -> node2[headport=s, tailport=n,label="   "]

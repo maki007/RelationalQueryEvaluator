@@ -163,7 +163,7 @@ Table::Table(DOMElement * element)
 			info.column = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
 			if(XmlUtils::ReadAttribute(*it,"number_of_unique_values")=="")
 			{
-				info.numberOfUniqueValues=double(numberOfRows)/2;
+				info.numberOfUniqueValues=sqrt(double(numberOfRows));
 			}
 			else
 			{

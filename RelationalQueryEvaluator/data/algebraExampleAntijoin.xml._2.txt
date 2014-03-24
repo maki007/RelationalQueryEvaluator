@@ -7,18 +7,18 @@ node2[label="AntiJoin
 (c_1(0) == a_2(1))"]
 node3[label="Table z
  number of rows: 1000
- columns: c_1(int,500)
+ columns: c_1(int,31)
  indices: "]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Table x
  number of rows: 1000
- columns: a_2(int,500)
+ columns: a_2(int,31)
  indices: "]
 node4 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node5[label="Table y
  number of rows: 1000
- columns: b_3(int,500)
+ columns: b_3(int,31)
  indices: "]
 node5 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

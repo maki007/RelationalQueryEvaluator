@@ -79,14 +79,14 @@ void SortOperator::accept(PhysicalOperatorVisitor &v)
 	v.visitSortOperator(this);
 }
 
-void MergeJoin::accept(PhysicalOperatorVisitor &v)
+void MergeEquiJoin::accept(PhysicalOperatorVisitor &v)
 {
-	v.visitMergeJoin(this);
+	v.visitMergeEquiJoin(this);
 }
 
-void NestedLoopJoin::accept(PhysicalOperatorVisitor &v)
+void MergeNonEquiJoin::accept(PhysicalOperatorVisitor &v)
 {
-	v.visitNestedLoopJoin(this);
+	v.visitMergeNonEquiJoin(this);
 }
 
 void CrossJoin::accept(PhysicalOperatorVisitor &v)
