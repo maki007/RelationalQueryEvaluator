@@ -168,6 +168,11 @@ void GraphDrawingVisitor::visitGroup(Group * node)
 		label+=it->toString();
 		label+=", ";
 	}
+	if (node->groupColumns.size() == 0)
+	{
+		label += "nothing,";
+	}
+
 	for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
 	{
 		label+=it->output.toString();

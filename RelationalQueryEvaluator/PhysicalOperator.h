@@ -197,37 +197,31 @@ public:
 class PhysicalPlan
 {
 public:
-	std::map<int,ColumnInfo> columns;
 	std::vector<Index> indices;
 	std::vector<SortParameter> sortedBy;
 	double timeComplexity;
-	double size;
 	std::shared_ptr<PhysicalOperator> plan;
 	PhysicalPlan();
 	PhysicalPlan(NullaryPhysicalOperator * op,double numberOfRows,double time,std::vector<ColumnInfo> & cols)
 	{
 		
 		plan=std::shared_ptr<PhysicalOperator>(op);
-		size = numberOfRows;
-		plan->size=size;
+		plan->size = numberOfRows;
 		timeComplexity=time;
 		plan->timeComplexity=time;
 		for(auto it2=cols.begin();it2!=cols.end();++it2)
 		{
-			columns[it2->column.id]=*it2;
+			op->columns[it2->column.id] = *it2;
 		}
-		op->columns = columns;
 	}
 
 	PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, const std::map<int, ColumnInfo> & newColumns)
 	{
 
 		plan = std::shared_ptr<PhysicalOperator>(op);
-		size = numberOfRows;
-		plan->size = size;
+		plan->size = numberOfRows;
 		timeComplexity = time;
 		plan->timeComplexity = time;
-		columns = newColumns;
 		op->columns = newColumns;
 	}
 
@@ -235,10 +229,8 @@ public:
 	PhysicalPlan(UnaryPhysicalOperator * op, double newSize, double time, const std::map<int, ColumnInfo> & newColumns, const std::shared_ptr<PhysicalPlan> & oldPlan)
 	{
 		op->child=oldPlan->plan;
-		columns=newColumns;
 		plan=std::shared_ptr<PhysicalOperator>(op);
-		size=newSize;
-		plan->size=size;	
+		plan->size = newSize;
 		plan->timeComplexity=time;
 		timeComplexity=oldPlan->timeComplexity+ plan->timeComplexity;
 		op->columns = newColumns;
@@ -250,10 +242,8 @@ public:
 	{
 		op->leftChild=oldPlan1->plan;
 		op->rightChild=oldPlan2->plan;
-		columns=newColumns;
 		plan=std::shared_ptr<PhysicalOperator>(op);
-		size=newSize;
-		plan->size=size;	
+		plan->size = newSize;
 		plan->timeComplexity=time;
 		timeComplexity=oldPlan1->timeComplexity+oldPlan2->timeComplexity+ plan->timeComplexity;
 		op->columns = newColumns;

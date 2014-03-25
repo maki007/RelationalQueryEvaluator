@@ -41,26 +41,24 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const vector<So
 	{
 		if (matchedColumns == 0)
 		{
-			double size = plan->size;
 			SortOperator * op = new SortOperator(vector<SortParameter>(), parameters);
-			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), plan->columns, plan));
+			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), columns, plan));
 			newPlan->sortedBy = parameters;
 			return newPlan;
 		}
 		else
 		{
 			//only partial sort is needed
-			double size = plan->size;
 			double numberOfUniqueSortedValues = 1;
 			vector<SortParameter> sortedBy;
 			for (ulong i = 0; i < matchedColumns; ++i)
 			{
 				sortedBy.push_back(parameters[i]);
-				numberOfUniqueSortedValues *= plan->columns[parameters[i].column.id].numberOfUniqueValues;
+				numberOfUniqueSortedValues *= columns[parameters[i].column.id].numberOfUniqueValues;
 			}
 			numberOfUniqueSortedValues = min(numberOfUniqueSortedValues, size / 2);
 			SortOperator * op = new SortOperator(sortedBy, vector<SortParameter>(parameters.begin() + matchedColumns, parameters.end()));
-			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues), plan->columns, plan));
+			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues), columns, plan));
 			newPlan->sortedBy = parameters;
 			return newPlan;
 		}
@@ -158,6 +156,13 @@ void AlgebraCompiler::visitTable(Table * node)
 			result.push_back(shared_ptr<PhysicalPlan>(physicalPlan));
 		}
 	}
+	size = node->numberOfRows;
+	columns.clear();
+	for (auto it = node->columns.begin(); it != node->columns.end(); ++it)
+	{
+		columns[it->column.id] = *it;
+	}
+	
 }
 
 void AlgebraCompiler::visitSort(Sort * node)
@@ -185,40 +190,41 @@ void AlgebraCompiler::visitGroup(Group * node)
 		parameters.push_back(parameter);
 	}
 
+	double newSize = 1;
+	for (auto it2 = node->groupColumns.begin(); it2 != node->groupColumns.end(); ++it2)
+	{
+		newSize *= columns[(*it2).id].numberOfUniqueValues;
+	}
+	newSize = min(newSize, size / 2);
+
+	std::map<int, ColumnInfo> newColumns;
+
+	for (auto column = node->groupColumns.begin(); column != node->groupColumns.end(); ++column)
+	{
+		ColumnInfo newColumn(*column, columns[column->id].numberOfUniqueValues*(newSize / size));
+		newColumns[column->id] = newColumn;
+	}
+	for (auto function = node->agregateFunctions.begin(); function != node->agregateFunctions.end(); ++function)
+	{
+		ColumnInfo newColumn(function->output, newSize);
+		newColumns[function->output.id] = newColumn;
+	}
+
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
-
-		double newSize = 1;
-		for (auto it2 = node->groupColumns.begin(); it2 != node->groupColumns.end(); ++it2)
-		{
-			newSize *= (*it)->columns[(*it2).id].numberOfUniqueValues;
-		}
-		newSize = min(newSize, (*it)->size / 2);
-		map<int, ColumnInfo> hashedGroupColumns, sortedGroupColumns;
-		for (auto column = node->groupColumns.begin(); column != node->groupColumns.end(); ++column)
-		{
-			ColumnInfo newColumn(*column, (*it)->columns[column->id].numberOfUniqueValues*(newSize / (*it)->size));
-			hashedGroupColumns[column->id] = newColumn;
-			sortedGroupColumns[column->id] = newColumn;
-		}
-		for (auto function = node->agregateFunctions.begin(); function != node->agregateFunctions.end(); ++function)
-		{
-			ColumnInfo newColumn(function->output, newSize);
-			hashedGroupColumns[function->output.id] = newColumn;
-			sortedGroupColumns[function->output.id] = newColumn;
-		}
-
 		shared_ptr<PhysicalPlan> sortedPlan = generateSortParameters(parameters, *it);
-		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(), newSize, TimeComplexity::sortedGroup((*it)->size) + TimeComplexity::aggregate((*it)->size, node->agregateFunctions.size()),
-			sortedGroupColumns, sortedPlan));
+		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(), newSize, TimeComplexity::sortedGroup(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
+			newColumns, sortedPlan));
 		sortedGroup->sortedBy = sortedPlan->sortedBy;
 
-		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(), newSize, TimeComplexity::hash((*it)->size) + TimeComplexity::aggregate((*it)->size, node->agregateFunctions.size()),
-			hashedGroupColumns, *it));
+		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(), newSize, TimeComplexity::hash(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
+			newColumns, *it));
 		insertPlan(newResult, hashedGroup);
 		insertPlan(newResult, sortedGroup);
 	}
 	result = newResult;
+	size = newSize;
+	columns = newColumns;
 }
 
 void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
@@ -226,34 +232,35 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> newResult;
 
+	map<int, ColumnInfo> newColumns;
+	for (auto operation = node->operations.begin(); operation != node->operations.end(); ++operation)
+	{
+		ColumnInfo newColumn(operation->result, size);
+		if (operation->expression != 0 && typeid(*(operation->expression)) == typeid(Column))
+		{
+			shared_ptr<Column> column = dynamic_pointer_cast<Column>(operation->expression);
+			newColumn.numberOfUniqueValues = columns[column->column.id].numberOfUniqueValues;
+		}
+		else if (operation->expression != 0)
+		{
+			MaxOfUniqueValuesExpressionVisitor visitor(&columns);
+			operation->expression->accept(visitor);
+			newColumn.numberOfUniqueValues = visitor.result;
+		}
+		else
+		{
+			newColumn.numberOfUniqueValues = columns[operation->result.id].numberOfUniqueValues;
+		}
+		newColumns[operation->result.id] = newColumn;
+	}
+
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
-		map<int, ColumnInfo> columns;
-		for (auto operation = node->operations.begin(); operation != node->operations.end(); ++operation)
-		{
-			ColumnInfo newColumn(operation->result, (*it)->size);
-			if (operation->expression != 0 && typeid(*(operation->expression)) == typeid(Column))
-			{
-				shared_ptr<Column> column = dynamic_pointer_cast<Column>(operation->expression);
-				newColumn.numberOfUniqueValues = (*it)->columns[column->column.id].numberOfUniqueValues;
-			}
-			else if (operation->expression != 0)
-			{
-				MaxOfUniqueValuesExpressionVisitor visitor(&((*it)->columns));
-				operation->expression->accept(visitor);
-				newColumn.numberOfUniqueValues = visitor.result;
-			}
-			else
-			{
-				newColumn.numberOfUniqueValues = (*it)->columns[operation->result.id].numberOfUniqueValues;
-			}
-			columns[operation->result.id] = newColumn;
-		}
-		shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations), (*it)->size, 0, columns, *it));
+		shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations), size, 0, newColumns, *it));
 
 		for (uint i = 0; i < (*it)->sortedBy.size(); ++i)
 		{
-			if (columns.find((*it)->sortedBy[i].column.id) == columns.end())
+			if (newColumns.find((*it)->sortedBy[i].column.id) == newColumns.end())
 			{
 				break;
 			}
@@ -265,11 +272,13 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 		insertPlan(newResult, newPlan);
 	}
 	result = newResult;
+	columns = newColumns;
 }
 
 
 void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, vector<shared_ptr<Expression> > & condition, vector<shared_ptr<PhysicalPlan>> & newResult)
 {
+	/*
 	for (auto index = (*plan)->indices.begin(); index != (*plan)->indices.end(); ++index)
 	{
 		//posible conditions possibleConditions[i] -> i-th column conditions
@@ -395,7 +404,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 			map<int, ColumnInfo> newColumns = (*plan)->columns;
 			for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
 			{
-				col->second.numberOfUniqueValues = min(col->second.numberOfUniqueValues,size);
+				col->second.numberOfUniqueValues *= sizeVisitor.size;
 			}
 			shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression, *index), size,
 				TimeComplexity::indexSearch(size) + TimeComplexity::unClusteredScan(size), newColumns));
@@ -428,7 +437,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 				newSize *= sizeVisitor.size;
 				for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
 				{
-					col->second.numberOfUniqueValues = min(newSize, col->second.numberOfUniqueValues);
+					col->second.numberOfUniqueValues *= sizeVisitor.size;
 				}
 
 				shared_ptr<PhysicalPlan> filterWithOrder(new PhysicalPlan(new FilterKeepingOrder(filterCondition), newSize, TimeComplexity::filterKeppeingOrder(size), newColumns, indexPlan));
@@ -444,7 +453,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 
 		}
 	}
-
+	*/
 }
 
 void AlgebraCompiler::visitSelection(Selection * node)
@@ -455,31 +464,30 @@ void AlgebraCompiler::visitSelection(Selection * node)
 
 	vector<shared_ptr<Expression> > condition = serializeExpression(node->condition);
 
+	SizeEstimatingExpressionVisitor sizeVisitor(&columns);
+	node->condition->accept(sizeVisitor);
+	double newSize = size*sizeVisitor.size;
+	for (auto col = columns.begin(); col != columns.end(); ++col)
+	{
+		col->second.numberOfUniqueValues *= sizeVisitor.size;
+	}
+
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
-		map<int, ColumnInfo> columns = (*it)->columns;
-		
-
 		if ((*it)->indices.size() != 0)
 		{
-			generateIndexScan(it, condition, newResult);
+			//generateIndexScan(it, condition, newResult);
 		}
-		SizeEstimatingExpressionVisitor sizeVisitor(&((*it)->columns));
-		node->condition->accept(sizeVisitor);
-		double newSize = (*it)->size*sizeVisitor.size;
-		for (auto col = columns.begin(); col != columns.end();++col)
-		{
-			col->second.numberOfUniqueValues = min(col->second.numberOfUniqueValues, newSize);
-		}
+		
 		if ((*it)->sortedBy.size() != 0)
 		{
 			shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), newSize,
-				TimeComplexity::filterKeppeingOrder((*it)->size), columns, *it));
+				TimeComplexity::filterKeppeingOrder(size), columns, *it));
 			sortedPlan->sortedBy = (*it)->sortedBy;
 			insertPlan(newResult, sortedPlan);
 		}
 		shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(node->condition), newSize,
-			TimeComplexity::filter((*it)->size), columns, *it));
+			TimeComplexity::filter(size), columns, *it));
 		insertPlan(newResult, unsortedPlan);
 	}
 	result = newResult;
@@ -493,8 +501,10 @@ void AlgebraCompiler::visitJoin(Join * node)
 void AlgebraCompiler::visitUnion(Union * node)
 {
 	node->leftChild->accept(*this);
+	double leftSize = size;
 	vector<shared_ptr<PhysicalPlan>> leftInput = result;
 	node->rightChild->accept(*this);
+	double rightSize = size;
 	vector<shared_ptr<PhysicalPlan>> rightInput = result;
 	vector<shared_ptr<PhysicalPlan>> newResult;
 
@@ -502,12 +512,13 @@ void AlgebraCompiler::visitUnion(Union * node)
 	{
 		for (auto rightIt = rightInput.begin(); rightIt != rightInput.end(); ++rightIt)
 		{
-			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new UnionOperator(), (*leftIt)->size + (*rightIt)->size,
-				TimeComplexity::Union((*leftIt)->size, (*rightIt)->size), (*leftIt)->columns, *leftIt, *rightIt));
+			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new UnionOperator(), leftSize + rightSize,
+				TimeComplexity::Union(leftSize, rightSize), columns, *leftIt, *rightIt));
 			insertPlan(newResult, newPlan);
 		}
 	}
 	result = newResult;
+	size = leftSize + rightSize;
 }
 
 
@@ -574,6 +585,8 @@ vector<ulong> AlgebraCompiler::getAllSubsets(vector<ulong> & arr, ulong n, ulong
 
 void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 {
+	result.clear();
+	return;
 	vector<shared_ptr<Expression>> cond;
 	if (node->condition != 0)
 	{
@@ -592,6 +605,9 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	//calling subtrees
 	vector<vector<shared_ptr<PhysicalPlan>>> results;
 	vector<shared_ptr<PhysicalPlan>> newResult;
+	std::vector<double> sizes;
+	std::vector<std::map<int,ColumnInfo>> allColumns;
+
 	for (auto it = node->children.begin(); it != node->children.end(); ++it)
 	{
 		(*it)->accept(*this);
@@ -602,12 +618,12 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	ulong n = results.size();
 	vector<JoinInfo> plans;
 	ulong input = 0;
-	for (auto it = results.begin(); it != results.end(); ++it)
+	for (uint i = 0; i < allColumns.size();++i)
 	{
 		JoinInfo newPlans;
-		newPlans.plans = *it;
+		newPlans.plans = results[i];
 		newPlans.processedPlans.insert(input);
-		for (auto col = it->at(0)->columns.begin(); col != it->at(0)->columns.end(); ++col)
+		for (auto col = allColumns[i].begin(); col != allColumns[i].end(); ++col)
 		{
 			JoinColumnInfo joinColumnInfo(col->second);
 			joinColumnInfo.input = input;
@@ -821,47 +837,50 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 
 	if (equalConditions.size() > 0)
 	{
+		double newSize = left.size * left.size;
+		for (auto it = equalConditions.begin(); it != equalConditions.end(); ++it)
+		{
+			uint leftColumnIndex = *((*it)->inputs.begin());
+			uint rightColumnIndex = *(--((*it)->inputs.end()));
+			int p = newPlan.columns[leftColumnIndex].numberOfUniqueValues;
+			int t = newPlan.columns[rightColumnIndex].numberOfUniqueValues;
+
+			newSize /= max(newPlan.columns[leftColumnIndex].numberOfUniqueValues, newPlan.columns[rightColumnIndex].numberOfUniqueValues);
+		}
+		newSize = max(double(1), newSize);
+		vector<shared_ptr<Expression>> expressions;
+		for (auto cond = equalConditions.begin(); cond != equalConditions.end(); ++cond)
+		{
+			expressions.push_back((*cond)->condition);
+		}
+		map<int, ColumnInfo> newColumns;
+		for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
+		{
+			newColumns[it->first] = ColumnInfo(it->second);
+			if (left.columns.find(it->first) != left.columns.end())
+			{
+				newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
+			}
+			else
+			{
+				newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
+			}
+		}
+
+
 		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)
 		{
 			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
 			{
 
-				double newSize = (*first)->size * (*second)->size;
-				for (auto it = equalConditions.begin(); it != equalConditions.end(); ++it)
-				{
-					uint leftColumnIndex = *((*it)->inputs.begin());
-					uint rightColumnIndex = *(--((*it)->inputs.end()));
-					int p = newPlan.columns[leftColumnIndex].numberOfUniqueValues;
-					int t = newPlan.columns[rightColumnIndex].numberOfUniqueValues;
-
-					newSize /= max(newPlan.columns[leftColumnIndex].numberOfUniqueValues, newPlan.columns[rightColumnIndex].numberOfUniqueValues);
-				}
-				newSize = max(double(1), newSize);
-				vector<shared_ptr<Expression>> expressions;
-				for (auto cond = equalConditions.begin(); cond != equalConditions.end(); ++cond)
-				{
-					expressions.push_back((*cond)->condition);
-				}
-				map<int, ColumnInfo> newColumns;
-				for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
-				{
-					newColumns[it->first] = ColumnInfo(it->second);
-					if ((*first)->columns.find(it->first) != (*first)->columns.end())
-					{
-						newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues,newSize);
-					}
-					else
-					{
-						newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
-					}
-				}
+				
 
 
 				HashJoin * hashJoin = new HashJoin(deserializeExpression(expressions));
 				shared_ptr<PhysicalPlan> hashedInput;
 				shared_ptr<PhysicalPlan> notHashedInput;
 
-				if ((*first)->size < (*second)->size)
+				if (left.size < right.size)
 				{
 					hashedInput = *first;
 					notHashedInput = *second;
@@ -871,7 +890,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					hashedInput = *second;
 					notHashedInput = *first;
 				}
-				double time = TimeComplexity::hashjoin(min((*first)->size, (*second)->size), max((*first)->size, (*second)->size));
+				double time = TimeComplexity::hashjoin(min(left.size, right.size), max(left.size, right.size));
 				shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, newColumns, hashedInput, notHashedInput));
 				if (lowerConditions.size() + otherConditions.size() > 0)
 				{
@@ -913,7 +932,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				{
 					newColumns[it->first] = ColumnInfo(it->second);
 				}
-				shared_ptr<PhysicalPlan> crossJoinPlan(new PhysicalPlan(new CrossJoin(), (*first)->size*(*second)->size, TimeComplexity::crossJoin((*first)->size,(*second)->size), newColumns, *first,*second));
+				shared_ptr<PhysicalPlan> crossJoinPlan(new PhysicalPlan(new CrossJoin(), left.size*right.size, TimeComplexity::crossJoin(left.size, right.size), newColumns, *first, *second));
 				insertPlan(newPlan.plans, crossJoinPlan);
 			}
 		}

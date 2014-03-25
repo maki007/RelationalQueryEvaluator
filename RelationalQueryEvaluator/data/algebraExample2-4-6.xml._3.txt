@@ -1,19 +1,19 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sorted Group
- time:32098
+ time:7800000
  size:1
 revenue_6 1,
 "]node1[label="Columns Operations
 x = (l_extendedprice_3(0) * l_discount_2(0))
  time:0
- size:24691
+ size:6000000
 x_5 24691,
 "]node2[label="Filter
 AND ((today <= l_shipdate_1(0)),(l_shipdate_1(0) < today+1year),(l_quantity_4(0) < 5000),(0.2 < l_discount_2(0)),(l_discount_2(0) < 0.3))
  time:6000000
  size:24691
-l_shipdate_1 24691,l_discount_2 100,l_extendedprice_3 24691,l_quantity_4 24691,
+l_shipdate_1 24691,l_discount_2 0,l_extendedprice_3 24691,l_quantity_4 12345,
 "]node3[label="Table Scan
  time:6000000
  size:6000000
@@ -22,19 +22,19 @@ l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 300
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Hash Group
- time:254320
+ time:61800000
  size:1
 revenue_6 1,
 "]node5[label="Columns Operations
 x = (l_extendedprice_3(0) * l_discount_2(0))
  time:0
- size:24691
+ size:6000000
 x_5 24691,
 "]node6[label="Filter
 AND ((today <= l_shipdate_1(0)),(l_shipdate_1(0) < today+1year),(l_quantity_4(0) < 5000),(0.2 < l_discount_2(0)),(l_discount_2(0) < 0.3))
  time:6000000
  size:24691
-l_shipdate_1 24691,l_discount_2 100,l_extendedprice_3 24691,l_quantity_4 24691,
+l_shipdate_1 24691,l_discount_2 0,l_extendedprice_3 24691,l_quantity_4 12345,
 "]node7[label="Table Scan
  time:6000000
  size:6000000

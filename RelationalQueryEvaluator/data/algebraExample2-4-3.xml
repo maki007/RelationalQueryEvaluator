@@ -57,8 +57,8 @@
                   </parameters>
                   <input>
                     <table name="customer" numberOfRows="150000">
-                      <column name="c_custkey" type="int" number_of_unique_values="150000" />
-                      <column name="c_mktsegment" type="int" number_of_unique_values="15000" />
+                      <column name="c_custkey" type="int" />
+                      <column name="c_mktsegment" type="int"/>
                       <index type="unclustered" name="index2">
                         <column name="c_mktsegment" order="asc" />
                       </index>
@@ -92,7 +92,7 @@
                       </parameters>
                       <input>
                         <table name="lineitem" numberOfRows="6000000">
-                          <column name="l_orderkey" type="int" number_of_unique_values="6000000"></column>
+                          <column name="l_orderkey" type="int"></column>
                           <column name="l_shipdate" type="int"/>
                           <column name="l_extendedprice" type="int"/>
                           <column name="l_discount" type="int"/>
@@ -110,10 +110,10 @@
                       </parameters>
                       <input>
                         <table name="orders" numberOfRows="1500000">
-                          <column name="o_orderdate" type="int" number_of_unique_values="1500000" />
+                          <column name="o_orderdate" type="int"/>
                           <column name="o_shippriority" type="int"/>
-                          <column name="o_orderkey" type="int" number_of_unique_values="150000"/>
-                          <column name="o_custkey" type="int" number_of_unique_values="150000"/>
+                          <column name="o_orderkey" type="int"/>
+                          <column name="o_custkey" type="int" />
                           <index type="clustered" name="index">
                             <column name="o_orderdate" order="asc" />
                             <column name="o_shippriority" order="asc" />

@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="Group
-groupBy revenue_6=sum(x_5);"]
+groupBy nothing,revenue_6=sum(x_5);"]
 node2[label="ColumnOperations
 x_5 = (l_extendedprice_3(0) * l_discount_2(0))"]
 node3[label="Selection

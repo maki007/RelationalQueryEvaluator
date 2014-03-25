@@ -5,12 +5,12 @@ node1[label="Join
 (country_id_-1(0) == id_-1(1))"]
 node2[label="Table users
  number of rows: 1000
- columns: name_-1(string,31), country_id_-1(int,31)
+ columns: name_-1(string,251), country_id_-1(int,251)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table countries
  number of rows: 1000
- columns: id_-1(int,31), name_-1(string,31)
+ columns: id_-1(int,251), name_-1(string,251)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

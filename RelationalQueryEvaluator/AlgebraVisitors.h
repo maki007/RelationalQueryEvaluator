@@ -194,13 +194,12 @@ public:
 	std::set<ulong> unProcessedPlans;
 	std::vector<std::shared_ptr<ConditionInfo>> condition;
 	std::map <int,JoinColumnInfo> columns;
+	double size;
 	static bool Comparator(const JoinInfo& lhs, const JoinInfo&rhs)
 	{
 		return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
 	}
 };
-
-
 
 class AlgebraCompiler : public AlgebraVisitor
 {
@@ -208,8 +207,10 @@ public:
 	static const ulong NUMBER_OF_PLANS;
 	static const ulong  LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM;
 	static const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM;
+	
 	std::vector<std::shared_ptr<PhysicalPlan> > result;
-
+	std::map<int, ColumnInfo> columns;
+	double size;
 	void visitTable(Table * node);
 
 	void visitSort(Sort * node);

@@ -136,7 +136,6 @@ void IndexScan::accept(PhysicalOperatorVisitor &v)
 
 PhysicalPlan::PhysicalPlan()
 {
-	size=0;
 	timeComplexity=0;
 	plan=0;
 }

@@ -2,56 +2,56 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sorted Group
  time:13000
- size:100
-country_2 1,count_3 100,
+ size:1584
+country_2 251,count_3 1584,
 "]node1[label="Sort by index Scan
  time:30000
  size:10000
-user_name_1 410,country_2 100,
+user_name_1 410,country_2 1584,
 "]node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Sort
 Sort by: country_2 asc
- time:1328
- size:100
-country_2 1,count_3 100,
+ time:33695
+ size:1584
+country_2 251,count_3 1584,
 "]node3[label="Hash Group
  time:103000
- size:100
-country_2 1,count_3 100,
+ size:1584
+country_2 251,count_3 1584,
 "]node4[label="Table Scan
  time:10000
  size:10000
-user_name_1 410,country_2 100,
+user_name_1 410,country_2 1584,
 "]node4 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node5[label="Sort
 Sort by: country_2 asc
- time:1328
- size:100
-country_2 1,count_3 100,
+ time:33695
+ size:1584
+country_2 251,count_3 1584,
 "]node6[label="Hash Group
  time:103000
- size:100
-country_2 1,count_3 100,
+ size:1584
+country_2 251,count_3 1584,
 "]node7[label="Sort by index Scan
  time:30000
  size:10000
-user_name_1 410,country_2 100,
+user_name_1 410,country_2 1584,
 "]node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node5[headport=s, tailport=n,label="   "]
 node8[label="Sorted Group
  time:13000
- size:100
-country_2 1,count_3 100,
+ size:1584
+country_2 251,count_3 1584,
 "]node9[label="Sort
 Sort by: country_2 asc
  time:265754
  size:10000
-user_name_1 410,country_2 100,
+user_name_1 410,country_2 1584,
 "]node10[label="Table Scan
  time:10000
  size:10000
-user_name_1 410,country_2 100,
+user_name_1 410,country_2 1584,
 "]node10 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node8[headport=s, tailport=n,label="   "]
 
