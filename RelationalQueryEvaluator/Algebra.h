@@ -88,7 +88,7 @@ class Table : public NullaryAlgebraNodeBase
 public:
 	std::string name;
 	std::vector<ColumnInfo> columns;
-	ulong numberOfRows;
+	double numberOfRows;
 	std::vector<Index> indices;
 	Table(DOMElement * element);
 	void accept(AlgebraVisitor &v);

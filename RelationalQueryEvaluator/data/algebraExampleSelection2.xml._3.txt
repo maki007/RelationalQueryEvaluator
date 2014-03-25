@@ -4,7 +4,7 @@ node0[label="Filter
 OR ((a_1(0) == 4),(a_1(0) < -1))
  time:10000
  size:3335
-a_1 1000,
+a_1 3000,
 "]node1[label="Table Scan
  time:10000
  size:10000
@@ -14,7 +14,7 @@ node2[label="Filter
 OR ((a_1(0) == 4),(a_1(0) < -1))
  time:10000
  size:3335
-a_1 1000,
+a_1 3000,
 "]node3[label="Sort by index Scan
  time:30000
  size:10000
@@ -24,7 +24,7 @@ node4[label="Filter Keeping Order
 OR ((a_1(0) == 4),(a_1(0) < -1))
  time:13000
  size:3335
-a_1 1000,
+a_1 3000,
 "]node5[label="Sort by index Scan
  time:30000
  size:10000

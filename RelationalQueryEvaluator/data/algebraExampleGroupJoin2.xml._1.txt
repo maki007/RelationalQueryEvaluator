@@ -4,26 +4,26 @@ node0[label="Sort"]
 node1[label="Join
 (d_-1(0) == c_-1(1))"]
 node2[label="Table d
- number of rows: 1000
+ number of rows: 1000.000000
  columns: d_-1(int,251)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Join
 (c_-1(0) == a_-1(1))"]
 node4[label="Table c
- number of rows: 1000
+ number of rows: 1000.000000
  columns: c_-1(int,251)
  indices: "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node5[label="Join
 (a_-1(0) == b_-1(1))"]
 node6[label="Table a
- number of rows: 1000
+ number of rows: 1000.000000
  columns: a_-1(int,251)
  indices: "]
 node6 -> node5[headport=s, tailport=n,label="   "]
 node7[label="Table b
- number of rows: 1000
+ number of rows: 1000.000000
  columns: b_-1(int,251)
  indices: "]
 node7 -> node5[headport=s, tailport=n,label="   "]

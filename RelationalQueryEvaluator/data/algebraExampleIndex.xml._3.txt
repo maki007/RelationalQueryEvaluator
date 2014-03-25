@@ -1,46 +1,51 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Filter Keeping Order
+node0[label="Index Scan
+(a_1(0) < 5)
+ time:100099
+ size:33333
+a_1 16666,
+"]node1[label="Filter Keeping Order
 (a_1(0) < 5)
  time:130000
  size:33333
-a_1 16666,
-"]node1[label="Sort by index Scan
+a_1 50000,
+"]node2[label="Sort by index Scan
  time:300000
  size:100000
 a_1 50000,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Sort
+"]node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Sort
 Sort by: a_1 asc
- time:3321928
- size:100000
+ time:1001645
+ size:33333
 a_1 16666,
-"]node3[label="Filter
+"]node4[label="Filter
 (a_1(0) < 5)
  time:100000
  size:33333
-a_1 16666,
-"]node4[label="Table Scan
+a_1 50000,
+"]node5[label="Table Scan
  time:100000
  size:100000
 a_1 50000,
-"]node4 -> node3[headport=s, tailport=n,label="   "]
-node3 -> node2[headport=s, tailport=n,label="   "]
-node5[label="Sort
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node6[label="Sort
 Sort by: a_1 asc
- time:3321928
- size:100000
+ time:1001645
+ size:33333
 a_1 16666,
-"]node6[label="Filter
+"]node7[label="Filter
 (a_1(0) < 5)
  time:100000
  size:33333
-a_1 16666,
-"]node7[label="Sort by index Scan
+a_1 50000,
+"]node8[label="Sort by index Scan
  time:300000
  size:100000
 a_1 50000,
-"]node7 -> node6[headport=s, tailport=n,label="   "]
-node6 -> node5[headport=s, tailport=n,label="   "]
+"]node8 -> node7[headport=s, tailport=n,label="   "]
+node7 -> node6[headport=s, tailport=n,label="   "]
 
 }

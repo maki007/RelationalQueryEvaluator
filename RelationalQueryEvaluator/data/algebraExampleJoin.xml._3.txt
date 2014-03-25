@@ -1,4 +1,19 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
+node0[label="Hash Join
+(country_id_2(0) == id_3(1))
+ time:10000
+ size:3981
+name_1 3981,country_id_2 3981,id_3 3981,name_4 3981,
+"]node1[label="Table Scan
+ time:1000
+ size:1000
+id_3 251,name_4 251,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+node2[label="Table Scan
+ time:1000
+ size:1000
+name_1 251,country_id_2 251,
+"]node2 -> node0[headport=s, tailport=n,label="   "]
 
 }

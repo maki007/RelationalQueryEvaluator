@@ -1,4 +1,18 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
+node0[label="Cross Join
+ time:1000000
+ size:1000000
+name_1 251,country_id_2 251,id_3 251,name_4 251,
+"]node1[label="Table Scan
+ time:1000
+ size:1000
+name_1 251,country_id_2 251,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+node2[label="Table Scan
+ time:1000
+ size:1000
+id_3 251,name_4 251,
+"]node2 -> node0[headport=s, tailport=n,label="   "]
 
 }

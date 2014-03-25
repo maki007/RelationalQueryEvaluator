@@ -4,22 +4,22 @@ node0[label="Sort"]
 node1[label="GroupedJoin
 AND ((d_1(0) == c_2(1)),(c_2(1) == a_3(2)),(a_3(2) == b_4(3)))"]
 node2[label="Table d
- number of rows: 1000
+ number of rows: 1000.000000
  columns: d_1(int,251)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table c
- number of rows: 1000
+ number of rows: 1000.000000
  columns: c_2(int,251)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node4[label="Table a
- number of rows: 1000
+ number of rows: 1000.000000
  columns: a_3(int,251)
  indices: "]
 node4 -> node1[headport=s, tailport=n,label="   "]
 node5[label="Table b
- number of rows: 1000
+ number of rows: 1000.000000
  columns: b_4(int,251)
  indices: "]
 node5 -> node1[headport=s, tailport=n,label="   "]

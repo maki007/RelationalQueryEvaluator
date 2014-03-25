@@ -4,12 +4,12 @@ node0[label="Sort"]
 node1[label="AntiJoin
 ((a1_-1(0) == b1_-1(1)) and (a2_-1(0) == b2_-1(1)))"]
 node2[label="Table a
- number of rows: 1000
+ number of rows: 1000.000000
  columns: a1_-1(int,251), a2_-1(int,251)
  indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table b
- number of rows: 1000
+ number of rows: 1000.000000
  columns: b1_-1(int,251), b2_-1(int,251)
  indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]

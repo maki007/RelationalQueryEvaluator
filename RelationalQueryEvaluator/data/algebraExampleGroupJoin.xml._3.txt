@@ -1,4 +1,219 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+Sort by: e_3 asc
+ time:2012155
+ size:63095
+a_1 251,b_2 251,c_3 251,d_4 251,
+"]node1[label="Hash Join
+(a_1(0) == c_3(2))
+ time:39810
+ size:63095
+a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+"]node2[label="Hash Join
+(c_3(0) == d_4(3))
+ time:10000
+ size:3981
+c_3 3981,d_4 3981,
+"]node3[label="Table Scan
+ time:1000
+ size:1000
+d_4 251,
+"]node3 -> node2[headport=s, tailport=n,label="   "]
+node4[label="Table Scan
+ time:1000
+ size:1000
+c_3 251,
+"]node4 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node5[label="Hash Join
+(a_1(0) == b_2(1))
+ time:10000
+ size:3981
+a_1 3981,b_2 3981,
+"]node6[label="Table Scan
+ time:1000
+ size:1000
+b_2 251,
+"]node6 -> node5[headport=s, tailport=n,label="   "]
+node7[label="Table Scan
+ time:1000
+ size:1000
+a_1 251,
+"]node7 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node8[label="Sort
+Sort by: e_3 asc
+ time:2012155
+ size:63095
+a_1 251,b_2 251,c_3 251,d_4 251,
+"]node9[label="Hash Join
+(c_3(0) == d_4(3))
+ time:39697
+ size:63095
+a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+"]node10[label="Table Scan
+ time:1000
+ size:1000
+d_4 251,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node11[label="Hash Join
+(a_1(0) == b_2(1))
+ time:15962
+ size:15848
+a_1 15848,b_2 15848,c_3 15848,
+"]node12[label="Table Scan
+ time:1000
+ size:1000
+b_2 251,
+"]node12 -> node11[headport=s, tailport=n,label="   "]
+node13[label="Hash Join
+(a_1(0) == c_3(2))
+ time:10000
+ size:3981
+a_1 3981,c_3 3981,
+"]node14[label="Table Scan
+ time:1000
+ size:1000
+c_3 251,
+"]node14 -> node13[headport=s, tailport=n,label="   "]
+node15[label="Table Scan
+ time:1000
+ size:1000
+a_1 251,
+"]node15 -> node13[headport=s, tailport=n,label="   "]
+node13 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node16[label="Sort
+Sort by: e_3 asc
+ time:2012155
+ size:63095
+a_1 251,b_2 251,c_3 251,d_4 251,
+"]node17[label="Hash Join
+(a_1(0) == b_2(1))
+ time:39697
+ size:63095
+a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+"]node18[label="Table Scan
+ time:1000
+ size:1000
+b_2 251,
+"]node18 -> node17[headport=s, tailport=n,label="   "]
+node19[label="Hash Join
+(a_1(0) == c_3(2))
+ time:15962
+ size:15848
+a_1 15848,c_3 15848,d_4 15848,
+"]node20[label="Table Scan
+ time:1000
+ size:1000
+a_1 251,
+"]node20 -> node19[headport=s, tailport=n,label="   "]
+node21[label="Hash Join
+(c_3(0) == d_4(3))
+ time:10000
+ size:3981
+c_3 3981,d_4 3981,
+"]node22[label="Table Scan
+ time:1000
+ size:1000
+d_4 251,
+"]node22 -> node21[headport=s, tailport=n,label="   "]
+node23[label="Table Scan
+ time:1000
+ size:1000
+c_3 251,
+"]node23 -> node21[headport=s, tailport=n,label="   "]
+node21 -> node19[headport=s, tailport=n,label="   "]
+node19 -> node17[headport=s, tailport=n,label="   "]
+node17 -> node16[headport=s, tailport=n,label="   "]
+node24[label="Sort
+Sort by: e_3 asc
+ time:2012155
+ size:63095
+a_1 251,b_2 251,c_3 251,d_4 251,
+"]node25[label="Hash Join
+(a_1(0) == b_2(1))
+ time:39697
+ size:63095
+a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+"]node26[label="Table Scan
+ time:1000
+ size:1000
+b_2 251,
+"]node26 -> node25[headport=s, tailport=n,label="   "]
+node27[label="Hash Join
+(c_3(0) == d_4(3))
+ time:15962
+ size:15848
+a_1 15848,c_3 15848,d_4 15848,
+"]node28[label="Table Scan
+ time:1000
+ size:1000
+d_4 251,
+"]node28 -> node27[headport=s, tailport=n,label="   "]
+node29[label="Hash Join
+(a_1(0) == c_3(2))
+ time:10000
+ size:3981
+a_1 3981,c_3 3981,
+"]node30[label="Table Scan
+ time:1000
+ size:1000
+c_3 251,
+"]node30 -> node29[headport=s, tailport=n,label="   "]
+node31[label="Table Scan
+ time:1000
+ size:1000
+a_1 251,
+"]node31 -> node29[headport=s, tailport=n,label="   "]
+node29 -> node27[headport=s, tailport=n,label="   "]
+node27 -> node25[headport=s, tailport=n,label="   "]
+node25 -> node24[headport=s, tailport=n,label="   "]
+node32[label="Sort
+Sort by: e_3 asc
+ time:2012155
+ size:63095
+a_1 251,b_2 251,c_3 251,d_4 251,
+"]node33[label="Hash Join
+(c_3(0) == d_4(3))
+ time:39697
+ size:63095
+a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+"]node34[label="Table Scan
+ time:1000
+ size:1000
+d_4 251,
+"]node34 -> node33[headport=s, tailport=n,label="   "]
+node35[label="Hash Join
+(a_1(0) == c_3(2))
+ time:15962
+ size:15848
+a_1 15848,b_2 15848,c_3 15848,
+"]node36[label="Table Scan
+ time:1000
+ size:1000
+c_3 251,
+"]node36 -> node35[headport=s, tailport=n,label="   "]
+node37[label="Hash Join
+(a_1(0) == b_2(1))
+ time:10000
+ size:3981
+a_1 3981,b_2 3981,
+"]node38[label="Table Scan
+ time:1000
+ size:1000
+b_2 251,
+"]node38 -> node37[headport=s, tailport=n,label="   "]
+node39[label="Table Scan
+ time:1000
+ size:1000
+a_1 251,
+"]node39 -> node37[headport=s, tailport=n,label="   "]
+node37 -> node35[headport=s, tailport=n,label="   "]
+node35 -> node33[headport=s, tailport=n,label="   "]
+node33 -> node32[headport=s, tailport=n,label="   "]
 
 }

@@ -5,7 +5,7 @@ a_1 asc"]
 node1[label="Selection
 (a_1(0) < 5)"]
 node2[label="Table x
- number of rows: 100000
+ number of rows: 100000.000000
  columns: a_1(int,50000)
  indices: UNCLUSTERED(a)"]
 node2 -> node1[headport=s, tailport=n,label="   "]
