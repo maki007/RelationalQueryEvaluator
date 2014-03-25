@@ -846,7 +846,6 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		{
 			uint leftColumnIndex = *((*it)->inputs.begin());
 			uint rightColumnIndex = *(--((*it)->inputs.end()));
-
 			newSize /= max(newPlan.columns[leftColumnIndex].numberOfUniqueValues, newPlan.columns[rightColumnIndex].numberOfUniqueValues);
 		}
 		newSize = max(double(1), newSize);
@@ -874,12 +873,12 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
 			}
 		}
-
+		shared_ptr<Expression> condition=deserializeExpression(expressions);
 		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)
 		{
 			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
 			{
-				HashJoin * hashJoin = new HashJoin(deserializeExpression(expressions));
+				HashJoin * hashJoin = new HashJoin(condition);
 				shared_ptr<PhysicalPlan> hashedInput;
 				shared_ptr<PhysicalPlan> notHashedInput;
 
@@ -893,7 +892,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					hashedInput = *second;
 					notHashedInput = *first;
 				}
-				double time = TimeComplexity::hashjoin(min(left.size, right.size), max(left.size, right.size));
+				double time = TimeComplexity::hashJoin(min(left.size, right.size), max(left.size, right.size));
 				shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, newColumns, hashedInput, notHashedInput));
 				if (lowerConditions.size() + otherConditions.size() > 0)
 				{
@@ -907,9 +906,47 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				}
 			
 
-				//MergeJoin * mergeJoin = new MergeJoin()
+				vector<SortParameter> leftSortParameters;
+				vector<SortParameter> rightSortParameters;
+				for (auto cond = equalConditions.begin(); cond != equalConditions.end(); ++cond)
+				{
+					ulong firstColumn = *((*cond)->inputs.begin());
+					ulong secondColumn = *(--((*cond)->inputs.end()));
+					
+					SortParameter leftParameter;
+					SortParameter rightParameter;
+					if (left.columns.find(firstColumn) != left.columns.end())
+					{
+						leftParameter.column = left.columns.at(firstColumn).column;
+						leftParameter.order = SortOrder::ASCENDING;
+						rightParameter.column = right.columns.at(secondColumn).column;
+						rightParameter.order = SortOrder::ASCENDING;
+					}
+					else
+					{
+						leftParameter.column = left.columns.at(secondColumn).column;
+						leftParameter.order = SortOrder::ASCENDING;
+						rightParameter.column = right.columns.at(firstColumn).column;
+						rightParameter.order = SortOrder::ASCENDING;
+					}
 
 
+
+					leftSortParameters.push_back(leftParameter);
+					rightSortParameters.push_back(rightParameter);
+
+
+				}
+
+				shared_ptr<PhysicalPlan> leftSortedPlan;
+				leftSortedPlan = generateSortParameters(leftSortParameters, *first);
+				shared_ptr<PhysicalPlan> rightSortedPlan;
+				rightSortedPlan = generateSortParameters(rightSortParameters, *second);
+
+				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition);
+				time = TimeComplexity::mergeEquiJoin(left.size, right.size);
+				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan,rightSortedPlan));
+				insertPlan(newPlan.plans, mergePlan);
 				
 			}
 		}

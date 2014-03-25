@@ -15,5 +15,31 @@ node2[label="Table Scan
  size:1000
 name_1 251,country_id_2 251,
 "]node2 -> node0[headport=s, tailport=n,label="   "]
+node3[label="Merge Join(country_id_2(0) == id_3(1))
+ time:1200
+ size:3981
+name_1 3981,country_id_2 3981,id_3 3981,name_4 3981,
+"]node4[label="Sort
+Sort by: country_id_2 asc
+ time:19931
+ size:1000
+id_3 251,name_4 251,
+"]node5[label="Table Scan
+ time:1000
+ size:1000
+name_1 251,country_id_2 251,
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node6[label="Sort
+Sort by: id_3 asc
+ time:19931
+ size:1000
+id_3 251,name_4 251,
+"]node7[label="Table Scan
+ time:1000
+ size:1000
+id_3 251,name_4 251,
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node3[headport=s, tailport=n,label="   "]
 
 }
