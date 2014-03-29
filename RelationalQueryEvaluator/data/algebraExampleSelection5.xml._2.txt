@@ -1,0 +1,13 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="Selection
+(c_mktsegment_2(0) <= 500)"]
+node2[label="Table customer
+ number of rows: 150000.000000
+ columns: c_custkey_1(int,150000), c_mktsegment_2(int,10)
+ indices: UNCLUSTERED(c_mktsegment)"]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}
