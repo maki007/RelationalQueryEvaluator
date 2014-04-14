@@ -193,7 +193,7 @@ public:
 	std::set<ulong> processedPlans;
 	std::set<ulong> unProcessedPlans;
 	std::vector<std::shared_ptr<ConditionInfo>> condition;
-	std::map <int,JoinColumnInfo> columns;
+	std::map <ulong,JoinColumnInfo> columns;
 	double size;
 	static bool Comparator(const JoinInfo& lhs, const JoinInfo&rhs)
 	{
@@ -233,7 +233,7 @@ public:
 private:
 	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
-	std::shared_ptr<PhysicalPlan> generateSortParameters(const std::vector<SortParameter> & parameters, const std::shared_ptr<PhysicalPlan> & result);
+	std::shared_ptr<PhysicalPlan> generateSortParameters(const PossibleSortParameters & parameters, const std::shared_ptr<PhysicalPlan> & result);
 
 	void generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 

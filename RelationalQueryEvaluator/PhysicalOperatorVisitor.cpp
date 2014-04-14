@@ -186,8 +186,10 @@ void PhysicalOperatorDrawingVisitor::visitFilterKeepingOrder(FilterKeepingOrder 
 
 void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 {
-	string label="";
-	if (node->sortedBy.size() == 0)
+	
+	string label="Sort";
+	generateText(label, node);
+	/*if (node->sortedBy.size() == 0)
 	{
 		label += "Sort";
 	}
@@ -223,7 +225,7 @@ void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 			label += " ,";
 		}
 	}
-	generateText(label,node);
+	generateText(label,node);*/
 }
 
 void PhysicalOperatorDrawingVisitor::visitMergeEquiJoin(MergeEquiJoin * node)

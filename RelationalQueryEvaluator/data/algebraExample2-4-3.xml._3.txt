@@ -1,7 +1,6 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-Sort by: revenue_12 desc ,o_orderdate_7 asc
  time:46693
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
@@ -52,7 +51,6 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node9[label="Sort
-Sort by: revenue_12 desc ,o_orderdate_7 asc
  time:46693
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
@@ -61,7 +59,6 @@ l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
 "]node11[label="Sort
-Sort by: l_orderkey_3 asc ,o_orderdate_7 asc ,o_shippriority_8 asc
  time:101841
  size:4227
 l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
@@ -109,7 +106,6 @@ node12 -> node11[headport=s, tailport=n,label="   "]
 node11 -> node10[headport=s, tailport=n,label="   "]
 node10 -> node9[headport=s, tailport=n,label="   "]
 node19[label="Sort
-Sort by: revenue_12 desc ,o_orderdate_7 asc
  time:46693
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
@@ -165,7 +161,6 @@ node22 -> node21[headport=s, tailport=n,label="   "]
 node21 -> node20[headport=s, tailport=n,label="   "]
 node20 -> node19[headport=s, tailport=n,label="   "]
 node29[label="Sort
-Sort by: revenue_12 desc ,o_orderdate_7 asc
  time:46693
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
@@ -174,7 +169,6 @@ l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
 "]node31[label="Sort
-Sort by: l_orderkey_3 asc ,o_orderdate_7 asc ,o_shippriority_8 asc
  time:101841
  size:4227
 l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
@@ -227,7 +221,6 @@ node32 -> node31[headport=s, tailport=n,label="   "]
 node31 -> node30[headport=s, tailport=n,label="   "]
 node30 -> node29[headport=s, tailport=n,label="   "]
 node40[label="Sort
-Sort by: revenue_12 desc ,o_orderdate_7 asc
  time:46693
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,

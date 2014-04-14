@@ -1,7 +1,6 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-Sort by: e_3 asc
  time:2012155
  size:63095
 a_1 251,b_2 251,c_3 251,d_4 251,
@@ -44,7 +43,6 @@ a_1 251,
 node5 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node8[label="Sort
-Sort by: e_3 asc
  time:2012155
  size:63095
 a_1 251,b_2 251,c_3 251,d_4 251,
@@ -53,7 +51,6 @@ a_1 251,b_2 251,c_3 251,d_4 251,
  size:63095
 a_1 63095,b_2 63095,c_3 63095,d_4 63095,
 "]node10[label="Sort
-Sort by: a_1 asc
  time:19931
  size:1000
 d_4 251,
@@ -75,7 +72,6 @@ a_1 251,
 node11 -> node10[headport=s, tailport=n,label="   "]
 node10 -> node9[headport=s, tailport=n,label="   "]
 node14[label="Sort
-Sort by: c_3 asc
  time:19931
  size:1000
 d_4 251,
@@ -98,7 +94,6 @@ node15 -> node14[headport=s, tailport=n,label="   "]
 node14 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node8[headport=s, tailport=n,label="   "]
 node18[label="Sort
-Sort by: e_3 asc
  time:2012155
  size:63095
 a_1 251,b_2 251,c_3 251,d_4 251,
@@ -141,7 +136,6 @@ node23 -> node21[headport=s, tailport=n,label="   "]
 node21 -> node19[headport=s, tailport=n,label="   "]
 node19 -> node18[headport=s, tailport=n,label="   "]
 node26[label="Sort
-Sort by: e_3 asc
  time:2012155
  size:63095
 a_1 251,b_2 251,c_3 251,d_4 251,
@@ -184,7 +178,6 @@ node31 -> node29[headport=s, tailport=n,label="   "]
 node29 -> node27[headport=s, tailport=n,label="   "]
 node27 -> node26[headport=s, tailport=n,label="   "]
 node34[label="Sort
-Sort by: e_3 asc
  time:2012155
  size:63095
 a_1 251,b_2 251,c_3 251,d_4 251,

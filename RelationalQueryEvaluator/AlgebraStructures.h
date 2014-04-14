@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 #include <string>
-
+#include <list>
 
 class Expression;
 
@@ -41,16 +41,81 @@ public:
 
 enum SortOrder
 {
-	ASCENDING, DESCENDING
+	ASCENDING, DESCENDING, UNKNOWN
 };
 
 class SortParameter
 {
 public:
 	ColumnIdentifier column;
+	std::vector<ColumnIdentifier> others;
 	SortOrder order;
+	SortParameter(const ColumnIdentifier & column,SortOrder order)
+	{
+		this->column = column;
+		this->order = order;
+	}
+	
+	SortParameter(const ColumnIdentifier & column, const ColumnIdentifier & other, SortOrder order)
+	{
+		this->column = column;
+		this->order = order;
+		this->others.push_back(other);
+	}
+
+
+	SortParameter()
+	{
+		this->order = SortOrder::UNKNOWN;
+	}
 };
 
+class SortParameters
+{
+public:
+	std::list<SortParameter> values;
+	bool isKnown()
+	{
+		return values.size() <= 1;
+	}
+
+	SortParameters(const SortParameter & value)
+	{
+		values.push_back(value);
+	}
+
+	SortParameters(const std::vector<SortParameter> & values)
+	{
+		this->values = std::list<SortParameter>(values.begin(), values.end());
+	}
+	SortParameters()
+	{
+	
+	}
+
+};
+
+class PossibleSortParameters
+{
+public:
+	std::vector<SortParameters> parameters;
+	PossibleSortParameters(const std::vector<SortParameters> & parameters)
+	{
+		this->parameters = parameters;
+	}
+
+	PossibleSortParameters(const std::vector<SortParameter> & parameters)
+	{
+		for (auto it = parameters.begin(); it != parameters.end();++it)
+		{
+			this->parameters.push_back(*it);
+		}
+	}
+
+	PossibleSortParameters()
+	{
+	}
+};
 
 enum AgregateFunctionType
 {

@@ -93,10 +93,10 @@ public:
 class SortOperator : public UnaryPhysicalOperator
 {
 public:
-	std::vector<SortParameter> sortedBy;
-	std::vector<SortParameter> sortBy;
+	PossibleSortParameters sortedBy;
+	PossibleSortParameters sortBy;
 	void accept(PhysicalOperatorVisitor &v);
-	SortOperator(const std::vector<SortParameter> &  sortedBy, const std::vector<SortParameter> & sortBy)
+	SortOperator(const PossibleSortParameters &  sortedBy, const PossibleSortParameters & sortBy)
 	{
 		this->sortedBy = sortedBy;
 		this->sortBy = sortBy;
@@ -200,7 +200,7 @@ class PhysicalPlan
 {
 public:
 	std::vector<Index> indices;
-	std::vector<SortParameter> sortedBy;
+	PossibleSortParameters sortedBy;
 	double timeComplexity;
 	std::shared_ptr<PhysicalOperator> plan;
 	PhysicalPlan();

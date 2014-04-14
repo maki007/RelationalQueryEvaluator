@@ -42,7 +42,6 @@ node7[label="Merge Join(c_2(1) == a_3(2))
  size:63095
 d_1 63095,c_2 63095,a_3 63095,b_4 63095,
 "]node8[label="Sort
-Sort by: c_2 asc
  time:19931
  size:1000
 b_4 251,
@@ -64,7 +63,6 @@ d_1 251,
 node9 -> node8[headport=s, tailport=n,label="   "]
 node8 -> node7[headport=s, tailport=n,label="   "]
 node12[label="Sort
-Sort by: a_3 asc
  time:19931
  size:1000
 b_4 251,
