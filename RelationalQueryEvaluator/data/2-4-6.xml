@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <group>
+      <parameters>
+        <sum output="revenue" argument="x"/>
+      </parameters>
+      <input>
+        <column_operations>
+          <parameters>
+            <column name="x">
+              <equals>
+                <times>
+                  <column name="l_extendedprice" />
+                  <column name="l_discount"/>
+                </times>
+              </equals>
+            </column>
+          </parameters>
+          <input>
+
+            <selection>
+              <parameters>
+                <condition>
+                  <and>
+                    <and>
+                      <lower_or_equals>
+                        <constant type="date" value="today" />
+                        <column name="l_shipdate" />
+                      </lower_or_equals>
+                      <lower>
+                        <column name="l_shipdate" />
+                        <constant type="date" value="today+1year" />
+                      </lower>
+                    </and>
+                    <and>
+                      <lower>
+                        <column name="l_quantity"/>
+                        <constant type="double" value="5000"/>
+                      </lower>
+                      <and>
+                        <lower>
+                          <constant type="double" value="0.2"/>
+                          <column name="l_discount" />
+                        </lower>
+                        <lower>
+
+                          <column name="l_discount" />
+                          <constant type="double" value="0.3"/>
+                        </lower>
+                      </and>
+                    </and>
+                  </and>
+                </condition>
+              </parameters>
+              <input>
+                <table name="lineitem" numberOfRows="6000000">
+                  <column name="l_shipdate" type="date" number_of_unique_values="6000000" />
+                  <column name="l_discount" type="int"  number_of_unique_values="100" />
+                  <column name="l_extendedprice" type="double" number_of_unique_values="6000000" />
+                  <column name="l_quantity" type="double" number_of_unique_values="3000000" />
+                </table>
+              </input>
+            </selection>
+          </input>
+        </column_operations>
+          
+      </input>
+    </group>
+  </input>
+</sort>

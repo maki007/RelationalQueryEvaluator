@@ -6,9 +6,9 @@
 
 using namespace std;
 
-const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
+const ulong AlgebraCompiler::NUMBER_OF_PLANS = 50;
 
-const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 8;
+const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 5;
 
 const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
 
@@ -38,9 +38,9 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 	while (true)
 	{
 		SortParameters newSortedBy;
-		for (auto sortByIt = currentSortBy.values.begin(); sortByIt != currentSortBy.values.begin(); ++sortByIt)
+		for (auto sortByIt = currentSortBy.values.begin(); sortByIt != currentSortBy.values.end(); ++sortByIt)
 		{
-			for (auto sortedByIt = currentSorted.values.begin(); sortedByIt != currentSorted.values.begin(); ++sortedByIt)
+			for (auto sortedByIt = currentSorted.values.begin(); sortedByIt != currentSorted.values.end(); ++sortedByIt)
 			{
 				if (sortByIt->column.id == sortedByIt->column.id)
 				{
@@ -53,8 +53,12 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 						{
 							newSortedBy.values.back().order = sortedByOrder;
 						}
-						currentSortBy.values.erase(sortByIt);
-						currentSorted.values.erase(sortedByIt);
+						sortByIt=currentSortBy.values.erase(sortByIt);
+						sortedByIt = currentSorted.values.erase(sortedByIt);
+						if (sortByIt == currentSortBy.values.end())
+						{
+							goto endLoop;
+						}
 					}
 					break;
 				}
@@ -73,8 +77,12 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 								{
 									newSortedBy.values.back().order = sortedByOrder;
 								}
-								currentSortBy.values.erase(sortByIt);
-								currentSorted.values.erase(sortedByIt);
+								sortByIt=currentSortBy.values.erase(sortByIt);
+								sortedByIt = currentSorted.values.erase(sortedByIt);
+								if (sortByIt == currentSortBy.values.end())
+								{
+									goto endLoop;
+								}
 								break;
 							}
 						}
@@ -82,12 +90,16 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 				}
 			}
 		}
-
+		endLoop:
+		
 		if (newSortedBy.values.size() == 0)
 		{
 			break;
 		}
-
+		else
+		{
+			sortedBy.parameters.push_back(newSortedBy);
+		}
 		bool end = false;
 		if (currentSorted.values.size()==0)
 		{
@@ -104,9 +116,9 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 		if (currentSortBy.values.size() == 0)
 		{
 			sortByIndex++;
-			if (parameters.parameters.size() < sortedIndex)
+			if (parameters.parameters.size() < sortByIndex)
 			{
-				currentSortBy = parameters.parameters[sortedIndex];
+				currentSortBy = parameters.parameters[sortByIndex];
 			}
 			else
 			{
@@ -131,7 +143,11 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 	}
 	SortOperator * op = new SortOperator(sortedBy, sortBy);
 	double time;
-	if (sortedBy.parameters.size() == 0)
+	if (sortBy.parameters.size() == 0)
+	{
+		time = 0;
+	}
+	else if (sortedBy.parameters.size() == 0)
 	{
 		time = TimeComplexity::sort(size);
 	}
@@ -142,70 +158,19 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 		{
 			for (auto it2 =it->values.begin(); it2 != it->values.end(); ++it2)
 			{
-				numberOfUniqueSortedValues *= columns[it2->column.id].numberOfUniqueValues;
+				numberOfUniqueSortedValues *= plan->plan->columns[it2->column.id].numberOfUniqueValues;
 			}
 		}
 		numberOfUniqueSortedValues = min(numberOfUniqueSortedValues, size / 2);
 		time= numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues);
 	}
-	shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, time, columns, plan));
+	shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, time, plan->plan->columns, plan));
 	newPlan->sortedBy = sortedBy;
 	for (ulong i = sortedIndex; i < parameters.parameters.size(); ++i)
 	{
 		newPlan->sortedBy.parameters.push_back(parameters.parameters[i]);
 	}
 	return newPlan;
-
-	/*
-	ulong matchedColumns = 0;
-	for (ulong i = 0; i < parameters.size() && i < plan->sortedBy.size(); ++i)
-	{
-		SortParameter sortParameter = parameters[i];
-		SortParameter sortedBy = plan->sortedBy[i];
-		if (sortedBy.column.name == sortParameter.column.name)
-		{
-			if (sortedBy.order == sortParameter.order)
-			{
-				++matchedColumns;
-			}
-		}
-		else
-		{
-			break;
-		}
-	}
-	if (matchedColumns == parameters.size())
-	{
-		//no sort needed
-		return plan;
-	}
-	else
-	{
-		if (matchedColumns == 0)
-		{
-			SortOperator * op = new SortOperator(vector<SortParameter>(), parameters);
-			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), columns, plan));
-			newPlan->sortedBy = parameters;
-			return newPlan;
-		}
-		else
-		{
-			//only partial sort is needed
-			double numberOfUniqueSortedValues = 1;
-			vector<SortParameter> sortedBy;
-			for (ulong i = 0; i < matchedColumns; ++i)
-			{
-				sortedBy.push_back(parameters[i]);
-				numberOfUniqueSortedValues *= columns[parameters[i].column.id].numberOfUniqueValues;
-			}
-			numberOfUniqueSortedValues = min(numberOfUniqueSortedValues, size / 2);
-			SortOperator * op = new SortOperator(sortedBy, vector<SortParameter>(parameters.begin() + matchedColumns, parameters.end()));
-			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues), columns, plan));
-			newPlan->sortedBy = parameters;
-			return newPlan;
-		}
-	}
-	*/
 }
 
 vector<shared_ptr<Expression> > AlgebraCompiler::serializeExpression(shared_ptr<Expression> condition)
@@ -1045,6 +1010,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				PossibleSortParameters leftSortParameters;
 				leftSortParameters.parameters.push_back(SortParameters());
 				std::map<int, int> equalPairs;
+				std::map<int, int> equalPairsReverse;
 				SortParameter leftParameter;
 				for (auto cond = equalConditions.begin(); cond != equalConditions.end(); ++cond)
 				{
@@ -1057,20 +1023,23 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 						leftParameter.column = left.columns.at(firstColumn).column;
 						leftParameter.order = SortOrder::UNKNOWN;
 						equalPairs[leftParameter.column.id] = right.columns.at(secondColumn).column.id;
+						equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
 					}
 					else
 					{
 						leftParameter.column = left.columns.at(secondColumn).column;
 						leftParameter.order = SortOrder::UNKNOWN;
 						equalPairs[leftParameter.column.id] = right.columns.at(firstColumn).column.id;
+						equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
+
 					}
 				}
 				leftSortParameters.parameters[0].values.push_back(leftParameter);
 
 				shared_ptr<PhysicalPlan> leftSortedPlan;
 				leftSortedPlan = generateSortParameters(leftSortParameters, *first);
+				
 				PossibleSortParameters rightSortParameters;
-				int s = leftSortedPlan->sortedBy.parameters.size();
 				for (auto it = leftSortedPlan->sortedBy.parameters.begin(); it != leftSortedPlan->sortedBy.parameters.end(); ++it)
 				{
 					rightSortParameters.parameters.push_back(SortParameters());
@@ -1107,9 +1076,29 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition);
 				time = TimeComplexity::mergeEquiJoin(left.size, right.size);
 				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan,rightSortedPlan));
-				//add sorted by
+				PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;
+				for (auto it = resultParameters.parameters.begin(); it != resultParameters.parameters.end(); ++it)
+				{
+					for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
+					{
+						if (equalPairsReverse.find(it2->column.id) == equalPairsReverse.end())
+						{
+							for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
+							{
+								if (equalPairsReverse.find(it3->id) != equalPairsReverse.end())
+								{
+									it2->others.insert(left.columns.at(equalPairsReverse[it3->id]).column);
+								}
+							}
+						}
+						else
+						{
+							it2->others.insert(left.columns.at(equalPairsReverse[it2->column.id]).column);
+						}
+					}
+				}
+				mergePlan->sortedBy = resultParameters;
 				insertPlan(newPlan.plans, mergePlan);
-				
 			}
 		}
 	}

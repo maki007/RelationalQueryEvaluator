@@ -20,7 +20,7 @@ ColumnIdentifier::ColumnIdentifier()
 	this->name = "";
 	this->id = -1;
 }
-string ColumnIdentifier::toString()
+string ColumnIdentifier::toString() const
 {
 	return name + "_" + std::to_string(id);
 }

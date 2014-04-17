@@ -97,6 +97,6 @@ int main(int argc, const char *argv[])
 			drawPlan(algebraRoot,line+string("._3"));;
 		}
 	}
-	system("drawAlgebra.bat");
+	system("_drawAlgebra.bat");
 	return 0;
 }

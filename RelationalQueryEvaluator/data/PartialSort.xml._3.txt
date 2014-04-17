@@ -1,0 +1,14 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+Sort by: a_1 asc, b_2 desc
+ time:265754
+ size:10000
+a_1 10000,b_2 10000,
+"]node1[label="Table Scan
+ time:10000
+ size:10000
+a_1 10000,b_2 10000,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

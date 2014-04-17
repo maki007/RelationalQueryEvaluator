@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <set>
 
 class Expression;
 
@@ -34,7 +35,16 @@ public:
 
 	ColumnIdentifier();
 	
-	std::string toString();
+	std::string toString() const;
+
+	bool operator<(const ColumnIdentifier& other) const
+	{
+		return this->id < other.id;
+	}
+	bool operator ==(const ColumnIdentifier& other) const
+	{
+		return this->id == other.id;
+	}
 };
 
 
@@ -48,7 +58,7 @@ class SortParameter
 {
 public:
 	ColumnIdentifier column;
-	std::vector<ColumnIdentifier> others;
+	std::set<ColumnIdentifier> others;
 	SortOrder order;
 	SortParameter(const ColumnIdentifier & column,SortOrder order)
 	{
@@ -60,7 +70,7 @@ public:
 	{
 		this->column = column;
 		this->order = order;
-		this->others.push_back(other);
+		this->others.insert(other);
 	}
 
 
@@ -74,7 +84,7 @@ class SortParameters
 {
 public:
 	std::list<SortParameter> values;
-	bool isKnown()
+	bool isKnown() const
 	{
 		return values.size() <= 1;
 	}

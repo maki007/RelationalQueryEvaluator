@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <column_operations>
+      <parameters>
+        <column name="a"></column>
+        <column name="x">
+          <equals>
+            <plus>
+              <column name="a"/>
+              <times>
+                <column name="b"/>
+                <constant type="int" value="5"/>
+              </times>
+            </plus>
+          </equals>
+        </column>
+        <column name="d">
+          <equals>
+            <column name="c" />
+          </equals>
+        </column>
+      </parameters>
+      <input>
+        <table name="users">
+          <column name="a" type="int" />
+          <column name="b" type="int" />
+          <column name="c"  type="int" />
+        </table>
+      </input>
+    </column_operations>
+  </input>
+</sort>

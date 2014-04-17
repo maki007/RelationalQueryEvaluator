@@ -1,4 +1,0 @@
-digraph g {node [shape=box]
- graph[rankdir="BT", concentrate=true];
-
-}

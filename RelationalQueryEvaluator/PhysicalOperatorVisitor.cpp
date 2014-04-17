@@ -184,12 +184,52 @@ void PhysicalOperatorDrawingVisitor::visitFilterKeepingOrder(FilterKeepingOrder 
 	generateText(label,node);
 }
 
+void writeSortParameters(const PossibleSortParameters & sort, string & label)
+{
+	for (auto it = sort.parameters.begin(); it != sort.parameters.end(); ++it)
+	{
+		if (!it->isKnown())
+		{
+			label += "(";
+		}
+		for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
+		{
+			string order="";
+			switch (it2->order)
+			{
+			case SortOrder::ASCENDING:
+				order = " asc";
+				break;
+			case SortOrder::DESCENDING:
+				order = " desc";
+				break;
+			case SortOrder::UNKNOWN:
+				order = " both";
+				break;
+			}
+			label += (it2->column.toString()) + order;
+			auto copyIt = it2;
+			++copyIt;
+			if (copyIt != it->values.end())
+			{
+				label += ", ";
+			}
+		}
+		if (!it->isKnown())
+		{
+			label += ")";
+		}
+		if (it != sort.parameters.end() - 1)
+		{
+			label += ", ";
+		}
+	}
+}
+
 void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 {
-	
-	string label="Sort";
-	generateText(label, node);
-	/*if (node->sortedBy.size() == 0)
+	string label="";
+	if (node->sortedBy.parameters.size() == 0)
 	{
 		label += "Sort";
 	}
@@ -197,35 +237,13 @@ void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 	{
 		label += "Partial Sort\n";
 		label += "Sorted by ";
-		for (auto it = node->sortedBy.begin(); it != node->sortedBy.end(); ++it)
-		{
-			string order = " asc";
-			if (it->order == SortOrder::DESCENDING)
-			{
-				order = " desc";
-			}
-			label += it->column.toString() + order;
-			if (it != node->sortedBy.end()-1)
-			{
-				label += " ,";
-			}
-		}
+		writeSortParameters(node->sortedBy,label);
 	}
 	label += "\nSort by: ";
-	for (auto it = node->sortBy.begin(); it != node->sortBy.end(); ++it)
-	{
-		string order = " asc";
-		if (it->order == SortOrder::DESCENDING)
-		{
-			order = " desc";
-		}
-		label += it->column.toString() + order;
-		if (it != node->sortBy.end() - 1)
-		{
-			label += " ,";
-		}
-	}
-	generateText(label,node);*/
+	
+	writeSortParameters(node->sortBy, label);
+
+	generateText(label,node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitMergeEquiJoin(MergeEquiJoin * node)

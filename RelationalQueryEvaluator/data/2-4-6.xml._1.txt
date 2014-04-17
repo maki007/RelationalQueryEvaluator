@@ -1,0 +1,19 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="Group
+groupBy nothing,revenue_-1=sum(x_-1);"]
+node2[label="ColumnOperations
+x_-1 = (l_extendedprice_-1(0) * l_discount_-1(0))"]
+node3[label="Selection
+(((today <= l_shipdate_-1(0)) and (l_shipdate_-1(0) < today+1year)) and ((l_quantity_-1(0) < 5000) and ((0.2 < l_discount_-1(0)) and (l_discount_-1(0) < 0.3))))"]
+node4[label="Table lineitem
+ number of rows: 6000000.000000
+ columns: l_shipdate_-1(date,6000000), l_discount_-1(int,100), l_extendedprice_-1(double,6000000), l_quantity_-1(double,3000000)
+ indices: "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}
