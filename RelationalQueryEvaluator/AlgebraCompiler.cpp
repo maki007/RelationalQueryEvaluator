@@ -23,7 +23,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 	if (plan->sortedBy.parameters.size() == 0)
 	{
 		SortOperator * op = new SortOperator(PossibleSortParameters(), parameters);
-		shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), columns, plan));
+		shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, TimeComplexity::sort(size), plan->plan->columns, plan));
 		newPlan->sortedBy = parameters;
 		return newPlan;
 	}
