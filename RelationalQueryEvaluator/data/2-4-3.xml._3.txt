@@ -52,7 +52,7 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node9[label="Sort
-Sort by: revenue_12 desc, revenue_12 desc, o_orderdate_7 asc
+Sort by: revenue_12 desc, o_orderdate_7 asc
  time:46693
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
@@ -165,7 +165,7 @@ node22 -> node21[headport=s, tailport=n,label="   "]
 node21 -> node20[headport=s, tailport=n,label="   "]
 node20 -> node19[headport=s, tailport=n,label="   "]
 node29[label="Sort
-Sort by: revenue_12 desc, revenue_12 desc, o_orderdate_7 asc
+Sort by: revenue_12 desc, o_orderdate_7 asc
  time:46693
  size:2113
 l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,

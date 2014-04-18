@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const ulong AlgebraCompiler::NUMBER_OF_PLANS = 50;
+const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 5;
 
@@ -59,8 +59,8 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 						{
 							goto endLoop;
 						}
+						break;
 					}
-					break;
 				}
 				else
 				{
@@ -80,6 +80,10 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 								sortByIt=currentSortBy.values.erase(sortByIt);
 								sortedByIt = currentSorted.values.erase(sortedByIt);
 								if (sortByIt == currentSortBy.values.end())
+								{
+									goto endLoop;
+								}
+								if (sortedByIt == currentSorted.values.end())
 								{
 									goto endLoop;
 								}
@@ -104,7 +108,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 		if (currentSorted.values.size()==0)
 		{
 			sortedIndex++;
-			if (plan->sortedBy.parameters.size() < sortedIndex)
+			if (plan->sortedBy.parameters.size() > sortedIndex)
 			{
 				currentSorted = plan->sortedBy.parameters[sortedIndex];
 			}
@@ -116,7 +120,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 		if (currentSortBy.values.size() == 0)
 		{
 			sortByIndex++;
-			if (parameters.parameters.size() < sortByIndex)
+			if (parameters.parameters.size() > sortByIndex)
 			{
 				currentSortBy = parameters.parameters[sortByIndex];
 			}
@@ -137,7 +141,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 		sortBy.parameters.push_back(currentSortBy);
 	}
 	
-	for (ulong i = sortedIndex; i < parameters.parameters.size(); ++i)
+	for (ulong i = sortedIndex+1; i < parameters.parameters.size(); ++i)
 	{
 		sortBy.parameters.push_back(parameters.parameters[i]);
 	}
@@ -1007,6 +1011,8 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					insertPlan(newPlan.plans, hashPlan);
 				}
 
+
+
 				PossibleSortParameters leftSortParameters;
 				leftSortParameters.parameters.push_back(SortParameters());
 				std::map<int, int> equalPairs;
@@ -1033,8 +1039,9 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 						equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
 
 					}
+					leftSortParameters.parameters[0].values.push_back(leftParameter);
 				}
-				leftSortParameters.parameters[0].values.push_back(leftParameter);
+				
 
 				shared_ptr<PhysicalPlan> leftSortedPlan;
 				leftSortedPlan = generateSortParameters(leftSortParameters, *first);

@@ -248,7 +248,7 @@ void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 
 void PhysicalOperatorDrawingVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
-	string label = "Merge Join";
+	string label = "Merge Join\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
 	label.append(expresionWriter.result);
@@ -257,7 +257,7 @@ void PhysicalOperatorDrawingVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 
 void PhysicalOperatorDrawingVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
-	string label = "Merge Join";
+	string label = "Merge Join\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
 	label.append(expresionWriter.result);
