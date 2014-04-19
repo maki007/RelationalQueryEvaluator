@@ -1,0 +1,19 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+a_-1 asc"]
+node1[label="Join
+(a_-1(0) == b_-1(1))"]
+node2[label="Table A
+ number of rows: 1000000.000000
+ columns: a_-1(int,63095)
+ indices: CLUSTERED(a)"]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table B
+ number of rows: 1000000.000000
+ columns: b_-1(int,63095)
+ indices: CLUSTERED(b)"]
+node3 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

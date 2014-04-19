@@ -1,0 +1,65 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Partial Sort
+Sorted by a_1 asc
+Sort by: 
+ time:0
+ size:33333
+a_1 16666,
+"]node1[label="Index Scan
+(a_1(0) < 5)
+ time:100099
+ size:33333
+a_1 16666,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+node2[label="Partial Sort
+Sorted by a_1 asc
+Sort by: 
+ time:0
+ size:33333
+a_1 50000,
+"]node3[label="Filter Keeping Order
+(a_1(0) < 5)
+ time:130000
+ size:33333
+a_1 50000,
+"]node4[label="Sort by index Scan
+ time:300000
+ size:100000
+a_1 50000,
+"]node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node5[label="Sort
+Sort by: a_1 asc
+ time:1001645
+ size:33333
+a_1 50000,
+"]node6[label="Filter
+(a_1(0) < 5)
+ time:100000
+ size:33333
+a_1 50000,
+"]node7[label="Table Scan
+ time:100000
+ size:100000
+a_1 50000,
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node5[headport=s, tailport=n,label="   "]
+node8[label="Sort
+Sort by: a_1 asc
+ time:1001645
+ size:33333
+a_1 50000,
+"]node9[label="Filter
+(a_1(0) < 5)
+ time:100000
+ size:33333
+a_1 50000,
+"]node10[label="Sort by index Scan
+ time:300000
+ size:100000
+a_1 50000,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+
+}

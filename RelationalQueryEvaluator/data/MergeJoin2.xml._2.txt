@@ -1,0 +1,19 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+d_4 desc, a_1 asc"]
+node1[label="GroupedJoin
+AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))"]
+node2[label="Table A
+ number of rows: 1000000.000000
+ columns: a_1(int,63095), c_2(int,63095)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table B
+ number of rows: 1000000.000000
+ columns: b_3(int,63095), d_4(int,63095)
+ indices: "]
+node3 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}
