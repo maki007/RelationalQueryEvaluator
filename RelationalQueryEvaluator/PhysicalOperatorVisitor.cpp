@@ -341,3 +341,181 @@ void PhysicalOperatorDrawingVisitor::visitIndexScan(IndexScan * node)
 }
 
 
+void CloningPhysicalOperatorVisitor::processUnaryOperator(UnaryPhysicalOperator * res)
+{
+	res->child->accept(*this);
+	res->child = result;
+	result = shared_ptr<PhysicalOperator>(res);
+}
+
+void CloningPhysicalOperatorVisitor::processBinaryOperator(BinaryPhysicalOperator * res)
+{
+	res->leftChild->accept(*this);
+	res->leftChild = result;
+	res->rightChild->accept(*this);
+	res->rightChild = result;
+	result = shared_ptr<PhysicalOperator>(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitFilter(Filter * node)
+{
+	auto res = new Filter(*node);
+	processUnaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
+{
+	auto res = new FilterKeepingOrder(*node);
+	processUnaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitSortOperator(SortOperator * node)
+{
+	auto res = new SortOperator(*node);
+	processUnaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
+{
+	auto res = new MergeEquiJoin(*node);
+	processBinaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
+{
+	auto res = new MergeNonEquiJoin(*node);
+	processBinaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
+{
+	auto res = new CrossJoin(*node);
+	processBinaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
+{
+	auto res = new HashJoin(*node);
+	processBinaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
+{
+	auto res = new UnionOperator(*node);
+	processBinaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
+{
+	auto res = new HashGroup(*node);
+	processUnaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
+{
+	auto res = new SortedGroup(*node);
+	processUnaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
+{
+	auto res = new ColumnsOperationsOperator(*node);
+	processUnaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
+{
+	result = shared_ptr<PhysicalOperator>(new ScanAndSortByIndex(*node));
+}
+
+void CloningPhysicalOperatorVisitor::visitTableScan(TableScan * node)
+{
+	result = shared_ptr<PhysicalOperator>(new TableScan(*node));
+}
+
+void CloningPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
+{
+	result = shared_ptr<PhysicalOperator>(new IndexScan(*node));
+}
+
+
+void SortResolvingPhysicalOperatorVisitor::visitFilter(Filter * node)
+{
+	sortParameters.parameters.clear();
+	node->child->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
+{
+	node->child->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node)
+{
+
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
+{
+
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
+{
+
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
+{
+	sortParameters.parameters.clear();
+	node->leftChild->accept(*this);
+	sortParameters.parameters.clear();
+	node->rightChild->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
+{
+	sortParameters.parameters.clear();
+	node->leftChild->accept(*this);
+	sortParameters.parameters.clear();
+	node->rightChild->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
+{
+	sortParameters.parameters.clear();
+	node->leftChild->accept(*this);
+	sortParameters.parameters.clear();
+	node->rightChild->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
+{
+	sortParameters.parameters.clear();
+	node->child->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
+{
+	node->child->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
+{
+
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
+{
+
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitTableScan(TableScan * node)
+{
+
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
+{
+
+}

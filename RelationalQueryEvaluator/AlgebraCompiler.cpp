@@ -372,9 +372,40 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 		for (uint i = 0; i < (*it)->sortedBy.parameters.size(); ++i)
 		{
 			SortParameters parameters = (*it)->sortedBy.parameters[i];
-			//if (newColumns.find((*it)->sortedBy[i].column.id) == newColumns.end())
-			newPlan->sortedBy.parameters.push_back(parameters);
+			SortParameters newParameters;
 			
+			for (auto it2 = parameters.values.begin(); it2 != parameters.values.end();++it2)
+			{
+				auto allCols = it2->others;
+				allCols.insert(it2->column);
+				for (auto it3 = allCols.begin(); it3 != allCols.end(); ++it3)
+				{
+					if (newColumns.find(it3->id) == newColumns.end())
+					{
+						allCols.erase(it3);
+						if (it3 == allCols.end())
+						{
+							break;
+						}
+					}
+				}
+				if (allCols.size() > 0)
+				{
+					SortParameter parameter;
+					parameter.others = allCols;
+					parameter.column = *(parameter.others.begin());
+					parameter.others.erase(parameter.others.begin());
+					newParameters.values.push_back(parameter);
+				}
+			}
+			if (newParameters.values.size()>0)
+			{
+				newPlan->sortedBy.parameters.push_back(newParameters);
+			}
+			else
+			{
+				break;
+			}
 		}
 		insertPlan(newResult, newPlan);
 	}

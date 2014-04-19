@@ -69,6 +69,7 @@ double TimeComplexity::crossJoin(double leftSize, double rightSize)
 {
 	return TimeComplexity::CROSS_JOIN*leftSize*rightSize;
 }
+
 void Filter::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitFilter(this);

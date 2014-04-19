@@ -1,6 +1,7 @@
 #ifndef PhysicalOpearatorVisitorsHPP
 #define PhysicalOpearatorVisitorsHPP
 
+#include <memory>
 #include "PhysicalOperator.h"
 
 class PhysicalOperatorVisitor
@@ -85,5 +86,74 @@ public:
 	void visitIndexScan(IndexScan * node);
 };
 
+class CloningPhysicalOperatorVisitor : public PhysicalOperatorVisitor
+{
+public:
+	std::shared_ptr<PhysicalOperator> result;
 
+	void processUnaryOperator(UnaryPhysicalOperator * res);
+	
+	void processBinaryOperator(BinaryPhysicalOperator * res);
+
+	void visitFilter(Filter * node);
+
+	void visitFilterKeepingOrder(FilterKeepingOrder * node);
+
+	void visitSortOperator(SortOperator * node);
+
+	void visitMergeEquiJoin(MergeEquiJoin * node);
+
+	void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
+
+	void visitCrossJoin(CrossJoin * node);
+
+	void visitHashJoin(HashJoin * node);
+
+	void visitUnionOperator(UnionOperator * node);
+
+	void visitHashGroup(HashGroup * node);
+
+	void visitSortedGroup(SortedGroup * node);
+
+	void visitColumnsOperationsOperator(ColumnsOperationsOperator * node);
+
+	void visitScanAndSortByIndex(ScanAndSortByIndex * node);
+
+	void visitTableScan(TableScan * node);
+
+	void visitIndexScan(IndexScan * node);
+};
+
+class SortResolvingPhysicalOperatorVisitor : public PhysicalOperatorVisitor
+{
+public:
+	PossibleSortParameters sortParameters;
+	void visitFilter(Filter * node);
+
+	void visitFilterKeepingOrder(FilterKeepingOrder * node);
+
+	void visitSortOperator(SortOperator * node);
+
+	void visitMergeEquiJoin(MergeEquiJoin * node);
+
+	void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
+
+	void visitCrossJoin(CrossJoin * node);
+
+	void visitHashJoin(HashJoin * node);
+
+	void visitUnionOperator(UnionOperator * node);
+
+	void visitHashGroup(HashGroup * node);
+
+	void visitSortedGroup(SortedGroup * node);
+
+	void visitColumnsOperationsOperator(ColumnsOperationsOperator * node);
+
+	void visitScanAndSortByIndex(ScanAndSortByIndex * node);
+
+	void visitTableScan(TableScan * node);
+
+	void visitIndexScan(IndexScan * node);
+};
 #endif
