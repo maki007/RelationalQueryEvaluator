@@ -502,20 +502,20 @@ void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 
 void SortResolvingPhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
-
+	node->child->accept(*this);
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-
+	//empty
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitTableScan(TableScan * node)
 {
-
+	//empty
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 {
-
+	//empty
 }
