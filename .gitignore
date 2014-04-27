@@ -214,3 +214,6 @@ pip-log.txt
 #Mr Developer
 .mr.developer.cfg
 /_gsdata_
+/_gsdata_/_cleanup.gss
+/_gsdata_/_file_state_v4._gs
+/_gsdata_/_insync_v4.gsl
