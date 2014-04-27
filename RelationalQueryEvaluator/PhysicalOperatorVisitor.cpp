@@ -441,7 +441,7 @@ void CloningPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 
 void SortResolvingPhysicalOperatorVisitor::visitFilter(Filter * node)
 {
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->child->accept(*this);
 }
 
@@ -452,7 +452,94 @@ void SortResolvingPhysicalOperatorVisitor::visitFilterKeepingOrder(FilterKeeping
 
 void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node)
 {
+	ulong index = 0;
 
+	PossibleSortParameters sortBy=node->sortedBy;
+	ulong sortedBySize = 0;
+	for (auto it = node->sortedBy.parameters.begin(); it != node->sortedBy.parameters.end(); ++it)
+	{
+		sortedBySize += it->values.size();
+	}
+
+	for (auto it = node->sortBy.parameters.begin(); it != node->sortBy.parameters.end(); ++it)
+	{
+		sortBy.parameters.push_back(*it);
+	}
+
+	std::vector<SortParameter> newSortParameters;
+	ulong i = 0;
+	for (; i < sortBy.parameters.size(); ++i)
+	{
+		while (true)
+		{
+			bool found = false;
+			for (auto it = sortBy.parameters[i].values.begin(); it != sortBy.parameters[i].values.end(); ++it)
+			{
+				if (index >= sortParameters.size())
+				{
+					goto endOfOuterCycle;
+				}
+				std::set<ColumnIdentifier> first = it->others;
+				first.insert(it->column);
+				std::set<ColumnIdentifier> second = sortParameters[index].others;
+				second.insert(sortParameters[index].column);
+				for (auto it2 = first.begin(); it2 != first.end(); ++it2)
+				{
+					for (auto it3 = second.begin(); it3 != second.end(); ++it3)
+					{
+						if (it2->id == it3->id)
+						{
+							node->sortedBy.parameters[i].values.erase(it);
+							++index;
+							SortParameter newParameter = sortParameters[index];
+							newParameter.others.insert(first.begin(), first.end());
+							newParameter.others.erase(newParameter.others.find(newParameter.column));
+							newSortParameters.push_back(newParameter);
+							found = true;
+							goto endOfInnerCycle;
+						}
+					}
+				}
+			}
+			endOfInnerCycle:
+			if (node->sortedBy.parameters[i].values.size() == 0)
+			{
+				if (found == true)
+				{
+					break;
+				}
+				else
+				{
+					goto endOfOuterCycle;
+				}
+			}
+		}
+	}
+	endOfOuterCycle:
+	for (; i < sortBy.parameters.size(); ++i)
+	{
+		SortParameters param = sortBy.parameters[i];
+		for (auto it = param.values.begin(); it != param.values.end(); ++it)
+		{
+			newSortParameters.push_back(*it);
+			if (newSortParameters[newSortParameters.size() - 1].order == SortOrder::UNKNOWN)
+			{
+				newSortParameters[newSortParameters.size() - 1].order = SortOrder::ASCENDING;
+			}
+		}
+	}
+	sortParameters = newSortParameters;
+	node->sortedBy.parameters.clear();
+	node->sortBy.parameters.clear();
+	for (ulong j = 0; j < sortedBySize; ++j)
+	{
+		node->sortedBy.parameters.push_back(SortParameters(newSortParameters[j]));
+	}
+	for (ulong j = sortedBySize; j < newSortParameters.size(); ++j)
+	{
+		node->sortBy.parameters.push_back(SortParameters(newSortParameters[j]));
+	}
+	node->child->accept(*this);
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
@@ -467,36 +554,37 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoi
 
 void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
 {
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->leftChild->accept(*this);
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->rightChild->accept(*this);
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 {
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->leftChild->accept(*this);
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->rightChild->accept(*this);
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
 {
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->leftChild->accept(*this);
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->rightChild->accept(*this);
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
 {
-	sortParameters.parameters.clear();
+	sortParameters.clear();
 	node->child->accept(*this);
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 {
+	sortParameters.clear();
 	node->child->accept(*this);
 }
 

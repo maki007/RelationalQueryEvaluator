@@ -127,7 +127,7 @@ public:
 class SortResolvingPhysicalOperatorVisitor : public PhysicalOperatorVisitor
 {
 public:
-	PossibleSortParameters sortParameters;
+	std::vector<SortParameter> sortParameters;
 	void visitFilter(Filter * node);
 
 	void visitFilterKeepingOrder(FilterKeepingOrder * node);
