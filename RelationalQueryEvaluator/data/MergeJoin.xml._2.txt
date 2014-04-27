@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-a_1 asc"]
+a_1 desc"]
 node1[label="GroupedJoin
 (a_1(0) == b_2(1))"]
 node2[label="Table A

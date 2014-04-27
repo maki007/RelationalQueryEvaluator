@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
   <parameters>
-    <parameter column="a" direction="asc"/>
+    <parameter column="a" direction="desc"/>
   </parameters>
   <input>
     <join>

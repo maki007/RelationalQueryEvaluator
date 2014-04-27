@@ -541,6 +541,58 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
+	std::vector<SortParameter> leftSortParameters;
+	std::vector<SortParameter> rightSortParameters; 
+	for (auto it = sortParameters.begin(); it != sortParameters.end();++it)
+	{
+		it->others.insert(it->column);
+		SortParameter newParameter;
+		newParameter.order = it->order;
+		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
+		{
+			if (node->leftChild->columns.find(it2->id) != node->leftChild->columns.end())
+			{
+				newParameter.others.insert(*it2);
+			}
+		}
+		if (newParameter.others.size() > 0)
+		{
+			newParameter.column = *(newParameter.others.begin());
+			newParameter.others.erase(newParameter.others.begin());
+			leftSortParameters.push_back(newParameter);
+		}
+		else
+		{
+			break;
+		}
+	}
+	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
+	{
+		it->others.insert(it->column);
+		SortParameter newParameter;
+		newParameter.order = it->order;
+		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
+		{
+			if (node->rightChild->columns.find(it2->id) != node->rightChild->columns.end())
+			{
+				newParameter.others.insert(*it2);
+			}
+		}
+		if (newParameter.others.size() > 0)
+		{
+			newParameter.column = *(newParameter.others.begin());
+			newParameter.others.erase(newParameter.others.begin());
+			rightSortParameters.push_back(newParameter);
+		}
+		else
+		{
+			break;
+		}
+	}
+	sortParameters = leftSortParameters;
+	node->leftChild->accept(*this);
+	sortParameters = rightSortParameters;
+	node->rightChild->accept(*this);
 
 }
 

@@ -12,7 +12,7 @@ a_1 15848931,b_2 15848931,
  size:15848931
 a_1 15848931,b_2 15848931,
 "]node2[label="Partial Sort
-Sorted by a_1 both
+Sorted by a_1 asc
 Sort by: 
  time:0
  size:1000000
@@ -24,7 +24,7 @@ a_1 63095,
 "]node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node4[label="Partial Sort
-Sorted by b_2 both
+Sorted by b_2 asc
 Sort by: 
  time:0
  size:1000000

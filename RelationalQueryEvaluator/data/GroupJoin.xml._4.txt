@@ -12,7 +12,7 @@ a_1 63095,b_2 63095,c_3 63095,d_4 63095,
  size:63095
 a_1 63095,b_2 63095,c_3 63095,d_4 63095,
 "]node2[label="Sort
-Sort by: a_1 both
+Sort by: a_1 asc
  time:19931
  size:1000
 a_1 3981,b_2 3981,
@@ -34,7 +34,7 @@ a_1 251,
 node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node6[label="Sort
-Sort by: c_3 both
+Sort by: e_3 asc
  time:19931
  size:1000
 c_3 3981,d_4 3981,
