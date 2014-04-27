@@ -11,7 +11,7 @@ country_2 251,count_3 1584,
  size:1584
 country_2 251,count_3 1584,
 "]node2[label="Partial Sort
-Sorted by country_2 both
+Sorted by country_2 asc
 Sort by: 
  time:0
  size:10000
@@ -64,7 +64,7 @@ country_2 251,count_3 1584,
  size:1584
 country_2 251,count_3 1584,
 "]node12[label="Sort
-Sort by: country_2 both
+Sort by: country_2 asc
  time:265754
  size:10000
 user_name_1 410,country_2 1584,
