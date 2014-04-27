@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Partial Sort
-Sorted by country_2 asc
+Sorted by country_2 desc
 Sort by: 
  time:0
  size:1584
@@ -11,7 +11,7 @@ country_2 251,count_3 1584,
  size:1584
 country_2 251,count_3 1584,
 "]node2[label="Partial Sort
-Sorted by country_2 asc
+Sorted by country_2 desc
 Sort by: 
  time:0
  size:10000
@@ -24,7 +24,7 @@ user_name_1 410,country_2 1584,
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Sort
-Sort by: country_2 asc
+Sort by: country_2 desc
  time:33695
  size:1584
 country_2 251,count_3 1584,
@@ -39,7 +39,7 @@ user_name_1 410,country_2 1584,
 "]node6 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node7[label="Sort
-Sort by: country_2 asc
+Sort by: country_2 desc
  time:33695
  size:1584
 country_2 251,count_3 1584,
@@ -54,7 +54,7 @@ user_name_1 410,country_2 1584,
 "]node9 -> node8[headport=s, tailport=n,label="   "]
 node8 -> node7[headport=s, tailport=n,label="   "]
 node10[label="Partial Sort
-Sorted by country_2 asc
+Sorted by country_2 desc
 Sort by: 
  time:0
  size:1584
@@ -64,7 +64,7 @@ country_2 251,count_3 1584,
  size:1584
 country_2 251,count_3 1584,
 "]node12[label="Sort
-Sort by: country_2 asc
+Sort by: country_2 desc
  time:265754
  size:10000
 user_name_1 410,country_2 1584,

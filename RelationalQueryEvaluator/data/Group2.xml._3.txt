@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-Sort by: country_2 asc
+Sort by: country_2 desc
  time:122877
  size:5000
 user_name_1 205,country_2 792,count_3 5000,
@@ -16,7 +16,7 @@ user_name_1 410,country_2 1584,
 "]node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Partial Sort
-Sorted by country_2 asc
+Sorted by country_2 desc
 Sort by: 
  time:0
  size:5000

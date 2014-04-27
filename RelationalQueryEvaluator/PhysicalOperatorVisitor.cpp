@@ -489,9 +489,9 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 					{
 						if (it2->id == it3->id)
 						{
-							node->sortedBy.parameters[i].values.erase(it);
-							++index;
+							sortBy.parameters[i].values.erase(it);
 							SortParameter newParameter = sortParameters[index];
+							++index;
 							newParameter.others.insert(first.begin(), first.end());
 							newParameter.others.erase(newParameter.others.find(newParameter.column));
 							newSortParameters.push_back(newParameter);
@@ -502,16 +502,13 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 				}
 			}
 			endOfInnerCycle:
-			if (node->sortedBy.parameters[i].values.size() == 0)
+			if (found == true)
 			{
-				if (found == true)
-				{
-					break;
-				}
-				else
-				{
-					goto endOfOuterCycle;
-				}
+				break;
+			}
+			else
+			{
+				goto endOfOuterCycle;
 			}
 		}
 	}
@@ -584,7 +581,6 @@ void SortResolvingPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
 
 void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 {
-	sortParameters.clear();
 	node->child->accept(*this);
 }
 

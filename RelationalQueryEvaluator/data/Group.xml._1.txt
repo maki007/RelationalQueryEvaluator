@@ -1,7 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-country_-1 asc"]
+country_-1 desc"]
 node1[label="Group
 groupBy country_-1, count_-1=count();"]
 node2[label="Table people
