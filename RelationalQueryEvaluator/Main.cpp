@@ -117,6 +117,7 @@ int main(int argc, const char *argv[])
 
 			for (auto it = algebraCompiler->result.begin(); it != algebraCompiler->result.end(); ++it)
 			{
+
 				CloningPhysicalOperatorVisitor cloner;
 				(*it)->plan->accept(cloner);
 				clonedPlans.push_back(shared_ptr<PhysicalOperator>(cloner.result));
