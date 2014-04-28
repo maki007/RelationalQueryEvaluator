@@ -54,7 +54,7 @@ void drawPlan(std::vector<std::shared_ptr<PhysicalPlan> > & result, string & fil
 
 void drawPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string & fileName)
 {
-	unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
+	unique_ptr<PhysicalOperatorDrawingVisitorWithouSorts> planDrawer(new PhysicalOperatorDrawingVisitorWithouSorts());
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
 		(*it)->accept(*planDrawer);
@@ -114,6 +114,7 @@ int main(int argc, const char *argv[])
 			drawPlan(algebraCompiler->result, line + string("._3"));
 			
 			vector<shared_ptr<PhysicalOperator> > clonedPlans;
+
 			for (auto it = algebraCompiler->result.begin(); it != algebraCompiler->result.end(); ++it)
 			{
 				CloningPhysicalOperatorVisitor cloner;
@@ -121,13 +122,12 @@ int main(int argc, const char *argv[])
 				clonedPlans.push_back(shared_ptr<PhysicalOperator>(cloner.result));
 			}
 
-			//resolve sort
-
 			for (auto it = clonedPlans.begin(); it != clonedPlans.end(); ++it)
 			{
 				SortResolvingPhysicalOperatorVisitor sortResolver;
 				(*it)->accept(sortResolver);
 			}
+
 			drawPlan(clonedPlans, line + string("._4"));
 
 

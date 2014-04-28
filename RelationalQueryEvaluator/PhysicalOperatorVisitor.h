@@ -156,4 +156,11 @@ public:
 
 	void visitIndexScan(IndexScan * node);
 };
+
+class PhysicalOperatorDrawingVisitorWithouSorts : public PhysicalOperatorDrawingVisitor
+{
+	void visitSortOperator(SortOperator * node);
+
+
+};
 #endif

@@ -246,6 +246,18 @@ void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 	generateText(label,node);
 }
 
+void PhysicalOperatorDrawingVisitorWithouSorts::visitSortOperator(SortOperator * node)
+{
+	if (node->sortBy.parameters.size() > 0)
+	{
+		PhysicalOperatorDrawingVisitor::visitSortOperator(node);
+	}
+	else
+	{
+		node->child->accept(*this);
+	}
+
+}
 void PhysicalOperatorDrawingVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
 	string label = "Merge Join\n";
@@ -541,6 +553,10 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
+	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
+	{
+		//add 
+	}
 	std::vector<SortParameter> leftSortParameters;
 	std::vector<SortParameter> rightSortParameters; 
 	for (auto it = sortParameters.begin(); it != sortParameters.end();++it)
@@ -655,3 +671,4 @@ void SortResolvingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 {
 	//empty
 }
+
