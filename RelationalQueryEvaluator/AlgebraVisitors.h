@@ -229,6 +229,9 @@ public:
 
 	void visitGroupedJoin(GroupedJoin * node);
 
+	static std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
+
+	static std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 
 private:
 	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
@@ -237,10 +240,7 @@ private:
 
 	void generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 
-	std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
-
-	std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
-
+	
 	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
 	std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;

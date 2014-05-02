@@ -101,8 +101,8 @@ void PhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 
 PhysicalOperatorDrawingVisitor::PhysicalOperatorDrawingVisitor()
 {
-	result="digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
-	nodeCounter=0;
+	result = "digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
+	nodeCounter = 0;
 }
 
 string columns(std::map<int, ColumnInfo> & columns)
@@ -115,21 +115,21 @@ string columns(std::map<int, ColumnInfo> & columns)
 	return result;
 }
 
-void PhysicalOperatorDrawingVisitor::generateText(string & label,NullaryPhysicalOperator * node)
+void PhysicalOperatorDrawingVisitor::generateText(string & label, NullaryPhysicalOperator * node)
 {
 	result.append("node");
 	result.append(to_string(nodeCounter));
 	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
 }
 
-void PhysicalOperatorDrawingVisitor::generateText(string & label,UnaryPhysicalOperator * node)
+void PhysicalOperatorDrawingVisitor::generateText(string & label, UnaryPhysicalOperator * node)
 {
-	ulong identifier=nodeCounter;
+	ulong identifier = nodeCounter;
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\""+label+"\n time:"+to_string((ulong)node->timeComplexity)+"\n size:"+to_string((ulong)node->size)+"\n"+columns(node->columns)+"\n\"]");
-	ulong childIdentifier=++nodeCounter;
+	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
+	ulong childIdentifier = ++nodeCounter;
 	node->child->accept(*this);
 
 	result.append("node");
@@ -140,15 +140,15 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label,UnaryPhysicalOp
 
 }
 
-void PhysicalOperatorDrawingVisitor::generateText(string & label,BinaryPhysicalOperator * node)
+void PhysicalOperatorDrawingVisitor::generateText(string & label, BinaryPhysicalOperator * node)
 {
-	ulong identifier=nodeCounter;
+	ulong identifier = nodeCounter;
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
 	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
 
-	ulong childIdentifier=++nodeCounter;
+	ulong childIdentifier = ++nodeCounter;
 	node->leftChild->accept(*this);
 	result.append("node");
 	result.append(to_string(childIdentifier));
@@ -156,7 +156,7 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label,BinaryPhysicalO
 	result.append(to_string(identifier));
 	result.append("[headport=s, tailport=n,label=\"   \"]\n");
 
-	childIdentifier=++nodeCounter;
+	childIdentifier = ++nodeCounter;
 	node->rightChild->accept(*this);
 	result.append("node");
 	result.append(to_string(childIdentifier));
@@ -168,20 +168,20 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label,BinaryPhysicalO
 
 void PhysicalOperatorDrawingVisitor::visitFilter(Filter * node)
 {
-	string label="Filter\n";
+	string label = "Filter\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
 	label.append(expresionWriter.result);
-	generateText(label,node);
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
 {
-	string label="Filter Keeping Order\n";
+	string label = "Filter Keeping Order\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
 	label.append(expresionWriter.result);
-	generateText(label,node);
+	generateText(label, node);
 }
 
 void writeSortParameters(const PossibleSortParameters & sort, string & label)
@@ -194,7 +194,7 @@ void writeSortParameters(const PossibleSortParameters & sort, string & label)
 		}
 		for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
 		{
-			string order="";
+			string order = "";
 			switch (it2->order)
 			{
 			case SortOrder::ASCENDING:
@@ -228,7 +228,7 @@ void writeSortParameters(const PossibleSortParameters & sort, string & label)
 
 void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 {
-	string label="";
+	string label = "";
 	if (node->sortedBy.parameters.size() == 0)
 	{
 		label += "Sort";
@@ -237,13 +237,13 @@ void PhysicalOperatorDrawingVisitor::visitSortOperator(SortOperator * node)
 	{
 		label += "Partial Sort\n";
 		label += "Sorted by ";
-		writeSortParameters(node->sortedBy,label);
+		writeSortParameters(node->sortedBy, label);
 	}
 	label += "\nSort by: ";
-	
+
 	writeSortParameters(node->sortBy, label);
 
-	generateText(label,node);
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitorWithouSorts::visitSortOperator(SortOperator * node)
@@ -294,25 +294,25 @@ void PhysicalOperatorDrawingVisitor::visitHashJoin(HashJoin * node)
 
 void PhysicalOperatorDrawingVisitor::visitUnionOperator(UnionOperator * node)
 {
-	string label="Union";
-	generateText(label,node);
+	string label = "Union";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitHashGroup(HashGroup * node)
 {
-	string label="Hash Group";
-	generateText(label,node);
+	string label = "Hash Group";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitSortedGroup(SortedGroup * node)
 {
-	string label="Sorted Group";
-	generateText(label,node);
+	string label = "Sorted Group";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
-	string label="Columns Operations\n";
+	string label = "Columns Operations\n";
 	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
 	{
 		label += it->result.name;
@@ -328,28 +328,28 @@ void PhysicalOperatorDrawingVisitor::visitColumnsOperationsOperator(ColumnsOpera
 			label += ", ";
 		}
 	}
-	generateText(label,node);
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-	string label="Sort by index Scan";
-	generateText(label,node);
+	string label = "Sort by index Scan";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitTableScan(TableScan * node)
 {
-	string label="Table Scan";
-	generateText(label,node);
+	string label = "Table Scan";
+	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitIndexScan(IndexScan * node)
 {
-	string label="Index Scan\n";
+	string label = "Index Scan\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
 	label.append(expresionWriter.result);
-	generateText(label,node);
+	generateText(label, node);
 }
 
 
@@ -466,7 +466,7 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 {
 	ulong index = 0;
 
-	PossibleSortParameters sortBy=node->sortedBy;
+	PossibleSortParameters sortBy = node->sortedBy;
 	ulong sortedBySize = 0;
 	for (auto it = node->sortedBy.parameters.begin(); it != node->sortedBy.parameters.end(); ++it)
 	{
@@ -485,6 +485,8 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 		while (true)
 		{
 			bool found = false;
+
+
 			for (auto it = sortBy.parameters[i].values.begin(); it != sortBy.parameters[i].values.end(); ++it)
 			{
 				if (index >= sortParameters.size())
@@ -512,19 +514,17 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 						}
 					}
 				}
+			
 			}
-			endOfInnerCycle:
-			if (found == true)
+		endOfInnerCycle:
+			if (found == false)
 			{
 				break;
 			}
-			else
-			{
-				goto endOfOuterCycle;
-			}
 		}
 	}
-	endOfOuterCycle:
+endOfOuterCycle:
+
 	for (; i < sortBy.parameters.size(); ++i)
 	{
 		SortParameters param = sortBy.parameters[i];
@@ -553,13 +553,39 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
+	map<ulong, ulong> pairs;
+	vector<shared_ptr<Expression> > condition = AlgebraCompiler::serializeExpression(node->condition);
+	for (auto it = condition.begin(); it != condition.end(); ++it)
+	{
+		BinaryExpression * expr = (BinaryExpression *)((*it).get());
+		Column * leftColumn = (Column *)(expr->leftChild.get());
+		Column * rightColumn = (Column *)(expr->rightChild.get());
+		pairs[leftColumn->column.id] = rightColumn->column.id;
+		pairs[rightColumn->column.id] = leftColumn->column.id;
+
+	}
+
 	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
 	{
-		//add 
+		if (pairs.find(it->column.id) != pairs.end())
+		{
+			it->others.insert(node->columns[pairs[it->column.id]].column);
+		}
+		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
+		{
+			if (pairs.find(it2->id) != pairs.end())
+			{
+				it->others.insert(node->columns[pairs[it2->id]].column);
+			}
+		}
+		if (it->others.find(it->column) != it->others.end())
+		{
+			it->others.erase(it->others.find(it->column));
+		}
 	}
 	std::vector<SortParameter> leftSortParameters;
-	std::vector<SortParameter> rightSortParameters; 
-	for (auto it = sortParameters.begin(); it != sortParameters.end();++it)
+	std::vector<SortParameter> rightSortParameters;
+	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
 	{
 		it->others.insert(it->column);
 		SortParameter newParameter;
