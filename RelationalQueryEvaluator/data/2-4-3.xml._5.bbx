@@ -1,0 +1,29 @@
+operator main()->()
+{
+broadcast()->(){3} start;
+IndexScan()->(int,int) IndexScan0(); 
+IndexScan()->(int,int,int,int) IndexScan1(); 
+HashJoin(int,int)(int,int,int,int)->(int,int,int,int,int,int) HashJoin2(); 
+TableScan()->(int,int,int,int) TableScan3(); 
+Filter(int,int,int,int)->(int,int,int,int) Filter4(); 
+HashJoin(int,int,int,int,int,int)(int,int,int,int)->(int,int,int,int,int,int,int,int,int,int) HashJoin5(); 
+ColumnsOperations(int,int,int,double)->(int,int,int,double) ColumnsOperations6(); 
+HashGroup(int,int,int,double)->(int,int,int,double) HashGroup7(); 
+SortOperator(int,int,int,double)->(int,int,int,double) SortOperator8(); 
+Store(int,int,int,double)->() storeResult(); 
+
+source -> start
+start[0] -> IndexScan0;
+start[1] -> IndexScan1;
+IndexScan0 -> [0]HashJoin2;
+IndexScan1 -> [1]HashJoin2;
+start[2] -> TableScan3;
+TableScan3 -> Filter4;
+HashJoin2 -> [0]HashJoin5;
+Filter4 -> [1]HashJoin5;
+HashJoin5 -> ColumnsOperations6;
+ColumnsOperations6 -> HashGroup7;
+HashGroup7 -> SortOperator8;
+SortOperator8 -> storeResult;
+storeResult -> output;
+}

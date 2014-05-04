@@ -163,4 +163,72 @@ class PhysicalOperatorDrawingVisitorWithouSorts : public PhysicalOperatorDrawing
 
 
 };
+
+
+class BoboxPlanWritingPhysicalOperatorVisitor : public PhysicalOperatorVisitor
+{
+private:
+	ulong numberOfLeafs;
+
+	std::string declarations;
+
+	std::string code;
+	
+	ulong lastId;
+
+	std::string lastWritttenNode;
+
+public:
+
+	std::string declaration(const std::string & type, const std::string & inputColumns,
+		const std::string & outputColumns, const std::string & name, const std::string & constructParameters);
+	
+	std::string connect(const std::string & from, const std::string & to);
+
+
+	BoboxPlanWritingPhysicalOperatorVisitor();
+
+	std::string writePlan(std::shared_ptr<PhysicalOperator> plan);
+	
+	std::string getColumnNumberOutput(const std::map<int, ColumnInfo> & columns);
+
+	std::string getColumnTypeOutput(const std::map<int, ColumnInfo> & columns);
+
+	std::string getId();
+
+	void writeNullaryOperator(const std::string & type, const std::map<int, ColumnInfo> & columns, const std::string & costructorParameters);
+
+	void writeUnaryOperator(const std::string & type, UnaryPhysicalOperator * node, const std::string & costructorParameters);
+
+	void writeBinaryOperator(const std::string & type, BinaryPhysicalOperator * node, const std::string & costructorParameters);
+
+	void visitFilter(Filter * node);
+
+	void visitFilterKeepingOrder(FilterKeepingOrder * node);
+
+	void visitSortOperator(SortOperator * node);
+
+	void visitMergeEquiJoin(MergeEquiJoin * node);
+
+	void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
+
+	void visitCrossJoin(CrossJoin * node);
+
+	void visitHashJoin(HashJoin * node);
+
+	void visitUnionOperator(UnionOperator * node);
+
+	void visitHashGroup(HashGroup * node);
+
+	void visitSortedGroup(SortedGroup * node);
+
+	void visitColumnsOperationsOperator(ColumnsOperationsOperator * node);
+
+	void visitScanAndSortByIndex(ScanAndSortByIndex * node);
+
+	void visitTableScan(TableScan * node);
+
+	void visitIndexScan(IndexScan * node);
+
+};
 #endif

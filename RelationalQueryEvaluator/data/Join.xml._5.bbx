@@ -1,0 +1,16 @@
+operator main()->()
+{
+broadcast()->(){2} start;
+TableScan()->(int,string) TableScan0(); 
+TableScan()->(string,int) TableScan1(); 
+HashJoin(int,string)(string,int)->(string,int,int,string) HashJoin2(); 
+Store(string,int,int,string)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+start[1] -> TableScan1;
+TableScan0 -> [0]HashJoin2;
+TableScan1 -> [1]HashJoin2;
+HashJoin2 -> storeResult;
+storeResult -> output;
+}

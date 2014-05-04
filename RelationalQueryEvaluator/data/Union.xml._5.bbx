@@ -1,0 +1,21 @@
+operator main()->()
+{
+broadcast()->(){3} start;
+TableScan()->(string) TableScan0(); 
+TableScan()->(string) TableScan1(); 
+TableScan()->(string) TableScan2(); 
+Union(string)(string)->(string) Union3(); 
+Union(string)(string)->(string) Union4(); 
+Store(string)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+start[1] -> TableScan1;
+start[2] -> TableScan2;
+TableScan1 -> [0]Union3;
+TableScan2 -> [1]Union3;
+TableScan0 -> [0]Union4;
+Union3 -> [1]Union4;
+Union4 -> storeResult;
+storeResult -> output;
+}

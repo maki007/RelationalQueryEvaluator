@@ -298,4 +298,25 @@ public:
 		this->result = std::max(this->result, columns->at(expression->column.id).numberOfUniqueValues);
 	}
 };
+
+
+class TypeResolvingExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	std::string resultType;
+
+	void visitUnaryExpression(UnaryExpression * expression);
+
+	void visitBinaryExpression(BinaryExpression * expression);
+
+	void visitNnaryExpression(NnaryExpression * expression);
+
+	void visitConstant(Constant * expression);
+
+	void visitColumn(Column * expression);
+
+	void visitGroupedExpression(GroupedExpression * expression);
+};
+
+
 #endif

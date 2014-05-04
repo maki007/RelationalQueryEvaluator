@@ -1,0 +1,16 @@
+operator main()->()
+{
+broadcast()->(){2} start;
+TableScan()->(string,int) TableScan0(); 
+TableScan()->(int,string) TableScan1(); 
+CrossJoin(string,int)(int,string)->(string,int,int,string) CrossJoin2(); 
+Store(string,int,int,string)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+start[1] -> TableScan1;
+TableScan0 -> [0]CrossJoin2;
+TableScan1 -> [1]CrossJoin2;
+CrossJoin2 -> storeResult;
+storeResult -> output;
+}

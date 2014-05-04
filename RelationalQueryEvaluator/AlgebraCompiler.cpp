@@ -19,7 +19,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 	{
 		return plan;
 	}
-	
+
 	if (plan->sortedBy.parameters.size() == 0)
 	{
 		SortOperator * op = new SortOperator(PossibleSortParameters(), parameters);
@@ -27,13 +27,13 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 		newPlan->sortedBy = parameters;
 		return newPlan;
 	}
-	
-	ulong sortedIndex=0;
-	ulong sortByIndex=0;
+
+	ulong sortedIndex = 0;
+	ulong sortByIndex = 0;
 	SortParameters currentSorted = plan->sortedBy.parameters[0];
 	SortParameters currentSortBy = parameters.parameters[0];
 	PossibleSortParameters sortedBy;
-	
+
 
 	while (true)
 	{
@@ -44,7 +44,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 			{
 				if (sortByIt->column.id == sortedByIt->column.id)
 				{
-					SortOrder sortedByOrder =sortByIt->order;
+					SortOrder sortedByOrder = sortByIt->order;
 					SortOrder sortByOrder = sortedByIt->order;
 					if ((sortedByOrder == SortOrder::UNKNOWN) || (sortedByOrder == sortByOrder) || (sortByOrder == SortOrder::UNKNOWN))
 					{
@@ -53,7 +53,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 						{
 							newSortedBy.values.back().order = sortedByOrder;
 						}
-						sortByIt=currentSortBy.values.erase(sortByIt);
+						sortByIt = currentSortBy.values.erase(sortByIt);
 						sortedByIt = currentSorted.values.erase(sortedByIt);
 						if (sortByIt == currentSortBy.values.end())
 						{
@@ -77,7 +77,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 								{
 									newSortedBy.values.back().order = sortedByOrder;
 								}
-								sortByIt=currentSortBy.values.erase(sortByIt);
+								sortByIt = currentSortBy.values.erase(sortByIt);
 								sortedByIt = currentSorted.values.erase(sortedByIt);
 								if (sortByIt == currentSortBy.values.end())
 								{
@@ -94,8 +94,8 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 				}
 			}
 		}
-		endLoop:
-		
+	endLoop:
+
 		if (newSortedBy.values.size() == 0)
 		{
 			break;
@@ -105,7 +105,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 			sortedBy.parameters.push_back(newSortedBy);
 		}
 		bool end = false;
-		if (currentSorted.values.size()==0)
+		if (currentSorted.values.size() == 0)
 		{
 			sortedIndex++;
 			if (plan->sortedBy.parameters.size() > sortedIndex)
@@ -134,14 +134,14 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 			break;
 		}
 	}
-	
+
 	PossibleSortParameters sortBy;
 	if (currentSortBy.values.size() > 0)
 	{
 		sortBy.parameters.push_back(currentSortBy);
 	}
-	
-	for (ulong i = sortedIndex+1; i < parameters.parameters.size(); ++i)
+
+	for (ulong i = sortedIndex + 1; i < parameters.parameters.size(); ++i)
 	{
 		sortBy.parameters.push_back(parameters.parameters[i]);
 	}
@@ -158,15 +158,15 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 	else
 	{
 		double numberOfUniqueSortedValues = 1;
-		for (auto it = sortBy.parameters.begin(); it != sortBy.parameters.end();++it)
+		for (auto it = sortBy.parameters.begin(); it != sortBy.parameters.end(); ++it)
 		{
-			for (auto it2 =it->values.begin(); it2 != it->values.end(); ++it2)
+			for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
 			{
 				numberOfUniqueSortedValues *= plan->plan->columns[it2->column.id].numberOfUniqueValues;
 			}
 		}
 		numberOfUniqueSortedValues = min(numberOfUniqueSortedValues, size / 2);
-		time= numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues);
+		time = numberOfUniqueSortedValues*TimeComplexity::sort(size / numberOfUniqueSortedValues);
 	}
 	shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(op, size, time, plan->plan->columns, plan));
 	newPlan->sortedBy = sortedBy;
@@ -273,7 +273,7 @@ void AlgebraCompiler::visitTable(Table * node)
 	{
 		columns[it->column.id] = *it;
 	}
-	
+
 }
 
 void AlgebraCompiler::visitSort(Sort * node)
@@ -312,12 +312,12 @@ void AlgebraCompiler::visitGroup(Group * node)
 
 	for (auto column = node->groupColumns.begin(); column != node->groupColumns.end(); ++column)
 	{
-		ColumnInfo newColumn(*column, columns[column->id].numberOfUniqueValues*(newSize / size));
+		ColumnInfo newColumn(*column, columns[column->id].numberOfUniqueValues*(newSize / size), columns[column->id].type);
 		newColumns[column->id] = newColumn;
 	}
 	for (auto function = node->agregateFunctions.begin(); function != node->agregateFunctions.end(); ++function)
 	{
-		ColumnInfo newColumn(function->output, newSize);
+		ColumnInfo newColumn(function->output, newSize, columns[function->parameter.id].type);
 		newColumns[function->output.id] = newColumn;
 	}
 
@@ -346,7 +346,18 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 	map<int, ColumnInfo> newColumns;
 	for (auto operation = node->operations.begin(); operation != node->operations.end(); ++operation)
 	{
-		ColumnInfo newColumn(operation->result, size);
+		TypeResolvingExpressionVisitor visitor;
+		if (operation->expression != 0)
+		{
+			operation->expression->accept(visitor);
+			operation->type = visitor.resultType;
+		}
+		else
+		{
+			operation->type = columns[operation->result.id].type;
+		}
+				
+		ColumnInfo newColumn(operation->result, size, operation->type);
 		if (operation->expression != 0 && typeid(*(operation->expression)) == typeid(Column))
 		{
 			shared_ptr<Column> column = dynamic_pointer_cast<Column>(operation->expression);
@@ -373,8 +384,8 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 		{
 			SortParameters parameters = (*it)->sortedBy.parameters[i];
 			SortParameters newParameters;
-			
-			for (auto it2 = parameters.values.begin(); it2 != parameters.values.end();++it2)
+
+			for (auto it2 = parameters.values.begin(); it2 != parameters.values.end(); ++it2)
 			{
 				auto allCols = it2->others;
 				allCols.insert(it2->column);
@@ -398,7 +409,7 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 					newParameters.values.push_back(parameter);
 				}
 			}
-			if (newParameters.values.size()>0)
+			if (newParameters.values.size() > 0)
 			{
 				newPlan->sortedBy.parameters.push_back(newParameters);
 			}
@@ -454,12 +465,12 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 								shared_ptr<Column> condColumn = dynamic_pointer_cast<Column>(expression->rightChild);
 								if (condColumn->column.id == column->column.id)
 								{
-									
+
 									insertCondition = true;
 								}
 							}
 						}
-						
+
 						if (insertCondition)
 						{
 							if (expression->operation == BinaryOperator::EQUALS)
@@ -491,7 +502,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 				vector<shared_ptr<Expression> > newExpressions;
 				for (ulong j = 0; j < possibleConditions[i].size(); j++)
 				{
-					for (ulong k = j+1; k < possibleConditions[i].size(); k++)
+					for (ulong k = j + 1; k < possibleConditions[i].size(); k++)
 					{
 						newExpressions.push_back(shared_ptr<Expression>(new BinaryExpression(possibleConditions[i][j], possibleConditions[i][k], BinaryOperator::AND)));
 					}
@@ -570,7 +581,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 				filterCondition->accept(sizeVisitor);
 				oldSize = newSize;
 				newSize *= sizeVisitor.size;
-				
+
 				for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
 				{
 					col->second.numberOfUniqueValues *= sizeVisitor.size;
@@ -596,7 +607,7 @@ void AlgebraCompiler::visitSelection(Selection * node)
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> newResult;
 	vector<shared_ptr<Expression> > condition = serializeExpression(node->condition);
-	std::map<int, ColumnInfo> newColumns=columns;
+	std::map<int, ColumnInfo> newColumns = columns;
 	SizeEstimatingExpressionVisitor sizeVisitor(&newColumns);
 	node->condition->accept(sizeVisitor);
 	double newSize = size*sizeVisitor.size;
@@ -611,7 +622,7 @@ void AlgebraCompiler::visitSelection(Selection * node)
 		{
 			generateIndexScan(it, condition, newResult);
 		}
-		
+
 		if ((*it)->sortedBy.parameters.size() != 0)
 		{
 			shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), newSize,
@@ -739,7 +750,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	vector<vector<shared_ptr<PhysicalPlan>>> results;
 	vector<shared_ptr<PhysicalPlan>> newResult;
 	std::vector<double> sizes;
-	std::vector<std::map<int,ColumnInfo>> allColumns;
+	std::vector<std::map<int, ColumnInfo>> allColumns;
 
 	for (auto it = node->children.begin(); it != node->children.end(); ++it)
 	{
@@ -753,7 +764,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	ulong n = results.size();
 	vector<JoinInfo> plans;
 	ulong input = 0;
-	for (uint i = 0; i < allColumns.size();++i)
+	for (uint i = 0; i < allColumns.size(); ++i)
 	{
 		JoinInfo newPlans;
 		newPlans.size = sizes[i];
@@ -846,7 +857,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 			insertPlan(newResult, *it);
 		}
 		columns.clear();
-		for (auto it = allSubsets.back().columns.begin(); it != allSubsets.back().columns.end();++it)
+		for (auto it = allSubsets.back().columns.begin(); it != allSubsets.back().columns.end(); ++it)
 		{
 			columns[it->first] = it->second;
 		}
@@ -919,7 +930,7 @@ void AlgebraCompiler::greedyJoin(vector<JoinInfo>::iterator &it, set<ulong>::ite
 }
 
 
-	
+
 
 
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
@@ -973,7 +984,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		newPlan.columns[it->first] = it->second;
 	}
 
-	
+
 
 	if (equalConditions.size() > 0)
 	{
@@ -988,7 +999,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		newPlan.size = newSize;
 		for (std::map <ulong, JoinColumnInfo>::iterator it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
 		{
-			it->second.numberOfUniqueValues = min(it->second.numberOfUniqueValues,newSize);
+			it->second.numberOfUniqueValues = min(it->second.numberOfUniqueValues, newSize);
 		}
 		newPlan.size = newSize;
 		vector<shared_ptr<Expression>> expressions;
@@ -1009,7 +1020,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
 			}
 		}
-		shared_ptr<Expression> condition=deserializeExpression(expressions);
+		shared_ptr<Expression> condition = deserializeExpression(expressions);
 
 		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)
 		{
@@ -1054,7 +1065,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					ulong firstColumn = *((*cond)->inputs.begin());
 					ulong secondColumn = *(--((*cond)->inputs.end()));
 
-					
+
 					if (left.columns.find(firstColumn) != left.columns.end())
 					{
 						leftParameter.column = left.columns.at(firstColumn).column;
@@ -1072,11 +1083,11 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 					}
 					leftSortParameters.parameters[0].values.push_back(leftParameter);
 				}
-				
+
 
 				shared_ptr<PhysicalPlan> leftSortedPlan;
 				leftSortedPlan = generateSortParameters(leftSortParameters, *first);
-				
+
 				PossibleSortParameters rightSortParameters;
 				for (auto it = leftSortedPlan->sortedBy.parameters.begin(); it != leftSortedPlan->sortedBy.parameters.end(); ++it)
 				{
@@ -1113,7 +1124,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 
 				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition);
 				time = TimeComplexity::mergeEquiJoin(left.size, right.size);
-				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan,rightSortedPlan));
+				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
 				PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;
 				for (auto it = resultParameters.parameters.begin(); it != resultParameters.parameters.end(); ++it)
 				{
@@ -1149,7 +1160,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		throw new exception("other condition should be empty");
 	}
 
-	
+
 	if (lowerConditions.size() + equalConditions.size() == 0)
 	{
 		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)

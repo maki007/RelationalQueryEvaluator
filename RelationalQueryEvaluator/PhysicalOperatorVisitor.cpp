@@ -485,8 +485,6 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 		while (true)
 		{
 			bool found = false;
-
-
 			for (auto it = sortBy.parameters[i].values.begin(); it != sortBy.parameters[i].values.end(); ++it)
 			{
 				if (index >= sortParameters.size())

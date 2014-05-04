@@ -1,0 +1,13 @@
+operator main()->()
+{
+broadcast()->(){1} start;
+IndexScan()->(int) IndexScan0(); 
+Filter(int)->(int) Filter1(); 
+Store(int)->() storeResult(); 
+
+source -> start
+start[0] -> IndexScan0;
+IndexScan0 -> Filter1;
+Filter1 -> storeResult;
+storeResult -> output;
+}

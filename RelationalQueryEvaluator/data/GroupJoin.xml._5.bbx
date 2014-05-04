@@ -1,0 +1,30 @@
+operator main()->()
+{
+broadcast()->(){4} start;
+TableScan()->(int) TableScan0(); 
+TableScan()->(int) TableScan1(); 
+HashJoin(int)(int)->(int,int) HashJoin2(); 
+SortOperator(int,int)->(int,int) SortOperator3(); 
+TableScan()->(int) TableScan4(); 
+TableScan()->(int) TableScan5(); 
+HashJoin(int)(int)->(int,int) HashJoin6(); 
+SortOperator(int,int)->(int,int) SortOperator7(); 
+MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin8(); 
+Store(int,int,int,int)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+start[1] -> TableScan1;
+TableScan0 -> [0]HashJoin2;
+TableScan1 -> [1]HashJoin2;
+HashJoin2 -> SortOperator3;
+start[2] -> TableScan4;
+start[3] -> TableScan5;
+TableScan4 -> [0]HashJoin6;
+TableScan5 -> [1]HashJoin6;
+HashJoin6 -> SortOperator7;
+SortOperator3 -> [0]MergeEquiJoin8;
+SortOperator7 -> [1]MergeEquiJoin8;
+MergeEquiJoin8 -> storeResult;
+storeResult -> output;
+}

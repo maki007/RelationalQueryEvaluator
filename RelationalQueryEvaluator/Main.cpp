@@ -21,7 +21,6 @@ void writeOutput(string & fileName, string & content)
 	ofstream myfile;
 	string s("");
 	s.append(fileName);
-	s.append(".txt");
 	myfile.open(s.c_str());
 	myfile << content;
 	myfile.close();
@@ -65,6 +64,19 @@ void drawPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string &
 	writeOutput(fileName, planDrawer->result);
 }
 
+void boboxPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string & fileName)
+{
+	unique_ptr<BoboxPlanWritingPhysicalOperatorVisitor> planDrawer(new BoboxPlanWritingPhysicalOperatorVisitor());
+	if (result.size() > 0)
+	{
+		writeOutput(fileName, planDrawer->writePlan(*(result.begin())));
+	}
+	else
+	{
+		writeOutput(fileName, string(""));
+	}
+}
+
 int main(int argc, const char *argv[])
 {
 	if (argc != 2)
@@ -93,7 +105,7 @@ int main(int argc, const char *argv[])
 			{
 				return 1;
 			}
-			drawAlgebra(algebraRoot,line+string("._1"));
+			drawAlgebra(algebraRoot,line+string("._1.txt"));
 
 			unique_ptr<SemanticChecker> semanticChecker(new SemanticChecker());
 			algebraRoot->accept(*semanticChecker);
@@ -105,13 +117,13 @@ int main(int argc, const char *argv[])
 			
 			unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
 			algebraRoot->accept(*groupVisitor);
-			drawAlgebra(algebraRoot,line+string("._2"));
+			drawAlgebra(algebraRoot,line+string("._2.txt"));
 			
 			
 			shared_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
 			algebraRoot->accept(*algebraCompiler);
 
-			drawPlan(algebraCompiler->result, line + string("._3"));
+			drawPlan(algebraCompiler->result, line + string("._3.txt"));
 			
 			vector<shared_ptr<PhysicalOperator> > clonedPlans;
 
@@ -129,8 +141,9 @@ int main(int argc, const char *argv[])
 				(*it)->accept(sortResolver);
 			}
 
-			drawPlan(clonedPlans, line + string("._4"));
+			drawPlan(clonedPlans, line + string("._4.txt"));
 
+			boboxPlan(clonedPlans, line + string("._5.bbx"));
 
 
 			clock_t end = clock();

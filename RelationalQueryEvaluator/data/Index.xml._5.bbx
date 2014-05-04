@@ -1,0 +1,11 @@
+operator main()->()
+{
+broadcast()->(){1} start;
+IndexScan()->(int) IndexScan0(); 
+Store(int)->() storeResult(); 
+
+source -> start
+start[0] -> IndexScan0;
+IndexScan0 -> storeResult;
+storeResult -> output;
+}

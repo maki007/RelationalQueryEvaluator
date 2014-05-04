@@ -167,9 +167,9 @@ public:
 
 	ColumnInfo();
 
-	ColumnInfo(std::string name, double numberOfUniqueValues);
+	ColumnInfo(std::string name, double numberOfUniqueValues, std::string type);
 
-	ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues);
+	ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues, std::string type);
 
 	ColumnInfo(const JoinColumnInfo & info);
 

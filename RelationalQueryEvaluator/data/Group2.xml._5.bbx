@@ -1,0 +1,15 @@
+operator main()->()
+{
+broadcast()->(){1} start;
+TableScan()->(string,string) TableScan0(); 
+HashGroup(string,string,)->(string,string,) HashGroup1(); 
+SortOperator(string,string,)->(string,string,) SortOperator2(); 
+Store(string,string,)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+TableScan0 -> HashGroup1;
+HashGroup1 -> SortOperator2;
+SortOperator2 -> storeResult;
+storeResult -> output;
+}

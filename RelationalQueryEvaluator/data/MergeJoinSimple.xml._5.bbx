@@ -1,0 +1,16 @@
+operator main()->()
+{
+broadcast()->(){2} start;
+TableScan()->(int) TableScan0(); 
+TableScan()->(int) TableScan1(); 
+MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(); 
+Store(int,int)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+start[1] -> TableScan1;
+TableScan0 -> [0]MergeEquiJoin2;
+TableScan1 -> [1]MergeEquiJoin2;
+MergeEquiJoin2 -> storeResult;
+storeResult -> output;
+}

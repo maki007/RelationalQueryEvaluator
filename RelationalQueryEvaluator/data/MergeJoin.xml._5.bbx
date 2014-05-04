@@ -1,0 +1,16 @@
+operator main()->()
+{
+broadcast()->(){2} start;
+ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan0(); 
+ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan1(); 
+MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(); 
+Store(int,int)->() storeResult(); 
+
+source -> start
+start[0] -> ScanAndSortByIndexScan0;
+start[1] -> ScanAndSortByIndexScan1;
+ScanAndSortByIndexScan0 -> [0]MergeEquiJoin2;
+ScanAndSortByIndexScan1 -> [1]MergeEquiJoin2;
+MergeEquiJoin2 -> storeResult;
+storeResult -> output;
+}

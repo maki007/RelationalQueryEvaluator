@@ -153,6 +153,7 @@
     <ClCompile Include="AlgebraCompiler.cpp" />
     <ClCompile Include="AlgebraStructures.cpp" />
     <ClCompile Include="AlgebraVisitors.cpp" />
+    <ClCompile Include="BoboxOutput.cpp" />
     <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="ExpressionVisitors.cpp" />
     <ClCompile Include="Main.cpp" />

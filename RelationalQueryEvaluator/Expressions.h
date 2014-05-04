@@ -67,8 +67,9 @@ class NnaryExpression : public Expression
 {
 public:
 	std::string name;
+	std::string returnType;
 	std::vector<std::shared_ptr<Expression>> arguments;
-	NnaryExpression(DOMElement * node);
+	NnaryExpression(DOMElement * node, const std::string & name, const std::string & returnType);
 	void accept(ExpressionVisitorBase &v);
 	void replaceChild(Expression * oldChild,Expression * newChild);
 };

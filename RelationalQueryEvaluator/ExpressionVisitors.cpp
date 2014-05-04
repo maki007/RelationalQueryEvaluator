@@ -264,3 +264,61 @@ void SemanticExpressionVisitor::visitColumn(Column * expression)
 		}
 	}
 }
+
+
+void TypeResolvingExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
+{
+	resultType = "bool";
+}
+
+void TypeResolvingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
+{
+	expression->leftChild->accept(*this);
+	string leftType = resultType;
+	expression->rightChild->accept(*this);
+	string rightType = resultType;
+
+	switch (expression->operation)
+	{
+	case BinaryOperator::AND:
+	case BinaryOperator::OR:
+	case BinaryOperator::EQUALS:
+	case BinaryOperator::NOT_EQUALS:
+	case BinaryOperator::LOWER:
+	case BinaryOperator::LOWER_OR_EQUAL:
+		resultType = "bool";
+		break;
+
+	case BinaryOperator::PLUS:
+	case BinaryOperator::MINUS:
+	case BinaryOperator::TIMES:
+	case BinaryOperator::DIVIDE:
+		resultType = "double";
+		break;
+
+	default:
+
+		break;
+	}
+
+}
+
+void TypeResolvingExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
+{
+	resultType = expression->returnType;
+}
+
+void TypeResolvingExpressionVisitor::visitConstant(Constant * expression)
+{
+	resultType = expression->type;
+}
+
+void TypeResolvingExpressionVisitor::visitColumn(Column * expression)
+{
+	resultType = expression->type;
+}
+
+void TypeResolvingExpressionVisitor::visitGroupedExpression(GroupedExpression * expression)
+{
+	resultType = "bool";
+}

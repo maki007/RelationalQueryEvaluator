@@ -1,0 +1,13 @@
+operator main()->()
+{
+broadcast()->(){1} start;
+TableScan()->(int,int,int) TableScan0(); 
+ColumnsOperations(int,double,)->(int,double,) ColumnsOperations1(); 
+Store(int,double,)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+TableScan0 -> ColumnsOperations1;
+ColumnsOperations1 -> storeResult;
+storeResult -> output;
+}

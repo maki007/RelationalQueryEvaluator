@@ -1,0 +1,13 @@
+operator main()->()
+{
+broadcast()->(){1} start;
+TableScan()->(int,int) TableScan0(); 
+SortOperator(int,int)->(int,int) SortOperator1(); 
+Store(int,int)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+TableScan0 -> SortOperator1;
+SortOperator1 -> storeResult;
+storeResult -> output;
+}

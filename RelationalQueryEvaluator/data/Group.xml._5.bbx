@@ -1,0 +1,13 @@
+operator main()->()
+{
+broadcast()->(){1} start;
+ScanAndSortByIndexScan()->(string,string) ScanAndSortByIndexScan0(); 
+SortedGroup(string,)->(string,) SortedGroup1(); 
+Store(string,)->() storeResult(); 
+
+source -> start
+start[0] -> ScanAndSortByIndexScan0;
+ScanAndSortByIndexScan0 -> SortedGroup1;
+SortedGroup1 -> storeResult;
+storeResult -> output;
+}

@@ -40,14 +40,16 @@ ColumnInfo::ColumnInfo()
 	type = "";
 	numberOfUniqueValues = 1;
 }
-ColumnInfo::ColumnInfo(std::string name, double numberOfUniqueValues)
+ColumnInfo::ColumnInfo(std::string name, double numberOfUniqueValues,std::string type)
 {
 	this->column = ColumnIdentifier(name);
+	this->type = type;
 	this->numberOfUniqueValues = numberOfUniqueValues;
 }
-ColumnInfo::ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues)
+ColumnInfo::ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues, std::string type)
 {
 	this->column = column;
+	this->type = type;
 	this->numberOfUniqueValues = numberOfUniqueValues;
 }
 

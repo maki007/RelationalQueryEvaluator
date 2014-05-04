@@ -88,10 +88,9 @@
   </xs:complexType>
 
   <xs:complexType name="boolean_predicate">
-    <xs:choice minOccurs="1" maxOccurs="unbounded">
-      <xs:element name="column" type="column"></xs:element>
-      <xs:element name="constant" type="constant"></xs:element>
-    </xs:choice>
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="argument" type="bool_condition"></xs:element>
+    </xs:sequence>
     <xs:attribute name="name" use="required"></xs:attribute>
   </xs:complexType>
 
@@ -125,6 +124,7 @@
       <xs:element name="argument" type="unary_aritmetic_expression"></xs:element>
     </xs:sequence>
     <xs:attribute name="name" use="required"></xs:attribute>
+    <xs:attribute name="returnType" use="required"></xs:attribute>
   </xs:complexType>
 
   <!-- group -->

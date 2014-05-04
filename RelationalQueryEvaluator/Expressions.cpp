@@ -60,7 +60,7 @@ Expression * Expression::constructChildren(DOMElement * node)
 	}
 	else if(XMLString::compareString(node->getNodeName(),booleanPredicateName)==0)
 	{
-		child = new NnaryExpression((DOMElement *)node);
+		child = new NnaryExpression((DOMElement *)node, XmlUtils::ReadAttribute(node,"name"), "bool");
 	}
 	else if(XMLString::compareString(node->getNodeName(),plusName)==0)
 	{
@@ -80,7 +80,7 @@ Expression * Expression::constructChildren(DOMElement * node)
 	}
 	else if(XMLString::compareString(node->getNodeName(),aritmeticFunctionName)==0)
 	{
-		child = new NnaryExpression((DOMElement *)node);
+		child = new NnaryExpression((DOMElement *)node, XmlUtils::ReadAttribute(node, "name"), XmlUtils::ReadAttribute(node, "returnType"));
 	}
 	else if(XMLString::compareString(node->getNodeName(),columnName)==0)
 	{
@@ -163,8 +163,10 @@ void BinaryExpression::accept(ExpressionVisitorBase &v)
 	v.visitBinaryExpression(this);
 }
 
-NnaryExpression::NnaryExpression(DOMElement * node)
+NnaryExpression::NnaryExpression(DOMElement * node, const std::string & name, const std::string & returnType)
 {
+	this->name = name;
+	this->returnType = returnType;;
 	vector<DOMElement *> childNodes =  XmlUtils::GetChildElements(node);
 	for(auto it=childNodes.begin();it!=childNodes.end();++it)
 	{
