@@ -317,7 +317,7 @@ void AlgebraCompiler::visitGroup(Group * node)
 	}
 	for (auto function = node->agregateFunctions.begin(); function != node->agregateFunctions.end(); ++function)
 	{
-		ColumnInfo newColumn(function->output, newSize, columns[function->parameter.id].type);
+		ColumnInfo newColumn(function->output, newSize, function->function == AgregateFunctionType::COUNT? "int" : columns[function->parameter.id].type);
 		newColumns[function->output.id] = newColumn;
 	}
 

@@ -2,9 +2,9 @@ operator main()->()
 {
 broadcast()->(){1} start;
 TableScan()->(string,string) TableScan0(); 
-HashGroup(string,string,)->(string,string,) HashGroup1(); 
-SortOperator(string,string,)->(string,string,) SortOperator2(); 
-Store(string,string,)->() storeResult(); 
+HashGroup(string,string,int)->(string,string,int) HashGroup1(); 
+SortOperator(string,string,int)->(string,string,int) SortOperator2(); 
+Store(string,string,int)->() storeResult(); 
 
 source -> start
 start[0] -> TableScan0;

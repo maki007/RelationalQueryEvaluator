@@ -2,8 +2,8 @@ operator main()->()
 {
 broadcast()->(){1} start;
 ScanAndSortByIndexScan()->(string,string) ScanAndSortByIndexScan0(); 
-SortedGroup(string,)->(string,) SortedGroup1(); 
-Store(string,)->() storeResult(); 
+SortedGroup(string,int)->(string,int) SortedGroup1(); 
+Store(string,int)->() storeResult(); 
 
 source -> start
 start[0] -> ScanAndSortByIndexScan0;
