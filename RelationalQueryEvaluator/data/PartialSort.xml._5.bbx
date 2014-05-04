@@ -2,7 +2,7 @@ operator main()->()
 {
 broadcast()->(){1} start;
 TableScan()->(int,int) TableScan0(); 
-SortOperator(int,int)->(int,int) SortOperator1(); 
+SortOperator(int,int)->(int,int) SortOperator1(sortedBy="0",sortBy="1:D"); 
 Store(int,int)->() storeResult(); 
 
 source -> start

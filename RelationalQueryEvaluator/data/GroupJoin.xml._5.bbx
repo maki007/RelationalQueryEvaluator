@@ -4,11 +4,11 @@ broadcast()->(){4} start;
 TableScan()->(int) TableScan0(); 
 TableScan()->(int) TableScan1(); 
 HashJoin(int)(int)->(int,int) HashJoin2(); 
-SortOperator(int,int)->(int,int) SortOperator3(); 
+SortOperator(int,int)->(int,int) SortOperator3(sortedBy="",sortBy="0:A"); 
 TableScan()->(int) TableScan4(); 
 TableScan()->(int) TableScan5(); 
 HashJoin(int)(int)->(int,int) HashJoin6(); 
-SortOperator(int,int)->(int,int) SortOperator7(); 
+SortOperator(int,int)->(int,int) SortOperator7(sortedBy="",sortBy="0:A"); 
 MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin8(); 
 Store(int,int,int,int)->() storeResult(); 
 

@@ -317,18 +317,18 @@ void AlgebraCompiler::visitGroup(Group * node)
 	}
 	for (auto function = node->agregateFunctions.begin(); function != node->agregateFunctions.end(); ++function)
 	{
-		ColumnInfo newColumn(function->output, newSize, function->function == AgregateFunctionType::COUNT? "int" : columns[function->parameter.id].type);
+		ColumnInfo newColumn(function->output, newSize, function->function == AgregateFunctionType::COUNT ? "int" : columns[function->parameter.id].type);
 		newColumns[function->output.id] = newColumn;
 	}
 
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
 		shared_ptr<PhysicalPlan> sortedPlan = generateSortParameters(parameters, *it);
-		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(), newSize, TimeComplexity::sortedGroup(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
+		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(node->groupColumns,node->agregateFunctions), newSize, TimeComplexity::sortedGroup(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
 			newColumns, sortedPlan));
 		sortedGroup->sortedBy = sortedPlan->sortedBy;
 
-		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(), newSize, TimeComplexity::hash(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
+		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(node->groupColumns, node->agregateFunctions), newSize, TimeComplexity::hash(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
 			newColumns, *it));
 		insertPlan(newResult, hashedGroup);
 		insertPlan(newResult, sortedGroup);
@@ -356,7 +356,7 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 		{
 			operation->type = columns[operation->result.id].type;
 		}
-				
+
 		ColumnInfo newColumn(operation->result, size, operation->type);
 		if (operation->expression != 0 && typeid(*(operation->expression)) == typeid(Column))
 		{

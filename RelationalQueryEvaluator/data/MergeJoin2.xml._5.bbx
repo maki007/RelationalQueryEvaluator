@@ -4,7 +4,7 @@ broadcast()->(){2} start;
 TableScan()->(int,int) TableScan0(); 
 TableScan()->(int,int) TableScan1(); 
 HashJoin(int,int)(int,int)->(int,int,int,int) HashJoin2(); 
-SortOperator(int,int,int,int)->(int,int,int,int) SortOperator3(); 
+SortOperator(int,int,int,int)->(int,int,int,int) SortOperator3(sortedBy="",sortBy="3:D,0:A"); 
 Store(int,int,int,int)->() storeResult(); 
 
 source -> start

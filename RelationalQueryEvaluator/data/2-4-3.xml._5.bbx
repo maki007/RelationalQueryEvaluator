@@ -7,9 +7,9 @@ HashJoin(int,int)(int,int,int,int)->(int,int,int,int,int,int) HashJoin2();
 TableScan()->(int,int,int,int) TableScan3(); 
 Filter(int,int,int,int)->(int,int,int,int) Filter4(); 
 HashJoin(int,int,int,int,int,int)(int,int,int,int)->(int,int,int,int,int,int,int,int,int,int) HashJoin5(); 
-ColumnsOperations(int,int,int,double)->(int,int,int,double) ColumnsOperations6(); 
-HashGroup(int,int,int,double)->(int,int,int,double) HashGroup7(); 
-SortOperator(int,int,int,double)->(int,int,int,double) SortOperator8(); 
+ColumnsOperations(int,int,int,int,int,int,int,int,int,int)->(int,int,int,double) ColumnsOperations6(); 
+HashGroup(int,int,int,double)->(int,int,int,double) HashGroup7(groupBy="0,1,2",functions="sum(3)"); 
+SortOperator(int,int,int,double)->(int,int,int,double) SortOperator8(sortedBy="",sortBy="3:D,1:A"); 
 Store(int,int,int,double)->() storeResult(); 
 
 source -> start

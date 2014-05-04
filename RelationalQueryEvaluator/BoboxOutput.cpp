@@ -52,12 +52,20 @@ string BoboxPlanWritingPhysicalOperatorVisitor::connect(const string & from, con
 	return from  + " -> " + to + ";\n";
 }
 
-
-
 string BoboxPlanWritingPhysicalOperatorVisitor::getId()
 {
 	return to_string(lastId++);
 }
+
+void BoboxPlanWritingPhysicalOperatorVisitor::convertColumns(const std::map<int, ColumnInfo> & columns, std::map<int, int> & result)
+{
+	int i = 0;
+	for (auto it = columns.begin(); it != columns.end(); ++it)
+	{
+		result[it->first] = i++;
+	}
+}
+
 string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<PhysicalOperator> plan)
 {
 	plan->accept(*this);
@@ -87,7 +95,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::writeUnaryOperator(const string & 
 {
 	node->child->accept(*this);
 	string newlastWritttenNode = type + getId();
-	declarations += declaration(type, getColumnTypeOutput(node->columns), getColumnTypeOutput(node->columns), newlastWritttenNode, costructorParameters);
+	declarations += declaration(type, getColumnTypeOutput(node->child->columns), getColumnTypeOutput(node->columns), newlastWritttenNode, costructorParameters);
 	code += connect(lastWritttenNode, newlastWritttenNode);
 	lastWritttenNode = newlastWritttenNode;
 }
@@ -108,6 +116,42 @@ void BoboxPlanWritingPhysicalOperatorVisitor::writeBinaryOperator(const string &
 	lastWritttenNode = newlastWritttenNode;
 
 }
+
+
+string BoboxPlanWritingPhysicalOperatorVisitor::writeGroupParameters(const map<int, ColumnInfo> & outputColumns, const map<int, ColumnInfo> & inputColumns,
+	const vector<ColumnIdentifier> & groupColumns, const vector<AgregateFunction> & agregateFunctions)
+{
+	string groupBy = "groupBy=\"";
+	map<int, int> cols, inputCols;
+	convertColumns(outputColumns, cols);
+	convertColumns(inputColumns, inputCols);
+
+	ulong i = 0;
+	for (auto it = groupColumns.begin(); it != groupColumns.end(); ++it)
+	{
+		groupBy += to_string(cols[it->id]);
+		i++;
+		if (i != groupColumns.size())
+		{
+			groupBy += ",";
+		}
+	}
+	groupBy += "\",";
+	string functions = "functions=\"";
+	i = 0;
+	for (auto it = agregateFunctions.begin(); it != agregateFunctions.end(); ++it)
+	{
+		functions += it->functionName + "(" + to_string(inputCols[it->parameter.id]) + ")";
+		i++;
+		if (i != agregateFunctions.size())
+		{
+			functions += ",";
+		}
+	}
+	functions += "\"";
+	return groupBy + functions;
+}
+
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
@@ -150,7 +194,40 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitSortOperator(SortOperator * n
 {
 	if (node->sortBy.parameters.size() > 0)
 	{
-		writeUnaryOperator("SortOperator", node, "");
+		map<int, int> cols;
+		convertColumns(node->columns, cols);
+		string sortedby = "sortedBy=\"";
+		ulong i = 0;
+		for (auto it = node->sortedBy.parameters.begin(); it != node->sortedBy.parameters.end(); ++it)
+		{
+			sortedby += to_string(cols[(it->values.begin())->column.id]);
+			++i;
+			if (node->sortedBy.parameters.size() != i)
+			{
+				sortedby += ",";
+			}
+		}
+		sortedby += "\",";
+		string sortby = "sortBy=\"";
+		i = 0;
+		for (auto it = node->sortBy.parameters.begin(); it != node->sortBy.parameters.end(); ++it)
+		{
+			string direction = "A";
+			if (it->values.begin()->order == SortOrder::DESCENDING)
+			{
+				direction = "D";
+			}
+			sortby += to_string(cols[(it->values.begin())->column.id]) + ":" + direction;
+			++i;
+			if (node->sortBy.parameters.size() != i)
+			{
+				sortby += ",";
+			}
+		}
+		sortby += "\"";
+
+
+		writeUnaryOperator("SortOperator", node, sortedby+sortby);
 	}
 	else
 	{
@@ -160,21 +237,18 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitSortOperator(SortOperator * n
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
 {
-	writeUnaryOperator("HashGroup", node, "");
+	writeUnaryOperator("HashGroup", node, writeGroupParameters(node->columns,node->child->columns,node->groupColumns,node->agregateFunctions));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 {
-	writeUnaryOperator("SortedGroup", node, "");
+	writeUnaryOperator("SortedGroup", node, writeGroupParameters(node->columns, node->child->columns, node->groupColumns, node->agregateFunctions));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
 	writeUnaryOperator("ColumnsOperations", node, "");
 }
-
-
-
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
@@ -190,4 +264,5 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 {
 	writeNullaryOperator("IndexScan", node->columns, "");
 }
+
 

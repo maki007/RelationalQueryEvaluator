@@ -196,11 +196,17 @@ public:
 
 	std::string getId();
 
+	void BoboxPlanWritingPhysicalOperatorVisitor::convertColumns(const std::map<int, ColumnInfo> & columns, std::map<int, int> & result);
+
 	void writeNullaryOperator(const std::string & type, const std::map<int, ColumnInfo> & columns, const std::string & costructorParameters);
 
 	void writeUnaryOperator(const std::string & type, UnaryPhysicalOperator * node, const std::string & costructorParameters);
 
 	void writeBinaryOperator(const std::string & type, BinaryPhysicalOperator * node, const std::string & costructorParameters);
+
+	std::string writeGroupParameters(const std::map<int, ColumnInfo> & outputColumns, const std::map<int, ColumnInfo> & inputColumns,
+		const std::vector<ColumnIdentifier> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
+	
 
 	void visitFilter(Filter * node);
 

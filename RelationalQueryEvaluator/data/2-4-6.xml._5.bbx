@@ -3,8 +3,8 @@ operator main()->()
 broadcast()->(){1} start;
 TableScan()->(date,int,double,double) TableScan0(); 
 Filter(date,int,double,double)->(date,int,double,double) Filter1(); 
-ColumnsOperations(double)->(double) ColumnsOperations2(); 
-SortedGroup(double)->(double) SortedGroup3(); 
+ColumnsOperations(date,int,double,double)->(double) ColumnsOperations2(); 
+SortedGroup(double)->(double) SortedGroup3(groupBy="",functions="sum(0)"); 
 Store(double)->() storeResult(); 
 
 source -> start

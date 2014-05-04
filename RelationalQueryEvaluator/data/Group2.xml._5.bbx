@@ -2,8 +2,8 @@ operator main()->()
 {
 broadcast()->(){1} start;
 TableScan()->(string,string) TableScan0(); 
-HashGroup(string,string,int)->(string,string,int) HashGroup1(); 
-SortOperator(string,string,int)->(string,string,int) SortOperator2(); 
+HashGroup(string,string)->(string,string,int) HashGroup1(groupBy="1,0",functions="count(0)"); 
+SortOperator(string,string,int)->(string,string,int) SortOperator2(sortedBy="",sortBy="1:D"); 
 Store(string,string,int)->() storeResult(); 
 
 source -> start
