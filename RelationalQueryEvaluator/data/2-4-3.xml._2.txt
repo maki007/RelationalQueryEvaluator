@@ -1,9 +1,9 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-revenue_12 desc, o_orderdate_7 asc"]
+revenue_15 desc, o_orderdate_13 asc"]
 node1[label="Group
-groupBy l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_12=sum(x_11);"]
+groupBy l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);"]
 node2[label="ColumnOperations
 l_orderkey_3, o_orderdate_7, o_shippriority_8, x_11 = (l_extendedprice_5(0) * (1 - l_discount_6(0)))"]
 node3[label="GroupedJoin

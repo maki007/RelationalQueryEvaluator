@@ -1,14 +1,14 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-Sort by: revenue_12 desc, o_orderdate_7 asc
+Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node1[label="Hash Group
  time:43541
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node2[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
@@ -52,14 +52,14 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node9[label="Sort
-Sort by: revenue_12 desc, o_orderdate_7 asc
+Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node10[label="Sorted Group
  time:5495
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node11[label="Sort
 Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
  time:101841
@@ -109,14 +109,14 @@ node12 -> node11[headport=s, tailport=n,label="   "]
 node11 -> node10[headport=s, tailport=n,label="   "]
 node10 -> node9[headport=s, tailport=n,label="   "]
 node19[label="Sort
-Sort by: revenue_12 desc, o_orderdate_7 asc
+Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node20[label="Hash Group
  time:43541
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node21[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
@@ -165,14 +165,14 @@ node22 -> node21[headport=s, tailport=n,label="   "]
 node21 -> node20[headport=s, tailport=n,label="   "]
 node20 -> node19[headport=s, tailport=n,label="   "]
 node29[label="Sort
-Sort by: revenue_12 desc, o_orderdate_7 asc
+Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node30[label="Sorted Group
  time:5495
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node31[label="Sort
 Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
  time:101841
@@ -227,14 +227,14 @@ node32 -> node31[headport=s, tailport=n,label="   "]
 node31 -> node30[headport=s, tailport=n,label="   "]
 node30 -> node29[headport=s, tailport=n,label="   "]
 node40[label="Sort
-Sort by: revenue_12 desc, o_orderdate_7 asc
+Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node41[label="Hash Group
  time:43541
  size:2113
-l_orderkey_3 2113,o_orderdate_7 2113,o_shippriority_8 2113,revenue_12 2113,
+l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node42[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0

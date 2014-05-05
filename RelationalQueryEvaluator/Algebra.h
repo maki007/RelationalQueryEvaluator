@@ -105,7 +105,7 @@ public:
 class Group : public UnaryAlgebraNodeBase
 {
 public:
-	std::vector<ColumnIdentifier> groupColumns;
+	std::vector<GroupColumn> groupColumns;
 	std::vector<AgregateFunction> agregateFunctions;
 	Group(DOMElement * element);
 	void accept(AlgebraVisitor &v);

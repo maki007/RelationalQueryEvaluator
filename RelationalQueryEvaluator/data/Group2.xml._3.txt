@@ -1,14 +1,14 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-Sort by: country_2 desc
+Sort by: country_3 desc
  time:122877
  size:5000
-user_name_1 205,country_2 792,count_3 5000,
+country_3 792,user_name_4 205,count_5 5000,
 "]node1[label="Hash Group
  time:103000
  size:5000
-user_name_1 205,country_2 792,count_3 5000,
+country_3 792,user_name_4 205,count_5 5000,
 "]node2[label="Table Scan
  time:10000
  size:10000
@@ -16,15 +16,15 @@ user_name_1 410,country_2 1584,
 "]node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Partial Sort
-Sorted by country_2 desc
+Sorted by country_3 desc
 Sort by: 
  time:0
  size:5000
-user_name_1 205,country_2 792,count_3 5000,
+country_3 792,user_name_4 205,count_5 5000,
 "]node4[label="Sorted Group
  time:13000
  size:5000
-user_name_1 205,country_2 792,count_3 5000,
+country_3 792,user_name_4 205,count_5 5000,
 "]node5[label="Sort
 Sort by: country_2 both, user_name_1 both
  time:265754

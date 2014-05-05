@@ -251,7 +251,7 @@ Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 
 			if(elementName=="group_by")
 			{
-				groupColumns.push_back(XmlUtils::ReadAttribute(parameterElement,"column"));
+				groupColumns.push_back(GroupColumn(ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"column"))));
 			}
 			else
 			{

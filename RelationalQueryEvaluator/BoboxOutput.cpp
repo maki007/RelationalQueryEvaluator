@@ -119,7 +119,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::writeBinaryOperator(const string &
 
 
 string BoboxPlanWritingPhysicalOperatorVisitor::writeGroupParameters(const map<int, ColumnInfo> & outputColumns, const map<int, ColumnInfo> & inputColumns,
-	const vector<ColumnIdentifier> & groupColumns, const vector<AgregateFunction> & agregateFunctions)
+	const vector<GroupColumn> & groupColumns, const vector<AgregateFunction> & agregateFunctions)
 {
 	string groupBy = "groupBy=\"";
 	map<int, int> cols, inputCols;
@@ -129,7 +129,7 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeGroupParameters(const map<i
 	ulong i = 0;
 	for (auto it = groupColumns.begin(); it != groupColumns.end(); ++it)
 	{
-		groupBy += to_string(cols[it->id]);
+		groupBy += to_string(inputCols[it->input.id]);
 		i++;
 		if (i != groupColumns.size())
 		{
@@ -141,7 +141,15 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeGroupParameters(const map<i
 	i = 0;
 	for (auto it = agregateFunctions.begin(); it != agregateFunctions.end(); ++it)
 	{
-		functions += it->functionName + "(" + to_string(inputCols[it->parameter.id]) + ")";
+		functions += it->functionName;
+		if (it->function == AgregateFunctionType::COUNT)
+		{
+			functions += "()";
+		}
+		else
+		{
+			functions += "(" + to_string(inputCols[it->parameter.id]) + ")";
+		}
 		i++;
 		if (i != agregateFunctions.size())
 		{

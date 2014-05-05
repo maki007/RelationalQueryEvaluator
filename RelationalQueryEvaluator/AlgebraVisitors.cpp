@@ -165,7 +165,7 @@ void GraphDrawingVisitor::visitGroup(Group * node)
 	label+="groupBy ";
 	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
 	{
-		label+=it->toString();
+		label+=it->input.toString();
 		label+=", ";
 	}
 	if (node->groupColumns.size() == 0)

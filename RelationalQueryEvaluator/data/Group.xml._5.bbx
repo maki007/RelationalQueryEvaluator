@@ -2,7 +2,7 @@ operator main()->()
 {
 broadcast()->(){1} start;
 ScanAndSortByIndexScan()->(string,string) ScanAndSortByIndexScan0(); 
-SortedGroup(string,string)->(string,int) SortedGroup1(groupBy="0",functions="count(0)"); 
+SortedGroup(string,string)->(string,int) SortedGroup1(groupBy="1",functions="count()"); 
 Store(string,int)->() storeResult(); 
 
 source -> start

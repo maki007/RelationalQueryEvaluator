@@ -1,15 +1,15 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Partial Sort
-Sorted by country_2 desc
+Sorted by country_3 desc
 Sort by: 
  time:0
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node1[label="Sorted Group
  time:13000
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node2[label="Partial Sort
 Sorted by country_2 both
 Sort by: 
@@ -24,14 +24,14 @@ user_name_1 410,country_2 1584,
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Sort
-Sort by: country_2 desc
+Sort by: country_3 desc
  time:33695
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node5[label="Hash Group
  time:103000
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node6[label="Table Scan
  time:10000
  size:10000
@@ -39,14 +39,14 @@ user_name_1 410,country_2 1584,
 "]node6 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node7[label="Sort
-Sort by: country_2 desc
+Sort by: country_3 desc
  time:33695
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node8[label="Hash Group
  time:103000
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node9[label="Sort by index Scan
  time:30000
  size:10000
@@ -54,15 +54,15 @@ user_name_1 410,country_2 1584,
 "]node9 -> node8[headport=s, tailport=n,label="   "]
 node8 -> node7[headport=s, tailport=n,label="   "]
 node10[label="Partial Sort
-Sorted by country_2 desc
+Sorted by country_3 desc
 Sort by: 
  time:0
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node11[label="Sorted Group
  time:13000
  size:1584
-country_2 251,count_3 1584,
+country_3 251,count_4 1584,
 "]node12[label="Sort
 Sort by: country_2 both
  time:265754

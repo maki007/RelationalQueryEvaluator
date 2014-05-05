@@ -110,17 +110,20 @@ void SemanticChecker::visitGroup(Group * node)
 	map<string, ColumnInfo> groupColumns;
 	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
 	{
-		if(outputColumns.find(it->name)==outputColumns.end())
+		if(outputColumns.find(it->input.name)==outputColumns.end())
 		{
 			ReportError("Column doesn't exist");
 		}
 		else
 		{
-			if (groupColumns.find(it->name) == groupColumns.end())
+			if (groupColumns.find(it->input.name) == groupColumns.end())
 			{
-				groupColumns[it->name] = ColumnInfo(it->name, "");
-				groupColumns[it->name].column = outputColumns[it->name].column;
-				it->id = outputColumns[it->name].column.id;
+				groupColumns[it->input.name] = ColumnInfo(it->input.name, "");
+				groupColumns[it->input.name].column = outputColumns[it->input.name].column;
+				it->input.id = outputColumns[it->input.name].column.id;
+				it->output = it->input;
+				it->output.id = nextId();
+				groupColumns[it->input.name].column.id = it->output.id;
 			}
 			else
 			{

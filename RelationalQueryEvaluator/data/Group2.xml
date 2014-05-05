@@ -13,7 +13,7 @@
       <input>
         <table name="people" numberOfRows="10000">
           <column name="user_name" type="string" number_of_unique_values="410"/>
-          <column name="country" type="string" />
+          <column name="country" type="int" />
         </table>
       </input>
     </group>

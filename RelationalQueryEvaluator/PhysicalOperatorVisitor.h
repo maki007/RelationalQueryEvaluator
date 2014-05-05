@@ -205,7 +205,7 @@ public:
 	void writeBinaryOperator(const std::string & type, BinaryPhysicalOperator * node, const std::string & costructorParameters);
 
 	std::string writeGroupParameters(const std::map<int, ColumnInfo> & outputColumns, const std::map<int, ColumnInfo> & inputColumns,
-		const std::vector<ColumnIdentifier> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
+		const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 	
 
 	void visitFilter(Filter * node);

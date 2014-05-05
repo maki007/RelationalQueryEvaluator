@@ -673,6 +673,29 @@ void SortResolvingPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
 
 void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 {
+	map<int, int> mapedColumns;
+	for (auto it = node->groupColumns.begin(); it != node->groupColumns.end(); ++it)
+	{
+		mapedColumns[it->output.id] = it->input.id;
+	}
+	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
+	{
+		if (mapedColumns.find(it->column.id) != mapedColumns.end())
+		{
+			it->column.id = mapedColumns[it->column.id];
+		}
+		std::set<ColumnIdentifier> others;
+		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
+		{
+			if (mapedColumns.find(it2->id) != mapedColumns.end())
+			{
+				auto copy = *it2;
+				copy.id = mapedColumns[it2->id];
+				others.insert(copy);
+			}
+		}
+		it->others = others;
+	}
 	node->child->accept(*this);
 }
 

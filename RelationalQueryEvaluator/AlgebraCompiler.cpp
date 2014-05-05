@@ -290,6 +290,7 @@ void AlgebraCompiler::visitSort(Sort * node)
 
 void AlgebraCompiler::visitGroup(Group * node)
 {
+	map<int, int> newColumnsId;
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> newResult;
 	vector<SortParameter> parameters;
@@ -297,14 +298,15 @@ void AlgebraCompiler::visitGroup(Group * node)
 	{
 		SortParameter parameter;
 		parameter.order = SortOrder::UNKNOWN;
-		parameter.column = *it;
+		parameter.column = it->input;
 		parameters.push_back(parameter);
+		newColumnsId[it->input.id] = it->output.id;
 	}
 
 	double newSize = 1;
 	for (auto it2 = node->groupColumns.begin(); it2 != node->groupColumns.end(); ++it2)
 	{
-		newSize *= columns[(*it2).id].numberOfUniqueValues;
+		newSize *= columns[it2->input.id].numberOfUniqueValues;
 	}
 	newSize = min(newSize, size / 2);
 
@@ -312,8 +314,8 @@ void AlgebraCompiler::visitGroup(Group * node)
 
 	for (auto column = node->groupColumns.begin(); column != node->groupColumns.end(); ++column)
 	{
-		ColumnInfo newColumn(*column, columns[column->id].numberOfUniqueValues*(newSize / size), columns[column->id].type);
-		newColumns[column->id] = newColumn;
+		ColumnInfo newColumn(column->output, columns[column->input.id].numberOfUniqueValues*(newSize / size), columns[column->input.id].type);
+		newColumns[column->output.id] = newColumn;
 	}
 	for (auto function = node->agregateFunctions.begin(); function != node->agregateFunctions.end(); ++function)
 	{
@@ -324,12 +326,34 @@ void AlgebraCompiler::visitGroup(Group * node)
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
 		shared_ptr<PhysicalPlan> sortedPlan = generateSortParameters(parameters, *it);
-		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(node->groupColumns,node->agregateFunctions), newSize, TimeComplexity::sortedGroup(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
-			newColumns, sortedPlan));
+		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(node->groupColumns,node->agregateFunctions), newSize, 
+			TimeComplexity::sortedGroup(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()), newColumns, sortedPlan));
 		sortedGroup->sortedBy = sortedPlan->sortedBy;
+		for (auto it2 = sortedGroup->sortedBy.parameters.begin(); it2 != sortedGroup->sortedBy.parameters.end();++it2)
+		{
+			for (auto it3 = it2->values.begin(); it3 != it2->values.end(); ++it3)
+			{
+				if (newColumnsId.find(it3->column.id) != newColumnsId.end())
+				{
+					it3->column.id = newColumnsId[it3->column.id];
+				}
+				std::set<ColumnIdentifier> others;
+				for (auto it4 = it3->others.begin(); it4!= it3->others.end(); ++it4)
+				{
+					if (newColumnsId.find(it4->id) != newColumnsId.end())
+					{
+						auto copy = *it4;
+						copy.id = newColumnsId[it4->id];
+						others.insert(copy);
+					}
+				}
+				it3->others = others;
+			}
+		}
 
-		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(node->groupColumns, node->agregateFunctions), newSize, TimeComplexity::hash(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),
-			newColumns, *it));
+
+		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(node->groupColumns, node->agregateFunctions), newSize, 
+			TimeComplexity::hash(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),newColumns, *it));
 		insertPlan(newResult, hashedGroup);
 		insertPlan(newResult, sortedGroup);
 	}

@@ -151,9 +151,9 @@ public:
 class HashGroup : public UnaryPhysicalOperator
 {
 public:
-	std::vector<ColumnIdentifier> groupColumns;
+	std::vector<GroupColumn> groupColumns;
 	std::vector<AgregateFunction> agregateFunctions;
-	HashGroup(const std::vector<ColumnIdentifier> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions)
+	HashGroup(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions)
 	{
 		this->groupColumns = groupColumns;
 		this->agregateFunctions = agregateFunctions;
@@ -165,9 +165,9 @@ public:
 class SortedGroup : public UnaryPhysicalOperator
 {
 public:
-	std::vector<ColumnIdentifier> groupColumns;
+	std::vector<GroupColumn> groupColumns;
 	std::vector<AgregateFunction> agregateFunctions;
-	SortedGroup(const std::vector<ColumnIdentifier> & groupColumns,const std::vector<AgregateFunction> & agregateFunctions)
+	SortedGroup(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions)
 	{
 		this->groupColumns = groupColumns;
 		this->agregateFunctions = agregateFunctions;

@@ -196,6 +196,15 @@ public:
 	std::string type;
 };
 
-
+class GroupColumn
+{
+public:
+	ColumnIdentifier input;
+	ColumnIdentifier output;
+	GroupColumn(const ColumnIdentifier & input)
+	{
+		this->input = input;
+	}
+};
 
 #endif
