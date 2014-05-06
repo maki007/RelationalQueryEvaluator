@@ -274,6 +274,7 @@ void SemanticChecker::visitUnion(Union * node)
 			ReportError("Union requires inputs to have same columns"); 
 		}	
 	}
+	outputColumns = outputColumns0;
 }
 
 void SemanticChecker::visitGroupedJoin(GroupedJoin * node)

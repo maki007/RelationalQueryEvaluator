@@ -183,7 +183,28 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
 {
-	writeBinaryOperator("Union", node, "");
+	string left = "left=\"";
+	string right = "right=\"";
+	string out = "out=\"";
+	
+	map<string,ulong> names;
+	ulong i = 0;
+	for (auto it = node->rightChild->columns.begin(); it != node->rightChild->columns.end(); ++it)
+	{
+		names.insert(make_pair(it->second.column.name,i++));
+	}
+	i = 0;
+	for (auto it = node->columns.begin(); it != node->columns.end(); ++it)
+	{
+		left += to_string(i) + ",";
+		right += to_string(names[it->second.column.name]) + ",";
+		out += to_string(i++) + ",";
+	}
+	left.at(left.size() - 1) = '\"';
+	right.at(right.size() - 1) = '\"';
+	out.at(out.size() - 1) = '\"';
+
+	writeBinaryOperator("Union", node, left+","+right+","+out);
 }
 
 

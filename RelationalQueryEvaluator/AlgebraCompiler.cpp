@@ -673,6 +673,7 @@ void AlgebraCompiler::visitUnion(Union * node)
 	node->leftChild->accept(*this);
 	double leftSize = size;
 	vector<shared_ptr<PhysicalPlan>> leftInput = result;
+	std::map<int, ColumnInfo> leftColumns=columns;
 	node->rightChild->accept(*this);
 	double rightSize = size;
 	vector<shared_ptr<PhysicalPlan>> rightInput = result;
@@ -683,7 +684,7 @@ void AlgebraCompiler::visitUnion(Union * node)
 		for (auto rightIt = rightInput.begin(); rightIt != rightInput.end(); ++rightIt)
 		{
 			shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new UnionOperator(), leftSize + rightSize,
-				TimeComplexity::Union(leftSize, rightSize), columns, *leftIt, *rightIt));
+				TimeComplexity::Union(leftSize, rightSize), leftColumns, *leftIt, *rightIt));
 			insertPlan(newResult, newPlan);
 		}
 	}

@@ -3,25 +3,25 @@ digraph g {node [shape=box]
 node0[label="Union
  time:900
  size:3000
-name_3 251,
+id_1 251,name_2 251,
 "]node1[label="Table Scan
  time:1000
  size:1000
-name_1 251,
+id_1 251,name_2 251,
 "]node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Union
  time:600
  size:2000
-name_3 251,
+id_3 251,name_4 251,
 "]node3[label="Table Scan
  time:1000
  size:1000
-name_2 251,
+id_3 251,name_4 251,
 "]node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Table Scan
  time:1000
  size:1000
-name_3 251,
+name_5 251,id_6 251,
 "]node4 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node0[headport=s, tailport=n,label="   "]
 

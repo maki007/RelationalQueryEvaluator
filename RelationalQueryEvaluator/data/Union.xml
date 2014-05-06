@@ -6,18 +6,21 @@
     <union>
       <input>
         <table name="people_from_city">
+          <column name="id" type="int" />
           <column name="name" type="string" />
         </table>
         <union>
           <input>
             <table name="people_from_city">
+              <column name="id" type="int" />
               <column name="name" type="string"/>
             </table>
             <table name="people_from_city">
               <column name="name" type="string" />
+              <column name="id" type="int" />
             </table>
           </input>
-        </union>   
+        </union>
       </input>
     </union>
   </input>
