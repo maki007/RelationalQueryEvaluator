@@ -1,4 +1,9 @@
 #include "PhysicalOperatorVisitor.h"
+#include "ExpressionVisitors.h"
+#include <algorithm>
+#include <string>
+#include <iostream>
+#include <map>
 
 using namespace std;
 
@@ -6,7 +11,7 @@ BoboxPlanWritingPhysicalOperatorVisitor::BoboxPlanWritingPhysicalOperatorVisitor
 {
 	numberOfLeafs = 0;
 	declarations = "";
-	code = ""; 
+	code = "";
 	lastId = 0;
 }
 
@@ -44,12 +49,12 @@ string BoboxPlanWritingPhysicalOperatorVisitor::getColumnTypeOutput(const map<in
 
 string BoboxPlanWritingPhysicalOperatorVisitor::declaration(const string & type, const string & inputColumns, const string & outputColumns, const string & name, const string & constructParameters)
 {
-	return type + "(" + inputColumns + ")->(" + outputColumns + ") " + name + "("+constructParameters+"); \n";
+	return type + "(" + inputColumns + ")->(" + outputColumns + ") " + name + "(" + constructParameters + "); \n";
 }
 
 string BoboxPlanWritingPhysicalOperatorVisitor::connect(const string & from, const string & to)
 {
-	return from  + " -> " + to + ";\n";
+	return from + " -> " + to + ";\n";
 }
 
 string BoboxPlanWritingPhysicalOperatorVisitor::getId()
@@ -76,7 +81,7 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<Physic
 	result += declaration("Store", getColumnTypeOutput(plan->columns), "", "storeResult", "") + "\n";
 	result += "source -> start\n";
 	result += code;
-	result += connect(lastWritttenNode,"storeResult");
+	result += connect(lastWritttenNode, "storeResult");
 	result += connect("storeResult", "output");
 	result += "}";
 	return result;
@@ -186,12 +191,12 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator *
 	string left = "left=\"";
 	string right = "right=\"";
 	string out = "out=\"";
-	
-	map<string,ulong> names;
+
+	map<string, ulong> names;
 	ulong i = 0;
 	for (auto it = node->rightChild->columns.begin(); it != node->rightChild->columns.end(); ++it)
 	{
-		names.insert(make_pair(it->second.column.name,i++));
+		names.insert(make_pair(it->second.column.name, i++));
 	}
 	i = 0;
 	for (auto it = node->columns.begin(); it != node->columns.end(); ++it)
@@ -204,19 +209,27 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator *
 	right.at(right.size() - 1) = '\"';
 	out.at(out.size() - 1) = '\"';
 
-	writeBinaryOperator("Union", node, left+","+right+","+out);
+	writeBinaryOperator("Union", node, left + "," + right + "," + out);
 }
 
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitFilter(Filter * node)
 {
-	writeUnaryOperator("Filter", node, "");
+	map<int, int> cols;
+	convertColumns(node->child->columns, cols);
+	BoboxWritingExpressionVisitor writer(cols);
+	node->condition->accept(writer);
+	writeUnaryOperator("Filter", node, "condition=\"" + writer.result + "\"");
 
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
 {
-	writeUnaryOperator("FilterKeepingOrder", node, "");
+	map<int, int> cols;
+	convertColumns(node->child->columns, cols);
+	BoboxWritingExpressionVisitor writer(cols);
+	node->condition->accept(writer);
+	writeUnaryOperator("FilterKeepingOrder", node, "condition=\"" + writer.result + "\"");
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node)
@@ -256,7 +269,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitSortOperator(SortOperator * n
 		sortby += "\"";
 
 
-		writeUnaryOperator("SortOperator", node, sortedby+sortby);
+		writeUnaryOperator("SortOperator", node, sortedby + sortby);
 	}
 	else
 	{
@@ -266,7 +279,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitSortOperator(SortOperator * n
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
 {
-	writeUnaryOperator("HashGroup", node, writeGroupParameters(node->columns,node->child->columns,node->groupColumns,node->agregateFunctions));
+	writeUnaryOperator("HashGroup", node, writeGroupParameters(node->columns, node->child->columns, node->groupColumns, node->agregateFunctions));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
@@ -276,12 +289,44 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * nod
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
-	writeUnaryOperator("ColumnsOperations", node, "");
+	sort(node->operations.begin(), node->operations.end(),
+		[](const ColumnOperation & a, const ColumnOperation & b)
+	{
+		return a.result.id < b.result.id;
+	});
+
+	map<int, int> cols;
+	convertColumns(node->child->columns, cols);
+
+	string parameters = "out=\"";
+	ulong i = 0;
+	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
+	{
+		if (it->expression != 0)
+		{
+			BoboxWritingExpressionVisitor writer(cols);
+			it->expression->accept(writer);
+			parameters += writer.result;
+		}
+		else
+		{
+			parameters += to_string(cols[it->result.id]);
+		}
+
+		++i;
+		if (i != node->operations.size())
+		{
+			parameters += ",";
+		}
+	}
+
+	parameters += "\"";
+	writeUnaryOperator("ColumnsOperations", node, parameters);
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-	writeNullaryOperator("ScanAndSortByIndexScan", node->columns,"");
+	writeNullaryOperator("ScanAndSortByIndexScan", node->columns, "");
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitTableScan(TableScan * node)
@@ -294,4 +339,122 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 	writeNullaryOperator("IndexScan", node->columns, "");
 }
 
+BoboxWritingExpressionVisitor::BoboxWritingExpressionVisitor(map<int, int> & cols)
+{
+	this->cols = &cols;
+}
+
+void BoboxWritingExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
+{
+	switch (expression->operation)
+	{
+	case UnaryOperator::NOT:
+		result += "OP_NOT(";
+		break;
+	default:
+		throw new exception("operator not found");
+	}
+	expression->child->accept(*this);
+	result += ")";
+
+}
+
+void BoboxWritingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
+{
+	string opName = "";
+	switch (expression->operation)
+	{
+	case BinaryOperator::AND:
+		opName += "OP_AND";
+		break;
+	case BinaryOperator::OR:
+		opName += "OP_OR";
+		break;
+	case BinaryOperator::PLUS:
+		opName += "OP_PLUS";
+		break;
+	case BinaryOperator::MINUS:
+		opName += "OP_MINUS";
+		break;
+	case BinaryOperator::TIMES:
+		opName += "OP_TIMES";
+		break;
+	case BinaryOperator::DIVIDE:
+		opName += "OP_DIVIDE";
+		break;
+	case BinaryOperator::EQUALS:
+		opName += "OP_EQUALS";
+		break;
+	case BinaryOperator::NOT_EQUALS:
+		opName += "OP_NOT_EQUALS";
+		break;
+	case BinaryOperator::LOWER:
+		opName += "OP_LOWER";
+		break;
+	case BinaryOperator::LOWER_OR_EQUAL:
+		opName += "OP_LOWER_OR_EQUAL";
+		break;
+	default:
+		throw new exception("operator not found");
+	}
+	result += opName + "(";
+	expression->leftChild->accept(*this);
+	result += ",";
+	expression->rightChild->accept(*this);
+	result += ")";
+
+}
+
+void BoboxWritingExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
+{
+	result += "OP_"+expression->name + "(";
+	ulong i = 0;
+	for (auto it = expression->arguments.begin(); it != expression->arguments.end(); ++it)
+	{
+		(*it)->accept(*this);
+		++i;
+		if (expression->arguments.size() != i)
+		{
+			result += ",";
+		}
+	}
+}
+
+void BoboxWritingExpressionVisitor::visitConstant(Constant * expression)
+{
+	result += "OP_" + expression->type + "_CONSTANT(" + expression->value + ")";
+}
+
+void BoboxWritingExpressionVisitor::visitColumn(Column * expression)
+{
+	result += to_string(cols->at(expression->column.id));
+}
+
+void BoboxWritingExpressionVisitor::visitGroupedExpression(GroupedExpression * expression)
+{
+	string opName = "";
+	switch (expression->operation)
+	{
+	case GroupedOperator::AND:
+		opName += "OP_AND";
+		break;
+	case GroupedOperator::OR:
+		opName += "OP_OR";
+		break;
+	default:
+		throw new exception("operator not found");
+	}
+	result += opName + "(";
+	ulong i = 0;
+	for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
+	{
+		(*it)->accept(*this);
+		++i;
+		if (expression->children.size() != i)
+		{
+			result += ",";
+		}
+	}
+	result += ")";
+}
 

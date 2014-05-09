@@ -148,7 +148,7 @@ void SemanticChecker::visitGroup(Group * node)
 	}
 	if(outputColumns.size()==0)
 	{
-		ReportError("Group must group by one column or must contain at least one agegate function");
+		ReportError("Group must group by one column or must contain at least one aggregate function");
 	}
 }
 

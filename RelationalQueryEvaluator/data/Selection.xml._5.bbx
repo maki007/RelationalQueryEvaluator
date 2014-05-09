@@ -2,7 +2,7 @@ operator main()->()
 {
 broadcast()->(){1} start;
 IndexScan()->(int) IndexScan0(); 
-Filter(int)->(int) Filter1(); 
+Filter(int)->(int) Filter1(condition="OP_LOWER(0,OP_int_CONSTANT(-1))"); 
 Store(int)->() storeResult(); 
 
 source -> start

@@ -2,7 +2,7 @@ operator main()->()
 {
 broadcast()->(){1} start;
 TableScan()->(int) TableScan0(); 
-Filter(int)->(int) Filter1(); 
+Filter(int)->(int) Filter1(condition="OP_OR(OP_EQUALS(0,OP_int_CONSTANT(4)),OP_LOWER(0,OP_int_CONSTANT(-1)))"); 
 Store(int)->() storeResult(); 
 
 source -> start

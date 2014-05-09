@@ -318,5 +318,25 @@ public:
 	void visitGroupedExpression(GroupedExpression * expression);
 };
 
+class BoboxWritingExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	std::string result;
+	std::map<int, int> * cols;
+	
+	BoboxWritingExpressionVisitor(std::map<int, int> & cols);
+
+	void visitUnaryExpression(UnaryExpression * expression);
+
+	void visitBinaryExpression(BinaryExpression * expression);
+
+	void visitNnaryExpression(NnaryExpression * expression);
+
+	void visitConstant(Constant * expression);
+
+	void visitColumn(Column * expression);
+
+	void visitGroupedExpression(GroupedExpression * expression);
+};
 
 #endif

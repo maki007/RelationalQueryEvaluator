@@ -194,6 +194,7 @@ void NnaryExpression::accept(ExpressionVisitorBase &v)
 Constant::Constant(DOMElement * node)
 {
 	this->value=XmlUtils::ReadAttribute(node,"value");
+	this->type = XmlUtils::ReadAttribute(node, "type");
 }
 
 void Constant::replaceChild(Expression * oldChild,Expression * newChild)
