@@ -3,13 +3,13 @@ operator main()->()
 broadcast()->(){4} start;
 TableScan()->(int) TableScan0(); 
 TableScan()->(int) TableScan1(); 
-HashJoin(int)(int)->(int,int) HashJoin2(); 
+HashJoin(int)(int)->(int,int) HashJoin2(left="1",right="0",out="0,1"); 
 SortOperator(int,int)->(int,int) SortOperator3(sortedBy="",sortBy="0:A"); 
 TableScan()->(int) TableScan4(); 
 TableScan()->(int) TableScan5(); 
-HashJoin(int)(int)->(int,int) HashJoin6(); 
+HashJoin(int)(int)->(int,int) HashJoin6(left="1",right="0",out="0,1"); 
 SortOperator(int,int)->(int,int) SortOperator7(sortedBy="",sortBy="0:A"); 
-MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin8(); 
+MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin8(left="0,1",right="2,3",out="0,1,2,3"); 
 Store(int,int,int,int)->() storeResult(); 
 
 source -> start

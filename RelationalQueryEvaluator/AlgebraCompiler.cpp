@@ -925,7 +925,17 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		}
 	}
 
+	std::map<int, ColumnInfo> outputColumns;
+	for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
+	{
+		outputColumns[it->column.id] = *it;
+	}
 	result = newResult;
+	for (auto it = result.begin(); it != result.end(); ++it)
+	{
+		(*it)->plan->columns = outputColumns;
+
+	}
 }
 
 

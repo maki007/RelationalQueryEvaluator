@@ -15,22 +15,6 @@ BoboxPlanWritingPhysicalOperatorVisitor::BoboxPlanWritingPhysicalOperatorVisitor
 	lastId = 0;
 }
 
-string BoboxPlanWritingPhysicalOperatorVisitor::getColumnNumberOutput(const map<int, ColumnInfo> & columns)
-{
-	string res = "";
-	ulong i = 0;
-	for (auto it = columns.begin(); it != columns.end(); ++it)
-	{
-		res += to_string(it->second.column.id);
-		++i;
-		if (i != columns.size())
-		{
-			res += ",";
-		}
-	}
-	return res;
-}
-
 string BoboxPlanWritingPhysicalOperatorVisitor::getColumnTypeOutput(const map<int, ColumnInfo> & columns)
 {
 	string res = "";
@@ -166,24 +150,62 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeGroupParameters(const map<i
 }
 
 
+string BoboxPlanWritingPhysicalOperatorVisitor::writeJoinParameters(BinaryPhysicalOperator * node)
+{
+	map<int, int> cols;
+	std::map<int, ColumnInfo> allColumns = node->leftChild->columns;
+	allColumns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
+	convertColumns(allColumns, cols);
+	string left = "left=\"";
+	string right = "right=\"";
+	string out = "out=\"";
+	ulong i = 0;
+	for (auto it = cols.begin(); it != cols.end(); ++it)
+	{
+		if (node->columns.find(it->first) != node->columns.end())
+		{
+			out += to_string(i) + ",";
+		}
+		
+		if (node->leftChild->columns.find(it->first) != node->leftChild->columns.end())
+		{
+			left += to_string(i) + ",";
+		}
+		
+		if (node->rightChild->columns.find(it->first) != node->rightChild->columns.end())
+		{
+			right += to_string(i) + ",";
+		}
+
+		++i;
+	}
+
+	left[left.size()-1] = '\"';
+	right[right.size() - 1] = '\"';
+	out[out.size() - 1] = '\"';
+
+	return left+","+right+","+out;
+
+}
+
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
-	writeBinaryOperator("MergeEquiJoin", node, "");
+	writeBinaryOperator("MergeEquiJoin", node, writeJoinParameters(node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
-	writeBinaryOperator("MergeNonEquiJoin", node, "");
+	writeBinaryOperator("MergeNonEquiJoin", node, writeJoinParameters(node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
 {
-	writeBinaryOperator("CrossJoin", node, "");
+	writeBinaryOperator("CrossJoin", node, writeJoinParameters(node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 {
-	writeBinaryOperator("HashJoin", node, "");
+	writeBinaryOperator("HashJoin", node, writeJoinParameters(node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)

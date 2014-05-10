@@ -104,9 +104,10 @@ public:
 					}
 					else
 					{
-						outputColumns[it->newColumn] = ColumnInfo(it->newColumn, "");
+						outputColumns[it->newColumn] = ColumnInfo(it->newColumn, outputColumns0[it->column.name].type);
 						outputColumns[it->newColumn].column.id = outputColumns0[it->column.name].column.id;
-
+						(it)->column.id = outputColumns[it->newColumn].column.id;
+						(it)->type = outputColumns[it->newColumn].type;
 					}
 				}
 				else if (it->input == 1)
@@ -117,8 +118,10 @@ public:
 					}
 					else
 					{
-						outputColumns[it->newColumn] = ColumnInfo(it->newColumn, "");
+						outputColumns[it->newColumn] = ColumnInfo(it->newColumn, outputColumns1[it->column.name].type);
 						outputColumns[it->newColumn].column.id = outputColumns1[it->column.name].column.id;
+						(it)->column.id = outputColumns[it->newColumn].column.id;
+						(it)->type = outputColumns[it->newColumn].type;
 					}
 				}
 				else

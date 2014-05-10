@@ -3,11 +3,11 @@ operator main()->()
 broadcast()->(){4} start;
 TableScan()->(int) TableScan0(); 
 TableScan()->(int) TableScan1(); 
-HashJoin(int)(int)->(int,int) HashJoin2(); 
+HashJoin(int)(int)->(int,int) HashJoin2(left="1",right="0",out="0,1"); 
 TableScan()->(int) TableScan3(); 
 TableScan()->(int) TableScan4(); 
-HashJoin(int)(int)->(int,int) HashJoin5(); 
-HashJoin(int,int)(int,int)->(int,int,int,int) HashJoin6(); 
+HashJoin(int)(int)->(int,int) HashJoin5(left="1",right="0",out="0,1"); 
+HashJoin(int,int)(int,int)->(int,int,int,int) HashJoin6(left="2,3",right="0,1",out="0,1,2,3"); 
 Store(int,int,int,int)->() storeResult(); 
 
 source -> start

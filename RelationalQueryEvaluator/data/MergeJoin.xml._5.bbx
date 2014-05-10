@@ -3,7 +3,7 @@ operator main()->()
 broadcast()->(){2} start;
 ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan0(); 
 ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan1(); 
-MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(); 
+MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(left="0",right="1",out="0,1"); 
 Store(int,int)->() storeResult(); 
 
 source -> start

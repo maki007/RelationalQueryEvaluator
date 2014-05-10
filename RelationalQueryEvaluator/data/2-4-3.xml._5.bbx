@@ -3,11 +3,11 @@ operator main()->()
 broadcast()->(){3} start;
 IndexScan()->(int,int) IndexScan0(); 
 IndexScan()->(int,int,int,int) IndexScan1(); 
-HashJoin(int,int)(int,int,int,int)->(int,int,int,int,int,int) HashJoin2(); 
+HashJoin(int,int)(int,int,int,int)->(int,int,int,int,int,int) HashJoin2(left="0,1",right="2,3,4,5",out="0,1,2,3,4,5"); 
 TableScan()->(int,int,int,int) TableScan3(); 
 Filter(int,int,int,int)->(int,int,int,int) Filter4(condition="OP_LOWER(OP_date_CONSTANT(today),1)"); 
-HashJoin(int,int,int,int,int,int)(int,int,int,int)->(int,int,int,int,int,int,int,int,int,int) HashJoin5(); 
-ColumnsOperations(int,int,int,int,int,int,int,int,int,int)->(int,int,int,double) ColumnsOperations6(out="2,6,7,OP_TIMES(4,OP_MINUS(OP_double_CONSTANT(1),5))"); 
+HashJoin(int,int,int,int,int,int)(int,int,int,int)->(int,int,int,int,int) HashJoin5(left="0,1,6,7,8,9",right="2,3,4,5",out="2,4,5,6,7"); 
+ColumnsOperations(int,int,int,int,int)->(int,int,int,double) ColumnsOperations6(out="0,3,4,OP_TIMES(1,OP_MINUS(OP_double_CONSTANT(1),2))"); 
 HashGroup(int,int,int,double)->(int,int,int,double) HashGroup7(groupBy="0,1,2",functions="sum(3)"); 
 SortOperator(int,int,int,double)->(int,int,int,double) SortOperator8(sortedBy="",sortBy="3:D,1:A"); 
 Store(int,int,int,double)->() storeResult(); 

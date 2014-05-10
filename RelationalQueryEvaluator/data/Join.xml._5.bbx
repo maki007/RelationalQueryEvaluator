@@ -3,8 +3,8 @@ operator main()->()
 broadcast()->(){2} start;
 TableScan()->(int,string) TableScan0(); 
 TableScan()->(string,int) TableScan1(); 
-HashJoin(int,string)(string,int)->(string,int,int,string) HashJoin2(); 
-Store(string,int,int,string)->() storeResult(); 
+HashJoin(int,string)(string,int)->(string,string) HashJoin2(left="2,3",right="0,1",out="0,3"); 
+Store(string,string)->() storeResult(); 
 
 source -> start
 start[0] -> TableScan0;

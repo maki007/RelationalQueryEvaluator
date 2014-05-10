@@ -5,12 +5,12 @@ Sorted by e_3 asc
 Sort by: 
  time:0
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node1[label="Merge Join
 (a_1(0) == c_3(2))
  time:4777
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node2[label="Sort
 Sort by: a_1 both
  time:19931
@@ -39,7 +39,7 @@ Sort by: c_3 both
  size:1000
 c_3 3981,d_4 3981,
 "]node7[label="Hash Join
-(c_3(0) == d_4(3))
+(c_3(2) == d_4(3))
  time:10000
  size:3981
 c_3 3981,d_4 3981,
@@ -60,14 +60,14 @@ node10[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node11[label="Hash Join
 (a_1(0) == c_3(2))
  time:39810
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node12[label="Hash Join
-(c_3(0) == d_4(3))
+(c_3(2) == d_4(3))
  time:10000
  size:3981
 c_3 3981,d_4 3981,
@@ -103,12 +103,12 @@ node18[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node19[label="Hash Join
 (a_1(0) == b_2(1))
  time:39697
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node20[label="Table Scan
  time:1000
  size:1000
@@ -125,7 +125,7 @@ a_1 15848,c_3 15848,d_4 15848,
 a_1 251,
 "]node22 -> node21[headport=s, tailport=n,label="   "]
 node23[label="Hash Join
-(c_3(0) == d_4(3))
+(c_3(2) == d_4(3))
  time:10000
  size:3981
 c_3 3981,d_4 3981,
@@ -146,12 +146,12 @@ node26[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node27[label="Hash Join
-(c_3(0) == d_4(3))
+(c_3(2) == d_4(3))
  time:39697
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node28[label="Table Scan
  time:1000
  size:1000
@@ -189,19 +189,19 @@ node34[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node35[label="Hash Join
 (a_1(0) == b_2(1))
  time:39697
  size:63095
-a_1 63095,b_2 63095,c_3 63095,d_4 63095,
+a_1 1,b_2 1,e_3 1,d_4 1,
 "]node36[label="Table Scan
  time:1000
  size:1000
 b_2 251,
 "]node36 -> node35[headport=s, tailport=n,label="   "]
 node37[label="Hash Join
-(c_3(0) == d_4(3))
+(c_3(2) == d_4(3))
  time:15962
  size:15848
 a_1 15848,c_3 15848,d_4 15848,

@@ -3,8 +3,8 @@ operator main()->()
 broadcast()->(){2} start;
 TableScan()->(string,int) TableScan0(); 
 TableScan()->(int,string) TableScan1(); 
-CrossJoin(string,int)(int,string)->(string,int,int,string) CrossJoin2(); 
-Store(string,int,int,string)->() storeResult(); 
+CrossJoin(string,int)(int,string)->(string,string) CrossJoin2(left="0,1",right="2,3",out="0,3"); 
+Store(string,string)->() storeResult(); 
 
 source -> start
 start[0] -> TableScan0;
