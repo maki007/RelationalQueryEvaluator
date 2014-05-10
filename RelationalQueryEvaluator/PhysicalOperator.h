@@ -103,15 +103,10 @@ public:
 	}
 };
 
-class MergeEquiJoin : public BinaryPhysicalOperator
+class CrossJoin : public BinaryPhysicalOperator
 {
 public:
-	std::shared_ptr<Expression> condition;
 	void accept(PhysicalOperatorVisitor &v);
-	MergeEquiJoin(const std::shared_ptr<Expression> & condition)
-	{
-		this->condition = condition;
-	}
 };
 
 class MergeNonEquiJoin : public BinaryPhysicalOperator
@@ -125,9 +120,18 @@ public:
 	}
 };
 
-class CrossJoin : public BinaryPhysicalOperator
+class MergeEquiJoin : public BinaryPhysicalOperator
 {
 public:
+	std::shared_ptr<Expression> condition;
+	std::vector<ColumnIdentifier> left;
+	std::vector<ColumnIdentifier> right;
+	MergeEquiJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+	{
+		this->condition = condition;
+		this->left = left;
+		this->right = right;
+	}
 	void accept(PhysicalOperatorVisitor &v);
 };
 
@@ -135,9 +139,13 @@ class HashJoin : public BinaryPhysicalOperator
 {
 public:
 	std::shared_ptr<Expression> condition;
-	HashJoin(const std::shared_ptr<Expression> & condition)
+	std::vector<ColumnIdentifier> left;
+	std::vector<ColumnIdentifier> right;
+	HashJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
 	{
 		this->condition = condition;
+		this->left = left;
+		this->right = right;
 	}
 	void accept(PhysicalOperatorVisitor &v);
 };

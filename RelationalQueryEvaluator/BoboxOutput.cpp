@@ -182,12 +182,12 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeJoinParameters(BinaryPhysic
 		{
 			out += to_string(i) + ",";
 		}
-		
+
 		if (node->leftChild->columns.find(it->first) != node->leftChild->columns.end())
 		{
 			left += to_string(i) + ",";
 		}
-		
+
 		if (node->rightChild->columns.find(it->first) != node->rightChild->columns.end())
 		{
 			right += to_string(i) + ",";
@@ -196,17 +196,41 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeJoinParameters(BinaryPhysic
 		++i;
 	}
 
-	left[left.size()-1] = '\"';
+	left[left.size() - 1] = '\"';
 	right[right.size() - 1] = '\"';
 	out[out.size() - 1] = '\"';
 
-	return left+","+right+","+out;
+	return left + "," + right + "," + out;
 
 }
-
+string BoboxPlanWritingPhysicalOperatorVisitor::writeEquiJoinParameters(const vector<ColumnIdentifier> & left, const vector<ColumnIdentifier> & right, BinaryPhysicalOperator * node)
+{
+	string leftString = "leftPartOfCondition=\"";
+	string rightString = "rightPartOfCondition=\"";
+	
+	std::map<int, ColumnInfo> columns = node->leftChild->columns;
+	columns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
+	map<int, int> cols;
+	convertColumns(columns, cols);
+	for (ulong i = 0; i < left.size(); ++i)
+	{
+		leftString += to_string(cols[left[i].id]);
+		leftString += ",";
+		rightString += to_string(cols[right[i].id]);
+		rightString += ",";
+	}
+	leftString[leftString.size() - 1] = '\"';
+	rightString[rightString.size() - 1] = '\"';
+	return "," + leftString + "," + rightString;
+}
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
-	writeBinaryOperator("MergeEquiJoin", node, writeJoinParameters(node));
+	writeBinaryOperator("MergeEquiJoin", node, writeJoinParameters(node)+writeEquiJoinParameters(node->left,node->right,node));
+}
+
+void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
+{
+	writeBinaryOperator("HashJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->left, node->right, node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
@@ -217,11 +241,6 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEqui
 void BoboxPlanWritingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
 {
 	writeBinaryOperator("CrossJoin", node, writeJoinParameters(node));
-}
-
-void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
-{
-	writeBinaryOperator("HashJoin", node, writeJoinParameters(node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
@@ -365,7 +384,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitColumnsOperationsOperator(Col
 void BoboxPlanWritingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
 	string cols = "";
-	writeNullaryOperator("ScanAndSortByIndexScan", node->columns, "name=\""+node->tableName+"\",index=\""+node->index.name+"\",columns=\""+getColumnNameOutput(node->columns)+"\"");
+	writeNullaryOperator("ScanAndSortByIndexScan", node->columns, "name=\"" + node->tableName + "\",index=\"" + node->index.name + "\",columns=\"" + getColumnNameOutput(node->columns) + "\"");
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitTableScan(TableScan * node)
@@ -379,7 +398,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 	convertColumns(node->columns, cols);
 	BoboxWritingExpressionVisitor writer(cols);
 	node->condition->accept(writer);
-	writeNullaryOperator("IndexScan", node->columns, "name=\"" + node->tableName + "\",index=\"" + node->index.name + "\",columns=\"" + getColumnNameOutput(node->columns) + "\",condition=\"" + writer .result+ "\"");
+	writeNullaryOperator("IndexScan", node->columns, "name=\"" + node->tableName + "\",index=\"" + node->index.name + "\",columns=\"" + getColumnNameOutput(node->columns) + "\",condition=\"" + writer.result + "\"");
 }
 
 BoboxWritingExpressionVisitor::BoboxWritingExpressionVisitor(map<int, int> & cols)
@@ -450,7 +469,7 @@ void BoboxWritingExpressionVisitor::visitBinaryExpression(BinaryExpression * exp
 
 void BoboxWritingExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
 {
-	result += "OP_"+expression->name + "(";
+	result += "OP_" + expression->name + "(";
 	ulong i = 0;
 	for (auto it = expression->arguments.begin(); it != expression->arguments.end(); ++it)
 	{

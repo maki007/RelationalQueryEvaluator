@@ -3,7 +3,7 @@ operator main()->()
 broadcast()->(){2} start;
 TableScan()->(int) TableScan0(name="p",columns="a"); 
 ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan1(name="q",index="index",columns="b"); 
-MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(left="0",right="1",out="0,1"); 
+MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(left="0",right="1",out="0,1",leftPartOfCondition="0",rightPartOfCondition="1"); 
 Store(int,int)->() storeResult(); 
 
 source -> start

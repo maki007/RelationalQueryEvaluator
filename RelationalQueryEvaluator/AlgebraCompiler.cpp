@@ -1023,12 +1023,17 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 
 	if (equalConditions.size() > 0)
 	{
+
+		std::vector<ColumnIdentifier> leftPartOfEquation;
+		std::vector<ColumnIdentifier> rightPartOfEquation;
 		double newSize = left.size * right.size;
 		for (auto it = equalConditions.begin(); it != equalConditions.end(); ++it)
 		{
 			uint leftColumnIndex = *((*it)->inputs.begin());
 			uint rightColumnIndex = *(--((*it)->inputs.end()));
 			newSize /= max(newPlan.columns[leftColumnIndex].numberOfUniqueValues, newPlan.columns[rightColumnIndex].numberOfUniqueValues);
+			leftPartOfEquation.push_back(newPlan.columns[leftColumnIndex].column);
+			rightPartOfEquation.push_back(newPlan.columns[rightColumnIndex].column);
 		}
 		newSize = max(double(1), newSize);
 		newPlan.size = newSize;
@@ -1061,7 +1066,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		{
 			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
 			{
-				HashJoin * hashJoin = new HashJoin(condition);
+				HashJoin * hashJoin;
 				shared_ptr<PhysicalPlan> hashedInput;
 				shared_ptr<PhysicalPlan> notHashedInput;
 
@@ -1069,11 +1074,13 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				{
 					hashedInput = *first;
 					notHashedInput = *second;
+					hashJoin = new HashJoin(condition, leftPartOfEquation, rightPartOfEquation);
 				}
 				else
 				{
 					hashedInput = *second;
 					notHashedInput = *first;
+					hashJoin = new HashJoin(condition, rightPartOfEquation, leftPartOfEquation);
 				}
 				double time = TimeComplexity::hashJoin(min(left.size, right.size), max(left.size, right.size));
 				shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, newColumns, hashedInput, notHashedInput));
@@ -1157,7 +1164,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				shared_ptr<PhysicalPlan> rightSortedPlan;
 				rightSortedPlan = generateSortParameters(rightSortParameters, *second);
 
-				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition);
+				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition, leftPartOfEquation, rightPartOfEquation);
 				time = TimeComplexity::mergeEquiJoin(left.size, right.size);
 				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
 				PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;

@@ -210,6 +210,8 @@ public:
 		const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 	std::string BoboxPlanWritingPhysicalOperatorVisitor::writeJoinParameters(BinaryPhysicalOperator * node);
 
+	std::string writeEquiJoinParameters(const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right, BinaryPhysicalOperator * node);
+
 	void visitFilter(Filter * node);
 
 	void visitFilterKeepingOrder(FilterKeepingOrder * node);
