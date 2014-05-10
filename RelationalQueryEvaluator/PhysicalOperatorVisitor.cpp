@@ -298,15 +298,48 @@ void PhysicalOperatorDrawingVisitor::visitUnionOperator(UnionOperator * node)
 	generateText(label, node);
 }
 
+string PhysicalOperatorDrawingVisitor::writeGroupParameters(const vector<GroupColumn> & groupColumns, const vector<AgregateFunction> & agregateFunctions)
+{
+	string label = "";
+	for (auto it = groupColumns.begin(); it != groupColumns.end(); ++it)
+	{
+		label += it->input.toString();
+		label += ", ";
+	}
+	if (groupColumns.size() == 0)
+	{
+		label += "nothing,";
+	}
+
+	for (auto it = agregateFunctions.begin(); it != agregateFunctions.end(); ++it)
+	{
+		label += it->output.toString();
+		label += "=";
+		label += it->functionName;
+		if (it->parameter.name == "")
+		{
+			label += "()";
+		}
+		else
+		{
+			label += "(" + it->parameter.toString() + ")";
+		}
+		label += ";";
+	}
+	return label;
+}
+
 void PhysicalOperatorDrawingVisitor::visitHashGroup(HashGroup * node)
 {
-	string label = "Hash Group";
+	string label = "Hash Group\n";
+	label += writeGroupParameters(node->groupColumns, node->agregateFunctions);
 	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitSortedGroup(SortedGroup * node)
 {
-	string label = "Sorted Group";
+	string label = "Sorted Group\n";
+	label += writeGroupParameters(node->groupColumns, node->agregateFunctions);
 	generateText(label, node);
 }
 
@@ -333,7 +366,8 @@ void PhysicalOperatorDrawingVisitor::visitColumnsOperationsOperator(ColumnsOpera
 
 void PhysicalOperatorDrawingVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-	string label = "Sort by index Scan";
+	string label = "Sort by index Scan\n";
+	label.append(node->index.toString());
 	generateText(label, node);
 }
 
@@ -348,7 +382,8 @@ void PhysicalOperatorDrawingVisitor::visitIndexScan(IndexScan * node)
 	string label = "Index Scan\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
-	label.append(expresionWriter.result);
+	label.append(expresionWriter.result+"\n");
+	label.append(node->index.toString());
 	generateText(label, node);
 }
 

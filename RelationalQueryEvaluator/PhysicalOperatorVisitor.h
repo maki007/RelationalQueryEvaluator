@@ -56,6 +56,8 @@ public:
 	void generateText(std::string & label,UnaryPhysicalOperator * node);
 
 	void generateText(std::string & label,BinaryPhysicalOperator * node);
+	
+	std::string PhysicalOperatorDrawingVisitor::writeGroupParameters(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 
 	void visitFilter(Filter * node);
 

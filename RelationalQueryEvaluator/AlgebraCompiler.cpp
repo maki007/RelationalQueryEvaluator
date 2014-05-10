@@ -254,7 +254,7 @@ void AlgebraCompiler::visitTable(Table * node)
 	{
 		if (it->type == UNCLUSTERED)
 		{
-			PhysicalPlan * physicalPlan = new PhysicalPlan(new ScanAndSortByIndex(), (double)node->numberOfRows,
+			PhysicalPlan * physicalPlan = new PhysicalPlan(new ScanAndSortByIndex(*it), (double)node->numberOfRows,
 				TimeComplexity::unClusteredScan(double(node->numberOfRows)), node->columns);
 
 			for (auto index = it->columns.begin(); index != it->columns.end(); ++index)

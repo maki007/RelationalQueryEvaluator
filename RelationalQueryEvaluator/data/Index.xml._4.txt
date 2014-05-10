@@ -2,6 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Index Scan
 (a_1(0) < 5)
+index(a_1:ascending)
  time:100099
  size:33333
 a_1 16666,
@@ -11,6 +12,7 @@ a_1 16666,
  size:33333
 a_1 50000,
 "]node2[label="Sort by index Scan
+index(a_1:ascending)
  time:300000
  size:100000
 a_1 50000,
@@ -42,6 +44,7 @@ a_1 50000,
  size:33333
 a_1 50000,
 "]node8[label="Sort by index Scan
+index(a_1:ascending)
  time:300000
  size:100000
 a_1 50000,

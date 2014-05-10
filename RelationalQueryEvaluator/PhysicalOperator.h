@@ -190,6 +190,11 @@ public:
 class ScanAndSortByIndex : public NullaryPhysicalOperator
 {
 public:
+	Index index;
+	ScanAndSortByIndex(const Index & index)
+	{
+		this->index = index;
+	}
 	void accept(PhysicalOperatorVisitor &v);
 };
 

@@ -153,6 +153,31 @@ public:
 	IndexType type;
 	std::string name;
 	std::vector<SortParameter> columns;
+	std::string toString()
+	{
+		std::string column = "";
+		ulong i = 0;
+		for (auto it = columns.begin(); it != columns.end(); ++it)
+		{
+			column += it->column.toString();
+			column += ":";
+			if (it->order == SortOrder::ASCENDING)
+			{
+				column += "ascending";
+			}
+			else
+			{
+				column += "descending";
+			}
+			++i;
+			if (i != columns.size())
+			{
+				column += ",";
+			}
+		}
+		
+		return name + "(" + column + ")";
+	}
 };
 
 class JoinColumnInfo;

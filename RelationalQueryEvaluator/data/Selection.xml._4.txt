@@ -7,6 +7,7 @@ node0[label="Filter
 a_1 0,
 "]node1[label="Index Scan
 (a_1(0) == 4)
+index(a_1:ascending)
  time:89
  size:3
 a_1 1,
@@ -18,6 +19,7 @@ node2[label="Filter Keeping Order
 a_1 0,
 "]node3[label="Index Scan
 (a_1(0) == 4)
+index(a_1:ascending)
  time:89
  size:3
 a_1 1,
@@ -38,6 +40,7 @@ AND ((a_1(0) == 4),(a_1(0) < -1))
  size:1
 a_1 3000,
 "]node7[label="Sort by index Scan
+index(a_1:ascending)
  time:30000
  size:10000
 a_1 3000,
@@ -48,6 +51,7 @@ AND ((a_1(0) == 4),(a_1(0) < -1))
  size:1
 a_1 3000,
 "]node9[label="Sort by index Scan
+index(a_1:ascending)
  time:30000
  size:10000
 a_1 3000,

@@ -1,6 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sorted Group
+nothing,revenue_6=sum(x_5);
  time:32098
  size:1
 revenue_6 1,
@@ -22,6 +23,7 @@ l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 300
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Hash Group
+nothing,revenue_6=sum(x_5);
  time:254320
  size:1
 revenue_6 1,

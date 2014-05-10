@@ -6,6 +6,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node1[label="Hash Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:43541
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
@@ -26,12 +27,14 @@ l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority
 c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
 "]node5[label="Index Scan
 (c_mktsegment_2(0) == SEGMENT)
+index2(c_mktsegment_2:ascending)
  time:135
  size:10
 c_custkey_1 1,c_mktsegment_2 1,
 "]node5 -> node4[headport=s, tailport=n,label="   "]
 node6[label="Index Scan
 (o_orderdate_7(0) < today)
+index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
  size:500000
 o_orderdate_7 29090,o_shippriority_8 29090,o_orderkey_9 29090,o_custkey_10 29090,
@@ -57,6 +60,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node10[label="Sorted Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:5495
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
@@ -82,12 +86,14 @@ l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority
 c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
 "]node15[label="Index Scan
 (c_mktsegment_2(0) == SEGMENT)
+index2(c_mktsegment_2:ascending)
  time:135
  size:10
 c_custkey_1 1,c_mktsegment_2 1,
 "]node15 -> node14[headport=s, tailport=n,label="   "]
 node16[label="Index Scan
 (o_orderdate_7(0) < today)
+index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
  size:500000
 o_orderdate_7 29090,o_shippriority_8 29090,o_orderkey_9 29090,o_custkey_10 29090,
@@ -114,6 +120,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node20[label="Hash Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:43541
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
@@ -145,6 +152,7 @@ c_custkey_1 13831,c_mktsegment_2 13831,
 node24 -> node23[headport=s, tailport=n,label="   "]
 node26[label="Index Scan
 (o_orderdate_7(0) < today)
+index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
  size:500000
 o_orderdate_7 29090,o_shippriority_8 29090,o_orderkey_9 29090,o_custkey_10 29090,
@@ -170,6 +178,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node30[label="Sorted Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:5495
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
@@ -206,6 +215,7 @@ c_custkey_1 13831,c_mktsegment_2 13831,
 node35 -> node34[headport=s, tailport=n,label="   "]
 node37[label="Index Scan
 (o_orderdate_7(0) < today)
+index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
  size:500000
 o_orderdate_7 29090,o_shippriority_8 29090,o_orderkey_9 29090,o_custkey_10 29090,
@@ -232,6 +242,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node41[label="Hash Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:43541
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
@@ -256,6 +267,7 @@ c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orde
  size:10
 c_custkey_1 13831,c_mktsegment_2 13831,
 "]node46[label="Sort by index Scan
+index2(c_mktsegment_2:ascending)
  time:450000
  size:150000
 c_custkey_1 13831,c_mktsegment_2 13831,
@@ -263,6 +275,7 @@ c_custkey_1 13831,c_mktsegment_2 13831,
 node45 -> node44[headport=s, tailport=n,label="   "]
 node47[label="Index Scan
 (o_orderdate_7(0) < today)
+index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
  size:500000
 o_orderdate_7 29090,o_shippriority_8 29090,o_orderkey_9 29090,o_custkey_10 29090,
