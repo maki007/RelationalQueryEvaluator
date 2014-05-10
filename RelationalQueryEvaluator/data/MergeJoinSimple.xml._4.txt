@@ -28,16 +28,16 @@ a_1 1,b_2 1,
  size:15848931
 a_1 1,b_2 1,
 "]node5[label="Table Scan
-B
- time:1000000
- size:1000000
-b_2 63095,
-"]node5 -> node4[headport=s, tailport=n,label="   "]
-node6[label="Table Scan
 A
  time:1000000
  size:1000000
 a_1 63095,
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node6[label="Table Scan
+B
+ time:1000000
+ size:1000000
+b_2 63095,
 "]node6 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 

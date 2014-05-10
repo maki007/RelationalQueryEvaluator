@@ -6,16 +6,16 @@ node0[label="Hash Join
  size:3981
 name_1 1,name_4 1,
 "]node1[label="Table Scan
-countries
- time:1000
- size:1000
-id_3 251,name_4 251,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Table Scan
 users
  time:1000
  size:1000
 name_1 251,country_id_2 251,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+node2[label="Table Scan
+countries
+ time:1000
+ size:1000
+id_3 251,name_4 251,
 "]node2 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Merge Join
 (country_id_2(0) == id_3(1))

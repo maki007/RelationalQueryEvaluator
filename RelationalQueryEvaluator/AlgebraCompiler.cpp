@@ -1070,7 +1070,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				shared_ptr<PhysicalPlan> hashedInput;
 				shared_ptr<PhysicalPlan> notHashedInput;
 
-				if (left.size < right.size)
+				if (left.size <= right.size)
 				{
 					hashedInput = *first;
 					notHashedInput = *second;

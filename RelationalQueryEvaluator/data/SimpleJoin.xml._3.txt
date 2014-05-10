@@ -38,34 +38,34 @@ node5[label="Hash Join
  size:3981
 a_1 1,b_2 1,
 "]node6[label="Table Scan
-q
- time:1000
- size:1000
-b_2 251,
-"]node6 -> node5[headport=s, tailport=n,label="   "]
-node7[label="Table Scan
 p
  time:1000
  size:1000
 a_1 251,
+"]node6 -> node5[headport=s, tailport=n,label="   "]
+node7[label="Table Scan
+q
+ time:1000
+ size:1000
+b_2 251,
 "]node7 -> node5[headport=s, tailport=n,label="   "]
 node8[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000
  size:3981
 a_1 1,b_2 1,
-"]node9[label="Sort by index Scan
+"]node9[label="Table Scan
+p
+ time:1000
+ size:1000
+a_1 251,
+"]node9 -> node8[headport=s, tailport=n,label="   "]
+node10[label="Sort by index Scan
 q
 index(b_2:ascending)
  time:3000
  size:1000
 b_2 251,
-"]node9 -> node8[headport=s, tailport=n,label="   "]
-node10[label="Table Scan
-p
- time:1000
- size:1000
-a_1 251,
 "]node10 -> node8[headport=s, tailport=n,label="   "]
 node11[label="Merge Join
 (a_1(0) == b_2(1))

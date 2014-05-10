@@ -22,16 +22,16 @@ a_1 3981,b_2 3981,
  size:3981
 a_1 3981,b_2 3981,
 "]node4[label="Table Scan
-b
- time:1000
- size:1000
-b_2 251,
-"]node4 -> node3[headport=s, tailport=n,label="   "]
-node5[label="Table Scan
 a
  time:1000
  size:1000
 a_1 251,
+"]node4 -> node3[headport=s, tailport=n,label="   "]
+node5[label="Table Scan
+b
+ time:1000
+ size:1000
+b_2 251,
 "]node5 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
@@ -46,16 +46,16 @@ c_3 3981,d_4 3981,
  size:3981
 c_3 3981,d_4 3981,
 "]node8[label="Table Scan
-d
- time:1000
- size:1000
-d_4 251,
-"]node8 -> node7[headport=s, tailport=n,label="   "]
-node9[label="Table Scan
 c
  time:1000
  size:1000
 c_3 251,
+"]node8 -> node7[headport=s, tailport=n,label="   "]
+node9[label="Table Scan
+d
+ time:1000
+ size:1000
+d_4 251,
 "]node9 -> node7[headport=s, tailport=n,label="   "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node1[headport=s, tailport=n,label="   "]
@@ -71,39 +71,39 @@ a_1 1,b_2 1,e_3 1,d_4 1,
  size:63095
 a_1 1,b_2 1,e_3 1,d_4 1,
 "]node12[label="Hash Join
-(c_3(2) == d_4(3))
- time:10000
- size:3981
-c_3 3981,d_4 3981,
-"]node13[label="Table Scan
-d
- time:1000
- size:1000
-d_4 251,
-"]node13 -> node12[headport=s, tailport=n,label="   "]
-node14[label="Table Scan
-c
- time:1000
- size:1000
-c_3 251,
-"]node14 -> node12[headport=s, tailport=n,label="   "]
-node12 -> node11[headport=s, tailport=n,label="   "]
-node15[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000
  size:3981
 a_1 3981,b_2 3981,
-"]node16[label="Table Scan
-b
- time:1000
- size:1000
-b_2 251,
-"]node16 -> node15[headport=s, tailport=n,label="   "]
-node17[label="Table Scan
+"]node13[label="Table Scan
 a
  time:1000
  size:1000
 a_1 251,
+"]node13 -> node12[headport=s, tailport=n,label="   "]
+node14[label="Table Scan
+b
+ time:1000
+ size:1000
+b_2 251,
+"]node14 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node11[headport=s, tailport=n,label="   "]
+node15[label="Hash Join
+(c_3(2) == d_4(3))
+ time:10000
+ size:3981
+c_3 3981,d_4 3981,
+"]node16[label="Table Scan
+c
+ time:1000
+ size:1000
+c_3 251,
+"]node16 -> node15[headport=s, tailport=n,label="   "]
+node17[label="Table Scan
+d
+ time:1000
+ size:1000
+d_4 251,
 "]node17 -> node15[headport=s, tailport=n,label="   "]
 node15 -> node11[headport=s, tailport=n,label="   "]
 node11 -> node10[headport=s, tailport=n,label="   "]
@@ -140,16 +140,16 @@ node23[label="Hash Join
  size:3981
 c_3 3981,d_4 3981,
 "]node24[label="Table Scan
-d
- time:1000
- size:1000
-d_4 251,
-"]node24 -> node23[headport=s, tailport=n,label="   "]
-node25[label="Table Scan
 c
  time:1000
  size:1000
 c_3 251,
+"]node24 -> node23[headport=s, tailport=n,label="   "]
+node25[label="Table Scan
+d
+ time:1000
+ size:1000
+d_4 251,
 "]node25 -> node23[headport=s, tailport=n,label="   "]
 node23 -> node21[headport=s, tailport=n,label="   "]
 node21 -> node19[headport=s, tailport=n,label="   "]
@@ -187,16 +187,16 @@ node31[label="Hash Join
  size:3981
 a_1 3981,c_3 3981,
 "]node32[label="Table Scan
-c
- time:1000
- size:1000
-c_3 251,
-"]node32 -> node31[headport=s, tailport=n,label="   "]
-node33[label="Table Scan
 a
  time:1000
  size:1000
 a_1 251,
+"]node32 -> node31[headport=s, tailport=n,label="   "]
+node33[label="Table Scan
+c
+ time:1000
+ size:1000
+c_3 251,
 "]node33 -> node31[headport=s, tailport=n,label="   "]
 node31 -> node29[headport=s, tailport=n,label="   "]
 node29 -> node27[headport=s, tailport=n,label="   "]
@@ -234,16 +234,16 @@ node39[label="Hash Join
  size:3981
 a_1 3981,c_3 3981,
 "]node40[label="Table Scan
-c
- time:1000
- size:1000
-c_3 251,
-"]node40 -> node39[headport=s, tailport=n,label="   "]
-node41[label="Table Scan
 a
  time:1000
  size:1000
 a_1 251,
+"]node40 -> node39[headport=s, tailport=n,label="   "]
+node41[label="Table Scan
+c
+ time:1000
+ size:1000
+c_3 251,
 "]node41 -> node39[headport=s, tailport=n,label="   "]
 node39 -> node37[headport=s, tailport=n,label="   "]
 node37 -> node35[headport=s, tailport=n,label="   "]
