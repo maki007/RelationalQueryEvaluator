@@ -366,20 +366,20 @@ void PhysicalOperatorDrawingVisitor::visitColumnsOperationsOperator(ColumnsOpera
 
 void PhysicalOperatorDrawingVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-	string label = "Sort by index Scan\n";
+	string label = "Sort by index Scan\n" +node->tableName + "\n";
 	label.append(node->index.toString());
 	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitTableScan(TableScan * node)
 {
-	string label = "Table Scan";
+	string label = "Table Scan\n"+ node->tableName;
 	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitIndexScan(IndexScan * node)
 {
-	string label = "Index Scan\n";
+	string label = "Index Scan\n" + node->tableName + "\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
 	label.append(expresionWriter.result+"\n");

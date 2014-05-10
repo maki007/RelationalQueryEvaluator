@@ -1,8 +1,8 @@
 operator main()->()
 {
 broadcast()->(){2} start;
-TableScan()->(int) TableScan0(); 
-TableScan()->(int) TableScan1(); 
+TableScan()->(int) TableScan0(name="A",columns="a"); 
+TableScan()->(int) TableScan1(name="B",columns="b"); 
 MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(left="0",right="1",out="0,1"); 
 Store(int,int)->() storeResult(); 
 

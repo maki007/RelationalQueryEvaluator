@@ -231,7 +231,7 @@ void AlgebraCompiler::visitTable(Table * node)
 {
 	result.clear();
 
-	PhysicalPlan * physicalPlan = new PhysicalPlan(new TableScan(), (double)node->numberOfRows,
+	PhysicalPlan * physicalPlan = new PhysicalPlan(new TableScan(node->name), (double)node->numberOfRows,
 		TimeComplexity::clusteredScan(double(node->numberOfRows)), node->columns);
 
 	physicalPlan->indices = node->indices;
@@ -254,7 +254,7 @@ void AlgebraCompiler::visitTable(Table * node)
 	{
 		if (it->type == UNCLUSTERED)
 		{
-			PhysicalPlan * physicalPlan = new PhysicalPlan(new ScanAndSortByIndex(*it), (double)node->numberOfRows,
+			PhysicalPlan * physicalPlan = new PhysicalPlan(new ScanAndSortByIndex(node->name,*it), (double)node->numberOfRows,
 				TimeComplexity::unClusteredScan(double(node->numberOfRows)), node->columns);
 
 			for (auto index = it->columns.begin(); index != it->columns.end(); ++index)
@@ -449,7 +449,7 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 }
 
 
-void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, vector<shared_ptr<Expression> > & condition, vector<shared_ptr<PhysicalPlan>> & newResult)
+void AlgebraCompiler::generateIndexScan(const std::string & tableName,std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, vector<shared_ptr<Expression> > & condition, vector<shared_ptr<PhysicalPlan>> & newResult)
 {
 	for (auto index = (*plan)->indices.begin(); index != (*plan)->indices.end(); ++index)
 	{
@@ -577,7 +577,7 @@ void AlgebraCompiler::generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan
 			{
 				col->second.numberOfUniqueValues *= sizeVisitor.size;
 			}
-			shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(*expression, *index), newSize,
+			shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(tableName,*expression, *index), newSize,
 				TimeComplexity::indexSearch(oldSize) + TimeComplexity::unClusteredScan(newSize), newColumns));
 			indexPlan->sortedBy = sortedBy;
 			vector<shared_ptr<Expression> > newCondition;
@@ -644,7 +644,7 @@ void AlgebraCompiler::visitSelection(Selection * node)
 	{
 		if ((*it)->indices.size() != 0)
 		{
-			generateIndexScan(it, condition, newResult);
+			generateIndexScan(((Table *)(node->child.get()))->name,it, condition, newResult);
 		}
 
 		if ((*it)->sortedBy.parameters.size() != 0)

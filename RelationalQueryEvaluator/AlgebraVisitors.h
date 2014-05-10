@@ -241,7 +241,7 @@ private:
 
 	std::shared_ptr<PhysicalPlan> generateSortParameters(const PossibleSortParameters & parameters, const std::shared_ptr<PhysicalPlan> & result);
 
-	void generateIndexScan(std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
+	void generateIndexScan(const std::string & tableName,std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 
 	
 	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);

@@ -1,6 +1,7 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Index Scan
+customer
 (c_mktsegment_2(0) <= 500)
 index2(c_mktsegment_2:ascending)
  time:150103
@@ -12,6 +13,7 @@ c_custkey_1 50000,c_mktsegment_2 3,
  size:50000
 c_custkey_1 150000,c_mktsegment_2 10,
 "]node2[label="Table Scan
+customer
  time:150000
  size:150000
 c_custkey_1 150000,c_mktsegment_2 10,
@@ -22,6 +24,7 @@ node3[label="Filter
  size:50000
 c_custkey_1 150000,c_mktsegment_2 10,
 "]node4[label="Sort by index Scan
+customer
 index2(c_mktsegment_2:ascending)
  time:450000
  size:150000
@@ -33,6 +36,7 @@ node5[label="Filter Keeping Order
  size:50000
 c_custkey_1 150000,c_mktsegment_2 10,
 "]node6[label="Sort by index Scan
+customer
 index2(c_mktsegment_2:ascending)
  time:450000
  size:150000

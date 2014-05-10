@@ -26,6 +26,7 @@ l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority
  size:186
 c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
 "]node5[label="Index Scan
+customer
 (c_mktsegment_2(0) == SEGMENT)
 index2(c_mktsegment_2:ascending)
  time:135
@@ -33,6 +34,7 @@ index2(c_mktsegment_2:ascending)
 c_custkey_1 1,c_mktsegment_2 1,
 "]node5 -> node4[headport=s, tailport=n,label="   "]
 node6[label="Index Scan
+orders
 (o_orderdate_7(0) < today)
 index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
@@ -46,6 +48,7 @@ node7[label="Filter
  size:2000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
 "]node8[label="Table Scan
+lineitem
  time:6000000
  size:6000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
@@ -80,6 +83,7 @@ l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority
  size:186
 c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
 "]node14[label="Index Scan
+customer
 (c_mktsegment_2(0) == SEGMENT)
 index2(c_mktsegment_2:ascending)
  time:135
@@ -87,6 +91,7 @@ index2(c_mktsegment_2:ascending)
 c_custkey_1 1,c_mktsegment_2 1,
 "]node14 -> node13[headport=s, tailport=n,label="   "]
 node15[label="Index Scan
+orders
 (o_orderdate_7(0) < today)
 index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
@@ -100,6 +105,7 @@ node16[label="Filter
  size:2000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
 "]node17[label="Table Scan
+lineitem
  time:6000000
  size:6000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
@@ -139,12 +145,14 @@ c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orde
  size:10
 c_custkey_1 13831,c_mktsegment_2 13831,
 "]node24[label="Table Scan
+customer
  time:150000
  size:150000
 c_custkey_1 13831,c_mktsegment_2 13831,
 "]node24 -> node23[headport=s, tailport=n,label="   "]
 node23 -> node22[headport=s, tailport=n,label="   "]
 node25[label="Index Scan
+orders
 (o_orderdate_7(0) < today)
 index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
@@ -158,6 +166,7 @@ node26[label="Filter
  size:2000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
 "]node27[label="Table Scan
+lineitem
  time:6000000
  size:6000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
@@ -197,12 +206,14 @@ c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orde
  size:10
 c_custkey_1 13831,c_mktsegment_2 13831,
 "]node34[label="Table Scan
+customer
  time:150000
  size:150000
 c_custkey_1 13831,c_mktsegment_2 13831,
 "]node34 -> node33[headport=s, tailport=n,label="   "]
 node33 -> node32[headport=s, tailport=n,label="   "]
 node35[label="Index Scan
+orders
 (o_orderdate_7(0) < today)
 index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
@@ -216,6 +227,7 @@ node36[label="Filter
  size:2000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
 "]node37[label="Table Scan
+lineitem
  time:6000000
  size:6000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
@@ -255,6 +267,7 @@ c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orde
  size:10
 c_custkey_1 13831,c_mktsegment_2 13831,
 "]node44[label="Sort by index Scan
+customer
 index2(c_mktsegment_2:ascending)
  time:450000
  size:150000
@@ -262,6 +275,7 @@ c_custkey_1 13831,c_mktsegment_2 13831,
 "]node44 -> node43[headport=s, tailport=n,label="   "]
 node43 -> node42[headport=s, tailport=n,label="   "]
 node45[label="Index Scan
+orders
 (o_orderdate_7(0) < today)
 index(o_orderdate_7:ascending,o_shippriority_8:ascending)
  time:1500123
@@ -275,6 +289,7 @@ node46[label="Filter
  size:2000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
 "]node47[label="Table Scan
+lineitem
  time:6000000
  size:6000000
 l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,

@@ -1,7 +1,7 @@
 operator main()->()
 {
 broadcast()->(){1} start;
-TableScan()->(int,int,int) TableScan0(); 
+TableScan()->(int,int,int) TableScan0(name="users",columns="a,b,c"); 
 ColumnsOperations(int,int,int)->(int,double,) ColumnsOperations1(out="0,OP_PLUS(0,OP_TIMES(1,OP_int_CONSTANT(5))),2"); 
 Store(int,double,)->() storeResult(); 
 

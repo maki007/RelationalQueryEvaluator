@@ -11,11 +11,13 @@ AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  size:251
 a_1 1,c_2 1,b_3 1,d_4 1,
 "]node2[label="Table Scan
+B
  time:1000000
  size:1000000
 b_3 63095,d_4 63095,
 "]node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table Scan
+A
  time:1000000
  size:1000000
 a_1 63095,c_2 63095,
@@ -32,6 +34,7 @@ Sort by: c_2 desc, a_1 asc
  size:1000000
 a_1 63095,c_2 63095,
 "]node6[label="Table Scan
+A
  time:1000000
  size:1000000
 a_1 63095,c_2 63095,
@@ -43,6 +46,7 @@ Sort by: d_4 desc, b_3 asc
  size:1000000
 b_3 63095,d_4 63095,
 "]node8[label="Table Scan
+B
  time:1000000
  size:1000000
 b_3 63095,d_4 63095,

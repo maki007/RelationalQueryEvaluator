@@ -31,6 +31,22 @@ string BoboxPlanWritingPhysicalOperatorVisitor::getColumnTypeOutput(const map<in
 	return res;
 }
 
+string BoboxPlanWritingPhysicalOperatorVisitor::getColumnNameOutput(const map<int, ColumnInfo> & columns)
+{
+	string res = "";
+	ulong i = 0;
+	for (auto it = columns.begin(); it != columns.end(); ++it)
+	{
+		res += it->second.column.name;
+		++i;
+		if (i != columns.size())
+		{
+			res += ",";
+		}
+	}
+	return res;
+}
+
 string BoboxPlanWritingPhysicalOperatorVisitor::declaration(const string & type, const string & inputColumns, const string & outputColumns, const string & name, const string & constructParameters)
 {
 	return type + "(" + inputColumns + ")->(" + outputColumns + ") " + name + "(" + constructParameters + "); \n";
@@ -348,17 +364,22 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitColumnsOperationsOperator(Col
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-	writeNullaryOperator("ScanAndSortByIndexScan", node->columns, "");
+	string cols = "";
+	writeNullaryOperator("ScanAndSortByIndexScan", node->columns, "name=\""+node->tableName+"\",index=\""+node->index.name+"\",columns=\""+getColumnNameOutput(node->columns)+"\"");
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitTableScan(TableScan * node)
 {
-	writeNullaryOperator("TableScan", node->columns, "");
+	writeNullaryOperator("TableScan", node->columns, "name=\"" + node->tableName + "\",columns=\"" + getColumnNameOutput(node->columns) + "\"");
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 {
-	writeNullaryOperator("IndexScan", node->columns, "");
+	map<int, int> cols;
+	convertColumns(node->columns, cols);
+	BoboxWritingExpressionVisitor writer(cols);
+	node->condition->accept(writer);
+	writeNullaryOperator("IndexScan", node->columns, "name=\"" + node->tableName + "\",index=\"" + node->index.name + "\",columns=\"" + getColumnNameOutput(node->columns) + "\",condition=\"" + writer .result+ "\"");
 }
 
 BoboxWritingExpressionVisitor::BoboxWritingExpressionVisitor(map<int, int> & cols)

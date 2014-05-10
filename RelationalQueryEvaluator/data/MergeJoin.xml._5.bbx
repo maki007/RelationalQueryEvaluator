@@ -1,8 +1,8 @@
 operator main()->()
 {
 broadcast()->(){2} start;
-ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan0(); 
-ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan1(); 
+ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan0(name="A",index="index",columns="a"); 
+ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan1(name="B",index="index2",columns="b"); 
 MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(left="0",right="1",out="0,1"); 
 Store(int,int)->() storeResult(); 
 

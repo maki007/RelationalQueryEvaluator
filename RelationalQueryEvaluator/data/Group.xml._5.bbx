@@ -1,7 +1,7 @@
 operator main()->()
 {
 broadcast()->(){1} start;
-ScanAndSortByIndexScan()->(string,string) ScanAndSortByIndexScan0(); 
+ScanAndSortByIndexScan()->(string,string) ScanAndSortByIndexScan0(name="people",index="index",columns="user_name,country"); 
 SortedGroup(string,string)->(string,int) SortedGroup1(groupBy="1",functions="count()"); 
 Store(string,int)->() storeResult(); 
 

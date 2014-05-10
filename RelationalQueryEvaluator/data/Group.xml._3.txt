@@ -18,6 +18,7 @@ Sort by:
  size:10000
 user_name_1 410,country_2 1584,
 "]node3[label="Sort by index Scan
+people
 index(country_2:ascending)
  time:30000
  size:10000
@@ -36,6 +37,7 @@ country_2, count_4=count();
  size:1584
 country_3 251,count_4 1584,
 "]node6[label="Table Scan
+people
  time:10000
  size:10000
 user_name_1 410,country_2 1584,
@@ -52,6 +54,7 @@ country_2, count_4=count();
  size:1584
 country_3 251,count_4 1584,
 "]node9[label="Sort by index Scan
+people
 index(country_2:ascending)
  time:30000
  size:10000
@@ -75,6 +78,7 @@ Sort by: country_2 both
  size:10000
 user_name_1 410,country_2 1584,
 "]node13[label="Table Scan
+people
  time:10000
  size:10000
 user_name_1 410,country_2 1584,

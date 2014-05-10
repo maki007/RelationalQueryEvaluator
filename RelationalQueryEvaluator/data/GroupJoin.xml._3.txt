@@ -22,11 +22,13 @@ a_1 3981,b_2 3981,
  size:3981
 a_1 3981,b_2 3981,
 "]node4[label="Table Scan
+b
  time:1000
  size:1000
 b_2 251,
 "]node4 -> node3[headport=s, tailport=n,label="   "]
 node5[label="Table Scan
+a
  time:1000
  size:1000
 a_1 251,
@@ -44,11 +46,13 @@ c_3 3981,d_4 3981,
  size:3981
 c_3 3981,d_4 3981,
 "]node8[label="Table Scan
+d
  time:1000
  size:1000
 d_4 251,
 "]node8 -> node7[headport=s, tailport=n,label="   "]
 node9[label="Table Scan
+c
  time:1000
  size:1000
 c_3 251,
@@ -72,11 +76,13 @@ a_1 1,b_2 1,e_3 1,d_4 1,
  size:3981
 c_3 3981,d_4 3981,
 "]node13[label="Table Scan
+d
  time:1000
  size:1000
 d_4 251,
 "]node13 -> node12[headport=s, tailport=n,label="   "]
 node14[label="Table Scan
+c
  time:1000
  size:1000
 c_3 251,
@@ -88,11 +94,13 @@ node15[label="Hash Join
  size:3981
 a_1 3981,b_2 3981,
 "]node16[label="Table Scan
+b
  time:1000
  size:1000
 b_2 251,
 "]node16 -> node15[headport=s, tailport=n,label="   "]
 node17[label="Table Scan
+a
  time:1000
  size:1000
 a_1 251,
@@ -110,6 +118,7 @@ a_1 1,b_2 1,e_3 1,d_4 1,
  size:63095
 a_1 1,b_2 1,e_3 1,d_4 1,
 "]node20[label="Table Scan
+b
  time:1000
  size:1000
 b_2 251,
@@ -120,6 +129,7 @@ node21[label="Hash Join
  size:15848
 a_1 15848,c_3 15848,d_4 15848,
 "]node22[label="Table Scan
+a
  time:1000
  size:1000
 a_1 251,
@@ -130,11 +140,13 @@ node23[label="Hash Join
  size:3981
 c_3 3981,d_4 3981,
 "]node24[label="Table Scan
+d
  time:1000
  size:1000
 d_4 251,
 "]node24 -> node23[headport=s, tailport=n,label="   "]
 node25[label="Table Scan
+c
  time:1000
  size:1000
 c_3 251,
@@ -153,6 +165,7 @@ a_1 1,b_2 1,e_3 1,d_4 1,
  size:63095
 a_1 1,b_2 1,e_3 1,d_4 1,
 "]node28[label="Table Scan
+d
  time:1000
  size:1000
 d_4 251,
@@ -163,6 +176,7 @@ node29[label="Hash Join
  size:15848
 a_1 15848,b_2 15848,c_3 15848,
 "]node30[label="Table Scan
+b
  time:1000
  size:1000
 b_2 251,
@@ -173,11 +187,13 @@ node31[label="Hash Join
  size:3981
 a_1 3981,c_3 3981,
 "]node32[label="Table Scan
+c
  time:1000
  size:1000
 c_3 251,
 "]node32 -> node31[headport=s, tailport=n,label="   "]
 node33[label="Table Scan
+a
  time:1000
  size:1000
 a_1 251,
@@ -196,6 +212,7 @@ a_1 1,b_2 1,e_3 1,d_4 1,
  size:63095
 a_1 1,b_2 1,e_3 1,d_4 1,
 "]node36[label="Table Scan
+b
  time:1000
  size:1000
 b_2 251,
@@ -206,6 +223,7 @@ node37[label="Hash Join
  size:15848
 a_1 15848,c_3 15848,d_4 15848,
 "]node38[label="Table Scan
+d
  time:1000
  size:1000
 d_4 251,
@@ -216,11 +234,13 @@ node39[label="Hash Join
  size:3981
 a_1 3981,c_3 3981,
 "]node40[label="Table Scan
+c
  time:1000
  size:1000
 c_3 251,
 "]node40 -> node39[headport=s, tailport=n,label="   "]
 node41[label="Table Scan
+a
  time:1000
  size:1000
 a_1 251,

@@ -18,6 +18,7 @@ Sort by:
  size:1000000
 a_1 63095,
 "]node3[label="Sort by index Scan
+A
 index(a_1:ascending)
  time:3000000
  size:1000000
@@ -31,6 +32,7 @@ Sort by:
  size:1000000
 b_2 63095,
 "]node5[label="Sort by index Scan
+B
 index2(b_2:ascending)
  time:3000000
  size:1000000
@@ -49,11 +51,13 @@ a_1 1,b_2 1,
  size:15848931
 a_1 1,b_2 1,
 "]node8[label="Table Scan
+B
  time:1000000
  size:1000000
 b_2 63095,
 "]node8 -> node7[headport=s, tailport=n,label="   "]
 node9[label="Table Scan
+A
  time:1000000
  size:1000000
 a_1 63095,
@@ -70,11 +74,13 @@ a_1 1,b_2 1,
  size:15848931
 a_1 1,b_2 1,
 "]node12[label="Table Scan
+B
  time:1000000
  size:1000000
 b_2 63095,
 "]node12 -> node11[headport=s, tailport=n,label="   "]
 node13[label="Sort by index Scan
+A
 index(a_1:ascending)
  time:3000000
  size:1000000
@@ -92,12 +98,14 @@ a_1 1,b_2 1,
  size:15848931
 a_1 1,b_2 1,
 "]node16[label="Sort by index Scan
+B
 index2(b_2:ascending)
  time:3000000
  size:1000000
 b_2 63095,
 "]node16 -> node15[headport=s, tailport=n,label="   "]
 node17[label="Table Scan
+A
  time:1000000
  size:1000000
 a_1 63095,
@@ -114,12 +122,14 @@ a_1 1,b_2 1,
  size:15848931
 a_1 1,b_2 1,
 "]node20[label="Sort by index Scan
+B
 index2(b_2:ascending)
  time:3000000
  size:1000000
 b_2 63095,
 "]node20 -> node19[headport=s, tailport=n,label="   "]
 node21[label="Sort by index Scan
+A
 index(a_1:ascending)
  time:3000000
  size:1000000

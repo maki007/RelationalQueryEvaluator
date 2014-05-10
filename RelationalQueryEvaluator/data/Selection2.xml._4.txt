@@ -6,6 +6,7 @@ OR ((a_1(0) == 4),(a_1(0) < -1))
  size:3335
 a_1 3000,
 "]node1[label="Table Scan
+users
  time:10000
  size:10000
 a_1 3000,
@@ -16,6 +17,7 @@ OR ((a_1(0) == 4),(a_1(0) < -1))
  size:3335
 a_1 3000,
 "]node3[label="Sort by index Scan
+users
 index(a_1:ascending)
  time:30000
  size:10000
@@ -27,6 +29,7 @@ OR ((a_1(0) == 4),(a_1(0) < -1))
  size:3335
 a_1 3000,
 "]node5[label="Sort by index Scan
+users
 index(a_1:ascending)
  time:30000
  size:10000

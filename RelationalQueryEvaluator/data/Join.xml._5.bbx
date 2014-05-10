@@ -1,8 +1,8 @@
 operator main()->()
 {
 broadcast()->(){2} start;
-TableScan()->(int,string) TableScan0(); 
-TableScan()->(string,int) TableScan1(); 
+TableScan()->(int,string) TableScan0(name="countries",columns="id,name"); 
+TableScan()->(string,int) TableScan1(name="users",columns="name,country_id"); 
 HashJoin(int,string)(string,int)->(string,string) HashJoin2(left="2,3",right="0,1",out="0,3"); 
 Store(string,string)->() storeResult(); 
 

@@ -190,9 +190,11 @@ public:
 class ScanAndSortByIndex : public NullaryPhysicalOperator
 {
 public:
+	std::string tableName;
 	Index index;
-	ScanAndSortByIndex(const Index & index)
+	ScanAndSortByIndex(const std::string & name,const Index & index)
 	{
+		tableName = name;
 		this->index = index;
 	}
 	void accept(PhysicalOperatorVisitor &v);
@@ -201,16 +203,23 @@ public:
 class TableScan : public NullaryPhysicalOperator
 {
 public:
+	std::string tableName;
+	TableScan(const std::string & name)
+	{
+		tableName = name;
+	}
 	void accept(PhysicalOperatorVisitor &v);
 };
 
 class IndexScan : public NullaryPhysicalOperator
 {
 public:
+	std::string tableName;
 	std::shared_ptr<Expression> condition;
 	Index index;
-	IndexScan(const std::shared_ptr<Expression> & condition,const Index & index)
+	IndexScan(const std::string & name, const std::shared_ptr<Expression> & condition, const Index & index)
 	{
+		tableName = name;
 		this->condition = condition;
 		this->index = index;
 	}

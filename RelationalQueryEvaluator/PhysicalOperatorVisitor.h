@@ -192,9 +192,9 @@ public:
 
 	std::string writePlan(std::shared_ptr<PhysicalOperator> plan);
 	
-	std::string getColumnNumberOutput(const std::map<int, ColumnInfo> & columns);
-
 	std::string getColumnTypeOutput(const std::map<int, ColumnInfo> & columns);
+
+	std::string getColumnNameOutput(const std::map<int, ColumnInfo> & columns);
 
 	std::string getId();
 

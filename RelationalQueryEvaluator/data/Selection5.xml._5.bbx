@@ -1,7 +1,7 @@
 operator main()->()
 {
 broadcast()->(){1} start;
-IndexScan()->(int,int) IndexScan0(); 
+IndexScan()->(int,int) IndexScan0(name="customer",index="index2",columns="c_custkey,c_mktsegment",condition="OP_LOWER_OR_EQUAL(1,OP_int_CONSTANT(500))"); 
 Store(int,int)->() storeResult(); 
 
 source -> start

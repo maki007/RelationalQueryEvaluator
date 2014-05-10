@@ -16,6 +16,7 @@ AND ((today <= l_shipdate_1(0)),(l_shipdate_1(0) < today+1year),(l_quantity_4(0)
  size:24691
 l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,
 "]node3[label="Table Scan
+lineitem
  time:6000000
  size:6000000
 l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,
@@ -38,6 +39,7 @@ AND ((today <= l_shipdate_1(0)),(l_shipdate_1(0) < today+1year),(l_quantity_4(0)
  size:24691
 l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,
 "]node7[label="Table Scan
+lineitem
  time:6000000
  size:6000000
 l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,

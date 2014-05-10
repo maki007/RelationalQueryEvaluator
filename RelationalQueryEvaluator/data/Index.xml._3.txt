@@ -7,6 +7,7 @@ Sort by:
  size:33333
 a_1 16666,
 "]node1[label="Index Scan
+x
 (a_1(0) < 5)
 index(a_1:ascending)
  time:100099
@@ -25,6 +26,7 @@ a_1 50000,
  size:33333
 a_1 50000,
 "]node4[label="Sort by index Scan
+x
 index(a_1:ascending)
  time:300000
  size:100000
@@ -42,6 +44,7 @@ a_1 50000,
  size:33333
 a_1 50000,
 "]node7[label="Table Scan
+x
  time:100000
  size:100000
 a_1 50000,
@@ -58,6 +61,7 @@ a_1 50000,
  size:33333
 a_1 50000,
 "]node10[label="Sort by index Scan
+x
 index(a_1:ascending)
  time:300000
  size:100000

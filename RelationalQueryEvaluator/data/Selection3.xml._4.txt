@@ -6,6 +6,7 @@ AND ((a_1(0) < -1),(b_2(0) < 8000))
  size:1
 a_1 0,b_2 0,
 "]node1[label="Index Scan
+users
 AND ((a_1(0) == 4),(b_2(0) == 10))
 index(a_1:ascending,b_2:ascending)
  time:169
@@ -18,6 +19,7 @@ AND ((a_1(0) < -1),(b_2(0) < 8000))
  size:1
 a_1 0,b_2 0,
 "]node3[label="Index Scan
+users
 AND ((a_1(0) == 4),(b_2(0) == 10))
 index(a_1:ascending,b_2:ascending)
  time:169
@@ -30,6 +32,7 @@ AND ((a_1(0) == 4),(b_2(0) == 10),(a_1(0) < -1),(b_2(0) < 8000))
  size:1
 a_1 1000,b_2 1000,
 "]node5[label="Table Scan
+users
  time:10000000
  size:10000000
 a_1 1000,b_2 1000,
@@ -40,6 +43,7 @@ AND ((a_1(0) == 4),(b_2(0) == 10),(a_1(0) < -1),(b_2(0) < 8000))
  size:1
 a_1 1000,b_2 1000,
 "]node7[label="Sort by index Scan
+users
 index(a_1:ascending,b_2:ascending)
  time:30000000
  size:10000000
@@ -51,6 +55,7 @@ AND ((a_1(0) == 4),(b_2(0) == 10),(a_1(0) < -1),(b_2(0) < 8000))
  size:1
 a_1 1000,b_2 1000,
 "]node9[label="Sort by index Scan
+users
 index(a_1:ascending,b_2:ascending)
  time:30000000
  size:10000000

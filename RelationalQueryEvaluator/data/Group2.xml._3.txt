@@ -11,6 +11,7 @@ country_2, user_name_1, count_5=count();
  size:5000
 country_3 792,user_name_4 205,count_5 5000,
 "]node2[label="Table Scan
+people
  time:10000
  size:10000
 user_name_1 410,country_2 1584,
@@ -33,6 +34,7 @@ Sort by: country_2 both, user_name_1 both
  size:10000
 user_name_1 410,country_2 1584,
 "]node6[label="Table Scan
+people
  time:10000
  size:10000
 user_name_1 410,country_2 1584,

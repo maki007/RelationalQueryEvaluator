@@ -1,7 +1,7 @@
 operator main()->()
 {
 broadcast()->(){1} start;
-TableScan()->(string,int) TableScan0(); 
+TableScan()->(string,int) TableScan0(name="people",columns="user_name,country"); 
 HashGroup(string,int)->(int,string,int) HashGroup1(groupBy="1,0",functions="count()"); 
 SortOperator(int,string,int)->(int,string,int) SortOperator2(sortedBy="",sortBy="0:D"); 
 Store(int,string,int)->() storeResult(); 
