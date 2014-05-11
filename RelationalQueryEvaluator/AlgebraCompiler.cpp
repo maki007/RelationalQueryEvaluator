@@ -1271,7 +1271,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	{
 		for (auto second = rightInput.begin(); second != rightInput.end(); ++second)
 		{
-			HashAntiJoin * hashJoin = new HashAntiJoin(node->condition, rightPartOfEquation, leftPartOfEquation);
+			HashAntiJoin * hashJoin = new HashAntiJoin(node->condition, leftPartOfEquation, rightPartOfEquation);
 			shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, TimeComplexity::hashJoin(leftSize, rightSize), allColumns, *first, *second));
 			insertPlan(newResult, hashPlan);
 		}
