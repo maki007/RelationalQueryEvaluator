@@ -1,4 +1,21 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
+node0[label="Hash Antijoin
+((a1_1(0) == b1_3(1)) and (a2_2(0) == b2_4(1)))
+ time:10000
+ size:500
+a1_1 251,a2_2 251,
+"]node1[label="Table Scan
+a
+ time:1000
+ size:1000
+a1_1 251,a2_2 251,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+node2[label="Table Scan
+b
+ time:1000
+ size:1000
+b1_3 251,b2_4 251,
+"]node2 -> node0[headport=s, tailport=n,label="   "]
 
 }

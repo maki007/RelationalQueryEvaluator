@@ -105,6 +105,16 @@ void HashJoin::accept(PhysicalOperatorVisitor &v)
 	v.visitHashJoin(this);
 }
 
+void HashAntiJoin::accept(PhysicalOperatorVisitor &v)
+{
+	v.visitHashAntiJoin(this);
+}
+
+void MergeAntiJoin::accept(PhysicalOperatorVisitor &v)
+{
+	v.visitMergeAntiJoin(this);
+}
+
 void UnionOperator::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitUnionOperator(this);

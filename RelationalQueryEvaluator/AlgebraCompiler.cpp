@@ -964,10 +964,6 @@ void AlgebraCompiler::greedyJoin(vector<JoinInfo>::iterator &it, set<ulong>::ite
 
 }
 
-
-
-
-
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
 	vector<shared_ptr<ConditionInfo>> equalConditions;
@@ -1228,6 +1224,59 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 {
 	node->leftChild->accept(*this);
+	double leftSize = size;
+	vector<shared_ptr<PhysicalPlan>> leftInput = result;
+	std::map<int, ColumnInfo> leftColumns = columns;
 	node->rightChild->accept(*this);
-	result.clear();
+	double rightSize = size;
+	vector<shared_ptr<PhysicalPlan>> rightInput = result;
+	std::map<int, ColumnInfo> rightColumns = columns;
+	vector<shared_ptr<PhysicalPlan>> newResult;
+	
+	vector<shared_ptr<Expression>> cond;
+	if (node->condition != 0)
+	{
+		cond = serializeExpression(node->condition);
+	}
+
+	std::vector<ColumnIdentifier> leftPartOfEquation;
+	std::vector<ColumnIdentifier> rightPartOfEquation;
+	vector<shared_ptr<ConditionInfo>> conditions;
+	for (auto it = cond.begin(); it != cond.end(); ++it)
+	{
+		shared_ptr<ConditionInfo> info = shared_ptr<ConditionInfo>(new ConditionInfo());
+		info->condition = *it;
+		info->condition->accept(JoinInfoReadingExpressionVisitor(&info->inputs, &info->type));
+		conditions.push_back(info);
+	}
+	std::map<int, ColumnInfo> allColumns = leftColumns;
+	allColumns.insert(rightColumns.begin(), rightColumns.end());
+
+	for (auto it = conditions.begin(); it != conditions.end(); ++it)
+	{
+		uint leftColumnIndex = *((*it)->inputs.begin());
+		uint rightColumnIndex = *(--((*it)->inputs.end()));
+		leftPartOfEquation.push_back(allColumns[leftColumnIndex].column);
+		rightPartOfEquation.push_back(allColumns[rightColumnIndex].column);
+	}
+
+	std::map<int, ColumnInfo> newAllColumns;
+	for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
+	{
+		newAllColumns[it->column.id] = allColumns[it->column.id];
+	}
+	allColumns = newAllColumns;
+	double newSize = leftSize / 2;
+	for (auto first = leftInput.begin(); first != leftInput.end(); ++first)
+	{
+		for (auto second = rightInput.begin(); second != rightInput.end(); ++second)
+		{
+			HashAntiJoin * hashJoin = new HashAntiJoin(node->condition, rightPartOfEquation, leftPartOfEquation);
+			shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, TimeComplexity::hashJoin(leftSize, rightSize), allColumns, *first, *second));
+			insertPlan(newResult, hashPlan);
+		}
+	}
+	size = newSize;
+	result = newResult;
+	columns = allColumns;
 }

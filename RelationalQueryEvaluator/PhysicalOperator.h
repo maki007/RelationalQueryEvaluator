@@ -150,6 +150,39 @@ public:
 	void accept(PhysicalOperatorVisitor &v);
 };
 
+class HashAntiJoin : public BinaryPhysicalOperator
+{
+public:
+	std::shared_ptr<Expression> condition;
+	std::vector<ColumnIdentifier> left;
+	std::vector<ColumnIdentifier> right;
+	HashAntiJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+	{
+		this->condition = condition;
+		this->left = left;
+		this->right = right;
+	}
+	void accept(PhysicalOperatorVisitor &v);
+};
+
+class MergeAntiJoin : public BinaryPhysicalOperator
+{
+public:
+	std::shared_ptr<Expression> condition;
+	std::vector<ColumnIdentifier> left;
+	std::vector<ColumnIdentifier> right;
+	MergeAntiJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+	{
+		this->condition = condition;
+		this->left = left;
+		this->right = right;
+	}
+	void accept(PhysicalOperatorVisitor &v);
+};
+
+
+
+
 class UnionOperator : public BinaryPhysicalOperator
 {
 public:

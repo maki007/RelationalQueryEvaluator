@@ -29,6 +29,10 @@ public:
 
 	virtual void visitHashJoin(HashJoin * node);
 
+	virtual void visitHashAntiJoin(HashAntiJoin * node);
+
+	virtual void visitMergeAntiJoin(MergeAntiJoin * node);
+	
 	virtual void visitUnionOperator(UnionOperator * node);
 
 	virtual void visitHashGroup(HashGroup * node);
@@ -73,6 +77,10 @@ public:
 
 	void visitHashJoin(HashJoin * node);
 
+	void visitHashAntiJoin(HashAntiJoin * node);
+
+	void visitMergeAntiJoin(MergeAntiJoin * node);
+
 	void visitUnionOperator(UnionOperator * node);
 
 	void visitHashGroup(HashGroup * node);
@@ -111,6 +119,10 @@ public:
 
 	void visitHashJoin(HashJoin * node);
 
+	void visitHashAntiJoin(HashAntiJoin * node);
+
+	void visitMergeAntiJoin(MergeAntiJoin * node);
+
 	void visitUnionOperator(UnionOperator * node);
 
 	void visitHashGroup(HashGroup * node);
@@ -143,6 +155,10 @@ public:
 	void visitCrossJoin(CrossJoin * node);
 
 	void visitHashJoin(HashJoin * node);
+
+	void visitHashAntiJoin(HashAntiJoin * node);
+
+	void visitMergeAntiJoin(MergeAntiJoin * node);
 
 	void visitUnionOperator(UnionOperator * node);
 
@@ -225,6 +241,10 @@ public:
 	void visitCrossJoin(CrossJoin * node);
 
 	void visitHashJoin(HashJoin * node);
+
+	void visitHashAntiJoin(HashAntiJoin * node);
+
+	void visitMergeAntiJoin(MergeAntiJoin * node);
 
 	void visitUnionOperator(UnionOperator * node);
 

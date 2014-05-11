@@ -61,6 +61,18 @@ void PhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 	node->rightChild->accept(*this);
 }
 
+void PhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node)
+{
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
+}
+
+void PhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
+{
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
+}
+
 void PhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
 {
 	node->leftChild->accept(*this);
@@ -292,6 +304,24 @@ void PhysicalOperatorDrawingVisitor::visitHashJoin(HashJoin * node)
 	generateText(label, node);
 }
 
+void PhysicalOperatorDrawingVisitor::visitHashAntiJoin(HashAntiJoin * node)
+{
+	string label = "Hash Antijoin\n";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
+	generateText(label, node);
+}
+
+void PhysicalOperatorDrawingVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
+{
+	string label = "Merge Antijoin\n";
+	WritingExpressionVisitor expresionWriter;
+	node->condition->accept(expresionWriter);
+	label.append(expresionWriter.result);
+	generateText(label, node);
+}
+
 void PhysicalOperatorDrawingVisitor::visitUnionOperator(UnionOperator * node)
 {
 	string label = "Union";
@@ -443,6 +473,18 @@ void CloningPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
 void CloningPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 {
 	auto res = new HashJoin(*node);
+	processBinaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node)
+{
+	auto res = new HashAntiJoin(*node);
+	processBinaryOperator(res);
+}
+
+void CloningPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
+{
+	auto res = new MergeAntiJoin(*node);
 	processBinaryOperator(res);
 }
 
@@ -673,7 +715,20 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * no
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
+	//TODO
+}
 
+void SortResolvingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node)
+{
+	sortParameters.clear();
+	node->leftChild->accept(*this);
+	sortParameters.clear();
+	node->rightChild->accept(*this);
+}
+
+void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
+{
+	//TODO
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)

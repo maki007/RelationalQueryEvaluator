@@ -233,6 +233,16 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 	writeBinaryOperator("HashJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->left, node->right, node));
 }
 
+void BoboxPlanWritingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node)
+{
+	writeBinaryOperator("HashAntiJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->left, node->right, node));
+}
+
+void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
+{
+	writeBinaryOperator("MergeAntiJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->left, node->right, node));
+}
+
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
 	writeBinaryOperator("MergeNonEquiJoin", node, writeJoinParameters(node));
