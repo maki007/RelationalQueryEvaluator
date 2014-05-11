@@ -68,11 +68,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\xerces-c-3.1.1\projects\Win32\VC10\xerces-all;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\externals\xerces-c-3.1.1-x86_64-windows-vc-10.0\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\externals\xerces-c-3.1.1-x86_64-windows-vc-10.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\externals\xerces-c-3.1.1-x86_64-windows-vc-10.0\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -92,7 +92,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\xerces-c-3.1.1\Build\Win64\VC10\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\externals\xerces-c-3.1.1-x86_64-windows-vc-10.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>xerces-c_3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -108,7 +108,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files (x86)\Visual Leak Detector\lib;C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\externals\xerces-c-3.1.1-x86_64-windows-vc-10.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\externals\xerces-c-3.1.1-x86_64-windows-vc-10.0\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>xerces-c_3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
