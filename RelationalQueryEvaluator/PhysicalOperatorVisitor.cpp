@@ -728,7 +728,88 @@ void SortResolvingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
 {
-	//TODO
+	map<ulong, ulong> pairs;
+	vector<shared_ptr<Expression> > condition = AlgebraCompiler::serializeExpression(node->condition);
+	for (auto it = condition.begin(); it != condition.end(); ++it)
+	{
+		BinaryExpression * expr = (BinaryExpression *)((*it).get());
+		Column * leftColumn = (Column *)(expr->leftChild.get());
+		Column * rightColumn = (Column *)(expr->rightChild.get());
+		pairs[leftColumn->column.id] = rightColumn->column.id;
+		pairs[rightColumn->column.id] = leftColumn->column.id;
+
+	}
+
+	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
+	{
+		if (pairs.find(it->column.id) != pairs.end())
+		{
+			it->others.insert(node->columns[pairs[it->column.id]].column);
+		}
+		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
+		{
+			if (pairs.find(it2->id) != pairs.end())
+			{
+				it->others.insert(node->columns[pairs[it2->id]].column);
+			}
+		}
+		if (it->others.find(it->column) != it->others.end())
+		{
+			it->others.erase(it->others.find(it->column));
+		}
+	}
+	std::vector<SortParameter> leftSortParameters;
+	std::vector<SortParameter> rightSortParameters;
+	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
+	{
+		it->others.insert(it->column);
+		SortParameter newParameter;
+		newParameter.order = it->order;
+		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
+		{
+			if (node->leftChild->columns.find(it2->id) != node->leftChild->columns.end())
+			{
+				newParameter.others.insert(*it2);
+			}
+		}
+		if (newParameter.others.size() > 0)
+		{
+			newParameter.column = *(newParameter.others.begin());
+			newParameter.others.erase(newParameter.others.begin());
+			leftSortParameters.push_back(newParameter);
+		}
+		else
+		{
+			break;
+		}
+	}
+	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
+	{
+		it->others.insert(it->column);
+		SortParameter newParameter;
+		newParameter.order = it->order;
+		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
+		{
+			if (node->rightChild->columns.find(it2->id) != node->rightChild->columns.end())
+			{
+				newParameter.others.insert(*it2);
+			}
+		}
+		if (newParameter.others.size() > 0)
+		{
+			newParameter.column = *(newParameter.others.begin());
+			newParameter.others.erase(newParameter.others.begin());
+			rightSortParameters.push_back(newParameter);
+		}
+		else
+		{
+			break;
+		}
+	}
+	sortParameters = leftSortParameters;
+	node->leftChild->accept(*this);
+	sortParameters = rightSortParameters;
+	node->rightChild->accept(*this);
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)

@@ -348,7 +348,6 @@ GroupingVisitor::GroupingVisitor()
 
 }
 
-
 void GroupingVisitor::visitJoin(Join * node)
 {
 	if(node->condition.get()!=0)
@@ -515,4 +514,12 @@ void GroupingVisitor::visitSelection(Selection * node)
 }
 
 
+
+void GroupingVisitor::visitAntiJoin(AntiJoin * node)
+{
+	node->condition->accept(GroupingExpressionVisitor(&(node->condition)));
+	node->leftChild->accept(*this);
+	node->rightChild->accept(*this);
+
+}
 

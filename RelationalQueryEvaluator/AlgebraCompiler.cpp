@@ -1266,14 +1266,109 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 		newAllColumns[it->column.id] = allColumns[it->column.id];
 	}
 	allColumns = newAllColumns;
-	double newSize = leftSize / 2;
+	double newSize = leftSize / (1<<leftPartOfEquation.size());
 	for (auto first = leftInput.begin(); first != leftInput.end(); ++first)
 	{
 		for (auto second = rightInput.begin(); second != rightInput.end(); ++second)
 		{
 			HashAntiJoin * hashJoin = new HashAntiJoin(node->condition, leftPartOfEquation, rightPartOfEquation);
-			shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, TimeComplexity::hashJoin(leftSize, rightSize), allColumns, *first, *second));
+			shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, TimeComplexity::hashJoin(rightSize, leftSize), allColumns, *first, *second));
 			insertPlan(newResult, hashPlan);
+			
+			//sortParameters
+			PossibleSortParameters leftSortParameters;
+			leftSortParameters.parameters.push_back(SortParameters());
+			std::map<int, int> equalPairs;
+			std::map<int, int> equalPairsReverse;
+			SortParameter leftParameter;
+			for (auto cond = conditions.begin(); cond != conditions.end(); ++cond)
+			{
+				ulong firstColumn = *((*cond)->inputs.begin());
+				ulong secondColumn = *(--((*cond)->inputs.end()));
+
+
+				if (leftColumns.find(firstColumn) != leftColumns.end())
+				{
+					leftParameter.column = leftColumns.at(firstColumn).column;
+					leftParameter.order = SortOrder::UNKNOWN;
+					equalPairs[leftParameter.column.id] = rightColumns.at(secondColumn).column.id;
+					equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
+				}
+				else
+				{
+					leftParameter.column = leftColumns.at(secondColumn).column;
+					leftParameter.order = SortOrder::UNKNOWN;
+					equalPairs[leftParameter.column.id] = rightColumns.at(firstColumn).column.id;
+					equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
+
+				}
+				leftSortParameters.parameters[0].values.push_back(leftParameter);
+			}
+
+
+			shared_ptr<PhysicalPlan> leftSortedPlan;
+			leftSortedPlan = generateSortParameters(leftSortParameters, *first);
+
+			PossibleSortParameters rightSortParameters;
+			for (auto it = leftSortedPlan->sortedBy.parameters.begin(); it != leftSortedPlan->sortedBy.parameters.end(); ++it)
+			{
+				rightSortParameters.parameters.push_back(SortParameters());
+				for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
+				{
+					if (equalPairs.find(it2->column.id) == equalPairs.end())
+					{
+						bool found = false;
+						for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
+						{
+							if (equalPairs.find(it3->id) != equalPairs.end())
+							{
+								rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(rightColumns.at(equalPairs[it3->id]).column, it2->order));
+								found = true;
+								break;
+							}
+						}
+						if (!found)
+						{
+							goto endLoop;
+						}
+					}
+					else
+					{
+						rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(rightColumns.at(equalPairs[it2->column.id]).column, it2->order));
+					}
+				}
+			}
+		endLoop:
+
+			shared_ptr<PhysicalPlan> rightSortedPlan;
+			rightSortedPlan = generateSortParameters(rightSortParameters, *second);
+
+			MergeAntiJoin * mergejoin = new MergeAntiJoin(node->condition, leftPartOfEquation, rightPartOfEquation);
+			shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergejoin, newSize, TimeComplexity::mergeEquiJoin(leftSize, rightSize), allColumns, leftSortedPlan, rightSortedPlan));
+			PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;
+			for (auto it = resultParameters.parameters.begin(); it != resultParameters.parameters.end(); ++it)
+			{
+				for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
+				{
+					if (equalPairsReverse.find(it2->column.id) == equalPairsReverse.end())
+					{
+						for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
+						{
+							if (equalPairsReverse.find(it3->id) != equalPairsReverse.end())
+							{
+								it2->others.insert(leftColumns.at(equalPairsReverse[it3->id]).column);
+							}
+						}
+					}
+					else
+					{
+						it2->others.insert(leftColumns.at(equalPairsReverse[it2->column.id]).column);
+					}
+				}
+			}
+			mergePlan->sortedBy = resultParameters;
+			insertPlan(newResult, mergePlan);
+
 		}
 	}
 	size = newSize;

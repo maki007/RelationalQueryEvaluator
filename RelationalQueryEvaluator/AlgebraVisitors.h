@@ -170,6 +170,8 @@ public:
 
 	void visitJoin(Join * node);
 
+	void visitAntiJoin(AntiJoin * node);
+
 	void resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * groupedOperator, std::vector<std::shared_ptr<AlgebraNodeBase> > & oldChildren);
 };
 
