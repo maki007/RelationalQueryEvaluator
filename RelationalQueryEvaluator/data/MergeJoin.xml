@@ -24,9 +24,7 @@
         </table>
         <table name="B" numberOfRows="1000000">
           <column name="b" type="int" />
-          <index name="index2" type="unclustered">
-           <column name="b" order="asc"/>
-          </index>
+
         </table>
       </input>
     </join>

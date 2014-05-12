@@ -1160,7 +1160,7 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				shared_ptr<PhysicalPlan> rightSortedPlan;
 				rightSortedPlan = generateSortParameters(rightSortParameters, *second);
 
-				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition, leftPartOfEquation, rightPartOfEquation);
+				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition);
 				time = TimeComplexity::mergeEquiJoin(left.size, right.size);
 				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
 				PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;
@@ -1343,7 +1343,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 			shared_ptr<PhysicalPlan> rightSortedPlan;
 			rightSortedPlan = generateSortParameters(rightSortParameters, *second);
 
-			MergeAntiJoin * mergejoin = new MergeAntiJoin(node->condition, leftPartOfEquation, rightPartOfEquation);
+			MergeAntiJoin * mergejoin = new MergeAntiJoin(node->condition);
 			shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergejoin, newSize, TimeComplexity::mergeEquiJoin(leftSize, rightSize), allColumns, leftSortedPlan, rightSortedPlan));
 			PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;
 			for (auto it = resultParameters.parameters.begin(); it != resultParameters.parameters.end(); ++it)

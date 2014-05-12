@@ -10,6 +10,10 @@ Antijoin.xml._1.txt
 Antijoin.xml._2.txt
 Antijoin.xml._3.txt
 Antijoin.xml._4.txt
+Antijoin2.xml._1.txt
+Antijoin2.xml._2.txt
+Antijoin2.xml._3.txt
+Antijoin2.xml._4.txt
 ColumnOperations.xml._1.txt
 ColumnOperations.xml._2.txt
 ColumnOperations.xml._3.txt
@@ -66,6 +70,10 @@ PartialSort.xml._1.txt
 PartialSort.xml._2.txt
 PartialSort.xml._3.txt
 PartialSort.xml._4.txt
+PartialSort2.xml._1.txt
+PartialSort2.xml._2.txt
+PartialSort2.xml._3.txt
+PartialSort2.xml._4.txt
 Selection.xml._1.txt
 Selection.xml._2.txt
 Selection.xml._3.txt

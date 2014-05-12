@@ -1,0 +1,173 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Hash Antijoin
+(c_1(0) == b_3(1))
+ time:9000
+ size:250
+c_1 251,
+"]node1[label="Merge Antijoin
+(c_1(0) == a_2(1))
+ time:1200
+ size:500
+c_1 251,
+"]node2[label="Partial Sort
+Sorted by c_1 both
+Sort by: 
+ time:0
+ size:1000
+c_1 251,
+"]node3[label="Table Scan
+z
+ time:1000
+ size:1000
+c_1 251,
+"]node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node4[label="Partial Sort
+Sorted by a_2 both
+Sort by: 
+ time:0
+ size:1000
+a_2 251,
+"]node5[label="Table Scan
+x
+ time:1000
+ size:1000
+a_2 251,
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node6[label="Table Scan
+y
+ time:1000
+ size:1000
+b_3 251,
+"]node6 -> node0[headport=s, tailport=n,label="   "]
+node7[label="Hash Antijoin
+(c_1(0) == b_3(1))
+ time:9000
+ size:250
+c_1 251,
+"]node8[label="Hash Antijoin
+(c_1(0) == a_2(1))
+ time:10000
+ size:500
+c_1 251,
+"]node9[label="Table Scan
+z
+ time:1000
+ size:1000
+c_1 251,
+"]node9 -> node8[headport=s, tailport=n,label="   "]
+node10[label="Table Scan
+x
+ time:1000
+ size:1000
+a_2 251,
+"]node10 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node7[headport=s, tailport=n,label="   "]
+node11[label="Table Scan
+y
+ time:1000
+ size:1000
+b_3 251,
+"]node11 -> node7[headport=s, tailport=n,label="   "]
+node12[label="Merge Antijoin
+(c_1(0) == b_3(1))
+ time:1100
+ size:250
+c_1 251,
+"]node13[label="Partial Sort
+Sorted by c_1 both
+Sort by: 
+ time:0
+ size:1000
+c_1 251,
+"]node14[label="Merge Antijoin
+(c_1(0) == a_2(1))
+ time:1200
+ size:500
+c_1 251,
+"]node15[label="Partial Sort
+Sorted by c_1 both
+Sort by: 
+ time:0
+ size:1000
+c_1 251,
+"]node16[label="Table Scan
+z
+ time:1000
+ size:1000
+c_1 251,
+"]node16 -> node15[headport=s, tailport=n,label="   "]
+node15 -> node14[headport=s, tailport=n,label="   "]
+node17[label="Partial Sort
+Sorted by a_2 both
+Sort by: 
+ time:0
+ size:1000
+a_2 251,
+"]node18[label="Table Scan
+x
+ time:1000
+ size:1000
+a_2 251,
+"]node18 -> node17[headport=s, tailport=n,label="   "]
+node17 -> node14[headport=s, tailport=n,label="   "]
+node14 -> node13[headport=s, tailport=n,label="   "]
+node13 -> node12[headport=s, tailport=n,label="   "]
+node19[label="Sort
+Sort by: b_3 both
+ time:19931
+ size:1000
+b_3 251,
+"]node20[label="Table Scan
+y
+ time:1000
+ size:1000
+b_3 251,
+"]node20 -> node19[headport=s, tailport=n,label="   "]
+node19 -> node12[headport=s, tailport=n,label="   "]
+node21[label="Merge Antijoin
+(c_1(0) == b_3(1))
+ time:1100
+ size:250
+c_1 251,
+"]node22[label="Sort
+Sort by: c_1 both
+ time:19931
+ size:1000
+c_1 251,
+"]node23[label="Hash Antijoin
+(c_1(0) == a_2(1))
+ time:10000
+ size:500
+c_1 251,
+"]node24[label="Table Scan
+z
+ time:1000
+ size:1000
+c_1 251,
+"]node24 -> node23[headport=s, tailport=n,label="   "]
+node25[label="Table Scan
+x
+ time:1000
+ size:1000
+a_2 251,
+"]node25 -> node23[headport=s, tailport=n,label="   "]
+node23 -> node22[headport=s, tailport=n,label="   "]
+node22 -> node21[headport=s, tailport=n,label="   "]
+node26[label="Sort
+Sort by: b_3 both
+ time:19931
+ size:1000
+b_3 251,
+"]node27[label="Table Scan
+y
+ time:1000
+ size:1000
+b_3 251,
+"]node27 -> node26[headport=s, tailport=n,label="   "]
+node26 -> node21[headport=s, tailport=n,label="   "]
+
+}

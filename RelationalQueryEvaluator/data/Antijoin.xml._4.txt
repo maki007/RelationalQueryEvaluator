@@ -120,7 +120,7 @@ c_1 251,
 (c_1(0) == a_2(1))
  time:1200
  size:500
-c_1 251,_-1 1,
+c_1 251,
 "]node21[label="Sort
 Sort by: c_1 asc
  time:19931

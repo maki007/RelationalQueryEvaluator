@@ -1,6 +1,7 @@
 2-4-3.xml
 2-4-6.xml
 Antijoin.xml
+Antijoin2.xml
 ColumnOperations.xml
 CrossJoin.xml
 Group.xml
@@ -15,6 +16,7 @@ MergeJoin.xml
 MergeJoin2.xml
 MergeJoinSimple.xml
 PartialSort.xml
+PartialSort2.xml
 Selection.xml
 Selection2.xml
 Selection3.xml

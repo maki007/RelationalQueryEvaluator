@@ -124,13 +124,11 @@ class MergeEquiJoin : public BinaryPhysicalOperator
 {
 public:
 	std::shared_ptr<Expression> condition;
-	std::vector<ColumnIdentifier> left;
-	std::vector<ColumnIdentifier> right;
-	MergeEquiJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+	std::vector<SortParameter> left;
+	std::vector<SortParameter> right;
+	MergeEquiJoin(const std::shared_ptr<Expression> & condition)
 	{
 		this->condition = condition;
-		this->left = left;
-		this->right = right;
 	}
 	void accept(PhysicalOperatorVisitor &v);
 };
@@ -169,13 +167,11 @@ class MergeAntiJoin : public BinaryPhysicalOperator
 {
 public:
 	std::shared_ptr<Expression> condition;
-	std::vector<ColumnIdentifier> left;
-	std::vector<ColumnIdentifier> right;
-	MergeAntiJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+	std::vector<SortParameter> left;
+	std::vector<SortParameter> right;
+	MergeAntiJoin(const std::shared_ptr<Expression> & condition)
 	{
 		this->condition = condition;
-		this->left = left;
-		this->right = right;
 	}
 	void accept(PhysicalOperatorVisitor &v);
 };

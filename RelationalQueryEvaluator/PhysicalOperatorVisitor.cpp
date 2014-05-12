@@ -528,10 +528,13 @@ void CloningPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
 }
 
 
+
+
 void SortResolvingPhysicalOperatorVisitor::visitFilter(Filter * node)
 {
 	sortParameters.clear();
 	node->child->accept(*this);
+
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
@@ -639,18 +642,20 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * no
 		pairs[rightColumn->column.id] = leftColumn->column.id;
 
 	}
+	std::map<int, ColumnInfo> allColumns = node->leftChild->columns;
+	allColumns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
 
 	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
 	{
 		if (pairs.find(it->column.id) != pairs.end())
 		{
-			it->others.insert(node->columns[pairs[it->column.id]].column);
+			it->others.insert(allColumns[pairs[it->column.id]].column);
 		}
 		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
 		{
 			if (pairs.find(it2->id) != pairs.end())
 			{
-				it->others.insert(node->columns[pairs[it2->id]].column);
+				it->others.insert(allColumns[pairs[it2->id]].column);
 			}
 		}
 		if (it->others.find(it->column) != it->others.end())
@@ -706,6 +711,7 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * no
 			break;
 		}
 	}
+
 	sortParameters = leftSortParameters;
 	node->leftChild->accept(*this);
 	sortParameters = rightSortParameters;
@@ -739,18 +745,19 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * no
 		pairs[rightColumn->column.id] = leftColumn->column.id;
 
 	}
-
+	std::map<int, ColumnInfo> allColumns = node->leftChild->columns;
+	allColumns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
 	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
 	{
 		if (pairs.find(it->column.id) != pairs.end())
 		{
-			it->others.insert(node->columns[pairs[it->column.id]].column);
+			it->others.insert(allColumns[pairs[it->column.id]].column);
 		}
 		for (auto it2 = it->others.begin(); it2 != it->others.end(); ++it2)
 		{
 			if (pairs.find(it2->id) != pairs.end())
 			{
-				it->others.insert(node->columns[pairs[it2->id]].column);
+				it->others.insert(allColumns[pairs[it2->id]].column);
 			}
 		}
 		if (it->others.find(it->column) != it->others.end())
@@ -806,10 +813,13 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * no
 			break;
 		}
 	}
+
 	sortParameters = leftSortParameters;
 	node->leftChild->accept(*this);
+
 	sortParameters = rightSortParameters;
 	node->rightChild->accept(*this);
+
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)

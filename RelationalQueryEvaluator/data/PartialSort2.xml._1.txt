@@ -1,0 +1,11 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+a_-1 desc, b_-1 desc"]
+node1[label="Table x
+ number of rows: 10000.000000
+ columns: a_-1(int,10000), b_-1(int,10000)
+ indices: CLUSTERED(a)"]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

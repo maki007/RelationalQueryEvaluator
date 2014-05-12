@@ -228,6 +228,8 @@ public:
 
 	std::string writeEquiJoinParameters(const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right, BinaryPhysicalOperator * node);
 
+	std::string  writeMergeEquiJoinParameters(const std::vector<SortParameter> & left, const std::vector<SortParameter> & right, BinaryPhysicalOperator * node);
+
 	void visitFilter(Filter * node);
 
 	void visitFilterKeepingOrder(FilterKeepingOrder * node);

@@ -223,9 +223,41 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeEquiJoinParameters(const ve
 	rightString[rightString.size() - 1] = '\"';
 	return "," + leftString + "," + rightString;
 }
+
+string BoboxPlanWritingPhysicalOperatorVisitor::writeMergeEquiJoinParameters(const vector<SortParameter> & left, const vector<SortParameter> & right, BinaryPhysicalOperator * node)
+{
+	string leftString = "leftPartOfCondition=\"";
+	string rightString = "rightPartOfCondition=\"";
+
+	std::map<int, ColumnInfo> columns = node->leftChild->columns;
+	columns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
+	map<int, int> cols;
+	convertColumns(columns, cols);
+	for (ulong i = 0; i < left.size(); ++i)
+	{
+		leftString += to_string(cols[left[i].column.id]);
+		rightString += to_string(cols[right[i].column.id]);
+		if (left[i].order == SortOrder::ASCENDING)
+		{
+			leftString += ":A";
+			rightString += ":A";
+		}
+		else
+		{
+			leftString += ":D";
+			rightString += ":D";
+		}
+		leftString += ",";
+		rightString += ",";
+	}
+	leftString[leftString.size() - 1] = '\"';
+	rightString[rightString.size() - 1] = '\"';
+	return "," + leftString + "," + rightString;
+}
+
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
-	writeBinaryOperator("MergeEquiJoin", node, writeJoinParameters(node)+writeEquiJoinParameters(node->left,node->right,node));
+	writeBinaryOperator("MergeEquiJoin", node, writeJoinParameters(node)+writeMergeEquiJoinParameters(node->left,node->right,node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
@@ -240,7 +272,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * n
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
 {
-	writeBinaryOperator("MergeAntiJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->left, node->right, node));
+	writeBinaryOperator("MergeAntiJoin", node, writeJoinParameters(node) + writeMergeEquiJoinParameters(node->left, node->right, node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)

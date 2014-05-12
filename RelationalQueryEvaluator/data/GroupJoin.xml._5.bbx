@@ -9,7 +9,7 @@ TableScan()->(int) TableScan4(name="c",columns="c");
 TableScan()->(int) TableScan5(name="d",columns="d"); 
 HashJoin(int)(int)->(int,int) HashJoin6(left="0",right="1",out="0,1",leftPartOfCondition="0",rightPartOfCondition="1"); 
 SortOperator(int,int)->(int,int) SortOperator7(sortedBy="",sortBy="0:A"); 
-MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin8(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="0",rightPartOfCondition="2"); 
+MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin8(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition=",rightPartOfCondition="); 
 Store(int,int,int,int)->() storeResult(); 
 
 source -> start

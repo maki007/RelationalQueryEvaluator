@@ -12,7 +12,7 @@ node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table B
  number of rows: 1000000.000000
  columns: b_2(int,63095)
- indices: UNCLUSTERED(b)"]
+ indices: "]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 
