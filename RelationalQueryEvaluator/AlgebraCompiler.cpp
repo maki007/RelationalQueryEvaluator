@@ -44,8 +44,8 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 			{
 				if (sortByIt->column.id == sortedByIt->column.id)
 				{
-					SortOrder sortedByOrder = sortByIt->order;
-					SortOrder sortByOrder = sortedByIt->order;
+					SortOrder sortByOrder = sortByIt->order;
+					SortOrder sortedByOrder  = sortedByIt->order;
 					if ((sortedByOrder == SortOrder::UNKNOWN) || (sortedByOrder == sortByOrder) || (sortByOrder == SortOrder::UNKNOWN))
 					{
 						newSortedBy.values.push_back(*sortByIt);

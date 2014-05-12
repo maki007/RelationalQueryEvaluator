@@ -13,13 +13,13 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node4[label="Table x
  number of rows: 1000.000000
  columns: a_-1(int,251)
- indices: CLUSTERED(a)"]
+ indices: "]
 node4 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node5[label="Table y
  number of rows: 1000.000000
  columns: b_-1(int,251)
- indices: "]
+ indices: CLUSTERED(b)"]
 node5 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 

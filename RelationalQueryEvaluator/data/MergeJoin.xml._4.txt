@@ -5,54 +5,53 @@ node0[label="Merge Join
  time:1200000
  size:15848931
 a_1 1,b_2 1,
-"]node1[label="Sort by index Scan
-A
-index(a_1:ascending)
- time:3000000
- size:1000000
-a_1 63095,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Sort
-Sort by: b_2 desc
- time:39863137
- size:1000000
-b_2 63095,
-"]node3[label="Table Scan
-B
- time:1000000
- size:1000000
-b_2 63095,
-"]node3 -> node2[headport=s, tailport=n,label="   "]
-node2 -> node0[headport=s, tailport=n,label="   "]
-node4[label="Merge Join
-(a_1(0) == b_2(1))
- time:1200000
- size:15848931
-a_1 1,b_2 1,
-"]node5[label="Sort
+"]node1[label="Sort
 Sort by: a_1 desc
  time:39863137
  size:1000000
 a_1 63095,
-"]node6[label="Table Scan
+"]node2[label="Table Scan
 A
  time:1000000
  size:1000000
 a_1 63095,
-"]node6 -> node5[headport=s, tailport=n,label="   "]
-node5 -> node4[headport=s, tailport=n,label="   "]
-node7[label="Sort
+"]node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node3[label="Sort
 Sort by: b_2 desc
  time:39863137
  size:1000000
 b_2 63095,
-"]node8[label="Table Scan
+"]node4[label="Table Scan
 B
  time:1000000
  size:1000000
 b_2 63095,
-"]node8 -> node7[headport=s, tailport=n,label="   "]
-node7 -> node4[headport=s, tailport=n,label="   "]
+"]node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node0[headport=s, tailport=n,label="   "]
+node5[label="Sort
+Sort by: a_1 desc
+ time:758145776
+ size:15848931
+a_1 1,b_2 1,
+"]node6[label="Hash Join
+(a_1(0) == b_2(1))
+ time:10000000
+ size:15848931
+a_1 1,b_2 1,
+"]node7[label="Table Scan
+A
+ time:1000000
+ size:1000000
+a_1 63095,
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node8[label="Table Scan
+B
+ time:1000000
+ size:1000000
+b_2 63095,
+"]node8 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node5[headport=s, tailport=n,label="   "]
 node9[label="Sort
 Sort by: a_1 desc
  time:758145776
@@ -63,9 +62,10 @@ a_1 1,b_2 1,
  time:10000000
  size:15848931
 a_1 1,b_2 1,
-"]node11[label="Table Scan
+"]node11[label="Sort by index Scan
 A
- time:1000000
+index(a_1:ascending)
+ time:3000000
  size:1000000
 a_1 63095,
 "]node11 -> node10[headport=s, tailport=n,label="   "]
@@ -81,9 +81,9 @@ Sort by: a_1 desc
  time:758145776
  size:15848931
 a_1 1,b_2 1,
-"]node14[label="Hash Join
+"]node14[label="Merge Join
 (a_1(0) == b_2(1))
- time:10000000
+ time:1200000
  size:15848931
 a_1 1,b_2 1,
 "]node15[label="Sort by index Scan
@@ -93,12 +93,18 @@ index(a_1:ascending)
  size:1000000
 a_1 63095,
 "]node15 -> node14[headport=s, tailport=n,label="   "]
-node16[label="Table Scan
+node16[label="Sort
+Sort by: b_2 desc
+ time:39863137
+ size:1000000
+b_2 63095,
+"]node17[label="Table Scan
 B
  time:1000000
  size:1000000
 b_2 63095,
-"]node16 -> node14[headport=s, tailport=n,label="   "]
+"]node17 -> node16[headport=s, tailport=n,label="   "]
+node16 -> node14[headport=s, tailport=n,label="   "]
 node14 -> node13[headport=s, tailport=n,label="   "]
 
 }

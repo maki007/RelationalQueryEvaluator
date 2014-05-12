@@ -6,7 +6,7 @@ node0[label="Merge Join
  size:3981
 a_1 1,b_2 1,
 "]node1[label="Partial Sort
-Sorted by a_1 both
+Sorted by a_1 asc
 Sort by: 
  time:0
  size:1000
@@ -19,7 +19,7 @@ a_1 251,
 "]node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Partial Sort
-Sorted by b_2 both
+Sorted by b_2 asc
 Sort by: 
  time:0
  size:1000
@@ -73,7 +73,7 @@ node11[label="Merge Join
  size:3981
 a_1 1,b_2 1,
 "]node12[label="Partial Sort
-Sorted by a_1 both
+Sorted by a_1 asc
 Sort by: 
  time:0
  size:1000
@@ -86,7 +86,7 @@ a_1 251,
 "]node13 -> node12[headport=s, tailport=n,label="   "]
 node12 -> node11[headport=s, tailport=n,label="   "]
 node14[label="Sort
-Sort by: b_2 both
+Sort by: b_2 asc
  time:19931
  size:1000
 b_2 251,

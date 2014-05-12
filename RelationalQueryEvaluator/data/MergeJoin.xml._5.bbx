@@ -1,18 +1,20 @@
 operator main()->()
 {
 broadcast()->(){2} start;
-ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan0(name="A",index="index",columns="a"); 
-TableScan()->(int) TableScan1(name="B",columns="b"); 
-SortOperator(int)->(int) SortOperator2(sortedBy="",sortBy="0:D"); 
-MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin3(left="0",right="1",out="0,1",leftPartOfCondition=",rightPartOfCondition="); 
+TableScan()->(int) TableScan0(name="A",columns="a"); 
+SortOperator(int)->(int) SortOperator1(sortedBy="",sortBy="0:D"); 
+TableScan()->(int) TableScan2(name="B",columns="b"); 
+SortOperator(int)->(int) SortOperator3(sortedBy="",sortBy="0:D"); 
+MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin4(left="0",right="1",out="0,1",leftPartOfCondition=",rightPartOfCondition="); 
 Store(int,int)->() storeResult(); 
 
 source -> start
-start[0] -> ScanAndSortByIndexScan0;
-start[1] -> TableScan1;
-TableScan1 -> SortOperator2;
-ScanAndSortByIndexScan0 -> [0]MergeEquiJoin3;
-SortOperator2 -> [1]MergeEquiJoin3;
-MergeEquiJoin3 -> storeResult;
+start[0] -> TableScan0;
+TableScan0 -> SortOperator1;
+start[1] -> TableScan2;
+TableScan2 -> SortOperator3;
+SortOperator1 -> [0]MergeEquiJoin4;
+SortOperator3 -> [1]MergeEquiJoin4;
+MergeEquiJoin4 -> storeResult;
 storeResult -> output;
 }

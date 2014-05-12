@@ -3,11 +3,13 @@ operator main()->()
 broadcast()->(){1} start;
 ScanAndSortByIndexScan()->(string,string) ScanAndSortByIndexScan0(name="people",index="index",columns="user_name,country"); 
 SortedGroup(string,string)->(string,int) SortedGroup1(groupBy="1",functions="count()"); 
+SortOperator(string,int)->(string,int) SortOperator2(sortedBy="",sortBy="0:D"); 
 Store(string,int)->() storeResult(); 
 
 source -> start
 start[0] -> ScanAndSortByIndexScan0;
 ScanAndSortByIndexScan0 -> SortedGroup1;
-SortedGroup1 -> storeResult;
+SortedGroup1 -> SortOperator2;
+SortOperator2 -> storeResult;
 storeResult -> output;
 }

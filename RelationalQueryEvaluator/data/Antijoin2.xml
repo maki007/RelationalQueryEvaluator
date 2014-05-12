@@ -33,16 +33,16 @@
             </table>
             <table name="x">
               <column name="a" type="int"/>
-              <index name="yb" type="clustered">
-                <column name="a" order="desc"/>
-              </index>
+              
             </table>
           </input>
 
         </antijoin>
         <table name="y">
           <column name="b" type="int"/>
-
+<index name="yb" type="clustered">
+                <column name="b" order="desc"/>
+              </index>
         </table>
       </input>
     </antijoin>
