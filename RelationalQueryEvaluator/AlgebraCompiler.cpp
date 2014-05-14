@@ -1216,9 +1216,6 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				//direction left->right
 				generateSortParametersForMergeJoin(leftSortParameters, equalConditions, leftColumns);
 
-				//direction left->right
-				generateSortParametersForMergeJoin(leftSortParameters, equalConditions, leftColumns);
-
 				shared_ptr<PhysicalPlan> leftSortedPlan;
 				leftSortedPlan = generateSortParameters(leftSortParameters, *first);
 				PossibleSortParameters rightSortParameters;
@@ -1236,6 +1233,29 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
 				PossibleSortParameters resultParameters = leftSortedPlan->sortedBy;
 				getMergeJoinSortedParametes(resultParameters, equalPairs, rightColumns);
+				mergePlan->sortedBy = resultParameters;
+				insertPlan(newPlan.plans, mergePlan);
+				
+				
+				leftSortParameters.parameters.clear();
+				rightSortParameters.parameters.clear();
+				rightSortParameters.parameters.push_back(SortParameters());
+				generateSortParametersForMergeJoin(rightSortParameters, equalConditions, rightColumns);
+
+				rightSortedPlan = generateSortParameters(rightSortParameters, *second);
+
+				generateSortParametersForOtherPlanInMergeJoin(leftSortParameters, rightSortedPlan, leftColumns, equalPairsReverse);
+				leftSortedPlan = generateSortParameters(leftSortParameters, *first);
+
+				rightSortParameters.parameters.clear();
+				generateSortParametersForOtherPlanInMergeJoin(rightSortParameters, leftSortedPlan, rightColumns, equalPairs);
+				rightSortedPlan = generateSortParameters(rightSortParameters, *second);
+
+				mergeJoin = new MergeEquiJoin(condition);
+				time = TimeComplexity::mergeEquiJoin(left.size, right.size);
+				mergePlan = shared_ptr<PhysicalPlan>(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
+				resultParameters = rightSortedPlan->sortedBy;
+				getMergeJoinSortedParametes(resultParameters, equalPairsReverse, leftColumns);
 				mergePlan->sortedBy = resultParameters;
 				insertPlan(newPlan.plans, mergePlan);
 			}

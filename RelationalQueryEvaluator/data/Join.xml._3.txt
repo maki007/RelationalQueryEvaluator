@@ -46,5 +46,34 @@ countries
 id_3 251,name_4 251,
 "]node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]
+node8[label="Merge Join
+(country_id_2(0) == id_3(1))
+ time:1200
+ size:3981
+name_1 1,name_4 1,
+"]node9[label="Sort
+Sort by: country_id_2 both
+ time:19931
+ size:1000
+name_1 251,country_id_2 251,
+"]node10[label="Table Scan
+users
+ time:1000
+ size:1000
+name_1 251,country_id_2 251,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node11[label="Sort
+Sort by: id_3 both
+ time:19931
+ size:1000
+id_3 251,name_4 251,
+"]node12[label="Table Scan
+countries
+ time:1000
+ size:1000
+id_3 251,name_4 251,
+"]node12 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node8[headport=s, tailport=n,label="   "]
 
 }
