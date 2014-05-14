@@ -534,7 +534,7 @@ void SortResolvingPhysicalOperatorVisitor::visitFilter(Filter * node)
 {
 	sortParameters.clear();
 	node->child->accept(*this);
-
+	sortParameters.clear();
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitFilterKeepingOrder(FilterKeepingOrder * node)
@@ -718,7 +718,7 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * no
 	node->leftChild->accept(*this);
 	sortParameters = rightSortParameters;
 	node->rightChild->accept(*this);
-
+	//todo set sortPameters + refactor with mergeanitjoin
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
@@ -732,6 +732,7 @@ void SortResolvingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node
 	node->leftChild->accept(*this);
 	sortParameters.clear();
 	node->rightChild->accept(*this);
+	sortParameters.clear();
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
@@ -822,6 +823,7 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * no
 	sortParameters = rightSortParameters;
 	node->rightChild->accept(*this);
 
+	//todo set sortPameters
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
@@ -830,6 +832,7 @@ void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
 	node->leftChild->accept(*this);
 	sortParameters.clear();
 	node->rightChild->accept(*this);
+	sortParameters.clear();
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
@@ -838,6 +841,7 @@ void SortResolvingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 	node->leftChild->accept(*this);
 	sortParameters.clear();
 	node->rightChild->accept(*this);
+	sortParameters.clear();
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * node)
@@ -846,12 +850,14 @@ void SortResolvingPhysicalOperatorVisitor::visitUnionOperator(UnionOperator * no
 	node->leftChild->accept(*this);
 	sortParameters.clear();
 	node->rightChild->accept(*this);
+	sortParameters.clear();
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitHashGroup(HashGroup * node)
 {
 	sortParameters.clear();
 	node->child->accept(*this);
+	sortParameters.clear();
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
@@ -880,25 +886,37 @@ void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 		it->others = others;
 	}
 	node->child->accept(*this);
+	//todo
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
 	node->child->accept(*this);
+	//todo
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-	//empty
+	sortParameters.clear();
+	for (auto it = node->index.columns.begin(); it != node->index.columns.end(); ++it)
+	{
+		sortParameters.push_back(*it);
+	}
 }
+
+void SortResolvingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
+{
+	sortParameters.clear();
+	for (auto it = node->index.columns.begin(); it != node->index.columns.end(); ++it)
+	{
+		sortParameters.push_back(*it);
+	}
+}
+
 
 void SortResolvingPhysicalOperatorVisitor::visitTableScan(TableScan * node)
 {
 	//empty
 }
 
-void SortResolvingPhysicalOperatorVisitor::visitIndexScan(IndexScan * node)
-{
-	//empty
-}
 
