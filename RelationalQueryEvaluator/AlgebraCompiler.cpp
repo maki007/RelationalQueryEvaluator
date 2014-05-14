@@ -19,7 +19,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 	{
 		return plan;
 	}
-
+	size = plan->plan->size;
 	if (plan->sortedBy.parameters.size() == 0)
 	{
 		SortOperator * op = new SortOperator(PossibleSortParameters(), parameters);
@@ -45,7 +45,7 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 				if (sortByIt->column.id == sortedByIt->column.id)
 				{
 					SortOrder sortByOrder = sortByIt->order;
-					SortOrder sortedByOrder  = sortedByIt->order;
+					SortOrder sortedByOrder = sortedByIt->order;
 					if ((sortedByOrder == SortOrder::UNKNOWN) || (sortedByOrder == sortByOrder) || (sortByOrder == SortOrder::UNKNOWN))
 					{
 						newSortedBy.values.push_back(*sortByIt);
@@ -254,7 +254,7 @@ void AlgebraCompiler::visitTable(Table * node)
 	{
 		if (it->type == UNCLUSTERED)
 		{
-			PhysicalPlan * physicalPlan = new PhysicalPlan(new ScanAndSortByIndex(node->name,*it), (double)node->numberOfRows,
+			PhysicalPlan * physicalPlan = new PhysicalPlan(new ScanAndSortByIndex(node->name, *it), (double)node->numberOfRows,
 				TimeComplexity::unClusteredScan(double(node->numberOfRows)), node->columns);
 
 			for (auto index = it->columns.begin(); index != it->columns.end(); ++index)
@@ -326,10 +326,10 @@ void AlgebraCompiler::visitGroup(Group * node)
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
 		shared_ptr<PhysicalPlan> sortedPlan = generateSortParameters(parameters, *it);
-		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(node->groupColumns,node->agregateFunctions), newSize, 
+		shared_ptr<PhysicalPlan> sortedGroup(new PhysicalPlan(new SortedGroup(node->groupColumns, node->agregateFunctions), newSize,
 			TimeComplexity::sortedGroup(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()), newColumns, sortedPlan));
 		sortedGroup->sortedBy = sortedPlan->sortedBy;
-		for (auto it2 = sortedGroup->sortedBy.parameters.begin(); it2 != sortedGroup->sortedBy.parameters.end();++it2)
+		for (auto it2 = sortedGroup->sortedBy.parameters.begin(); it2 != sortedGroup->sortedBy.parameters.end(); ++it2)
 		{
 			for (auto it3 = it2->values.begin(); it3 != it2->values.end(); ++it3)
 			{
@@ -338,7 +338,7 @@ void AlgebraCompiler::visitGroup(Group * node)
 					it3->column.id = newColumnsId[it3->column.id];
 				}
 				std::set<ColumnIdentifier> others;
-				for (auto it4 = it3->others.begin(); it4!= it3->others.end(); ++it4)
+				for (auto it4 = it3->others.begin(); it4 != it3->others.end(); ++it4)
 				{
 					if (newColumnsId.find(it4->id) != newColumnsId.end())
 					{
@@ -352,8 +352,8 @@ void AlgebraCompiler::visitGroup(Group * node)
 		}
 
 
-		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(node->groupColumns, node->agregateFunctions), newSize, 
-			TimeComplexity::hash(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()),newColumns, *it));
+		shared_ptr<PhysicalPlan> hashedGroup(new PhysicalPlan(new HashGroup(node->groupColumns, node->agregateFunctions), newSize,
+			TimeComplexity::hash(size) + TimeComplexity::aggregate(size, node->agregateFunctions.size()), newColumns, *it));
 		insertPlan(newResult, hashedGroup);
 		insertPlan(newResult, sortedGroup);
 	}
@@ -449,7 +449,7 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 }
 
 
-void AlgebraCompiler::generateIndexScan(const std::string & tableName,std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, vector<shared_ptr<Expression> > & condition, vector<shared_ptr<PhysicalPlan>> & newResult)
+void AlgebraCompiler::generateIndexScan(const std::string & tableName, std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, vector<shared_ptr<Expression> > & condition, vector<shared_ptr<PhysicalPlan>> & newResult)
 {
 	for (auto index = (*plan)->indices.begin(); index != (*plan)->indices.end(); ++index)
 	{
@@ -577,7 +577,7 @@ void AlgebraCompiler::generateIndexScan(const std::string & tableName,std::vecto
 			{
 				col->second.numberOfUniqueValues *= sizeVisitor.size;
 			}
-			shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(tableName,*expression, *index), newSize,
+			shared_ptr<PhysicalPlan> indexPlan(new PhysicalPlan(new IndexScan(tableName, *expression, *index), newSize,
 				TimeComplexity::indexSearch(oldSize) + TimeComplexity::unClusteredScan(newSize), newColumns));
 			indexPlan->sortedBy = sortedBy;
 			vector<shared_ptr<Expression> > newCondition;
@@ -644,7 +644,7 @@ void AlgebraCompiler::visitSelection(Selection * node)
 	{
 		if ((*it)->indices.size() != 0)
 		{
-			generateIndexScan(((Table *)(node->child.get()))->name,it, condition, newResult);
+			generateIndexScan(((Table *)(node->child.get()))->name, it, condition, newResult);
 		}
 
 		if ((*it)->sortedBy.parameters.size() != 0)
@@ -673,7 +673,7 @@ void AlgebraCompiler::visitUnion(Union * node)
 	node->leftChild->accept(*this);
 	double leftSize = size;
 	vector<shared_ptr<PhysicalPlan>> leftInput = result;
-	std::map<int, ColumnInfo> leftColumns=columns;
+	std::map<int, ColumnInfo> leftColumns = columns;
 	node->rightChild->accept(*this);
 	double rightSize = size;
 	vector<shared_ptr<PhysicalPlan>> rightInput = result;
@@ -964,6 +964,106 @@ void AlgebraCompiler::greedyJoin(vector<JoinInfo>::iterator &it, set<ulong>::ite
 
 }
 
+void AlgebraCompiler::generateSortParametersForMergeJoin(PossibleSortParameters & sortParameters, const vector<shared_ptr<ConditionInfo>> & conditions, const map<int, ColumnInfo> & columns)
+{
+	SortParameter parameter;
+	for (auto cond = conditions.begin(); cond != conditions.end(); ++cond)
+	{
+		ulong firstColumn = *((*cond)->inputs.begin());
+		ulong secondColumn = *(--((*cond)->inputs.end()));
+
+
+		if (columns.find(firstColumn) != columns.end())
+		{
+			parameter.column = columns.at(firstColumn).column;
+		}
+		else
+		{
+			parameter.column = columns.at(secondColumn).column;
+		}
+		parameter.order = SortOrder::UNKNOWN;
+
+		sortParameters.parameters[0].values.push_back(parameter);
+	}
+}
+
+void AlgebraCompiler::getEqualPairsFromCondition(const vector<shared_ptr<ConditionInfo>> & conditions, map<int, int> & equalPairs, map<int, int> & equalPairsReverse, const map<int, ColumnInfo> & leftColumns, const map<int, ColumnInfo> & rightColumns)
+{
+	for (auto cond = conditions.begin(); cond != conditions.end(); ++cond)
+	{
+		ulong firstColumn = *((*cond)->inputs.begin());
+		ulong secondColumn = *(--((*cond)->inputs.end()));
+
+
+		if (leftColumns.find(firstColumn) != leftColumns.end())
+		{
+			equalPairs[leftColumns.at(firstColumn).column.id] = rightColumns.at(secondColumn).column.id;
+			equalPairsReverse[equalPairs[leftColumns.at(firstColumn).column.id]] = leftColumns.at(firstColumn).column.id;
+		}
+		else
+		{
+			equalPairs[leftColumns.at(secondColumn).column.id] = rightColumns.at(firstColumn).column.id;
+			equalPairsReverse[equalPairs[leftColumns.at(secondColumn).column.id]] = leftColumns.at(secondColumn).column.id;
+		}
+	}
+}
+
+void AlgebraCompiler::generateSortParametersForOtherPlanInMergeJoin(PossibleSortParameters & rightSortParameters, shared_ptr<PhysicalPlan> plan, const map<int, ColumnInfo> & columns, std::map<int, int> & equalPairs)
+{
+	for (auto it = plan->sortedBy.parameters.begin(); it != plan->sortedBy.parameters.end(); ++it)
+	{
+		rightSortParameters.parameters.push_back(SortParameters());
+		for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
+		{
+			if (equalPairs.find(it2->column.id) == equalPairs.end())
+			{
+				bool found = false;
+				for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
+				{
+					if (equalPairs.find(it3->id) != equalPairs.end())
+					{
+						rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(columns.at(equalPairs[it3->id]).column, it2->order));
+						found = true;
+						break;
+					}
+				}
+				if (!found)
+				{
+					return;
+				}
+			}
+			else
+			{
+				rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(columns.at(equalPairs[it2->column.id]).column, it2->order));
+			}
+		}
+	}
+}
+
+void AlgebraCompiler::getMergeJoinSortedParametes(PossibleSortParameters & resultParameters, map<int, int> & equalPairsReverse, map<int, ColumnInfo> & otherColumns)
+{
+	for (auto it = resultParameters.parameters.begin(); it != resultParameters.parameters.end(); ++it)
+	{
+		for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
+		{
+			if (equalPairsReverse.find(it2->column.id) == equalPairsReverse.end())
+			{
+				for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
+				{
+					if (equalPairsReverse.find(it3->id) != equalPairsReverse.end())
+					{
+						it2->others.insert(otherColumns.at(equalPairsReverse[it3->id]).column);
+					}
+				}
+			}
+			else
+			{
+				it2->others.insert(otherColumns.at(equalPairsReverse[it2->column.id]).column);
+			}
+		}
+	}
+}
+
 void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
 	vector<shared_ptr<ConditionInfo>> equalConditions;
@@ -1058,6 +1158,20 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 		}
 		shared_ptr<Expression> condition = deserializeExpression(expressions);
 
+		map<int, ColumnInfo> leftColumns;
+		map<int, ColumnInfo> rightColumns;
+
+		for (auto it = left.columns.begin(); it != left.columns.end(); ++it)
+		{
+			leftColumns[it->first] = it->second;
+		}
+
+		for (auto it = right.columns.begin(); it != right.columns.end(); ++it)
+		{
+			rightColumns[it->first] = it->second;
+		}
+
+
 		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)
 		{
 			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
@@ -1097,93 +1211,31 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				leftSortParameters.parameters.push_back(SortParameters());
 				std::map<int, int> equalPairs;
 				std::map<int, int> equalPairsReverse;
-				SortParameter leftParameter;
-				for (auto cond = equalConditions.begin(); cond != equalConditions.end(); ++cond)
-				{
-					ulong firstColumn = *((*cond)->inputs.begin());
-					ulong secondColumn = *(--((*cond)->inputs.end()));
+				getEqualPairsFromCondition(equalConditions, equalPairs, equalPairsReverse, leftColumns, rightColumns);
 
+				//direction left->right
+				generateSortParametersForMergeJoin(leftSortParameters, equalConditions, leftColumns);
 
-					if (left.columns.find(firstColumn) != left.columns.end())
-					{
-						leftParameter.column = left.columns.at(firstColumn).column;
-						leftParameter.order = SortOrder::UNKNOWN;
-						equalPairs[leftParameter.column.id] = right.columns.at(secondColumn).column.id;
-						equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
-					}
-					else
-					{
-						leftParameter.column = left.columns.at(secondColumn).column;
-						leftParameter.order = SortOrder::UNKNOWN;
-						equalPairs[leftParameter.column.id] = right.columns.at(firstColumn).column.id;
-						equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
-
-					}
-					leftSortParameters.parameters[0].values.push_back(leftParameter);
-				}
-
+				//direction left->right
+				generateSortParametersForMergeJoin(leftSortParameters, equalConditions, leftColumns);
 
 				shared_ptr<PhysicalPlan> leftSortedPlan;
 				leftSortedPlan = generateSortParameters(leftSortParameters, *first);
-
 				PossibleSortParameters rightSortParameters;
-				for (auto it = leftSortedPlan->sortedBy.parameters.begin(); it != leftSortedPlan->sortedBy.parameters.end(); ++it)
-				{
-					rightSortParameters.parameters.push_back(SortParameters());
-					for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
-					{
-						if (equalPairs.find(it2->column.id) == equalPairs.end())
-						{
-							bool found = false;
-							for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
-							{
-								if (equalPairs.find(it3->id) != equalPairs.end())
-								{
-									rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(right.columns.at(equalPairs[it3->id]).column, it2->order));
-									found = true;
-									break;
-								}
-							}
-							if (!found)
-							{
-								goto endLoop;
-							}
-						}
-						else
-						{
-							rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(right.columns.at(equalPairs[it2->column.id]).column, it2->order));
-						}
-					}
-				}
-			endLoop:
+				generateSortParametersForOtherPlanInMergeJoin(rightSortParameters, leftSortedPlan, rightColumns, equalPairs);
 
 				shared_ptr<PhysicalPlan> rightSortedPlan;
 				rightSortedPlan = generateSortParameters(rightSortParameters, *second);
 
+				leftSortParameters.parameters.clear();
+				generateSortParametersForOtherPlanInMergeJoin(leftSortParameters, rightSortedPlan, leftColumns, equalPairsReverse);
+				leftSortedPlan = generateSortParameters(leftSortParameters, *first);
+
 				MergeEquiJoin * mergeJoin = new MergeEquiJoin(condition);
 				time = TimeComplexity::mergeEquiJoin(left.size, right.size);
 				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergeJoin, newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
-				PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;
-				for (auto it = resultParameters.parameters.begin(); it != resultParameters.parameters.end(); ++it)
-				{
-					for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
-					{
-						if (equalPairsReverse.find(it2->column.id) == equalPairsReverse.end())
-						{
-							for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
-							{
-								if (equalPairsReverse.find(it3->id) != equalPairsReverse.end())
-								{
-									it2->others.insert(left.columns.at(equalPairsReverse[it3->id]).column);
-								}
-							}
-						}
-						else
-						{
-							it2->others.insert(left.columns.at(equalPairsReverse[it2->column.id]).column);
-						}
-					}
-				}
+				PossibleSortParameters resultParameters = leftSortedPlan->sortedBy;
+				getMergeJoinSortedParametes(resultParameters, equalPairs, rightColumns);
 				mergePlan->sortedBy = resultParameters;
 				insertPlan(newPlan.plans, mergePlan);
 			}
@@ -1232,7 +1284,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	vector<shared_ptr<PhysicalPlan>> rightInput = result;
 	std::map<int, ColumnInfo> rightColumns = columns;
 	vector<shared_ptr<PhysicalPlan>> newResult;
-	
+
 	vector<shared_ptr<Expression>> cond;
 	if (node->condition != 0)
 	{
@@ -1266,7 +1318,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 		newAllColumns[it->column.id] = allColumns[it->column.id];
 	}
 	allColumns = newAllColumns;
-	double newSize = leftSize / (1<<leftPartOfEquation.size());
+	double newSize = leftSize / (1 << leftPartOfEquation.size());
 	for (auto first = leftInput.begin(); first != leftInput.end(); ++first)
 	{
 		for (auto second = rightInput.begin(); second != rightInput.end(); ++second)
@@ -1274,98 +1326,56 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 			HashAntiJoin * hashJoin = new HashAntiJoin(node->condition, leftPartOfEquation, rightPartOfEquation);
 			shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, TimeComplexity::hashJoin(rightSize, leftSize), allColumns, *first, *second));
 			insertPlan(newResult, hashPlan);
-			
+
 			//sortParameters
 			PossibleSortParameters leftSortParameters;
 			leftSortParameters.parameters.push_back(SortParameters());
 			std::map<int, int> equalPairs;
 			std::map<int, int> equalPairsReverse;
-			SortParameter leftParameter;
-			for (auto cond = conditions.begin(); cond != conditions.end(); ++cond)
-			{
-				ulong firstColumn = *((*cond)->inputs.begin());
-				ulong secondColumn = *(--((*cond)->inputs.end()));
-
-
-				if (leftColumns.find(firstColumn) != leftColumns.end())
-				{
-					leftParameter.column = leftColumns.at(firstColumn).column;
-					leftParameter.order = SortOrder::UNKNOWN;
-					equalPairs[leftParameter.column.id] = rightColumns.at(secondColumn).column.id;
-					equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
-				}
-				else
-				{
-					leftParameter.column = leftColumns.at(secondColumn).column;
-					leftParameter.order = SortOrder::UNKNOWN;
-					equalPairs[leftParameter.column.id] = rightColumns.at(firstColumn).column.id;
-					equalPairsReverse[equalPairs[leftParameter.column.id]] = leftParameter.column.id;
-
-				}
-				leftSortParameters.parameters[0].values.push_back(leftParameter);
-			}
-
+			getEqualPairsFromCondition(conditions, equalPairs, equalPairsReverse, leftColumns, rightColumns);
+			
+			//direction left->right
+			generateSortParametersForMergeJoin(leftSortParameters, conditions, leftColumns);
 
 			shared_ptr<PhysicalPlan> leftSortedPlan;
 			leftSortedPlan = generateSortParameters(leftSortParameters, *first);
 
 			PossibleSortParameters rightSortParameters;
-			for (auto it = leftSortedPlan->sortedBy.parameters.begin(); it != leftSortedPlan->sortedBy.parameters.end(); ++it)
-			{
-				rightSortParameters.parameters.push_back(SortParameters());
-				for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
-				{
-					if (equalPairs.find(it2->column.id) == equalPairs.end())
-					{
-						bool found = false;
-						for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
-						{
-							if (equalPairs.find(it3->id) != equalPairs.end())
-							{
-								rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(rightColumns.at(equalPairs[it3->id]).column, it2->order));
-								found = true;
-								break;
-							}
-						}
-						if (!found)
-						{
-							goto endLoop;
-						}
-					}
-					else
-					{
-						rightSortParameters.parameters[rightSortParameters.parameters.size() - 1].values.push_back(SortParameter(rightColumns.at(equalPairs[it2->column.id]).column, it2->order));
-					}
-				}
-			}
-		endLoop:
+			generateSortParametersForOtherPlanInMergeJoin(rightSortParameters, leftSortedPlan, rightColumns, equalPairs);
 
 			shared_ptr<PhysicalPlan> rightSortedPlan;
 			rightSortedPlan = generateSortParameters(rightSortParameters, *second);
 
+			leftSortParameters.parameters.clear();
+			generateSortParametersForOtherPlanInMergeJoin(leftSortParameters, rightSortedPlan, leftColumns, equalPairsReverse);
+			leftSortedPlan = generateSortParameters(leftSortParameters, *first);
+
 			MergeAntiJoin * mergejoin = new MergeAntiJoin(node->condition);
 			shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(mergejoin, newSize, TimeComplexity::mergeEquiJoin(leftSize, rightSize), allColumns, leftSortedPlan, rightSortedPlan));
-			PossibleSortParameters resultParameters = rightSortedPlan->sortedBy;
-			for (auto it = resultParameters.parameters.begin(); it != resultParameters.parameters.end(); ++it)
-			{
-				for (auto it2 = it->values.begin(); it2 != it->values.end(); ++it2)
-				{
-					if (equalPairsReverse.find(it2->column.id) == equalPairsReverse.end())
-					{
-						for (auto it3 = it2->others.begin(); it3 != it2->others.end(); ++it3)
-						{
-							if (equalPairsReverse.find(it3->id) != equalPairsReverse.end())
-							{
-								it2->others.insert(leftColumns.at(equalPairsReverse[it3->id]).column);
-							}
-						}
-					}
-					else
-					{
-						it2->others.insert(leftColumns.at(equalPairsReverse[it2->column.id]).column);
-					}
-				}
-			}
+			PossibleSortParameters resultParameters = leftSortedPlan->sortedBy;
+			getMergeJoinSortedParametes(resultParameters, equalPairs, rightColumns);
+			mergePlan->sortedBy = resultParameters;
+			insertPlan(newResult, mergePlan);
+
+			//direction right->left
+			leftSortParameters.parameters.clear();
+			rightSortParameters.parameters.clear();
+			rightSortParameters.parameters.push_back(SortParameters());
+			generateSortParametersForMergeJoin(rightSortParameters, conditions, rightColumns);
+
+			rightSortedPlan = generateSortParameters(rightSortParameters, *second);
+
+			generateSortParametersForOtherPlanInMergeJoin(leftSortParameters, rightSortedPlan, leftColumns, equalPairsReverse);
+			leftSortedPlan = generateSortParameters(leftSortParameters, *first);
+
+			rightSortParameters.parameters.clear();
+			generateSortParametersForOtherPlanInMergeJoin(rightSortParameters, leftSortedPlan, rightColumns, equalPairs);
+			rightSortedPlan = generateSortParameters(rightSortParameters, *second);
+			
+			mergejoin = new MergeAntiJoin(node->condition);
+			mergePlan = shared_ptr<PhysicalPlan>(new PhysicalPlan(mergejoin, newSize, TimeComplexity::mergeEquiJoin(leftSize, rightSize), allColumns, leftSortedPlan, rightSortedPlan));
+			resultParameters = rightSortedPlan->sortedBy;
+			getMergeJoinSortedParametes(resultParameters, equalPairsReverse, leftColumns);
 			mergePlan->sortedBy = resultParameters;
 			insertPlan(newResult, mergePlan);
 

@@ -245,13 +245,21 @@ private:
 
 	void generateIndexScan(const std::string & tableName,std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 
-	
 	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
 	std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;
 
 	void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
 
+
+	void generateSortParametersForMergeJoin(PossibleSortParameters & sortParameters, const std::vector<std::shared_ptr<ConditionInfo>> & conditions, const std::map<int, ColumnInfo> & columns);
+
+	void getEqualPairsFromCondition(const std::vector<std::shared_ptr<ConditionInfo>> & conditions, std::map<int, int> & equalPairs, std::map<int, int> & equalPairsReverse, const std::map<int, ColumnInfo> & leftColumns, const std::map<int, ColumnInfo> & rightColumns);
+
+	void generateSortParametersForOtherPlanInMergeJoin(PossibleSortParameters & rightSortParameters, std::shared_ptr<PhysicalPlan> plan, const std::map<int, ColumnInfo> & columns, std::map<int, int> & equalPairs);
+
+	void getMergeJoinSortedParametes(PossibleSortParameters & resultParameters, std::map<int, int> & equalPairsReverse, std::map<int, ColumnInfo> & otherColumns);
+	
 	std::shared_ptr<Expression> deserializeConditionInfo(const std::vector<std::shared_ptr<ConditionInfo>> & a, const std::vector<std::shared_ptr<ConditionInfo>> & b)
 	{
 		std::vector<std::shared_ptr<Expression> >  data;

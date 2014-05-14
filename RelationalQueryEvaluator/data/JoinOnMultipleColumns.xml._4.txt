@@ -46,5 +46,34 @@ b
 b1_3 251,b2_4 251,
 "]node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]
+node8[label="Merge Antijoin
+AND ((a1_1(0) == b1_3(1)),(a2_2(0) == b2_4(1)))
+ time:1200
+ size:250
+a1_1 251,a2_2 251,
+"]node9[label="Sort
+Sort by: a1_1 asc, a2_2 asc
+ time:19931
+ size:1000
+a1_1 251,a2_2 251,
+"]node10[label="Table Scan
+a
+ time:1000
+ size:1000
+a1_1 251,a2_2 251,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node11[label="Sort
+Sort by: b1_3 asc, b2_4 asc
+ time:19931
+ size:1000
+b1_3 251,b2_4 251,
+"]node12[label="Table Scan
+b
+ time:1000
+ size:1000
+b1_3 251,b2_4 251,
+"]node12 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node8[headport=s, tailport=n,label="   "]
 
 }

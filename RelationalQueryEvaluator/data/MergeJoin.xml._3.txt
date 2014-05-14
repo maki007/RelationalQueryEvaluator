@@ -12,7 +12,7 @@ a_1 1,b_2 1,
  size:15848931
 a_1 1,b_2 1,
 "]node2[label="Sort
-Sort by: a_1 both
+Sort by: (a_1 both, a_1 both)
  time:39863137
  size:1000000
 a_1 63095,
@@ -24,7 +24,7 @@ a_1 63095,
 "]node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node4[label="Sort
-Sort by: b_2 both
+Sort by: (b_2 both, b_2 both)
  time:39863137
  size:1000000
 b_2 63095,

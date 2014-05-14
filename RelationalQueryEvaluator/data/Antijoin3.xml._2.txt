@@ -6,12 +6,12 @@ node1[label="AntiJoin
 node2[label="Table z
  number of rows: 1000.000000
  columns: c_1(int,251)
- indices: CLUSTERED(c)"]
+ indices: "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table x
  number of rows: 1000.000000
  columns: a_2(int,251)
- indices: "]
+ indices: CLUSTERED(a)"]
 node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 

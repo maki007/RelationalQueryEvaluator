@@ -2,9 +2,9 @@ operator main()->()
 {
 broadcast()->(){2} start;
 TableScan()->(int) TableScan0(name="A",columns="a"); 
-SortOperator(int)->(int) SortOperator1(sortedBy="",sortBy="0:D"); 
+SortOperator(int)->(int) SortOperator1(sortedBy="",sortBy="0:D,0:A"); 
 TableScan()->(int) TableScan2(name="B",columns="b"); 
-SortOperator(int)->(int) SortOperator3(sortedBy="",sortBy="0:D"); 
+SortOperator(int)->(int) SortOperator3(sortedBy="",sortBy="0:D,0:A"); 
 MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin4(left="0",right="1",out="0,1",leftPartOfCondition=",rightPartOfCondition="); 
 Store(int,int)->() storeResult(); 
 

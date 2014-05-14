@@ -615,17 +615,19 @@ endOfOuterCycle:
 			}
 		}
 	}
-	sortParameters = newSortParameters;
+	sortParameters.clear();
 	node->sortedBy.parameters.clear();
 	node->sortBy.parameters.clear();
 	for (ulong j = 0; j < sortedBySize; ++j)
 	{
 		node->sortedBy.parameters.push_back(SortParameters(newSortParameters[j]));
+		sortParameters.push_back(newSortParameters[j]);
 	}
 	for (ulong j = sortedBySize; j < newSortParameters.size(); ++j)
 	{
 		node->sortBy.parameters.push_back(SortParameters(newSortParameters[j]));
 	}
+
 	node->child->accept(*this);
 }
 

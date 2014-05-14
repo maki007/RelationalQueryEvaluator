@@ -16,13 +16,13 @@
       <input>
         <table name="z">
           <column name="c" type="int"/>
-          <index name="zc" type="clustered">
-            <column name="c" order="desc"/>
-          </index>
+          
         </table>
         <table name="x">
           <column name="a" type="int"/>
-
+<index name="zc" type="clustered">
+            <column name="a" order="desc"/>
+          </index>
         </table>
       </input>
 
