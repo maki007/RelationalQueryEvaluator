@@ -616,19 +616,24 @@ endOfOuterCycle:
 		}
 	}
 	sortParameters.clear();
+	std::vector<SortParameter> postSortParameters;
+
 	node->sortedBy.parameters.clear();
 	node->sortBy.parameters.clear();
 	for (ulong j = 0; j < sortedBySize; ++j)
 	{
 		node->sortedBy.parameters.push_back(SortParameters(newSortParameters[j]));
 		sortParameters.push_back(newSortParameters[j]);
+		postSortParameters.push_back(newSortParameters[j]);
 	}
 	for (ulong j = sortedBySize; j < newSortParameters.size(); ++j)
 	{
 		node->sortBy.parameters.push_back(SortParameters(newSortParameters[j]));
+		postSortParameters.push_back(newSortParameters[j]);
 	}
 
 	node->child->accept(*this);
+	sortParameters = postSortParameters;	
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
@@ -716,9 +721,22 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * no
 
 	sortParameters = leftSortParameters;
 	node->leftChild->accept(*this);
+	leftSortParameters=sortParameters;
 	sortParameters = rightSortParameters;
 	node->rightChild->accept(*this);
-	//todo set sortPameters + refactor with mergeanitjoin
+	rightSortParameters = sortParameters;
+
+	node->left = std::vector<SortParameter>(leftSortParameters.begin(), leftSortParameters.begin() + condition.size());
+	node->right = std::vector<SortParameter>(rightSortParameters.begin(), rightSortParameters.begin() + condition.size());
+
+
+	sortParameters = leftSortParameters;
+	for (ulong i = 0; i < min(leftSortParameters.size(), rightSortParameters.size()); ++i)
+	{
+		sortParameters[i].others.insert(rightSortParameters[i].column);
+		sortParameters[i].others.insert(rightSortParameters[i].others.begin(), rightSortParameters[i].others.end());
+	}
+
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
@@ -819,11 +837,21 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * no
 
 	sortParameters = leftSortParameters;
 	node->leftChild->accept(*this);
-
+	leftSortParameters = sortParameters;
 	sortParameters = rightSortParameters;
 	node->rightChild->accept(*this);
+	rightSortParameters = sortParameters;
 
-	//todo set sortPameters
+	node->left = std::vector<SortParameter>(leftSortParameters.begin(), leftSortParameters.begin() + condition.size());
+	node->right = std::vector<SortParameter>(rightSortParameters.begin(), rightSortParameters.begin() + condition.size());
+
+
+	sortParameters = leftSortParameters;
+	for (ulong i = 0; i < min(leftSortParameters.size(), rightSortParameters.size()); ++i)
+	{
+		sortParameters[i].others.insert(rightSortParameters[i].column);
+		sortParameters[i].others.insert(rightSortParameters[i].others.begin(), rightSortParameters[i].others.end());
+	}
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
@@ -886,13 +914,45 @@ void SortResolvingPhysicalOperatorVisitor::visitSortedGroup(SortedGroup * node)
 		it->others = others;
 	}
 	node->child->accept(*this);
-	//todo
+	while (sortParameters.size() > node->groupColumns.size())
+	{
+		sortParameters.pop_back();
+	}
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitColumnsOperationsOperator(ColumnsOperationsOperator * node)
 {
 	node->child->accept(*this);
-	//todo
+	std::vector<SortParameter> newParameters;
+	for (uint i = 0; i < sortParameters.size(); ++i)
+	{
+		SortParameter & parameter = sortParameters[i];
+		auto allCols = parameter.others;
+		allCols.insert(parameter.column);
+		for (auto it3 = allCols.begin(); it3 != allCols.end(); ++it3)
+		{
+			if (node->columns.find(it3->id) == node->columns.end())
+			{
+				allCols.erase(it3);
+				if (it3 == allCols.end())
+				{
+					break;
+				}
+			}
+		}
+		if (allCols.size() > 0)
+		{
+			SortParameter parameter;
+			parameter.others = allCols;
+			parameter.column = *(parameter.others.begin());
+			parameter.others.erase(parameter.others.begin());
+			newParameters.push_back(parameter);
+		}
+		else
+		{
+			break;
+		}
+	}
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
