@@ -31,7 +31,7 @@ public:
 	static double indexSearch(double size);
 	static double hash(double size);
 	static double sortedGroup(double size);
-	static double aggregate(double size,ulong numberOfagregateFuntions);
+	static double aggregate(double size, ulong numberOfagregateFuntions);
 	static double hashJoin(double leftSize, double rightSize);
 	static double mergeEquiJoin(double hashSize, double readSize);
 	static double Union(double leftSize, double rightSize);
@@ -221,7 +221,7 @@ public:
 	{
 		this->operations = operations;
 	}
-	void accept(PhysicalOperatorVisitor &v);		 
+	void accept(PhysicalOperatorVisitor &v);
 };
 
 class ScanAndSortByIndex : public NullaryPhysicalOperator
@@ -229,7 +229,7 @@ class ScanAndSortByIndex : public NullaryPhysicalOperator
 public:
 	std::string tableName;
 	Index index;
-	ScanAndSortByIndex(const std::string & name,const Index & index)
+	ScanAndSortByIndex(const std::string & name, const Index & index)
 	{
 		tableName = name;
 		this->index = index;
@@ -271,14 +271,14 @@ public:
 	double timeComplexity;
 	std::shared_ptr<PhysicalOperator> plan;
 	PhysicalPlan();
-	PhysicalPlan(NullaryPhysicalOperator * op,double numberOfRows,double time,std::vector<ColumnInfo> & cols)
+	PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, std::vector<ColumnInfo> & cols)
 	{
-		
-		plan=std::shared_ptr<PhysicalOperator>(op);
+
+		plan = std::shared_ptr<PhysicalOperator>(op);
 		plan->size = numberOfRows;
-		timeComplexity=time;
-		plan->timeComplexity=time;
-		for(auto it2=cols.begin();it2!=cols.end();++it2)
+		timeComplexity = time;
+		plan->timeComplexity = time;
+		for (auto it2 = cols.begin(); it2 != cols.end(); ++it2)
 		{
 			op->columns[it2->column.id] = *it2;
 		}
@@ -297,31 +297,31 @@ public:
 
 	PhysicalPlan(UnaryPhysicalOperator * op, double newSize, double time, const std::map<int, ColumnInfo> & newColumns, const std::shared_ptr<PhysicalPlan> & oldPlan)
 	{
-		op->child=oldPlan->plan;
-		plan=std::shared_ptr<PhysicalOperator>(op);
+		op->child = oldPlan->plan;
+		plan = std::shared_ptr<PhysicalOperator>(op);
 		plan->size = newSize;
-		plan->timeComplexity=time;
-		timeComplexity=oldPlan->timeComplexity+ plan->timeComplexity;
+		plan->timeComplexity = time;
+		timeComplexity = oldPlan->timeComplexity + plan->timeComplexity;
 		op->columns = newColumns;
 	}
-	
 
 
-	PhysicalPlan(BinaryPhysicalOperator * op,double newSize,double time,const std::map<int,ColumnInfo> & newColumns,const std::shared_ptr<PhysicalPlan> & oldPlan1,const std::shared_ptr<PhysicalPlan> & oldPlan2)
+
+	PhysicalPlan(BinaryPhysicalOperator * op, double newSize, double time, const std::map<int, ColumnInfo> & newColumns, const std::shared_ptr<PhysicalPlan> & oldPlan1, const std::shared_ptr<PhysicalPlan> & oldPlan2)
 	{
-		op->leftChild=oldPlan1->plan;
-		op->rightChild=oldPlan2->plan;
-		plan=std::shared_ptr<PhysicalOperator>(op);
+		op->leftChild = oldPlan1->plan;
+		op->rightChild = oldPlan2->plan;
+		plan = std::shared_ptr<PhysicalOperator>(op);
 		plan->size = newSize;
-		plan->timeComplexity=time;
-		timeComplexity=oldPlan1->timeComplexity+oldPlan2->timeComplexity+ plan->timeComplexity;
+		plan->timeComplexity = time;
+		timeComplexity = oldPlan1->timeComplexity + oldPlan2->timeComplexity + plan->timeComplexity;
 		op->columns = newColumns;
 
 	}
 
 	static bool Comparator(std::shared_ptr<PhysicalPlan> & i, std::shared_ptr<PhysicalPlan> & j)
 	{
-		return (i->timeComplexity<j->timeComplexity);
+		return (i->timeComplexity < j->timeComplexity);
 	}
 
 };

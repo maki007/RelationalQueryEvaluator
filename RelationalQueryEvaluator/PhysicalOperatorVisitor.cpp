@@ -766,8 +766,11 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * no
 		pairs[rightColumn->column.id] = leftColumn->column.id;
 
 	}
+
 	std::map<int, ColumnInfo> allColumns = node->leftChild->columns;
 	allColumns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
+
+
 	for (auto it = sortParameters.begin(); it != sortParameters.end(); ++it)
 	{
 		if (pairs.find(it->column.id) != pairs.end())
@@ -844,7 +847,6 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * no
 
 	node->left = std::vector<SortParameter>(leftSortParameters.begin(), leftSortParameters.begin() + condition.size());
 	node->right = std::vector<SortParameter>(rightSortParameters.begin(), rightSortParameters.begin() + condition.size());
-
 
 	sortParameters = leftSortParameters;
 	for (ulong i = 0; i < min(leftSortParameters.size(), rightSortParameters.size()); ++i)
@@ -953,6 +955,7 @@ void SortResolvingPhysicalOperatorVisitor::visitColumnsOperationsOperator(Column
 			break;
 		}
 	}
+	sortParameters = newParameters;
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)

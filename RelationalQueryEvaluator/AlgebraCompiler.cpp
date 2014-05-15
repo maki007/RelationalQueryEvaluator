@@ -1258,6 +1258,8 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				getMergeJoinSortedParametes(resultParameters, equalPairsReverse, leftColumns);
 				mergePlan->sortedBy = resultParameters;
 				insertPlan(newPlan.plans, mergePlan);
+				
+				
 			}
 		}
 	}
@@ -1398,7 +1400,8 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 			getMergeJoinSortedParametes(resultParameters, equalPairsReverse, leftColumns);
 			mergePlan->sortedBy = resultParameters;
 			insertPlan(newResult, mergePlan);
-
+	
+			
 		}
 	}
 	size = newSize;
