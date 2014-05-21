@@ -1,0 +1,18 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="AntiJoin
+(c_1(0) == a_2(1))"]
+node2[label="Table z
+ number of rows: 1000.000000
+ columns: c_1(int,251)
+ indices: CLUSTERED(c)"]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table x
+ number of rows: 1000.000000
+ columns: a_2(int,251)
+ indices: CLUSTERED(a)"]
+node3 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

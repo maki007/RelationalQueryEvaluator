@@ -8,11 +8,13 @@
       <parameters>
         <group_by column="country"/>
         <count output="count" />
+        <max output="x" argument="parameter"/>
       </parameters>
       <input>
         <table name="people" numberOfRows="10000">
           <column name="user_name" type="string" number_of_unique_values="410"/>
           <column name="country" type="string" />
+          <column name="parameter" type ="int"/>
           <index type="unclustered" name="index">
             <column name="country" order="asc" />
           </index>

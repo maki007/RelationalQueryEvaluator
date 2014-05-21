@@ -1,12 +1,12 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-country_3 desc"]
+country_4 desc"]
 node1[label="Group
-groupBy country_2, count_4=count();"]
+groupBy country_2, count_5=count();x_6=max(parameter_3);"]
 node2[label="Table people
  number of rows: 10000.000000
- columns: user_name_1(string,410), country_2(string,1584)
+ columns: user_name_1(string,410), country_2(string,1584), parameter_3(int,1584)
  indices: UNCLUSTERED(country)"]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]

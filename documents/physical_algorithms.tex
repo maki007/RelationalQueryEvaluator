@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Description of physical algorithms}
+
+\maketitle
+
+\section{Filter}
+
+Example: \\
+$Filter(double,double,int)->(double,double,int)$\\
+$f(condition="OP\_LOWER(OP\_double\_CONSTANT("4.8"),1)"); $\\
+Input and output columns are the same and they are numbered from 0.\\
+Output contains only rows statisfying given condition.\\
+Output doens't have to be sorted same way as input. \\
+
+\section{Filter keeping order}
+
+Example: \\
+$FilterKeepingOrder(double,double,int)->(double,double,int)$ \\
+$f(condition="OP\_LOWER(OP\_double\_CONSTANT("4.8"),1)"); $ \\
+Input and output columns are the same and they are numbered from 0.\\
+They are numbered from 0.\\
+Output contains only rows statisfying condition. \\
+Output has to be sorted same way as input. \\
+
+\section{Hash group}
+Example: \\  
+$HashGroup(string,string,int)->(string,int,int)$ \\
+$g(groupBy="1",functions="count(),max(2)");$ \\
+Input columns are numbered from 0.\\
+\\
+\\
+\section{Sorted group}
+Example: \\  
+$SortedGroup(string,string,int)->(string,int,int)$ \\
+$g(groupBy="1",functions="count(),max(2)");$ \\
+
+\section{Column operationas}
+Example: \\  
+$ColumnsOperations(int,int,int,int,int)->(int,int,int,double)$ \\
+$c(out="0,3,4,OP\_TIMES(1,OP\_MINUS(OP\_double\_CONSTANT(1),2))");$\\ 
+
+
+\section{Cross join}
+Example:\\
+$CrossJoin(string,int)(int,string)->(string,string)$\\
+$c(left="0,1",right="2,3",out="0,3");$\\
+
+\section{Hash join}
+Example:\\
+$HashJoin(int,int)(int,int,int,int)->(int,int,int,int,int,int)$\\
+$h(left="0,1",right="2,3,4,5",out="0,1,2,3,4,5",leftPartOfCondition="0",rightPartOfCondition="5");$\\ 
+
+
+\section{Merge equijoin}
+Example:\\
+$MergeEquiJoin(int)(int)->(int,int))$\\
+$m(left="0",right="1",out="0,1",leftPartOfCondition="0:D",rightPartOfCondition="1:D");$\\ 
+
+
+\section{Merge nonequiJoin}
+
+
+\section{Hash antijoin}
+Example:\\
+$HashAntiJoin(int)(int)->(int)$\\
+$h(left="0",right="1",out="0",leftPartOfCondition="0",rightPartOfCondition="1");$\\ 
+
+
+\section{Merge antijoin}
+Example:\\
+$MergeAntiJoin(int)(int)->(int)$\\
+$m(left="0",right="1",out="0",leftPartOfCondition="0:D",rightPartOfCondition="1:D");$\\ 
+
+
+\section{Table scan}
+Example:\\
+$TableScan()->(int,int,int,int)$\\
+$t(name="lineitem",columns="l\_orderkey,l\_shipdate,l\_extendedprice,l\_discount");$\\ 
+
+
+\section{ScanAndSortByIndex}
+Example:\\
+$ScanAndSortByIndexScan()->(string,string,int)$\\
+$s(name="people",index="index",columns="user\_name,country,parameter"); $\\ 
+
+
+
+\section{IndexScan}
+Example:\\
+$IndexScan()->(int,int)$\\
+$i(name="customer",index="index2",columns="c\_custkey,c\_mktsegment",condition="OP\_EQUALS(1,OP\_string\_CONSTANT(SEGMENT))");$
+
+\section{Sort}
+Example:\\
+$SortOperator(int,int)->(int,int)$\\
+$s(sortedBy="0",sortBy="1:D");$\\
+
+\section{Union}
+Example:\\
+$Union(int,string)(string,int)->(int,string)$\\
+$ u(left="0,1",right="1,0",out="0,1");$\\
+
+\end{document}
