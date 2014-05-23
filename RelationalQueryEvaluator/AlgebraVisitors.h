@@ -37,7 +37,7 @@ public:
 
 	virtual void visitGroupedJoin(GroupedJoin * node);
 
-	static std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
+	static void serializeExpression(std::shared_ptr<Expression> condition, std::vector<std::shared_ptr<Expression> > & result);
 
 	static std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 

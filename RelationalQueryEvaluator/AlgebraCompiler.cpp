@@ -543,7 +543,8 @@ void AlgebraCompiler::generateIndexScan(const std::string & tableName, std::vect
 				TimeComplexity::indexSearch(oldSize) + TimeComplexity::unClusteredScan(newSize), newColumns));
 			indexPlan->sortedBy = sortedBy;
 			vector<shared_ptr<Expression> > newCondition;
-			vector<shared_ptr<Expression> >  serialExpresion = serializeExpression(*expression);
+			vector<shared_ptr<Expression> >  serialExpresion;
+			serializeExpression(*expression, serialExpresion);
 
 			for (auto conditionPart = condition.begin(); conditionPart != condition.end(); ++conditionPart)
 			{
@@ -592,7 +593,8 @@ void AlgebraCompiler::visitSelection(Selection * node)
 {
 	node->child->accept(*this);
 	vector<shared_ptr<PhysicalPlan>> newResult;
-	vector<shared_ptr<Expression> > condition = serializeExpression(node->condition);
+	vector<shared_ptr<Expression> > condition;
+	serializeExpression(node->condition, condition);
 	std::map<int, ColumnInfo> newColumns = columns;
 	SizeEstimatingExpressionVisitor sizeVisitor(&newColumns);
 	node->condition->accept(sizeVisitor);
@@ -721,7 +723,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	vector<shared_ptr<Expression>> cond;
 	if (node->condition != 0)
 	{
-		cond = serializeExpression(node->condition);
+		serializeExpression(node->condition, cond);
 	}
 
 	vector<shared_ptr<ConditionInfo>> conditions;
@@ -1266,7 +1268,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	vector<shared_ptr<Expression>> cond;
 	if (node->condition != 0)
 	{
-		cond = serializeExpression(node->condition);
+		serializeExpression(node->condition, cond);
 	}
 
 	std::vector<ColumnIdentifier> leftPartOfEquation;

@@ -79,9 +79,8 @@ void AlgebraVisitor::visitGroupedJoin(GroupedJoin * node)
 	}
 }
 
-vector<shared_ptr<Expression> > AlgebraVisitor::serializeExpression(shared_ptr<Expression> condition)
+void AlgebraVisitor::serializeExpression(shared_ptr<Expression> condition, vector<shared_ptr<Expression> > & result)
 {
-	vector<shared_ptr<Expression> > result;
 	if ((typeid(*(condition)) == typeid(GroupedExpression)))
 	{
 		shared_ptr<GroupedExpression> groupedCondition = dynamic_pointer_cast<GroupedExpression>(condition);
@@ -98,7 +97,6 @@ vector<shared_ptr<Expression> > AlgebraVisitor::serializeExpression(shared_ptr<E
 	{
 		result.push_back(condition);
 	}
-	return result;
 }
 
 shared_ptr<Expression> AlgebraVisitor::deserializeExpression(const vector<shared_ptr<Expression> > & condition)

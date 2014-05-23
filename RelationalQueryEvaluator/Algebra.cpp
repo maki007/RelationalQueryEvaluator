@@ -139,7 +139,13 @@ void NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNode
 
 void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
 {
-
+	for (auto it = children.begin(); it != children.end(); ++it)
+	{
+		if ((*it).get() == oldChild)
+		{
+			(*it) = shared_ptr<AlgebraNodeBase>(newChild);
+		}
+	}
 }
 
 Table::Table(DOMElement * element)

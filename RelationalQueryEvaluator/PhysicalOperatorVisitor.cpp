@@ -639,7 +639,8 @@ endOfOuterCycle:
 void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
 	map<ulong, ulong> pairs;
-	vector<shared_ptr<Expression> > condition = AlgebraCompiler::serializeExpression(node->condition);
+	vector<shared_ptr<Expression> > condition;
+	AlgebraCompiler::serializeExpression(node->condition, condition);
 	for (auto it = condition.begin(); it != condition.end(); ++it)
 	{
 		BinaryExpression * expr = (BinaryExpression *)((*it).get());
@@ -756,7 +757,8 @@ void SortResolvingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node
 void SortResolvingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)
 {
 	map<ulong, ulong> pairs;
-	vector<shared_ptr<Expression> > condition = AlgebraCompiler::serializeExpression(node->condition);
+	vector<shared_ptr<Expression> > condition;
+	AlgebraCompiler::serializeExpression(node->condition, condition);
 	for (auto it = condition.begin(); it != condition.end(); ++it)
 	{
 		BinaryExpression * expr = (BinaryExpression *)((*it).get());
