@@ -40,12 +40,12 @@ void drawPlan(std::vector<std::shared_ptr<PhysicalPlan> > & result, string & fil
 {
 	PhysicalOperatorDrawingVisitor planDrawer;
 	sort(result.begin(), result.end(), PhysicalPlan::Comparator);
-	for(auto it=result.begin();it!=result.end();++it)
+	for (auto it = result.begin(); it != result.end(); ++it)
 	{
 		(*it)->plan->accept(planDrawer);
 		planDrawer.nodeCounter++;
 	}
-	planDrawer.result+="\n}";
+	planDrawer.result += "\n}";
 
 	writeOutput(fileName, planDrawer.result);
 }
@@ -87,39 +87,39 @@ int main(int argc, const char *argv[])
 
 	ifstream reader;
 	reader.open(argv[1]);
-	if (reader.is_open()) 
+	if (reader.is_open())
 	{
-		while (!reader.eof()) 
+		while (!reader.eof())
 		{
 
 			clock_t begin = clock();
 
 			string line;
-			getline(reader,line);
-			if(line.size()==0)
+			getline(reader, line);
+			if (line.size() == 0)
 				continue;
 
-			line="data/"+line;
+			line = "data/" + line;
 			shared_ptr<AlgebraNodeBase> algebraRoot = XmlHandler::GenerateRelationalAlgebra(line.c_str());
-			if(algebraRoot==0)
+			if (algebraRoot == 0)
 			{
 				return 1;
 			}
-			drawAlgebra(algebraRoot,line+string("._1.txt"));
+			drawAlgebra(algebraRoot, line + string("._1.txt"));
 
 			SemanticChecker semanticChecker;
 			algebraRoot->accept(semanticChecker);
-			if(semanticChecker.containsErrors==true)
+			if (semanticChecker.containsErrors == true)
 			{
 				cout << "semantic error in " << line << endl;
 				return 1;
 			}
-			
+
 			unique_ptr<AlgebraVisitor> groupVisitor(new GroupingVisitor());
 			algebraRoot->accept(*groupVisitor);
-			drawAlgebra(algebraRoot,line+string("._2.txt"));
-			
-			
+			drawAlgebra(algebraRoot, line + string("._2.txt"));
+
+
 			SelectionSpitingVisitor selectionSpliter;
 			algebraRoot->accept(selectionSpliter);
 
@@ -141,7 +141,7 @@ int main(int argc, const char *argv[])
 			algebraRoot->accept(algebraCompiler);
 
 			drawPlan(algebraCompiler.result, line + string("._4.txt"));
-			
+
 			vector<shared_ptr<PhysicalOperator> > clonedPlans;
 
 			for (auto it = algebraCompiler.result.begin(); it != algebraCompiler.result.end(); ++it)

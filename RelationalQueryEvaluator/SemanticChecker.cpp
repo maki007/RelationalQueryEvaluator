@@ -7,7 +7,7 @@ using namespace std;
 
 SemanticChecker::SemanticChecker()
 {
-	containsErrors=false;
+	containsErrors = false;
 	lastId = 1;
 }
 
@@ -21,7 +21,7 @@ void SemanticChecker::visitTable(Table * node)
 	outputColumns.clear();
 
 	set<string> hashSet;
-	for(auto it=node->columns.begin();it!=node->columns.end();++it)
+	for (auto it = node->columns.begin(); it != node->columns.end(); ++it)
 	{
 		if (hashSet.find(it->column.name) == hashSet.end())
 		{
@@ -36,14 +36,14 @@ void SemanticChecker::visitTable(Table * node)
 		}
 	}
 
-	bool containsClusteredIndex=false;
-	for(auto it=node->indices.begin();it!=node->indices.end();++it)
+	bool containsClusteredIndex = false;
+	for (auto it = node->indices.begin(); it != node->indices.end(); ++it)
 	{
-		if(it->type==CLUSTERED)
+		if (it->type == CLUSTERED)
 		{
-			if(containsClusteredIndex==false)
+			if (containsClusteredIndex == false)
 			{
-				containsClusteredIndex=true;
+				containsClusteredIndex = true;
 			}
 			else
 			{
@@ -51,9 +51,9 @@ void SemanticChecker::visitTable(Table * node)
 			}
 		}
 		set<string>  indexSet;
-		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
+		for (auto it2 = it->columns.begin(); it2 != it->columns.end(); ++it2)
 		{
-			if(hashSet.find(it2->column.name)==hashSet.end())
+			if (hashSet.find(it2->column.name) == hashSet.end())
 			{
 				ReportError("Index cannot be on non-existing column");
 			}
@@ -77,9 +77,9 @@ void SemanticChecker::visitTable(Table * node)
 void SemanticChecker::visitSort(Sort * node)
 {
 	node->child->accept(*this);
-	for(auto it=node->parameters.begin();it!=node->parameters.end();++it)
+	for (auto it = node->parameters.begin(); it != node->parameters.end(); ++it)
 	{
-		if(outputColumns.find(it->column.name)==outputColumns.end())
+		if (outputColumns.find(it->column.name) == outputColumns.end())
 		{
 			ReportError("Column doesn't exist");
 		}
@@ -93,11 +93,11 @@ void SemanticChecker::visitSort(Sort * node)
 void SemanticChecker::visitGroup(Group * node)
 {
 	node->child->accept(*this);
-	for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
+	for (auto it = node->agregateFunctions.begin(); it != node->agregateFunctions.end(); ++it)
 	{
-		if(it->function!=COUNT)
+		if (it->function != COUNT)
 		{
-			if(outputColumns.find(it->parameter.name)==outputColumns.end())
+			if (outputColumns.find(it->parameter.name) == outputColumns.end())
 			{
 				ReportError("Column doesn't exist");
 			}
@@ -108,9 +108,9 @@ void SemanticChecker::visitGroup(Group * node)
 		}
 	}
 	map<string, ColumnInfo> groupColumns;
-	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
+	for (auto it = node->groupColumns.begin(); it != node->groupColumns.end(); ++it)
 	{
-		if(outputColumns.find(it->input.name)==outputColumns.end())
+		if (outputColumns.find(it->input.name) == outputColumns.end())
 		{
 			ReportError("Column doesn't exist");
 		}
@@ -130,12 +130,12 @@ void SemanticChecker::visitGroup(Group * node)
 				ReportError("Cannot group by same column twice");
 			}
 		}
-		
+
 	}
 	outputColumns = groupColumns;
-	for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
+	for (auto it = node->agregateFunctions.begin(); it != node->agregateFunctions.end(); ++it)
 	{
-		if(outputColumns.find(it->output.name)==outputColumns.end())
+		if (outputColumns.find(it->output.name) == outputColumns.end())
 		{
 			outputColumns[it->output.name] = ColumnInfo(it->output.name, "");
 			outputColumns[it->output.name].column.id = nextId();
@@ -146,7 +146,7 @@ void SemanticChecker::visitGroup(Group * node)
 			ReportError("Columns must have different name");
 		}
 	}
-	if(outputColumns.size()==0)
+	if (outputColumns.size() == 0)
 	{
 		ReportError("Group must group by one column or must contain at least one aggregate function");
 	}
@@ -156,15 +156,15 @@ void SemanticChecker::visitColumnOperations(ColumnOperations * node)
 {
 	node->child->accept(*this);
 
-	for(auto it=node->operations.begin();it!=node->operations.end();++it)
+	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
 	{
-		if(it->expression!=0)
+		if (it->expression != 0)
 		{
 			shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-			expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-			expresionVisitor->outputColumns0=outputColumns;
+			expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+			expresionVisitor->outputColumns0 = outputColumns;
 			it->expression->accept(*expresionVisitor);
-			containsErrors|=expresionVisitor->containsErrors;
+			containsErrors |= expresionVisitor->containsErrors;
 		}
 		else
 		{
@@ -206,28 +206,28 @@ void SemanticChecker::visitSelection(Selection * node)
 {
 	node->child->accept(*this);
 	shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-	expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-	expresionVisitor->outputColumns0=outputColumns;
+	expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+	expresionVisitor->outputColumns0 = outputColumns;
 	node->condition->accept(*expresionVisitor);
-	containsErrors|=expresionVisitor->containsErrors;
+	containsErrors |= expresionVisitor->containsErrors;
 }
 
 void SemanticChecker::visitJoin(Join * node)
 {
-	map<string,ColumnInfo> outputColumns0,outputColumns1;
+	map<string, ColumnInfo> outputColumns0, outputColumns1;
 	node->leftChild->accept(*this);
-	outputColumns0=outputColumns;
+	outputColumns0 = outputColumns;
 	node->rightChild->accept(*this);
-	outputColumns1=outputColumns;
+	outputColumns1 = outputColumns;
 
-	if(node->condition!=0)
+	if (node->condition != 0)
 	{
 		shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-		expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-		expresionVisitor->outputColumns0=outputColumns0;
-		expresionVisitor->outputColumns1=outputColumns1;
+		expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+		expresionVisitor->outputColumns0 = outputColumns0;
+		expresionVisitor->outputColumns1 = outputColumns1;
 		node->condition->accept(*expresionVisitor);
-		containsErrors|=expresionVisitor->containsErrors;
+		containsErrors |= expresionVisitor->containsErrors;
 	}
 
 	checkJoinOutPutParameters(outputColumns0, outputColumns1, node);
@@ -236,43 +236,43 @@ void SemanticChecker::visitJoin(Join * node)
 
 void SemanticChecker::visitAntiJoin(AntiJoin * node)
 {
-	map<string,ColumnInfo> outputColumns0,outputColumns1;
+	map<string, ColumnInfo> outputColumns0, outputColumns1;
 	node->leftChild->accept(*this);
-	outputColumns0=outputColumns;
+	outputColumns0 = outputColumns;
 	node->rightChild->accept(*this);
-	outputColumns1=outputColumns;
+	outputColumns1 = outputColumns;
 
 	shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-	expresionVisitor=shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-	expresionVisitor->outputColumns0=outputColumns0;
-	expresionVisitor->outputColumns1=outputColumns1;
+	expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
+	expresionVisitor->outputColumns0 = outputColumns0;
+	expresionVisitor->outputColumns1 = outputColumns1;
 	node->condition->accept(*expresionVisitor);
-	containsErrors|=expresionVisitor->containsErrors;
+	containsErrors |= expresionVisitor->containsErrors;
 
-	checkJoinOutPutParameters(outputColumns0, outputColumns1,node);
+	checkJoinOutPutParameters(outputColumns0, outputColumns1, node);
 }
 
 
 
 void SemanticChecker::visitUnion(Union * node)
 {
-	map<string,ColumnInfo> outputColumns0,outputColumns1;
+	map<string, ColumnInfo> outputColumns0, outputColumns1;
 	node->leftChild->accept(*this);
-	outputColumns0=outputColumns;
+	outputColumns0 = outputColumns;
 	node->rightChild->accept(*this);
-	outputColumns1=outputColumns;
-	
-	if(outputColumns0.size()!=outputColumns1.size())
+	outputColumns1 = outputColumns;
+
+	if (outputColumns0.size() != outputColumns1.size())
 	{
-		ReportError("Union requires inputs to have same size"); 
+		ReportError("Union requires inputs to have same size");
 	}
 
-	for(auto it=outputColumns0.begin();it!=outputColumns0.end();++it)
+	for (auto it = outputColumns0.begin(); it != outputColumns0.end(); ++it)
 	{
-		if(outputColumns1.find(it->first)==outputColumns1.end())
+		if (outputColumns1.find(it->first) == outputColumns1.end())
 		{
-			ReportError("Union requires inputs to have same columns"); 
-		}	
+			ReportError("Union requires inputs to have same columns");
+		}
 	}
 	outputColumns = outputColumns0;
 }
@@ -284,6 +284,6 @@ void SemanticChecker::visitGroupedJoin(GroupedJoin * node)
 
 void SemanticChecker::ReportError(const char * error)
 {
-	containsErrors=true;
+	containsErrors = true;
 	cout << error << endl;
 }

@@ -30,11 +30,11 @@ public:
 	std::string name;
 	int id;
 	ColumnIdentifier(std::string name, int id);
-	
+
 	ColumnIdentifier(std::string name);
 
 	ColumnIdentifier();
-	
+
 	std::string toString() const;
 
 	bool operator<(const ColumnIdentifier& other) const
@@ -60,12 +60,12 @@ public:
 	ColumnIdentifier column;
 	std::set<ColumnIdentifier> others;
 	SortOrder order;
-	SortParameter(const ColumnIdentifier & column,SortOrder order)
+	SortParameter(const ColumnIdentifier & column, SortOrder order)
 	{
 		this->column = column;
 		this->order = order;
 	}
-	
+
 	SortParameter(const ColumnIdentifier & column, const ColumnIdentifier & other, SortOrder order)
 	{
 		this->column = column;
@@ -100,7 +100,7 @@ public:
 	}
 	SortParameters()
 	{
-	
+
 	}
 
 };
@@ -116,7 +116,7 @@ public:
 
 	PossibleSortParameters(const std::vector<SortParameter> & parameters)
 	{
-		for (auto it = parameters.begin(); it != parameters.end();++it)
+		for (auto it = parameters.begin(); it != parameters.end(); ++it)
 		{
 			this->parameters.push_back(*it);
 		}
@@ -175,7 +175,7 @@ public:
 				column += ",";
 			}
 		}
-		
+
 		return name + "(" + column + ")";
 	}
 };
@@ -210,7 +210,7 @@ public:
 	JoinColumnInfo(const ColumnInfo & col);
 
 	JoinColumnInfo();
-		
+
 };
 
 class ColumnOperation

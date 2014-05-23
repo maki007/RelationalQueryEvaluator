@@ -13,18 +13,18 @@ void ExpressionVisitorBase::visitExpression(Expression * expression)
 
 void ExpressionVisitorBase::visitUnaryExpression(UnaryExpression * expression)
 {
-	expression->child->accept(*this); 
+	expression->child->accept(*this);
 }
 
 void ExpressionVisitorBase::visitBinaryExpression(BinaryExpression * expression)
 {
-	expression->leftChild->accept(*this); 
-	expression->rightChild->accept(*this); 
+	expression->leftChild->accept(*this);
+	expression->rightChild->accept(*this);
 }
 
 void ExpressionVisitorBase::visitNnaryExpression(NnaryExpression * expression)
 {
-	for (auto it=expression->arguments.begin();it!=expression->arguments.end();++it)
+	for (auto it = expression->arguments.begin(); it != expression->arguments.end(); ++it)
 	{
 		(*it)->accept(*this);
 	}
@@ -32,7 +32,7 @@ void ExpressionVisitorBase::visitNnaryExpression(NnaryExpression * expression)
 
 void ExpressionVisitorBase::visitGroupedExpression(GroupedExpression * expression)
 {
-	for (auto it=expression->children.begin();it!=expression->children.end();++it)
+	for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
 	{
 		(*it)->accept(*this);
 	}
@@ -50,80 +50,80 @@ void ExpressionVisitorBase::visitColumn(Column * expression)
 
 void WritingExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
 {
-	result+="!(";
-	expression->child->accept(*this); 
-	result+=")";
+	result += "!(";
+	expression->child->accept(*this);
+	result += ")";
 }
 
 void WritingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
 {
-	result+="(";
-	expression->leftChild->accept(*this); 
+	result += "(";
+	expression->leftChild->accept(*this);
 	switch (expression->operation)
 	{
 	case BinaryOperator::AND:
-		result+=" and ";
+		result += " and ";
 		break;
 	case BinaryOperator::OR:
-		result+=" or ";
+		result += " or ";
 		break;
 	case BinaryOperator::PLUS:
-		result+=" + ";
+		result += " + ";
 		break;
 	case BinaryOperator::MINUS:
-		result+=" - ";
+		result += " - ";
 		break;
 	case BinaryOperator::TIMES:
-		result+=" * ";
+		result += " * ";
 		break;
 	case BinaryOperator::DIVIDE:
-		result+=" / ";
+		result += " / ";
 		break;
 	case BinaryOperator::EQUALS:
-		result+=" == ";
+		result += " == ";
 		break;
 	case BinaryOperator::NOT_EQUALS:
-		result+=" != ";
+		result += " != ";
 		break;
 	case BinaryOperator::LOWER:
-		result+=" < ";
+		result += " < ";
 		break;
 	case BinaryOperator::LOWER_OR_EQUAL:
-		result+=" <= ";
+		result += " <= ";
 		break;
 	}
-	expression->rightChild->accept(*this); 
-	result+=")";
+	expression->rightChild->accept(*this);
+	result += ")";
 }
 
 void WritingExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
 {
-	result+=expression->name;
-	result+="(";
-	for (auto it=expression->arguments.begin();it!=expression->arguments.end();++it)
+	result += expression->name;
+	result += "(";
+	for (auto it = expression->arguments.begin(); it != expression->arguments.end(); ++it)
 	{
 		(*it)->accept(*this);
-		if(it!=expression->arguments.end()-1)
+		if (it != expression->arguments.end() - 1)
 		{
-			result+=",";
+			result += ",";
 		}
 	}
-	result+=")";
+	result += ")";
 }
 
 void WritingExpressionVisitor::visitConstant(Constant * expression)
 {
-	result+=expression->value;
+	result += expression->value;
 }
 
 void WritingExpressionVisitor::visitColumn(Column * expression)
 {
-	result+=expression->column.toString();
-	if(expression->input>=0)
+	result += expression->column.toString();
+	if (expression->input >= 0)
 	{
-		result+="(";
-		result+=to_string(expression->input);
-		result+=")";
+		result += "(";
+		result += to_string(expression->input);
+		result += ")";
 	}
 }
 
@@ -132,39 +132,39 @@ void WritingExpressionVisitor::visitGroupedExpression(GroupedExpression * expres
 	switch (expression->operation)
 	{
 	case GroupedOperator::AND:
-		result+="AND (";
+		result += "AND (";
 		break;
 	case GroupedOperator::OR:
-		result+="OR (";
+		result += "OR (";
 		break;
 	}
-	for (auto it=expression->children.begin();it!=expression->children.end();++it)
+	for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
 	{
 		(*it)->accept(*this);
-		if(it!=expression->children.end()-1)
+		if (it != expression->children.end() - 1)
 		{
-			result+=",";
+			result += ",";
 		}
 	}
-	result+=")";
+	result += ")";
 }
 
 NumberColumnsInJoinVisitor::NumberColumnsInJoinVisitor()
 {
-	lastNumberedColumn=1;
+	lastNumberedColumn = 1;
 }
 
 void NumberColumnsInJoinVisitor::visitColumn(Column * expression)
 {
-	if(lastNumberedColumn==1)
+	if (lastNumberedColumn == 1)
 	{
-		expression->input=0;
-		lastNumberedColumn=0;
+		expression->input = 0;
+		lastNumberedColumn = 0;
 	}
 	else
 	{
-		expression->input=1;
-		lastNumberedColumn=1;
+		expression->input = 1;
+		lastNumberedColumn = 1;
 	}
 }
 
@@ -175,48 +175,48 @@ void GetColumnsNodesVisitor::visitColumn(Column * expression)
 
 GroupingExpressionVisitor::GroupingExpressionVisitor(shared_ptr<Expression> * x)
 {
-	root=x;
+	root = x;
 }
 
 void GroupingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
 {
-	expression->leftChild->accept(*this); 
+	expression->leftChild->accept(*this);
 	expression->rightChild->accept(*this);
 	if ((expression->operation == BinaryOperator::AND) || (expression->operation == BinaryOperator::OR))
 	{
 		vector<shared_ptr<Expression> > oldChildren;
 		oldChildren.resize(2);
-		oldChildren[0]=expression->leftChild;
-		oldChildren[1]=expression->rightChild;
-		GroupedExpression * newNode=new GroupedExpression();
-		newNode->parent=expression->parent;
-		
+		oldChildren[0] = expression->leftChild;
+		oldChildren[1] = expression->rightChild;
+		GroupedExpression * newNode = new GroupedExpression();
+		newNode->parent = expression->parent;
+
 		if (expression->operation == BinaryOperator::AND)
 		{
-			newNode->operation=GroupedOperator::AND;
+			newNode->operation = GroupedOperator::AND;
 		}
 		else if (expression->operation == BinaryOperator::OR)
 		{
-			newNode->operation=GroupedOperator::OR;
+			newNode->operation = GroupedOperator::OR;
 		}
-		
-		if(newNode->parent==0)
+
+		if (newNode->parent == 0)
 		{
-			*root=shared_ptr<Expression>(newNode);
+			*root = shared_ptr<Expression>(newNode);
 		}
 		else
 		{
-			newNode->parent->replaceChild(expression,newNode);
+			newNode->parent->replaceChild(expression, newNode);
 		}
 
-		for(ulong i=0;i<2;++i)
+		for (ulong i = 0; i < 2; ++i)
 		{
-			if(typeid(*(oldChildren[i])) == typeid(GroupedExpression))
+			if (typeid(*(oldChildren[i])) == typeid(GroupedExpression))
 			{
-				shared_ptr<GroupedExpression> expression=dynamic_pointer_cast<GroupedExpression>(oldChildren[i]);
-				if(newNode->operation==expression->operation)
+				shared_ptr<GroupedExpression> expression = dynamic_pointer_cast<GroupedExpression>(oldChildren[i]);
+				if (newNode->operation == expression->operation)
 				{
-					for(auto it=expression->children.begin();it!=expression->children.end();++it)
+					for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
 					{
 						newNode->children.push_back(*it);
 					}
@@ -236,27 +236,27 @@ void GroupingExpressionVisitor::visitBinaryExpression(BinaryExpression * express
 
 SemanticExpressionVisitor::SemanticExpressionVisitor()
 {
-	containsErrors=false;
+	containsErrors = false;
 }
 
 void SemanticExpressionVisitor::visitColumn(Column * expression)
 {
-	if(expression->input==0)
+	if (expression->input == 0)
 	{
-		if(outputColumns0.find(expression->column.name)==outputColumns0.end())
+		if (outputColumns0.find(expression->column.name) == outputColumns0.end())
 		{
-			containsErrors=true;
+			containsErrors = true;
 		}
 		else
 		{
 			expression->column.id = outputColumns0[expression->column.name].column.id;
 		}
 	}
-	if(expression->input==1)
+	if (expression->input == 1)
 	{
 		if (outputColumns1.find(expression->column.name) == outputColumns1.end())
 		{
-			containsErrors=true;
+			containsErrors = true;
 		}
 		else
 		{

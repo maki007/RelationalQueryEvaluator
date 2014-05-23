@@ -41,7 +41,7 @@ public:
 	AlgebraNodeBase();
 	AlgebraNodeBase * constructChildren(DOMElement * node);
 	virtual void accept(AlgebraVisitor &v) = 0;
-	virtual void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild) = 0;
+	virtual void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild) = 0;
 };
 
 class UnaryAlgebraNodeBase : public AlgebraNodeBase
@@ -49,9 +49,9 @@ class UnaryAlgebraNodeBase : public AlgebraNodeBase
 public:
 	std::shared_ptr <AlgebraNodeBase> child;
 	UnaryAlgebraNodeBase(DOMElement * element);
-	UnaryAlgebraNodeBase();	
+	UnaryAlgebraNodeBase();
 	virtual void accept(AlgebraVisitor &v) = 0;
-	void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
+	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
 };
 
 class BinaryAlgebraNodeBase : public AlgebraNodeBase
@@ -64,7 +64,7 @@ public:
 	BinaryAlgebraNodeBase();
 	virtual void accept(AlgebraVisitor &v) = 0;
 	void constructJoinParameters(DOMElement * node, std::shared_ptr<Expression> & condition, std::vector<JoinColumnInfo> & outputColumns);
-	void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
+	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
 };
 
 class GroupedAlgebraNode : public AlgebraNodeBase
@@ -72,7 +72,7 @@ class GroupedAlgebraNode : public AlgebraNodeBase
 public:
 	std::vector<std::shared_ptr<AlgebraNodeBase>> children;
 	virtual void accept(AlgebraVisitor &v) = 0;
-	void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
+	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
 };
 
 class NullaryAlgebraNodeBase : public AlgebraNodeBase
@@ -80,7 +80,7 @@ class NullaryAlgebraNodeBase : public AlgebraNodeBase
 public:
 
 	virtual void accept(AlgebraVisitor &v) = 0;
-	void replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild);
+	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
 };
 
 class Table : public NullaryAlgebraNodeBase
@@ -111,10 +111,10 @@ public:
 	void accept(AlgebraVisitor &v);
 };
 
-class ColumnOperations: public UnaryAlgebraNodeBase
+class ColumnOperations : public UnaryAlgebraNodeBase
 {
 public:
-	std::vector<ColumnOperation> operations; 
+	std::vector<ColumnOperation> operations;
 	ColumnOperations(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };

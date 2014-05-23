@@ -207,7 +207,7 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeEquiJoinParameters(const ve
 {
 	string leftString = "leftPartOfCondition=\"";
 	string rightString = "rightPartOfCondition=\"";
-	
+
 	std::map<int, ColumnInfo> columns = node->leftChild->columns;
 	columns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
 	map<int, int> cols;
@@ -257,7 +257,7 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writeMergeEquiJoinParameters(con
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
 {
-	writeBinaryOperator("MergeEquiJoin", node, writeJoinParameters(node)+writeMergeEquiJoinParameters(node->left,node->right,node));
+	writeBinaryOperator("MergeEquiJoin", node, writeJoinParameters(node) + writeMergeEquiJoinParameters(node->left, node->right, node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)

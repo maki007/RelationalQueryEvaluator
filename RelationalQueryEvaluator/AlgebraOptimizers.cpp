@@ -39,7 +39,7 @@ void SelectionFusingVisitor::visitSelection(Selection * node)
 	AlgebraNodeBase * current = node;
 	while (typeid(*current) == typeid(Selection))
 	{
-		selections.push_back((Selection *) current);
+		selections.push_back((Selection *)current);
 		current = ((Selection *)current)->child.get();
 	}
 
@@ -55,7 +55,7 @@ void SelectionFusingVisitor::visitSelection(Selection * node)
 			newCondition.push_back((*it)->condition);
 		}
 		Selection * newNode = new Selection(deserializeExpression(newCondition));
-		
+
 		newNode->child = shared_ptr<AlgebraNodeBase>(current);
 		current->parent = newNode;
 		newNode->parent = node->parent;
@@ -70,3 +70,98 @@ void SelectionColectingVisitor::visitSelection(Selection * node)
 	selections.push_back(node);
 	node->child->accept(*this);
 }
+
+
+
+void PushSelectionDownVisitor::visitTable(Table * node)
+{
+
+}
+
+void PushSelectionDownVisitor::visitSort(Sort * node)
+{
+
+}
+
+void PushSelectionDownVisitor::visitGroup(Group * node)
+{
+
+}
+
+void PushSelectionDownVisitor::visitColumnOperations(ColumnOperations * node)
+{
+
+}
+
+void PushSelectionDownVisitor::visitSelection(Selection * node)
+{
+
+}
+
+void PushSelectionDownVisitor::visitJoin(Join * node)
+{
+	throw new exception("not supported");
+}
+
+void PushSelectionDownVisitor::visitAntiJoin(AntiJoin * node)
+{
+
+}
+
+void PushSelectionDownVisitor::visitUnion(Union * node)
+{
+
+}
+
+void PushSelectionDownVisitor::visitGroupedJoin(GroupedJoin * node)
+{
+
+}
+
+
+
+void PushSelectionUpVisitor::visitTable(Table * node)
+{
+
+}
+
+void PushSelectionUpVisitor::visitSort(Sort * node)
+{
+
+}
+
+void PushSelectionUpVisitor::visitGroup(Group * node)
+{
+
+}
+
+void PushSelectionUpVisitor::visitColumnOperations(ColumnOperations * node)
+{
+
+}
+
+void PushSelectionUpVisitor::visitSelection(Selection * node)
+{
+
+}
+
+void PushSelectionUpVisitor::visitJoin(Join * node)
+{
+	throw new exception("not supported");
+}
+
+void PushSelectionUpVisitor::visitAntiJoin(AntiJoin * node)
+{
+
+}
+
+void PushSelectionUpVisitor::visitUnion(Union * node)
+{
+
+}
+
+void PushSelectionUpVisitor::visitGroupedJoin(GroupedJoin * node)
+{
+
+}
+

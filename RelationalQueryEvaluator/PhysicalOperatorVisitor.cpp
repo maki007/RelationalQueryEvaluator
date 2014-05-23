@@ -396,14 +396,14 @@ void PhysicalOperatorDrawingVisitor::visitColumnsOperationsOperator(ColumnsOpera
 
 void PhysicalOperatorDrawingVisitor::visitScanAndSortByIndex(ScanAndSortByIndex * node)
 {
-	string label = "Sort by index Scan\n" +node->tableName + "\n";
+	string label = "Sort by index Scan\n" + node->tableName + "\n";
 	label.append(node->index.toString());
 	generateText(label, node);
 }
 
 void PhysicalOperatorDrawingVisitor::visitTableScan(TableScan * node)
 {
-	string label = "Table Scan\n"+ node->tableName;
+	string label = "Table Scan\n" + node->tableName;
 	generateText(label, node);
 }
 
@@ -412,7 +412,7 @@ void PhysicalOperatorDrawingVisitor::visitIndexScan(IndexScan * node)
 	string label = "Index Scan\n" + node->tableName + "\n";
 	WritingExpressionVisitor expresionWriter;
 	node->condition->accept(expresionWriter);
-	label.append(expresionWriter.result+"\n");
+	label.append(expresionWriter.result + "\n");
 	label.append(node->index.toString());
 	generateText(label, node);
 }
@@ -592,7 +592,7 @@ void SortResolvingPhysicalOperatorVisitor::visitSortOperator(SortOperator * node
 						}
 					}
 				}
-			
+
 			}
 		endOfInnerCycle:
 			if (found == false)
@@ -633,7 +633,7 @@ endOfOuterCycle:
 	}
 
 	node->child->accept(*this);
-	sortParameters = postSortParameters;	
+	sortParameters = postSortParameters;
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * node)
@@ -722,7 +722,7 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * no
 
 	sortParameters = leftSortParameters;
 	node->leftChild->accept(*this);
-	leftSortParameters=sortParameters;
+	leftSortParameters = sortParameters;
 	sortParameters = rightSortParameters;
 	node->rightChild->accept(*this);
 	rightSortParameters = sortParameters;

@@ -5,11 +5,11 @@ using namespace std;
 
 const double TimeComplexity::CLUSTERED_SCAN = 1.0;
 const double TimeComplexity::UNCLUSTERED_SCAN = 3.0;
-const double TimeComplexity::SORT=2.0;
-const double TimeComplexity::SORTED_GROUP=1;
-const double TimeComplexity::HASH=8;
-const double TimeComplexity::FILTER=1;
-const double TimeComplexity::FILTER_KEEPING_ORDER=1.3;
+const double TimeComplexity::SORT = 2.0;
+const double TimeComplexity::SORTED_GROUP = 1;
+const double TimeComplexity::HASH = 8;
+const double TimeComplexity::FILTER = 1;
+const double TimeComplexity::FILTER_KEEPING_ORDER = 1.3;
 const double TimeComplexity::INDEX_SEARCH = 6;
 const double TimeComplexity::AGGREGATE = 0.3;
 const double TimeComplexity::READ_HASH_TABLE = 2;
@@ -125,12 +125,12 @@ void HashGroup::accept(PhysicalOperatorVisitor &v)
 	v.visitHashGroup(this);
 }
 
-void SortedGroup::accept(PhysicalOperatorVisitor &v)	
+void SortedGroup::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitSortedGroup(this);
 }
 
-void ColumnsOperationsOperator::accept(PhysicalOperatorVisitor &v) 
+void ColumnsOperationsOperator::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitColumnsOperationsOperator(this);
 }
@@ -152,6 +152,6 @@ void IndexScan::accept(PhysicalOperatorVisitor &v)
 
 PhysicalPlan::PhysicalPlan()
 {
-	timeComplexity=0;
-	plan=0;
+	timeComplexity = 0;
+	plan = 0;
 }

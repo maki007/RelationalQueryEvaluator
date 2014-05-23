@@ -40,7 +40,7 @@ ColumnInfo::ColumnInfo()
 	type = "";
 	numberOfUniqueValues = 1;
 }
-ColumnInfo::ColumnInfo(std::string name, double numberOfUniqueValues,std::string type)
+ColumnInfo::ColumnInfo(std::string name, double numberOfUniqueValues, std::string type)
 {
 	this->column = ColumnIdentifier(name);
 	this->type = type;

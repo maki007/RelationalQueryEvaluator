@@ -56,7 +56,7 @@ private:
 	{
 		errors++;
 		char* msg = XMLString::transcode(ex.getMessage());
-		fprintf(stderr, "at line %llu column %llu, %s\n", 
+		fprintf(stderr, "at line %llu column %llu, %s\n",
 			ex.getColumnNumber(), ex.getLineNumber(), msg);
 		XMLString::release(&msg);
 	}
@@ -110,7 +110,7 @@ public:
 			printf("XML file ");
 			printf(xmlFilePath);
 			printf(" validated against the schema successfully\n");
-			
+
 			DOMDocument * xmlDoc = domParser.getDocument();
 			DOMElement* elementRoot = xmlDoc->getDocumentElement();
 			return std::unique_ptr<AlgebraNodeBase>(new Sort(elementRoot));
@@ -127,7 +127,7 @@ public:
 	static std::unique_ptr<AlgebraNodeBase> GenerateRelationalAlgebra(const char *filename)
 	{
 		XMLPlatformUtils::Initialize();
-		std::unique_ptr<AlgebraNodeBase> result= ValidateSchema(filename);
+		std::unique_ptr<AlgebraNodeBase> result = ValidateSchema(filename);
 		XMLPlatformUtils::Terminate();
 		return result;
 	}

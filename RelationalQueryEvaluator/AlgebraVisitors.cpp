@@ -28,6 +28,7 @@ void AlgebraVisitor::visitNullaryAlgebraNodeBase(NullaryAlgebraNodeBase * node)
 {
 	node->accept(*this);
 }
+
 void  AlgebraVisitor::visitTable(Table * node)
 {
 
@@ -73,7 +74,7 @@ void  AlgebraVisitor::visitUnion(Union * node)
 
 void AlgebraVisitor::visitGroupedJoin(GroupedJoin * node)
 {
-	for(auto it=node->children.begin();it!=node->children.end();++it)
+	for (auto it = node->children.begin(); it != node->children.end(); ++it)
 	{
 		(*it)->accept(*this);
 	}
@@ -117,18 +118,18 @@ shared_ptr<Expression> AlgebraVisitor::deserializeExpression(const vector<shared
 
 GraphDrawingVisitor::GraphDrawingVisitor()
 {
-	result="";
-	nodeCounter=0;
+	result = "";
+	nodeCounter = 0;
 }
 
-void GraphDrawingVisitor::generateText(string & label ,UnaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(string & label, UnaryAlgebraNodeBase * node)
 {
-	int identifier=nodeCounter;
+	int identifier = nodeCounter;
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\""+label+"\"]\n");
-	int childIdentifier=++nodeCounter;
+	result.append("[label=\"" + label + "\"]\n");
+	int childIdentifier = ++nodeCounter;
 	node->child->accept(*this);
 
 	result.append("node");
@@ -139,15 +140,15 @@ void GraphDrawingVisitor::generateText(string & label ,UnaryAlgebraNodeBase * no
 
 }
 
-void GraphDrawingVisitor::generateText(string & label , BinaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(string & label, BinaryAlgebraNodeBase * node)
 {
-	int identifier=nodeCounter;
+	int identifier = nodeCounter;
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\""+label+"\"]\n");
+	result.append("[label=\"" + label + "\"]\n");
 
-	int childIdentifier=++nodeCounter;
+	int childIdentifier = ++nodeCounter;
 	node->leftChild->accept(*this);
 	result.append("node");
 	result.append(to_string(childIdentifier));
@@ -155,7 +156,7 @@ void GraphDrawingVisitor::generateText(string & label , BinaryAlgebraNodeBase * 
 	result.append(to_string(identifier));
 	result.append("[headport=s, tailport=n,label=\"   \"]\n");
 
-	childIdentifier=++nodeCounter;
+	childIdentifier = ++nodeCounter;
 	node->rightChild->accept(*this);
 	result.append("node");
 	result.append(to_string(childIdentifier));
@@ -167,50 +168,50 @@ void GraphDrawingVisitor::generateText(string & label , BinaryAlgebraNodeBase * 
 
 void GraphDrawingVisitor::visitSort(Sort * node)
 {
-	result="digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
-	string label="Sort";
-	if(node->parameters.size()!=0)
+	result = "digraph g {node [shape=box]\n graph[rankdir=\"BT\", concentrate=true];\n";
+	string label = "Sort";
+	if (node->parameters.size() != 0)
 	{
-		label+="\n";
+		label += "\n";
 	}
-	for(auto it=node->parameters.begin();it!=node->parameters.end();++it)
+	for (auto it = node->parameters.begin(); it != node->parameters.end(); ++it)
 	{
 		label += it->column.toString();
-		if(it->order==ASCENDING)
+		if (it->order == ASCENDING)
 		{
-			label+=" asc";
+			label += " asc";
 		}
 		else
 		{
-			label+=" desc";
+			label += " desc";
 		}
-		if(it!=node->parameters.end()-1)
-			label+=", ";
+		if (it != node->parameters.end() - 1)
+			label += ", ";
 	}
-	generateText(label,node);
+	generateText(label, node);
 
-	result+="\n}";
+	result += "\n}";
 }
 
 void GraphDrawingVisitor::visitGroup(Group * node)
 {
-	string label="Group\n";
-	label+="groupBy ";
-	for(auto it=node->groupColumns.begin();it!=node->groupColumns.end();++it)
+	string label = "Group\n";
+	label += "groupBy ";
+	for (auto it = node->groupColumns.begin(); it != node->groupColumns.end(); ++it)
 	{
-		label+=it->input.toString();
-		label+=", ";
+		label += it->input.toString();
+		label += ", ";
 	}
 	if (node->groupColumns.size() == 0)
 	{
 		label += "nothing,";
 	}
 
-	for(auto it=node->agregateFunctions.begin();it!=node->agregateFunctions.end();++it)
+	for (auto it = node->agregateFunctions.begin(); it != node->agregateFunctions.end(); ++it)
 	{
-		label+=it->output.toString();
-		label+="=";
-		label+=it->functionName;
+		label += it->output.toString();
+		label += "=";
+		label += it->functionName;
 		if (it->parameter.name == "")
 		{
 			label += "()";
@@ -219,138 +220,138 @@ void GraphDrawingVisitor::visitGroup(Group * node)
 		{
 			label += "(" + it->parameter.toString() + ")";
 		}
-		label+=";";
+		label += ";";
 	}
 
-	generateText(label,node);
+	generateText(label, node);
 }
 
 void GraphDrawingVisitor::visitTable(Table * node)
 {
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	string label="[label=\"Table ";
-	label+=node->name;
-	label+="\n number of rows: ";
-	label+=to_string(node->numberOfRows);
-	label+="\n columns: ";
-	for(auto it=node->columns.begin();it!=node->columns.end();++it)
+	string label = "[label=\"Table ";
+	label += node->name;
+	label += "\n number of rows: ";
+	label += to_string(node->numberOfRows);
+	label += "\n columns: ";
+	for (auto it = node->columns.begin(); it != node->columns.end(); ++it)
 	{
 		label += it->column.toString();
-		label+= "(";
-		label+=it->type;
-		label+=",";
-		label+=to_string((ulong)it->numberOfUniqueValues);
-		label+= ")";
+		label += "(";
+		label += it->type;
+		label += ",";
+		label += to_string((ulong)it->numberOfUniqueValues);
+		label += ")";
 
-		if(it!=node->columns.end()-1)
+		if (it != node->columns.end() - 1)
 		{
-			label+=", ";
+			label += ", ";
 		}
 	}
-	label+="\n indices: ";
+	label += "\n indices: ";
 
-	for(auto it=node->indices.begin();it!=node->indices.end();++it)
+	for (auto it = node->indices.begin(); it != node->indices.end(); ++it)
 	{
-		if(it->type==IndexType::CLUSTERED)
+		if (it->type == IndexType::CLUSTERED)
 		{
-			label+="CLUSTERED";
+			label += "CLUSTERED";
 		}
 		else
 		{
-			label+="UNCLUSTERED";
+			label += "UNCLUSTERED";
 		}
-		label+= "(";
-		for(auto it2=it->columns.begin();it2!=it->columns.end();++it2)
+		label += "(";
+		for (auto it2 = it->columns.begin(); it2 != it->columns.end(); ++it2)
 		{
 			label += it2->column.name;
-			if(it2!=it->columns.end()-1)
+			if (it2 != it->columns.end() - 1)
 			{
-				label+=", ";
+				label += ", ";
 			}
 		}
-		label+= ")";
-		if(it!=node->indices.end()-1)
+		label += ")";
+		if (it != node->indices.end() - 1)
 		{
-			label+=", ";
+			label += ", ";
 		}
 	}
 
-	label+="\"]\n";
+	label += "\"]\n";
 	result.append(label);
 }
 
 void GraphDrawingVisitor::visitColumnOperations(ColumnOperations * node)
 {
-	string label="ColumnOperations\n";
-	for(auto it=node->operations.begin();it!=node->operations.end();++it)
+	string label = "ColumnOperations\n";
+	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
 	{
-		label+=it->result.toString();
-		if(it->expression!=0)
+		label += it->result.toString();
+		if (it->expression != 0)
 		{
 			shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 			it->expression->accept(*visitor);
-			label+=" = ";
-			label+=visitor->result;
+			label += " = ";
+			label += visitor->result;
 		}
-		if(it!=node->operations.end()-1)
+		if (it != node->operations.end() - 1)
 		{
-			label+=", ";
+			label += ", ";
 		}
 	}
-	generateText(label,node);
+	generateText(label, node);
 
 }
 
 void GraphDrawingVisitor::visitSelection(Selection * node)
 {
-	string label="Selection\n";
+	string label = "Selection\n";
 	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 	node->condition->accept(*visitor);
-	label+=visitor->result;
-	generateText(label,node);
+	label += visitor->result;
+	generateText(label, node);
 }
 
 void GraphDrawingVisitor::visitJoin(Join * node)
 {
-	string label="Join\n";
+	string label = "Join\n";
 	//crossjoin
-	if(node->condition!=0)
+	if (node->condition != 0)
 	{
 		shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 		node->condition->accept(*visitor);
-		label+=visitor->result;
+		label += visitor->result;
 	}
-	generateText(label,node);
+	generateText(label, node);
 }
 
 void GraphDrawingVisitor::visitAntiJoin(AntiJoin * node)
 {
-	string label="AntiJoin\n";
+	string label = "AntiJoin\n";
 	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
 	node->condition->accept(*visitor);
-	label+=visitor->result;
-	generateText(label,node);
+	label += visitor->result;
+	generateText(label, node);
 }
 
 void GraphDrawingVisitor::visitUnion(Union * node)
 {
-	generateText(string("Union"),node);
+	generateText(string("Union"), node);
 }
 
-void GraphDrawingVisitor::generateText(string & label , GroupedAlgebraNode * node)
+void GraphDrawingVisitor::generateText(string & label, GroupedAlgebraNode * node)
 {
-	int identifier=nodeCounter;
+	int identifier = nodeCounter;
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\""+label+"\"]\n");
+	result.append("[label=\"" + label + "\"]\n");
 
 
 	int childIdentifier;
-	for(auto it=node->children.begin();it!=node->children.end();++it)
+	for (auto it = node->children.begin(); it != node->children.end(); ++it)
 	{
-		childIdentifier=++nodeCounter;
+		childIdentifier = ++nodeCounter;
 		(*it)->accept(*this);
 		result.append("node");
 		result.append(to_string(childIdentifier));
@@ -363,14 +364,14 @@ void GraphDrawingVisitor::generateText(string & label , GroupedAlgebraNode * nod
 
 void GraphDrawingVisitor::visitGroupedJoin(GroupedJoin * node)
 {
-	string label="GroupedJoin\n";
+	string label = "GroupedJoin\n";
 	shared_ptr<WritingExpressionVisitor> visitor(new WritingExpressionVisitor());
-	if(node->condition!=0)
+	if (node->condition != 0)
 	{
 		node->condition->accept(*visitor);
-		label+=visitor->result;
+		label += visitor->result;
 	}
-	generateText(label,node);
+	generateText(label, node);
 }
 
 
@@ -383,64 +384,64 @@ GroupingVisitor::GroupingVisitor()
 
 void GroupingVisitor::visitJoin(Join * node)
 {
-	if(node->condition.get()!=0)
+	if (node->condition.get() != 0)
 	{
 		node->condition->accept(GroupingExpressionVisitor(&(node->condition)));
 	}
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 	GroupedJoin * groupedOperator = new GroupedJoin();
-	groupedOperator->outputColumns=node->outputColumns;
-	groupedOperator->condition=node->condition;
+	groupedOperator->outputColumns = node->outputColumns;
+	groupedOperator->condition = node->condition;
 	vector<shared_ptr<AlgebraNodeBase> > oldChildren;
 	oldChildren.resize(2);
-	oldChildren[0]=node->leftChild;
-	oldChildren[1]=node->rightChild;
-	resolveJoins(node,groupedOperator,oldChildren);
+	oldChildren[0] = node->leftChild;
+	oldChildren[1] = node->rightChild;
+	resolveJoins(node, groupedOperator, oldChildren);
 }
 
-void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * groupedOperator,vector<shared_ptr<AlgebraNodeBase> > & oldChildren)
+void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * groupedOperator, vector<shared_ptr<AlgebraNodeBase> > & oldChildren)
 {
 
-	shared_ptr<Expression> newCondition=0;
-	ulong numberOfChildreninFirstChild=0;
-	for(ulong i=0;i<2;++i)
+	shared_ptr<Expression> newCondition = 0;
+	ulong numberOfChildreninFirstChild = 0;
+	for (ulong i = 0; i < 2; ++i)
 	{
-		if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
+		if (typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 		{
 			shared_ptr<GroupedJoin> newNode = dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
 			if (groupedOperator->condition != 0)
 			{
 				groupedOperator->condition->accept(RenamingJoinConditionExpressionVisitor(i, &newNode->outputColumns));
 			}
-			
-			if(i==1)
+
+			if (i == 1)
 			{
-				if(newNode->condition!=0)
+				if (newNode->condition != 0)
 				{
 					GetColumnsNodesVisitor visitor;
 					newNode->condition->accept(visitor);
-					for(auto it=visitor.nodes.begin();it!=visitor.nodes.end();++it)
+					for (auto it = visitor.nodes.begin(); it != visitor.nodes.end(); ++it)
 					{
-						(*it)->input+=groupedOperator->children.size();
+						(*it)->input += groupedOperator->children.size();
 					}
 				}
 			}
 
-			vector<shared_ptr<AlgebraNodeBase>> children=newNode->children;
-			if(newCondition==0)
+			vector<shared_ptr<AlgebraNodeBase>> children = newNode->children;
+			if (newCondition == 0)
 			{
-				newCondition=newNode->condition;
+				newCondition = newNode->condition;
 			}
 			else
 			{
-				if(newNode->condition!=0)
+				if (newNode->condition != 0)
 				{
-					newCondition=shared_ptr<Expression>(new BinaryExpression(newNode->condition,newCondition,BinaryOperator::AND));
+					newCondition = shared_ptr<Expression>(new BinaryExpression(newNode->condition, newCondition, BinaryOperator::AND));
 				}
 			}
 
-			for(auto it=children.begin();it!=children.end();++it)
+			for (auto it = children.begin(); it != children.end(); ++it)
 			{
 				groupedOperator->children.push_back(*it);
 			}
@@ -449,80 +450,80 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 		{
 			groupedOperator->children.push_back(oldChildren[i]);
 		}
-		if(i==0)
+		if (i == 0)
 		{
-			numberOfChildreninFirstChild=groupedOperator->children.size();
+			numberOfChildreninFirstChild = groupedOperator->children.size();
 		}
 	}
 
 
-	if(groupedOperator->condition!=0)
+	if (groupedOperator->condition != 0)
 	{
 		GetColumnsNodesVisitor visitor;
 		groupedOperator->condition->accept(visitor);
-		for(long long int i=1;i>=0;--i)
+		for (long long int i = 1; i >= 0; --i)
 		{
-			if(typeid(*(oldChildren[i])) == typeid(GroupedJoin))
+			if (typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 			{
-				shared_ptr<GroupedJoin> join=dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
-				for(auto it=join->outputColumns.begin();it!=join->outputColumns.end();++it)
+				shared_ptr<GroupedJoin> join = dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
+				for (auto it = join->outputColumns.begin(); it != join->outputColumns.end(); ++it)
 				{
 					int columnId = it->column.id;
-					for(auto it2=visitor.nodes.begin();it2!=visitor.nodes.end();++it2)
+					for (auto it2 = visitor.nodes.begin(); it2 != visitor.nodes.end(); ++it2)
 					{
 						if ((*it2)->column.id == columnId)
 						{
-							(*it2)->input=it->input+numberOfChildreninFirstChild;
+							(*it2)->input = it->input + numberOfChildreninFirstChild;
 						}
 					}
-					for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
+					for (auto it2 = groupedOperator->outputColumns.begin(); it2 != groupedOperator->outputColumns.end(); ++it2)
 					{
 						if ((it2)->column.id == columnId)
 						{
-							(it2)->input=it->input+numberOfChildreninFirstChild;;
+							(it2)->input = it->input + numberOfChildreninFirstChild;;
 						}
 					}
 				}
 			}
 			else
 			{
-				for(auto it2=visitor.nodes.begin();it2!=visitor.nodes.end();++it2)
+				for (auto it2 = visitor.nodes.begin(); it2 != visitor.nodes.end(); ++it2)
 				{
-					if((*it2)->input==i)
+					if ((*it2)->input == i)
 					{
-						(*it2)->input=numberOfChildreninFirstChild;
+						(*it2)->input = numberOfChildreninFirstChild;
 					}
 				}
-				for(auto it2=groupedOperator->outputColumns.begin();it2!=groupedOperator->outputColumns.end();++it2)
+				for (auto it2 = groupedOperator->outputColumns.begin(); it2 != groupedOperator->outputColumns.end(); ++it2)
 				{
-					if((it2)->input==i)
+					if ((it2)->input == i)
 					{
-						(it2)->input=numberOfChildreninFirstChild;
+						(it2)->input = numberOfChildreninFirstChild;
 					}
 				}
 
 			}
-			numberOfChildreninFirstChild=0;
+			numberOfChildreninFirstChild = 0;
 
 		}
 
 	}
 
-	if(newCondition.get()==0)
+	if (newCondition.get() == 0)
 	{
-		newCondition=groupedOperator->condition;
+		newCondition = groupedOperator->condition;
 	}
 	else
 	{
-		if(groupedOperator->condition.get()!=0)
+		if (groupedOperator->condition.get() != 0)
 		{
-			newCondition=shared_ptr<Expression>(new BinaryExpression(groupedOperator->condition,newCondition,BinaryOperator::AND));
+			newCondition = shared_ptr<Expression>(new BinaryExpression(groupedOperator->condition, newCondition, BinaryOperator::AND));
 		}
 	}
-	groupedOperator->condition=newCondition;
-	groupedOperator->parent=node->parent;
-	node->parent->replaceChild(node,groupedOperator);
-	if(groupedOperator->condition.get()!=0)
+	groupedOperator->condition = newCondition;
+	groupedOperator->parent = node->parent;
+	node->parent->replaceChild(node, groupedOperator);
+	if (groupedOperator->condition.get() != 0)
 	{
 		groupedOperator->condition->accept(GroupingExpressionVisitor(&(groupedOperator->condition)));
 	}
@@ -530,9 +531,9 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node,GroupedJoin * gr
 
 void GroupingVisitor::visitColumnOperations(ColumnOperations * node)
 {
-	for(auto it=node->operations.begin();it!=node->operations.end();++it)
+	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
 	{
-		if(it->expression.get()!=0)
+		if (it->expression.get() != 0)
 		{
 			it->expression->accept(GroupingExpressionVisitor(&it->expression));
 		}

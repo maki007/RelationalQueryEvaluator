@@ -202,7 +202,7 @@ public:
 	std::set<ulong> processedPlans;
 	std::set<ulong> unProcessedPlans;
 	std::vector<std::shared_ptr<ConditionInfo>> condition;
-	std::map <ulong,JoinColumnInfo> columns;
+	std::map <ulong, JoinColumnInfo> columns;
 	double size;
 	static bool Comparator(const JoinInfo& lhs, const JoinInfo&rhs)
 	{
@@ -224,7 +224,7 @@ public:
 			}
 		}
 
-		for (auto it = columns.begin(); it != columns.end(); )
+		for (auto it = columns.begin(); it != columns.end();)
 		{
 			if (allColumns.find(it->first) == allColumns.end())
 			{
@@ -234,7 +234,7 @@ public:
 			++it;
 		}
 
-		for (auto it = plans.begin(); it != plans.end();++it)
+		for (auto it = plans.begin(); it != plans.end(); ++it)
 		{
 			for (auto it2 = (*it)->plan->columns.begin(); it2 != (*it)->plan->columns.end();)
 			{
@@ -256,7 +256,7 @@ public:
 	static const ulong NUMBER_OF_PLANS;
 	static const ulong  LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM;
 	static const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM;
-	
+
 	std::vector<std::shared_ptr<PhysicalPlan> > result;
 	std::map<int, ColumnInfo> columns;
 	double size;
@@ -277,13 +277,13 @@ public:
 	void visitUnion(Union * node);
 
 	void visitGroupedJoin(GroupedJoin * node);
-	
+
 private:
 	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
 	std::shared_ptr<PhysicalPlan> generateSortParameters(const PossibleSortParameters & parameters, const std::shared_ptr<PhysicalPlan> & result);
 
-	void generateIndexScan(const std::string & tableName,std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
+	void generateIndexScan(const std::string & tableName, std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 
 	void join(GroupedJoin * node, const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
@@ -299,11 +299,11 @@ private:
 	void generateSortParametersForOtherPlanInMergeJoin(PossibleSortParameters & rightSortParameters, std::shared_ptr<PhysicalPlan> plan, const std::map<int, ColumnInfo> & columns, std::map<int, int> & equalPairs);
 
 	void getMergeJoinSortedParametes(PossibleSortParameters & resultParameters, std::map<int, int> & equalPairsReverse, std::map<int, ColumnInfo> & otherColumns);
-	
+
 	std::shared_ptr<Expression> deserializeConditionInfo(const std::vector<std::shared_ptr<ConditionInfo>> & a, const std::vector<std::shared_ptr<ConditionInfo>> & b)
 	{
 		std::vector<std::shared_ptr<Expression> >  data;
-		for (auto it = a.begin(); it != a.end();++it)
+		for (auto it = a.begin(); it != a.end(); ++it)
 		{
 			data.push_back((*it)->condition);
 		}
@@ -353,6 +353,48 @@ public:
 	void visitSelection(Selection * node);
 };
 
+class PushSelectionDownVisitor : public AlgebraVisitor
+{
+public:
+	void visitTable(Table * node);
 
+	void visitSort(Sort * node);
+
+	void visitGroup(Group * node);
+
+	void visitColumnOperations(ColumnOperations * node);
+
+	void visitSelection(Selection * node);
+
+	void visitJoin(Join * node);
+
+	void visitAntiJoin(AntiJoin * node);
+
+	void visitUnion(Union * node);
+
+	void visitGroupedJoin(GroupedJoin * node);
+};
+
+class PushSelectionUpVisitor : public AlgebraVisitor
+{
+public:
+	void visitTable(Table * node);
+
+	void visitSort(Sort * node);
+
+	void visitGroup(Group * node);
+
+	void visitColumnOperations(ColumnOperations * node);
+
+	void visitSelection(Selection * node);
+
+	void visitJoin(Join * node);
+
+	void visitAntiJoin(AntiJoin * node);
+
+	void visitUnion(Union * node);
+
+	void visitGroupedJoin(GroupedJoin * node);
+};
 
 #endif

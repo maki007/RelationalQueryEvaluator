@@ -32,7 +32,7 @@ public:
 	virtual void visitHashAntiJoin(HashAntiJoin * node);
 
 	virtual void visitMergeAntiJoin(MergeAntiJoin * node);
-	
+
 	virtual void visitUnionOperator(UnionOperator * node);
 
 	virtual void visitHashGroup(HashGroup * node);
@@ -55,12 +55,12 @@ public:
 	ulong nodeCounter;
 	PhysicalOperatorDrawingVisitor();
 
-	void generateText(std::string & label,NullaryPhysicalOperator * node);
+	void generateText(std::string & label, NullaryPhysicalOperator * node);
 
-	void generateText(std::string & label,UnaryPhysicalOperator * node);
+	void generateText(std::string & label, UnaryPhysicalOperator * node);
 
-	void generateText(std::string & label,BinaryPhysicalOperator * node);
-	
+	void generateText(std::string & label, BinaryPhysicalOperator * node);
+
 	std::string PhysicalOperatorDrawingVisitor::writeGroupParameters(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 
 	void visitFilter(Filter * node);
@@ -102,7 +102,7 @@ public:
 	std::shared_ptr<PhysicalOperator> result;
 
 	void processUnaryOperator(UnaryPhysicalOperator * res);
-	
+
 	void processBinaryOperator(BinaryPhysicalOperator * res);
 
 	void visitFilter(Filter * node);
@@ -191,7 +191,7 @@ private:
 	std::string declarations;
 
 	std::string code;
-	
+
 	ulong lastId;
 
 	std::string lastWritttenNode;
@@ -200,14 +200,14 @@ public:
 
 	std::string declaration(const std::string & type, const std::string & inputColumns,
 		const std::string & outputColumns, const std::string & name, const std::string & constructParameters);
-	
+
 	std::string connect(const std::string & from, const std::string & to);
 
 
 	BoboxPlanWritingPhysicalOperatorVisitor();
 
 	std::string writePlan(std::shared_ptr<PhysicalOperator> plan);
-	
+
 	std::string getColumnTypeOutput(const std::map<int, ColumnInfo> & columns);
 
 	std::string getColumnNameOutput(const std::map<int, ColumnInfo> & columns);

@@ -72,8 +72,8 @@ class SemanticExpressionVisitor : public ExpressionVisitorBase
 {
 public:
 	bool containsErrors;
-	std::map<std::string,ColumnInfo> outputColumns0; 
-	std::map<std::string,ColumnInfo> outputColumns1; 
+	std::map<std::string, ColumnInfo> outputColumns0;
+	std::map<std::string, ColumnInfo> outputColumns1;
 	SemanticExpressionVisitor();
 	void visitColumn(Column * expression);
 };
@@ -118,7 +118,7 @@ public:
 					std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(expression->leftChild);
 					size = 1 / columns->at(column->column.id).numberOfUniqueValues;
 				}
-			
+
 			}
 			else
 			{
@@ -149,7 +149,7 @@ public:
 			}
 			break;
 		case BinaryOperator::LOWER:
-			size = double(1)/ 3;
+			size = double(1) / 3;
 			break;
 		case BinaryOperator::LOWER_OR_EQUAL:
 			size = double(1) / 3;
@@ -161,7 +161,7 @@ public:
 
 	void visitNnaryExpression(NnaryExpression * expression)
 	{
-		size = 1/3;
+		size = 1 / 3;
 	}
 
 
@@ -182,7 +182,7 @@ public:
 			for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
 			{
 				(*it)->accept(*this);
-				newSize *= 1-size;
+				newSize *= 1 - size;
 			}
 			newSize = 1 - newSize;
 			break;
@@ -204,15 +204,15 @@ public:
 		conditionType = type;
 		(*conditionType) = ConditionType::OTHER;
 	}
-	
+
 	void visitColumn(Column * expression)
 	{
 		data->insert(expression->column.id);
 	}
-	
+
 	void visitUnaryExpression(UnaryExpression * expression)
 	{
-		expression->child->accept(*this); 
+		expression->child->accept(*this);
 		(*conditionType) = ConditionType::OTHER;
 	}
 
@@ -247,7 +247,7 @@ public:
 
 	void visitConstant(Constant * expression)
 	{
-		
+
 	}
 
 	void visitGroupedExpression(GroupedExpression * expression)
@@ -276,7 +276,7 @@ public:
 	{
 		if (expression->input == n)
 		{
-			for (auto it = inputColumns->begin(); it != inputColumns->end();++it)
+			for (auto it = inputColumns->begin(); it != inputColumns->end(); ++it)
 			{
 				if (it->column.name != it->newColumn)
 				{
@@ -287,7 +287,7 @@ public:
 				}
 			}
 		}
-		
+
 	}
 };
 
@@ -332,7 +332,7 @@ class BoboxWritingExpressionVisitor : public ExpressionVisitorBase
 public:
 	std::string result;
 	std::map<int, int> * cols;
-	
+
 	BoboxWritingExpressionVisitor(std::map<int, int> & cols);
 
 	void visitUnaryExpression(UnaryExpression * expression);

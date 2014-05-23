@@ -14,7 +14,7 @@ AlgebraNodeBase::AlgebraNodeBase()
 
 AlgebraNodeBase *  AlgebraNodeBase::constructChildren(DOMElement * node)
 {
-	AlgebraNodeBase * child=0;
+	AlgebraNodeBase * child = 0;
 	XMLCh * groupName = XMLString::transcode("group");
 	XMLCh * joinName = XMLString::transcode("join");
 	XMLCh * columnOperationsName = XMLString::transcode("column_operations");
@@ -24,31 +24,31 @@ AlgebraNodeBase *  AlgebraNodeBase::constructChildren(DOMElement * node)
 	XMLCh * differenceName = XMLString::transcode("difference");
 	XMLCh * antijoinName = XMLString::transcode("antijoin");
 	XMLCh * intersectionName = XMLString::transcode("intersection");
-	if(XMLString::compareString(node->getNodeName(),groupName)==0)
+	if (XMLString::compareString(node->getNodeName(), groupName) == 0)
 	{
 		child = new Group((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),joinName)==0)
+	else if (XMLString::compareString(node->getNodeName(), joinName) == 0)
 	{
 		child = new Join((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),columnOperationsName)==0)
+	else if (XMLString::compareString(node->getNodeName(), columnOperationsName) == 0)
 	{
 		child = new ColumnOperations((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),tableName)==0)
+	else if (XMLString::compareString(node->getNodeName(), tableName) == 0)
 	{
 		child = new Table((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),selectionName)==0)
+	else if (XMLString::compareString(node->getNodeName(), selectionName) == 0)
 	{
 		child = new Selection((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),unionName)==0)
+	else if (XMLString::compareString(node->getNodeName(), unionName) == 0)
 	{
 		child = new Union((DOMElement *)node);
 	}
-	else if(XMLString::compareString(node->getNodeName(),antijoinName)==0)
+	else if (XMLString::compareString(node->getNodeName(), antijoinName) == 0)
 	{
 		child = new AntiJoin((DOMElement *)node);
 	}
@@ -59,11 +59,11 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()
 {
 }
 
-void UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+void UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
 {
-	if(child.get()==oldChild)
+	if (child.get() == oldChild)
 	{
-		child=shared_ptr<AlgebraNodeBase>(newChild);
+		child = shared_ptr<AlgebraNodeBase>(newChild);
 	}
 	else
 	{
@@ -72,15 +72,15 @@ void UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBa
 }
 UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 {
-	parent=0;
-	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"input");
-	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
+	parent = 0;
+	DOMNode * inputNode = XmlUtils::GetChildElementByName(element, "input");
+	for (XMLSize_t i = 0; i < inputNode->getChildNodes()->getLength(); ++i)
 	{
 		DOMNode * node = inputNode->getChildNodes()->item(i);
-		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
+		if (node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
-			child=shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
-			child->parent=this;
+			child = shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
+			child->parent = this;
 		}
 	}
 
@@ -92,15 +92,15 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase()
 
 }
 
-void BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+void BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
 {
-	if(leftChild.get()==oldChild)
+	if (leftChild.get() == oldChild)
 	{
-		leftChild=shared_ptr<AlgebraNodeBase>(newChild);
+		leftChild = shared_ptr<AlgebraNodeBase>(newChild);
 	}
-	else if(rightChild.get()==oldChild)
+	else if (rightChild.get() == oldChild)
 	{
-		rightChild=shared_ptr<AlgebraNodeBase>(newChild);
+		rightChild = shared_ptr<AlgebraNodeBase>(newChild);
 	}
 	else
 	{
@@ -110,34 +110,34 @@ void BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeB
 
 BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 {
-	bool leftChildInitialized=false;
-	parent=0;
-	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"input");
-	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
+	bool leftChildInitialized = false;
+	parent = 0;
+	DOMNode * inputNode = XmlUtils::GetChildElementByName(element, "input");
+	for (XMLSize_t i = 0; i < inputNode->getChildNodes()->getLength(); ++i)
 	{
 		DOMNode * node = inputNode->getChildNodes()->item(i);
-		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
+		if (node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
-			if(leftChildInitialized==false)
+			if (leftChildInitialized == false)
 			{
-				leftChild=shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
-				leftChildInitialized=true;
-				leftChild->parent=this;
+				leftChild = shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
+				leftChildInitialized = true;
+				leftChild->parent = this;
 			}
 			else
 			{
-				rightChild=shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
-				rightChild->parent=this;
+				rightChild = shared_ptr<AlgebraNodeBase>(constructChildren((DOMElement*)node));
+				rightChild->parent = this;
 			}
 		}
 	}
 }
 
-void NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+void NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
 {
 }
 
-void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase * newChild)
+void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
 {
 	for (auto it = children.begin(); it != children.end(); ++it)
 	{
@@ -150,48 +150,48 @@ void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild,AlgebraNodeBase
 
 Table::Table(DOMElement * element)
 {
-	name=XmlUtils::ReadAttribute(element,"name");
-	if(XmlUtils::ReadAttribute(element,"numberOfRows")=="")
+	name = XmlUtils::ReadAttribute(element, "name");
+	if (XmlUtils::ReadAttribute(element, "numberOfRows") == "")
 	{
-		numberOfRows=1000;
+		numberOfRows = 1000;
 	}
 	else
 	{
-		istringstream ( XmlUtils::ReadAttribute(element,"numberOfRows") ) >> numberOfRows;
+		istringstream(XmlUtils::ReadAttribute(element, "numberOfRows")) >> numberOfRows;
 	}
-	vector<DOMElement *> parameters=XmlUtils::GetChildElements(element);
-	for(auto it=parameters.begin();it!=parameters.end();++it)
+	vector<DOMElement *> parameters = XmlUtils::GetChildElements(element);
+	for (auto it = parameters.begin(); it != parameters.end(); ++it)
 	{
-		if(XmlUtils::GetElementName(*it)=="column")
+		if (XmlUtils::GetElementName(*it) == "column")
 		{
 			ColumnInfo info;
-			info.type=XmlUtils::ReadAttribute(*it,"type");
+			info.type = XmlUtils::ReadAttribute(*it, "type");
 			info.column = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
-			if(XmlUtils::ReadAttribute(*it,"number_of_unique_values")=="")
+			if (XmlUtils::ReadAttribute(*it, "number_of_unique_values") == "")
 			{
-				info.numberOfUniqueValues=pow(numberOfRows,0.8);
+				info.numberOfUniqueValues = pow(numberOfRows, 0.8);
 			}
 			else
 			{
-				istringstream ( XmlUtils::ReadAttribute(*it,"number_of_unique_values") ) >> info.numberOfUniqueValues;
-				info.numberOfUniqueValues = min(info.numberOfUniqueValues,double(numberOfRows));
+				istringstream(XmlUtils::ReadAttribute(*it, "number_of_unique_values")) >> info.numberOfUniqueValues;
+				info.numberOfUniqueValues = min(info.numberOfUniqueValues, double(numberOfRows));
 			}
 			columns.push_back(info);
 		}
-		else if(XmlUtils::GetElementName(*it)=="index")
+		else if (XmlUtils::GetElementName(*it) == "index")
 		{
 			Index index;
-			if(XmlUtils::ReadAttribute(*it,"type")=="clustered")
+			if (XmlUtils::ReadAttribute(*it, "type") == "clustered")
 			{
-				index.type=IndexType::CLUSTERED;
+				index.type = IndexType::CLUSTERED;
 			}
 			else
 			{
-				index.type=IndexType::UNCLUSTERED;
+				index.type = IndexType::UNCLUSTERED;
 			}
 			index.name = XmlUtils::ReadAttribute(*it, "name");
-			vector<DOMElement *> columnsElement=XmlUtils::GetChildElements(*it);
-			for(auto it2=columnsElement.begin();it2!=columnsElement.end();++it2)
+			vector<DOMElement *> columnsElement = XmlUtils::GetChildElements(*it);
+			for (auto it2 = columnsElement.begin(); it2 != columnsElement.end(); ++it2)
 			{
 				SortParameter parameter;
 				parameter.column = ColumnIdentifier(string(XmlUtils::ReadAttribute(*it2, "name")));
@@ -215,23 +215,23 @@ void Table::accept(AlgebraVisitor &v)
 
 Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
-	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"parameters");
-	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
+	DOMNode * inputNode = XmlUtils::GetChildElementByName(element, "parameters");
+	for (XMLSize_t i = 0; i < inputNode->getChildNodes()->getLength(); ++i)
 	{
 		DOMNode * node = inputNode->getChildNodes()->item(i);
-		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
+		if (node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
 			SortParameter parameter;
-			DOMElement * parameterElement=(DOMElement *)node;
-			parameter.column= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"column"));
-			string direction=XmlUtils::ReadAttribute(parameterElement,"direction");
-			if(direction=="asc")
+			DOMElement * parameterElement = (DOMElement *)node;
+			parameter.column = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "column"));
+			string direction = XmlUtils::ReadAttribute(parameterElement, "direction");
+			if (direction == "asc")
 			{
-				parameter.order=ASCENDING;
+				parameter.order = ASCENDING;
 			}
 			else
 			{
-				parameter.order=DESCENDING;
+				parameter.order = DESCENDING;
 			}
 			parameters.push_back(parameter);
 		}
@@ -246,43 +246,43 @@ void Sort::accept(AlgebraVisitor &v)
 Group::Group(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
 
-	DOMNode * inputNode=XmlUtils::GetChildElementByName(element,"parameters");
-	for(XMLSize_t i=0;i<inputNode->getChildNodes()->getLength();++i)
+	DOMNode * inputNode = XmlUtils::GetChildElementByName(element, "parameters");
+	for (XMLSize_t i = 0; i < inputNode->getChildNodes()->getLength(); ++i)
 	{
 		DOMNode * node = inputNode->getChildNodes()->item(i);
-		if(node->getNodeType() == DOMNode::ELEMENT_NODE)
+		if (node->getNodeType() == DOMNode::ELEMENT_NODE)
 		{
-			DOMElement * parameterElement=(DOMElement *)node;
-			string elementName=XMLString::transcode(parameterElement->getLocalName());
+			DOMElement * parameterElement = (DOMElement *)node;
+			string elementName = XMLString::transcode(parameterElement->getLocalName());
 
-			if(elementName=="group_by")
+			if (elementName == "group_by")
 			{
-				groupColumns.push_back(GroupColumn(ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"column"))));
+				groupColumns.push_back(GroupColumn(ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "column"))));
 			}
 			else
 			{
 				AgregateFunction function;
-				function.functionName=elementName;
-				if(elementName == "max")
-				{
-					function.parameter= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"argument"));
-					function.function=AgregateFunctionType::MAX;
-				}
-				if(elementName == "min")
+				function.functionName = elementName;
+				if (elementName == "max")
 				{
 					function.parameter = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "argument"));
-					function.function=AgregateFunctionType::MIN;
+					function.function = AgregateFunctionType::MAX;
 				}
-				if(elementName == "sum")
+				if (elementName == "min")
 				{
 					function.parameter = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "argument"));
-					function.function=AgregateFunctionType::SUM;
+					function.function = AgregateFunctionType::MIN;
 				}
-				if(elementName == "count")
+				if (elementName == "sum")
 				{
-					function.function=AgregateFunctionType::COUNT;
+					function.parameter = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "argument"));
+					function.function = AgregateFunctionType::SUM;
 				}
-				function.output= ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement,"output"));
+				if (elementName == "count")
+				{
+					function.function = AgregateFunctionType::COUNT;
+				}
+				function.output = ColumnIdentifier(XmlUtils::ReadAttribute(parameterElement, "output"));
 				agregateFunctions.push_back(function);
 			}
 		}
@@ -294,21 +294,21 @@ void Group::accept(AlgebraVisitor &v)
 	v.visitGroup(this);
 }
 
-ColumnOperations::ColumnOperations(DOMElement * element):UnaryAlgebraNodeBase(element)
+ColumnOperations::ColumnOperations(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
-	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
-	vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
-	for(auto it=columns.begin();it!=columns.end();++it)
+	DOMElement * parametersNode = XmlUtils::GetChildElementByName(element, "parameters");
+	vector<DOMElement *> columns = XmlUtils::GetChildElements(parametersNode);
+	for (auto it = columns.begin(); it != columns.end(); ++it)
 	{
 		ColumnOperation op;
 		op.result = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
-		if(XmlUtils::GetFirstChildElement(*it)!=0)
+		if (XmlUtils::GetFirstChildElement(*it) != 0)
 		{
-			op.expression=shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(XmlUtils::GetFirstChildElement(*it))));
+			op.expression = shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(XmlUtils::GetFirstChildElement(*it))));
 		}
 		else
 		{
-			op.expression=shared_ptr<Expression>(0);
+			op.expression = shared_ptr<Expression>(0);
 		}
 		operations.push_back(op);
 	}
@@ -319,10 +319,10 @@ void ColumnOperations::accept(AlgebraVisitor &v)
 	v.visitColumnOperations(this);
 }
 
-Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
+Selection::Selection(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
-	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
-	DOMElement * conditionNode=XmlUtils::GetChildElementByName(parametersNode,"condition");
+	DOMElement * parametersNode = XmlUtils::GetChildElementByName(element, "parameters");
+	DOMElement * conditionNode = XmlUtils::GetChildElementByName(parametersNode, "condition");
 	condition = shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
 
 }
@@ -338,45 +338,45 @@ void Selection::accept(AlgebraVisitor &v)
 	v.visitSelection(this);
 }
 
-void BinaryAlgebraNodeBase::constructJoinParameters(DOMElement * element,shared_ptr<Expression> & condition,vector<JoinColumnInfo> & outputColumns)
+void BinaryAlgebraNodeBase::constructJoinParameters(DOMElement * element, shared_ptr<Expression> & condition, vector<JoinColumnInfo> & outputColumns)
 {
-	DOMElement * parametersNode=XmlUtils::GetChildElementByName(element,"parameters");
-	DOMElement * conditionNode=XmlUtils::GetFirstChildElement(parametersNode);
-	int start=0;
-	if(XmlUtils::GetFirstChildElement(conditionNode)!=0)
+	DOMElement * parametersNode = XmlUtils::GetChildElementByName(element, "parameters");
+	DOMElement * conditionNode = XmlUtils::GetFirstChildElement(parametersNode);
+	int start = 0;
+	if (XmlUtils::GetFirstChildElement(conditionNode) != 0)
 	{
-		start=1;
-		condition = shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));	
+		start = 1;
+		condition = shared_ptr<Expression>(Expression::constructChildren(XmlUtils::GetFirstChildElement(conditionNode)));
 		condition->accept(NumberColumnsInJoinVisitor());
-		vector<DOMElement *> conditions=XmlUtils::GetChildElements(conditionNode);
-		for(auto it=conditions.begin()+1;it!=conditions.end();++it)
+		vector<DOMElement *> conditions = XmlUtils::GetChildElements(conditionNode);
+		for (auto it = conditions.begin() + 1; it != conditions.end(); ++it)
 		{
 			shared_ptr<Expression> newCondition(Expression::constructChildren(*it));
 			newCondition->accept(NumberColumnsInJoinVisitor());
-			condition = shared_ptr<Expression>(new BinaryExpression(condition,newCondition,BinaryOperator::AND));
+			condition = shared_ptr<Expression>(new BinaryExpression(condition, newCondition, BinaryOperator::AND));
 		}
 	}
 	else
 	{
-		condition=0;
+		condition = 0;
 	}
-	vector<DOMElement *> columns=XmlUtils::GetChildElements(parametersNode);
-	for(auto it=columns.begin()+start;it!=columns.end();++it)
+	vector<DOMElement *> columns = XmlUtils::GetChildElements(parametersNode);
+	for (auto it = columns.begin() + start; it != columns.end(); ++it)
 	{
 		JoinColumnInfo info;
-		info.newColumn=XmlUtils::ReadAttribute(*it,"newName");
+		info.newColumn = XmlUtils::ReadAttribute(*it, "newName");
 		info.column = ColumnIdentifier(XmlUtils::ReadAttribute(*it, "name"));
-		if (info.newColumn== "")
+		if (info.newColumn == "")
 		{
 			info.newColumn = info.column.name;
 		}
-		if(XmlUtils::ReadAttribute(*it,"input")=="second")
+		if (XmlUtils::ReadAttribute(*it, "input") == "second")
 		{
-			info.input=1;
+			info.input = 1;
 		}
 		else
 		{
-			info.input=0;
+			info.input = 0;
 		}
 		outputColumns.push_back(info);
 	}
@@ -384,7 +384,7 @@ void BinaryAlgebraNodeBase::constructJoinParameters(DOMElement * element,shared_
 }
 Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
-	constructJoinParameters(element,condition,outputColumns);
+	constructJoinParameters(element, condition, outputColumns);
 }
 
 void Join::accept(AlgebraVisitor &v)
@@ -394,7 +394,7 @@ void Join::accept(AlgebraVisitor &v)
 
 AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
-	constructJoinParameters(element,condition,outputColumns);
+	constructJoinParameters(element, condition, outputColumns);
 }
 
 void AntiJoin::accept(AlgebraVisitor &v)
