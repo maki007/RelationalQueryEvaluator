@@ -1,31 +1,24 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Union
- time:900
- size:3000
-id_1 251,name_2 251,
-"]node1[label="Table Scan
-people_from_city
- time:1000
- size:1000
-id_1 251,name_2 251,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Union
- time:600
- size:2000
-id_3 251,name_4 251,
-"]node3[label="Table Scan
-people_from_city
- time:1000
- size:1000
-id_3 251,name_4 251,
-"]node3 -> node2[headport=s, tailport=n,label="   "]
-node4[label="Table Scan
-people_from_city
- time:1000
- size:1000
-name_5 251,id_6 251,
-"]node4 -> node2[headport=s, tailport=n,label="   "]
-node2 -> node0[headport=s, tailport=n,label="   "]
+node0[label="Sort"]
+node1[label="Union"]
+node2[label="Table people_from_city
+ number of rows: 1000.000000
+ columns: id_1(int,251), name_2(string,251)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Union"]
+node4[label="Table people_from_city
+ number of rows: 1000.000000
+ columns: id_3(int,251), name_4(string,251)
+ indices: "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node5[label="Table people_from_city
+ number of rows: 1000.000000
+ columns: name_5(string,251), id_6(int,251)
+ indices: "]
+node5 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
 
 }

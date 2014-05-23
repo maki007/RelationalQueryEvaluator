@@ -1,15 +1,11 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
-Sort by: a_1 desc, b_2 desc
- time:265754
- size:10000
-a_1 10000,b_2 10000,
-"]node1[label="Table Scan
-x
- time:10000
- size:10000
-a_1 10000,b_2 10000,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
+a_1 desc, b_2 desc"]
+node1[label="Table x
+ number of rows: 10000.000000
+ columns: a_1(int,10000), b_2(int,10000)
+ indices: CLUSTERED(a)"]
+node1 -> node0[headport=s, tailport=n,label="   "]
 
 }

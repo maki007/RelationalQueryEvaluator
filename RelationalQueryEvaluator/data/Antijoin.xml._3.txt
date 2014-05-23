@@ -1,197 +1,26 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Hash Antijoin
-(c_1(0) == b_3(1))
- time:9000
- size:250
-c_1 251,
-"]node1[label="Hash Antijoin
-(c_1(0) == a_2(1))
- time:10000
- size:500
-c_1 251,
-"]node2[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node2 -> node1[headport=s, tailport=n,label="   "]
-node3[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node3 -> node1[headport=s, tailport=n,label="   "]
+node0[label="Sort"]
+node1[label="AntiJoin
+(c_1(0) == b_3(1))"]
+node2[label="AntiJoin
+(c_1(0) == a_2(1))"]
+node3[label="Table z
+ number of rows: 1000.000000
+ columns: c_1(int,251)
+ indices: "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node4[label="Table x
+ number of rows: 1000.000000
+ columns: a_2(int,251)
+ indices: "]
+node4 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node5[label="Table y
+ number of rows: 1000.000000
+ columns: b_3(int,251)
+ indices: "]
+node5 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
-node4[label="Table Scan
-y
- time:1000
- size:1000
-b_3 251,
-"]node4 -> node0[headport=s, tailport=n,label="   "]
-node5[label="Merge Antijoin
-(c_1(0) == b_3(1))
- time:1100
- size:250
-c_1 251,
-"]node6[label="Sort
-Sort by: c_1 both
- time:8965
- size:500
-c_1 251,
-"]node7[label="Hash Antijoin
-(c_1(0) == a_2(1))
- time:10000
- size:500
-c_1 251,
-"]node8[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node8 -> node7[headport=s, tailport=n,label="   "]
-node9[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node9 -> node7[headport=s, tailport=n,label="   "]
-node7 -> node6[headport=s, tailport=n,label="   "]
-node6 -> node5[headport=s, tailport=n,label="   "]
-node10[label="Sort
-Sort by: b_3 both
- time:19931
- size:1000
-b_3 251,
-"]node11[label="Table Scan
-y
- time:1000
- size:1000
-b_3 251,
-"]node11 -> node10[headport=s, tailport=n,label="   "]
-node10 -> node5[headport=s, tailport=n,label="   "]
-node12[label="Merge Antijoin
-(c_1(0) == b_3(1))
- time:1100
- size:250
-c_1 251,
-"]node13[label="Sort
-Sort by: c_1 both
- time:8965
- size:500
-c_1 251,
-"]node14[label="Hash Antijoin
-(c_1(0) == a_2(1))
- time:10000
- size:500
-c_1 251,
-"]node15[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node15 -> node14[headport=s, tailport=n,label="   "]
-node16[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node16 -> node14[headport=s, tailport=n,label="   "]
-node14 -> node13[headport=s, tailport=n,label="   "]
-node13 -> node12[headport=s, tailport=n,label="   "]
-node17[label="Sort
-Sort by: b_3 both
- time:19931
- size:1000
-b_3 251,
-"]node18[label="Table Scan
-y
- time:1000
- size:1000
-b_3 251,
-"]node18 -> node17[headport=s, tailport=n,label="   "]
-node17 -> node12[headport=s, tailport=n,label="   "]
-node19[label="Hash Antijoin
-(c_1(0) == b_3(1))
- time:9000
- size:250
-c_1 251,
-"]node20[label="Merge Antijoin
-(c_1(0) == a_2(1))
- time:1200
- size:500
-c_1 251,
-"]node21[label="Sort
-Sort by: c_1 both
- time:19931
- size:1000
-c_1 251,
-"]node22[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node22 -> node21[headport=s, tailport=n,label="   "]
-node21 -> node20[headport=s, tailport=n,label="   "]
-node23[label="Sort
-Sort by: a_2 both
- time:19931
- size:1000
-a_2 251,
-"]node24[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node24 -> node23[headport=s, tailport=n,label="   "]
-node23 -> node20[headport=s, tailport=n,label="   "]
-node20 -> node19[headport=s, tailport=n,label="   "]
-node25[label="Table Scan
-y
- time:1000
- size:1000
-b_3 251,
-"]node25 -> node19[headport=s, tailport=n,label="   "]
-node26[label="Hash Antijoin
-(c_1(0) == b_3(1))
- time:9000
- size:250
-c_1 251,
-"]node27[label="Merge Antijoin
-(c_1(0) == a_2(1))
- time:1200
- size:500
-c_1 251,
-"]node28[label="Sort
-Sort by: c_1 both
- time:19931
- size:1000
-c_1 251,
-"]node29[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node29 -> node28[headport=s, tailport=n,label="   "]
-node28 -> node27[headport=s, tailport=n,label="   "]
-node30[label="Sort
-Sort by: a_2 both
- time:19931
- size:1000
-a_2 251,
-"]node31[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node31 -> node30[headport=s, tailport=n,label="   "]
-node30 -> node27[headport=s, tailport=n,label="   "]
-node27 -> node26[headport=s, tailport=n,label="   "]
-node32[label="Table Scan
-y
- time:1000
- size:1000
-b_3 251,
-"]node32 -> node26[headport=s, tailport=n,label="   "]
 
 }

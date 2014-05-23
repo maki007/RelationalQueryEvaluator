@@ -1,15 +1,13 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Columns Operations
-a, x = (a_1(0) + (b_2(0) * 5)), d = c_3(0)
- time:0
- size:1000
-a_1 251,x_4 251,d_5 251,
-"]node1[label="Table Scan
-users
- time:1000
- size:1000
-a_1 251,b_2 251,c_3 251,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
+node0[label="Sort"]
+node1[label="ColumnOperations
+a_1, x_4 = (a_1(0) + (b_2(0) * 5)), d_5 = c_3(0)"]
+node2[label="Table users
+ number of rows: 1000.000000
+ columns: a_1(int,251), b_2(int,251), c_3(int,251)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
 
 }

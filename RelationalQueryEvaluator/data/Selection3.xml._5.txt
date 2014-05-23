@@ -1,0 +1,65 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Filter
+AND ((a_1(0) < -1),(b_2(0) < 8000))
+ time:10
+ size:1
+a_1 0,b_2 0,
+"]node1[label="Index Scan
+users
+AND ((a_1(0) == 4),(b_2(0) == 10))
+index(a_1:ascending,b_2:ascending)
+ time:169
+ size:10
+a_1 0,b_2 0,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+node2[label="Filter Keeping Order
+AND ((a_1(0) < -1),(b_2(0) < 8000))
+ time:13
+ size:1
+a_1 0,b_2 0,
+"]node3[label="Index Scan
+users
+AND ((a_1(0) == 4),(b_2(0) == 10))
+index(a_1:ascending,b_2:ascending)
+ time:169
+ size:10
+a_1 0,b_2 0,
+"]node3 -> node2[headport=s, tailport=n,label="   "]
+node4[label="Filter
+AND ((a_1(0) == 4),(b_2(0) == 10),(a_1(0) < -1),(b_2(0) < 8000))
+ time:10000000
+ size:1
+a_1 1000,b_2 1000,
+"]node5[label="Table Scan
+users
+ time:10000000
+ size:10000000
+a_1 1000,b_2 1000,
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node6[label="Filter
+AND ((a_1(0) == 4),(b_2(0) == 10),(a_1(0) < -1),(b_2(0) < 8000))
+ time:10000000
+ size:1
+a_1 1000,b_2 1000,
+"]node7[label="Sort by index Scan
+users
+index(a_1:ascending,b_2:ascending)
+ time:30000000
+ size:10000000
+a_1 1000,b_2 1000,
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node8[label="Filter Keeping Order
+AND ((a_1(0) == 4),(b_2(0) == 10),(a_1(0) < -1),(b_2(0) < 8000))
+ time:13000000
+ size:1
+a_1 1000,b_2 1000,
+"]node9[label="Sort by index Scan
+users
+index(a_1:ascending,b_2:ascending)
+ time:30000000
+ size:10000000
+a_1 1000,b_2 1000,
+"]node9 -> node8[headport=s, tailport=n,label="   "]
+
+}

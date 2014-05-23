@@ -23,63 +23,77 @@ B
 b_3 63095,d_4 63095,
 "]node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
-node4[label="Merge Join
+node4[label="Partial Sort
+Sorted by d_4 desc, a_1 asc
+Sort by: 
+ time:0
+ size:251
+a_1 251,c_2 251,b_3 251,d_4 251,
+"]node5[label="Merge Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:1200000
  size:251
 a_1 251,c_2 251,b_3 251,d_4 251,
-"]node5[label="Sort
-Sort by: c_2 desc, a_1 asc
+"]node6[label="Sort
+Sort by: (a_1 both, c_2 both)
  time:39863137
  size:1000000
 a_1 63095,c_2 63095,
-"]node6[label="Table Scan
+"]node7[label="Table Scan
 A
  time:1000000
  size:1000000
 a_1 63095,c_2 63095,
-"]node6 -> node5[headport=s, tailport=n,label="   "]
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node5[headport=s, tailport=n,label="   "]
+node8[label="Sort
+Sort by: (b_3 both, d_4 both)
+ time:39863137
+ size:1000000
+b_3 63095,d_4 63095,
+"]node9[label="Table Scan
+B
+ time:1000000
+ size:1000000
+b_3 63095,d_4 63095,
+"]node9 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node4[headport=s, tailport=n,label="   "]
-node7[label="Sort
-Sort by: d_4 desc, b_3 asc
- time:39863137
- size:1000000
-b_3 63095,d_4 63095,
-"]node8[label="Table Scan
-B
- time:1000000
- size:1000000
-b_3 63095,d_4 63095,
-"]node8 -> node7[headport=s, tailport=n,label="   "]
-node7 -> node4[headport=s, tailport=n,label="   "]
-node9[label="Merge Join
+node10[label="Partial Sort
+Sorted by d_4 desc, a_1 asc
+Sort by: 
+ time:0
+ size:251
+a_1 251,c_2 251,b_3 251,d_4 251,
+"]node11[label="Merge Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:1200000
  size:251
 a_1 251,c_2 251,b_3 251,d_4 251,
-"]node10[label="Sort
-Sort by: c_2 desc, a_1 asc
+"]node12[label="Sort
+Sort by: (a_1 both, c_2 both)
  time:39863137
  size:1000000
 a_1 63095,c_2 63095,
-"]node11[label="Table Scan
+"]node13[label="Table Scan
 A
  time:1000000
  size:1000000
 a_1 63095,c_2 63095,
-"]node11 -> node10[headport=s, tailport=n,label="   "]
-node10 -> node9[headport=s, tailport=n,label="   "]
-node12[label="Sort
-Sort by: d_4 desc, b_3 asc
+"]node13 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node11[headport=s, tailport=n,label="   "]
+node14[label="Sort
+Sort by: (b_3 both, d_4 both)
  time:39863137
  size:1000000
 b_3 63095,d_4 63095,
-"]node13[label="Table Scan
+"]node15[label="Table Scan
 B
  time:1000000
  size:1000000
 b_3 63095,d_4 63095,
-"]node13 -> node12[headport=s, tailport=n,label="   "]
-node12 -> node9[headport=s, tailport=n,label="   "]
+"]node15 -> node14[headport=s, tailport=n,label="   "]
+node14 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node10[headport=s, tailport=n,label="   "]
 
 }

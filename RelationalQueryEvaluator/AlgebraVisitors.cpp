@@ -1,5 +1,3 @@
-
-
 #include "Algebra.h"
 #include "AlgebraVisitors.h"
 #include "Expressions.h"
@@ -81,6 +79,43 @@ void AlgebraVisitor::visitGroupedJoin(GroupedJoin * node)
 	}
 }
 
+vector<shared_ptr<Expression> > AlgebraVisitor::serializeExpression(shared_ptr<Expression> condition)
+{
+	vector<shared_ptr<Expression> > result;
+	if ((typeid(*(condition)) == typeid(GroupedExpression)))
+	{
+		shared_ptr<GroupedExpression> groupedCondition = dynamic_pointer_cast<GroupedExpression>(condition);
+		if (groupedCondition->operation == GroupedOperator::AND)
+		{
+			result = groupedCondition->children;
+		}
+		else
+		{
+			result.push_back(condition);
+		}
+	}
+	else
+	{
+		result.push_back(condition);
+	}
+	return result;
+}
+
+shared_ptr<Expression> AlgebraVisitor::deserializeExpression(const vector<shared_ptr<Expression> > & condition)
+{
+	if (condition.size() == 0)
+	{
+		return shared_ptr<Expression>(0);
+	}
+	if (condition.size() == 1)
+	{
+		return condition[0];
+	}
+	else
+	{
+		return shared_ptr<Expression>(new GroupedExpression(GroupedOperator::AND, condition));
+	}
+}
 
 GraphDrawingVisitor::GraphDrawingVisitor()
 {
@@ -522,4 +557,3 @@ void GroupingVisitor::visitAntiJoin(AntiJoin * node)
 	node->rightChild->accept(*this);
 
 }
-

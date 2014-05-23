@@ -124,6 +124,7 @@ class Selection : public UnaryAlgebraNodeBase
 public:
 	std::shared_ptr<Expression> condition;
 	Selection(DOMElement * element);
+	Selection(std::shared_ptr<Expression> & cond);
 	void accept(AlgebraVisitor &v);
 };
 

@@ -177,44 +177,6 @@ shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleS
 	return newPlan;
 }
 
-vector<shared_ptr<Expression> > AlgebraCompiler::serializeExpression(shared_ptr<Expression> condition)
-{
-	vector<shared_ptr<Expression> > result;
-	if ((typeid(*(condition)) == typeid(GroupedExpression)))
-	{
-		shared_ptr<GroupedExpression> groupedCondition = dynamic_pointer_cast<GroupedExpression>(condition);
-		if (groupedCondition->operation == GroupedOperator::AND)
-		{
-			result = groupedCondition->children;
-		}
-		else
-		{
-			result.push_back(condition);
-		}
-	}
-	else
-	{
-		result.push_back(condition);
-	}
-	return result;
-}
-
-shared_ptr<Expression> AlgebraCompiler::deserializeExpression(const vector<shared_ptr<Expression> > & condition)
-{
-	if (condition.size() == 0)
-	{
-		return shared_ptr<Expression>(0);
-	}
-	if (condition.size() == 1)
-	{
-		return condition[0];
-	}
-	else
-	{
-		return shared_ptr<Expression>(new GroupedExpression(GroupedOperator::AND, condition));
-	}
-}
-
 void AlgebraCompiler::insertPlan(vector<shared_ptr<PhysicalPlan> > & plans, shared_ptr<PhysicalPlan> & plan)
 {
 	plans.push_back(plan);

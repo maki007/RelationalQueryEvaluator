@@ -10,65 +10,79 @@ country_2, count_5=count();x_6=max(parameter_3);
  time:13000
  size:1584
 country_4 251,count_5 1584,x_6 1584,
-"]node2[label="Sort by index Scan
+"]node2[label="Partial Sort
+Sorted by country_2 asc
+Sort by: 
+ time:0
+ size:10000
+user_name_1 410,country_2 1584,parameter_3 1584,
+"]node3[label="Sort by index Scan
 people
 index(country_2:ascending)
  time:30000
  size:10000
 user_name_1 410,country_2 1584,parameter_3 1584,
-"]node2 -> node1[headport=s, tailport=n,label="   "]
+"]node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
-node3[label="Sort
+node4[label="Sort
 Sort by: country_4 desc
  time:33695
  size:1584
 country_4 251,count_5 1584,x_6 1584,
-"]node4[label="Hash Group
+"]node5[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
  time:103000
  size:1584
 country_4 251,count_5 1584,x_6 1584,
-"]node5[label="Table Scan
+"]node6[label="Table Scan
 people
  time:10000
  size:10000
 user_name_1 410,country_2 1584,parameter_3 1584,
-"]node5 -> node4[headport=s, tailport=n,label="   "]
-node4 -> node3[headport=s, tailport=n,label="   "]
-node6[label="Sort
+"]node6 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node7[label="Sort
 Sort by: country_4 desc
  time:33695
  size:1584
 country_4 251,count_5 1584,x_6 1584,
-"]node7[label="Hash Group
+"]node8[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
  time:103000
  size:1584
 country_4 251,count_5 1584,x_6 1584,
-"]node8[label="Sort by index Scan
+"]node9[label="Sort by index Scan
 people
 index(country_2:ascending)
  time:30000
  size:10000
 user_name_1 410,country_2 1584,parameter_3 1584,
-"]node8 -> node7[headport=s, tailport=n,label="   "]
-node7 -> node6[headport=s, tailport=n,label="   "]
-node9[label="Sorted Group
+"]node9 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node7[headport=s, tailport=n,label="   "]
+node10[label="Partial Sort
+Sorted by country_4 desc
+Sort by: 
+ time:0
+ size:1584
+country_4 251,count_5 1584,x_6 1584,
+"]node11[label="Sorted Group
 country_2, count_5=count();x_6=max(parameter_3);
  time:13000
  size:1584
 country_4 251,count_5 1584,x_6 1584,
-"]node10[label="Sort
-Sort by: country_2 desc
+"]node12[label="Sort
+Sort by: country_2 both
  time:265754
  size:10000
 user_name_1 410,country_2 1584,parameter_3 1584,
-"]node11[label="Table Scan
+"]node13[label="Table Scan
 people
  time:10000
  size:10000
 user_name_1 410,country_2 1584,parameter_3 1584,
-"]node11 -> node10[headport=s, tailport=n,label="   "]
-node10 -> node9[headport=s, tailport=n,label="   "]
+"]node13 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node10[headport=s, tailport=n,label="   "]
 
 }

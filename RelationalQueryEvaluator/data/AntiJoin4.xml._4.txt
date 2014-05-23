@@ -22,46 +22,60 @@ node3[label="Merge Antijoin
  time:1200
  size:500
 c_1 251,
-"]node4[label="Table Scan
+"]node4[label="Partial Sort
+Sorted by c_1 desc
+Sort by: 
+ time:0
+ size:1000
+c_1 251,
+"]node5[label="Table Scan
 z
  time:1000
  size:1000
 c_1 251,
-"]node4 -> node3[headport=s, tailport=n,label="   "]
-node5[label="Sort
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node6[label="Sort
 Sort by: a_2 desc
  time:19931
  size:1000
 a_2 251,
-"]node6[label="Table Scan
+"]node7[label="Table Scan
 x
  time:1000
  size:1000
 a_2 251,
-"]node6 -> node5[headport=s, tailport=n,label="   "]
-node5 -> node3[headport=s, tailport=n,label="   "]
-node7[label="Merge Antijoin
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node3[headport=s, tailport=n,label="   "]
+node8[label="Merge Antijoin
 (c_1(0) == a_2(1))
  time:1200
  size:500
 c_1 251,
-"]node8[label="Table Scan
+"]node9[label="Partial Sort
+Sorted by c_1 desc
+Sort by: 
+ time:0
+ size:1000
+c_1 251,
+"]node10[label="Table Scan
 z
  time:1000
  size:1000
 c_1 251,
-"]node8 -> node7[headport=s, tailport=n,label="   "]
-node9[label="Sort
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node11[label="Sort
 Sort by: a_2 desc
  time:19931
  size:1000
 a_2 251,
-"]node10[label="Table Scan
+"]node12[label="Table Scan
 x
  time:1000
  size:1000
 a_2 251,
-"]node10 -> node9[headport=s, tailport=n,label="   "]
-node9 -> node7[headport=s, tailport=n,label="   "]
+"]node12 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node8[headport=s, tailport=n,label="   "]
 
 }

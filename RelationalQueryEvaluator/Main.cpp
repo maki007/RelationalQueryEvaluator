@@ -115,15 +115,23 @@ int main(int argc, const char *argv[])
 				return 1;
 			}
 			
-			unique_ptr<GroupingVisitor> groupVisitor(new GroupingVisitor());
+			unique_ptr<AlgebraVisitor> groupVisitor(new GroupingVisitor());
 			algebraRoot->accept(*groupVisitor);
 			drawAlgebra(algebraRoot,line+string("._2.txt"));
 			
 			
+			unique_ptr<AlgebraVisitor> selectionSpliter(new SelectionSpitingVisitor());
+			algebraRoot->accept(*selectionSpliter);
+
+			unique_ptr<AlgebraVisitor> selectionFuser(new SelectionFusingVisitor());
+			algebraRoot->accept(*selectionFuser);
+
+			drawAlgebra(algebraRoot, line + string("._3.txt"));
+
 			shared_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
 			algebraRoot->accept(*algebraCompiler);
 
-			drawPlan(algebraCompiler->result, line + string("._3.txt"));
+			drawPlan(algebraCompiler->result, line + string("._4.txt"));
 			
 			vector<shared_ptr<PhysicalOperator> > clonedPlans;
 
@@ -141,9 +149,9 @@ int main(int argc, const char *argv[])
 				(*it)->accept(sortResolver);
 			}
 
-			drawPlan(clonedPlans, line + string("._4.txt"));
+			drawPlan(clonedPlans, line + string("._5.txt"));
 
-			boboxPlan(clonedPlans, line + string("._5.bbx"));
+			boboxPlan(clonedPlans, line + string("._6.bbx"));
 
 
 			clock_t end = clock();

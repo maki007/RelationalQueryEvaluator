@@ -68,7 +68,7 @@ l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node11[label="Sort
-Sort by: l_orderkey_3 asc, o_orderdate_7 asc, o_shippriority_8 asc
+Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
  time:101841
  size:4227
 l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
@@ -192,7 +192,7 @@ l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  size:2113
 l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
 "]node31[label="Sort
-Sort by: l_orderkey_3 asc, o_orderdate_7 asc, o_shippriority_8 asc
+Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
  time:101841
  size:4227
 l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,

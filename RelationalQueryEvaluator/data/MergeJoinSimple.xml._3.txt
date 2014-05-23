@@ -1,103 +1,19 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Partial Sort
-Sorted by a_1 asc
-Sort by: 
- time:0
- size:15848931
-a_1 63095,b_2 63095,
-"]node1[label="Merge Join
-(a_1(0) == b_2(1))
- time:1200000
- size:15848931
-a_1 63095,b_2 63095,
-"]node2[label="Partial Sort
-Sorted by a_1 asc
-Sort by: 
- time:0
- size:1000000
-a_1 63095,
-"]node3[label="Table Scan
-A
- time:1000000
- size:1000000
-a_1 63095,
-"]node3 -> node2[headport=s, tailport=n,label="   "]
+node0[label="Sort
+a_1 asc"]
+node1[label="GroupedJoin
+(a_1(0) == b_2(1))"]
+node2[label="Table A
+ number of rows: 1000000.000000
+ columns: a_1(int,63095)
+ indices: CLUSTERED(a)"]
 node2 -> node1[headport=s, tailport=n,label="   "]
-node4[label="Partial Sort
-Sorted by b_2 asc
-Sort by: 
- time:0
- size:1000000
-b_2 63095,
-"]node5[label="Table Scan
-B
- time:1000000
- size:1000000
-b_2 63095,
-"]node5 -> node4[headport=s, tailport=n,label="   "]
-node4 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table B
+ number of rows: 1000000.000000
+ columns: b_2(int,63095)
+ indices: CLUSTERED(b)"]
+node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
-node6[label="Partial Sort
-Sorted by a_1 asc
-Sort by: 
- time:0
- size:15848931
-a_1 63095,b_2 63095,
-"]node7[label="Merge Join
-(a_1(0) == b_2(1))
- time:1200000
- size:15848931
-a_1 63095,b_2 63095,
-"]node8[label="Partial Sort
-Sorted by a_1 asc
-Sort by: 
- time:0
- size:1000000
-a_1 63095,
-"]node9[label="Table Scan
-A
- time:1000000
- size:1000000
-a_1 63095,
-"]node9 -> node8[headport=s, tailport=n,label="   "]
-node8 -> node7[headport=s, tailport=n,label="   "]
-node10[label="Partial Sort
-Sorted by b_2 asc
-Sort by: 
- time:0
- size:1000000
-b_2 63095,
-"]node11[label="Table Scan
-B
- time:1000000
- size:1000000
-b_2 63095,
-"]node11 -> node10[headport=s, tailport=n,label="   "]
-node10 -> node7[headport=s, tailport=n,label="   "]
-node7 -> node6[headport=s, tailport=n,label="   "]
-node12[label="Sort
-Sort by: a_1 asc
- time:758145776
- size:15848931
-a_1 63095,b_2 63095,
-"]node13[label="Hash Join
-(a_1(0) == b_2(1))
- time:10000000
- size:15848931
-a_1 63095,b_2 63095,
-"]node14[label="Table Scan
-A
- time:1000000
- size:1000000
-a_1 63095,
-"]node14 -> node13[headport=s, tailport=n,label="   "]
-node15[label="Table Scan
-B
- time:1000000
- size:1000000
-b_2 63095,
-"]node15 -> node13[headport=s, tailport=n,label="   "]
-node13 -> node12[headport=s, tailport=n,label="   "]
 
 }

@@ -23,7 +23,7 @@ node3[label="Merge Join
  size:3981
 name_1 251,name_4 251,
 "]node4[label="Sort
-Sort by: country_id_2 asc
+Sort by: country_id_2 both
  time:19931
  size:1000
 name_1 251,country_id_2 251,
@@ -35,7 +35,7 @@ name_1 251,country_id_2 251,
 "]node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node6[label="Sort
-Sort by: id_3 asc
+Sort by: id_3 both
  time:19931
  size:1000
 id_3 251,name_4 251,
@@ -52,7 +52,7 @@ node8[label="Merge Join
  size:3981
 name_1 251,name_4 251,
 "]node9[label="Sort
-Sort by: country_id_2 asc
+Sort by: country_id_2 both
  time:19931
  size:1000
 name_1 251,country_id_2 251,
@@ -64,7 +64,7 @@ name_1 251,country_id_2 251,
 "]node10 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node8[headport=s, tailport=n,label="   "]
 node11[label="Sort
-Sort by: id_3 asc
+Sort by: id_3 both
  time:19931
  size:1000
 id_3 251,name_4 251,

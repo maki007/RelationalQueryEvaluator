@@ -1,50 +1,19 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Sorted Group
-nothing,revenue_6=sum(x_5);
- time:32098
- size:1
-revenue_6 1,
-"]node1[label="Columns Operations
-x = (l_extendedprice_3(0) * l_discount_2(0))
- time:0
- size:24691
-x_5 24691,
-"]node2[label="Filter
-AND ((today <= l_shipdate_1(0)),(l_shipdate_1(0) < today+1year),(l_quantity_4(0) < 5000),(0.2 < l_discount_2(0)),(l_discount_2(0) < 0.3))
- time:6000000
- size:24691
-l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,
-"]node3[label="Table Scan
-lineitem
- time:6000000
- size:6000000
-l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,
-"]node3 -> node2[headport=s, tailport=n,label="   "]
+node0[label="Sort"]
+node1[label="Group
+groupBy nothing,revenue_6=sum(x_5);"]
+node2[label="ColumnOperations
+x_5 = (l_extendedprice_3(0) * l_discount_2(0))"]
+node3[label="Selection
+AND ((today <= l_shipdate_1(0)),(l_shipdate_1(0) < today+1year),(l_quantity_4(0) < 5000),(0.2 < l_discount_2(0)),(l_discount_2(0) < 0.3))"]
+node4[label="Table lineitem
+ number of rows: 6000000.000000
+ columns: l_shipdate_1(date,6000000), l_discount_2(int,100), l_extendedprice_3(double,6000000), l_quantity_4(double,3000000)
+ indices: "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
-node4[label="Hash Group
-nothing,revenue_6=sum(x_5);
- time:254320
- size:1
-revenue_6 1,
-"]node5[label="Columns Operations
-x = (l_extendedprice_3(0) * l_discount_2(0))
- time:0
- size:24691
-x_5 24691,
-"]node6[label="Filter
-AND ((today <= l_shipdate_1(0)),(l_shipdate_1(0) < today+1year),(l_quantity_4(0) < 5000),(0.2 < l_discount_2(0)),(l_discount_2(0) < 0.3))
- time:6000000
- size:24691
-l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,
-"]node7[label="Table Scan
-lineitem
- time:6000000
- size:6000000
-l_shipdate_1 6000000,l_discount_2 100,l_extendedprice_3 6000000,l_quantity_4 3000000,
-"]node7 -> node6[headport=s, tailport=n,label="   "]
-node6 -> node5[headport=s, tailport=n,label="   "]
-node5 -> node4[headport=s, tailport=n,label="   "]
 
 }

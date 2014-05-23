@@ -1,83 +1,18 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Merge Antijoin
-(c_1(0) == a_2(1))
- time:1200
- size:500
-c_1 251,
-"]node1[label="Partial Sort
-Sorted by c_1 desc
-Sort by: 
- time:0
- size:1000
-c_1 251,
-"]node2[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node2 -> node1[headport=s, tailport=n,label="   "]
+node0[label="Sort"]
+node1[label="AntiJoin
+(c_1(0) == a_2(1))"]
+node2[label="Table z
+ number of rows: 1000.000000
+ columns: c_1(int,251)
+ indices: CLUSTERED(c)"]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table x
+ number of rows: 1000.000000
+ columns: a_2(int,251)
+ indices: CLUSTERED(a)"]
+node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
-node3[label="Partial Sort
-Sorted by a_2 desc
-Sort by: 
- time:0
- size:1000
-a_2 251,
-"]node4[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node4 -> node3[headport=s, tailport=n,label="   "]
-node3 -> node0[headport=s, tailport=n,label="   "]
-node5[label="Merge Antijoin
-(c_1(0) == a_2(1))
- time:1200
- size:500
-c_1 251,
-"]node6[label="Partial Sort
-Sorted by c_1 desc
-Sort by: 
- time:0
- size:1000
-c_1 251,
-"]node7[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node7 -> node6[headport=s, tailport=n,label="   "]
-node6 -> node5[headport=s, tailport=n,label="   "]
-node8[label="Partial Sort
-Sorted by a_2 desc
-Sort by: 
- time:0
- size:1000
-a_2 251,
-"]node9[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node9 -> node8[headport=s, tailport=n,label="   "]
-node8 -> node5[headport=s, tailport=n,label="   "]
-node10[label="Hash Antijoin
-(c_1(0) == a_2(1))
- time:10000
- size:500
-c_1 251,
-"]node11[label="Table Scan
-z
- time:1000
- size:1000
-c_1 251,
-"]node11 -> node10[headport=s, tailport=n,label="   "]
-node12[label="Table Scan
-x
- time:1000
- size:1000
-a_2 251,
-"]node12 -> node10[headport=s, tailport=n,label="   "]
 
 }

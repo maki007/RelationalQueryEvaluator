@@ -1,79 +1,18 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Hash Join
-(country_id_2(0) == id_3(1))
- time:10000
- size:3981
-name_1 251,name_4 251,
-"]node1[label="Table Scan
-users
- time:1000
- size:1000
-name_1 251,country_id_2 251,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Table Scan
-countries
- time:1000
- size:1000
-id_3 251,name_4 251,
-"]node2 -> node0[headport=s, tailport=n,label="   "]
-node3[label="Merge Join
-(country_id_2(0) == id_3(1))
- time:1200
- size:3981
-name_1 251,name_4 251,
-"]node4[label="Sort
-Sort by: country_id_2 both
- time:19931
- size:1000
-name_1 251,country_id_2 251,
-"]node5[label="Table Scan
-users
- time:1000
- size:1000
-name_1 251,country_id_2 251,
-"]node5 -> node4[headport=s, tailport=n,label="   "]
-node4 -> node3[headport=s, tailport=n,label="   "]
-node6[label="Sort
-Sort by: id_3 both
- time:19931
- size:1000
-id_3 251,name_4 251,
-"]node7[label="Table Scan
-countries
- time:1000
- size:1000
-id_3 251,name_4 251,
-"]node7 -> node6[headport=s, tailport=n,label="   "]
-node6 -> node3[headport=s, tailport=n,label="   "]
-node8[label="Merge Join
-(country_id_2(0) == id_3(1))
- time:1200
- size:3981
-name_1 251,name_4 251,
-"]node9[label="Sort
-Sort by: country_id_2 both
- time:19931
- size:1000
-name_1 251,country_id_2 251,
-"]node10[label="Table Scan
-users
- time:1000
- size:1000
-name_1 251,country_id_2 251,
-"]node10 -> node9[headport=s, tailport=n,label="   "]
-node9 -> node8[headport=s, tailport=n,label="   "]
-node11[label="Sort
-Sort by: id_3 both
- time:19931
- size:1000
-id_3 251,name_4 251,
-"]node12[label="Table Scan
-countries
- time:1000
- size:1000
-id_3 251,name_4 251,
-"]node12 -> node11[headport=s, tailport=n,label="   "]
-node11 -> node8[headport=s, tailport=n,label="   "]
+node0[label="Sort"]
+node1[label="GroupedJoin
+(country_id_2(0) == id_3(1))"]
+node2[label="Table users
+ number of rows: 1000.000000
+ columns: name_1(string,251), country_id_2(int,251)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table countries
+ number of rows: 1000.000000
+ columns: id_3(int,251), name_4(string,251)
+ indices: "]
+node3 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
 
 }

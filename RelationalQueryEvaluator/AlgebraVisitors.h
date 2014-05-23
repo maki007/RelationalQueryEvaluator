@@ -37,6 +37,10 @@ public:
 
 	virtual void visitGroupedJoin(GroupedJoin * node);
 
+	static std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
+
+	static std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
+
 };
 
 class GraphDrawingVisitor : public AlgebraVisitor
@@ -273,11 +277,7 @@ public:
 	void visitUnion(Union * node);
 
 	void visitGroupedJoin(GroupedJoin * node);
-
-	static std::vector<std::shared_ptr<Expression> > serializeExpression(std::shared_ptr<Expression> condition);
-
-	static std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
-
+	
 private:
 	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
@@ -328,5 +328,23 @@ private:
 	}
 
 };
+
+
+class SelectionSpitingVisitor : public AlgebraVisitor
+{
+public:
+
+	void visitSelection(Selection * node);
+
+};
+
+class SelectionFusingVisitor : public AlgebraVisitor
+{
+public:
+
+	void visitSelection(Selection * node);
+
+};
+
 
 #endif

@@ -321,6 +321,12 @@ Selection::Selection(DOMElement * element):UnaryAlgebraNodeBase(element)
 
 }
 
+Selection::Selection(shared_ptr<Expression> & cond)
+{
+	condition = cond;
+
+}
+
 void Selection::accept(AlgebraVisitor &v)
 {
 	v.visitSelection(this);

@@ -1,46 +1,13 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Index Scan
-customer
-(c_mktsegment_2(0) <= 500)
-index2(c_mktsegment_2:ascending)
- time:150103
- size:50000
-c_custkey_1 50000,c_mktsegment_2 3,
-"]node1[label="Filter
-(c_mktsegment_2(0) <= 500)
- time:150000
- size:50000
-c_custkey_1 150000,c_mktsegment_2 10,
-"]node2[label="Table Scan
-customer
- time:150000
- size:150000
-c_custkey_1 150000,c_mktsegment_2 10,
-"]node2 -> node1[headport=s, tailport=n,label="   "]
-node3[label="Filter
-(c_mktsegment_2(0) <= 500)
- time:150000
- size:50000
-c_custkey_1 150000,c_mktsegment_2 10,
-"]node4[label="Sort by index Scan
-customer
-index2(c_mktsegment_2:ascending)
- time:450000
- size:150000
-c_custkey_1 150000,c_mktsegment_2 10,
-"]node4 -> node3[headport=s, tailport=n,label="   "]
-node5[label="Filter Keeping Order
-(c_mktsegment_2(0) <= 500)
- time:195000
- size:50000
-c_custkey_1 150000,c_mktsegment_2 10,
-"]node6[label="Sort by index Scan
-customer
-index2(c_mktsegment_2:ascending)
- time:450000
- size:150000
-c_custkey_1 150000,c_mktsegment_2 10,
-"]node6 -> node5[headport=s, tailport=n,label="   "]
+node0[label="Sort"]
+node1[label="Selection
+(c_mktsegment_2(0) <= 500)"]
+node2[label="Table customer
+ number of rows: 150000.000000
+ columns: c_custkey_1(int,150000), c_mktsegment_2(int,10)
+ indices: UNCLUSTERED(c_mktsegment)"]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
 
 }
