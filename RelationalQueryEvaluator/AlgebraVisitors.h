@@ -204,6 +204,46 @@ public:
 	{
 		return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
 	}
+	void RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns)
+	{
+		std::set<ulong> allColumns;
+		for (auto it = outputColumns.begin(); it != outputColumns.end(); ++it)
+		{
+			allColumns.insert(it->column.id);
+		}
+
+		for (auto it = condition.begin(); it != condition.end(); ++it)
+		{
+			for (auto it2 = (*it)->inputs.begin(); it2 != (*it)->inputs.end(); ++it2)
+			{
+				allColumns.insert(*it2);
+			}
+		}
+
+		for (auto it = columns.begin(); it != columns.end(); )
+		{
+			if (allColumns.find(it->first) == allColumns.end())
+			{
+				columns.erase(it++);
+				continue;
+			}
+			++it;
+		}
+
+		for (auto it = plans.begin(); it != plans.end();++it)
+		{
+			for (auto it2 = (*it)->plan->columns.begin(); it2 != (*it)->plan->columns.end();)
+			{
+				if (allColumns.find(it2->first) == allColumns.end())
+				{
+					(*it)->plan->columns.erase(it2++);
+					continue;
+				}
+				++it2;
+			}
+		}
+
+	}
 };
 
 class AlgebraCompiler : public AlgebraVisitor
@@ -245,11 +285,11 @@ private:
 
 	void generateIndexScan(const std::string & tableName,std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 
-	void join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
+	void join(GroupedJoin * node, const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
 	std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;
 
-	void greedyJoin(std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
+	void greedyJoin(GroupedJoin * node, std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
 
 
 	void generateSortParametersForMergeJoin(PossibleSortParameters & sortParameters, const std::vector<std::shared_ptr<ConditionInfo>> & conditions, const std::map<int, ColumnInfo> & columns);

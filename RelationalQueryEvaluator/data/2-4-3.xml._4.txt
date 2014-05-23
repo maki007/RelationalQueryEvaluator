@@ -19,12 +19,12 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority_8 1,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node4[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
  size:186
-c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
+o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 "]node5[label="Index Scan
 customer
 (c_mktsegment_2(0) == SEGMENT)
@@ -81,12 +81,12 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority_8 1,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node14[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
  size:186
-c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
+o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 "]node15[label="Index Scan
 customer
 (c_mktsegment_2(0) == SEGMENT)
@@ -139,12 +139,12 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority_8 1,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node23[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
  size:186
-c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
+o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 "]node24[label="Filter
 (c_mktsegment_2(0) == SEGMENT)
  time:150000
@@ -205,12 +205,12 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority_8 1,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node34[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
  size:186
-c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
+o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 "]node35[label="Filter
 (c_mktsegment_2(0) == SEGMENT)
  time:150000
@@ -267,12 +267,12 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 1,l_extendedprice_5 1,l_discount_6 1,o_orderdate_7 1,o_shippriority_8 1,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node44[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
  size:186
-c_custkey_1 186,c_mktsegment_2 186,o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,o_custkey_10 186,
+o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 "]node45[label="Filter
 (c_mktsegment_2(0) == SEGMENT)
  time:150000

@@ -5,12 +5,12 @@ Sorted by a_1 desc
 Sort by: 
  time:0
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node1[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200000
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node2[label="Sort
 Sort by: a_1 both
  time:39863137
@@ -40,12 +40,12 @@ node6[label="Sort
 Sort by: a_1 desc
  time:758145776
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node7[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000000
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node8[label="Table Scan
 A
  time:1000000
@@ -63,12 +63,12 @@ node10[label="Sort
 Sort by: a_1 desc
  time:758145776
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node11[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000000
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node12[label="Sort by index Scan
 A
 index(a_1:ascending)
@@ -87,12 +87,12 @@ node14[label="Sort
 Sort by: a_1 desc
  time:758145776
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node15[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200000
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node16[label="Partial Sort
 Sorted by a_1 asc
 Sort by: 
@@ -124,12 +124,12 @@ node20[label="Sort
 Sort by: a_1 desc
  time:758145776
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node21[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200000
  size:15848931
-a_1 1,b_2 1,
+a_1 63095,b_2 63095,
 "]node22[label="Partial Sort
 Sorted by a_1 asc
 Sort by: 

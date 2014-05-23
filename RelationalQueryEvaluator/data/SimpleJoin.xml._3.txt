@@ -4,7 +4,7 @@ node0[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200
  size:3981
-a_1 1,b_2 1,
+a_1 251,b_2 251,
 "]node1[label="Partial Sort
 Sorted by a_1 asc
 Sort by: 
@@ -36,7 +36,7 @@ node5[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200
  size:3981
-a_1 1,b_2 1,
+a_1 251,b_2 251,
 "]node6[label="Partial Sort
 Sorted by a_1 asc
 Sort by: 
@@ -68,7 +68,7 @@ node10[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000
  size:3981
-a_1 1,b_2 1,
+a_1 251,b_2 251,
 "]node11[label="Table Scan
 p
  time:1000
@@ -85,7 +85,7 @@ node13[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000
  size:3981
-a_1 1,b_2 1,
+a_1 251,b_2 251,
 "]node14[label="Table Scan
 p
  time:1000
@@ -103,7 +103,7 @@ node16[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200
  size:3981
-a_1 1,b_2 1,
+a_1 251,b_2 251,
 "]node17[label="Partial Sort
 Sorted by a_1 asc
 Sort by: 

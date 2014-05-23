@@ -156,6 +156,7 @@ class GroupedJoin : public GroupedAlgebraNode
 {
 public:
 	std::shared_ptr<Expression> condition;
+	std::shared_ptr<Expression> nonJoincondition;
 	std::vector<JoinColumnInfo> outputColumns;
 	void accept(AlgebraVisitor &v);
 };

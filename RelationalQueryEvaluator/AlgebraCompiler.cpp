@@ -871,7 +871,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 						ulong rightIndex = wholeSet&(~leftIndex);
 
 						//cout << i + 1 << " " << wholeSet << "==" << (leftIndex | rightIndex) << " " << leftIndex << " " << rightIndex << endl;
-						join(allSubsets[leftIndex], allSubsets[rightIndex], **it);
+						join(node, allSubsets[leftIndex], allSubsets[rightIndex], **it);
 
 					}
 				}
@@ -899,7 +899,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 			ulong max = *(--end);
 			for (auto it2 = it->unProcessedPlans.find(max + 1); it2 != it->unProcessedPlans.end(); ++it2)
 			{
-				greedyJoin(it, it2, plans, heap);
+				greedyJoin(node, it, it2, plans, heap);
 			}
 		}
 
@@ -913,7 +913,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 			{
 				for (auto it2 = it->unProcessedPlans.begin(); it2 != it->unProcessedPlans.end(); ++it2)
 				{
-					greedyJoin(it, it2, plans, heap);
+					greedyJoin(node, it, it2, plans, heap);
 				}
 			}
 			lastPlans.clear();
@@ -925,28 +925,18 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		}
 	}
 
-	std::map<int, ColumnInfo> outputColumns;
-	for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
-	{
-		outputColumns[it->column.id] = *it;
-	}
 	result = newResult;
-	for (auto it = result.begin(); it != result.end(); ++it)
-	{
-		(*it)->plan->columns = outputColumns;
-
-	}
 }
 
 
-void AlgebraCompiler::greedyJoin(vector<JoinInfo>::iterator &it, set<ulong>::iterator &it2, vector<JoinInfo> & plans, vector<JoinInfo> & heap)
+void AlgebraCompiler::greedyJoin(GroupedJoin * node, vector<JoinInfo>::iterator &it, set<ulong>::iterator &it2, vector<JoinInfo> & plans, vector<JoinInfo> & heap)
 {
 	JoinInfo newPlans;
 	newPlans.processedPlans = it->processedPlans;
 	newPlans.unProcessedPlans = it->unProcessedPlans;
 	newPlans.processedPlans.insert(*it2);
 	newPlans.unProcessedPlans.erase(*it2);
-	join(*it, plans[*it2], newPlans);
+	join(node, *it, plans[*it2], newPlans);
 	for (auto it3 = newPlans.plans.begin(); it3 != newPlans.plans.end(); ++it3)
 	{
 		JoinInfo insertedPlan;
@@ -1064,11 +1054,12 @@ void AlgebraCompiler::getMergeJoinSortedParametes(PossibleSortParameters & resul
 	}
 }
 
-void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
+void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
 	vector<shared_ptr<ConditionInfo>> equalConditions;
 	vector<shared_ptr<ConditionInfo>> lowerConditions;
 	vector<shared_ptr<ConditionInfo>> otherConditions;
+	newPlan.condition.clear();
 	for (auto it = left.condition.begin(); it != left.condition.end(); ++it)
 	{
 		bool containsLeft = false, constainsRight = false;
@@ -1149,11 +1140,11 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 			newColumns[it->first] = JoinColumnInfo(it->second);
 			if (left.columns.find(it->first) != left.columns.end())
 			{
-				newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
+				newColumns[it->first].numberOfUniqueValues = min(newColumns[it->first].numberOfUniqueValues, newSize);
 			}
 			else
 			{
-				newColumns[it->first].numberOfUniqueValues = max(newColumns[it->first].numberOfUniqueValues, newSize);
+				newColumns[it->first].numberOfUniqueValues = min(newColumns[it->first].numberOfUniqueValues, newSize);
 			}
 		}
 		shared_ptr<Expression> condition = deserializeExpression(expressions);
@@ -1235,8 +1226,8 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				getMergeJoinSortedParametes(resultParameters, equalPairs, rightColumns);
 				mergePlan->sortedBy = resultParameters;
 				insertPlan(newPlan.plans, mergePlan);
-				
-				
+
+
 				leftSortParameters.parameters.clear();
 				rightSortParameters.parameters.clear();
 				rightSortParameters.parameters.push_back(SortParameters());
@@ -1258,8 +1249,8 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 				getMergeJoinSortedParametes(resultParameters, equalPairsReverse, leftColumns);
 				mergePlan->sortedBy = resultParameters;
 				insertPlan(newPlan.plans, mergePlan);
-				
-				
+
+
 			}
 		}
 	}
@@ -1291,6 +1282,9 @@ void AlgebraCompiler::join(const JoinInfo & left, const JoinInfo & right, JoinIn
 			}
 		}
 	}
+
+	newPlan.RemoveUnnecessaryColumns(node->outputColumns);
+
 }
 
 
@@ -1355,7 +1349,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 			std::map<int, int> equalPairs;
 			std::map<int, int> equalPairsReverse;
 			getEqualPairsFromCondition(conditions, equalPairs, equalPairsReverse, leftColumns, rightColumns);
-			
+
 			//direction left->right
 			generateSortParametersForMergeJoin(leftSortParameters, conditions, leftColumns);
 
@@ -1393,15 +1387,15 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 			rightSortParameters.parameters.clear();
 			generateSortParametersForOtherPlanInMergeJoin(rightSortParameters, leftSortedPlan, rightColumns, equalPairs);
 			rightSortedPlan = generateSortParameters(rightSortParameters, *second);
-			
+
 			mergejoin = new MergeAntiJoin(node->condition);
 			mergePlan = shared_ptr<PhysicalPlan>(new PhysicalPlan(mergejoin, newSize, TimeComplexity::mergeEquiJoin(leftSize, rightSize), allColumns, leftSortedPlan, rightSortedPlan));
 			resultParameters = rightSortedPlan->sortedBy;
 			getMergeJoinSortedParametes(resultParameters, equalPairsReverse, leftColumns);
 			mergePlan->sortedBy = resultParameters;
 			insertPlan(newResult, mergePlan);
-	
-			
+
+
 		}
 	}
 	size = newSize;

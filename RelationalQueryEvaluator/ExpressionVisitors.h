@@ -212,11 +212,15 @@ public:
 	
 	void visitUnaryExpression(UnaryExpression * expression)
 	{
+		expression->child->accept(*this); 
 		(*conditionType) = ConditionType::OTHER;
 	}
 
 	void visitBinaryExpression(BinaryExpression * expression)
 	{
+		expression->leftChild->accept(*this);
+		expression->rightChild->accept(*this);
+
 		switch (expression->operation)
 		{
 		case BinaryOperator::EQUALS:
@@ -230,23 +234,28 @@ public:
 			(*conditionType) = ConditionType::OTHER;
 			break;
 		}
-		expression->leftChild->accept(*this);
-		expression->rightChild->accept(*this);
-		
 	}
 
 	void visitNnaryExpression(NnaryExpression * expression)
 	{
+		for (auto it = expression->arguments.begin(); it != expression->arguments.end(); ++it)
+		{
+			(*it)->accept(*this);
+		}
 		(*conditionType) = ConditionType::OTHER;
 	}
 
 	void visitConstant(Constant * expression)
 	{
-		throw new std::exception("constant shouldnt be in joins");
+		
 	}
 
 	void visitGroupedExpression(GroupedExpression * expression)
 	{
+		for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
+		{
+			(*it)->accept(*this);
+		}
 		(*conditionType) = ConditionType::OTHER;
 	}
 

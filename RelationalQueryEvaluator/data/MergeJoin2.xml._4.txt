@@ -4,12 +4,12 @@ node0[label="Sort
 Sort by: d_4 desc, a_1 asc
  time:4005
  size:251
-a_1 1,c_2 1,b_3 1,d_4 1,
+a_1 251,c_2 251,b_3 251,d_4 251,
 "]node1[label="Hash Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:10000000
  size:251
-a_1 1,c_2 1,b_3 1,d_4 1,
+a_1 251,c_2 251,b_3 251,d_4 251,
 "]node2[label="Table Scan
 A
  time:1000000
@@ -27,7 +27,7 @@ node4[label="Merge Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:1200000
  size:251
-a_1 1,c_2 1,b_3 1,d_4 1,
+a_1 251,c_2 251,b_3 251,d_4 251,
 "]node5[label="Sort
 Sort by: c_2 desc, a_1 asc
  time:39863137
@@ -56,7 +56,7 @@ node9[label="Merge Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:1200000
  size:251
-a_1 1,c_2 1,b_3 1,d_4 1,
+a_1 251,c_2 251,b_3 251,d_4 251,
 "]node10[label="Sort
 Sort by: c_2 desc, a_1 asc
  time:39863137
