@@ -28,48 +28,48 @@ void writeOutput(string & fileName, string & content)
 
 void drawAlgebra(shared_ptr<AlgebraNodeBase> algebraRoot, string & fileName)
 {
-	unique_ptr<GraphDrawingVisitor> visitor(new GraphDrawingVisitor());
-	algebraRoot->accept(*visitor);
+	GraphDrawingVisitor visitor;
+	algebraRoot->accept(visitor);
 
-	writeOutput(fileName, visitor->result);
+	writeOutput(fileName, visitor.result);
 }
 
 
 
 void drawPlan(std::vector<std::shared_ptr<PhysicalPlan> > & result, string & fileName)
 {
-	unique_ptr<PhysicalOperatorDrawingVisitor> planDrawer(new PhysicalOperatorDrawingVisitor());
+	PhysicalOperatorDrawingVisitor planDrawer;
 	sort(result.begin(), result.end(), PhysicalPlan::Comparator);
 	for(auto it=result.begin();it!=result.end();++it)
 	{
-		(*it)->plan->accept(*planDrawer);
-		planDrawer->nodeCounter++;
+		(*it)->plan->accept(planDrawer);
+		planDrawer.nodeCounter++;
 	}
-	planDrawer->result+="\n}";
+	planDrawer.result+="\n}";
 
-	writeOutput(fileName, planDrawer->result);
+	writeOutput(fileName, planDrawer.result);
 }
 
 
 void drawPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string & fileName)
 {
-	unique_ptr<PhysicalOperatorDrawingVisitorWithouSorts> planDrawer(new PhysicalOperatorDrawingVisitorWithouSorts());
+	PhysicalOperatorDrawingVisitorWithouSorts planDrawer;
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
-		(*it)->accept(*planDrawer);
-		planDrawer->nodeCounter++;
+		(*it)->accept(planDrawer);
+		planDrawer.nodeCounter++;
 	}
-	planDrawer->result += "\n}";
+	planDrawer.result += "\n}";
 
-	writeOutput(fileName, planDrawer->result);
+	writeOutput(fileName, planDrawer.result);
 }
 
 void boboxPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string & fileName)
 {
-	unique_ptr<BoboxPlanWritingPhysicalOperatorVisitor> planDrawer(new BoboxPlanWritingPhysicalOperatorVisitor());
+	BoboxPlanWritingPhysicalOperatorVisitor planDrawer;
 	if (result.size() > 0)
 	{
-		writeOutput(fileName, planDrawer->writePlan(*(result.begin())));
+		writeOutput(fileName, planDrawer.writePlan(*(result.begin())));
 	}
 	else
 	{
@@ -107,9 +107,9 @@ int main(int argc, const char *argv[])
 			}
 			drawAlgebra(algebraRoot,line+string("._1.txt"));
 
-			unique_ptr<SemanticChecker> semanticChecker(new SemanticChecker());
-			algebraRoot->accept(*semanticChecker);
-			if(semanticChecker->containsErrors==true)
+			SemanticChecker semanticChecker;
+			algebraRoot->accept(semanticChecker);
+			if(semanticChecker.containsErrors==true)
 			{
 				cout << "semantic error in " << line << endl;
 				return 1;
@@ -120,22 +120,31 @@ int main(int argc, const char *argv[])
 			drawAlgebra(algebraRoot,line+string("._2.txt"));
 			
 			
-			unique_ptr<AlgebraVisitor> selectionSpliter(new SelectionSpitingVisitor());
-			algebraRoot->accept(*selectionSpliter);
+			SelectionSpitingVisitor selectionSpliter;
+			algebraRoot->accept(selectionSpliter);
 
-			unique_ptr<AlgebraVisitor> selectionFuser(new SelectionFusingVisitor());
-			algebraRoot->accept(*selectionFuser);
+			SelectionColectingVisitor selectionColecter;
+			algebraRoot->accept(selectionColecter);
+
+			//move selection up
+
+			//move selection down
+
+			SelectionFusingVisitor selectionFuser;
+			algebraRoot->accept(selectionFuser);
+
+
 
 			drawAlgebra(algebraRoot, line + string("._3.txt"));
 
-			shared_ptr<AlgebraCompiler> algebraCompiler(new AlgebraCompiler());
-			algebraRoot->accept(*algebraCompiler);
+			AlgebraCompiler algebraCompiler;
+			algebraRoot->accept(algebraCompiler);
 
-			drawPlan(algebraCompiler->result, line + string("._4.txt"));
+			drawPlan(algebraCompiler.result, line + string("._4.txt"));
 			
 			vector<shared_ptr<PhysicalOperator> > clonedPlans;
 
-			for (auto it = algebraCompiler->result.begin(); it != algebraCompiler->result.end(); ++it)
+			for (auto it = algebraCompiler.result.begin(); it != algebraCompiler.result.end(); ++it)
 			{
 
 				CloningPhysicalOperatorVisitor cloner;

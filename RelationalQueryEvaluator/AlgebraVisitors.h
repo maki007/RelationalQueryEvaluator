@@ -346,5 +346,13 @@ public:
 
 };
 
+class SelectionColectingVisitor : public AlgebraVisitor
+{
+public:
+	std::vector<Selection *> selections;
+	void visitSelection(Selection * node);
+};
+
+
 
 #endif

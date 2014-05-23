@@ -64,3 +64,9 @@ void SelectionFusingVisitor::visitSelection(Selection * node)
 	}
 }
 
+
+void SelectionColectingVisitor::visitSelection(Selection * node)
+{
+	selections.push_back(node);
+	node->child->accept(*this);
+}
