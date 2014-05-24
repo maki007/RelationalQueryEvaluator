@@ -1,0 +1,21 @@
+operator main()->()
+{
+broadcast()->(){3} start;
+TableScan()->(int,string) TableScan0(name="people_from_city",columns="id,name"); 
+TableScan()->(int,string) TableScan1(name="people_from_city",columns="id,name"); 
+TableScan()->(string,int) TableScan2(name="people_from_city",columns="name,id"); 
+Union(int,string)(string,int)->(int,string) Union3(left="0,1",right="1,0",out="0,1"); 
+Union(int,string)(int,string)->(int,string) Union4(left="0,1",right="0,1",out="0,1"); 
+Store(int,string)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+start[1] -> TableScan1;
+start[2] -> TableScan2;
+TableScan1 -> [0]Union3;
+TableScan2 -> [1]Union3;
+TableScan0 -> [0]Union4;
+Union3 -> [1]Union4;
+Union4 -> storeResult;
+storeResult -> output;
+}

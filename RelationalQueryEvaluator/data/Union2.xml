@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <selection>
+      <parameters>
+        <condition>
+          <equals>
+            <column name="name"/>
+            <constant type="string" value="sparta"/>
+          </equals>
+        </condition>
+      </parameters>
+      <input>
+        <union>
+          <input>
+            <table name="people_from_city">
+              <column name="id" type="int" />
+              <column name="name" type="string" />
+            </table>
+            <union>
+              <input>
+                <table name="people_from_city">
+                  <column name="id" type="int" />
+                  <column name="name" type="string"/>
+                </table>
+                <table name="people_from_city">
+                  <column name="name" type="string" />
+                  <column name="id" type="int" />
+                </table>
+              </input>
+            </union>
+          </input>
+        </union>
+      </input>
+    </selection>
+  </input>
+</sort>

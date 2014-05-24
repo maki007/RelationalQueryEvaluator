@@ -362,6 +362,9 @@ public:
 class PushSelectionDownVisitor : public AlgebraVisitor
 {
 private:
+	std::set<uint> columns;
+	ConditionType conditionType;
+
 	Selection * nodePointer;
 	std::shared_ptr<Expression> condition;
 public:

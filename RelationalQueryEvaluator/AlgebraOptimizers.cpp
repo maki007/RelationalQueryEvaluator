@@ -80,6 +80,7 @@ PushSelectionDownVisitor::PushSelectionDownVisitor(Selection * node)
 
 void PushSelectionDownVisitor::pushDown()
 {
+	JoinInfoReadingExpressionVisitor expresionVisitor(&columns, &conditionType);
 	AlgebraNodeBase * start = nodePointer->child.get();
 	removeSelection(nodePointer);
 	start->accept(*this);
@@ -122,7 +123,9 @@ void PushSelectionDownVisitor::visitAntiJoin(AntiJoin * node)
 
 void PushSelectionDownVisitor::visitUnion(Union * node)
 {
+	//node->leftChild->accept(*this);
 
+	//node->rightChild->accept(*this);
 }
 
 void PushSelectionDownVisitor::visitGroupedJoin(GroupedJoin * node)

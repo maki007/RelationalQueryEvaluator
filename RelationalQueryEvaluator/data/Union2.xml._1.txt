@@ -1,0 +1,27 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="Selection
+(name_-1(0) == sparta)"]
+node2[label="Union"]
+node3[label="Table people_from_city
+ number of rows: 1000.000000
+ columns: id_-1(int,251), name_-1(string,251)
+ indices: "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node4[label="Union"]
+node5[label="Table people_from_city
+ number of rows: 1000.000000
+ columns: id_-1(int,251), name_-1(string,251)
+ indices: "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node6[label="Table people_from_city
+ number of rows: 1000.000000
+ columns: name_-1(string,251), id_-1(int,251)
+ indices: "]
+node6 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}
