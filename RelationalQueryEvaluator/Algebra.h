@@ -24,7 +24,7 @@
 #include "XmlUtils.h"
 #include "Expressions.h"
 #include <memory>
-
+#include <map>
 XERCES_CPP_NAMESPACE_USE
 
 typedef unsigned long long int ulong;
@@ -37,6 +37,7 @@ class AlgebraVisitor;
 class AlgebraNodeBase
 {
 public:
+	std::map<int, ColumnInfo> outputColumns;
 	AlgebraNodeBase * parent;
 	AlgebraNodeBase();
 	AlgebraNodeBase * constructChildren(DOMElement * node);
@@ -132,7 +133,7 @@ class Join : public BinaryAlgebraNodeBase
 {
 public:
 	std::shared_ptr<Expression> condition;
-	std::vector<JoinColumnInfo> outputColumns;
+	std::vector<JoinColumnInfo> outputJoinColumns;
 	Join(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -141,7 +142,7 @@ class AntiJoin : public BinaryAlgebraNodeBase
 {
 public:
 	std::shared_ptr<Expression> condition;
-	std::vector<JoinColumnInfo> outputColumns;
+	std::vector<JoinColumnInfo> outputJoinColumns;
 	AntiJoin(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -158,7 +159,7 @@ class GroupedJoin : public GroupedAlgebraNode
 public:
 	std::shared_ptr<Expression> condition;
 	std::shared_ptr<Expression> nonJoincondition;
-	std::vector<JoinColumnInfo> outputColumns;
+	std::vector<JoinColumnInfo> outputJoinColumns;
 	void accept(AlgebraVisitor &v);
 };
 

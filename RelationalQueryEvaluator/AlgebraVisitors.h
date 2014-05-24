@@ -41,6 +41,10 @@ public:
 
 	static std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 
+	static void removeSelection(Selection * node);
+
+	static void insertSelection(AlgebraNodeBase * node, Selection * selection);
+
 };
 
 class GraphDrawingVisitor : public AlgebraVisitor
@@ -84,6 +88,8 @@ private:
 	std::map<std::string, ColumnInfo> outputColumns;
 	int lastId;
 
+	void convertColumns(const std::map<std::string, ColumnInfo> & outputColumns, AlgebraNodeBase * node);
+
 public:
 
 	bool containsErrors;
@@ -91,12 +97,12 @@ public:
 	SemanticChecker();
 
 	int nextId();
-
+	
 	template <typename T>
 	void checkJoinOutPutParameters(std::map<std::string, ColumnInfo> & outputColumns0, std::map<std::string, ColumnInfo> & outputColumns1, T * node)
 	{
 		outputColumns.clear();
-		for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
+		for (auto it = node->outputJoinColumns.begin(); it != node->outputJoinColumns.end(); ++it)
 		{
 			if (outputColumns.find(it->newColumn) == outputColumns.end())
 			{
@@ -349,13 +355,19 @@ public:
 class SelectionColectingVisitor : public AlgebraVisitor
 {
 public:
-	std::vector<Selection *> selections;
+	std::vector<std::shared_ptr<Selection> > selections;
 	void visitSelection(Selection * node);
 };
 
 class PushSelectionDownVisitor : public AlgebraVisitor
 {
+private:
+	std::shared_ptr<Selection> node;
 public:
+	PushSelectionDownVisitor(Selection * node);
+
+	void pushDown();
+
 	void visitTable(Table * node);
 
 	void visitSort(Sort * node);

@@ -79,12 +79,13 @@ void boboxPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string 
 
 int main(int argc, const char *argv[])
 {
+	
 	if (argc != 2)
 	{
 		printf("SchemaValidator <file containg xml file>\n");
 		return 0;
 	}
-
+	
 	ifstream reader;
 	reader.open(argv[1]);
 	if (reader.is_open())
@@ -115,20 +116,24 @@ int main(int argc, const char *argv[])
 				return 1;
 			}
 
-			unique_ptr<AlgebraVisitor> groupVisitor(new GroupingVisitor());
-			algebraRoot->accept(*groupVisitor);
+			GroupingVisitor groupVisitor;
+			algebraRoot->accept(groupVisitor);
 			drawAlgebra(algebraRoot, line + string("._2.txt"));
 
 
 			SelectionSpitingVisitor selectionSpliter;
 			algebraRoot->accept(selectionSpliter);
 
-			SelectionColectingVisitor selectionColecter;
-			algebraRoot->accept(selectionColecter);
+			/*SelectionColectingVisitor selectionColecter;
+			algebraRoot->accept(selectionColecter);*/
 
 			//move selection up
 
-			//move selection down
+			/*for (auto it = selectionColecter.selections.begin(); it != selectionColecter.selections.end(); ++it)
+			{
+				PushSelectionDownVisitor pushDownVisitor(it->get());
+				pushDownVisitor.pushDown();
+			}*/
 
 			SelectionFusingVisitor selectionFuser;
 			algebraRoot->accept(selectionFuser);

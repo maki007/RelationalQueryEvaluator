@@ -116,6 +116,26 @@ shared_ptr<Expression> AlgebraVisitor::deserializeExpression(const vector<shared
 	}
 }
 
+void AlgebraVisitor::removeSelection(Selection * node)
+{
+	AlgebraNodeBase * old = node->parent;
+	node->parent->replaceChild(node,node->child.get());
+	old = node->parent;
+	node->parent = 0;
+	node->child = 0;
+}
+
+void AlgebraVisitor::insertSelection(AlgebraNodeBase * node, Selection * selection)
+{
+	Selection * copy = new Selection(*selection);
+	node->parent->replaceChild(node, copy);
+	copy->parent = node->parent;
+	node->parent = copy;
+	copy->child = shared_ptr<AlgebraNodeBase>(node);
+	copy->outputColumns = copy->child->outputColumns;
+}
+
+
 GraphDrawingVisitor::GraphDrawingVisitor()
 {
 	result = "";
@@ -391,13 +411,26 @@ void GroupingVisitor::visitJoin(Join * node)
 	node->leftChild->accept(*this);
 	node->rightChild->accept(*this);
 	GroupedJoin * groupedOperator = new GroupedJoin();
-	groupedOperator->outputColumns = node->outputColumns;
+	groupedOperator->outputJoinColumns = node->outputJoinColumns;
+	
+	groupedOperator->outputColumns.clear();
+	for (auto it = groupedOperator->outputJoinColumns.begin(); it != groupedOperator->outputJoinColumns.end(); ++it)
+	{
+		groupedOperator->outputColumns.insert(make_pair(it->column.id, *it));
+	}
+
+
 	groupedOperator->condition = node->condition;
 	vector<shared_ptr<AlgebraNodeBase> > oldChildren;
 	oldChildren.resize(2);
 	oldChildren[0] = node->leftChild;
 	oldChildren[1] = node->rightChild;
 	resolveJoins(node, groupedOperator, oldChildren);
+	for (auto it = groupedOperator->children.begin(); it != groupedOperator->children.end(); ++it)
+	{
+		(*it)->parent=groupedOperator;
+	}
+
 }
 
 void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * groupedOperator, vector<shared_ptr<AlgebraNodeBase> > & oldChildren)
@@ -412,7 +445,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * g
 			shared_ptr<GroupedJoin> newNode = dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
 			if (groupedOperator->condition != 0)
 			{
-				groupedOperator->condition->accept(RenamingJoinConditionExpressionVisitor(i, &newNode->outputColumns));
+				groupedOperator->condition->accept(RenamingJoinConditionExpressionVisitor(i, &newNode->outputJoinColumns));
 			}
 
 			if (i == 1)
@@ -466,7 +499,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * g
 			if (typeid(*(oldChildren[i])) == typeid(GroupedJoin))
 			{
 				shared_ptr<GroupedJoin> join = dynamic_pointer_cast<GroupedJoin>(oldChildren[i]);
-				for (auto it = join->outputColumns.begin(); it != join->outputColumns.end(); ++it)
+				for (auto it = join->outputJoinColumns.begin(); it != join->outputJoinColumns.end(); ++it)
 				{
 					int columnId = it->column.id;
 					for (auto it2 = visitor.nodes.begin(); it2 != visitor.nodes.end(); ++it2)
@@ -476,7 +509,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * g
 							(*it2)->input = it->input + numberOfChildreninFirstChild;
 						}
 					}
-					for (auto it2 = groupedOperator->outputColumns.begin(); it2 != groupedOperator->outputColumns.end(); ++it2)
+					for (auto it2 = groupedOperator->outputJoinColumns.begin(); it2 != groupedOperator->outputJoinColumns.end(); ++it2)
 					{
 						if ((it2)->column.id == columnId)
 						{
@@ -494,7 +527,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * g
 						(*it2)->input = numberOfChildreninFirstChild;
 					}
 				}
-				for (auto it2 = groupedOperator->outputColumns.begin(); it2 != groupedOperator->outputColumns.end(); ++it2)
+				for (auto it2 = groupedOperator->outputJoinColumns.begin(); it2 != groupedOperator->outputJoinColumns.end(); ++it2)
 				{
 					if ((it2)->input == i)
 					{

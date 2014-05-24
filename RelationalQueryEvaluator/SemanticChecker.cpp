@@ -16,6 +16,15 @@ int SemanticChecker::nextId()
 	return lastId++;
 }
 
+void SemanticChecker::convertColumns(const map<string, ColumnInfo> & outputColumns, AlgebraNodeBase * node)
+{
+	node->outputColumns.clear();
+	for (auto it = outputColumns.begin(); it != outputColumns.end(); ++it)
+	{
+		node->outputColumns.insert(make_pair(it->second.column.id, it->second));
+	}
+}
+
 void SemanticChecker::visitTable(Table * node)
 {
 	outputColumns.clear();
@@ -71,7 +80,7 @@ void SemanticChecker::visitTable(Table * node)
 			}
 		}
 	}
-
+	convertColumns(outputColumns, node);
 }
 
 void SemanticChecker::visitSort(Sort * node)
@@ -88,6 +97,7 @@ void SemanticChecker::visitSort(Sort * node)
 			it->column.id = outputColumns[it->column.name].column.id;
 		}
 	}
+	convertColumns(outputColumns, node);
 }
 
 void SemanticChecker::visitGroup(Group * node)
@@ -150,6 +160,7 @@ void SemanticChecker::visitGroup(Group * node)
 	{
 		ReportError("Group must group by one column or must contain at least one aggregate function");
 	}
+	convertColumns(outputColumns, node);
 }
 
 void SemanticChecker::visitColumnOperations(ColumnOperations * node)
@@ -160,11 +171,10 @@ void SemanticChecker::visitColumnOperations(ColumnOperations * node)
 	{
 		if (it->expression != 0)
 		{
-			shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-			expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-			expresionVisitor->outputColumns0 = outputColumns;
-			it->expression->accept(*expresionVisitor);
-			containsErrors |= expresionVisitor->containsErrors;
+			SemanticExpressionVisitor expresionVisitor;
+			expresionVisitor.outputColumns0 = outputColumns;
+			it->expression->accept(expresionVisitor);
+			containsErrors |= expresionVisitor.containsErrors;
 		}
 		else
 		{
@@ -200,16 +210,17 @@ void SemanticChecker::visitColumnOperations(ColumnOperations * node)
 			ReportError("Columns must have different name");
 		}
 	}
+	convertColumns(outputColumns, node);
 }
 
 void SemanticChecker::visitSelection(Selection * node)
 {
 	node->child->accept(*this);
-	shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-	expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-	expresionVisitor->outputColumns0 = outputColumns;
-	node->condition->accept(*expresionVisitor);
-	containsErrors |= expresionVisitor->containsErrors;
+	SemanticExpressionVisitor expresionVisitor;
+	expresionVisitor.outputColumns0 = outputColumns;
+	node->condition->accept(expresionVisitor);
+	containsErrors |= expresionVisitor.containsErrors;
+	convertColumns(outputColumns, node);
 }
 
 void SemanticChecker::visitJoin(Join * node)
@@ -222,16 +233,15 @@ void SemanticChecker::visitJoin(Join * node)
 
 	if (node->condition != 0)
 	{
-		shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-		expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-		expresionVisitor->outputColumns0 = outputColumns0;
-		expresionVisitor->outputColumns1 = outputColumns1;
-		node->condition->accept(*expresionVisitor);
-		containsErrors |= expresionVisitor->containsErrors;
+		SemanticExpressionVisitor expresionVisitor;
+		expresionVisitor.outputColumns0 = outputColumns0;
+		expresionVisitor.outputColumns1 = outputColumns1;
+		node->condition->accept(expresionVisitor);
+		containsErrors |= expresionVisitor.containsErrors;
 	}
 
 	checkJoinOutPutParameters(outputColumns0, outputColumns1, node);
-
+	convertColumns(outputColumns, node);
 }
 
 void SemanticChecker::visitAntiJoin(AntiJoin * node)
@@ -242,14 +252,14 @@ void SemanticChecker::visitAntiJoin(AntiJoin * node)
 	node->rightChild->accept(*this);
 	outputColumns1 = outputColumns;
 
-	shared_ptr<SemanticExpressionVisitor> expresionVisitor;
-	expresionVisitor = shared_ptr<SemanticExpressionVisitor>(new SemanticExpressionVisitor());
-	expresionVisitor->outputColumns0 = outputColumns0;
-	expresionVisitor->outputColumns1 = outputColumns1;
-	node->condition->accept(*expresionVisitor);
-	containsErrors |= expresionVisitor->containsErrors;
+	SemanticExpressionVisitor expresionVisitor;
+	expresionVisitor.outputColumns0 = outputColumns0;
+	expresionVisitor.outputColumns1 = outputColumns1;
+	node->condition->accept(expresionVisitor);
+	containsErrors |= expresionVisitor.containsErrors;
 
 	checkJoinOutPutParameters(outputColumns0, outputColumns1, node);
+	convertColumns(outputColumns, node);
 }
 
 
@@ -275,6 +285,7 @@ void SemanticChecker::visitUnion(Union * node)
 		}
 	}
 	outputColumns = outputColumns0;
+	convertColumns(outputColumns, node);
 }
 
 void SemanticChecker::visitGroupedJoin(GroupedJoin * node)

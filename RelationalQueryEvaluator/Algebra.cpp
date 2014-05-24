@@ -384,7 +384,7 @@ void BinaryAlgebraNodeBase::constructJoinParameters(DOMElement * element, shared
 }
 Join::Join(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
-	constructJoinParameters(element, condition, outputColumns);
+	constructJoinParameters(element, condition, outputJoinColumns);
 }
 
 void Join::accept(AlgebraVisitor &v)
@@ -394,7 +394,7 @@ void Join::accept(AlgebraVisitor &v)
 
 AntiJoin::AntiJoin(DOMElement * element) :BinaryAlgebraNodeBase(element)
 {
-	constructJoinParameters(element, condition, outputColumns);
+	constructJoinParameters(element, condition, outputJoinColumns);
 }
 
 void AntiJoin::accept(AlgebraVisitor &v)

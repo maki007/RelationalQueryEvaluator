@@ -1247,7 +1247,7 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 		}
 	}
 
-	newPlan.RemoveUnnecessaryColumns(node->outputColumns);
+	newPlan.RemoveUnnecessaryColumns(node->outputJoinColumns);
 
 }
 
@@ -1293,7 +1293,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	}
 
 	std::map<int, ColumnInfo> newAllColumns;
-	for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
+	for (auto it = node->outputJoinColumns.begin(); it != node->outputJoinColumns.end(); ++it)
 	{
 		newAllColumns[it->column.id] = allColumns[it->column.id];
 	}

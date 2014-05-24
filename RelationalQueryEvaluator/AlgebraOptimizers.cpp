@@ -67,11 +67,22 @@ void SelectionFusingVisitor::visitSelection(Selection * node)
 
 void SelectionColectingVisitor::visitSelection(Selection * node)
 {
-	selections.push_back(node);
+	selections.push_back(shared_ptr<Selection>(node));
 	node->child->accept(*this);
 }
 
 
+PushSelectionDownVisitor::PushSelectionDownVisitor(Selection * node)
+{
+	this->node = shared_ptr<Selection>(node);
+}
+
+void PushSelectionDownVisitor::pushDown()
+{
+	AlgebraNodeBase * start = node->child.get();
+	removeSelection(node.get());
+//	start->accept(*this);
+}
 
 void PushSelectionDownVisitor::visitTable(Table * node)
 {
@@ -80,7 +91,7 @@ void PushSelectionDownVisitor::visitTable(Table * node)
 
 void PushSelectionDownVisitor::visitSort(Sort * node)
 {
-
+	throw new exception("should not happen");
 }
 
 void PushSelectionDownVisitor::visitGroup(Group * node)
