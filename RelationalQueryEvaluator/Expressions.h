@@ -38,7 +38,7 @@ public:
 	Expression * parent;
 	virtual void accept(ExpressionVisitorBase &v) = 0;
 	static Expression * constructChildren(DOMElement * node);
-	virtual void replaceChild(Expression * oldChild, Expression * newChild) = 0;
+	virtual void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild) = 0;
 };
 class UnaryExpression : public Expression
 {
@@ -48,7 +48,7 @@ public:
 	UnaryExpression(DOMElement * node, UnaryOperator op);
 	UnaryExpression(std::shared_ptr<Expression> node, UnaryOperator op);
 	void accept(ExpressionVisitorBase &v);
-	void replaceChild(Expression * oldChild, Expression * newChild);
+	void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild);
 };
 
 class BinaryExpression : public Expression
@@ -60,7 +60,7 @@ public:
 	BinaryExpression(DOMElement * node, BinaryOperator op);
 	BinaryExpression(std::shared_ptr<Expression> & leftChild, std::shared_ptr<Expression> & rightChild, BinaryOperator op);
 	void accept(ExpressionVisitorBase &v);
-	void replaceChild(Expression * oldChild, Expression * newChild);
+	void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild);
 };
 
 class NnaryExpression : public Expression
@@ -71,7 +71,7 @@ public:
 	std::vector<std::shared_ptr<Expression>> arguments;
 	NnaryExpression(DOMElement * node, const std::string & name, const std::string & returnType);
 	void accept(ExpressionVisitorBase &v);
-	void replaceChild(Expression * oldChild, Expression * newChild);
+	void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild);
 };
 
 
@@ -82,7 +82,7 @@ public:
 	std::string type;
 	Constant(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
-	void replaceChild(Expression * oldChild, Expression * newChild);
+	void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild);
 };
 
 class Column : public Expression
@@ -93,7 +93,7 @@ public:
 	ulong input;
 	Column(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
-	void replaceChild(Expression * oldChild, Expression * newChild);
+	void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild);
 };
 
 class GroupedExpression : public Expression
@@ -104,7 +104,7 @@ public:
 	GroupedExpression();
 	GroupedExpression(GroupedOperator operation, const std::vector<std::shared_ptr<Expression>> & children);
 	void accept(ExpressionVisitorBase &v);
-	void replaceChild(Expression * oldChild, Expression * newChild);
+	void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild);
 };
 
 #endif

@@ -59,11 +59,13 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()
 {
 }
 
-void UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
+shared_ptr<AlgebraNodeBase> UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild)
 {
 	if (child.get() == oldChild)
 	{
-		child = shared_ptr<AlgebraNodeBase>(newChild);
+		shared_ptr<AlgebraNodeBase> result=child;
+		child = newChild;
+		return result;
 	}
 	else
 	{
@@ -92,20 +94,24 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase()
 
 }
 
-void BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
+shared_ptr<AlgebraNodeBase> BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, shared_ptr<AlgebraNodeBase> & newChild)
 {
+	shared_ptr<AlgebraNodeBase> result;
 	if (leftChild.get() == oldChild)
 	{
-		leftChild = shared_ptr<AlgebraNodeBase>(newChild);
+		result = leftChild;
+		leftChild = newChild;
 	}
 	else if (rightChild.get() == oldChild)
 	{
-		rightChild = shared_ptr<AlgebraNodeBase>(newChild);
+		result = rightChild;
+		rightChild = newChild;
 	}
 	else
 	{
-		//exception
+		throw new exception("child not found");
 	}
+	return result;
 }
 
 BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
@@ -133,17 +139,21 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 	}
 }
 
-void NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
+shared_ptr<AlgebraNodeBase> NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, shared_ptr<AlgebraNodeBase> & newChild)
 {
+	throw new exception("not suported");
 }
 
-void GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild)
+shared_ptr<AlgebraNodeBase> GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild, shared_ptr<AlgebraNodeBase> & newChild)
 {
+	shared_ptr<AlgebraNodeBase> result;
 	for (auto it = children.begin(); it != children.end(); ++it)
 	{
 		if ((*it).get() == oldChild)
 		{
-			(*it) = shared_ptr<AlgebraNodeBase>(newChild);
+			result = (*it);
+			(*it) = newChild;
+			return result;
 		}
 	}
 }

@@ -206,7 +206,7 @@ public:
 
 	BoboxPlanWritingPhysicalOperatorVisitor();
 
-	std::string writePlan(std::shared_ptr<PhysicalOperator> plan);
+	std::string writePlan(std::shared_ptr<PhysicalOperator> & plan);
 
 	std::string getColumnTypeOutput(const std::map<int, ColumnInfo> & columns);
 

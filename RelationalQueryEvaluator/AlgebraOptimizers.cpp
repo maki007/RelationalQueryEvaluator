@@ -29,7 +29,7 @@ void SelectionSpitingVisitor::visitSelection(Selection * node)
 	newSelections[0]->parent = node->parent;
 	newSelections.back()->child = node->child;
 	node->child->parent = newSelections.back();
-	node->parent->replaceChild(node, newSelections[0]);
+	node->parent->replaceChild(node, shared_ptr<AlgebraNodeBase>(newSelections[0]));
 	newSelections.back()->child->accept(*this);
 }
 
@@ -59,7 +59,7 @@ void SelectionFusingVisitor::visitSelection(Selection * node)
 		newNode->child = shared_ptr<AlgebraNodeBase>(current);
 		current->parent = newNode;
 		newNode->parent = node->parent;
-		node->parent->replaceChild(node, newNode);
+		node->parent->replaceChild(node, shared_ptr<AlgebraNodeBase>(newNode));
 		newNode->child->accept(*this);
 	}
 }
@@ -67,26 +67,27 @@ void SelectionFusingVisitor::visitSelection(Selection * node)
 
 void SelectionColectingVisitor::visitSelection(Selection * node)
 {
-	selections.push_back(shared_ptr<Selection>(node));
+	selections.push_back(node);
 	node->child->accept(*this);
 }
 
 
 PushSelectionDownVisitor::PushSelectionDownVisitor(Selection * node)
 {
-	this->node = shared_ptr<Selection>(node);
+	nodePointer = node;
+	condition = node->condition;
 }
 
 void PushSelectionDownVisitor::pushDown()
 {
-	AlgebraNodeBase * start = node->child.get();
-	removeSelection(node.get());
-//	start->accept(*this);
+	AlgebraNodeBase * start = nodePointer->child.get();
+	removeSelection(nodePointer);
+	start->accept(*this);
 }
 
 void PushSelectionDownVisitor::visitTable(Table * node)
 {
-
+	insertSelection(node, shared_ptr<Selection>(new Selection(condition)));
 }
 
 void PushSelectionDownVisitor::visitSort(Sort * node)
@@ -106,7 +107,7 @@ void PushSelectionDownVisitor::visitColumnOperations(ColumnOperations * node)
 
 void PushSelectionDownVisitor::visitSelection(Selection * node)
 {
-
+	node->child->accept(*this);
 }
 
 void PushSelectionDownVisitor::visitJoin(Join * node)

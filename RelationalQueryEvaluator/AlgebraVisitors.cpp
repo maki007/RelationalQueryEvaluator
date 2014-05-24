@@ -80,7 +80,7 @@ void AlgebraVisitor::visitGroupedJoin(GroupedJoin * node)
 	}
 }
 
-void AlgebraVisitor::serializeExpression(shared_ptr<Expression> condition, vector<shared_ptr<Expression> > & result)
+void AlgebraVisitor::serializeExpression(shared_ptr<Expression> & condition, vector<shared_ptr<Expression> > & result)
 {
 	if ((typeid(*(condition)) == typeid(GroupedExpression)))
 	{
@@ -118,21 +118,17 @@ shared_ptr<Expression> AlgebraVisitor::deserializeExpression(const vector<shared
 
 void AlgebraVisitor::removeSelection(Selection * node)
 {
-	AlgebraNodeBase * old = node->parent;
-	node->parent->replaceChild(node,node->child.get());
-	old = node->parent;
-	node->parent = 0;
-	node->child = 0;
+	node->child->parent = node->parent;
+	node->parent->replaceChild(node,node->child);
+	
 }
 
-void AlgebraVisitor::insertSelection(AlgebraNodeBase * node, Selection * selection)
+void AlgebraVisitor::insertSelection(AlgebraNodeBase * node, shared_ptr<Selection> & selection)
 {
-	Selection * copy = new Selection(*selection);
-	node->parent->replaceChild(node, copy);
-	copy->parent = node->parent;
-	node->parent = copy;
-	copy->child = shared_ptr<AlgebraNodeBase>(node);
-	copy->outputColumns = copy->child->outputColumns;
+	selection->child=node->parent->replaceChild(node, std::static_pointer_cast<AlgebraNodeBase>(selection));
+	selection->parent = node->parent;
+	node->parent = selection.get();
+	selection->outputColumns = selection->child->outputColumns;
 }
 
 
@@ -555,7 +551,7 @@ void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * g
 	}
 	groupedOperator->condition = newCondition;
 	groupedOperator->parent = node->parent;
-	node->parent->replaceChild(node, groupedOperator);
+	node->parent->replaceChild(node, shared_ptr<AlgebraNodeBase>(groupedOperator));
 	if (groupedOperator->condition.get() != 0)
 	{
 		groupedOperator->condition->accept(GroupingExpressionVisitor(&(groupedOperator->condition)));

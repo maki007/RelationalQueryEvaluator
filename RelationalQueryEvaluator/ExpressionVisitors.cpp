@@ -206,7 +206,7 @@ void GroupingExpressionVisitor::visitBinaryExpression(BinaryExpression * express
 		}
 		else
 		{
-			newNode->parent->replaceChild(expression, newNode);
+			newNode->parent->replaceChild(expression, shared_ptr<Expression>(newNode));
 		}
 
 		for (ulong i = 0; i < 2; ++i)

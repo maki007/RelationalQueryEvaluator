@@ -729,7 +729,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	vector<shared_ptr<ConditionInfo>> conditions;
 	for (auto it = cond.begin(); it != cond.end(); ++it)
 	{
-		shared_ptr<ConditionInfo> info = shared_ptr<ConditionInfo>(new ConditionInfo());
+		shared_ptr<ConditionInfo> info(new ConditionInfo());
 		info->condition = *it;
 		info->condition->accept(JoinInfoReadingExpressionVisitor(&info->inputs, &info->type));
 		conditions.push_back(info);
@@ -1276,7 +1276,7 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	vector<shared_ptr<ConditionInfo>> conditions;
 	for (auto it = cond.begin(); it != cond.end(); ++it)
 	{
-		shared_ptr<ConditionInfo> info = shared_ptr<ConditionInfo>(new ConditionInfo());
+		shared_ptr<ConditionInfo> info(new ConditionInfo());
 		info->condition = *it;
 		info->condition->accept(JoinInfoReadingExpressionVisitor(&info->inputs, &info->type));
 		conditions.push_back(info);

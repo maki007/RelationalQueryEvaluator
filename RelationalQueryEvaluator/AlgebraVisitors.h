@@ -37,13 +37,13 @@ public:
 
 	virtual void visitGroupedJoin(GroupedJoin * node);
 
-	static void serializeExpression(std::shared_ptr<Expression> condition, std::vector<std::shared_ptr<Expression> > & result);
+	static void serializeExpression(std::shared_ptr<Expression> & condition, std::vector<std::shared_ptr<Expression> > & result);
 
 	static std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 
 	static void removeSelection(Selection * node);
 
-	static void insertSelection(AlgebraNodeBase * node, Selection * selection);
+	static void insertSelection(AlgebraNodeBase * node, std::shared_ptr<Selection> & selection);
 
 };
 
@@ -355,14 +355,15 @@ public:
 class SelectionColectingVisitor : public AlgebraVisitor
 {
 public:
-	std::vector<std::shared_ptr<Selection> > selections;
+	std::vector<Selection * > selections;
 	void visitSelection(Selection * node);
 };
 
 class PushSelectionDownVisitor : public AlgebraVisitor
 {
 private:
-	std::shared_ptr<Selection> node;
+	Selection * nodePointer;
+	std::shared_ptr<Expression> condition;
 public:
 	PushSelectionDownVisitor(Selection * node);
 

@@ -113,7 +113,7 @@ UnaryExpression::UnaryExpression(shared_ptr<Expression> node, UnaryOperator op)
 	operation = op;
 }
 
-void UnaryExpression::replaceChild(Expression * oldChild, Expression * newChild)
+void UnaryExpression::replaceChild(Expression * oldChild, shared_ptr<Expression> newChild)
 {
 	if (child.get() == oldChild)
 	{
@@ -146,7 +146,7 @@ BinaryExpression::BinaryExpression(shared_ptr<Expression> & leftChild, shared_pt
 	operation = op;
 }
 
-void BinaryExpression::replaceChild(Expression * oldChild, Expression * newChild)
+void BinaryExpression::replaceChild(Expression * oldChild, shared_ptr<Expression> newChild)
 {
 	if (leftChild.get() == oldChild)
 	{
@@ -175,7 +175,7 @@ NnaryExpression::NnaryExpression(DOMElement * node, const std::string & name, co
 	}
 }
 
-void NnaryExpression::replaceChild(Expression * oldChild, Expression * newChild)
+void NnaryExpression::replaceChild(Expression * oldChild, shared_ptr<Expression> newChild)
 {
 	for (auto it = arguments.begin(); it != arguments.end(); ++it)
 	{
@@ -197,7 +197,7 @@ Constant::Constant(DOMElement * node)
 	this->type = XmlUtils::ReadAttribute(node, "type");
 }
 
-void Constant::replaceChild(Expression * oldChild, Expression * newChild)
+void Constant::replaceChild(Expression * oldChild, shared_ptr<Expression> newChild)
 {
 
 }
@@ -213,7 +213,7 @@ Column::Column(DOMElement * node)
 	this->input = 0;
 }
 
-void Column::replaceChild(Expression * oldChild, Expression * newChild)
+void Column::replaceChild(Expression * oldChild, shared_ptr<Expression> newChild)
 {
 
 }
@@ -233,7 +233,7 @@ GroupedExpression::GroupedExpression(GroupedOperator operation, const vector<sha
 	this->children = children;
 
 }
-void GroupedExpression::replaceChild(Expression * oldChild, Expression * newChild)
+void GroupedExpression::replaceChild(Expression * oldChild, shared_ptr<Expression> newChild)
 {
 	for (auto it = children.begin(); it != children.end(); ++it)
 	{

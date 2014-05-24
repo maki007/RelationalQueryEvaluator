@@ -42,7 +42,7 @@ public:
 	AlgebraNodeBase();
 	AlgebraNodeBase * constructChildren(DOMElement * node);
 	virtual void accept(AlgebraVisitor &v) = 0;
-	virtual void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild) = 0;
+	virtual std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild) = 0;
 };
 
 class UnaryAlgebraNodeBase : public AlgebraNodeBase
@@ -52,7 +52,7 @@ public:
 	UnaryAlgebraNodeBase(DOMElement * element);
 	UnaryAlgebraNodeBase();
 	virtual void accept(AlgebraVisitor &v) = 0;
-	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
+	std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild);
 };
 
 class BinaryAlgebraNodeBase : public AlgebraNodeBase
@@ -65,7 +65,7 @@ public:
 	BinaryAlgebraNodeBase();
 	virtual void accept(AlgebraVisitor &v) = 0;
 	void constructJoinParameters(DOMElement * node, std::shared_ptr<Expression> & condition, std::vector<JoinColumnInfo> & outputColumns);
-	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
+	std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild);
 };
 
 class GroupedAlgebraNode : public AlgebraNodeBase
@@ -73,7 +73,7 @@ class GroupedAlgebraNode : public AlgebraNodeBase
 public:
 	std::vector<std::shared_ptr<AlgebraNodeBase>> children;
 	virtual void accept(AlgebraVisitor &v) = 0;
-	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
+	std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild);
 };
 
 class NullaryAlgebraNodeBase : public AlgebraNodeBase
@@ -81,7 +81,7 @@ class NullaryAlgebraNodeBase : public AlgebraNodeBase
 public:
 
 	virtual void accept(AlgebraVisitor &v) = 0;
-	void replaceChild(AlgebraNodeBase * oldChild, AlgebraNodeBase * newChild);
+	std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild);
 };
 
 class Table : public NullaryAlgebraNodeBase
@@ -123,6 +123,8 @@ public:
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
+	Selection()
+	{}
 	std::shared_ptr<Expression> condition;
 	Selection(DOMElement * element);
 	Selection(std::shared_ptr<Expression> & cond);

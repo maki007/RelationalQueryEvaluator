@@ -71,7 +71,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::convertColumns(const std::map<int,
 	}
 }
 
-string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<PhysicalOperator> plan)
+string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<PhysicalOperator> & plan)
 {
 	plan->accept(*this);
 	string result = "operator main()->()\n";
