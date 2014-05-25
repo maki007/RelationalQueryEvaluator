@@ -123,9 +123,29 @@ void PushSelectionDownVisitor::visitAntiJoin(AntiJoin * node)
 
 void PushSelectionDownVisitor::visitUnion(Union * node)
 {
-	//node->leftChild->accept(*this);
+	CloningExpressionVisitor cloner;
+	condition->accept(cloner);
 
-	//node->rightChild->accept(*this);
+	shared_ptr<Expression> savedCondition = cloner.result;
+	node->leftChild->accept(*this);
+	
+	
+	map<int, int> equalpairs;
+	map<string, int> leftInput;
+	for (auto it = node->leftChild->outputColumns.begin(); it != node->leftChild->outputColumns.end(); ++it)
+	{
+		leftInput[it->second.column.name] = it->first;
+	}
+	for (auto it = node->rightChild->outputColumns.begin(); it != node->rightChild->outputColumns.end(); ++it)
+	{
+		equalpairs[leftInput[it->second.column.name]] = it->first;
+	}
+	savedCondition->accept(RenameColumnsVisitor(&equalpairs));
+
+	savedCondition->accept(JoinInfoReadingExpressionVisitor(&columns, &conditionType));
+	condition = savedCondition;
+	
+	node->rightChild->accept(*this);
 }
 
 void PushSelectionDownVisitor::visitGroupedJoin(GroupedJoin * node)
@@ -137,7 +157,7 @@ void PushSelectionDownVisitor::visitGroupedJoin(GroupedJoin * node)
 
 void PushSelectionUpVisitor::visitTable(Table * node)
 {
-
+	throw new exception("should not happen");
 }
 
 void PushSelectionUpVisitor::visitSort(Sort * node)

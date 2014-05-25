@@ -348,4 +348,39 @@ public:
 	void visitGroupedExpression(GroupedExpression * expression);
 };
 
+class CloningExpressionVisitor : public ExpressionVisitorBase
+{
+public:
+	std::shared_ptr<Expression> result;
+
+	void visitUnaryExpression(UnaryExpression * expression);
+
+	void visitBinaryExpression(BinaryExpression * expression);
+
+	void visitNnaryExpression(NnaryExpression * expression);
+
+	void visitConstant(Constant * expression);
+
+	void visitColumn(Column * expression);
+
+	void visitGroupedExpression(GroupedExpression * expression);
+
+};
+
+
+class RenameColumnsVisitor : public ExpressionVisitorBase
+{
+public:
+	std::map<int, int>  * pairs;
+	RenameColumnsVisitor(std::map<int, int>  * pairs)
+	{
+		this->pairs = pairs;
+	}
+	void visitColumn(Column * expression)	
+	{
+		expression->column.id = pairs->at(expression->column.id);
+	}
+};
+
 #endif
+

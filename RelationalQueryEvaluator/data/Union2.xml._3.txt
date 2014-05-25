@@ -2,23 +2,32 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort"]
 node1[label="Union"]
-node2[label="Table people_from_city
+node2[label="Selection
+(name_2(0) == sparta)"]
+node3[label="Table people_from_city
  number of rows: 1000.000000
  columns: id_1(int,251), name_2(string,251)
  indices: "]
+node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
-node3[label="Union"]
-node4[label="Table people_from_city
+node4[label="Union"]
+node5[label="Selection
+(name_4(0) == sparta)"]
+node6[label="Table people_from_city
  number of rows: 1000.000000
  columns: id_3(int,251), name_4(string,251)
  indices: "]
-node4 -> node3[headport=s, tailport=n,label="   "]
-node5[label="Table people_from_city
+node6 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node7[label="Selection
+(name_5(0) == sparta)"]
+node8[label="Table people_from_city
  number of rows: 1000.000000
  columns: name_5(string,251), id_6(int,251)
  indices: "]
-node5 -> node3[headport=s, tailport=n,label="   "]
-node3 -> node1[headport=s, tailport=n,label="   "]
+node8 -> node7[headport=s, tailport=n,label="   "]
+node7 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 
 }

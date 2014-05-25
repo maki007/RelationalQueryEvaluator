@@ -1,31 +1,49 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Union
- time:900
- size:3000
+ time:3
+ size:11
+id_1 1,name_2 1,
+"]node1[label="Filter
+(name_2(0) == sparta)
+ time:1000
+ size:3
 id_1 251,name_2 251,
-"]node1[label="Table Scan
+"]node2[label="Table Scan
 people_from_city
  time:1000
  size:1000
 id_1 251,name_2 251,
-"]node1 -> node0[headport=s, tailport=n,label="   "]
-node2[label="Union
- time:600
- size:2000
+"]node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node3[label="Union
+ time:2
+ size:7
+id_3 1,name_4 1,
+"]node4[label="Filter
+(name_4(0) == sparta)
+ time:1000
+ size:3
 id_3 251,name_4 251,
-"]node3[label="Table Scan
+"]node5[label="Table Scan
 people_from_city
  time:1000
  size:1000
 id_3 251,name_4 251,
-"]node3 -> node2[headport=s, tailport=n,label="   "]
-node4[label="Table Scan
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node6[label="Filter
+(name_5(0) == sparta)
+ time:1000
+ size:3
+name_5 251,id_6 251,
+"]node7[label="Table Scan
 people_from_city
  time:1000
  size:1000
 name_5 251,id_6 251,
-"]node4 -> node2[headport=s, tailport=n,label="   "]
-node2 -> node0[headport=s, tailport=n,label="   "]
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node0[headport=s, tailport=n,label="   "]
 
 }

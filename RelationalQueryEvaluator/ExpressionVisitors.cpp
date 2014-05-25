@@ -322,3 +322,58 @@ void TypeResolvingExpressionVisitor::visitGroupedExpression(GroupedExpression * 
 {
 	resultType = "bool";
 }
+
+void CloningExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
+{
+	auto node = new UnaryExpression(*expression);
+	node->child->accept(*this);
+	node->child = result;
+	result = shared_ptr<Expression>(node);
+}
+
+void CloningExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
+{
+	auto node = new BinaryExpression(*expression);
+	node->leftChild->accept(*this);
+	node->leftChild = result;
+	node->rightChild->accept(*this);
+	node->rightChild = result;
+	result = shared_ptr<Expression>(node);
+
+}
+
+void CloningExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
+{
+	auto node = new NnaryExpression(*expression);
+	for (auto it = node->arguments.begin(); it != node->arguments.end(); ++it)
+	{
+		(*it)->accept(*this);
+		(*it) = result;
+	}
+	result = shared_ptr<Expression>(node);
+}
+
+void CloningExpressionVisitor::visitConstant(Constant * expression)
+{
+	auto node = new Constant(*expression);
+	result = shared_ptr<Expression>(node);
+}
+
+
+void CloningExpressionVisitor::visitColumn(Column * expression)
+{
+	auto node = new Column(*expression);
+	result = shared_ptr<Expression>(node);
+}
+
+void CloningExpressionVisitor::visitGroupedExpression(GroupedExpression * expression)
+{
+	auto node = new GroupedExpression(*expression);
+	for (auto it = node->children.begin(); it != node->children.end(); ++it)
+	{
+		(*it)->accept(*this);
+		(*it) = result;
+	}
+	result = shared_ptr<Expression>(node);
+}
+
