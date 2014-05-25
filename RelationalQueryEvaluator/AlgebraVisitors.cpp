@@ -413,6 +413,7 @@ void GroupingVisitor::visitJoin(Join * node)
 	for (auto it = groupedOperator->outputJoinColumns.begin(); it != groupedOperator->outputJoinColumns.end(); ++it)
 	{
 		groupedOperator->outputColumns.insert(make_pair(it->column.id, *it));
+		groupedOperator->outputColumns[it->column.id].column.name = it->newColumn;
 	}
 
 

@@ -180,7 +180,7 @@ void SemanticChecker::visitColumnOperations(ColumnOperations * node)
 		{
 			if (outputColumns.find(it->result.name) == outputColumns.end())
 			{
-				ReportError("Column not found");
+				ReportError("Column allready used");
 			}
 			else
 			{

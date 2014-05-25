@@ -4,12 +4,12 @@ node0[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node1[label="Hash Join
 (a_1(0) == c_3(2))
  time:39810
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node2[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000
@@ -51,12 +51,12 @@ node8[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node9[label="Hash Join
 (a_1(0) == b_2(1))
  time:39697
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node10[label="Table Scan
 b
  time:1000
@@ -98,12 +98,12 @@ node16[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node17[label="Hash Join
 (a_1(0) == b_2(1))
  time:39697
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node18[label="Table Scan
 b
  time:1000
@@ -145,12 +145,12 @@ node24[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node25[label="Hash Join
 (c_3(2) == d_4(3))
  time:39697
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node26[label="Table Scan
 d
  time:1000
@@ -192,12 +192,12 @@ node32[label="Sort
 Sort by: e_3 asc
  time:2012155
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node33[label="Hash Join
 (c_3(2) == d_4(3))
  time:39697
  size:63095
-a_1 251,b_2 251,c_3 251,d_4 251,
+a_1 251,b_2 251,e_3 251,d_4 251,
 "]node34[label="Table Scan
 d
  time:1000

@@ -887,8 +887,18 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		{
 			insertPlan(newResult, it->plans[0]);
 		}
+		columns = newResult[0]->plan->columns;
 	}
+	for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
+	{
+		columns[it->first].column.name = it->second.column.name;
+	}
+	
 
+	for (auto it = newResult.begin(); it != newResult.end(); ++it)
+	{
+		(*it)->plan->columns = columns;
+	}
 	result = newResult;
 }
 
@@ -1104,11 +1114,11 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 			newColumns[it->first] = JoinColumnInfo(it->second);
 			if (left.columns.find(it->first) != left.columns.end())
 			{
-				newColumns[it->first].numberOfUniqueValues = min(newColumns[it->first].numberOfUniqueValues, newSize);
+				newColumns[it->first].numberOfUniqueValues = min(left.columns.at(it->first).numberOfUniqueValues, newSize);
 			}
 			else
 			{
-				newColumns[it->first].numberOfUniqueValues = min(newColumns[it->first].numberOfUniqueValues, newSize);
+				newColumns[it->first].numberOfUniqueValues = min(right.columns.at(it->first).numberOfUniqueValues, newSize);
 			}
 		}
 		shared_ptr<Expression> condition = deserializeExpression(expressions);
@@ -1296,6 +1306,11 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	for (auto it = node->outputJoinColumns.begin(); it != node->outputJoinColumns.end(); ++it)
 	{
 		newAllColumns[it->column.id] = allColumns[it->column.id];
+		if (it->newColumn != "")
+		{
+			newAllColumns[it->column.id].column.name = it->newColumn;
+
+		}
 	}
 	allColumns = newAllColumns;
 	double newSize = leftSize / (1 << leftPartOfEquation.size());

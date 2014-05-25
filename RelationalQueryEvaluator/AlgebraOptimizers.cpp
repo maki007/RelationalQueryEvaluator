@@ -125,7 +125,36 @@ void PushSelectionDownVisitor::visitGroup(Group * node)
 
 void PushSelectionDownVisitor::visitColumnOperations(ColumnOperations * node)
 {
+	ulong matchedColumns = 0;
+	map<int, int> equalpairs;
+	for (auto it = node->operations.begin(); it != node->operations.end(); ++it)
+	{
+		if (it->expression == 0)
+		{
+			if (columns.find(it->result.id) != columns.end())
+			{
+				++matchedColumns;
+			}
+		}
+		else
+		{
+			if (typeid(*(it->expression)) == typeid(Column))
+			{
 
+			}
+		}
+	}
+
+	if (matchedColumns == columns.size())
+	{
+		condition->accept(RenameColumnsVisitor(&equalpairs));
+		condition->accept(JoinInfoReadingExpressionVisitor(&columns, &conditionType));
+		node->child->accept(*this);
+	}
+	else
+	{
+		insertSelection(node, shared_ptr<Selection>(new Selection(condition)));
+	}
 }
 
 void PushSelectionDownVisitor::visitSelection(Selection * node)
@@ -140,7 +169,7 @@ void PushSelectionDownVisitor::visitJoin(Join * node)
 
 void PushSelectionDownVisitor::visitAntiJoin(AntiJoin * node)
 {
-
+	node->leftChild->accept(*this);
 }
 
 void PushSelectionDownVisitor::visitUnion(Union * node)

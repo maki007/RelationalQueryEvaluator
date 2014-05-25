@@ -3,7 +3,7 @@ digraph g {node [shape=box]
 node0[label="Cross Join
  time:1000000
  size:1000000
-name_1 251,name_4 251,
+name_1 251,country_name_4 251,
 "]node1[label="Table Scan
 users
  time:1000

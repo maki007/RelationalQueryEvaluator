@@ -7,11 +7,11 @@
       <parameters>
         <equal_condition>
           <equals>
-            <column name="c"/>
+            <column name="d"/>
             <column name="b"/>
           </equals>
         </equal_condition>
-        <column name="c"/>
+        <column name="d"/>
       </parameters>
       <input>
         <antijoin>
@@ -22,7 +22,7 @@
                 <column name="a"/>
               </equals>
             </equal_condition>
-            <column name="c"/>
+            <column name="c" newName="d"/>
           </parameters>
           <input>
             <table name="z">

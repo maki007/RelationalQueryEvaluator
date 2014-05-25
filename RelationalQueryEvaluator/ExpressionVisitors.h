@@ -379,7 +379,10 @@ public:
 	}
 	void visitColumn(Column * expression)	
 	{
-		expression->column.id = pairs->at(expression->column.id);
+		if (pairs->find(expression->column.id) != pairs->end())
+		{
+			expression->column.id = pairs->at(expression->column.id);
+		}
 	}
 };
 

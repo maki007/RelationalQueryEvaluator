@@ -19,7 +19,7 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
 "]node4[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -81,7 +81,7 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
 "]node14[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -139,7 +139,7 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
 "]node23[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -205,7 +205,7 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
 "]node34[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -267,7 +267,7 @@ l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
 "]node44[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086

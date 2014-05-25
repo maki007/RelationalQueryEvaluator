@@ -1,15 +1,15 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Hash Antijoin
-(c_1(0) == b_3(1))
+(d_1(0) == b_3(1))
  time:9000
  size:250
-c_1 251,
+d_1 251,
 "]node1[label="Hash Antijoin
 (c_1(0) == a_2(1))
  time:10000
  size:500
-c_1 251,
+d_1 251,
 "]node2[label="Table Scan
 z
  time:1000
@@ -30,20 +30,20 @@ y
 b_3 251,
 "]node4 -> node0[headport=s, tailport=n,label="   "]
 node5[label="Merge Antijoin
-(c_1(0) == b_3(1))
+(d_1(0) == b_3(1))
  time:1100
  size:250
-c_1 251,
+d_1 251,
 "]node6[label="Sort
-Sort by: c_1 asc
+Sort by: d_1 asc
  time:8965
  size:500
-c_1 251,
+d_1 251,
 "]node7[label="Hash Antijoin
 (c_1(0) == a_2(1))
  time:10000
  size:500
-c_1 251,
+d_1 251,
 "]node8[label="Table Scan
 z
  time:1000
@@ -71,20 +71,20 @@ b_3 251,
 "]node11 -> node10[headport=s, tailport=n,label="   "]
 node10 -> node5[headport=s, tailport=n,label="   "]
 node12[label="Merge Antijoin
-(c_1(0) == b_3(1))
+(d_1(0) == b_3(1))
  time:1100
  size:250
-c_1 251,
+d_1 251,
 "]node13[label="Sort
-Sort by: c_1 asc
+Sort by: d_1 asc
  time:8965
  size:500
-c_1 251,
+d_1 251,
 "]node14[label="Hash Antijoin
 (c_1(0) == a_2(1))
  time:10000
  size:500
-c_1 251,
+d_1 251,
 "]node15[label="Table Scan
 z
  time:1000
@@ -112,15 +112,15 @@ b_3 251,
 "]node18 -> node17[headport=s, tailport=n,label="   "]
 node17 -> node12[headport=s, tailport=n,label="   "]
 node19[label="Hash Antijoin
-(c_1(0) == b_3(1))
+(d_1(0) == b_3(1))
  time:9000
  size:250
-c_1 251,
+d_1 251,
 "]node20[label="Merge Antijoin
 (c_1(0) == a_2(1))
  time:1200
  size:500
-c_1 251,
+d_1 251,
 "]node21[label="Sort
 Sort by: c_1 asc
  time:19931
@@ -153,15 +153,15 @@ y
 b_3 251,
 "]node25 -> node19[headport=s, tailport=n,label="   "]
 node26[label="Hash Antijoin
-(c_1(0) == b_3(1))
+(d_1(0) == b_3(1))
  time:9000
  size:250
-c_1 251,
+d_1 251,
 "]node27[label="Merge Antijoin
 (c_1(0) == a_2(1))
  time:1200
  size:500
-c_1 251,
+d_1 251,
 "]node28[label="Sort
 Sort by: c_1 asc
  time:19931

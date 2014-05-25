@@ -4,7 +4,7 @@ node0[label="Hash Join
 (country_id_2(0) == id_3(1))
  time:10000
  size:3981
-name_1 251,name_4 251,
+name_1 251,country_name_4 251,
 "]node1[label="Table Scan
 users
  time:1000
@@ -21,7 +21,7 @@ node3[label="Merge Join
 (country_id_2(0) == id_3(1))
  time:1200
  size:3981
-name_1 251,name_4 251,
+name_1 251,country_name_4 251,
 "]node4[label="Sort
 Sort by: country_id_2 both
  time:19931
@@ -50,7 +50,7 @@ node8[label="Merge Join
 (country_id_2(0) == id_3(1))
  time:1200
  size:3981
-name_1 251,name_4 251,
+name_1 251,country_name_4 251,
 "]node9[label="Sort
 Sort by: country_id_2 both
  time:19931
