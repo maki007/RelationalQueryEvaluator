@@ -9,6 +9,8 @@ ColumnOperations.xml
 CrossJoin.xml
 Group.xml
 Group2.xml
+GroupAndSelect.xml
+GroupAndSelect2.xml
 GroupJoin.xml
 GroupJoin2.xml
 GroupJoin3.xml

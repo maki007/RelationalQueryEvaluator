@@ -1,0 +1,17 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+country_-1 desc"]
+node1[label="Selection
+(count_-1(0) == 8)"]
+node2[label="Group
+groupBy country_-1, count_-1=count();x_-1=max(parameter_-1);"]
+node3[label="Table people
+ number of rows: 10000.000000
+ columns: user_name_-1(string,410), country_-1(string,1584), parameter_-1(int,1584)
+ indices: "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

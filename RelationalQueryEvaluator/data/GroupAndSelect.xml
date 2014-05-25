@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+    <parameter column="country" direction="desc"></parameter>
+  </parameters>
+  <input>
+    <selection>
+      <parameters>
+        <condition>
+          <equals>
+            <column name="country"/>
+            <constant type="string" value="sparta"/>
+          </equals>
+        </condition>
+      </parameters>
+      <input>
+        <group>
+          <parameters>
+            <group_by column="country"/>
+            <count output="count" />
+            <max output="x" argument="parameter"/>
+          </parameters>
+          <input>
+            <table name="people" numberOfRows="10000">
+              <column name="user_name" type="string" number_of_unique_values="410"/>
+              <column name="country" type="string" />
+              <column name="parameter" type ="int"/>
+              <index name="s" type="unclustered">
+                <column name="country" order="asc"/>
+              </index>
+            </table>
+          </input>
+        </group>    
+      </input>
+    </selection>
+  </input>
+</sort>

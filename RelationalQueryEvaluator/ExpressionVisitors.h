@@ -201,6 +201,7 @@ public:
 	JoinInfoReadingExpressionVisitor(std::set<uint> * data, ConditionType * type)
 	{
 		this->data = data;
+		data->clear();
 		conditionType = type;
 		(*conditionType) = ConditionType::OTHER;
 	}
