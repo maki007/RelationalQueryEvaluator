@@ -845,11 +845,8 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		{
 			insertPlan(newResult, *it);
 		}
-		columns.clear();
-		for (auto it = allSubsets.back().columns.begin(); it != allSubsets.back().columns.end(); ++it)
-		{
-			columns[it->first] = it->second;
-		}
+		columns = newResult[0]->plan->columns;
+		
 		size = allSubsets.back().size;
 	}
 	else

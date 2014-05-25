@@ -4,22 +4,22 @@ node0[label="Sort
 Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node1[label="Hash Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:43541
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node2[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
  size:4227
-l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
+l_orderkey_3 4227,o_orderdate_7 186,o_shippriority_8 186,x_11 4227,
 "]node3[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node4[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -61,27 +61,27 @@ node9[label="Sort
 Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node10[label="Sorted Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:5495
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node11[label="Sort
 Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
  time:101841
  size:4227
-l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
+l_orderkey_3 4227,o_orderdate_7 186,o_shippriority_8 186,x_11 4227,
 "]node12[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
  size:4227
-l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
+l_orderkey_3 4227,o_orderdate_7 186,o_shippriority_8 186,x_11 4227,
 "]node13[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node14[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -124,22 +124,22 @@ node19[label="Sort
 Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node20[label="Hash Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:43541
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node21[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
  size:4227
-l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
+l_orderkey_3 4227,o_orderdate_7 186,o_shippriority_8 186,x_11 4227,
 "]node22[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node23[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -185,27 +185,27 @@ node29[label="Sort
 Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node30[label="Sorted Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:5495
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node31[label="Sort
 Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
  time:101841
  size:4227
-l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
+l_orderkey_3 4227,o_orderdate_7 186,o_shippriority_8 186,x_11 4227,
 "]node32[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
  size:4227
-l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
+l_orderkey_3 4227,o_orderdate_7 186,o_shippriority_8 186,x_11 4227,
 "]node33[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node34[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086
@@ -252,22 +252,22 @@ node40[label="Sort
 Sort by: revenue_15 desc, o_orderdate_13 asc
  time:46693
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node41[label="Hash Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
  time:43541
  size:2113
-l_orderkey_12 2113,o_orderdate_13 2113,o_shippriority_14 2113,revenue_15 2113,
+l_orderkey_12 2113,o_orderdate_13 93,o_shippriority_14 93,revenue_15 2113,
 "]node42[label="Columns Operations
 l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
  time:0
  size:4227
-l_orderkey_3 4227,o_orderdate_7 4227,o_shippriority_8 4227,x_11 4227,
+l_orderkey_3 4227,o_orderdate_7 186,o_shippriority_8 186,x_11 4227,
 "]node43[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
  time:4001491
  size:4227
-l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 4227,o_shippriority_8 4227,
+l_orderkey_3 4227,l_extendedprice_5 4227,l_discount_6 4227,o_orderdate_7 186,o_shippriority_8 186,
 "]node44[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
  time:1000086

@@ -140,7 +140,12 @@ void PushSelectionDownVisitor::visitColumnOperations(ColumnOperations * node)
 		{
 			if (typeid(*(it->expression)) == typeid(Column))
 			{
-
+				Column * column = (Column *)(it->expression.get());
+				if (columns.find(it->result.id) != columns.end())
+				{
+					++matchedColumns;
+					equalpairs[it->result.id] = column->column.id;
+				}
 			}
 		}
 	}
