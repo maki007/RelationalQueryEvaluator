@@ -845,7 +845,6 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		{
 			insertPlan(newResult, *it);
 		}
-		columns = newResult[0]->plan->columns;
 		
 		size = allSubsets.back().size;
 	}
@@ -884,14 +883,26 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		{
 			insertPlan(newResult, it->plans[0]);
 		}
-		columns = newResult[0]->plan->columns;
+		
 	}
+	double min = newResult[0]->timeComplexity;
+	columns = newResult[0]->plan->columns;
+	for (auto it = newResult.begin(); it != newResult.end();++it)
+	{
+		if (min > (*it)->timeComplexity)
+		{
+			min = (*it)->timeComplexity;
+			columns = (*it)->plan->columns;
+		}
+	}
+	
+
+
 	for (auto it = node->outputColumns.begin(); it != node->outputColumns.end(); ++it)
 	{
 		columns[it->first].column.name = it->second.column.name;
 	}
 	
-
 	for (auto it = newResult.begin(); it != newResult.end(); ++it)
 	{
 		(*it)->plan->columns = columns;
