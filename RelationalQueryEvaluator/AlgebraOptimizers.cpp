@@ -206,6 +206,37 @@ void PushSelectionDownVisitor::visitUnion(Union * node)
 
 void PushSelectionDownVisitor::visitGroupedJoin(GroupedJoin * node)
 {
+	for (auto it = node->children.begin(); it != node->children.end(); ++it)
+	{
+		bool found = true;
+		for (auto it2 = columns.begin(); it2 != columns.end(); ++it2)
+		{
+			if ((*it)->outputColumns.find(*it2) == (*it)->outputColumns.end())
+			{
+				found = false;
+				break;
+			}
+		}
+		if (found == true)
+		{
+			(*it)->accept(*this);
+			return;
+		}
+	}
+
+
+	if (conditionType == ConditionType::EQUALS)
+	{
+		vector<shared_ptr<Expression> > cond;
+		serializeExpression(node->condition, cond);
+		cond.push_back(condition);
+		node->condition = deserializeExpression(cond);
+	}
+	else
+	{
+		insertSelection(node, shared_ptr<Selection>(new Selection(condition)));
+		//later insert selection into groupednode
+	}
 
 }
 

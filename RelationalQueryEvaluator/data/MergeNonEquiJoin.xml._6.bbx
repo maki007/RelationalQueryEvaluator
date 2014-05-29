@@ -1,0 +1,20 @@
+operator main()->()
+{
+broadcast()->(){2} start;
+TableScan()->(date,date) TableScan0(name="A",columns="a1,a2"); 
+SortOperator(date,date)->(date,date) SortOperator1(sortedBy="",sortBy="0:A,1:A"); 
+TableScan()->(date) TableScan2(name="B",columns="b"); 
+SortOperator(date)->(date) SortOperator3(sortedBy="",sortBy="0:A"); 
+MergeNonEquiJoin(date,date)(date)->(date,date,date) MergeNonEquiJoin4(left="0,1",right="2",out="0,1,2"); 
+Store(date,date,date)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+TableScan0 -> SortOperator1;
+start[1] -> TableScan2;
+TableScan2 -> SortOperator3;
+SortOperator1 -> [0]MergeNonEquiJoin4;
+SortOperator3 -> [1]MergeNonEquiJoin4;
+MergeNonEquiJoin4 -> storeResult;
+storeResult -> output;
+}

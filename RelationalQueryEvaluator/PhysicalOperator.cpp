@@ -15,6 +15,7 @@ const double TimeComplexity::AGGREGATE = 0.3;
 const double TimeComplexity::READ_HASH_TABLE = 2;
 const double TimeComplexity::UNION = 0.3;
 const double TimeComplexity::CROSS_JOIN = 1;
+const double TimeComplexity::MERGE_NONEQUI_JOIN = 1;
 const double TimeComplexity::MERGE_EQUI_JOIN = 0.2;
 
 double TimeComplexity::sort(double size)
@@ -60,6 +61,10 @@ double TimeComplexity::hashJoin(double hashSize, double readSize)
 double TimeComplexity::mergeEquiJoin(double leftSize, double rightSize)
 {
 	return MERGE_EQUI_JOIN*leftSize + rightSize;
+}
+double TimeComplexity::mergeEquiNonJoin(double leftSize, double rightSize, double finalSize)
+{
+	return finalSize;
 }
 double TimeComplexity::Union(double leftSize, double rightSize)
 {

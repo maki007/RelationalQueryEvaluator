@@ -1,0 +1,18 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="GroupedJoin
+AND ((a1_1(0) <= b_3(1)),(b_3(1) <= a2_2(0)))"]
+node2[label="Table A
+ number of rows: 1000.000000
+ columns: a1_1(date,1000), a2_2(date,1000)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node3[label="Table B
+ number of rows: 1000.000000
+ columns: b_3(date,1000)
+ indices: "]
+node3 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

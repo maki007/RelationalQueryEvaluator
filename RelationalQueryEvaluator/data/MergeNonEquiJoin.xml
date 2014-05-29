@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <join>
+      <parameters>
+        <less_condition>
+          <and>
+            <lower_or_equals>
+              <column name="a1"/>
+              <column name="b"/>
+            </lower_or_equals>
+            <lower_or_equals>
+              <column name="b"/>
+              <column name="a2"/>
+            </lower_or_equals>
+          </and>
+        </less_condition>
+        <column name="a1" input="first" />
+        <column name="b" input="second" />
+        <column name="a2" input="first" />
+      </parameters>
+      <input>
+        <table name="A" numberOfRows="1000">
+          <column name="a1" number_of_unique_values="1000" type="date"/>
+          <column name="a2" number_of_unique_values="1000" type="date"/>
+        </table>
+        <table name="B" numberOfRows="1000">
+          <column name="b" number_of_unique_values="1000" type="date"/>
+        </table>
+      </input>
+    </join>
+  </input>
+</sort>

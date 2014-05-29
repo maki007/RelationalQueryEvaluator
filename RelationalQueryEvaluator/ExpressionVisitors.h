@@ -50,6 +50,7 @@ public:
 	int lastNumberedColumn;
 	NumberColumnsInJoinVisitor();
 	void visitColumn(Column * expression);
+	void visitBinaryExpression(BinaryExpression * expression);
 };
 
 class GetColumnsNodesVisitor : public ExpressionVisitorBase

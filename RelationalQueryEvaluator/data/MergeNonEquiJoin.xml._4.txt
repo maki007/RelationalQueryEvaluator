@@ -1,0 +1,55 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Merge Join
+AND ((a1_1(0) <= b_3(1)),(b_3(1) <= a2_2(0)))
+ time:111111
+ size:111111
+a1_1 1000,a2_2 1000,b_3 1000,
+"]node1[label="Sort
+Sort by: a1_1 asc, a2_2 asc
+ time:19931
+ size:1000
+a1_1 1000,a2_2 1000,
+"]node2[label="Table Scan
+A
+ time:1000
+ size:1000
+a1_1 1000,a2_2 1000,
+"]node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node3[label="Sort
+Sort by: b_3 asc
+ time:19931
+ size:1000
+b_3 1000,
+"]node4[label="Table Scan
+B
+ time:1000
+ size:1000
+b_3 1000,
+"]node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node0[headport=s, tailport=n,label="   "]
+node5[label="Filter
+AND ((a1_1(0) <= b_3(1)),(b_3(1) <= a2_2(0)))
+ time:1000000
+ size:111111
+a1_1 1000,a2_2 1000,b_3 1000,
+"]node6[label="Cross Join
+ time:1000000
+ size:1000000
+a1_1 1000,a2_2 1000,b_3 1000,
+"]node7[label="Table Scan
+A
+ time:1000
+ size:1000
+a1_1 1000,a2_2 1000,
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node8[label="Table Scan
+B
+ time:1000
+ size:1000
+b_3 1000,
+"]node8 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node5[headport=s, tailport=n,label="   "]
+
+}

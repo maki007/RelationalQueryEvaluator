@@ -168,6 +168,23 @@ void NumberColumnsInJoinVisitor::visitColumn(Column * expression)
 	}
 }
 
+void NumberColumnsInJoinVisitor::visitBinaryExpression(BinaryExpression * expression)
+{
+	expression->leftChild->accept(*this);
+	expression->rightChild->accept(*this);
+	if (expression->operation == BinaryOperator::LOWER || expression->operation == BinaryOperator::LOWER_OR_EQUAL)
+	{
+		if (lastNumberedColumn == 1)
+		{
+			lastNumberedColumn = 0;
+		}
+		else
+		{
+			lastNumberedColumn = 1;
+		}
+	}
+}
+
 void GetColumnsNodesVisitor::visitColumn(Column * expression)
 {
 	this->nodes.push_back(expression);

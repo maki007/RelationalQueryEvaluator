@@ -20,6 +20,7 @@ JoinOnMultipleColumns.xml
 MergeJoin.xml
 MergeJoin2.xml
 MergeJoinSimple.xml
+MergeNonEquiJoin.xml
 PartialSort.xml
 PartialSort2.xml
 Selection.xml

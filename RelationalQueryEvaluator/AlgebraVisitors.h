@@ -214,46 +214,8 @@ public:
 	{
 		return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
 	}
-	void RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns)
-	{
-		std::set<ulong> allColumns;
-		for (auto it = outputColumns.begin(); it != outputColumns.end(); ++it)
-		{
-			allColumns.insert(it->column.id);
-		}
-
-		for (auto it = condition.begin(); it != condition.end(); ++it)
-		{
-			for (auto it2 = (*it)->inputs.begin(); it2 != (*it)->inputs.end(); ++it2)
-			{
-				allColumns.insert(*it2);
-			}
-		}
-
-		for (auto it = columns.begin(); it != columns.end();)
-		{
-			if (allColumns.find(it->first) == allColumns.end())
-			{
-				columns.erase(it++);
-				continue;
-			}
-			++it;
-		}
-
-		for (auto it = plans.begin(); it != plans.end(); ++it)
-		{
-			for (auto it2 = (*it)->plan->columns.begin(); it2 != (*it)->plan->columns.end();)
-			{
-				if (allColumns.find(it2->first) == allColumns.end())
-				{
-					(*it)->plan->columns.erase(it2++);
-					continue;
-				}
-				++it2;
-			}
-		}
-
-	}
+	void RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns);
+	
 };
 
 class AlgebraCompiler : public AlgebraVisitor
@@ -283,7 +245,7 @@ public:
 	void visitUnion(Union * node);
 
 	void visitGroupedJoin(GroupedJoin * node);
-
+	static void updateSortParameters(const PossibleSortParameters & possibleSortParameters, std::shared_ptr<PhysicalPlan> & newPlan, std::map<int, ColumnInfo> & newColumns);
 private:
 	void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
@@ -333,6 +295,10 @@ private:
 		return result;
 	}
 
+	std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition);
+	
+	std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterMergeJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition);
+	
 };
 
 

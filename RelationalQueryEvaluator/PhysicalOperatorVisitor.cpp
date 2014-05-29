@@ -742,7 +742,22 @@ void SortResolvingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin * no
 
 void SortResolvingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
-	//TODO
+	sortParameters.clear();
+	node->leftChild->accept(*this);
+	sortParameters.clear();
+	node->rightChild->accept(*this);
+	sortParameters = node->sortParameters;
+	for (auto it = node->sortParameters.begin(); it != node->sortParameters.end(); ++it)
+	{
+		if (node->columns.find(it->column.id) == node->columns.end())
+		{
+			break;
+		}
+		else
+		{
+			sortParameters.push_back(*it);
+		}
+	}
 }
 
 void SortResolvingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node)

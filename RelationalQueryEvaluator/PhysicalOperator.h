@@ -23,6 +23,7 @@ public:
 	static const double UNION;
 	static const double CROSS_JOIN;
 	static const double MERGE_EQUI_JOIN;
+	static const double MERGE_NONEQUI_JOIN;
 	static double sort(double size);
 	static double filter(double size);
 	static double filterKeppeingOrder(double size);
@@ -34,6 +35,7 @@ public:
 	static double aggregate(double size, ulong numberOfagregateFuntions);
 	static double hashJoin(double leftSize, double rightSize);
 	static double mergeEquiJoin(double hashSize, double readSize);
+	static double mergeEquiNonJoin(double leftSize, double rightSize, double finalSize);
 	static double Union(double leftSize, double rightSize);
 	static double crossJoin(double leftSize, double rightSize);
 };
@@ -114,6 +116,7 @@ class MergeNonEquiJoin : public BinaryPhysicalOperator
 public:
 	std::shared_ptr<Expression> condition;
 	void accept(PhysicalOperatorVisitor &v);
+	std::vector<SortParameter> sortParameters;
 	MergeNonEquiJoin(const std::shared_ptr<Expression> & condition)
 	{
 		this->condition = condition;

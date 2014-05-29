@@ -108,6 +108,11 @@ MergeJoinSimple.xml._2.txt
 MergeJoinSimple.xml._3.txt
 MergeJoinSimple.xml._4.txt
 MergeJoinSimple.xml._5.txt
+MergeNonEquiJoin.xml._1.txt
+MergeNonEquiJoin.xml._2.txt
+MergeNonEquiJoin.xml._3.txt
+MergeNonEquiJoin.xml._4.txt
+MergeNonEquiJoin.xml._5.txt
 PartialSort.xml._1.txt
 PartialSort.xml._2.txt
 PartialSort.xml._3.txt

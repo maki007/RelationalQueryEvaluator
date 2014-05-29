@@ -324,6 +324,49 @@ void AlgebraCompiler::visitGroup(Group * node)
 	columns = newColumns;
 }
 
+void AlgebraCompiler::updateSortParameters(const PossibleSortParameters & possibleSortParameters, shared_ptr<PhysicalPlan> & newPlan, map<int, ColumnInfo> & newColumns)
+{
+	for (uint i = 0; i < possibleSortParameters.parameters.size(); ++i)
+	{
+		SortParameters parameters = possibleSortParameters.parameters[i];
+
+		SortParameters newParameters;
+
+		for (auto it2 = parameters.values.begin(); it2 != parameters.values.end(); ++it2)
+		{
+			auto allCols = it2->others;
+			allCols.insert(it2->column);
+			for (auto it3 = allCols.begin(); it3 != allCols.end(); ++it3)
+			{
+				if (newColumns.find(it3->id) == newColumns.end())
+				{
+					allCols.erase(it3++);
+					if (it3 == allCols.end())
+					{
+						break;
+					}
+				}
+			}
+			if (allCols.size() > 0)
+			{
+				SortParameter parameter;
+				parameter.others = allCols;
+				parameter.column = *(parameter.others.begin());
+				parameter.others.erase(parameter.others.begin());
+				newParameters.values.push_back(parameter);
+			}
+		}
+		if (newParameters.values.size() > 0)
+		{
+			newPlan->sortedBy.parameters.push_back(newParameters);
+		}
+		else
+		{
+			break;
+		}
+	}
+}
+
 void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 {
 	node->child->accept(*this);
@@ -365,45 +408,7 @@ void AlgebraCompiler::visitColumnOperations(ColumnOperations * node)
 	for (auto it = result.begin(); it != result.end(); ++it)
 	{
 		shared_ptr<PhysicalPlan> newPlan(new PhysicalPlan(new ColumnsOperationsOperator(node->operations), size, 0, newColumns, *it));
-
-		for (uint i = 0; i < (*it)->sortedBy.parameters.size(); ++i)
-		{
-			SortParameters parameters = (*it)->sortedBy.parameters[i];
-			SortParameters newParameters;
-
-			for (auto it2 = parameters.values.begin(); it2 != parameters.values.end(); ++it2)
-			{
-				auto allCols = it2->others;
-				allCols.insert(it2->column);
-				for (auto it3 = allCols.begin(); it3 != allCols.end(); ++it3)
-				{
-					if (newColumns.find(it3->id) == newColumns.end())
-					{
-						allCols.erase(it3);
-						if (it3 == allCols.end())
-						{
-							break;
-						}
-					}
-				}
-				if (allCols.size() > 0)
-				{
-					SortParameter parameter;
-					parameter.others = allCols;
-					parameter.column = *(parameter.others.begin());
-					parameter.others.erase(parameter.others.begin());
-					newParameters.values.push_back(parameter);
-				}
-			}
-			if (newParameters.values.size() > 0)
-			{
-				newPlan->sortedBy.parameters.push_back(newParameters);
-			}
-			else
-			{
-				break;
-			}
-		}
+		updateSortParameters((*it)->sortedBy, newPlan, newColumns);
 		insertPlan(newResult, newPlan);
 	}
 	result = newResult;
@@ -1036,6 +1041,44 @@ void AlgebraCompiler::getMergeJoinSortedParametes(PossibleSortParameters & resul
 	}
 }
 
+shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterJoin(const shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition)
+{
+	double time = TimeComplexity::filter(plan->plan->size);
+	std::map<int, ColumnInfo> newColumns = plan->plan->columns;
+	SizeEstimatingExpressionVisitor sizeVisitor(&newColumns);
+	condition->accept(sizeVisitor);
+	double newSize = plan->plan->size*sizeVisitor.size;
+	
+	for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
+	{
+		col->second.numberOfUniqueValues = min(newSize, col->second.numberOfUniqueValues);
+	}
+
+	shared_ptr<PhysicalPlan> filterPlan(new PhysicalPlan(new Filter(condition), newSize, time, newColumns, plan));
+	return filterPlan;
+}
+
+shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterMergeJoin(const shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition)
+{
+	double time = TimeComplexity::filterKeppeingOrder(plan->plan->size);
+	std::map<int, ColumnInfo> newColumns = plan->plan->columns;
+	SizeEstimatingExpressionVisitor sizeVisitor(&newColumns);
+	condition->accept(sizeVisitor);
+	double newSize = plan->plan->size*sizeVisitor.size;
+
+	for (auto col = newColumns.begin(); col != newColumns.end(); ++col)
+	{
+		col->second.numberOfUniqueValues = min(newSize, col->second.numberOfUniqueValues);
+	}
+
+
+	shared_ptr<PhysicalPlan> filterPlan(new PhysicalPlan(new FilterKeepingOrder(condition), newSize, time, newColumns, plan));
+	filterPlan->sortedBy = plan->sortedBy;
+	return filterPlan;
+}
+
+
+
 void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan)
 {
 	vector<shared_ptr<ConditionInfo>> equalConditions;
@@ -1169,9 +1212,7 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 				shared_ptr<PhysicalPlan> hashPlan(new PhysicalPlan(hashJoin, newSize, time, newColumns, hashedInput, notHashedInput));
 				if (lowerConditions.size() + otherConditions.size() > 0)
 				{
-					time += TimeComplexity::filter(newSize);
-					shared_ptr<PhysicalPlan> filterPlan(new PhysicalPlan(new Filter(deserializeConditionInfo(lowerConditions, otherConditions)), newSize, time, newColumns, hashPlan));
-					insertPlan(newPlan.plans, filterPlan);
+					insertPlan(newPlan.plans, generateFilterAfterJoin(hashPlan, deserializeConditionInfo(lowerConditions, otherConditions)));
 				}
 				else
 				{
@@ -1207,8 +1248,14 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 				PossibleSortParameters resultParameters = leftSortedPlan->sortedBy;
 				getMergeJoinSortedParametes(resultParameters, equalPairs, rightColumns);
 				mergePlan->sortedBy = resultParameters;
-				insertPlan(newPlan.plans, mergePlan);
-
+				if (lowerConditions.size() + otherConditions.size() > 0)
+				{
+					insertPlan(newPlan.plans, generateFilterAfterMergeJoin(mergePlan, deserializeConditionInfo(lowerConditions, otherConditions)));
+				}
+				else
+				{
+					insertPlan(newPlan.plans, mergePlan);
+				}
 
 				leftSortParameters.parameters.clear();
 				rightSortParameters.parameters.clear();
@@ -1230,14 +1277,127 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 				resultParameters = rightSortedPlan->sortedBy;
 				getMergeJoinSortedParametes(resultParameters, equalPairsReverse, leftColumns);
 				mergePlan->sortedBy = resultParameters;
-				insertPlan(newPlan.plans, mergePlan);
+				if (lowerConditions.size() + otherConditions.size() > 0)
+				{
+					insertPlan(newPlan.plans, generateFilterAfterMergeJoin(mergePlan, deserializeConditionInfo(lowerConditions, otherConditions)));
+				}
+				else
+				{
+					insertPlan(newPlan.plans, mergePlan);
+				}
 
 
 			}
 		}
 	}
-	if (lowerConditions.size() > 0)
+	else if (lowerConditions.size() > 0)
 	{
+		for (auto first = left.plans.begin(); first != left.plans.end(); ++first)
+		{
+			for (auto second = right.plans.begin(); second != right.plans.end(); ++second)
+			{
+				map<int, ColumnInfo> newColumns;
+				for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
+				{
+					newColumns[it->first] = ColumnInfo(it->second);
+				}
+				double newSize = left.size * right.size;
+				newPlan.size = newSize;
+				double time = TimeComplexity::crossJoin(left.size, right.size);
+				shared_ptr<PhysicalPlan> crossJoinPlan(new PhysicalPlan(new CrossJoin(), newSize, time, newColumns, *first, *second));
+				insertPlan(newPlan.plans, generateFilterAfterJoin(crossJoinPlan, deserializeConditionInfo(lowerConditions, otherConditions)));
+
+				//smart plans
+				SizeEstimatingExpressionVisitor sizeVisitor(&newColumns);
+				shared_ptr<Expression> condition = deserializeConditionInfo(lowerConditions, vector<shared_ptr<ConditionInfo>>());
+				condition->accept(sizeVisitor);
+				newSize = left.size * right.size * sizeVisitor.size;
+				time = TimeComplexity::mergeEquiNonJoin(left.size, right.size, newSize);
+				for (auto it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
+				{
+					newColumns[it->first].numberOfUniqueValues = min(newSize, newColumns[it->first].numberOfUniqueValues);
+				}
+
+				int conditionRepresentation[3];
+				if (lowerConditions.size() == 1)
+				{
+					BinaryExpression * less = (BinaryExpression *)(lowerConditions[0]->condition.get());
+					Column * left = (Column *)(less->leftChild.get());
+					Column * right = (Column *)(less->rightChild.get());
+					//a<b
+					conditionRepresentation[0] = left->column.id;
+					conditionRepresentation[1] = right->column.id;
+					conditionRepresentation[2] = -1;
+					
+				}
+				else if (lowerConditions.size() == 2)
+				{
+					BinaryExpression * less = (BinaryExpression *)(lowerConditions[0]->condition.get());
+					Column * left1 = (Column *)(less->leftChild.get());
+					Column * right1 = (Column *)(less->rightChild.get());
+					
+					less = (BinaryExpression *)(lowerConditions[1]->condition.get());
+					Column * left2 = (Column *)(less->leftChild.get());
+					Column * right2 = (Column *)(less->rightChild.get());
+
+					if (right1->column.id == left2->column.id)
+					{
+						conditionRepresentation[0] = left1->column.id;
+						conditionRepresentation[1] = right1->column.id;
+						conditionRepresentation[2] = right2->column.id;
+					}
+					else if (right2->column.id == left1->column.id)
+					{
+						conditionRepresentation[0] = left2->column.id;
+						conditionRepresentation[1] = right2->column.id;
+						conditionRepresentation[2] = right1->column.id;
+					}
+					else
+					{
+						throw new exception("not suported");
+					}
+				}
+				else
+				{
+					throw new exception("not suported");
+				}
+
+				shared_ptr<PhysicalPlan> leftPlan;
+				shared_ptr<PhysicalPlan> rightPlan;
+				if (left.columns.find(conditionRepresentation[0]) != left.columns.end())
+				{
+					leftPlan = *first;
+					rightPlan = *second;
+				}
+				else
+				{
+					leftPlan = *second; 
+					rightPlan = *first;
+				}
+
+				PossibleSortParameters leftSortParameters;
+				leftSortParameters.parameters.push_back(SortParameter(newColumns[conditionRepresentation[0]].column, SortOrder::ASCENDING));
+				if (conditionRepresentation[2] != -1)
+				{
+					leftSortParameters.parameters.push_back(SortParameter(newColumns[conditionRepresentation[2]].column, SortOrder::ASCENDING));
+				}
+				shared_ptr<PhysicalPlan> leftSortedPlan = generateSortParameters(leftSortParameters, leftPlan);
+
+				PossibleSortParameters rightSortParameters;
+				rightSortParameters.parameters.push_back(SortParameter(newColumns[conditionRepresentation[1]].column, SortOrder::ASCENDING));
+				shared_ptr<PhysicalPlan> rightSortedPlan = generateSortParameters(rightSortParameters, rightPlan);
+				
+				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(new MergeNonEquiJoin(condition), newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
+				mergePlan->sortedBy.parameters.push_back(SortParameter(newColumns[conditionRepresentation[0]].column, SortOrder::ASCENDING));
+				mergePlan->sortedBy.parameters.push_back(SortParameter(newColumns[conditionRepresentation[1]].column, SortOrder::ASCENDING));
+				if (conditionRepresentation[2] != -1)
+				{
+					mergePlan->sortedBy.parameters.push_back(SortParameter(newColumns[conditionRepresentation[2]].column, SortOrder::ASCENDING));
+				}
+				insertPlan(newPlan.plans, mergePlan);
+
+			}
+		}
 	}
 
 	if (otherConditions.size() > 0)
@@ -1388,4 +1548,46 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	size = newSize;
 	result = newResult;
 	columns = allColumns;
+}
+
+void JoinInfo::RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns)
+{
+	std::set<ulong> allColumns;
+	for (auto it = outputColumns.begin(); it != outputColumns.end(); ++it)
+	{
+		allColumns.insert(it->column.id);
+	}
+
+	for (auto it = condition.begin(); it != condition.end(); ++it)
+	{
+		for (auto it2 = (*it)->inputs.begin(); it2 != (*it)->inputs.end(); ++it2)
+		{
+			allColumns.insert(*it2);
+		}
+	}
+
+	for (auto it = columns.begin(); it != columns.end();)
+	{
+		if (allColumns.find(it->first) == allColumns.end())
+		{
+			columns.erase(it++);
+			continue;
+		}
+		++it;
+	}
+
+	for (auto it = plans.begin(); it != plans.end(); ++it)
+	{
+		for (auto it2 = (*it)->plan->columns.begin(); it2 != (*it)->plan->columns.end();)
+		{
+			if (allColumns.find(it2->first) == allColumns.end())
+			{
+				(*it)->plan->columns.erase(it2++);
+				continue;
+			}
+			++it2;
+		}
+		AlgebraCompiler::updateSortParameters(PossibleSortParameters((*it)->sortedBy), (*it), (*it)->plan->columns);
+	}
+
 }

@@ -286,7 +286,7 @@
         <xs:complexType>
           <xs:choice minOccurs="2" maxOccurs="2">
             <xs:element name="less" type="less_or_equals_in_join"></xs:element>
-            <xs:element name="less_or_equals" type="less_or_equals_in_join"></xs:element>
+            <xs:element name="lower_or_equals" type="less_or_equals_in_join"></xs:element>
           </xs:choice>
         </xs:complexType>
       </xs:element>
