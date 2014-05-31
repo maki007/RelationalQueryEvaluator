@@ -1,0 +1,48 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+revenue_19 desc"]
+node1[label="Group
+groupBy n_name_14, revenue_19=sum(x_17);"]
+node2[label="ColumnOperations
+n_name_14, x_17 = (l_extendedprice_8(0) * (1 - l_discount_9(0)))"]
+node3[label="Selection
+AND ((c_custkey_1(0) == o_custkey_3(0)),(l_orderkey_6(0) == o_orderkey_4(0)),(l_suppkey_7(0) == s_suppkey_10(0)),(c_nationkey_2(0) == s_nationkey_11(0)),(n_nationkey_12(0) == s_nationkey_11(0)),(n_regionkey_13(0) == r_regionkey_15(0)),(r_name_16(0) == Africa),(20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))"]
+node4[label="GroupedJoin
+"]
+node5[label="Table customer
+ number of rows: 1000.000000
+ columns: c_custkey_1(int,251), c_nationkey_2(int,251)
+ indices: "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node6[label="Table orders
+ number of rows: 1000.000000
+ columns: o_custkey_3(int,251), o_orderkey_4(int,251), o_orderdate_5(date,251)
+ indices: "]
+node6 -> node4[headport=s, tailport=n,label="   "]
+node7[label="Table lineitem
+ number of rows: 1000.000000
+ columns: l_orderkey_6(int,251), l_suppkey_7(int,251), l_extendedprice_8(int,251), l_discount_9(int,251)
+ indices: "]
+node7 -> node4[headport=s, tailport=n,label="   "]
+node8[label="Table supplier
+ number of rows: 1000.000000
+ columns: s_suppkey_10(int,251), s_nationkey_11(int,251)
+ indices: "]
+node8 -> node4[headport=s, tailport=n,label="   "]
+node9[label="Table nation
+ number of rows: 1000.000000
+ columns: n_nationkey_12(int,251), n_regionkey_13(int,251), n_name_14(string,251)
+ indices: "]
+node9 -> node4[headport=s, tailport=n,label="   "]
+node10[label="Table region
+ number of rows: 1000.000000
+ columns: r_regionkey_15(int,251), r_name_16(int,251)
+ indices: "]
+node10 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

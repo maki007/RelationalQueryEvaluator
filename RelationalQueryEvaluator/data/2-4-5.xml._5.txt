@@ -1,0 +1,491 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+Sort by: revenue_19 desc
+ time:2
+ size:1
+n_name_18 0,revenue_19 1,
+"]node1[label="Hash Group
+n_name_14, revenue_19=sum(x_17);
+ time:10300
+ size:1
+n_name_18 0,revenue_19 1,
+"]node2[label="Columns Operations
+n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
+ time:0
+ size:1000
+n_name_14 1,x_17 1,
+"]node3[label="Hash Join
+AND ((c_custkey_1(0) == o_custkey_3(0)),(c_nationkey_2(0) == s_nationkey_11(0)))
+ time:2888
+ size:1
+c_custkey_1 1,c_nationkey_2 1,o_custkey_3 1,o_orderkey_4 1,o_orderdate_5 1,l_orderkey_6 1,l_suppkey_7 1,l_extendedprice_8 1,l_discount_9 1,s_suppkey_10 1,s_nationkey_11 1,n_nationkey_12 1,n_regionkey_13 1,n_name_14 1,r_regionkey_15 1,r_name_16 1,
+"]node4[label="Hash Join
+(l_orderkey_6(0) == o_orderkey_4(0))
+ time:1391
+ size:111
+o_custkey_3 27,o_orderkey_4 27,o_orderdate_5 27,l_orderkey_6 111,l_suppkey_7 111,l_extendedprice_8 111,l_discount_9 111,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node5[label="Filter
+AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
+ time:1000
+ size:111
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node6[label="Table Scan
+orders
+ time:1000
+ size:1000
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node6 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node7[label="Hash Join
+(l_suppkey_7(0) == s_suppkey_10(0))
+ time:2504
+ size:251
+l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node8[label="Hash Join
+(n_nationkey_12(0) == s_nationkey_11(0))
+ time:2126
+ size:63
+s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node9[label="Hash Join
+(n_regionkey_13(0) == r_regionkey_15(0))
+ time:2031
+ size:15
+n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node10[label="Filter
+(r_name_16(0) == Africa)
+ time:1000
+ size:3
+r_regionkey_15 251,r_name_16 251,
+"]node11[label="Table Scan
+region
+ time:1000
+ size:1000
+r_regionkey_15 251,r_name_16 251,
+"]node11 -> node10[headport=s, tailport=n,label="   "]
+node10 -> node9[headport=s, tailport=n,label="   "]
+node12[label="Table Scan
+nation
+ time:1000
+ size:1000
+n_nationkey_12 251,n_regionkey_13 251,n_name_14 251,
+"]node12 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node13[label="Table Scan
+supplier
+ time:1000
+ size:1000
+s_suppkey_10 251,s_nationkey_11 251,
+"]node13 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node7[headport=s, tailport=n,label="   "]
+node14[label="Table Scan
+lineitem
+ time:1000
+ size:1000
+l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,
+"]node14 -> node7[headport=s, tailport=n,label="   "]
+node7 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node15[label="Table Scan
+customer
+ time:1000
+ size:1000
+c_custkey_1 251,c_nationkey_2 251,
+"]node15 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node16[label="Sort
+Sort by: revenue_19 desc
+ time:2
+ size:1
+n_name_18 0,revenue_19 1,
+"]node17[label="Hash Group
+n_name_14, revenue_19=sum(x_17);
+ time:10300
+ size:1
+n_name_18 0,revenue_19 1,
+"]node18[label="Columns Operations
+n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
+ time:0
+ size:1000
+n_name_14 1,x_17 1,
+"]node19[label="Hash Join
+AND ((l_orderkey_6(0) == o_orderkey_4(0)),(l_suppkey_7(0) == s_suppkey_10(0)))
+ time:2888
+ size:1
+c_custkey_1 1,c_nationkey_2 1,o_custkey_3 1,o_orderkey_4 1,o_orderdate_5 1,l_orderkey_6 1,l_suppkey_7 1,l_extendedprice_8 1,l_discount_9 1,s_suppkey_10 1,s_nationkey_11 1,n_nationkey_12 1,n_regionkey_13 1,n_name_14 1,r_regionkey_15 1,r_name_16 1,
+"]node20[label="Hash Join
+(c_custkey_1(0) == o_custkey_3(0))
+ time:1391
+ size:111
+c_custkey_1 111,c_nationkey_2 111,o_custkey_3 27,o_orderkey_4 27,o_orderdate_5 27,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node21[label="Filter
+AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
+ time:1000
+ size:111
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node22[label="Table Scan
+orders
+ time:1000
+ size:1000
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node22 -> node21[headport=s, tailport=n,label="   "]
+node21 -> node20[headport=s, tailport=n,label="   "]
+node23[label="Hash Join
+(c_nationkey_2(0) == s_nationkey_11(0))
+ time:2504
+ size:251
+c_custkey_1 251,c_nationkey_2 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node24[label="Hash Join
+(n_nationkey_12(0) == s_nationkey_11(0))
+ time:2126
+ size:63
+s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node25[label="Hash Join
+(n_regionkey_13(0) == r_regionkey_15(0))
+ time:2031
+ size:15
+n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node26[label="Filter
+(r_name_16(0) == Africa)
+ time:1000
+ size:3
+r_regionkey_15 251,r_name_16 251,
+"]node27[label="Table Scan
+region
+ time:1000
+ size:1000
+r_regionkey_15 251,r_name_16 251,
+"]node27 -> node26[headport=s, tailport=n,label="   "]
+node26 -> node25[headport=s, tailport=n,label="   "]
+node28[label="Table Scan
+nation
+ time:1000
+ size:1000
+n_nationkey_12 251,n_regionkey_13 251,n_name_14 251,
+"]node28 -> node25[headport=s, tailport=n,label="   "]
+node25 -> node24[headport=s, tailport=n,label="   "]
+node29[label="Table Scan
+supplier
+ time:1000
+ size:1000
+s_suppkey_10 251,s_nationkey_11 251,
+"]node29 -> node24[headport=s, tailport=n,label="   "]
+node24 -> node23[headport=s, tailport=n,label="   "]
+node30[label="Table Scan
+customer
+ time:1000
+ size:1000
+c_custkey_1 251,c_nationkey_2 251,
+"]node30 -> node23[headport=s, tailport=n,label="   "]
+node23 -> node20[headport=s, tailport=n,label="   "]
+node20 -> node19[headport=s, tailport=n,label="   "]
+node31[label="Table Scan
+lineitem
+ time:1000
+ size:1000
+l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,
+"]node31 -> node19[headport=s, tailport=n,label="   "]
+node19 -> node18[headport=s, tailport=n,label="   "]
+node18 -> node17[headport=s, tailport=n,label="   "]
+node17 -> node16[headport=s, tailport=n,label="   "]
+node32[label="Sort
+Sort by: revenue_19 desc
+ time:2
+ size:1
+n_name_18 0,revenue_19 1,
+"]node33[label="Hash Group
+n_name_14, revenue_19=sum(x_17);
+ time:10300
+ size:1
+n_name_18 0,revenue_19 1,
+"]node34[label="Columns Operations
+n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
+ time:0
+ size:1000
+n_name_14 1,x_17 1,
+"]node35[label="Hash Join
+AND ((c_custkey_1(0) == o_custkey_3(0)),(l_orderkey_6(0) == o_orderkey_4(0)))
+ time:2888
+ size:1
+c_custkey_1 1,c_nationkey_2 1,o_custkey_3 1,o_orderkey_4 1,o_orderdate_5 1,l_orderkey_6 1,l_suppkey_7 1,l_extendedprice_8 1,l_discount_9 1,s_suppkey_10 1,s_nationkey_11 1,n_nationkey_12 1,n_regionkey_13 1,n_name_14 1,r_regionkey_15 1,r_name_16 1,
+"]node36[label="Filter
+AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
+ time:1000
+ size:111
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node37[label="Table Scan
+orders
+ time:1000
+ size:1000
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node37 -> node36[headport=s, tailport=n,label="   "]
+node36 -> node35[headport=s, tailport=n,label="   "]
+node38[label="Hash Join
+(c_nationkey_2(0) == s_nationkey_11(0))
+ time:4009
+ size:999
+c_custkey_1 251,c_nationkey_2 251,l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node39[label="Hash Join
+(l_suppkey_7(0) == s_suppkey_10(0))
+ time:2504
+ size:251
+l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node40[label="Hash Join
+(n_nationkey_12(0) == s_nationkey_11(0))
+ time:2126
+ size:63
+s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node41[label="Hash Join
+(n_regionkey_13(0) == r_regionkey_15(0))
+ time:2031
+ size:15
+n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node42[label="Filter
+(r_name_16(0) == Africa)
+ time:1000
+ size:3
+r_regionkey_15 251,r_name_16 251,
+"]node43[label="Table Scan
+region
+ time:1000
+ size:1000
+r_regionkey_15 251,r_name_16 251,
+"]node43 -> node42[headport=s, tailport=n,label="   "]
+node42 -> node41[headport=s, tailport=n,label="   "]
+node44[label="Table Scan
+nation
+ time:1000
+ size:1000
+n_nationkey_12 251,n_regionkey_13 251,n_name_14 251,
+"]node44 -> node41[headport=s, tailport=n,label="   "]
+node41 -> node40[headport=s, tailport=n,label="   "]
+node45[label="Table Scan
+supplier
+ time:1000
+ size:1000
+s_suppkey_10 251,s_nationkey_11 251,
+"]node45 -> node40[headport=s, tailport=n,label="   "]
+node40 -> node39[headport=s, tailport=n,label="   "]
+node46[label="Table Scan
+lineitem
+ time:1000
+ size:1000
+l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,
+"]node46 -> node39[headport=s, tailport=n,label="   "]
+node39 -> node38[headport=s, tailport=n,label="   "]
+node47[label="Table Scan
+customer
+ time:1000
+ size:1000
+c_custkey_1 251,c_nationkey_2 251,
+"]node47 -> node38[headport=s, tailport=n,label="   "]
+node38 -> node35[headport=s, tailport=n,label="   "]
+node35 -> node34[headport=s, tailport=n,label="   "]
+node34 -> node33[headport=s, tailport=n,label="   "]
+node33 -> node32[headport=s, tailport=n,label="   "]
+node48[label="Sort
+Sort by: revenue_19 desc
+ time:2
+ size:1
+n_name_18 0,revenue_19 1,
+"]node49[label="Hash Group
+n_name_14, revenue_19=sum(x_17);
+ time:10300
+ size:1
+n_name_18 0,revenue_19 1,
+"]node50[label="Columns Operations
+n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
+ time:0
+ size:1000
+n_name_14 1,x_17 1,
+"]node51[label="Hash Join
+AND ((c_custkey_1(0) == o_custkey_3(0)),(l_orderkey_6(0) == o_orderkey_4(0)))
+ time:2888
+ size:1
+c_custkey_1 1,c_nationkey_2 1,o_custkey_3 1,o_orderkey_4 1,o_orderdate_5 1,l_orderkey_6 1,l_suppkey_7 1,l_extendedprice_8 1,l_discount_9 1,s_suppkey_10 1,s_nationkey_11 1,n_nationkey_12 1,n_regionkey_13 1,n_name_14 1,r_regionkey_15 1,r_name_16 1,
+"]node52[label="Filter
+AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
+ time:1000
+ size:111
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node53[label="Table Scan
+orders
+ time:1000
+ size:1000
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node53 -> node52[headport=s, tailport=n,label="   "]
+node52 -> node51[headport=s, tailport=n,label="   "]
+node54[label="Hash Join
+(l_suppkey_7(0) == s_suppkey_10(0))
+ time:4009
+ size:999
+c_custkey_1 251,c_nationkey_2 251,l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node55[label="Hash Join
+(c_nationkey_2(0) == s_nationkey_11(0))
+ time:2504
+ size:251
+c_custkey_1 251,c_nationkey_2 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node56[label="Hash Join
+(n_nationkey_12(0) == s_nationkey_11(0))
+ time:2126
+ size:63
+s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node57[label="Hash Join
+(n_regionkey_13(0) == r_regionkey_15(0))
+ time:2031
+ size:15
+n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node58[label="Filter
+(r_name_16(0) == Africa)
+ time:1000
+ size:3
+r_regionkey_15 251,r_name_16 251,
+"]node59[label="Table Scan
+region
+ time:1000
+ size:1000
+r_regionkey_15 251,r_name_16 251,
+"]node59 -> node58[headport=s, tailport=n,label="   "]
+node58 -> node57[headport=s, tailport=n,label="   "]
+node60[label="Table Scan
+nation
+ time:1000
+ size:1000
+n_nationkey_12 251,n_regionkey_13 251,n_name_14 251,
+"]node60 -> node57[headport=s, tailport=n,label="   "]
+node57 -> node56[headport=s, tailport=n,label="   "]
+node61[label="Table Scan
+supplier
+ time:1000
+ size:1000
+s_suppkey_10 251,s_nationkey_11 251,
+"]node61 -> node56[headport=s, tailport=n,label="   "]
+node56 -> node55[headport=s, tailport=n,label="   "]
+node62[label="Table Scan
+customer
+ time:1000
+ size:1000
+c_custkey_1 251,c_nationkey_2 251,
+"]node62 -> node55[headport=s, tailport=n,label="   "]
+node55 -> node54[headport=s, tailport=n,label="   "]
+node63[label="Table Scan
+lineitem
+ time:1000
+ size:1000
+l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,
+"]node63 -> node54[headport=s, tailport=n,label="   "]
+node54 -> node51[headport=s, tailport=n,label="   "]
+node51 -> node50[headport=s, tailport=n,label="   "]
+node50 -> node49[headport=s, tailport=n,label="   "]
+node49 -> node48[headport=s, tailport=n,label="   "]
+node64[label="Sort
+Sort by: revenue_19 desc
+ time:2
+ size:1
+n_name_18 0,revenue_19 1,
+"]node65[label="Hash Group
+n_name_14, revenue_19=sum(x_17);
+ time:10300
+ size:1
+n_name_18 0,revenue_19 1,
+"]node66[label="Columns Operations
+n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
+ time:0
+ size:1000
+n_name_14 1,x_17 1,
+"]node67[label="Hash Join
+AND ((l_orderkey_6(0) == o_orderkey_4(0)),(l_suppkey_7(0) == s_suppkey_10(0)))
+ time:2888
+ size:1
+c_custkey_1 1,c_nationkey_2 1,o_custkey_3 1,o_orderkey_4 1,o_orderdate_5 1,l_orderkey_6 1,l_suppkey_7 1,l_extendedprice_8 1,l_discount_9 1,s_suppkey_10 1,s_nationkey_11 1,n_nationkey_12 1,n_regionkey_13 1,n_name_14 1,r_regionkey_15 1,r_name_16 1,
+"]node68[label="Merge Join
+(c_custkey_1(0) == o_custkey_3(0))
+ time:161
+ size:111
+c_custkey_1 111,c_nationkey_2 111,o_custkey_3 27,o_orderkey_4 27,o_orderdate_5 27,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node69[label="Sort
+Sort by: c_custkey_1 asc
+ time:4005
+ size:251
+c_custkey_1 251,c_nationkey_2 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node70[label="Hash Join
+(c_nationkey_2(0) == s_nationkey_11(0))
+ time:2504
+ size:251
+c_custkey_1 251,c_nationkey_2 251,s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node71[label="Hash Join
+(n_nationkey_12(0) == s_nationkey_11(0))
+ time:2126
+ size:63
+s_suppkey_10 63,s_nationkey_11 63,n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node72[label="Hash Join
+(n_regionkey_13(0) == r_regionkey_15(0))
+ time:2031
+ size:15
+n_nationkey_12 15,n_regionkey_13 15,n_name_14 15,r_regionkey_15 1,r_name_16 1,
+"]node73[label="Filter
+(r_name_16(0) == Africa)
+ time:1000
+ size:3
+r_regionkey_15 251,r_name_16 251,
+"]node74[label="Table Scan
+region
+ time:1000
+ size:1000
+r_regionkey_15 251,r_name_16 251,
+"]node74 -> node73[headport=s, tailport=n,label="   "]
+node73 -> node72[headport=s, tailport=n,label="   "]
+node75[label="Table Scan
+nation
+ time:1000
+ size:1000
+n_nationkey_12 251,n_regionkey_13 251,n_name_14 251,
+"]node75 -> node72[headport=s, tailport=n,label="   "]
+node72 -> node71[headport=s, tailport=n,label="   "]
+node76[label="Table Scan
+supplier
+ time:1000
+ size:1000
+s_suppkey_10 251,s_nationkey_11 251,
+"]node76 -> node71[headport=s, tailport=n,label="   "]
+node71 -> node70[headport=s, tailport=n,label="   "]
+node77[label="Table Scan
+customer
+ time:1000
+ size:1000
+c_custkey_1 251,c_nationkey_2 251,
+"]node77 -> node70[headport=s, tailport=n,label="   "]
+node70 -> node69[headport=s, tailport=n,label="   "]
+node69 -> node68[headport=s, tailport=n,label="   "]
+node78[label="Sort
+Sort by: o_custkey_3 asc
+ time:1510
+ size:111
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node79[label="Filter
+AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
+ time:1000
+ size:111
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node80[label="Table Scan
+orders
+ time:1000
+ size:1000
+o_custkey_3 251,o_orderkey_4 251,o_orderdate_5 251,
+"]node80 -> node79[headport=s, tailport=n,label="   "]
+node79 -> node78[headport=s, tailport=n,label="   "]
+node78 -> node68[headport=s, tailport=n,label="   "]
+node68 -> node67[headport=s, tailport=n,label="   "]
+node81[label="Table Scan
+lineitem
+ time:1000
+ size:1000
+l_orderkey_6 251,l_suppkey_7 251,l_extendedprice_8 251,l_discount_9 251,
+"]node81 -> node67[headport=s, tailport=n,label="   "]
+node67 -> node66[headport=s, tailport=n,label="   "]
+node66 -> node65[headport=s, tailport=n,label="   "]
+node65 -> node64[headport=s, tailport=n,label="   "]
+
+}

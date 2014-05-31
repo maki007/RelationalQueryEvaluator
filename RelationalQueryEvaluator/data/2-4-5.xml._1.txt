@@ -1,0 +1,60 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+revenue_-1 desc"]
+node1[label="Group
+groupBy n_name_-1, revenue_-1=sum(x_-1);"]
+node2[label="ColumnOperations
+n_name_-1, x_-1 = (l_extendedprice_-1(0) * (1 - l_discount_-1(0)))"]
+node3[label="Selection
+(((((((((c_custkey_-1(0) == o_custkey_-1(0)) and (l_orderkey_-1(0) == o_orderkey_-1(0))) and (l_suppkey_-1(0) == s_suppkey_-1(0))) and (c_nationkey_-1(0) == s_nationkey_-1(0))) and (n_nationkey_-1(0) == s_nationkey_-1(0))) and (n_regionkey_-1(0) == r_regionkey_-1(0))) and (r_name_-1(0) == Africa)) and (20-11-2013 <= o_orderdate_-1(0))) and (o_orderdate_-1(0) < 20-11-2014))"]
+node4[label="Join
+"]
+node5[label="Table customer
+ number of rows: 1000.000000
+ columns: c_custkey_-1(int,251), c_nationkey_-1(int,251)
+ indices: "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node6[label="Join
+"]
+node7[label="Table orders
+ number of rows: 1000.000000
+ columns: o_custkey_-1(int,251), o_orderkey_-1(int,251), o_orderdate_-1(date,251)
+ indices: "]
+node7 -> node6[headport=s, tailport=n,label="   "]
+node8[label="Join
+"]
+node9[label="Table lineitem
+ number of rows: 1000.000000
+ columns: l_orderkey_-1(int,251), l_suppkey_-1(int,251), l_extendedprice_-1(int,251), l_discount_-1(int,251)
+ indices: "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node10[label="Join
+"]
+node11[label="Table supplier
+ number of rows: 1000.000000
+ columns: s_suppkey_-1(int,251), s_nationkey_-1(int,251)
+ indices: "]
+node11 -> node10[headport=s, tailport=n,label="   "]
+node12[label="Join
+"]
+node13[label="Table nation
+ number of rows: 1000.000000
+ columns: n_nationkey_-1(int,251), n_regionkey_-1(int,251), n_name_-1(string,251)
+ indices: "]
+node13 -> node12[headport=s, tailport=n,label="   "]
+node14[label="Table region
+ number of rows: 1000.000000
+ columns: r_regionkey_-1(int,251), r_name_-1(int,251)
+ indices: "]
+node14 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node10[headport=s, tailport=n,label="   "]
+node10 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

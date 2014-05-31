@@ -952,7 +952,7 @@ void SortResolvingPhysicalOperatorVisitor::visitColumnsOperationsOperator(Column
 		{
 			if (node->columns.find(it3->id) == node->columns.end())
 			{
-				allCols.erase(it3);
+				allCols.erase(it3++);
 				if (it3 == allCols.end())
 				{
 					break;

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+    <parameter column="revenue" direction="desc" />
+  </parameters>
+  <input>
+    <group>
+      <parameters>
+        <group_by column="n_name"/>
+        <sum argument="x" output="revenue"/>
+      </parameters>
+      <input>
+        <column_operations>
+          <parameters>
+            <column name="n_name"></column>
+            <column name="x">
+              <equals>
+                <times>
+                  <column name="l_extendedprice"/>
+                  <minus>
+                    <constant type="double" value="1"/>
+                    <column name="l_discount"/>
+                  </minus>
+                </times>
+              </equals>
+            </column>
+          </parameters>
+          <input>
+            <selection>
+              <parameters>
+                <condition>
+                    <and>
+                      <and>
+                        <and>
+                          <and>
+                            <and>
+                              <and>
+                                <and>
+                                  <and>
+                                    <equals>
+                                      <column name="c_custkey"/>
+                                      <column name="o_custkey"/>
+                                    </equals>
+                                    <equals>
+                                      <column name="l_orderkey"/>
+                                      <column name="o_orderkey"/>
+                                    </equals>
+                                  </and>
+                                  <equals>
+                                    <column name="l_suppkey"/>
+                                    <column name="s_suppkey"/>
+                                  </equals>
+                                </and>
+                                <equals>
+                                  <column name="c_nationkey"/>
+                                  <column name="s_nationkey"/>
+                                </equals>
+                              </and>
+                                <equals>
+                                  <column name="n_nationkey"/>
+                                  <column name="s_nationkey"/>
+                                </equals>
+                              </and>
+                              <equals>
+                                <column name="n_regionkey"/>
+                                <column name="r_regionkey"/>
+                              </equals>
+                            </and>
+                            <equals>
+                              <column name="r_name"/>
+                              <constant value="Africa" type="string"/>
+                            </equals>
+                          </and>
+                          <lower_or_equals>
+                            <constant value="20-11-2013" type="date"/>
+                            <column name="o_orderdate"/>
+                          </lower_or_equals>
+                        </and>
+                        <lower>
+                          <column name="o_orderdate"/>
+                          <constant value="20-11-2014" type="date"/>
+                        </lower>
+                      </and>
+                </condition>
+              </parameters>
+              <input>
+                <join>
+                  <parameters>
+                    <column name="c_custkey" input="first"/>
+                    <column name="c_nationkey" input="first"/>
+                    <column name="o_custkey" input="second"/>
+                    <column name="o_orderkey" input="second"/>
+                    <column name="o_orderdate" input="second"/>
+                    <column name="l_orderkey" input="second"/>
+                    <column name="l_suppkey" input="second"/>
+                    <column name="l_extendedprice" input="second"/>
+                    <column name="l_discount" input="second"/>
+                    <column name="s_suppkey" input="second"/>
+                    <column name="s_nationkey" input="second"/>
+                    <column name="n_name" input="second"/>
+                    <column name="n_nationkey" input="second"/>
+                    <column name="n_regionkey" input="second"/>
+                    <column name="r_regionkey" input="second"/>
+                    <column name="r_name" input="second"/>
+                  </parameters>
+                  <input>
+                    <table name="customer">
+                      <column name="c_custkey" type ="int"/>
+                      <column name="c_nationkey" type ="int"/>
+                    </table>
+                    <join>
+                      <parameters>
+                        <column name="o_custkey" input="first"/>
+                        <column name="o_orderkey" input="first"/>
+                        <column name="o_orderdate" input="first"/>
+                        <column name="l_orderkey" input="second"/>
+                        <column name="l_suppkey" input="second"/>
+                        <column name="l_extendedprice" input="second"/>
+                        <column name="l_discount" input="second"/>
+                        <column name="s_suppkey" input="second"/>
+                        <column name="s_nationkey" input="second"/>
+                        <column name="n_name" input="second"/>
+                        <column name="n_nationkey" input="second"/>
+                        <column name="n_regionkey" input="second"/>
+                        <column name="r_regionkey" input="second"/>
+                        <column name="r_name" input="second"/>
+                      </parameters>
+                      <input>
+                        <table name="orders">
+                          <column name="o_custkey" type ="int"/>
+                          <column name="o_orderkey" type ="int"/>
+                          <column name="o_orderdate" type ="date"/>
+                        </table>
+                        <join>
+                          <parameters>
+                            <column name="l_orderkey" input="first"/>
+                            <column name="l_suppkey" input="first"/>
+                            <column name="l_extendedprice" input="first"/>
+                            <column name="l_discount" input="first"/>
+                            <column name="s_suppkey" input="second"/>
+                            <column name="s_nationkey" input="second"/>
+                            <column name="n_nationkey" input="second"/>
+                            <column name="n_name" input="second"/>
+                            <column name="n_regionkey" input="second"/>
+                            <column name="r_regionkey" input="second"/>
+                            <column name="r_name" input="second"/>
+                          </parameters>
+                          <input>
+                          <table name="lineitem">
+                            <column name="l_orderkey" type ="int"/>
+                            <column name="l_suppkey" type ="int"/>
+                            <column name="l_extendedprice" type ="int"/>
+                            <column name="l_discount" type ="int"/>
+                          </table>
+                            <join>
+                              <parameters>
+                                <column name="s_suppkey" input="first"/>
+                                <column name="s_nationkey" input="first"/>
+                                <column name="n_nationkey" input="second"/>
+                                <column name="n_name" input="second"/>
+                                <column name="n_regionkey" input="second"/>
+                                <column name="r_regionkey" input="second"/>
+                                <column name="r_name" input="second"/>
+                              </parameters>
+                              <input>
+                                <table name="supplier">
+                                  <column name="s_suppkey" type ="int"/>
+                                  <column name="s_nationkey" type ="int"/>
+                                </table>
+                                <join>
+                                  <parameters>
+                                    <column name="n_nationkey" input="first"/>
+                                    <column name="n_regionkey" input="first"/>
+                                    <column name="n_name" input="first"/>
+                                    <column name="r_regionkey" input="second"/>
+                                    <column name="r_name" input="second"/>
+                                  </parameters>
+                                  <input>
+                                    <table name="nation">
+                                      <column name="n_nationkey" type ="int"/>
+                                      <column name="n_regionkey" type ="int"/>
+                                      <column name="n_name" type="string"/>
+                                    </table>
+                                    <table name="region">
+                                      <column name="r_regionkey"  type ="int" />
+                                      <column name="r_name"  type ="int" />
+                                    </table>
+                                  </input>
+                                </join>
+                              </input>
+                            </join>
+                          </input>
+                        </join>
+                      </input>
+                    </join>
+                  </input>
+                </join>
+              </input>
+            </selection>
+          </input>
+        </column_operations>
+      </input>
+    </group>
+  </input>
+</sort>

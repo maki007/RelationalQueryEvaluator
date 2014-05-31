@@ -8,7 +8,7 @@ using namespace std;
 
 const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
-const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 5;
+const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 4;
 
 const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
 
@@ -929,6 +929,9 @@ void AlgebraCompiler::greedyJoin(GroupedJoin * node, vector<JoinInfo>::iterator 
 		JoinInfo insertedPlan;
 		insertedPlan.processedPlans = newPlans.processedPlans;
 		insertedPlan.unProcessedPlans = newPlans.unProcessedPlans;
+		insertedPlan.condition = newPlans.condition;
+		insertedPlan.columns = newPlans.columns;
+		insertedPlan.size = newPlans.size;
 		insertedPlan.plans.push_back(*it3);
 		heap.push_back(insertedPlan);
 		push_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
