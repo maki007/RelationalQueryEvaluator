@@ -105,8 +105,8 @@
                   </parameters>
                   <input>
                     <table name="customer" numberOfRows="150000">
-                      <column name="c_custkey" type ="int"/>
-                      <column name="c_nationkey" type ="int"/>
+                      <column name="c_custkey" type ="int" number_of_unique_values="150000"/>
+                      <column name="c_nationkey" type ="int" number_of_unique_values="25"/>
                     </table>
                     <join>
                       <parameters>
@@ -127,8 +127,8 @@
                       </parameters>
                       <input>
                         <table name="orders" numberOfRows="1500000">
-                          <column name="o_custkey" type ="int"/>
-                          <column name="o_orderkey" type ="int"/>
+                          <column name="o_custkey" type ="int" number_of_unique_values="150000"/>
+                          <column name="o_orderkey" type ="int" number_of_unique_values="1500000"/>
                           <column name="o_orderdate" type ="date"/>
                         </table>
                         <join>
@@ -147,8 +147,8 @@
                           </parameters>
                           <input>
                           <table name="lineitem" numberOfRows="100000">
-                            <column name="l_orderkey" type ="int"/>
-                            <column name="l_suppkey" type ="int"/>
+                            <column name="l_orderkey" type ="int" number_of_unique_values="1500000"/>
+                            <column name="l_suppkey" type ="int" number_of_unique_values="10000"/>
                             <column name="l_extendedprice" type ="int"/>
                             <column name="l_discount" type ="int"/>
                           </table>
@@ -164,8 +164,8 @@
                               </parameters>
                               <input>
                                 <table name="supplier" numberOfRows="10000">
-                                  <column name="s_suppkey" type ="int"/>
-                                  <column name="s_nationkey" type ="int"/>
+                                  <column name="s_suppkey" type ="int" number_of_unique_values="10000"/>
+                                  <column name="s_nationkey" type ="int" number_of_unique_values="25"/>
                                 </table>
                                 <join>
                                   <parameters>
@@ -177,13 +177,13 @@
                                   </parameters>
                                   <input>
                                     <table name="nation" numberOfRows="25">
-                                      <column name="n_nationkey" type ="int"/>
-                                      <column name="n_regionkey" type ="int"/>
+                                      <column name="n_nationkey" type ="int" number_of_unique_values="25"/>
+                                      <column name="n_regionkey" type ="int" number_of_unique_values="5"/>
                                       <column name="n_name" type="string"/>
                                     </table>
                                     <table name="region"  numberOfRows="5">
-                                      <column name="r_regionkey"  type ="int" />
-                                      <column name="r_name"  type ="int" />
+                                      <column name="r_regionkey"  type ="int" number_of_unique_values="5" />
+                                      <column name="r_name"  type ="int" number_of_unique_values="5"/>
                                     </table>
                                   </input>
                                 </join>

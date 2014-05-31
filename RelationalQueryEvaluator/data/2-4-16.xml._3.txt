@@ -1,0 +1,39 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc"]
+node1[label="Group
+groupBy p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();"]
+node2[label="Group
+groupBy p_brand_5, p_type_4, p_size_3, ps_suppkey_2, "]
+node3[label="AntiJoin
+(ps_suppkey_2(0) == s_suppkey_7(1))"]
+node4[label="GroupedJoin
+(p_partkey_6(0) == ps_partkey_1(0))"]
+node5[label="Table partsupp
+ number of rows: 1000.000000
+ columns: ps_partkey_1(int,251), ps_suppkey_2(int,251)
+ indices: "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node6[label="Selection
+AND ((p_brand_5(0) != brand),!(like(p_type_4(0),TYPE%)),OR ((p_size_3(0) == 1),(p_size_3(0) == 2),(p_size_3(0) == 3),(p_size_3(0) == 4)))"]
+node7[label="Table part
+ number of rows: 1000.000000
+ columns: p_size_3(int,251), p_type_4(string,251), p_brand_5(string,251), p_partkey_6(int,251)
+ indices: "]
+node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node8[label="Selection
+like(s_comment_8(0),%Customer%Complaints%)"]
+node9[label="Table supplier
+ number of rows: 1000.000000
+ columns: s_suppkey_7(int,251), s_comment_8(string,251)
+ indices: "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

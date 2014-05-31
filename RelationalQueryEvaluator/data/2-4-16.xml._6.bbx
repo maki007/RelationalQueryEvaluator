@@ -1,0 +1,33 @@
+operator main()->()
+{
+broadcast()->(){3} start;
+TableScan()->(int,string,string,int) TableScan0(name="part",columns="p_size,p_type,p_brand,p_partkey"); 
+Filter(int,string,string,int)->(int,string,string,int) Filter1(condition="OP_AND(OP_NOT_EQUALS(2,OP_string_CONSTANT(brand)),OP_NOT(OP_like(1,OP_string_CONSTANT(TYPE%)),OP_OR(OP_EQUALS(0,OP_int_CONSTANT(1)),OP_EQUALS(0,OP_int_CONSTANT(2)),OP_EQUALS(0,OP_int_CONSTANT(3)),OP_EQUALS(0,OP_int_CONSTANT(4))))"); 
+TableScan()->(int,int) TableScan2(name="partsupp",columns="ps_partkey,ps_suppkey"); 
+HashJoin(int,string,string,int)(int,int)->(int,int,int,string,string,int) HashJoin3(left="2,3,4,5",right="0,1",out="0,1,2,3,4,5",leftPartOfCondition="5",rightPartOfCondition="0"); 
+TableScan()->(int,string) TableScan4(name="supplier",columns="s_suppkey,s_comment"); 
+Filter(int,string)->(int,string) Filter5(condition="OP_like(1,OP_string_CONSTANT(%Customer%Complaints%)"); 
+HashAntiJoin(int,int,int,string,string,int)(int,string)->(int,int,string,string) HashAntiJoin6(left="0,1,2,3,4,5",right="6,7",out="1,2,3,4",leftPartOfCondition="1",rightPartOfCondition="6"); 
+SortOperator(int,int,string,string)->(int,int,string,string) SortOperator7(sortedBy="",sortBy="3:A,2:A,1:A,0:A"); 
+SortedGroup(int,int,string,string)->(string,string,int,int) SortedGroup8(groupBy="3,2,1,0",functions=""); 
+SortedGroup(string,string,int,int)->(string,string,int,int) SortedGroup9(groupBy="0,1,2",functions="count()"); 
+SortOperator(string,string,int,int)->(string,string,int,int) SortOperator10(sortedBy="",sortBy="3:D,0:A,1:A,2:A"); 
+Store(string,string,int,int)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+TableScan0 -> Filter1;
+start[1] -> TableScan2;
+Filter1 -> [0]HashJoin3;
+TableScan2 -> [1]HashJoin3;
+start[2] -> TableScan4;
+TableScan4 -> Filter5;
+HashJoin3 -> [0]HashAntiJoin6;
+Filter5 -> [1]HashAntiJoin6;
+HashAntiJoin6 -> SortOperator7;
+SortOperator7 -> SortedGroup8;
+SortedGroup8 -> SortedGroup9;
+SortedGroup9 -> SortOperator10;
+SortOperator10 -> storeResult;
+storeResult -> output;
+}

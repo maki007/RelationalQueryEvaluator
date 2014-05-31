@@ -619,12 +619,12 @@ void AlgebraCompiler::visitSelection(Selection * node)
 		if ((*it)->sortedBy.parameters.size() != 0)
 		{
 			shared_ptr<PhysicalPlan> sortedPlan(new PhysicalPlan(new FilterKeepingOrder(node->condition), newSize,
-				TimeComplexity::filterKeppeingOrder(size), columns, *it));
+				TimeComplexity::filterKeppeingOrder(size), newColumns, *it));
 			sortedPlan->sortedBy = (*it)->sortedBy;
 			insertPlan(newResult, sortedPlan);
 		}
 		shared_ptr<PhysicalPlan> unsortedPlan(new PhysicalPlan(new Filter(node->condition), newSize,
-			TimeComplexity::filter(size), columns, *it));
+			TimeComplexity::filter(size), newColumns, *it));
 		insertPlan(newResult, unsortedPlan);
 	}
 	result = newResult;

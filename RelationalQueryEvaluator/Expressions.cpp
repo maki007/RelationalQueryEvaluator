@@ -29,6 +29,7 @@ Expression * Expression::constructChildren(DOMElement * node)
 	XMLCh * aritmeticFunctionName = XMLString::transcode("aritmetic_function");
 	XMLCh * columnName = XMLString::transcode("column");
 	XMLCh * constantName = XMLString::transcode("constant");
+	XMLCh * argumentName = XMLString::transcode("argument");
 
 	if (XMLString::compareString(node->getNodeName(), notName) == 0)
 	{
@@ -90,9 +91,13 @@ Expression * Expression::constructChildren(DOMElement * node)
 	{
 		child = new Constant((DOMElement *)node);
 	}
+	else if (XMLString::compareString(node->getNodeName(), argumentName) == 0)
+	{
+		child = constructChildren(XmlUtils::GetChildElements(node)[0]);
+	}
 	else
 	{
-		throw new exception("not valid");
+		throw new exception("not suported");
 	}
 
 

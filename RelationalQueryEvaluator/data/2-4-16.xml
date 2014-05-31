@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+    <parameter column="supplier_cnt" direction="desc" />
+    <parameter column="p_brand" direction="asc" />
+    <parameter column="p_type" direction="asc" />
+    <parameter column="p_size" direction="asc" />
+  </parameters>
+  <input>
+    <group>
+      <parameters>
+        <group_by column="p_brand"/>
+        <group_by column="p_type"/>
+        <group_by column="p_size"/>
+        <count output="supplier_cnt" />
+      </parameters>
+      <input>
+        <group>
+          <parameters>
+            <group_by column="p_brand"/>
+            <group_by column="p_type"/>
+            <group_by column="p_size"/>
+            <group_by column="ps_suppkey"/>
+          </parameters>
+          <input>
+            <antijoin>
+              <parameters>
+                <equal_condition>
+                  <equals>
+                    <column name="ps_suppkey"/>
+                    <column name="s_suppkey"/>
+                  </equals>
+                </equal_condition>
+                <column name="p_brand"/>
+                <column name="p_type"/>
+                <column name="p_size"/>
+                <column name="ps_suppkey"/>
+              </parameters>
+              <input>
+                <selection>
+                  <parameters>
+                    <condition>
+                      <and>
+                        <and>
+                          <equals>
+                            <column name ="p_partkey"/>
+                            <column name ="ps_partkey"/>
+                          </equals>
+                          <not_equals>
+                            <column name="p_brand"/>
+                            <constant value="brand" type="string"/>
+                          </not_equals>
+                        </and>
+                        <and>
+                          <not>
+                          <boolean_predicate name="like">
+                            <argument>
+                              <column name="p_type"/>
+                            </argument>
+                            <argument>
+                              <constant type="string" value="TYPE%"/>
+                            </argument>
+                          </boolean_predicate>
+                          </not>
+                          <or>
+                            <or>
+                              <equals>
+                                <column name="p_size"/>
+                                <constant value="1" type="int"/>
+                              </equals>
+                              <equals>
+                                <column name="p_size"/>
+                                <constant value="2" type="int"/>
+                              </equals>
+                            </or>
+                            <or>
+                              <equals>
+                                <column name="p_size"/>
+                                <constant value="3" type="int"/>
+                              </equals>
+                              <equals>
+                                <column name="p_size"/>
+                                <constant value="4" type="int"/>
+                              </equals>
+                            </or>
+                          </or>
+                        </and>
+                      </and>
+                    </condition>
+                  </parameters>
+                  <input>
+                    <join>
+                      <parameters>
+                        <column name="ps_partkey" input="first"/>
+                        <column name="ps_suppkey" input="first"/>
+                        <column name="p_size" input="second"/>
+                        <column name="p_type" input="second"/>
+                        <column name="p_brand" input="second"/>
+                        <column name="p_partkey" input="second"/>
+                      </parameters>
+                      <input>
+                        <table name="partsupp">
+                          <column name="ps_partkey" type="int"/>
+                          <column name="ps_suppkey" type="int"/>
+                        </table>
+                        <table name="part">
+                          <column name="p_size" type="int"/>
+                          <column name="p_type" type="string"/>
+                          <column name="p_brand" type="string"/>
+                          <column name="p_partkey" type="int"/>
+                        </table>
+                      </input>
+                    </join>
+                  </input>
+                </selection>
+                <selection>
+                  <parameters>
+                    <condition>
+                      <boolean_predicate name="like">
+                        <argument>
+                          <column name ="s_comment"/>
+                        </argument>
+                        <argument>
+                          <constant value ="%Customer%Complaints%" type="string"/>
+                        </argument>
+                      </boolean_predicate>
+                    </condition>
+                  </parameters>
+                  <input>
+                    <table name="supplier">
+                      <column name="s_suppkey" type="int"/>
+                      <column name="s_comment" type="string"/>
+                    </table>
+                  </input>
+                </selection>
+              </input>
+            </antijoin>
+          </input>
+        </group>
+      </input>
+    </group>
+  </input>
+</sort>

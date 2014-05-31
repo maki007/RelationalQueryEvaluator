@@ -162,7 +162,7 @@ public:
 
 	void visitNnaryExpression(NnaryExpression * expression)
 	{
-		size = 1 / 3;
+		size = double(1) / 3;
 	}
 
 
