@@ -60,12 +60,12 @@ country_4 0,count_5 0,x_6 0,
 Sort by: country_2 both
  time:33
  size:6
-user_name_1 410,country_2 1584,parameter_3 1584,
+user_name_1 0,country_2 0,parameter_3 0,
 "]node10[label="Filter
 (country_2(0) == sparta)
  time:10000
  size:6
-user_name_1 410,country_2 1584,parameter_3 1584,
+user_name_1 0,country_2 0,parameter_3 0,
 "]node11[label="Table Scan
 people
  time:10000
@@ -89,7 +89,7 @@ country_4 0,count_5 0,x_6 0,
 (country_2(0) == sparta)
  time:10000
  size:6
-user_name_1 410,country_2 1584,parameter_3 1584,
+user_name_1 0,country_2 0,parameter_3 0,
 "]node15[label="Table Scan
 people
  time:10000
@@ -113,12 +113,12 @@ country_4 0,count_5 0,x_6 0,
 Sort by: country_2 both
  time:33
  size:6
-user_name_1 410,country_2 1584,parameter_3 1584,
+user_name_1 0,country_2 0,parameter_3 0,
 "]node19[label="Filter
 (country_2(0) == sparta)
  time:10000
  size:6
-user_name_1 410,country_2 1584,parameter_3 1584,
+user_name_1 0,country_2 0,parameter_3 0,
 "]node20[label="Sort by index Scan
 people
 s(country_2:ascending)

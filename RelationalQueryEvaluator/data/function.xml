@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+  </parameters>
+  <input>
+    <column_operations>
+      <parameters>
+        <column name="name"></column>
+        <column name="x">
+          <equals>
+            <aritmetic_function name="sqrt" returnType="int">
+              <argument>
+                <column name="id"/>
+              </argument>
+            </aritmetic_function>
+          </equals>
+        </column>
+      </parameters>
+      <input>
+        <table name="people_from_city">
+          <column name="name" type="string" />
+          <column name="id" type="int" />
+        </table>
+      </input>
+      </column_operations>
+
+    </input>
+</sort>

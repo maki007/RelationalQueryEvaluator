@@ -1,0 +1,13 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort"]
+node1[label="ColumnOperations
+name_-1, x_-1 = sqrt(id_-1(0))"]
+node2[label="Table people_from_city
+ number of rows: 1000.000000
+ columns: name_-1(string,251), id_-1(int,251)
+ indices: "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

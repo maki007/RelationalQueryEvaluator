@@ -4,12 +4,12 @@ node0[label="Sort
 Sort by: country_4 desc
  time:0
  size:0
-country_4 251,count_5 1584,x_6 1584,
+country_4 0,count_5 0,x_6 0,
 "]node1[label="Filter
 (count_5(0) == 8)
  time:1584
  size:0
-country_4 251,count_5 1584,x_6 1584,
+country_4 0,count_5 0,x_6 0,
 "]node2[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
  time:103000
@@ -27,12 +27,12 @@ node4[label="Sort
 Sort by: country_4 desc
  time:0
  size:0
-country_4 251,count_5 1584,x_6 1584,
+country_4 0,count_5 0,x_6 0,
 "]node5[label="Filter
 (count_5(0) == 8)
  time:1584
  size:0
-country_4 251,count_5 1584,x_6 1584,
+country_4 0,count_5 0,x_6 0,
 "]node6[label="Sorted Group
 country_2, count_5=count();x_6=max(parameter_3);
  time:13000
@@ -56,7 +56,7 @@ node9[label="Filter Keeping Order
 (count_5(0) == 8)
  time:2060
  size:0
-country_4 251,count_5 1584,x_6 1584,
+country_4 0,count_5 0,x_6 0,
 "]node10[label="Sorted Group
 country_2, count_5=count();x_6=max(parameter_3);
  time:13000

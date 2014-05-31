@@ -8,7 +8,7 @@ id_1 1,name_2 1,
 (name_2(0) == sparta)
  time:1000
  size:3
-id_1 251,name_2 251,
+id_1 1,name_2 1,
 "]node2[label="Table Scan
 people_from_city
  time:1000
@@ -24,7 +24,7 @@ id_3 1,name_4 1,
 (name_4(0) == sparta)
  time:1000
  size:3
-id_3 251,name_4 251,
+id_3 1,name_4 1,
 "]node5[label="Table Scan
 people_from_city
  time:1000
@@ -36,7 +36,7 @@ node6[label="Filter
 (name_5(0) == sparta)
  time:1000
  size:3
-name_5 251,id_6 251,
+name_5 1,id_6 1,
 "]node7[label="Table Scan
 people_from_city
  time:1000

@@ -9,6 +9,7 @@ AntiJoin4.xml
 AntiJoin5.xml
 ColumnOperations.xml
 CrossJoin.xml
+function.xml
 Group.xml
 Group2.xml
 GroupAndSelect.xml

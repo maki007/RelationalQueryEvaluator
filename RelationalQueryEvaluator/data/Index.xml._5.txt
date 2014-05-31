@@ -11,7 +11,7 @@ a_1 16666,
 (a_1(0) < 5)
  time:130000
  size:33333
-a_1 50000,
+a_1 16666,
 "]node2[label="Sort by index Scan
 x
 index(a_1:ascending)
@@ -23,12 +23,12 @@ node3[label="Sort
 Sort by: a_1 asc
  time:1001645
  size:33333
-a_1 50000,
+a_1 16666,
 "]node4[label="Filter
 (a_1(0) < 5)
  time:100000
  size:33333
-a_1 50000,
+a_1 16666,
 "]node5[label="Table Scan
 x
  time:100000
@@ -40,12 +40,12 @@ node6[label="Sort
 Sort by: a_1 asc
  time:1001645
  size:33333
-a_1 50000,
+a_1 16666,
 "]node7[label="Filter
 (a_1(0) < 5)
  time:100000
  size:33333
-a_1 50000,
+a_1 16666,
 "]node8[label="Sort by index Scan
 x
 index(a_1:ascending)

@@ -46,7 +46,7 @@ node7[label="Filter
 (today < l_shipdate_4(0))
  time:6000000
  size:2000000
-l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
+l_orderkey_3 88186,l_shipdate_4 88186,l_extendedprice_5 88186,l_discount_6 88186,
 "]node8[label="Table Scan
 lineitem
  time:6000000
@@ -108,7 +108,7 @@ node17[label="Filter
 (today < l_shipdate_4(0))
  time:6000000
  size:2000000
-l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
+l_orderkey_3 88186,l_shipdate_4 88186,l_extendedprice_5 88186,l_discount_6 88186,
 "]node18[label="Table Scan
 lineitem
  time:6000000
@@ -149,7 +149,7 @@ o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 (c_mktsegment_2(0) == SEGMENT)
  time:150000
  size:10
-c_custkey_1 13831,c_mktsegment_2 13831,
+c_custkey_1 1,c_mktsegment_2 1,
 "]node25[label="Table Scan
 customer
  time:150000
@@ -170,7 +170,7 @@ node27[label="Filter
 (today < l_shipdate_4(0))
  time:6000000
  size:2000000
-l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
+l_orderkey_3 88186,l_shipdate_4 88186,l_extendedprice_5 88186,l_discount_6 88186,
 "]node28[label="Table Scan
 lineitem
  time:6000000
@@ -215,7 +215,7 @@ o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 (c_mktsegment_2(0) == SEGMENT)
  time:150000
  size:10
-c_custkey_1 13831,c_mktsegment_2 13831,
+c_custkey_1 1,c_mktsegment_2 1,
 "]node36[label="Table Scan
 customer
  time:150000
@@ -236,7 +236,7 @@ node38[label="Filter
 (today < l_shipdate_4(0))
  time:6000000
  size:2000000
-l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
+l_orderkey_3 88186,l_shipdate_4 88186,l_extendedprice_5 88186,l_discount_6 88186,
 "]node39[label="Table Scan
 lineitem
  time:6000000
@@ -277,7 +277,7 @@ o_orderdate_7 186,o_shippriority_8 186,o_orderkey_9 186,
 (c_mktsegment_2(0) == SEGMENT)
  time:150000
  size:10
-c_custkey_1 13831,c_mktsegment_2 13831,
+c_custkey_1 1,c_mktsegment_2 1,
 "]node46[label="Sort by index Scan
 customer
 index2(c_mktsegment_2:ascending)
@@ -299,7 +299,7 @@ node48[label="Filter
 (today < l_shipdate_4(0))
  time:6000000
  size:2000000
-l_orderkey_3 264558,l_shipdate_4 264558,l_extendedprice_5 264558,l_discount_6 264558,
+l_orderkey_3 88186,l_shipdate_4 88186,l_extendedprice_5 88186,l_discount_6 88186,
 "]node49[label="Table Scan
 lineitem
  time:6000000
