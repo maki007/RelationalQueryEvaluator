@@ -4,12 +4,12 @@ node0[label="Columns Operations
 name, x = sqrt(id_2(0))
  time:0
  size:1000
-name_1 251,x_3 251,
+name_1 252,x_3 252,
 "]node1[label="Table Scan
 people_from_city
  time:1000
  size:1000
-name_1 251,id_2 251,
+name_1 252,id_2 252,
 "]node1 -> node0[headport=s, tailport=n,label="   "]
 
 }

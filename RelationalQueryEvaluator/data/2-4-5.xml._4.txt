@@ -4,12 +4,12 @@ node0[label="Sort
 Sort by: revenue_19 desc
  time:23
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node1[label="Hash Group
 n_name_14, revenue_19=sum(x_17);
  time:8240
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node2[label="Columns Operations
 n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
  time:0
@@ -24,12 +24,12 @@ c_custkey_1 800,c_nationkey_2 25,o_custkey_3 800,o_orderkey_4 800,o_orderdate_5 
 (l_orderkey_6(0) == o_orderkey_4(0))
  time:493333
  size:20000
-o_custkey_3 16666,o_orderkey_4 20000,o_orderdate_5 9696,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+o_custkey_3 16667,o_orderkey_4 20000,o_orderdate_5 9697,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node5[label="Hash Join
 (l_suppkey_7(0) == s_suppkey_10(0))
  time:216000
  size:20000
-l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node6[label="Hash Join
 (n_nationkey_12(0) == s_nationkey_11(0))
  time:20040
@@ -56,7 +56,7 @@ node10[label="Table Scan
 nation
  time:25
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node10 -> node7[headport=s, tailport=n,label="   "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node11[label="Table Scan
@@ -70,19 +70,19 @@ node12[label="Table Scan
 lineitem
  time:100000
  size:100000
-l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,
+l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,
 "]node12 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node13[label="Filter
 AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
  time:1500000
- size:166666
-o_custkey_3 16666,o_orderkey_4 166666,o_orderdate_5 9696,
+ size:166667
+o_custkey_3 16667,o_orderkey_4 166667,o_orderdate_5 9697,
 "]node14[label="Table Scan
 orders
  time:1500000
  size:1500000
-o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87271,
+o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87272,
 "]node14 -> node13[headport=s, tailport=n,label="   "]
 node13 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
@@ -99,12 +99,12 @@ node16[label="Sort
 Sort by: revenue_19 desc
  time:23
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node17[label="Hash Group
 n_name_14, revenue_19=sum(x_17);
  time:8240
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node18[label="Columns Operations
 n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
  time:0
@@ -119,12 +119,12 @@ c_custkey_1 800,c_nationkey_2 25,o_custkey_3 800,o_orderkey_4 800,o_orderdate_5 
 (l_orderkey_6(0) == o_orderkey_4(0))
  time:493333
  size:20000
-o_custkey_3 16666,o_orderkey_4 20000,o_orderdate_5 9696,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+o_custkey_3 16667,o_orderkey_4 20000,o_orderdate_5 9697,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node21[label="Hash Join
 (l_suppkey_7(0) == s_suppkey_10(0))
  time:216000
  size:20000
-l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node22[label="Hash Join
 (n_nationkey_12(0) == s_nationkey_11(0))
  time:20040
@@ -139,12 +139,12 @@ n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 Sort by: n_regionkey_13 both
  time:232
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node25[label="Table Scan
 nation
  time:25
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node25 -> node24[headport=s, tailport=n,label="   "]
 node24 -> node23[headport=s, tailport=n,label="   "]
 node26[label="Sort
@@ -177,19 +177,19 @@ node30[label="Table Scan
 lineitem
  time:100000
  size:100000
-l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,
+l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,
 "]node30 -> node21[headport=s, tailport=n,label="   "]
 node21 -> node20[headport=s, tailport=n,label="   "]
 node31[label="Filter
 AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
  time:1500000
- size:166666
-o_custkey_3 16666,o_orderkey_4 166666,o_orderdate_5 9696,
+ size:166667
+o_custkey_3 16667,o_orderkey_4 166667,o_orderdate_5 9697,
 "]node32[label="Table Scan
 orders
  time:1500000
  size:1500000
-o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87271,
+o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87272,
 "]node32 -> node31[headport=s, tailport=n,label="   "]
 node31 -> node20[headport=s, tailport=n,label="   "]
 node20 -> node19[headport=s, tailport=n,label="   "]
@@ -206,12 +206,12 @@ node34[label="Sort
 Sort by: revenue_19 desc
  time:23
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node35[label="Hash Group
 n_name_14, revenue_19=sum(x_17);
  time:8240
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node36[label="Columns Operations
 n_name, x = (l_extendedprice_8(0) * (1 - l_discount_9(0)))
  time:0
@@ -226,12 +226,12 @@ c_custkey_1 800,c_nationkey_2 25,o_custkey_3 800,o_orderkey_4 800,o_orderdate_5 
 (l_orderkey_6(0) == o_orderkey_4(0))
  time:493333
  size:20000
-o_custkey_3 16666,o_orderkey_4 20000,o_orderdate_5 9696,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+o_custkey_3 16667,o_orderkey_4 20000,o_orderdate_5 9697,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node39[label="Hash Join
 (l_suppkey_7(0) == s_suppkey_10(0))
  time:216000
  size:20000
-l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node40[label="Hash Join
 (n_nationkey_12(0) == s_nationkey_11(0))
  time:20040
@@ -246,12 +246,12 @@ n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 Sort by: n_regionkey_13 both
  time:232
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node43[label="Table Scan
 nation
  time:25
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node43 -> node42[headport=s, tailport=n,label="   "]
 node42 -> node41[headport=s, tailport=n,label="   "]
 node44[label="Sort
@@ -284,19 +284,19 @@ node48[label="Table Scan
 lineitem
  time:100000
  size:100000
-l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,
+l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,
 "]node48 -> node39[headport=s, tailport=n,label="   "]
 node39 -> node38[headport=s, tailport=n,label="   "]
 node49[label="Filter
 AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
  time:1500000
- size:166666
-o_custkey_3 16666,o_orderkey_4 166666,o_orderdate_5 9696,
+ size:166667
+o_custkey_3 16667,o_orderkey_4 166667,o_orderdate_5 9697,
 "]node50[label="Table Scan
 orders
  time:1500000
  size:1500000
-o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87271,
+o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87272,
 "]node50 -> node49[headport=s, tailport=n,label="   "]
 node49 -> node38[headport=s, tailport=n,label="   "]
 node38 -> node37[headport=s, tailport=n,label="   "]
@@ -313,12 +313,12 @@ node52[label="Sort
 Sort by: revenue_19 desc
  time:23
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node53[label="Sorted Group
 n_name_14, revenue_19=sum(x_17);
  time:1040
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node54[label="Sort
 Sort by: n_name_14 both
  time:15430
@@ -338,12 +338,12 @@ c_custkey_1 800,c_nationkey_2 25,o_custkey_3 800,o_orderkey_4 800,o_orderdate_5 
 (l_orderkey_6(0) == o_orderkey_4(0))
  time:493333
  size:20000
-o_custkey_3 16666,o_orderkey_4 20000,o_orderdate_5 9696,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+o_custkey_3 16667,o_orderkey_4 20000,o_orderdate_5 9697,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node58[label="Hash Join
 (l_suppkey_7(0) == s_suppkey_10(0))
  time:216000
  size:20000
-l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node59[label="Hash Join
 (n_nationkey_12(0) == s_nationkey_11(0))
  time:20040
@@ -370,7 +370,7 @@ node63[label="Table Scan
 nation
  time:25
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node63 -> node60[headport=s, tailport=n,label="   "]
 node60 -> node59[headport=s, tailport=n,label="   "]
 node64[label="Table Scan
@@ -384,19 +384,19 @@ node65[label="Table Scan
 lineitem
  time:100000
  size:100000
-l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,
+l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,
 "]node65 -> node58[headport=s, tailport=n,label="   "]
 node58 -> node57[headport=s, tailport=n,label="   "]
 node66[label="Filter
 AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
  time:1500000
- size:166666
-o_custkey_3 16666,o_orderkey_4 166666,o_orderdate_5 9696,
+ size:166667
+o_custkey_3 16667,o_orderkey_4 166667,o_orderdate_5 9697,
 "]node67[label="Table Scan
 orders
  time:1500000
  size:1500000
-o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87271,
+o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87272,
 "]node67 -> node66[headport=s, tailport=n,label="   "]
 node66 -> node57[headport=s, tailport=n,label="   "]
 node57 -> node56[headport=s, tailport=n,label="   "]
@@ -414,12 +414,12 @@ node69[label="Sort
 Sort by: revenue_19 desc
  time:23
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node70[label="Sorted Group
 n_name_14, revenue_19=sum(x_17);
  time:1040
  size:5
-n_name_18 0,revenue_19 5,
+n_name_18 1,revenue_19 5,
 "]node71[label="Sort
 Sort by: n_name_14 both
  time:15430
@@ -439,12 +439,12 @@ c_custkey_1 800,c_nationkey_2 25,o_custkey_3 800,o_orderkey_4 800,o_orderdate_5 
 (l_orderkey_6(0) == o_orderkey_4(0))
  time:493333
  size:20000
-o_custkey_3 16666,o_orderkey_4 20000,o_orderdate_5 9696,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+o_custkey_3 16667,o_orderkey_4 20000,o_orderdate_5 9697,l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node75[label="Hash Join
 (l_suppkey_7(0) == s_suppkey_10(0))
  time:216000
  size:20000
-l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
+l_orderkey_6 20000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,s_suppkey_10 2000,s_nationkey_11 25,n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 "]node76[label="Hash Join
 (n_nationkey_12(0) == s_nationkey_11(0))
  time:20040
@@ -459,12 +459,12 @@ n_nationkey_12 5,n_regionkey_13 5,n_name_14 5,r_regionkey_15 1,r_name_16 1,
 Sort by: n_regionkey_13 both
  time:232
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node79[label="Table Scan
 nation
  time:25
  size:25
-n_nationkey_12 25,n_regionkey_13 5,n_name_14 13,
+n_nationkey_12 25,n_regionkey_13 5,n_name_14 14,
 "]node79 -> node78[headport=s, tailport=n,label="   "]
 node78 -> node77[headport=s, tailport=n,label="   "]
 node80[label="Sort
@@ -497,19 +497,19 @@ node84[label="Table Scan
 lineitem
  time:100000
  size:100000
-l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10000,l_discount_9 10000,
+l_orderkey_6 100000,l_suppkey_7 10000,l_extendedprice_8 10001,l_discount_9 10001,
 "]node84 -> node75[headport=s, tailport=n,label="   "]
 node75 -> node74[headport=s, tailport=n,label="   "]
 node85[label="Filter
 AND ((20-11-2013 <= o_orderdate_5(0)),(o_orderdate_5(0) < 20-11-2014))
  time:1500000
- size:166666
-o_custkey_3 16666,o_orderkey_4 166666,o_orderdate_5 9696,
+ size:166667
+o_custkey_3 16667,o_orderkey_4 166667,o_orderdate_5 9697,
 "]node86[label="Table Scan
 orders
  time:1500000
  size:1500000
-o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87271,
+o_custkey_3 150000,o_orderkey_4 1500000,o_orderdate_5 87272,
 "]node86 -> node85[headport=s, tailport=n,label="   "]
 node85 -> node74[headport=s, tailport=n,label="   "]
 node74 -> node73[headport=s, tailport=n,label="   "]

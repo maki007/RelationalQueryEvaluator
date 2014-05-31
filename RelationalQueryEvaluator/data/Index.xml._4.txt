@@ -4,27 +4,27 @@ node0[label="Partial Sort
 Sorted by a_1 asc
 Sort by: 
  time:0
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node1[label="Index Scan
 x
 (a_1(0) < 5)
 index(a_1:ascending)
  time:100099
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Partial Sort
 Sorted by a_1 asc
 Sort by: 
  time:0
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node3[label="Filter Keeping Order
 (a_1(0) < 5)
  time:130000
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node4[label="Sort by index Scan
 x
 index(a_1:ascending)
@@ -36,13 +36,13 @@ node3 -> node2[headport=s, tailport=n,label="   "]
 node5[label="Sort
 Sort by: a_1 asc
  time:1001645
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node6[label="Filter
 (a_1(0) < 5)
  time:100000
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node7[label="Table Scan
 x
  time:100000
@@ -53,13 +53,13 @@ node6 -> node5[headport=s, tailport=n,label="   "]
 node8[label="Sort
 Sort by: a_1 asc
  time:1001645
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node9[label="Filter
 (a_1(0) < 5)
  time:100000
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node10[label="Sort by index Scan
 x
 index(a_1:ascending)

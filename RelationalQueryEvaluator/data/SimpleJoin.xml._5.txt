@@ -3,95 +3,95 @@ digraph g {node [shape=box]
 node0[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200
- size:3981
-a_1 251,b_2 251,
+ size:3982
+a_1 252,b_2 252,
 "]node1[label="Table Scan
 p
  time:1000
  size:1000
-a_1 251,
+a_1 252,
 "]node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Sort by index Scan
 q
 index(b_2:ascending)
  time:3000
  size:1000
-b_2 251,
+b_2 252,
 "]node2 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200
- size:3981
-a_1 251,b_2 251,
+ size:3982
+a_1 252,b_2 252,
 "]node4[label="Table Scan
 p
  time:1000
  size:1000
-a_1 251,
+a_1 252,
 "]node4 -> node3[headport=s, tailport=n,label="   "]
 node5[label="Sort by index Scan
 q
 index(b_2:ascending)
  time:3000
  size:1000
-b_2 251,
+b_2 252,
 "]node5 -> node3[headport=s, tailport=n,label="   "]
 node6[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000
- size:3981
-a_1 251,b_2 251,
+ size:3982
+a_1 252,b_2 252,
 "]node7[label="Table Scan
 p
  time:1000
  size:1000
-a_1 251,
+a_1 252,
 "]node7 -> node6[headport=s, tailport=n,label="   "]
 node8[label="Table Scan
 q
  time:1000
  size:1000
-b_2 251,
+b_2 252,
 "]node8 -> node6[headport=s, tailport=n,label="   "]
 node9[label="Hash Join
 (a_1(0) == b_2(1))
  time:10000
- size:3981
-a_1 251,b_2 251,
+ size:3982
+a_1 252,b_2 252,
 "]node10[label="Table Scan
 p
  time:1000
  size:1000
-a_1 251,
+a_1 252,
 "]node10 -> node9[headport=s, tailport=n,label="   "]
 node11[label="Sort by index Scan
 q
 index(b_2:ascending)
  time:3000
  size:1000
-b_2 251,
+b_2 252,
 "]node11 -> node9[headport=s, tailport=n,label="   "]
 node12[label="Merge Join
 (a_1(0) == b_2(1))
  time:1200
- size:3981
-a_1 251,b_2 251,
+ size:3982
+a_1 252,b_2 252,
 "]node13[label="Table Scan
 p
  time:1000
  size:1000
-a_1 251,
+a_1 252,
 "]node13 -> node12[headport=s, tailport=n,label="   "]
 node14[label="Sort
 Sort by: b_2 asc
  time:19931
  size:1000
-b_2 251,
+b_2 252,
 "]node15[label="Table Scan
 q
  time:1000
  size:1000
-b_2 251,
+b_2 252,
 "]node15 -> node14[headport=s, tailport=n,label="   "]
 node14 -> node12[headport=s, tailport=n,label="   "]
 

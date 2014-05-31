@@ -122,7 +122,7 @@ string columns(std::map<int, ColumnInfo> & columns)
 	string result = "";
 	for (auto it = columns.begin(); it != columns.end(); ++it)
 	{
-		result += it->second.column.toString() + " " + to_string(int(it->second.numberOfUniqueValues)) + ",";
+		result += it->second.column.toString() + " " + to_string(int(ceil(it->second.numberOfUniqueValues))) + ",";
 	}
 	return result;
 }
@@ -131,7 +131,7 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label, NullaryPhysica
 {
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
+	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)ceil(node->size)) + "\n" + columns(node->columns) + "\n\"]");
 }
 
 void PhysicalOperatorDrawingVisitor::generateText(string & label, UnaryPhysicalOperator * node)
@@ -140,7 +140,7 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label, UnaryPhysicalO
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
+	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)ceil(node->size)) + "\n" + columns(node->columns) + "\n\"]");
 	ulong childIdentifier = ++nodeCounter;
 	node->child->accept(*this);
 
@@ -158,7 +158,7 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label, BinaryPhysical
 
 	result.append("node");
 	result.append(to_string(nodeCounter));
-	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)node->size) + "\n" + columns(node->columns) + "\n\"]");
+	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)ceil(node->size)) + "\n" + columns(node->columns) + "\n\"]");
 
 	ulong childIdentifier = ++nodeCounter;
 	node->leftChild->accept(*this);

@@ -3,7 +3,7 @@ digraph g {node [shape=box]
 node0[label="Merge Join
 AND ((a1_1(0) <= b_3(1)),(b_3(1) <= a2_2(0)))
  time:111111
- size:111111
+ size:111112
 a1_1 1000,a2_2 1000,b_3 1000,
 "]node1[label="Sort
 Sort by: a1_1 asc, a2_2 asc
@@ -32,7 +32,7 @@ node3 -> node0[headport=s, tailport=n,label="   "]
 node5[label="Filter
 AND ((a1_1(0) <= b_3(1)),(b_3(1) <= a2_2(0)))
  time:1000000
- size:111111
+ size:111112
 a1_1 1000,a2_2 1000,b_3 1000,
 "]node6[label="Cross Join
  time:1000000

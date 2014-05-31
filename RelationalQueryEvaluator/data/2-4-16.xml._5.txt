@@ -3,62 +3,62 @@ digraph g {node [shape=box]
 node0[label="Sort
 Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
  time:5
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node1[label="Sorted Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
  time:13
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node2[label="Sorted Group
 p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
  time:27
- size:10
-p_brand_9 1,p_type_10 1,p_size_11 1,ps_suppkey_12 20,
+ size:11
+p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node3[label="Sort
 Sort by: p_brand_5 asc, p_type_4 asc, p_size_3 asc, ps_suppkey_2 asc
  time:183
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node4[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
  time:2750
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node5[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
  time:2084
- size:41
-ps_partkey_1 41,ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:42
+ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node6[label="Filter
 AND ((p_brand_5(0) != brand),!(like(p_type_4(0),TYPE%)),OR ((p_size_3(0) == 1),(p_size_3(0) == 2),(p_size_3(0) == 3),(p_size_3(0) == 4)))
  time:1000
- size:10
-p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:11
+p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node7[label="Table Scan
 part
  time:1000
  size:1000
-p_size_3 251,p_type_4 251,p_brand_5 251,p_partkey_6 251,
+p_size_3 252,p_type_4 252,p_brand_5 252,p_partkey_6 252,
 "]node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node5[headport=s, tailport=n,label="   "]
 node8[label="Table Scan
 partsupp
  time:1000
  size:1000
-ps_partkey_1 251,ps_suppkey_2 251,
+ps_partkey_1 252,ps_suppkey_2 252,
 "]node8 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node9[label="Filter
 like(s_comment_8(0),%Customer%Complaints%)
  time:1000
- size:333
-s_suppkey_7 83,s_comment_8 83,
+ size:334
+s_suppkey_7 84,s_comment_8 84,
 "]node10[label="Table Scan
 supplier
  time:1000
  size:1000
-s_suppkey_7 251,s_comment_8 251,
+s_suppkey_7 252,s_comment_8 252,
 "]node10 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
@@ -68,62 +68,62 @@ node1 -> node0[headport=s, tailport=n,label="   "]
 node11[label="Sort
 Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
  time:5
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node12[label="Sorted Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
  time:13
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node13[label="Sort
 Sort by: p_brand_9 asc, p_type_10 asc, p_size_11 asc
  time:70
- size:10
-p_brand_9 1,p_type_10 1,p_size_11 1,ps_suppkey_12 20,
+ size:11
+p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node14[label="Hash Group
 p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
  time:215
- size:10
-p_brand_9 1,p_type_10 1,p_size_11 1,ps_suppkey_12 20,
+ size:11
+p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node15[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
  time:2750
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node16[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
  time:2084
- size:41
-ps_partkey_1 41,ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:42
+ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node17[label="Filter
 AND ((p_brand_5(0) != brand),!(like(p_type_4(0),TYPE%)),OR ((p_size_3(0) == 1),(p_size_3(0) == 2),(p_size_3(0) == 3),(p_size_3(0) == 4)))
  time:1000
- size:10
-p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:11
+p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node18[label="Table Scan
 part
  time:1000
  size:1000
-p_size_3 251,p_type_4 251,p_brand_5 251,p_partkey_6 251,
+p_size_3 252,p_type_4 252,p_brand_5 252,p_partkey_6 252,
 "]node18 -> node17[headport=s, tailport=n,label="   "]
 node17 -> node16[headport=s, tailport=n,label="   "]
 node19[label="Table Scan
 partsupp
  time:1000
  size:1000
-ps_partkey_1 251,ps_suppkey_2 251,
+ps_partkey_1 252,ps_suppkey_2 252,
 "]node19 -> node16[headport=s, tailport=n,label="   "]
 node16 -> node15[headport=s, tailport=n,label="   "]
 node20[label="Filter
 like(s_comment_8(0),%Customer%Complaints%)
  time:1000
- size:333
-s_suppkey_7 83,s_comment_8 83,
+ size:334
+s_suppkey_7 84,s_comment_8 84,
 "]node21[label="Table Scan
 supplier
  time:1000
  size:1000
-s_suppkey_7 251,s_comment_8 251,
+s_suppkey_7 252,s_comment_8 252,
 "]node21 -> node20[headport=s, tailport=n,label="   "]
 node20 -> node15[headport=s, tailport=n,label="   "]
 node15 -> node14[headport=s, tailport=n,label="   "]
@@ -133,62 +133,62 @@ node12 -> node11[headport=s, tailport=n,label="   "]
 node22[label="Sort
 Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
  time:5
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node23[label="Hash Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
  time:107
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node24[label="Sorted Group
 p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
  time:27
- size:10
-p_brand_9 1,p_type_10 1,p_size_11 1,ps_suppkey_12 20,
+ size:11
+p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node25[label="Sort
 Sort by: p_brand_5 asc, p_type_4 asc, p_size_3 asc, ps_suppkey_2 asc
  time:183
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node26[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
  time:2750
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node27[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
  time:2084
- size:41
-ps_partkey_1 41,ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:42
+ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node28[label="Filter
 AND ((p_brand_5(0) != brand),!(like(p_type_4(0),TYPE%)),OR ((p_size_3(0) == 1),(p_size_3(0) == 2),(p_size_3(0) == 3),(p_size_3(0) == 4)))
  time:1000
- size:10
-p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:11
+p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node29[label="Table Scan
 part
  time:1000
  size:1000
-p_size_3 251,p_type_4 251,p_brand_5 251,p_partkey_6 251,
+p_size_3 252,p_type_4 252,p_brand_5 252,p_partkey_6 252,
 "]node29 -> node28[headport=s, tailport=n,label="   "]
 node28 -> node27[headport=s, tailport=n,label="   "]
 node30[label="Table Scan
 partsupp
  time:1000
  size:1000
-ps_partkey_1 251,ps_suppkey_2 251,
+ps_partkey_1 252,ps_suppkey_2 252,
 "]node30 -> node27[headport=s, tailport=n,label="   "]
 node27 -> node26[headport=s, tailport=n,label="   "]
 node31[label="Filter
 like(s_comment_8(0),%Customer%Complaints%)
  time:1000
- size:333
-s_suppkey_7 83,s_comment_8 83,
+ size:334
+s_suppkey_7 84,s_comment_8 84,
 "]node32[label="Table Scan
 supplier
  time:1000
  size:1000
-s_suppkey_7 251,s_comment_8 251,
+s_suppkey_7 252,s_comment_8 252,
 "]node32 -> node31[headport=s, tailport=n,label="   "]
 node31 -> node26[headport=s, tailport=n,label="   "]
 node26 -> node25[headport=s, tailport=n,label="   "]
@@ -198,57 +198,57 @@ node23 -> node22[headport=s, tailport=n,label="   "]
 node33[label="Sort
 Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
  time:5
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node34[label="Hash Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
  time:107
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node35[label="Hash Group
 p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
  time:215
- size:10
-p_brand_9 1,p_type_10 1,p_size_11 1,ps_suppkey_12 20,
+ size:11
+p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node36[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
  time:2750
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node37[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
  time:2084
- size:41
-ps_partkey_1 41,ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:42
+ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node38[label="Filter
 AND ((p_brand_5(0) != brand),!(like(p_type_4(0),TYPE%)),OR ((p_size_3(0) == 1),(p_size_3(0) == 2),(p_size_3(0) == 3),(p_size_3(0) == 4)))
  time:1000
- size:10
-p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:11
+p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node39[label="Table Scan
 part
  time:1000
  size:1000
-p_size_3 251,p_type_4 251,p_brand_5 251,p_partkey_6 251,
+p_size_3 252,p_type_4 252,p_brand_5 252,p_partkey_6 252,
 "]node39 -> node38[headport=s, tailport=n,label="   "]
 node38 -> node37[headport=s, tailport=n,label="   "]
 node40[label="Table Scan
 partsupp
  time:1000
  size:1000
-ps_partkey_1 251,ps_suppkey_2 251,
+ps_partkey_1 252,ps_suppkey_2 252,
 "]node40 -> node37[headport=s, tailport=n,label="   "]
 node37 -> node36[headport=s, tailport=n,label="   "]
 node41[label="Filter
 like(s_comment_8(0),%Customer%Complaints%)
  time:1000
- size:333
-s_suppkey_7 83,s_comment_8 83,
+ size:334
+s_suppkey_7 84,s_comment_8 84,
 "]node42[label="Table Scan
 supplier
  time:1000
  size:1000
-s_suppkey_7 251,s_comment_8 251,
+s_suppkey_7 252,s_comment_8 252,
 "]node42 -> node41[headport=s, tailport=n,label="   "]
 node41 -> node36[headport=s, tailport=n,label="   "]
 node36 -> node35[headport=s, tailport=n,label="   "]
@@ -257,73 +257,73 @@ node34 -> node33[headport=s, tailport=n,label="   "]
 node43[label="Sort
 Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
  time:5
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node44[label="Sorted Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
  time:13
- size:2
-p_brand_13 0,p_type_14 0,p_size_15 0,supplier_cnt_16 2,
+ size:3
+p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node45[label="Sorted Group
 p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
  time:27
- size:10
-p_brand_9 1,p_type_10 1,p_size_11 1,ps_suppkey_12 20,
+ size:11
+p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node46[label="Sort
 Sort by: p_brand_5 asc, p_type_4 asc, p_size_3 asc, ps_suppkey_2 asc
  time:183
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node47[label="Merge Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
  time:341
- size:20
-ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node48[label="Sort
 Sort by: ps_suppkey_2 asc
  time:450
- size:41
-ps_partkey_1 41,ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:42
+ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node49[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
  time:2084
- size:41
-ps_partkey_1 41,ps_suppkey_2 41,p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:42
+ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node50[label="Filter
 AND ((p_brand_5(0) != brand),!(like(p_type_4(0),TYPE%)),OR ((p_size_3(0) == 1),(p_size_3(0) == 2),(p_size_3(0) == 3),(p_size_3(0) == 4)))
  time:1000
- size:10
-p_size_3 2,p_type_4 2,p_brand_5 2,p_partkey_6 2,
+ size:11
+p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node51[label="Table Scan
 part
  time:1000
  size:1000
-p_size_3 251,p_type_4 251,p_brand_5 251,p_partkey_6 251,
+p_size_3 252,p_type_4 252,p_brand_5 252,p_partkey_6 252,
 "]node51 -> node50[headport=s, tailport=n,label="   "]
 node50 -> node49[headport=s, tailport=n,label="   "]
 node52[label="Table Scan
 partsupp
  time:1000
  size:1000
-ps_partkey_1 251,ps_suppkey_2 251,
+ps_partkey_1 252,ps_suppkey_2 252,
 "]node52 -> node49[headport=s, tailport=n,label="   "]
 node49 -> node48[headport=s, tailport=n,label="   "]
 node48 -> node47[headport=s, tailport=n,label="   "]
 node53[label="Sort
 Sort by: s_suppkey_7 asc
  time:5587
- size:333
-s_suppkey_7 83,s_comment_8 83,
+ size:334
+s_suppkey_7 84,s_comment_8 84,
 "]node54[label="Filter
 like(s_comment_8(0),%Customer%Complaints%)
  time:1000
- size:333
-s_suppkey_7 83,s_comment_8 83,
+ size:334
+s_suppkey_7 84,s_comment_8 84,
 "]node55[label="Table Scan
 supplier
  time:1000
  size:1000
-s_suppkey_7 251,s_comment_8 251,
+s_suppkey_7 252,s_comment_8 252,
 "]node55 -> node54[headport=s, tailport=n,label="   "]
 node54 -> node53[headport=s, tailport=n,label="   "]
 node53 -> node47[headport=s, tailport=n,label="   "]

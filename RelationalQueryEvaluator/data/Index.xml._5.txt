@@ -5,13 +5,13 @@ x
 (a_1(0) < 5)
 index(a_1:ascending)
  time:100099
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node1[label="Filter Keeping Order
 (a_1(0) < 5)
  time:130000
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node2[label="Sort by index Scan
 x
 index(a_1:ascending)
@@ -22,13 +22,13 @@ a_1 50000,
 node3[label="Sort
 Sort by: a_1 asc
  time:1001645
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node4[label="Filter
 (a_1(0) < 5)
  time:100000
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node5[label="Table Scan
 x
  time:100000
@@ -39,13 +39,13 @@ node4 -> node3[headport=s, tailport=n,label="   "]
 node6[label="Sort
 Sort by: a_1 asc
  time:1001645
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node7[label="Filter
 (a_1(0) < 5)
  time:100000
- size:33333
-a_1 16666,
+ size:33334
+a_1 16667,
 "]node8[label="Sort by index Scan
 x
 index(a_1:ascending)

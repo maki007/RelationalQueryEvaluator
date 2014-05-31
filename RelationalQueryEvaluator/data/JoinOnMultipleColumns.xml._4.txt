@@ -4,75 +4,75 @@ node0[label="Hash Antijoin
 AND ((a1_1(0) == b1_3(1)),(a2_2(0) == b2_4(1)))
  time:10000
  size:250
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node1[label="Table Scan
 a
  time:1000
  size:1000
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Table Scan
 b
  time:1000
  size:1000
-b1_3 251,b2_4 251,
+b1_3 252,b2_4 252,
 "]node2 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Merge Antijoin
 AND ((a1_1(0) == b1_3(1)),(a2_2(0) == b2_4(1)))
  time:1200
  size:250
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node4[label="Sort
 Sort by: (a1_1 both, a2_2 both)
  time:19931
  size:1000
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node5[label="Table Scan
 a
  time:1000
  size:1000
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node6[label="Sort
 Sort by: (b1_3 both, b2_4 both)
  time:19931
  size:1000
-b1_3 251,b2_4 251,
+b1_3 252,b2_4 252,
 "]node7[label="Table Scan
 b
  time:1000
  size:1000
-b1_3 251,b2_4 251,
+b1_3 252,b2_4 252,
 "]node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]
 node8[label="Merge Antijoin
 AND ((a1_1(0) == b1_3(1)),(a2_2(0) == b2_4(1)))
  time:1200
  size:250
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node9[label="Sort
 Sort by: (a1_1 both, a2_2 both)
  time:19931
  size:1000
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node10[label="Table Scan
 a
  time:1000
  size:1000
-a1_1 251,a2_2 251,
+a1_1 252,a2_2 252,
 "]node10 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node8[headport=s, tailport=n,label="   "]
 node11[label="Sort
 Sort by: (b1_3 both, b2_4 both)
  time:19931
  size:1000
-b1_3 251,b2_4 251,
+b1_3 252,b2_4 252,
 "]node12[label="Table Scan
 b
  time:1000
  size:1000
-b1_3 251,b2_4 251,
+b1_3 252,b2_4 252,
 "]node12 -> node11[headport=s, tailport=n,label="   "]
 node11 -> node8[headport=s, tailport=n,label="   "]
 

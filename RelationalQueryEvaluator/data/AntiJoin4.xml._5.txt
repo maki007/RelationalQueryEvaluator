@@ -4,63 +4,63 @@ node0[label="Hash Antijoin
 (c_1(0) == a_2(1))
  time:10000
  size:500
-c_1 251,
+c_1 252,
 "]node1[label="Table Scan
 z
  time:1000
  size:1000
-c_1 251,
+c_1 252,
 "]node1 -> node0[headport=s, tailport=n,label="   "]
 node2[label="Table Scan
 x
  time:1000
  size:1000
-a_2 251,
+a_2 252,
 "]node2 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Merge Antijoin
 (c_1(0) == a_2(1))
  time:1200
  size:500
-c_1 251,
+c_1 252,
 "]node4[label="Table Scan
 z
  time:1000
  size:1000
-c_1 251,
+c_1 252,
 "]node4 -> node3[headport=s, tailport=n,label="   "]
 node5[label="Sort
 Sort by: a_2 desc
  time:19931
  size:1000
-a_2 251,
+a_2 252,
 "]node6[label="Table Scan
 x
  time:1000
  size:1000
-a_2 251,
+a_2 252,
 "]node6 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node3[headport=s, tailport=n,label="   "]
 node7[label="Merge Antijoin
 (c_1(0) == a_2(1))
  time:1200
  size:500
-c_1 251,
+c_1 252,
 "]node8[label="Table Scan
 z
  time:1000
  size:1000
-c_1 251,
+c_1 252,
 "]node8 -> node7[headport=s, tailport=n,label="   "]
 node9[label="Sort
 Sort by: a_2 desc
  time:19931
  size:1000
-a_2 251,
+a_2 252,
 "]node10[label="Table Scan
 x
  time:1000
  size:1000
-a_2 251,
+a_2 252,
 "]node10 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node7[headport=s, tailport=n,label="   "]
 

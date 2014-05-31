@@ -5,13 +5,13 @@ users
 AND ((0 < a_1(0)),(a_1(0) < 8000))
 index(a_1:ascending,b_2:ascending)
  time:3333472
- size:1111111
-a_1 111,b_2 111,
+ size:1111112
+a_1 112,b_2 112,
 "]node1[label="Filter
 AND ((0 < a_1(0)),(a_1(0) < 8000))
  time:10000000
- size:1111111
-a_1 111,b_2 111,
+ size:1111112
+a_1 112,b_2 112,
 "]node2[label="Table Scan
 users
  time:10000000
@@ -21,8 +21,8 @@ a_1 1000,b_2 1000,
 node3[label="Filter
 AND ((0 < a_1(0)),(a_1(0) < 8000))
  time:10000000
- size:1111111
-a_1 111,b_2 111,
+ size:1111112
+a_1 112,b_2 112,
 "]node4[label="Sort by index Scan
 users
 index(a_1:ascending,b_2:ascending)
@@ -33,8 +33,8 @@ a_1 1000,b_2 1000,
 node5[label="Filter Keeping Order
 AND ((0 < a_1(0)),(a_1(0) < 8000))
  time:13000000
- size:1111111
-a_1 111,b_2 111,
+ size:1111112
+a_1 112,b_2 112,
 "]node6[label="Sort by index Scan
 users
 index(a_1:ascending,b_2:ascending)

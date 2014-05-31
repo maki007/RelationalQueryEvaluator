@@ -2,46 +2,46 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Union
  time:3
- size:11
+ size:12
 id_1 1,name_2 1,
 "]node1[label="Filter
 (name_2(0) == sparta)
  time:1000
- size:3
+ size:4
 id_1 1,name_2 1,
 "]node2[label="Table Scan
 people_from_city
  time:1000
  size:1000
-id_1 251,name_2 251,
+id_1 252,name_2 252,
 "]node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node3[label="Union
  time:2
- size:7
+ size:8
 id_3 1,name_4 1,
 "]node4[label="Filter
 (name_4(0) == sparta)
  time:1000
- size:3
+ size:4
 id_3 1,name_4 1,
 "]node5[label="Table Scan
 people_from_city
  time:1000
  size:1000
-id_3 251,name_4 251,
+id_3 252,name_4 252,
 "]node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node6[label="Filter
 (name_5(0) == sparta)
  time:1000
- size:3
+ size:4
 name_5 1,id_6 1,
 "]node7[label="Table Scan
 people_from_city
  time:1000
  size:1000
-name_5 251,id_6 251,
+name_5 252,id_6 252,
 "]node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node3[headport=s, tailport=n,label="   "]
 node3 -> node0[headport=s, tailport=n,label="   "]

@@ -3,82 +3,82 @@ digraph g {node [shape=box]
 node0[label="Sort
 Sort by: d_4 desc, a_1 asc
  time:4005
- size:251
-a_1 251,c_2 251,b_3 251,d_4 251,
+ size:252
+a_1 252,c_2 252,b_3 252,d_4 252,
 "]node1[label="Hash Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:10000000
- size:251
-a_1 251,c_2 251,b_3 251,d_4 251,
+ size:252
+a_1 252,c_2 252,b_3 252,d_4 252,
 "]node2[label="Table Scan
 A
  time:1000000
  size:1000000
-a_1 63095,c_2 63095,
+a_1 63096,c_2 63096,
 "]node2 -> node1[headport=s, tailport=n,label="   "]
 node3[label="Table Scan
 B
  time:1000000
  size:1000000
-b_3 63095,d_4 63095,
+b_3 63096,d_4 63096,
 "]node3 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Merge Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:1200000
- size:251
-a_1 251,c_2 251,b_3 251,d_4 251,
+ size:252
+a_1 252,c_2 252,b_3 252,d_4 252,
 "]node5[label="Sort
 Sort by: c_2 desc, a_1 asc
  time:39863137
  size:1000000
-a_1 63095,c_2 63095,
+a_1 63096,c_2 63096,
 "]node6[label="Table Scan
 A
  time:1000000
  size:1000000
-a_1 63095,c_2 63095,
+a_1 63096,c_2 63096,
 "]node6 -> node5[headport=s, tailport=n,label="   "]
 node5 -> node4[headport=s, tailport=n,label="   "]
 node7[label="Sort
 Sort by: d_4 desc, b_3 asc
  time:39863137
  size:1000000
-b_3 63095,d_4 63095,
+b_3 63096,d_4 63096,
 "]node8[label="Table Scan
 B
  time:1000000
  size:1000000
-b_3 63095,d_4 63095,
+b_3 63096,d_4 63096,
 "]node8 -> node7[headport=s, tailport=n,label="   "]
 node7 -> node4[headport=s, tailport=n,label="   "]
 node9[label="Merge Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
  time:1200000
- size:251
-a_1 251,c_2 251,b_3 251,d_4 251,
+ size:252
+a_1 252,c_2 252,b_3 252,d_4 252,
 "]node10[label="Sort
 Sort by: c_2 desc, a_1 asc
  time:39863137
  size:1000000
-a_1 63095,c_2 63095,
+a_1 63096,c_2 63096,
 "]node11[label="Table Scan
 A
  time:1000000
  size:1000000
-a_1 63095,c_2 63095,
+a_1 63096,c_2 63096,
 "]node11 -> node10[headport=s, tailport=n,label="   "]
 node10 -> node9[headport=s, tailport=n,label="   "]
 node12[label="Sort
 Sort by: d_4 desc, b_3 asc
  time:39863137
  size:1000000
-b_3 63095,d_4 63095,
+b_3 63096,d_4 63096,
 "]node13[label="Table Scan
 B
  time:1000000
  size:1000000
-b_3 63095,d_4 63095,
+b_3 63096,d_4 63096,
 "]node13 -> node12[headport=s, tailport=n,label="   "]
 node12 -> node9[headport=s, tailport=n,label="   "]
 
