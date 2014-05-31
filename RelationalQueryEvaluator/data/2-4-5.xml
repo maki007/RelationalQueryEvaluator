@@ -104,7 +104,7 @@
                     <column name="r_name" input="second"/>
                   </parameters>
                   <input>
-                    <table name="customer">
+                    <table name="customer" numberOfRows="150000">
                       <column name="c_custkey" type ="int"/>
                       <column name="c_nationkey" type ="int"/>
                     </table>
@@ -126,7 +126,7 @@
                         <column name="r_name" input="second"/>
                       </parameters>
                       <input>
-                        <table name="orders">
+                        <table name="orders" numberOfRows="1500000">
                           <column name="o_custkey" type ="int"/>
                           <column name="o_orderkey" type ="int"/>
                           <column name="o_orderdate" type ="date"/>
@@ -146,7 +146,7 @@
                             <column name="r_name" input="second"/>
                           </parameters>
                           <input>
-                          <table name="lineitem">
+                          <table name="lineitem" numberOfRows="100000">
                             <column name="l_orderkey" type ="int"/>
                             <column name="l_suppkey" type ="int"/>
                             <column name="l_extendedprice" type ="int"/>
@@ -163,7 +163,7 @@
                                 <column name="r_name" input="second"/>
                               </parameters>
                               <input>
-                                <table name="supplier">
+                                <table name="supplier" numberOfRows="10000">
                                   <column name="s_suppkey" type ="int"/>
                                   <column name="s_nationkey" type ="int"/>
                                 </table>
@@ -176,12 +176,12 @@
                                     <column name="r_name" input="second"/>
                                   </parameters>
                                   <input>
-                                    <table name="nation">
+                                    <table name="nation" numberOfRows="25">
                                       <column name="n_nationkey" type ="int"/>
                                       <column name="n_regionkey" type ="int"/>
                                       <column name="n_name" type="string"/>
                                     </table>
-                                    <table name="region">
+                                    <table name="region"  numberOfRows="5">
                                       <column name="r_regionkey"  type ="int" />
                                       <column name="r_name"  type ="int" />
                                     </table>
