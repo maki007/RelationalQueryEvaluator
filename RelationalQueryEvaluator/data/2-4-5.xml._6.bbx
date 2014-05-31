@@ -15,8 +15,9 @@ HashJoin(int,int,date)(int,int,int,int,int,int,int,int,string,int,int)->(int,int
 TableScan()->(int,int) TableScan11(name="customer",columns="c_custkey,c_nationkey"); 
 HashJoin(int,int,date,int,int,int,int,int,int,int,int,string,int,int)(int,int)->(int,int,int,int,date,int,int,int,int,int,int,int,int,string,int,int) HashJoin12(left="2,3,4,5,6,7,8,9,10,11,12,13,14,15",right="0,1",out="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15",leftPartOfCondition="0,1",rightPartOfCondition="2,10"); 
 ColumnsOperations(int,int,int,int,date,int,int,int,int,int,int,int,int,string,int,int)->(string,double) ColumnsOperations13(out="13,OP_TIMES(7,OP_MINUS(OP_double_CONSTANT(1),8))"); 
-HashGroup(string,double)->(string,double) HashGroup14(groupBy="0",functions="sum(1)"); 
-SortOperator(string,double)->(string,double) SortOperator15(sortedBy="",sortBy="1:D"); 
+SortOperator(string,double)->(string,double) SortOperator14(sortedBy="",sortBy="0:A"); 
+SortedGroup(string,double)->(string,double) SortedGroup15(groupBy="0",functions="sum(1)"); 
+SortOperator(string,double)->(string,double) SortOperator16(sortedBy="",sortBy="1:D"); 
 Store(string,double)->() storeResult(); 
 
 source -> start
@@ -39,8 +40,9 @@ start[5] -> TableScan11;
 HashJoin10 -> [0]HashJoin12;
 TableScan11 -> [1]HashJoin12;
 HashJoin12 -> ColumnsOperations13;
-ColumnsOperations13 -> HashGroup14;
-HashGroup14 -> SortOperator15;
-SortOperator15 -> storeResult;
+ColumnsOperations13 -> SortOperator14;
+SortOperator14 -> SortedGroup15;
+SortedGroup15 -> SortOperator16;
+SortOperator16 -> storeResult;
 storeResult -> output;
 }

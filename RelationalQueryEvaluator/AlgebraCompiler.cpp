@@ -10,7 +10,7 @@ const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
 const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 4;
 
-const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
+const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 10;
 
 
 shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleSortParameters & parameters, const shared_ptr<PhysicalPlan> & plan)
@@ -892,6 +892,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	}
 	double min = newResult[0]->timeComplexity;
 	columns = newResult[0]->plan->columns;
+	size = newResult[0]->plan->size;
 	for (auto it = newResult.begin(); it != newResult.end();++it)
 	{
 		if (min > (*it)->timeComplexity)
@@ -913,6 +914,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		(*it)->plan->columns = columns;
 	}
 	result = newResult;
+	
 }
 
 
