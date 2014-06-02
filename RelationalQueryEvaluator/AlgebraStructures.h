@@ -37,14 +37,10 @@ public:
 
 	std::string toString() const;
 
-	bool operator<(const ColumnIdentifier& other) const
-	{
-		return this->id < other.id;
-	}
-	bool operator ==(const ColumnIdentifier& other) const
-	{
-		return this->id == other.id;
-	}
+	bool operator<(const ColumnIdentifier& other) const;
+
+	bool operator ==(const ColumnIdentifier& other) const;
+
 };
 
 
@@ -60,48 +56,26 @@ public:
 	ColumnIdentifier column;
 	std::set<ColumnIdentifier> others;
 	SortOrder order;
-	SortParameter(const ColumnIdentifier & column, SortOrder order)
-	{
-		this->column = column;
-		this->order = order;
-	}
+	SortParameter(const ColumnIdentifier & column, SortOrder order);
 
-	SortParameter(const ColumnIdentifier & column, const ColumnIdentifier & other, SortOrder order)
-	{
-		this->column = column;
-		this->order = order;
-		this->others.insert(other);
-	}
+	SortParameter(const ColumnIdentifier & column, const ColumnIdentifier & other, SortOrder order);
 
+	SortParameter();
 
-	SortParameter()
-	{
-		this->order = SortOrder::UNKNOWN;
-	}
 };
 
 class SortParameters
 {
 public:
 	std::list<SortParameter> values;
-	bool isKnown() const
-	{
-		return values.size() <= 1;
-	}
 
-	SortParameters(const SortParameter & value)
-	{
-		values.push_back(value);
-	}
+	SortParameters(const SortParameter & value);
 
-	SortParameters(const std::vector<SortParameter> & values)
-	{
-		this->values = std::list<SortParameter>(values.begin(), values.end());
-	}
-	SortParameters()
-	{
+	SortParameters(const std::vector<SortParameter> & values);
 
-	}
+	SortParameters();
+
+	bool isKnown() const;
 
 };
 
@@ -109,22 +83,12 @@ class PossibleSortParameters
 {
 public:
 	std::vector<SortParameters> parameters;
-	PossibleSortParameters(const std::vector<SortParameters> & parameters)
-	{
-		this->parameters = parameters;
-	}
+	PossibleSortParameters(const std::vector<SortParameters> & parameters);
 
-	PossibleSortParameters(const std::vector<SortParameter> & parameters)
-	{
-		for (auto it = parameters.begin(); it != parameters.end(); ++it)
-		{
-			this->parameters.push_back(*it);
-		}
-	}
+	PossibleSortParameters(const std::vector<SortParameter> & parameters);
 
-	PossibleSortParameters()
-	{
-	}
+	PossibleSortParameters();
+
 };
 
 enum AgregateFunctionType
@@ -153,31 +117,7 @@ public:
 	IndexType type;
 	std::string name;
 	std::vector<SortParameter> columns;
-	std::string toString()
-	{
-		std::string column = "";
-		ulong i = 0;
-		for (auto it = columns.begin(); it != columns.end(); ++it)
-		{
-			column += it->column.toString();
-			column += ":";
-			if (it->order == SortOrder::ASCENDING)
-			{
-				column += "ascending";
-			}
-			else
-			{
-				column += "descending";
-			}
-			++i;
-			if (i != columns.size())
-			{
-				column += ",";
-			}
-		}
-
-		return name + "(" + column + ")";
-	}
+	std::string toString();
 };
 
 class JoinColumnInfo;
@@ -226,10 +166,7 @@ class GroupColumn
 public:
 	ColumnIdentifier input;
 	ColumnIdentifier output;
-	GroupColumn(const ColumnIdentifier & input)
-	{
-		this->input = input;
-	}
+	GroupColumn(const ColumnIdentifier & input);
 };
 
 #endif
