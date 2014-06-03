@@ -8,9 +8,9 @@ using namespace std;
 
 const ulong AlgebraCompiler::NUMBER_OF_PLANS = 5;
 
-const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 4;
+const ulong AlgebraCompiler::LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM = 5;
 
-const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 10;
+const ulong AlgebraCompiler::MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM = 20;
 
 
 shared_ptr<PhysicalPlan> AlgebraCompiler::generateSortParameters(const PossibleSortParameters & parameters, const shared_ptr<PhysicalPlan> & plan)

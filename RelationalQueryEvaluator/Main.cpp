@@ -174,6 +174,6 @@ int main(int argc, const char *argv[])
 			cout << "Elapsed time: " << elapsed_secs << endl;
 		}
 	}
-	system("_drawAlgebra.bat");
+	//system("_drawAlgebra.bat");
 	return 0;
 }
