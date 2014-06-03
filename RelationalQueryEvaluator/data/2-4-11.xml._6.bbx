@@ -1,0 +1,56 @@
+operator main()->()
+{
+broadcast()->(){6} start;
+TableScan()->(int,string) TableScan0(name="nation",columns="n_nationkey,n_name"); 
+Filter(int,string)->(int,string) Filter1(condition="OP_EQUALS(1,OP_string_CONSTANT(Slovakia))"); 
+TableScan()->(int,int) TableScan2(name="supplier",columns="s_nationkey,s_suppkey"); 
+HashJoin(int,string)(int,int)->(int,int,int,string) HashJoin3(left="2,3",right="0,1",out="0,1,2,3",leftPartOfCondition="2",rightPartOfCondition="0"); 
+TableScan()->(int,int,int) TableScan4(name="partsup",columns="ps_suppkey,ps_supplycost,ps_availqty"); 
+HashJoin(int,int,int,string)(int,int,int)->(int,int,int,int,int,int,string) HashJoin5(left="3,4,5,6",right="0,1,2",out="0,1,2,3,4,5,6",leftPartOfCondition="4",rightPartOfCondition="0"); 
+ColumnsOperations(int,int,int,int,int,int,string)->(double) ColumnsOperations6(out="OP_TIMES(1,2)"); 
+SortedGroup(double)->(double) SortedGroup7(groupBy="",functions="sum(0)"); 
+ColumnsOperations(double)->(double) ColumnsOperations8(out="OP_TIMES(0,OP_double_CONSTANT(0.7))"); 
+TableScan()->(int,string) TableScan9(name="nation",columns="n_nationkey,n_name"); 
+Filter(int,string)->(int,string) Filter10(condition="OP_EQUALS(1,OP_string_CONSTANT(Slovakia))"); 
+TableScan()->(int,int) TableScan11(name="supplier",columns="s_nationkey,s_suppkey"); 
+HashJoin(int,string)(int,int)->(int,int,int,string) HashJoin12(left="2,3",right="0,1",out="0,1,2,3",leftPartOfCondition="2",rightPartOfCondition="0"); 
+TableScan()->(int,int,int,int) TableScan13(name="partsup",columns="ps_suppkey,ps_partkey,ps_supplycost,ps_availqty"); 
+HashJoin(int,int,int,string)(int,int,int,int)->(int,int,int,int,int,int,int,string) HashJoin14(left="4,5,6,7",right="0,1,2,3",out="0,1,2,3,4,5,6,7",leftPartOfCondition="5",rightPartOfCondition="0"); 
+ColumnsOperations(int,int,int,int,int,int,int,string)->(int,double) ColumnsOperations15(out="1,OP_TIMES(2,3)"); 
+HashGroup(int,double)->(int,double) HashGroup16(groupBy="0",functions="sum(1)"); 
+CrossJoin(double)(int,double)->(double,int,double) CrossJoin17(left="0",right="1,2",out="0,1,2"); 
+Filter(double,int,double)->(double,int,double) Filter18(condition="OP_LOWER(0,2)"); 
+ColumnsOperations(double,int,double)->(int,double) ColumnsOperations19(out="1,2"); 
+SortOperator(int,double)->(int,double) SortOperator20(sortedBy="",sortBy="1:D"); 
+Store(int,double)->() storeResult(); 
+
+source -> start
+start[0] -> TableScan0;
+TableScan0 -> Filter1;
+start[1] -> TableScan2;
+Filter1 -> [0]HashJoin3;
+TableScan2 -> [1]HashJoin3;
+start[2] -> TableScan4;
+HashJoin3 -> [0]HashJoin5;
+TableScan4 -> [1]HashJoin5;
+HashJoin5 -> ColumnsOperations6;
+ColumnsOperations6 -> SortedGroup7;
+SortedGroup7 -> ColumnsOperations8;
+start[3] -> TableScan9;
+TableScan9 -> Filter10;
+start[4] -> TableScan11;
+Filter10 -> [0]HashJoin12;
+TableScan11 -> [1]HashJoin12;
+start[5] -> TableScan13;
+HashJoin12 -> [0]HashJoin14;
+TableScan13 -> [1]HashJoin14;
+HashJoin14 -> ColumnsOperations15;
+ColumnsOperations15 -> HashGroup16;
+ColumnsOperations8 -> [0]CrossJoin17;
+HashGroup16 -> [1]CrossJoin17;
+CrossJoin17 -> Filter18;
+Filter18 -> ColumnsOperations19;
+ColumnsOperations19 -> SortOperator20;
+SortOperator20 -> storeResult;
+storeResult -> output;
+}

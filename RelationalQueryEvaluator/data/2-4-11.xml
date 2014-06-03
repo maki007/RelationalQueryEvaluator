@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+    <parameter column="value" direction="desc" />
+  </parameters>
+  <input>
+    <join>
+      <parameters>
+        <less_condition>
+          <lower>
+            <column name="x"/>
+            <column name="value"/>
+          </lower>
+        </less_condition>
+        <column name="value" input="second"/>
+        <column name="ps_partkey" input="second"/>
+      </parameters>
+      <input>
+        <column_operations>
+          <parameters>
+            <column name="x">
+              <equals>
+                <times>
+                <column name="value"/>
+                  <constant type="double" value="0.7"/>
+                </times>
+              </equals>
+            </column>
+          </parameters>
+          <input>
+        <group>
+          <parameters>
+            <sum output="value" argument="x"/>
+          </parameters>
+          <input>
+            <column_operations>
+              <parameters>
+                <column name="x">
+                  <equals>
+                    <times>
+                      <column name="ps_supplycost"/>
+                      <column name="ps_availqty"/>
+                    </times>
+                  </equals>
+                </column>
+              </parameters>
+              <input>
+        <selection>
+          <parameters>
+            <condition>
+              <and>
+                <and>
+                  <equals>
+                    <column name="ps_suppkey"/>
+                    <column name="s_suppkey"/>
+                  </equals>
+                  <equals>
+                    <column name="s_nationkey"/>
+                    <column name="n_nationkey"/>
+                  </equals>
+                </and>
+                <equals>
+                  <column name="n_name"/>
+                  <constant type="string" value="Slovakia"/>
+                </equals>
+              </and>
+            </condition>
+          </parameters>
+          <input>
+            <join>
+              <parameters>
+                <column name="ps_suppkey" input="first"/>
+                <column name="ps_supplycost" input="first"/>
+                <column name="ps_availqty" input="first"/>
+                <column name="s_nationkey" input="first"/>
+                <column name="s_suppkey" input="first"/>
+                <column name="n_nationkey" input="second"/>
+                <column name="n_name" input="second"/>
+              </parameters>
+              <input>
+                <join>
+                  <parameters>
+                    <column name="ps_suppkey" input="first"/>
+                    <column name="ps_supplycost" input="first"/>
+                    <column name="ps_availqty" input="first"/>
+                    <column name="s_nationkey" input="second"/>
+                    <column name="s_suppkey" input="second"/>
+                  </parameters>
+                  <input>
+                    <table name="partsup" numberOfRows="200000000">
+                      <column name="ps_suppkey" type="int" number_of_unique_values="10000"/>
+                      <column name="ps_supplycost" type="int" number_of_unique_values="200000000"/>
+                      <column name="ps_availqty" type="int" number_of_unique_values="200000000"/>
+                    </table>
+                    <table name="supplier" numberOfRows="10000">
+                      <column name="s_nationkey" type="int" number_of_unique_values="25"/>
+                      <column name="s_suppkey" type="int"/>
+                    </table>
+                  </input>
+                </join>
+                <table name ="nation" numberOfRows="25">
+                  <column name="n_nationkey" type="int" number_of_unique_values="25"/>
+                  <column name="n_name" type="string" number_of_unique_values="25"/>
+                </table>
+              </input>
+            </join>
+          </input>
+        </selection>
+              </input>
+            </column_operations>
+          </input>
+        </group>
+          </input>
+        </column_operations>
+        <group>
+          <parameters>
+            <group_by column="ps_partkey"/>
+            <sum output="value" argument="x"/>
+          </parameters>
+          <input>
+            <column_operations>
+              <parameters>
+                <column name="ps_partkey"></column>
+                <column name="x">
+                  <equals>
+                    <times>
+                      <column name="ps_supplycost"/>
+                      <column name="ps_availqty"/>
+                    </times>
+                  </equals>
+                </column>
+              </parameters>
+              <input>
+                <selection>
+                  <parameters>
+                    <condition>
+                      <and>
+                        <and>
+                          <equals>
+                            <column name="ps_suppkey"/>
+                            <column name="s_suppkey"/>
+                          </equals>
+                          <equals>
+                            <column name="s_nationkey"/>
+                            <column name="n_nationkey"/>
+                          </equals>
+                        </and>
+                        <equals>
+                          <column name="n_name"/>
+                          <constant type="string" value="Slovakia"/>
+                        </equals>
+                      </and>
+                    </condition>
+                  </parameters>
+                  <input>
+                    <join>
+                      <parameters>
+                        <column name="ps_suppkey" input="first"/>
+                        <column name="ps_partkey" input="first"/>
+                        <column name="ps_supplycost" input="first"/>
+                        <column name="ps_availqty" input="first"/>
+                        <column name="s_nationkey" input="first"/>
+                        <column name="s_suppkey" input="first"/>
+                        <column name="n_nationkey" input="second"/>
+                        <column name="n_name" input="second"/>
+                      </parameters>
+                      <input>
+                        <join>
+                          <parameters>
+                            <column name="ps_suppkey" input="first"/>
+                            <column name="ps_partkey" input="first"/>
+                            <column name="ps_supplycost" input="first"/>
+                            <column name="ps_availqty" input="first"/>
+                            <column name="s_nationkey" input="second"/>
+                            <column name="s_suppkey" input="second"/>
+                          </parameters>
+                          <input>
+                            <table name="partsup" numberOfRows="200000000">
+                              <column name="ps_suppkey" type="int" number_of_unique_values="10000"/>
+                              <column name="ps_partkey" type="int" number_of_unique_values="200000"/>
+                              <column name="ps_supplycost" type="int" number_of_unique_values="200000000"/>
+                              <column name="ps_availqty" type="int" number_of_unique_values="200000000"/>
+                            </table>
+                            <table name="supplier" numberOfRows="10000">
+                              <column name="s_nationkey" type="int" number_of_unique_values="25"/>
+                              <column name="s_suppkey" type="int"/>
+                            </table>
+                           
+                          </input>
+                        </join>
+                        <table name ="nation" numberOfRows="25">
+                          <column name="n_nationkey" type="int" number_of_unique_values="25"/>
+                          <column name="n_name" type="string" number_of_unique_values="25"/>
+                        </table>
+                      </input>
+                    </join>
+                  </input>
+                </selection>
+              </input>
+            </column_operations>
+          </input>
+        </group>
+      </input>
+    </join>
+  </input>
+</sort>

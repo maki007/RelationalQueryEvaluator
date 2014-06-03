@@ -1,0 +1,672 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+Sort by: value_21 desc
+ time:2136623
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node1[label="Columns Operations
+ps_partkey, value
+ time:0
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node2[label="Filter
+(x_10(0) < value_21(1))
+ time:200000
+ size:66667
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node3[label="Cross Join
+ time:200000
+ size:200000
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node4[label="Columns Operations
+x = (value_9(0) * 0.7)
+ time:0
+ size:1
+x_10 1,
+"]node5[label="Sorted Group
+nothing,value_9=sum(x_8);
+ time:10400000
+ size:1
+value_9 1,
+"]node6[label="Columns Operations
+x = (ps_supplycost_2(0) * ps_availqty_3(0))
+ time:0
+ size:8000000
+x_8 8000000,
+"]node7[label="Hash Join
+(ps_suppkey_1(0) == s_suppkey_5(0))
+ time:400003200
+ size:8000000
+ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node8[label="Hash Join
+(s_nationkey_4(0) == n_nationkey_6(0))
+ time:20008
+ size:400
+s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node9[label="Filter
+(n_name_7(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_6 1,n_name_7 1,
+"]node10[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_6 25,n_name_7 25,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node11[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_4 25,s_suppkey_5 1585,
+"]node11 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node7[headport=s, tailport=n,label="   "]
+node12[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+"]node12 -> node7[headport=s, tailport=n,label="   "]
+node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node13[label="Hash Group
+ps_partkey_12, value_21=sum(x_19);
+ time:82400000
+ size:200000
+ps_partkey_20 5000,value_21 200000,
+"]node14[label="Columns Operations
+ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
+ time:0
+ size:8000000
+ps_partkey_12 200000,x_19 8000000,
+"]node15[label="Hash Join
+(ps_suppkey_11(0) == s_suppkey_16(0))
+ time:400003200
+ size:8000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node16[label="Hash Join
+(s_nationkey_15(0) == n_nationkey_17(0))
+ time:20008
+ size:400
+s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node17[label="Filter
+(n_name_18(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_17 1,n_name_18 1,
+"]node18[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_17 25,n_name_18 25,
+"]node18 -> node17[headport=s, tailport=n,label="   "]
+node17 -> node16[headport=s, tailport=n,label="   "]
+node19[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_15 25,s_suppkey_16 1585,
+"]node19 -> node16[headport=s, tailport=n,label="   "]
+node16 -> node15[headport=s, tailport=n,label="   "]
+node20[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+"]node20 -> node15[headport=s, tailport=n,label="   "]
+node15 -> node14[headport=s, tailport=n,label="   "]
+node14 -> node13[headport=s, tailport=n,label="   "]
+node13 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node21[label="Sort
+Sort by: value_21 desc
+ time:2136623
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node22[label="Columns Operations
+ps_partkey, value
+ time:0
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node23[label="Filter
+(x_10(0) < value_21(1))
+ time:200000
+ size:66667
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node24[label="Cross Join
+ time:200000
+ size:200000
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node25[label="Columns Operations
+x = (value_9(0) * 0.7)
+ time:0
+ size:1
+x_10 1,
+"]node26[label="Sorted Group
+nothing,value_9=sum(x_8);
+ time:10400000
+ size:1
+value_9 1,
+"]node27[label="Columns Operations
+x = (ps_supplycost_2(0) * ps_availqty_3(0))
+ time:0
+ size:8000000
+x_8 8000000,
+"]node28[label="Hash Join
+(ps_suppkey_1(0) == s_suppkey_5(0))
+ time:400003200
+ size:8000000
+ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node29[label="Merge Join
+(s_nationkey_4(0) == n_nationkey_6(0))
+ time:2001
+ size:400
+s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node30[label="Sort
+Sort by: s_nationkey_4 both
+ time:265754
+ size:10000
+s_nationkey_4 25,s_suppkey_5 1585,
+"]node31[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_4 25,s_suppkey_5 1585,
+"]node31 -> node30[headport=s, tailport=n,label="   "]
+node30 -> node29[headport=s, tailport=n,label="   "]
+node32[label="Sort
+Sort by: n_nationkey_6 both
+ time:0
+ size:1
+n_nationkey_6 1,n_name_7 1,
+"]node33[label="Filter
+(n_name_7(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_6 1,n_name_7 1,
+"]node34[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_6 25,n_name_7 25,
+"]node34 -> node33[headport=s, tailport=n,label="   "]
+node33 -> node32[headport=s, tailport=n,label="   "]
+node32 -> node29[headport=s, tailport=n,label="   "]
+node29 -> node28[headport=s, tailport=n,label="   "]
+node35[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+"]node35 -> node28[headport=s, tailport=n,label="   "]
+node28 -> node27[headport=s, tailport=n,label="   "]
+node27 -> node26[headport=s, tailport=n,label="   "]
+node26 -> node25[headport=s, tailport=n,label="   "]
+node25 -> node24[headport=s, tailport=n,label="   "]
+node36[label="Hash Group
+ps_partkey_12, value_21=sum(x_19);
+ time:82400000
+ size:200000
+ps_partkey_20 5000,value_21 200000,
+"]node37[label="Columns Operations
+ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
+ time:0
+ size:8000000
+ps_partkey_12 200000,x_19 8000000,
+"]node38[label="Hash Join
+(ps_suppkey_11(0) == s_suppkey_16(0))
+ time:400003200
+ size:8000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node39[label="Hash Join
+(s_nationkey_15(0) == n_nationkey_17(0))
+ time:20008
+ size:400
+s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node40[label="Filter
+(n_name_18(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_17 1,n_name_18 1,
+"]node41[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_17 25,n_name_18 25,
+"]node41 -> node40[headport=s, tailport=n,label="   "]
+node40 -> node39[headport=s, tailport=n,label="   "]
+node42[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_15 25,s_suppkey_16 1585,
+"]node42 -> node39[headport=s, tailport=n,label="   "]
+node39 -> node38[headport=s, tailport=n,label="   "]
+node43[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+"]node43 -> node38[headport=s, tailport=n,label="   "]
+node38 -> node37[headport=s, tailport=n,label="   "]
+node37 -> node36[headport=s, tailport=n,label="   "]
+node36 -> node24[headport=s, tailport=n,label="   "]
+node24 -> node23[headport=s, tailport=n,label="   "]
+node23 -> node22[headport=s, tailport=n,label="   "]
+node22 -> node21[headport=s, tailport=n,label="   "]
+node44[label="Sort
+Sort by: value_21 desc
+ time:2136623
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node45[label="Columns Operations
+ps_partkey, value
+ time:0
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node46[label="Filter
+(x_10(0) < value_21(1))
+ time:200000
+ size:66667
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node47[label="Cross Join
+ time:200000
+ size:200000
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node48[label="Columns Operations
+x = (value_9(0) * 0.7)
+ time:0
+ size:1
+x_10 1,
+"]node49[label="Sorted Group
+nothing,value_9=sum(x_8);
+ time:10400000
+ size:1
+value_9 1,
+"]node50[label="Columns Operations
+x = (ps_supplycost_2(0) * ps_availqty_3(0))
+ time:0
+ size:8000000
+x_8 8000000,
+"]node51[label="Hash Join
+(ps_suppkey_1(0) == s_suppkey_5(0))
+ time:400003200
+ size:8000000
+ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node52[label="Merge Join
+(s_nationkey_4(0) == n_nationkey_6(0))
+ time:2001
+ size:400
+s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node53[label="Sort
+Sort by: s_nationkey_4 both
+ time:265754
+ size:10000
+s_nationkey_4 25,s_suppkey_5 1585,
+"]node54[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_4 25,s_suppkey_5 1585,
+"]node54 -> node53[headport=s, tailport=n,label="   "]
+node53 -> node52[headport=s, tailport=n,label="   "]
+node55[label="Sort
+Sort by: n_nationkey_6 both
+ time:0
+ size:1
+n_nationkey_6 1,n_name_7 1,
+"]node56[label="Filter
+(n_name_7(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_6 1,n_name_7 1,
+"]node57[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_6 25,n_name_7 25,
+"]node57 -> node56[headport=s, tailport=n,label="   "]
+node56 -> node55[headport=s, tailport=n,label="   "]
+node55 -> node52[headport=s, tailport=n,label="   "]
+node52 -> node51[headport=s, tailport=n,label="   "]
+node58[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+"]node58 -> node51[headport=s, tailport=n,label="   "]
+node51 -> node50[headport=s, tailport=n,label="   "]
+node50 -> node49[headport=s, tailport=n,label="   "]
+node49 -> node48[headport=s, tailport=n,label="   "]
+node48 -> node47[headport=s, tailport=n,label="   "]
+node59[label="Hash Group
+ps_partkey_12, value_21=sum(x_19);
+ time:82400000
+ size:200000
+ps_partkey_20 5000,value_21 200000,
+"]node60[label="Columns Operations
+ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
+ time:0
+ size:8000000
+ps_partkey_12 200000,x_19 8000000,
+"]node61[label="Hash Join
+(ps_suppkey_11(0) == s_suppkey_16(0))
+ time:400003200
+ size:8000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node62[label="Hash Join
+(s_nationkey_15(0) == n_nationkey_17(0))
+ time:20008
+ size:400
+s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node63[label="Filter
+(n_name_18(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_17 1,n_name_18 1,
+"]node64[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_17 25,n_name_18 25,
+"]node64 -> node63[headport=s, tailport=n,label="   "]
+node63 -> node62[headport=s, tailport=n,label="   "]
+node65[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_15 25,s_suppkey_16 1585,
+"]node65 -> node62[headport=s, tailport=n,label="   "]
+node62 -> node61[headport=s, tailport=n,label="   "]
+node66[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+"]node66 -> node61[headport=s, tailport=n,label="   "]
+node61 -> node60[headport=s, tailport=n,label="   "]
+node60 -> node59[headport=s, tailport=n,label="   "]
+node59 -> node47[headport=s, tailport=n,label="   "]
+node47 -> node46[headport=s, tailport=n,label="   "]
+node46 -> node45[headport=s, tailport=n,label="   "]
+node45 -> node44[headport=s, tailport=n,label="   "]
+node67[label="Sort
+Sort by: value_21 desc
+ time:2136623
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node68[label="Columns Operations
+ps_partkey, value
+ time:0
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node69[label="Filter
+(x_10(0) < value_21(1))
+ time:200000
+ size:66667
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node70[label="Cross Join
+ time:200000
+ size:200000
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node71[label="Columns Operations
+x = (value_9(0) * 0.7)
+ time:0
+ size:1
+x_10 1,
+"]node72[label="Sorted Group
+nothing,value_9=sum(x_8);
+ time:10400000
+ size:1
+value_9 1,
+"]node73[label="Columns Operations
+x = (ps_supplycost_2(0) * ps_availqty_3(0))
+ time:0
+ size:8000000
+x_8 8000000,
+"]node74[label="Hash Join
+(ps_suppkey_1(0) == s_suppkey_5(0))
+ time:400003200
+ size:8000000
+ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node75[label="Hash Join
+(s_nationkey_4(0) == n_nationkey_6(0))
+ time:20008
+ size:400
+s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node76[label="Filter
+(n_name_7(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_6 1,n_name_7 1,
+"]node77[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_6 25,n_name_7 25,
+"]node77 -> node76[headport=s, tailport=n,label="   "]
+node76 -> node75[headport=s, tailport=n,label="   "]
+node78[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_4 25,s_suppkey_5 1585,
+"]node78 -> node75[headport=s, tailport=n,label="   "]
+node75 -> node74[headport=s, tailport=n,label="   "]
+node79[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+"]node79 -> node74[headport=s, tailport=n,label="   "]
+node74 -> node73[headport=s, tailport=n,label="   "]
+node73 -> node72[headport=s, tailport=n,label="   "]
+node72 -> node71[headport=s, tailport=n,label="   "]
+node71 -> node70[headport=s, tailport=n,label="   "]
+node80[label="Hash Group
+ps_partkey_12, value_21=sum(x_19);
+ time:82400000
+ size:200000
+ps_partkey_20 5000,value_21 200000,
+"]node81[label="Columns Operations
+ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
+ time:0
+ size:8000000
+ps_partkey_12 200000,x_19 8000000,
+"]node82[label="Hash Join
+(ps_suppkey_11(0) == s_suppkey_16(0))
+ time:400003200
+ size:8000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node83[label="Merge Join
+(s_nationkey_15(0) == n_nationkey_17(0))
+ time:2001
+ size:400
+s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node84[label="Sort
+Sort by: s_nationkey_15 both
+ time:265754
+ size:10000
+s_nationkey_15 25,s_suppkey_16 1585,
+"]node85[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_15 25,s_suppkey_16 1585,
+"]node85 -> node84[headport=s, tailport=n,label="   "]
+node84 -> node83[headport=s, tailport=n,label="   "]
+node86[label="Sort
+Sort by: n_nationkey_17 both
+ time:0
+ size:1
+n_nationkey_17 1,n_name_18 1,
+"]node87[label="Filter
+(n_name_18(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_17 1,n_name_18 1,
+"]node88[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_17 25,n_name_18 25,
+"]node88 -> node87[headport=s, tailport=n,label="   "]
+node87 -> node86[headport=s, tailport=n,label="   "]
+node86 -> node83[headport=s, tailport=n,label="   "]
+node83 -> node82[headport=s, tailport=n,label="   "]
+node89[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+"]node89 -> node82[headport=s, tailport=n,label="   "]
+node82 -> node81[headport=s, tailport=n,label="   "]
+node81 -> node80[headport=s, tailport=n,label="   "]
+node80 -> node70[headport=s, tailport=n,label="   "]
+node70 -> node69[headport=s, tailport=n,label="   "]
+node69 -> node68[headport=s, tailport=n,label="   "]
+node68 -> node67[headport=s, tailport=n,label="   "]
+node90[label="Sort
+Sort by: value_21 desc
+ time:2136623
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node91[label="Columns Operations
+ps_partkey, value
+ time:0
+ size:66667
+ps_partkey_20 5000,value_21 66667,
+"]node92[label="Filter
+(x_10(0) < value_21(1))
+ time:200000
+ size:66667
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node93[label="Cross Join
+ time:200000
+ size:200000
+x_10 1,ps_partkey_20 5000,value_21 200000,
+"]node94[label="Columns Operations
+x = (value_9(0) * 0.7)
+ time:0
+ size:1
+x_10 1,
+"]node95[label="Sorted Group
+nothing,value_9=sum(x_8);
+ time:10400000
+ size:1
+value_9 1,
+"]node96[label="Columns Operations
+x = (ps_supplycost_2(0) * ps_availqty_3(0))
+ time:0
+ size:8000000
+x_8 8000000,
+"]node97[label="Hash Join
+(ps_suppkey_1(0) == s_suppkey_5(0))
+ time:400003200
+ size:8000000
+ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node98[label="Hash Join
+(s_nationkey_4(0) == n_nationkey_6(0))
+ time:20008
+ size:400
+s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+"]node99[label="Filter
+(n_name_7(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_6 1,n_name_7 1,
+"]node100[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_6 25,n_name_7 25,
+"]node100 -> node99[headport=s, tailport=n,label="   "]
+node99 -> node98[headport=s, tailport=n,label="   "]
+node101[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_4 25,s_suppkey_5 1585,
+"]node101 -> node98[headport=s, tailport=n,label="   "]
+node98 -> node97[headport=s, tailport=n,label="   "]
+node102[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+"]node102 -> node97[headport=s, tailport=n,label="   "]
+node97 -> node96[headport=s, tailport=n,label="   "]
+node96 -> node95[headport=s, tailport=n,label="   "]
+node95 -> node94[headport=s, tailport=n,label="   "]
+node94 -> node93[headport=s, tailport=n,label="   "]
+node103[label="Hash Group
+ps_partkey_12, value_21=sum(x_19);
+ time:82400000
+ size:200000
+ps_partkey_20 5000,value_21 200000,
+"]node104[label="Columns Operations
+ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
+ time:0
+ size:8000000
+ps_partkey_12 200000,x_19 8000000,
+"]node105[label="Hash Join
+(ps_suppkey_11(0) == s_suppkey_16(0))
+ time:400003200
+ size:8000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node106[label="Merge Join
+(s_nationkey_15(0) == n_nationkey_17(0))
+ time:2001
+ size:400
+s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+"]node107[label="Sort
+Sort by: s_nationkey_15 both
+ time:265754
+ size:10000
+s_nationkey_15 25,s_suppkey_16 1585,
+"]node108[label="Table Scan
+supplier
+ time:10000
+ size:10000
+s_nationkey_15 25,s_suppkey_16 1585,
+"]node108 -> node107[headport=s, tailport=n,label="   "]
+node107 -> node106[headport=s, tailport=n,label="   "]
+node109[label="Sort
+Sort by: n_nationkey_17 both
+ time:0
+ size:1
+n_nationkey_17 1,n_name_18 1,
+"]node110[label="Filter
+(n_name_18(0) == Slovakia)
+ time:25
+ size:1
+n_nationkey_17 1,n_name_18 1,
+"]node111[label="Table Scan
+nation
+ time:25
+ size:25
+n_nationkey_17 25,n_name_18 25,
+"]node111 -> node110[headport=s, tailport=n,label="   "]
+node110 -> node109[headport=s, tailport=n,label="   "]
+node109 -> node106[headport=s, tailport=n,label="   "]
+node106 -> node105[headport=s, tailport=n,label="   "]
+node112[label="Table Scan
+partsup
+ time:200000000
+ size:200000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+"]node112 -> node105[headport=s, tailport=n,label="   "]
+node105 -> node104[headport=s, tailport=n,label="   "]
+node104 -> node103[headport=s, tailport=n,label="   "]
+node103 -> node93[headport=s, tailport=n,label="   "]
+node93 -> node92[headport=s, tailport=n,label="   "]
+node92 -> node91[headport=s, tailport=n,label="   "]
+node91 -> node90[headport=s, tailport=n,label="   "]
+
+}

@@ -1587,15 +1587,42 @@ void JoinInfo::RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColu
 
 	for (auto it = plans.begin(); it != plans.end(); ++it)
 	{
+		bool erased = false;
 		for (auto it2 = (*it)->plan->columns.begin(); it2 != (*it)->plan->columns.end();)
 		{
 			if (allColumns.find(it2->first) == allColumns.end())
 			{
 				(*it)->plan->columns.erase(it2++);
+				erased = true;
 				continue;
 			}
 			++it2;
 		}
+		if (erased == true)
+		{
+			if (typeid(*((*it)->plan)) == typeid(Filter) || typeid(*((*it)->plan)) == typeid(FilterKeepingOrder))
+			{
+				UnaryPhysicalOperator * unaryOperator = (UnaryPhysicalOperator *)(*it)->plan.get();
+				vector<ColumnOperation> operations;
+				for (auto it2 = (*it)->plan->columns.begin(); it2 != (*it)->plan->columns.end(); ++it2)
+				{
+					ColumnOperation op;
+					op.expression = 0;
+					op.result = it2->second.column;
+					op.type = it2->second.type;
+					operations.push_back(op);
+				}
+
+				shared_ptr<ColumnsOperationsOperator> columnOperations(new ColumnsOperationsOperator(operations));
+				columnOperations->columns = (*it)->plan->columns;
+				columnOperations->size = (*it)->plan->size;
+				columnOperations->timeComplexity = 0;
+				(*it)->plan->columns = unaryOperator->child->columns;
+				columnOperations->child = (*it)->plan;
+				(*it)->plan = columnOperations;
+			}
+		}
+
 		AlgebraCompiler::updateSortParameters(PossibleSortParameters((*it)->sortedBy), (*it), (*it)->plan->columns);
 	}
 
