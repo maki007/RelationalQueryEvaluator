@@ -214,6 +214,10 @@ public:
 	{
 		return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
 	}
+	static bool PointerComparator(const std::shared_ptr<JoinInfo> & lhs, const std::shared_ptr<JoinInfo> &rhs)
+	{
+		return (lhs->plans[0]->timeComplexity < rhs->plans[0]->timeComplexity);
+	}
 	void RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns);
 	
 };
@@ -257,7 +261,7 @@ private:
 
 	std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;
 
-	void greedyJoin(GroupedJoin * node, std::vector<JoinInfo>::iterator &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<JoinInfo> & heap);
+	void greedyJoin(GroupedJoin * node, JoinInfo &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<std::shared_ptr<JoinInfo >> & heap);
 
 
 	void generateSortParametersForMergeJoin(PossibleSortParameters & sortParameters, const std::vector<std::shared_ptr<ConditionInfo>> & conditions, const std::map<int, ColumnInfo> & columns);

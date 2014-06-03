@@ -856,7 +856,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 	else
 	{
 		//greedy algorithm	
-		vector<JoinInfo> heap;
+		vector<shared_ptr<JoinInfo> > heap;
 
 		for (auto it = plans.begin(); it != plans.end(); ++it)
 		{
@@ -864,11 +864,11 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 			ulong max = *(--end);
 			for (auto it2 = it->unProcessedPlans.find(max + 1); it2 != it->unProcessedPlans.end(); ++it2)
 			{
-				greedyJoin(node, it, it2, plans, heap);
+				greedyJoin(node, *it, it2, plans, heap);
 			}
 		}
 
-		vector<JoinInfo> lastPlans;
+		vector<shared_ptr<JoinInfo> > lastPlans;
 		lastPlans.clear();
 		lastPlans.swap(heap);
 
@@ -876,9 +876,9 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		{
 			for (auto it = lastPlans.begin(); it != lastPlans.end(); ++it)
 			{
-				for (auto it2 = it->unProcessedPlans.begin(); it2 != it->unProcessedPlans.end(); ++it2)
+				for (auto it2 = (*it)->unProcessedPlans.begin(); it2 != (*it)->unProcessedPlans.end(); ++it2)
 				{
-					greedyJoin(node, it, it2, plans, heap);
+					greedyJoin(node, (**it), it2, plans, heap);
 				}
 			}
 			lastPlans.clear();
@@ -886,7 +886,7 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 		}
 		for (auto it = lastPlans.begin(); it != lastPlans.end(); ++it)
 		{
-			insertPlan(newResult, it->plans[0]);
+			insertPlan(newResult, (*it)->plans[0]);
 		}
 		
 	}
@@ -918,29 +918,33 @@ void AlgebraCompiler::visitGroupedJoin(GroupedJoin * node)
 }
 
 
-void AlgebraCompiler::greedyJoin(GroupedJoin * node, vector<JoinInfo>::iterator &it, set<ulong>::iterator &it2, vector<JoinInfo> & plans, vector<JoinInfo> & heap)
+void AlgebraCompiler::greedyJoin(GroupedJoin * node, JoinInfo & it, set<ulong>::iterator &it2, vector<JoinInfo> & plans, vector<shared_ptr<JoinInfo >> & heap)
 {
 	JoinInfo newPlans;
-	newPlans.processedPlans = it->processedPlans;
-	newPlans.unProcessedPlans = it->unProcessedPlans;
+	newPlans.processedPlans = it.processedPlans;
+	newPlans.unProcessedPlans = it.unProcessedPlans;
 	newPlans.processedPlans.insert(*it2);
 	newPlans.unProcessedPlans.erase(*it2);
-	join(node, *it, plans[*it2], newPlans);
+	join(node, it, plans[*it2], newPlans);
 	for (auto it3 = newPlans.plans.begin(); it3 != newPlans.plans.end(); ++it3)
 	{
-		JoinInfo insertedPlan;
-		insertedPlan.processedPlans = newPlans.processedPlans;
-		insertedPlan.unProcessedPlans = newPlans.unProcessedPlans;
-		insertedPlan.condition = newPlans.condition;
-		insertedPlan.columns = newPlans.columns;
-		insertedPlan.size = newPlans.size;
-		insertedPlan.plans.push_back(*it3);
-		heap.push_back(insertedPlan);
-		push_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
-		while (heap.size() > MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM)
+		if (heap.size() == 0 || (heap.size() > 0 && (*it3)->timeComplexity < heap[0]->plans[0]->timeComplexity))
 		{
-			pop_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
-			heap.pop_back();
+		
+			JoinInfo * insertedPlan=new JoinInfo();
+			insertedPlan->processedPlans = newPlans.processedPlans;
+			insertedPlan->unProcessedPlans = newPlans.unProcessedPlans;
+			insertedPlan->condition = newPlans.condition;
+			insertedPlan->columns = newPlans.columns;
+			insertedPlan->size = newPlans.size;
+			insertedPlan->plans.push_back(*it3);
+			heap.push_back(shared_ptr<JoinInfo>(insertedPlan));
+			push_heap(heap.begin(), heap.end(), JoinInfo::PointerComparator);
+			while (heap.size() > MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM)
+			{
+				pop_heap(heap.begin(), heap.end(), JoinInfo::PointerComparator);
+				heap.pop_back();
+			}
 		}
 	}
 
