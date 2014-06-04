@@ -1,0 +1,87 @@
+\hypertarget{class_physical_operator_drawing_visitor}{\section{Physical\+Operator\+Drawing\+Visitor Class Reference}
+\label{class_physical_operator_drawing_visitor}\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+}
+Inheritance diagram for Physical\+Operator\+Drawing\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_physical_operator_drawing_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a50acb8aae6d2b5fffff964f7d84b079f}{void {\bfseries generate\+Text} (std\+::string \&label, \hyperlink{class_nullary_physical_operator}{Nullary\+Physical\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_a50acb8aae6d2b5fffff964f7d84b079f}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877363ede4a9}{void {\bfseries generate\+Text} (std\+::string \&label, \hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877363ede4a9}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}{void {\bfseries generate\+Text} (std\+::string \&label, \hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}{std\+::string {\bfseries write\+Group\+Parameters} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&group\+Columns, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&agregate\+Functions)}\label{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_af5a712a2a8dac447846849d91d20821e}{void {\bfseries visit\+Filter} (\hyperlink{class_filter}{Filter} $\ast$node)}\label{class_physical_operator_drawing_visitor_af5a712a2a8dac447846849d91d20821e}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a0e517a5b635ad9dd2624ca2ac5f623e6}{void {\bfseries visit\+Filter\+Keeping\+Order} (\hyperlink{class_filter_keeping_order}{Filter\+Keeping\+Order} $\ast$node)}\label{class_physical_operator_drawing_visitor_a0e517a5b635ad9dd2624ca2ac5f623e6}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_af0aaa68b27e6e562744b0c8211a63b9a}{void {\bfseries visit\+Sort\+Operator} (\hyperlink{class_sort_operator}{Sort\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_af0aaa68b27e6e562744b0c8211a63b9a}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a78f01a744a33b84011ddedca236e95e1}{virtual void {\bfseries visit\+Merge\+Equi\+Join} (\hyperlink{class_merge_equi_join}{Merge\+Equi\+Join} $\ast$node)}\label{class_physical_operator_drawing_visitor_a78f01a744a33b84011ddedca236e95e1}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_acdfdd3b9f711abff9fb064495e8512e1}{virtual void {\bfseries visit\+Merge\+Non\+Equi\+Join} (\hyperlink{class_merge_non_equi_join}{Merge\+Non\+Equi\+Join} $\ast$node)}\label{class_physical_operator_drawing_visitor_acdfdd3b9f711abff9fb064495e8512e1}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_aaeb9fbec796677a5483384cbddd3f827}{void {\bfseries visit\+Cross\+Join} (\hyperlink{class_cross_join}{Cross\+Join} $\ast$node)}\label{class_physical_operator_drawing_visitor_aaeb9fbec796677a5483384cbddd3f827}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a22032e2685059a3221b85bc990fe684e}{void {\bfseries visit\+Hash\+Join} (\hyperlink{class_hash_join}{Hash\+Join} $\ast$node)}\label{class_physical_operator_drawing_visitor_a22032e2685059a3221b85bc990fe684e}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a1825f8934ad3c2267a40a599b13d2a1a}{void {\bfseries visit\+Hash\+Anti\+Join} (\hyperlink{class_hash_anti_join}{Hash\+Anti\+Join} $\ast$node)}\label{class_physical_operator_drawing_visitor_a1825f8934ad3c2267a40a599b13d2a1a}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_ab47caea2d0f82662947a0bf7087e0514}{void {\bfseries visit\+Merge\+Anti\+Join} (\hyperlink{class_merge_anti_join}{Merge\+Anti\+Join} $\ast$node)}\label{class_physical_operator_drawing_visitor_ab47caea2d0f82662947a0bf7087e0514}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_aeaa1cd49533ed1bb74921262b918bb06}{void {\bfseries visit\+Union\+Operator} (\hyperlink{class_union_operator}{Union\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_aeaa1cd49533ed1bb74921262b918bb06}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a6841170440f377c240a7c0a7af179a29}{void {\bfseries visit\+Hash\+Group} (\hyperlink{class_hash_group}{Hash\+Group} $\ast$node)}\label{class_physical_operator_drawing_visitor_a6841170440f377c240a7c0a7af179a29}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a1c7736861639025a85d54867d7eeafca}{void {\bfseries visit\+Sorted\+Group} (\hyperlink{class_sorted_group}{Sorted\+Group} $\ast$node)}\label{class_physical_operator_drawing_visitor_a1c7736861639025a85d54867d7eeafca}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_ad1fb3f6d50ba14ad674a71e5f6c35d12}{void {\bfseries visit\+Columns\+Operations\+Operator} (\hyperlink{class_columns_operations_operator}{Columns\+Operations\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_ad1fb3f6d50ba14ad674a71e5f6c35d12}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_abf3323e213f5c7502e76b0d9afb9fe33}{void {\bfseries visit\+Scan\+And\+Sort\+By\+Index} (\hyperlink{class_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index} $\ast$node)}\label{class_physical_operator_drawing_visitor_abf3323e213f5c7502e76b0d9afb9fe33}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a709a44c2c02c9fc42d44fe3822c22f5b}{void {\bfseries visit\+Table\+Scan} (\hyperlink{class_table_scan}{Table\+Scan} $\ast$node)}\label{class_physical_operator_drawing_visitor_a709a44c2c02c9fc42d44fe3822c22f5b}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a3d8f7b6bff44d79fb741b2709587f867}{void {\bfseries visit\+Index\+Scan} (\hyperlink{class_index_scan}{Index\+Scan} $\ast$node)}\label{class_physical_operator_drawing_visitor_a3d8f7b6bff44d79fb741b2709587f867}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a5663f7f6a5c8a6ad25d0c4c8f918123e}{std\+::string {\bfseries result}}\label{class_physical_operator_drawing_visitor_a5663f7f6a5c8a6ad25d0c4c8f918123e}
+
+\item 
+\hypertarget{class_physical_operator_drawing_visitor_a75aa4987d070c40a3ec2e4e9c950c9e0}{ulong {\bfseries node\+Counter}}\label{class_physical_operator_drawing_visitor_a75aa4987d070c40a3ec2e4e9c950c9e0}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator\+Visitor.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator\+Visitor.\+cpp\end{DoxyCompactItemize}

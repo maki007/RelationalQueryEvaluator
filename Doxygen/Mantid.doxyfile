@@ -1,0 +1,6 @@
+PROJECT_NAME     = Relational Query Evaluator
+INPUT            = "C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\RelationalQueryEvaluator"
+WARNINGS         = YES
+FILE_PATTERNS    = *.cpp *.h
+SEARCHENGINE     = YES
+OUTPUT_DIRECTORY = "C:\Users\Marcel\Documents\Visual Studio 2012\Projects\RelationalQueryEvaluator\Doxygen\html"

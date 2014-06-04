@@ -1,0 +1,73 @@
+\hypertarget{class_algebra_compiler}{\section{Algebra\+Compiler Class Reference}
+\label{class_algebra_compiler}\index{Algebra\+Compiler@{Algebra\+Compiler}}
+}
+Inheritance diagram for Algebra\+Compiler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_algebra_compiler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_algebra_compiler_a5b2f264009e5ed18fcc28c739f67d48a}{void {\bfseries visit\+Table} (\hyperlink{class_table}{Table} $\ast$node)}\label{class_algebra_compiler_a5b2f264009e5ed18fcc28c739f67d48a}
+
+\item 
+\hypertarget{class_algebra_compiler_ab0a1083d8237aeb66e2d8e3c0baff201}{void {\bfseries visit\+Sort} (\hyperlink{class_sort}{Sort} $\ast$node)}\label{class_algebra_compiler_ab0a1083d8237aeb66e2d8e3c0baff201}
+
+\item 
+\hypertarget{class_algebra_compiler_aaf1f80df836121f8f8b7abd01e7ac4dd}{void {\bfseries visit\+Group} (\hyperlink{class_group}{Group} $\ast$node)}\label{class_algebra_compiler_aaf1f80df836121f8f8b7abd01e7ac4dd}
+
+\item 
+\hypertarget{class_algebra_compiler_add29b612e4c40532405924b72f739092}{void {\bfseries visit\+Column\+Operations} (\hyperlink{class_column_operations}{Column\+Operations} $\ast$node)}\label{class_algebra_compiler_add29b612e4c40532405924b72f739092}
+
+\item 
+\hypertarget{class_algebra_compiler_a22f8846f5665f898e8f67815abe64015}{void {\bfseries visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_algebra_compiler_a22f8846f5665f898e8f67815abe64015}
+
+\item 
+\hypertarget{class_algebra_compiler_a430ba2ac25d10e94b1408e23def965e6}{void {\bfseries visit\+Join} (\hyperlink{class_join}{Join} $\ast$node)}\label{class_algebra_compiler_a430ba2ac25d10e94b1408e23def965e6}
+
+\item 
+\hypertarget{class_algebra_compiler_a4903d8f81d9da91037ce65b6aaeb7fa4}{void {\bfseries visit\+Anti\+Join} (\hyperlink{class_anti_join}{Anti\+Join} $\ast$node)}\label{class_algebra_compiler_a4903d8f81d9da91037ce65b6aaeb7fa4}
+
+\item 
+\hypertarget{class_algebra_compiler_a6c5170534fba2aa8ed5899f92ceeee8f}{void {\bfseries visit\+Union} (\hyperlink{class_union}{Union} $\ast$node)}\label{class_algebra_compiler_a6c5170534fba2aa8ed5899f92ceeee8f}
+
+\item 
+\hypertarget{class_algebra_compiler_acebcb46237fd029f910ae9d06718c1b4}{void {\bfseries visit\+Grouped\+Join} (\hyperlink{class_grouped_join}{Grouped\+Join} $\ast$node)}\label{class_algebra_compiler_acebcb46237fd029f910ae9d06718c1b4}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_algebra_compiler_a64b17061a41e21787cb35572b60d826d}{static void {\bfseries update\+Sort\+Parameters} (const \hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \&possible\+Sort\+Parameters, std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&new\+Plan, std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&new\+Columns)}\label{class_algebra_compiler_a64b17061a41e21787cb35572b60d826d}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_algebra_compiler_acf3202bd193e4552a1d4fadb6d0b356c}{std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ $>$ {\bfseries result}}\label{class_algebra_compiler_acf3202bd193e4552a1d4fadb6d0b356c}
+
+\item 
+\hypertarget{class_algebra_compiler_a33ca2507927649bb0176c00ea5944d21}{std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ {\bfseries columns}}\label{class_algebra_compiler_a33ca2507927649bb0176c00ea5944d21}
+
+\item 
+\hypertarget{class_algebra_compiler_adcc3f8ba764b873c170cfb28d4636b16}{double {\bfseries size}}\label{class_algebra_compiler_adcc3f8ba764b873c170cfb28d4636b16}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_algebra_compiler_ab1a348c2daa3ca8f805f7cec2b35e29d}{static const ulong {\bfseries N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S} = 5}\label{class_algebra_compiler_ab1a348c2daa3ca8f805f7cec2b35e29d}
+
+\item 
+\hypertarget{class_algebra_compiler_a75bdf7e239082b0a6c8560ac5a75e72a}{static const ulong {\bfseries L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M} = 5}\label{class_algebra_compiler_a75bdf7e239082b0a6c8560ac5a75e72a}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Compiler.\+cpp\end{DoxyCompactItemize}

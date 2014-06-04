@@ -1,0 +1,76 @@
+\hypertarget{class_algebra_visitor}{\section{Algebra\+Visitor Class Reference}
+\label{class_algebra_visitor}\index{Algebra\+Visitor@{Algebra\+Visitor}}
+}
+Inheritance diagram for Algebra\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=10.000000cm]{class_algebra_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_algebra_visitor_a97257e8a65f77f30540b1223d92127fb}{virtual void {\bfseries visit\+Algebra\+Node\+Base} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a97257e8a65f77f30540b1223d92127fb}
+
+\item 
+\hypertarget{class_algebra_visitor_a371a822b60caab82b78c5750eff67b4b}{virtual void {\bfseries visit\+Unary\+Algebra\+Node\+Base} (\hyperlink{class_unary_algebra_node_base}{Unary\+Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a371a822b60caab82b78c5750eff67b4b}
+
+\item 
+\hypertarget{class_algebra_visitor_a00b2a6a2fb076160c0a8f713dd48d6d1}{virtual void {\bfseries visit\+Binary\+Algebra\+Node\+Base} (\hyperlink{class_binary_algebra_node_base}{Binary\+Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a00b2a6a2fb076160c0a8f713dd48d6d1}
+
+\item 
+\hypertarget{class_algebra_visitor_a5b5642743b1985cc5fd1e12002972388}{virtual void {\bfseries visit\+Nullary\+Algebra\+Node\+Base} (\hyperlink{class_nullary_algebra_node_base}{Nullary\+Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a5b5642743b1985cc5fd1e12002972388}
+
+\item 
+\hypertarget{class_algebra_visitor_a21ccc9b452a5c842d91cab7ec0855cfe}{virtual void {\bfseries visit\+Grouped\+Algebra\+Node} (\hyperlink{class_grouped_algebra_node}{Grouped\+Algebra\+Node} $\ast$node)}\label{class_algebra_visitor_a21ccc9b452a5c842d91cab7ec0855cfe}
+
+\item 
+\hypertarget{class_algebra_visitor_ac14f3c3c195373e3bae5d01d04f1ea09}{virtual void {\bfseries visit\+Table} (\hyperlink{class_table}{Table} $\ast$node)}\label{class_algebra_visitor_ac14f3c3c195373e3bae5d01d04f1ea09}
+
+\item 
+\hypertarget{class_algebra_visitor_ac350bf44664ce021c0cfec18258a14e8}{virtual void {\bfseries visit\+Sort} (\hyperlink{class_sort}{Sort} $\ast$node)}\label{class_algebra_visitor_ac350bf44664ce021c0cfec18258a14e8}
+
+\item 
+\hypertarget{class_algebra_visitor_af77bf2aaa949ea27cf992053c43a391b}{virtual void {\bfseries visit\+Group} (\hyperlink{class_group}{Group} $\ast$node)}\label{class_algebra_visitor_af77bf2aaa949ea27cf992053c43a391b}
+
+\item 
+\hypertarget{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}{virtual void {\bfseries visit\+Column\+Operations} (\hyperlink{class_column_operations}{Column\+Operations} $\ast$node)}\label{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}
+
+\item 
+\hypertarget{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{virtual void {\bfseries visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}
+
+\item 
+\hypertarget{class_algebra_visitor_a841875539a07c979b912ef44455b873c}{virtual void {\bfseries visit\+Join} (\hyperlink{class_join}{Join} $\ast$node)}\label{class_algebra_visitor_a841875539a07c979b912ef44455b873c}
+
+\item 
+\hypertarget{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}{virtual void {\bfseries visit\+Anti\+Join} (\hyperlink{class_anti_join}{Anti\+Join} $\ast$node)}\label{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}
+
+\item 
+\hypertarget{class_algebra_visitor_a681732083691701f0e9c10980392dd3c}{virtual void {\bfseries visit\+Union} (\hyperlink{class_union}{Union} $\ast$node)}\label{class_algebra_visitor_a681732083691701f0e9c10980392dd3c}
+
+\item 
+\hypertarget{class_algebra_visitor_ae92c2f0a465dacc4f42a71e879346c94}{virtual void {\bfseries visit\+Grouped\+Join} (\hyperlink{class_grouped_join}{Grouped\+Join} $\ast$node)}\label{class_algebra_visitor_ae92c2f0a465dacc4f42a71e879346c94}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_algebra_visitor_aa8f4149dca3babdefa323050bb6e82f9}{static void {\bfseries serialize\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \&result)}\label{class_algebra_visitor_aa8f4149dca3babdefa323050bb6e82f9}
+
+\item 
+\hypertarget{class_algebra_visitor_a20d1215ba30361d19d0317a939a9b860}{static std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries deserialize\+Expression} (const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \&condition)}\label{class_algebra_visitor_a20d1215ba30361d19d0317a939a9b860}
+
+\item 
+\hypertarget{class_algebra_visitor_a78119cf006ac64137b8c29223ab77885}{static void {\bfseries remove\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_algebra_visitor_a78119cf006ac64137b8c29223ab77885}
+
+\item 
+\hypertarget{class_algebra_visitor_adbcb61f031cfc4808d150b076f6aa63d}{static void {\bfseries insert\+Selection} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$node, std\+::shared\+\_\+ptr$<$ \hyperlink{class_selection}{Selection} $>$ \&selection)}\label{class_algebra_visitor_adbcb61f031cfc4808d150b076f6aa63d}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+cpp\end{DoxyCompactItemize}

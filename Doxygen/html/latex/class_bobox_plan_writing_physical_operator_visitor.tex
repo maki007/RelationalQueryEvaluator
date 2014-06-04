@@ -1,0 +1,108 @@
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor}{\section{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor Class Reference}
+\label{class_bobox_plan_writing_physical_operator_visitor}\index{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+}
+Inheritance diagram for Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_bobox_plan_writing_physical_operator_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a67767e3ad079b9fd8d431c230aed3f73}{std\+::string {\bfseries declaration} (const std\+::string \&type, const std\+::string \&input\+Columns, const std\+::string \&output\+Columns, const std\+::string \&name, const std\+::string \&construct\+Parameters)}\label{class_bobox_plan_writing_physical_operator_visitor_a67767e3ad079b9fd8d431c230aed3f73}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a9dc928a4e3a478c260036bbc44daf302}{std\+::string {\bfseries connect} (const std\+::string \&from, const std\+::string \&to)}\label{class_bobox_plan_writing_physical_operator_visitor_a9dc928a4e3a478c260036bbc44daf302}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_ad19fe61538f80b821617614a31e30cb2}{std\+::string {\bfseries write\+Plan} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_operator}{Physical\+Operator} $>$ \&plan)}\label{class_bobox_plan_writing_physical_operator_visitor_ad19fe61538f80b821617614a31e30cb2}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a09857e8ac9d485ca1a749e06fd447a4a}{std\+::string {\bfseries get\+Column\+Type\+Output} (const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&columns)}\label{class_bobox_plan_writing_physical_operator_visitor_a09857e8ac9d485ca1a749e06fd447a4a}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_ab10127e63906b7eb061f703cd7bb9252}{std\+::string {\bfseries get\+Column\+Name\+Output} (const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&columns)}\label{class_bobox_plan_writing_physical_operator_visitor_ab10127e63906b7eb061f703cd7bb9252}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_aa41f0bb800a4584a5d2baa160f3b064a}{std\+::string {\bfseries get\+Id} ()}\label{class_bobox_plan_writing_physical_operator_visitor_aa41f0bb800a4584a5d2baa160f3b064a}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a809cf16afde7b5714466438602925355}{void {\bfseries convert\+Columns} (const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&columns, std\+::map$<$ int, int $>$ \&result)}\label{class_bobox_plan_writing_physical_operator_visitor_a809cf16afde7b5714466438602925355}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a3d0b2c26562a904deac5d003eee02faf}{void {\bfseries write\+Nullary\+Operator} (const std\+::string \&type, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&columns, const std\+::string \&costructor\+Parameters)}\label{class_bobox_plan_writing_physical_operator_visitor_a3d0b2c26562a904deac5d003eee02faf}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_aacdb98a45fe5a45d5f86898e4b6d4ff1}{void {\bfseries write\+Unary\+Operator} (const std\+::string \&type, \hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$node, const std\+::string \&costructor\+Parameters)}\label{class_bobox_plan_writing_physical_operator_visitor_aacdb98a45fe5a45d5f86898e4b6d4ff1}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a2a3636390a5c12828b2814ac96a46410}{void {\bfseries write\+Binary\+Operator} (const std\+::string \&type, \hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node, const std\+::string \&costructor\+Parameters)}\label{class_bobox_plan_writing_physical_operator_visitor_a2a3636390a5c12828b2814ac96a46410}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a96eb34b06365296896e890123abdfa01}{std\+::string {\bfseries write\+Group\+Parameters} (const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&output\+Columns, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&input\+Columns, const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&group\+Columns, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&agregate\+Functions)}\label{class_bobox_plan_writing_physical_operator_visitor_a96eb34b06365296896e890123abdfa01}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a1a836021544f1e6cd117620b888819ba}{std\+::string {\bfseries write\+Join\+Parameters} (\hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a1a836021544f1e6cd117620b888819ba}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a03f4fd96dbe1a60b5e562a3e200d1263}{std\+::string {\bfseries write\+Equi\+Join\+Parameters} (const std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \&left, const std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \&right, \hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a03f4fd96dbe1a60b5e562a3e200d1263}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a30e0f62016ad2037261b8daa69752d5f}{std\+::string {\bfseries write\+Merge\+Equi\+Join\+Parameters} (const std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \&left, const std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \&right, \hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a30e0f62016ad2037261b8daa69752d5f}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a443e89add4155e51b2d7d1973afb3af5}{void {\bfseries visit\+Filter} (\hyperlink{class_filter}{Filter} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a443e89add4155e51b2d7d1973afb3af5}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a041f79a1705915af0d45e623ad7a18ac}{void {\bfseries visit\+Filter\+Keeping\+Order} (\hyperlink{class_filter_keeping_order}{Filter\+Keeping\+Order} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a041f79a1705915af0d45e623ad7a18ac}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_ac482fb6eae4e0bcb957bad6c572a2c03}{void {\bfseries visit\+Sort\+Operator} (\hyperlink{class_sort_operator}{Sort\+Operator} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_ac482fb6eae4e0bcb957bad6c572a2c03}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_ac66108bf441456b57aded81ac17b111b}{void {\bfseries visit\+Merge\+Equi\+Join} (\hyperlink{class_merge_equi_join}{Merge\+Equi\+Join} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_ac66108bf441456b57aded81ac17b111b}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a75a1a20aecd434d712dff1867bf5ec37}{void {\bfseries visit\+Merge\+Non\+Equi\+Join} (\hyperlink{class_merge_non_equi_join}{Merge\+Non\+Equi\+Join} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a75a1a20aecd434d712dff1867bf5ec37}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a882ad63c59098b1bca68fca5d36b8871}{void {\bfseries visit\+Cross\+Join} (\hyperlink{class_cross_join}{Cross\+Join} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a882ad63c59098b1bca68fca5d36b8871}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a5616d43abbe0666c854342af2d3aec94}{void {\bfseries visit\+Hash\+Join} (\hyperlink{class_hash_join}{Hash\+Join} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a5616d43abbe0666c854342af2d3aec94}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a01ed46af47fc5c7fb7af2b6b5b2483ba}{void {\bfseries visit\+Hash\+Anti\+Join} (\hyperlink{class_hash_anti_join}{Hash\+Anti\+Join} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a01ed46af47fc5c7fb7af2b6b5b2483ba}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a0346b44be20be9fb68d95029908808f6}{void {\bfseries visit\+Merge\+Anti\+Join} (\hyperlink{class_merge_anti_join}{Merge\+Anti\+Join} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a0346b44be20be9fb68d95029908808f6}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a87c2ddbe5d05b7dcc30c9d61d540d1f5}{void {\bfseries visit\+Union\+Operator} (\hyperlink{class_union_operator}{Union\+Operator} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a87c2ddbe5d05b7dcc30c9d61d540d1f5}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a1e114b9a6e5bf08a691a9197f03efe9d}{void {\bfseries visit\+Hash\+Group} (\hyperlink{class_hash_group}{Hash\+Group} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a1e114b9a6e5bf08a691a9197f03efe9d}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a78d8526758ffeb3b335b8fc4a8a2defb}{void {\bfseries visit\+Sorted\+Group} (\hyperlink{class_sorted_group}{Sorted\+Group} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a78d8526758ffeb3b335b8fc4a8a2defb}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_afe09e3f584a43ff5e06947918cf16a46}{void {\bfseries visit\+Columns\+Operations\+Operator} (\hyperlink{class_columns_operations_operator}{Columns\+Operations\+Operator} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_afe09e3f584a43ff5e06947918cf16a46}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_a09cbea340b85723f8e66e50b466d6e68}{void {\bfseries visit\+Scan\+And\+Sort\+By\+Index} (\hyperlink{class_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_a09cbea340b85723f8e66e50b466d6e68}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_aa8d995c39b2364625c1c10b6d7636b23}{void {\bfseries visit\+Table\+Scan} (\hyperlink{class_table_scan}{Table\+Scan} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_aa8d995c39b2364625c1c10b6d7636b23}
+
+\item 
+\hypertarget{class_bobox_plan_writing_physical_operator_visitor_ae042371767ff5d9296468da8037efa0f}{void {\bfseries visit\+Index\+Scan} (\hyperlink{class_index_scan}{Index\+Scan} $\ast$node)}\label{class_bobox_plan_writing_physical_operator_visitor_ae042371767ff5d9296468da8037efa0f}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator\+Visitor.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Bobox\+Output.\+cpp\end{DoxyCompactItemize}
