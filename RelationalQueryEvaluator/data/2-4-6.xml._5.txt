@@ -25,7 +25,7 @@ node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node4[label="Hash Group
 nothing,revenue_6=sum(x_5);
- time:254320
+ time:451851
  size:1
 revenue_6 1,
 "]node5[label="Columns Operations

@@ -87,10 +87,10 @@
                     <column name="s_suppkey" input="second"/>
                   </parameters>
                   <input>
-                    <table name="partsup" numberOfRows="200000000">
+                    <table name="partsup" numberOfRows="2000000">
                       <column name="ps_suppkey" type="int" number_of_unique_values="10000"/>
-                      <column name="ps_supplycost" type="int" number_of_unique_values="200000000"/>
-                      <column name="ps_availqty" type="int" number_of_unique_values="200000000"/>
+                      <column name="ps_supplycost" type="int" number_of_unique_values="2000000"/>
+                      <column name="ps_availqty" type="int" number_of_unique_values="2000000"/>
                     </table>
                     <table name="supplier" numberOfRows="10000">
                       <column name="s_nationkey" type="int" number_of_unique_values="25"/>
@@ -175,11 +175,11 @@
                             <column name="s_suppkey" input="second"/>
                           </parameters>
                           <input>
-                            <table name="partsup" numberOfRows="200000000">
+                            <table name="partsup" numberOfRows="2000000">
                               <column name="ps_suppkey" type="int" number_of_unique_values="10000"/>
                               <column name="ps_partkey" type="int" number_of_unique_values="200000"/>
-                              <column name="ps_supplycost" type="int" number_of_unique_values="200000000"/>
-                              <column name="ps_availqty" type="int" number_of_unique_values="200000000"/>
+                              <column name="ps_supplycost" type="int" number_of_unique_values="2000000"/>
+                              <column name="ps_availqty" type="int" number_of_unique_values="2000000"/>
                             </table>
                             <table name="supplier" numberOfRows="10000">
                               <column name="s_nationkey" type="int" number_of_unique_values="25"/>

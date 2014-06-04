@@ -12,7 +12,7 @@ country_4 1,count_5 1,x_6 1,
 country_4 1,count_5 1,x_6 1,
 "]node2[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
- time:103000
+ time:183000
  size:1585
 country_4 252,count_5 1585,x_6 1585,
 "]node3[label="Table Scan

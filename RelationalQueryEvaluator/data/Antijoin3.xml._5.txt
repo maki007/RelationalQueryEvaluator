@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Hash Antijoin
 (c_1(0) == a_2(1))
- time:10000
+ time:18000
  size:500
 c_1 252,
 "]node1[label="Table Scan

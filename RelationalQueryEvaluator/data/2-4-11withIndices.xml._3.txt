@@ -1,0 +1,66 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+value_21 desc"]
+node1[label="GroupedJoin
+(x_10(0) < value_21(1))"]
+node2[label="ColumnOperations
+x_10 = (value_9(0) * 0.7)"]
+node3[label="Group
+groupBy nothing,value_9=sum(x_8);"]
+node4[label="ColumnOperations
+x_8 = (ps_supplycost_2(0) * ps_availqty_3(0))"]
+node5[label="GroupedJoin
+AND ((ps_suppkey_1(0) == s_suppkey_5(0)),(s_nationkey_4(0) == n_nationkey_6(0)))"]
+node6[label="Table partsup
+ number of rows: 2000000.000000
+ columns: ps_suppkey_1(int,10000), ps_supplycost_2(int,2000000), ps_availqty_3(int,2000000)
+ indices: UNCLUSTERED(ps_suppkey)"]
+node6 -> node5[headport=s, tailport=n,label="   "]
+node7[label="Table supplier
+ number of rows: 10000.000000
+ columns: s_nationkey_4(int,25), s_suppkey_5(int,10000)
+ indices: CLUSTERED(s_suppkey), UNCLUSTERED(s_nationkey)"]
+node7 -> node5[headport=s, tailport=n,label="   "]
+node8[label="Selection
+(n_name_7(0) == Slovakia)"]
+node9[label="Table nation
+ number of rows: 25.000000
+ columns: n_nationkey_6(int,25), n_name_7(string,25)
+ indices: CLUSTERED(n_nationkey)"]
+node9 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node10[label="Group
+groupBy ps_partkey_12, value_21=sum(x_19);"]
+node11[label="ColumnOperations
+ps_partkey_12, x_19 = (ps_supplycost_13(0) * ps_availqty_14(0))"]
+node12[label="GroupedJoin
+AND ((ps_suppkey_11(0) == s_suppkey_16(0)),(s_nationkey_15(0) == n_nationkey_17(0)))"]
+node13[label="Table partsup
+ number of rows: 2000000.000000
+ columns: ps_suppkey_11(int,10000), ps_partkey_12(int,200000), ps_supplycost_13(int,2000000), ps_availqty_14(int,2000000)
+ indices: UNCLUSTERED(ps_suppkey), UNCLUSTERED(ps_partkey)"]
+node13 -> node12[headport=s, tailport=n,label="   "]
+node14[label="Table supplier
+ number of rows: 10000.000000
+ columns: s_nationkey_15(int,25), s_suppkey_16(int,10000)
+ indices: CLUSTERED(s_suppkey), UNCLUSTERED(s_nationkey)"]
+node14 -> node12[headport=s, tailport=n,label="   "]
+node15[label="Selection
+(n_name_18(0) == Slovakia)"]
+node16[label="Table nation
+ number of rows: 25.000000
+ columns: n_nationkey_17(int,25), n_name_18(string,25)
+ indices: CLUSTERED(n_nationkey)"]
+node16 -> node15[headport=s, tailport=n,label="   "]
+node15 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node10[headport=s, tailport=n,label="   "]
+node10 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+
+}

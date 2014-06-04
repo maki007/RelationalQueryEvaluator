@@ -1,239 +1,434 @@
 digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
-node0[label="Sort
-Sort by: e_3 asc
- time:2012155
+node0[label="Partial Sort
+Sorted by e_3 asc
+Sort by: 
+ time:0
  size:63096
 a_1 252,b_2 252,e_3 252,d_4 252,
-"]node1[label="Hash Join
+"]node1[label="Merge Join
 (a_1(0) == c_3(2))
- time:39810
+ time:4777
  size:63096
 a_1 252,b_2 252,e_3 252,d_4 252,
-"]node2[label="Hash Join
-(a_1(0) == b_2(1))
- time:10000
+"]node2[label="Partial Sort
+Sorted by a_1 both
+Sort by: 
+ time:0
  size:3982
 a_1 252,b_2 252,
-"]node3[label="Table Scan
+"]node3[label="Merge Join
+(a_1(0) == b_2(1))
+ time:1200
+ size:3982
+a_1 252,b_2 252,
+"]node4[label="Sort
+Sort by: a_1 both
+ time:19931
+ size:1000
+a_1 252,
+"]node5[label="Table Scan
 a
  time:1000
  size:1000
 a_1 252,
-"]node3 -> node2[headport=s, tailport=n,label="   "]
-node4[label="Table Scan
+"]node5 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node6[label="Sort
+Sort by: b_2 both
+ time:19931
+ size:1000
+b_2 252,
+"]node7[label="Table Scan
 b
  time:1000
  size:1000
 b_2 252,
-"]node4 -> node2[headport=s, tailport=n,label="   "]
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
 node2 -> node1[headport=s, tailport=n,label="   "]
-node5[label="Hash Join
-(c_3(2) == d_4(3))
- time:10000
+node8[label="Partial Sort
+Sorted by c_3 both
+Sort by: 
+ time:0
  size:3982
 c_3 252,d_4 252,
-"]node6[label="Table Scan
+"]node9[label="Merge Join
+(c_3(2) == d_4(3))
+ time:1200
+ size:3982
+c_3 252,d_4 252,
+"]node10[label="Sort
+Sort by: c_3 both
+ time:19931
+ size:1000
+c_3 252,
+"]node11[label="Table Scan
 c
  time:1000
  size:1000
 c_3 252,
-"]node6 -> node5[headport=s, tailport=n,label="   "]
-node7[label="Table Scan
+"]node11 -> node10[headport=s, tailport=n,label="   "]
+node10 -> node9[headport=s, tailport=n,label="   "]
+node12[label="Sort
+Sort by: d_4 both
+ time:19931
+ size:1000
+d_4 252,
+"]node13[label="Table Scan
 d
  time:1000
  size:1000
 d_4 252,
-"]node7 -> node5[headport=s, tailport=n,label="   "]
-node5 -> node1[headport=s, tailport=n,label="   "]
-node1 -> node0[headport=s, tailport=n,label="   "]
-node8[label="Sort
-Sort by: e_3 asc
- time:2012155
- size:63096
-a_1 252,b_2 252,e_3 252,d_4 252,
-"]node9[label="Hash Join
-(a_1(0) == b_2(1))
- time:39697
- size:63096
-a_1 252,b_2 252,e_3 252,d_4 252,
-"]node10[label="Table Scan
-b
- time:1000
- size:1000
-b_2 252,
-"]node10 -> node9[headport=s, tailport=n,label="   "]
-node11[label="Hash Join
-(a_1(0) == c_3(2))
- time:15962
- size:15849
-a_1 252,c_3 252,d_4 252,
-"]node12[label="Table Scan
-a
- time:1000
- size:1000
-a_1 252,
-"]node12 -> node11[headport=s, tailport=n,label="   "]
-node13[label="Hash Join
-(c_3(2) == d_4(3))
- time:10000
- size:3982
-c_3 252,d_4 252,
-"]node14[label="Table Scan
-c
- time:1000
- size:1000
-c_3 252,
-"]node14 -> node13[headport=s, tailport=n,label="   "]
-node15[label="Table Scan
-d
- time:1000
- size:1000
-d_4 252,
-"]node15 -> node13[headport=s, tailport=n,label="   "]
-node13 -> node11[headport=s, tailport=n,label="   "]
-node11 -> node9[headport=s, tailport=n,label="   "]
+"]node13 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node9[headport=s, tailport=n,label="   "]
 node9 -> node8[headport=s, tailport=n,label="   "]
-node16[label="Sort
-Sort by: e_3 asc
- time:2012155
+node8 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node14[label="Partial Sort
+Sorted by e_3 asc
+Sort by: 
+ time:0
  size:63096
 a_1 252,b_2 252,e_3 252,d_4 252,
-"]node17[label="Hash Join
-(a_1(0) == b_2(1))
- time:39697
- size:63096
-a_1 252,b_2 252,e_3 252,d_4 252,
-"]node18[label="Table Scan
-b
- time:1000
- size:1000
-b_2 252,
-"]node18 -> node17[headport=s, tailport=n,label="   "]
-node19[label="Hash Join
-(c_3(2) == d_4(3))
- time:15962
- size:15849
-a_1 252,c_3 252,d_4 252,
-"]node20[label="Table Scan
-d
- time:1000
- size:1000
-d_4 252,
-"]node20 -> node19[headport=s, tailport=n,label="   "]
-node21[label="Hash Join
+"]node15[label="Merge Join
 (a_1(0) == c_3(2))
- time:10000
- size:3982
-a_1 252,c_3 252,
-"]node22[label="Table Scan
-a
- time:1000
- size:1000
-a_1 252,
-"]node22 -> node21[headport=s, tailport=n,label="   "]
-node23[label="Table Scan
-c
- time:1000
- size:1000
-c_3 252,
-"]node23 -> node21[headport=s, tailport=n,label="   "]
-node21 -> node19[headport=s, tailport=n,label="   "]
-node19 -> node17[headport=s, tailport=n,label="   "]
-node17 -> node16[headport=s, tailport=n,label="   "]
-node24[label="Sort
-Sort by: e_3 asc
- time:2012155
+ time:4777
  size:63096
 a_1 252,b_2 252,e_3 252,d_4 252,
-"]node25[label="Hash Join
-(c_3(2) == d_4(3))
- time:39697
- size:63096
-a_1 252,b_2 252,e_3 252,d_4 252,
-"]node26[label="Table Scan
-d
- time:1000
- size:1000
-d_4 252,
-"]node26 -> node25[headport=s, tailport=n,label="   "]
-node27[label="Hash Join
-(a_1(0) == c_3(2))
- time:15962
- size:15849
-a_1 252,b_2 252,c_3 252,
-"]node28[label="Table Scan
-c
- time:1000
- size:1000
-c_3 252,
-"]node28 -> node27[headport=s, tailport=n,label="   "]
-node29[label="Hash Join
-(a_1(0) == b_2(1))
- time:10000
+"]node16[label="Partial Sort
+Sorted by a_1 both
+Sort by: 
+ time:0
  size:3982
 a_1 252,b_2 252,
-"]node30[label="Table Scan
-a
- time:1000
- size:1000
-a_1 252,
-"]node30 -> node29[headport=s, tailport=n,label="   "]
-node31[label="Table Scan
-b
- time:1000
- size:1000
-b_2 252,
-"]node31 -> node29[headport=s, tailport=n,label="   "]
-node29 -> node27[headport=s, tailport=n,label="   "]
-node27 -> node25[headport=s, tailport=n,label="   "]
-node25 -> node24[headport=s, tailport=n,label="   "]
-node32[label="Sort
-Sort by: e_3 asc
- time:2012155
- size:63096
-a_1 252,b_2 252,e_3 252,d_4 252,
-"]node33[label="Hash Join
-(c_3(2) == d_4(3))
- time:39697
- size:63096
-a_1 252,b_2 252,e_3 252,d_4 252,
-"]node34[label="Table Scan
-d
- time:1000
- size:1000
-d_4 252,
-"]node34 -> node33[headport=s, tailport=n,label="   "]
-node35[label="Hash Join
+"]node17[label="Merge Join
 (a_1(0) == b_2(1))
- time:15962
- size:15849
-a_1 252,b_2 252,c_3 252,
-"]node36[label="Table Scan
-b
- time:1000
- size:1000
-b_2 252,
-"]node36 -> node35[headport=s, tailport=n,label="   "]
-node37[label="Hash Join
-(a_1(0) == c_3(2))
- time:10000
+ time:1200
  size:3982
-a_1 252,c_3 252,
-"]node38[label="Table Scan
+a_1 252,b_2 252,
+"]node18[label="Sort
+Sort by: a_1 both
+ time:19931
+ size:1000
+a_1 252,
+"]node19[label="Table Scan
 a
  time:1000
  size:1000
 a_1 252,
-"]node38 -> node37[headport=s, tailport=n,label="   "]
-node39[label="Table Scan
+"]node19 -> node18[headport=s, tailport=n,label="   "]
+node18 -> node17[headport=s, tailport=n,label="   "]
+node20[label="Sort
+Sort by: b_2 both
+ time:19931
+ size:1000
+b_2 252,
+"]node21[label="Table Scan
+b
+ time:1000
+ size:1000
+b_2 252,
+"]node21 -> node20[headport=s, tailport=n,label="   "]
+node20 -> node17[headport=s, tailport=n,label="   "]
+node17 -> node16[headport=s, tailport=n,label="   "]
+node16 -> node15[headport=s, tailport=n,label="   "]
+node22[label="Partial Sort
+Sorted by c_3 both
+Sort by: 
+ time:0
+ size:3982
+c_3 252,d_4 252,
+"]node23[label="Merge Join
+(c_3(2) == d_4(3))
+ time:1200
+ size:3982
+c_3 252,d_4 252,
+"]node24[label="Sort
+Sort by: c_3 both
+ time:19931
+ size:1000
+c_3 252,
+"]node25[label="Table Scan
 c
  time:1000
  size:1000
 c_3 252,
-"]node39 -> node37[headport=s, tailport=n,label="   "]
-node37 -> node35[headport=s, tailport=n,label="   "]
-node35 -> node33[headport=s, tailport=n,label="   "]
-node33 -> node32[headport=s, tailport=n,label="   "]
+"]node25 -> node24[headport=s, tailport=n,label="   "]
+node24 -> node23[headport=s, tailport=n,label="   "]
+node26[label="Sort
+Sort by: d_4 both
+ time:19931
+ size:1000
+d_4 252,
+"]node27[label="Table Scan
+d
+ time:1000
+ size:1000
+d_4 252,
+"]node27 -> node26[headport=s, tailport=n,label="   "]
+node26 -> node23[headport=s, tailport=n,label="   "]
+node23 -> node22[headport=s, tailport=n,label="   "]
+node22 -> node15[headport=s, tailport=n,label="   "]
+node15 -> node14[headport=s, tailport=n,label="   "]
+node28[label="Partial Sort
+Sorted by e_3 asc
+Sort by: 
+ time:0
+ size:63096
+a_1 252,b_2 252,e_3 252,d_4 252,
+"]node29[label="Merge Join
+(a_1(0) == c_3(2))
+ time:4777
+ size:63096
+a_1 252,b_2 252,e_3 252,d_4 252,
+"]node30[label="Partial Sort
+Sorted by a_1 both
+Sort by: 
+ time:0
+ size:3982
+a_1 252,b_2 252,
+"]node31[label="Merge Join
+(a_1(0) == b_2(1))
+ time:1200
+ size:3982
+a_1 252,b_2 252,
+"]node32[label="Sort
+Sort by: a_1 both
+ time:19931
+ size:1000
+a_1 252,
+"]node33[label="Table Scan
+a
+ time:1000
+ size:1000
+a_1 252,
+"]node33 -> node32[headport=s, tailport=n,label="   "]
+node32 -> node31[headport=s, tailport=n,label="   "]
+node34[label="Sort
+Sort by: b_2 both
+ time:19931
+ size:1000
+b_2 252,
+"]node35[label="Table Scan
+b
+ time:1000
+ size:1000
+b_2 252,
+"]node35 -> node34[headport=s, tailport=n,label="   "]
+node34 -> node31[headport=s, tailport=n,label="   "]
+node31 -> node30[headport=s, tailport=n,label="   "]
+node30 -> node29[headport=s, tailport=n,label="   "]
+node36[label="Partial Sort
+Sorted by c_3 both
+Sort by: 
+ time:0
+ size:3982
+c_3 252,d_4 252,
+"]node37[label="Merge Join
+(c_3(2) == d_4(3))
+ time:1200
+ size:3982
+c_3 252,d_4 252,
+"]node38[label="Sort
+Sort by: c_3 both
+ time:19931
+ size:1000
+c_3 252,
+"]node39[label="Table Scan
+c
+ time:1000
+ size:1000
+c_3 252,
+"]node39 -> node38[headport=s, tailport=n,label="   "]
+node38 -> node37[headport=s, tailport=n,label="   "]
+node40[label="Sort
+Sort by: d_4 both
+ time:19931
+ size:1000
+d_4 252,
+"]node41[label="Table Scan
+d
+ time:1000
+ size:1000
+d_4 252,
+"]node41 -> node40[headport=s, tailport=n,label="   "]
+node40 -> node37[headport=s, tailport=n,label="   "]
+node37 -> node36[headport=s, tailport=n,label="   "]
+node36 -> node29[headport=s, tailport=n,label="   "]
+node29 -> node28[headport=s, tailport=n,label="   "]
+node42[label="Partial Sort
+Sorted by e_3 asc
+Sort by: 
+ time:0
+ size:63096
+a_1 252,b_2 252,e_3 252,d_4 252,
+"]node43[label="Merge Join
+(a_1(0) == c_3(2))
+ time:4777
+ size:63096
+a_1 252,b_2 252,e_3 252,d_4 252,
+"]node44[label="Partial Sort
+Sorted by a_1 both
+Sort by: 
+ time:0
+ size:3982
+a_1 252,b_2 252,
+"]node45[label="Merge Join
+(a_1(0) == b_2(1))
+ time:1200
+ size:3982
+a_1 252,b_2 252,
+"]node46[label="Sort
+Sort by: a_1 both
+ time:19931
+ size:1000
+a_1 252,
+"]node47[label="Table Scan
+a
+ time:1000
+ size:1000
+a_1 252,
+"]node47 -> node46[headport=s, tailport=n,label="   "]
+node46 -> node45[headport=s, tailport=n,label="   "]
+node48[label="Sort
+Sort by: b_2 both
+ time:19931
+ size:1000
+b_2 252,
+"]node49[label="Table Scan
+b
+ time:1000
+ size:1000
+b_2 252,
+"]node49 -> node48[headport=s, tailport=n,label="   "]
+node48 -> node45[headport=s, tailport=n,label="   "]
+node45 -> node44[headport=s, tailport=n,label="   "]
+node44 -> node43[headport=s, tailport=n,label="   "]
+node50[label="Partial Sort
+Sorted by c_3 both
+Sort by: 
+ time:0
+ size:3982
+c_3 252,d_4 252,
+"]node51[label="Merge Join
+(c_3(2) == d_4(3))
+ time:1200
+ size:3982
+c_3 252,d_4 252,
+"]node52[label="Sort
+Sort by: c_3 both
+ time:19931
+ size:1000
+c_3 252,
+"]node53[label="Table Scan
+c
+ time:1000
+ size:1000
+c_3 252,
+"]node53 -> node52[headport=s, tailport=n,label="   "]
+node52 -> node51[headport=s, tailport=n,label="   "]
+node54[label="Sort
+Sort by: d_4 both
+ time:19931
+ size:1000
+d_4 252,
+"]node55[label="Table Scan
+d
+ time:1000
+ size:1000
+d_4 252,
+"]node55 -> node54[headport=s, tailport=n,label="   "]
+node54 -> node51[headport=s, tailport=n,label="   "]
+node51 -> node50[headport=s, tailport=n,label="   "]
+node50 -> node43[headport=s, tailport=n,label="   "]
+node43 -> node42[headport=s, tailport=n,label="   "]
+node56[label="Partial Sort
+Sorted by e_3 asc
+Sort by: 
+ time:0
+ size:63096
+a_1 252,b_2 252,e_3 252,d_4 252,
+"]node57[label="Merge Join
+(a_1(0) == c_3(2))
+ time:4777
+ size:63096
+a_1 252,b_2 252,e_3 252,d_4 252,
+"]node58[label="Partial Sort
+Sorted by a_1 both
+Sort by: 
+ time:0
+ size:3982
+a_1 252,b_2 252,
+"]node59[label="Merge Join
+(a_1(0) == b_2(1))
+ time:1200
+ size:3982
+a_1 252,b_2 252,
+"]node60[label="Sort
+Sort by: a_1 both
+ time:19931
+ size:1000
+a_1 252,
+"]node61[label="Table Scan
+a
+ time:1000
+ size:1000
+a_1 252,
+"]node61 -> node60[headport=s, tailport=n,label="   "]
+node60 -> node59[headport=s, tailport=n,label="   "]
+node62[label="Sort
+Sort by: b_2 both
+ time:19931
+ size:1000
+b_2 252,
+"]node63[label="Table Scan
+b
+ time:1000
+ size:1000
+b_2 252,
+"]node63 -> node62[headport=s, tailport=n,label="   "]
+node62 -> node59[headport=s, tailport=n,label="   "]
+node59 -> node58[headport=s, tailport=n,label="   "]
+node58 -> node57[headport=s, tailport=n,label="   "]
+node64[label="Partial Sort
+Sorted by c_3 both
+Sort by: 
+ time:0
+ size:3982
+c_3 252,d_4 252,
+"]node65[label="Merge Join
+(c_3(2) == d_4(3))
+ time:1200
+ size:3982
+c_3 252,d_4 252,
+"]node66[label="Sort
+Sort by: c_3 both
+ time:19931
+ size:1000
+c_3 252,
+"]node67[label="Table Scan
+c
+ time:1000
+ size:1000
+c_3 252,
+"]node67 -> node66[headport=s, tailport=n,label="   "]
+node66 -> node65[headport=s, tailport=n,label="   "]
+node68[label="Sort
+Sort by: d_4 both
+ time:19931
+ size:1000
+d_4 252,
+"]node69[label="Table Scan
+d
+ time:1000
+ size:1000
+d_4 252,
+"]node69 -> node68[headport=s, tailport=n,label="   "]
+node68 -> node65[headport=s, tailport=n,label="   "]
+node65 -> node64[headport=s, tailport=n,label="   "]
+node64 -> node57[headport=s, tailport=n,label="   "]
+node57 -> node56[headport=s, tailport=n,label="   "]
 
 }

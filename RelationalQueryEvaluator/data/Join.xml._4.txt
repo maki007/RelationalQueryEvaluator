@@ -2,7 +2,7 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Hash Join
 (country_id_2(0) == id_3(1))
- time:10000
+ time:18000
  size:3982
 name_1 252,country_name_4 252,
 "]node1[label="Table Scan

@@ -2,23 +2,23 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
 Sort by: value_21 desc
- time:2136623
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ time:365406
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node1[label="Columns Operations
 ps_partkey, value
  time:0
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node2[label="Filter
 (x_10(0) < value_21(1))
- time:200000
- size:66667
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:13334
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node3[label="Cross Join
- time:200000
- size:200000
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:40000
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node4[label="Columns Operations
 x = (value_9(0) * 0.7)
  time:0
@@ -26,22 +26,22 @@ x = (value_9(0) * 0.7)
 x_10 1,
 "]node5[label="Sorted Group
 nothing,value_9=sum(x_8);
- time:10400000
+ time:104000
  size:1
 value_9 1,
 "]node6[label="Columns Operations
 x = (ps_supplycost_2(0) * ps_availqty_3(0))
  time:0
- size:8000000
-x_8 8000000,
+ size:80000
+x_8 80000,
 "]node7[label="Hash Join
 (ps_suppkey_1(0) == s_suppkey_5(0))
- time:400003200
- size:8000000
-ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+ time:16004000
+ size:80000
+ps_suppkey_1 10000,ps_supplycost_2 80000,ps_availqty_3 80000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node8[label="Hash Join
 (s_nationkey_4(0) == n_nationkey_6(0))
- time:20008
+ time:80010
  size:400
 s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node9[label="Filter
@@ -65,9 +65,9 @@ s_nationkey_4 25,s_suppkey_5 1585,
 node8 -> node7[headport=s, tailport=n,label="   "]
 node12[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_1 10000,ps_supplycost_2 2000000,ps_availqty_3 2000000,
 "]node12 -> node7[headport=s, tailport=n,label="   "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node5[headport=s, tailport=n,label="   "]
@@ -75,22 +75,22 @@ node5 -> node4[headport=s, tailport=n,label="   "]
 node4 -> node3[headport=s, tailport=n,label="   "]
 node13[label="Hash Group
 ps_partkey_12, value_21=sum(x_19);
- time:82400000
- size:200000
-ps_partkey_20 5000,value_21 200000,
+ time:1464000
+ size:40000
+ps_partkey_20 40000,value_21 40000,
 "]node14[label="Columns Operations
 ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
  time:0
- size:8000000
-ps_partkey_12 200000,x_19 8000000,
+ size:80000
+ps_partkey_12 80000,x_19 80000,
 "]node15[label="Hash Join
 (ps_suppkey_11(0) == s_suppkey_16(0))
- time:400003200
- size:8000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+ time:16004000
+ size:80000
+ps_suppkey_11 10000,ps_partkey_12 80000,ps_supplycost_13 80000,ps_availqty_14 80000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node16[label="Hash Join
 (s_nationkey_15(0) == n_nationkey_17(0))
- time:20008
+ time:80010
  size:400
 s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node17[label="Filter
@@ -114,9 +114,9 @@ s_nationkey_15 25,s_suppkey_16 1585,
 node16 -> node15[headport=s, tailport=n,label="   "]
 node20[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 2000000,ps_availqty_14 2000000,
 "]node20 -> node15[headport=s, tailport=n,label="   "]
 node15 -> node14[headport=s, tailport=n,label="   "]
 node14 -> node13[headport=s, tailport=n,label="   "]
@@ -126,23 +126,23 @@ node2 -> node1[headport=s, tailport=n,label="   "]
 node1 -> node0[headport=s, tailport=n,label="   "]
 node21[label="Sort
 Sort by: value_21 desc
- time:2136623
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ time:365406
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node22[label="Columns Operations
 ps_partkey, value
  time:0
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node23[label="Filter
 (x_10(0) < value_21(1))
- time:200000
- size:66667
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:13334
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node24[label="Cross Join
- time:200000
- size:200000
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:40000
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node25[label="Columns Operations
 x = (value_9(0) * 0.7)
  time:0
@@ -150,19 +150,19 @@ x = (value_9(0) * 0.7)
 x_10 1,
 "]node26[label="Sorted Group
 nothing,value_9=sum(x_8);
- time:10400000
+ time:104000
  size:1
 value_9 1,
 "]node27[label="Columns Operations
 x = (ps_supplycost_2(0) * ps_availqty_3(0))
  time:0
- size:8000000
-x_8 8000000,
+ size:80000
+x_8 80000,
 "]node28[label="Hash Join
 (ps_suppkey_1(0) == s_suppkey_5(0))
- time:400003200
- size:8000000
-ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+ time:16004000
+ size:80000
+ps_suppkey_1 10000,ps_supplycost_2 80000,ps_availqty_3 80000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node29[label="Merge Join
 (s_nationkey_4(0) == n_nationkey_6(0))
  time:2001
@@ -201,9 +201,9 @@ node32 -> node29[headport=s, tailport=n,label="   "]
 node29 -> node28[headport=s, tailport=n,label="   "]
 node35[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_1 10000,ps_supplycost_2 2000000,ps_availqty_3 2000000,
 "]node35 -> node28[headport=s, tailport=n,label="   "]
 node28 -> node27[headport=s, tailport=n,label="   "]
 node27 -> node26[headport=s, tailport=n,label="   "]
@@ -211,22 +211,22 @@ node26 -> node25[headport=s, tailport=n,label="   "]
 node25 -> node24[headport=s, tailport=n,label="   "]
 node36[label="Hash Group
 ps_partkey_12, value_21=sum(x_19);
- time:82400000
- size:200000
-ps_partkey_20 5000,value_21 200000,
+ time:1464000
+ size:40000
+ps_partkey_20 40000,value_21 40000,
 "]node37[label="Columns Operations
 ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
  time:0
- size:8000000
-ps_partkey_12 200000,x_19 8000000,
+ size:80000
+ps_partkey_12 80000,x_19 80000,
 "]node38[label="Hash Join
 (ps_suppkey_11(0) == s_suppkey_16(0))
- time:400003200
- size:8000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+ time:16004000
+ size:80000
+ps_suppkey_11 10000,ps_partkey_12 80000,ps_supplycost_13 80000,ps_availqty_14 80000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node39[label="Hash Join
 (s_nationkey_15(0) == n_nationkey_17(0))
- time:20008
+ time:80010
  size:400
 s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node40[label="Filter
@@ -250,9 +250,9 @@ s_nationkey_15 25,s_suppkey_16 1585,
 node39 -> node38[headport=s, tailport=n,label="   "]
 node43[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 2000000,ps_availqty_14 2000000,
 "]node43 -> node38[headport=s, tailport=n,label="   "]
 node38 -> node37[headport=s, tailport=n,label="   "]
 node37 -> node36[headport=s, tailport=n,label="   "]
@@ -262,23 +262,23 @@ node23 -> node22[headport=s, tailport=n,label="   "]
 node22 -> node21[headport=s, tailport=n,label="   "]
 node44[label="Sort
 Sort by: value_21 desc
- time:2136623
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ time:365406
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node45[label="Columns Operations
 ps_partkey, value
  time:0
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node46[label="Filter
 (x_10(0) < value_21(1))
- time:200000
- size:66667
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:13334
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node47[label="Cross Join
- time:200000
- size:200000
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:40000
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node48[label="Columns Operations
 x = (value_9(0) * 0.7)
  time:0
@@ -286,19 +286,19 @@ x = (value_9(0) * 0.7)
 x_10 1,
 "]node49[label="Sorted Group
 nothing,value_9=sum(x_8);
- time:10400000
+ time:104000
  size:1
 value_9 1,
 "]node50[label="Columns Operations
 x = (ps_supplycost_2(0) * ps_availqty_3(0))
  time:0
- size:8000000
-x_8 8000000,
+ size:80000
+x_8 80000,
 "]node51[label="Hash Join
 (ps_suppkey_1(0) == s_suppkey_5(0))
- time:400003200
- size:8000000
-ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+ time:16004000
+ size:80000
+ps_suppkey_1 10000,ps_supplycost_2 80000,ps_availqty_3 80000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node52[label="Merge Join
 (s_nationkey_4(0) == n_nationkey_6(0))
  time:2001
@@ -337,9 +337,9 @@ node55 -> node52[headport=s, tailport=n,label="   "]
 node52 -> node51[headport=s, tailport=n,label="   "]
 node58[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_1 10000,ps_supplycost_2 2000000,ps_availqty_3 2000000,
 "]node58 -> node51[headport=s, tailport=n,label="   "]
 node51 -> node50[headport=s, tailport=n,label="   "]
 node50 -> node49[headport=s, tailport=n,label="   "]
@@ -347,22 +347,22 @@ node49 -> node48[headport=s, tailport=n,label="   "]
 node48 -> node47[headport=s, tailport=n,label="   "]
 node59[label="Hash Group
 ps_partkey_12, value_21=sum(x_19);
- time:82400000
- size:200000
-ps_partkey_20 5000,value_21 200000,
+ time:1464000
+ size:40000
+ps_partkey_20 40000,value_21 40000,
 "]node60[label="Columns Operations
 ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
  time:0
- size:8000000
-ps_partkey_12 200000,x_19 8000000,
+ size:80000
+ps_partkey_12 80000,x_19 80000,
 "]node61[label="Hash Join
 (ps_suppkey_11(0) == s_suppkey_16(0))
- time:400003200
- size:8000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+ time:16004000
+ size:80000
+ps_suppkey_11 10000,ps_partkey_12 80000,ps_supplycost_13 80000,ps_availqty_14 80000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node62[label="Hash Join
 (s_nationkey_15(0) == n_nationkey_17(0))
- time:20008
+ time:80010
  size:400
 s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node63[label="Filter
@@ -386,9 +386,9 @@ s_nationkey_15 25,s_suppkey_16 1585,
 node62 -> node61[headport=s, tailport=n,label="   "]
 node66[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 2000000,ps_availqty_14 2000000,
 "]node66 -> node61[headport=s, tailport=n,label="   "]
 node61 -> node60[headport=s, tailport=n,label="   "]
 node60 -> node59[headport=s, tailport=n,label="   "]
@@ -398,23 +398,23 @@ node46 -> node45[headport=s, tailport=n,label="   "]
 node45 -> node44[headport=s, tailport=n,label="   "]
 node67[label="Sort
 Sort by: value_21 desc
- time:2136623
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ time:365406
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node68[label="Columns Operations
 ps_partkey, value
  time:0
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node69[label="Filter
 (x_10(0) < value_21(1))
- time:200000
- size:66667
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:13334
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node70[label="Cross Join
- time:200000
- size:200000
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:40000
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node71[label="Columns Operations
 x = (value_9(0) * 0.7)
  time:0
@@ -422,22 +422,22 @@ x = (value_9(0) * 0.7)
 x_10 1,
 "]node72[label="Sorted Group
 nothing,value_9=sum(x_8);
- time:10400000
+ time:104000
  size:1
 value_9 1,
 "]node73[label="Columns Operations
 x = (ps_supplycost_2(0) * ps_availqty_3(0))
  time:0
- size:8000000
-x_8 8000000,
+ size:80000
+x_8 80000,
 "]node74[label="Hash Join
 (ps_suppkey_1(0) == s_suppkey_5(0))
- time:400003200
- size:8000000
-ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+ time:16004000
+ size:80000
+ps_suppkey_1 10000,ps_supplycost_2 80000,ps_availqty_3 80000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node75[label="Hash Join
 (s_nationkey_4(0) == n_nationkey_6(0))
- time:20008
+ time:80010
  size:400
 s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node76[label="Filter
@@ -461,9 +461,9 @@ s_nationkey_4 25,s_suppkey_5 1585,
 node75 -> node74[headport=s, tailport=n,label="   "]
 node79[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_1 10000,ps_supplycost_2 2000000,ps_availqty_3 2000000,
 "]node79 -> node74[headport=s, tailport=n,label="   "]
 node74 -> node73[headport=s, tailport=n,label="   "]
 node73 -> node72[headport=s, tailport=n,label="   "]
@@ -471,19 +471,19 @@ node72 -> node71[headport=s, tailport=n,label="   "]
 node71 -> node70[headport=s, tailport=n,label="   "]
 node80[label="Hash Group
 ps_partkey_12, value_21=sum(x_19);
- time:82400000
- size:200000
-ps_partkey_20 5000,value_21 200000,
+ time:1464000
+ size:40000
+ps_partkey_20 40000,value_21 40000,
 "]node81[label="Columns Operations
 ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
  time:0
- size:8000000
-ps_partkey_12 200000,x_19 8000000,
+ size:80000
+ps_partkey_12 80000,x_19 80000,
 "]node82[label="Hash Join
 (ps_suppkey_11(0) == s_suppkey_16(0))
- time:400003200
- size:8000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+ time:16004000
+ size:80000
+ps_suppkey_11 10000,ps_partkey_12 80000,ps_supplycost_13 80000,ps_availqty_14 80000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node83[label="Merge Join
 (s_nationkey_15(0) == n_nationkey_17(0))
  time:2001
@@ -522,9 +522,9 @@ node86 -> node83[headport=s, tailport=n,label="   "]
 node83 -> node82[headport=s, tailport=n,label="   "]
 node89[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 2000000,ps_availqty_14 2000000,
 "]node89 -> node82[headport=s, tailport=n,label="   "]
 node82 -> node81[headport=s, tailport=n,label="   "]
 node81 -> node80[headport=s, tailport=n,label="   "]
@@ -534,23 +534,23 @@ node69 -> node68[headport=s, tailport=n,label="   "]
 node68 -> node67[headport=s, tailport=n,label="   "]
 node90[label="Sort
 Sort by: value_21 desc
- time:2136623
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ time:365406
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node91[label="Columns Operations
 ps_partkey, value
  time:0
- size:66667
-ps_partkey_20 5000,value_21 66667,
+ size:13334
+ps_partkey_20 13334,value_21 13334,
 "]node92[label="Filter
 (x_10(0) < value_21(1))
- time:200000
- size:66667
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:13334
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node93[label="Cross Join
- time:200000
- size:200000
-x_10 1,ps_partkey_20 5000,value_21 200000,
+ time:40000
+ size:40000
+x_10 1,ps_partkey_20 40000,value_21 40000,
 "]node94[label="Columns Operations
 x = (value_9(0) * 0.7)
  time:0
@@ -558,22 +558,22 @@ x = (value_9(0) * 0.7)
 x_10 1,
 "]node95[label="Sorted Group
 nothing,value_9=sum(x_8);
- time:10400000
+ time:104000
  size:1
 value_9 1,
 "]node96[label="Columns Operations
 x = (ps_supplycost_2(0) * ps_availqty_3(0))
  time:0
- size:8000000
-x_8 8000000,
+ size:80000
+x_8 80000,
 "]node97[label="Hash Join
 (ps_suppkey_1(0) == s_suppkey_5(0))
- time:400003200
- size:8000000
-ps_suppkey_1 10000,ps_supplycost_2 8000000,ps_availqty_3 8000000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
+ time:16004000
+ size:80000
+ps_suppkey_1 10000,ps_supplycost_2 80000,ps_availqty_3 80000,s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node98[label="Hash Join
 (s_nationkey_4(0) == n_nationkey_6(0))
- time:20008
+ time:80010
  size:400
 s_nationkey_4 25,s_suppkey_5 400,n_nationkey_6 1,n_name_7 1,
 "]node99[label="Filter
@@ -597,9 +597,9 @@ s_nationkey_4 25,s_suppkey_5 1585,
 node98 -> node97[headport=s, tailport=n,label="   "]
 node102[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_1 10000,ps_supplycost_2 200000000,ps_availqty_3 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_1 10000,ps_supplycost_2 2000000,ps_availqty_3 2000000,
 "]node102 -> node97[headport=s, tailport=n,label="   "]
 node97 -> node96[headport=s, tailport=n,label="   "]
 node96 -> node95[headport=s, tailport=n,label="   "]
@@ -607,19 +607,19 @@ node95 -> node94[headport=s, tailport=n,label="   "]
 node94 -> node93[headport=s, tailport=n,label="   "]
 node103[label="Hash Group
 ps_partkey_12, value_21=sum(x_19);
- time:82400000
- size:200000
-ps_partkey_20 5000,value_21 200000,
+ time:1464000
+ size:40000
+ps_partkey_20 40000,value_21 40000,
 "]node104[label="Columns Operations
 ps_partkey, x = (ps_supplycost_13(0) * ps_availqty_14(0))
  time:0
- size:8000000
-ps_partkey_12 200000,x_19 8000000,
+ size:80000
+ps_partkey_12 80000,x_19 80000,
 "]node105[label="Hash Join
 (ps_suppkey_11(0) == s_suppkey_16(0))
- time:400003200
- size:8000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 8000000,ps_availqty_14 8000000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
+ time:16004000
+ size:80000
+ps_suppkey_11 10000,ps_partkey_12 80000,ps_supplycost_13 80000,ps_availqty_14 80000,s_nationkey_15 25,s_suppkey_16 400,n_nationkey_17 1,n_name_18 1,
 "]node106[label="Merge Join
 (s_nationkey_15(0) == n_nationkey_17(0))
  time:2001
@@ -658,9 +658,9 @@ node109 -> node106[headport=s, tailport=n,label="   "]
 node106 -> node105[headport=s, tailport=n,label="   "]
 node112[label="Table Scan
 partsup
- time:200000000
- size:200000000
-ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 200000000,ps_availqty_14 200000000,
+ time:2000000
+ size:2000000
+ps_suppkey_11 10000,ps_partkey_12 200000,ps_supplycost_13 2000000,ps_availqty_14 2000000,
 "]node112 -> node105[headport=s, tailport=n,label="   "]
 node105 -> node104[headport=s, tailport=n,label="   "]
 node104 -> node103[headport=s, tailport=n,label="   "]

@@ -15,8 +15,8 @@ AND ((ps_suppkey_1(0) == s_suppkey_5(0)),(s_nationkey_4(0) == n_nationkey_6(0)),
 node6[label="GroupedJoin
 "]
 node7[label="Table partsup
- number of rows: 200000000.000000
- columns: ps_suppkey_1(int,10000), ps_supplycost_2(int,200000000), ps_availqty_3(int,200000000)
+ number of rows: 2000000.000000
+ columns: ps_suppkey_1(int,10000), ps_supplycost_2(int,2000000), ps_availqty_3(int,2000000)
  indices: "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node8[label="Table supplier
@@ -43,8 +43,8 @@ AND ((ps_suppkey_11(0) == s_suppkey_16(0)),(s_nationkey_15(0) == n_nationkey_17(
 node13[label="GroupedJoin
 "]
 node14[label="Table partsup
- number of rows: 200000000.000000
- columns: ps_suppkey_11(int,10000), ps_partkey_12(int,200000), ps_supplycost_13(int,200000000), ps_availqty_14(int,200000000)
+ number of rows: 2000000.000000
+ columns: ps_suppkey_11(int,10000), ps_partkey_12(int,200000), ps_supplycost_13(int,2000000), ps_availqty_14(int,2000000)
  indices: "]
 node14 -> node13[headport=s, tailport=n,label="   "]
 node15[label="Table supplier

@@ -7,7 +7,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
 l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
 "]node1[label="Hash Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
- time:43541
+ time:77360
  size:2114
 l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
 "]node2[label="Columns Operations
@@ -17,12 +17,12 @@ l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_disc
 l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
 "]node3[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
- time:4001491
+ time:16001863
  size:4228
 l_orderkey_3 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,
 "]node4[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
- time:1000086
+ time:4000108
  size:187
 o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,
 "]node5[label="Index Scan
@@ -79,12 +79,12 @@ l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_disc
 l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
 "]node13[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
- time:4001491
+ time:16001863
  size:4228
 l_orderkey_3 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,
 "]node14[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
- time:1000086
+ time:4000108
  size:187
 o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,
 "]node15[label="Index Scan
@@ -127,7 +127,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
 l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
 "]node20[label="Hash Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
- time:43541
+ time:77360
  size:2114
 l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
 "]node21[label="Columns Operations
@@ -137,12 +137,12 @@ l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_disc
 l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
 "]node22[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
- time:4001491
+ time:16001863
  size:4228
 l_orderkey_3 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,
 "]node23[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
- time:1000086
+ time:4000108
  size:187
 o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,
 "]node24[label="Filter
@@ -203,12 +203,12 @@ l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_disc
 l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
 "]node33[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
- time:4001491
+ time:16001863
  size:4228
 l_orderkey_3 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,
 "]node34[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
- time:1000086
+ time:4000108
  size:187
 o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,
 "]node35[label="Filter
@@ -255,7 +255,7 @@ Sort by: revenue_15 desc, o_orderdate_13 asc
 l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
 "]node41[label="Hash Group
 l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
- time:43541
+ time:77360
  size:2114
 l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
 "]node42[label="Columns Operations
@@ -265,12 +265,12 @@ l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_disc
 l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
 "]node43[label="Hash Join
 (l_orderkey_3(1) == o_orderkey_9(2))
- time:4001491
+ time:16001863
  size:4228
 l_orderkey_3 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,
 "]node44[label="Hash Join
 (c_custkey_1(0) == o_custkey_10(2))
- time:1000086
+ time:4000108
  size:187
 o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,
 "]node45[label="Filter

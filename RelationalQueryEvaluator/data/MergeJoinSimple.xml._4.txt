@@ -83,7 +83,7 @@ Sort by: a_1 asc
 a_1 63096,b_2 63096,
 "]node13[label="Hash Join
 (a_1(0) == b_2(1))
- time:10000000
+ time:18000000
  size:15848932
 a_1 63096,b_2 63096,
 "]node14[label="Table Scan

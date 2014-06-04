@@ -7,7 +7,7 @@ Sort by: d_4 desc, a_1 asc
 a_1 252,c_2 252,b_3 252,d_4 252,
 "]node1[label="Hash Join
 AND ((a_1(0) == b_3(1)),(c_2(0) == d_4(1)))
- time:10000000
+ time:18000000
  size:252
 a_1 252,c_2 252,b_3 252,d_4 252,
 "]node2[label="Table Scan

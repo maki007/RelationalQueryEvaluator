@@ -2,25 +2,33 @@ operator main()->()
 {
 broadcast()->(){4} start;
 TableScan()->(int) TableScan0(name="a",columns="a"); 
-TableScan()->(int) TableScan1(name="b",columns="b"); 
-HashJoin(int)(int)->(int,int) HashJoin2(left="0",right="1",out="0,1",leftPartOfCondition="0",rightPartOfCondition="1"); 
-TableScan()->(int) TableScan3(name="d",columns="d"); 
-TableScan()->(int) TableScan4(name="c",columns="c"); 
-HashJoin(int)(int)->(int,int) HashJoin5(left="0",right="1",out="0,1",leftPartOfCondition="0",rightPartOfCondition="1"); 
-HashJoin(int,int)(int,int)->(int,int,int,int) HashJoin6(left="1,2",right="0,3",out="0,1,2,3",leftPartOfCondition="1",rightPartOfCondition="3"); 
+SortOperator(int)->(int) SortOperator1(sortedBy="",sortBy="0:A"); 
+TableScan()->(int) TableScan2(name="b",columns="b"); 
+SortOperator(int)->(int) SortOperator3(sortedBy="",sortBy="0:A"); 
+MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin4(left="0",right="1",out="0,1",leftPartOfCondition="0:A",rightPartOfCondition="1:A"); 
+TableScan()->(int) TableScan5(name="d",columns="d"); 
+SortOperator(int)->(int) SortOperator6(sortedBy="",sortBy="0:A"); 
+TableScan()->(int) TableScan7(name="c",columns="c"); 
+SortOperator(int)->(int) SortOperator8(sortedBy="",sortBy="0:A"); 
+MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin9(left="0",right="1",out="0,1",leftPartOfCondition="0:A",rightPartOfCondition="1:A"); 
+MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin10(left="1,2",right="0,3",out="0,1,2,3",leftPartOfCondition="1:A",rightPartOfCondition="3:A"); 
 Store(int,int,int,int)->() storeResult(); 
 
 source -> start
 start[0] -> TableScan0;
-start[1] -> TableScan1;
-TableScan0 -> [0]HashJoin2;
-TableScan1 -> [1]HashJoin2;
-start[2] -> TableScan3;
-start[3] -> TableScan4;
-TableScan3 -> [0]HashJoin5;
-TableScan4 -> [1]HashJoin5;
-HashJoin2 -> [0]HashJoin6;
-HashJoin5 -> [1]HashJoin6;
-HashJoin6 -> storeResult;
+TableScan0 -> SortOperator1;
+start[1] -> TableScan2;
+TableScan2 -> SortOperator3;
+SortOperator1 -> [0]MergeEquiJoin4;
+SortOperator3 -> [1]MergeEquiJoin4;
+start[2] -> TableScan5;
+TableScan5 -> SortOperator6;
+start[3] -> TableScan7;
+TableScan7 -> SortOperator8;
+SortOperator6 -> [0]MergeEquiJoin9;
+SortOperator8 -> [1]MergeEquiJoin9;
+MergeEquiJoin4 -> [0]MergeEquiJoin10;
+MergeEquiJoin9 -> [1]MergeEquiJoin10;
+MergeEquiJoin10 -> storeResult;
 storeResult -> output;
 }

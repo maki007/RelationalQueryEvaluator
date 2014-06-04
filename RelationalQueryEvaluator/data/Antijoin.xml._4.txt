@@ -2,12 +2,12 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Hash Antijoin
 (d_1(0) == b_3(1))
- time:9000
+ time:14000
  size:250
 d_1 252,
 "]node1[label="Hash Antijoin
 (c_1(0) == a_2(1))
- time:10000
+ time:18000
  size:500
 d_1 252,
 "]node2[label="Table Scan
@@ -41,7 +41,7 @@ Sort by: d_1 both
 d_1 252,
 "]node7[label="Hash Antijoin
 (c_1(0) == a_2(1))
- time:10000
+ time:18000
  size:500
 d_1 252,
 "]node8[label="Table Scan
@@ -82,7 +82,7 @@ Sort by: d_1 both
 d_1 252,
 "]node14[label="Hash Antijoin
 (c_1(0) == a_2(1))
- time:10000
+ time:18000
  size:500
 d_1 252,
 "]node15[label="Table Scan
@@ -113,7 +113,7 @@ b_3 252,
 node17 -> node12[headport=s, tailport=n,label="   "]
 node19[label="Hash Antijoin
 (d_1(0) == b_3(1))
- time:9000
+ time:14000
  size:250
 d_1 252,
 "]node20[label="Merge Antijoin
@@ -154,7 +154,7 @@ b_3 252,
 "]node25 -> node19[headport=s, tailport=n,label="   "]
 node26[label="Hash Antijoin
 (d_1(0) == b_3(1))
- time:9000
+ time:14000
  size:250
 d_1 252,
 "]node27[label="Merge Antijoin

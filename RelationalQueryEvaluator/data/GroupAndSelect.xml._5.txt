@@ -26,7 +26,7 @@ Sort by: country_4 desc
 country_4 1,count_5 1,x_6 1,
 "]node4[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
- time:64
+ time:115
  size:1
 country_4 1,count_5 1,x_6 1,
 "]node5[label="Index Scan
@@ -68,7 +68,7 @@ Sort by: country_4 desc
 country_4 1,count_5 1,x_6 1,
 "]node11[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
- time:64
+ time:115
  size:1
 country_4 1,count_5 1,x_6 1,
 "]node12[label="Filter

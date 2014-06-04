@@ -28,12 +28,12 @@ Sort by: p_brand_5 both, p_type_4 both, p_size_3 both, ps_suppkey_2 both
 ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node5[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
- time:2750
+ time:3668
  size:21
 ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node6[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
- time:2084
+ time:8105
  size:42
 ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node7[label="Filter
@@ -77,29 +77,29 @@ Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
  time:5
  size:3
 p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
-"]node13[label="Sorted Group
+"]node13[label="Hash Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
- time:13
+ time:191
  size:3
 p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
-"]node14[label="Sort
-Sort by: p_brand_9 both, p_type_10 both, p_size_11 both
- time:70
- size:11
-p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
-"]node15[label="Hash Group
+"]node14[label="Sorted Group
 p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
- time:215
+ time:27
  size:11
 p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
+"]node15[label="Sort
+Sort by: p_brand_5 both, p_type_4 both, p_size_3 both, ps_suppkey_2 both
+ time:183
+ size:21
+ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node16[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
- time:2750
+ time:3668
  size:21
 ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node17[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
- time:2084
+ time:8105
  size:42
 ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node18[label="Filter
@@ -142,29 +142,29 @@ Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
  time:5
  size:3
 p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
-"]node24[label="Hash Group
+"]node24[label="Sorted Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
- time:107
+ time:13
  size:3
 p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
-"]node25[label="Sorted Group
-p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
- time:27
+"]node25[label="Sort
+Sort by: p_brand_9 both, p_type_10 both, p_size_11 both
+ time:70
  size:11
 p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
-"]node26[label="Sort
-Sort by: p_brand_5 both, p_type_4 both, p_size_3 both, ps_suppkey_2 both
- time:183
- size:21
-ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
+"]node26[label="Hash Group
+p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
+ time:382
+ size:11
+p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node27[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
- time:2750
+ time:3668
  size:21
 ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node28[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
- time:2084
+ time:8105
  size:42
 ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node29[label="Filter
@@ -209,22 +209,22 @@ Sort by: supplier_cnt_16 desc, p_brand_13 asc, p_type_14 asc, p_size_15 asc
 p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node35[label="Hash Group
 p_brand_9, p_type_10, p_size_11, supplier_cnt_16=count();
- time:107
+ time:191
  size:3
 p_brand_13 1,p_type_14 1,p_size_15 1,supplier_cnt_16 3,
 "]node36[label="Hash Group
 p_brand_5, p_type_4, p_size_3, ps_suppkey_2, 
- time:215
+ time:382
  size:11
 p_brand_9 2,p_type_10 2,p_size_11 2,ps_suppkey_12 21,
 "]node37[label="Hash Antijoin
 (ps_suppkey_2(0) == s_suppkey_7(1))
- time:2750
+ time:3668
  size:21
 ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,
 "]node38[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
- time:2084
+ time:8105
  size:42
 ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node39[label="Filter
@@ -299,7 +299,7 @@ Sort by: ps_suppkey_2 both
 ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node51[label="Hash Join
 (p_partkey_6(0) == ps_partkey_1(0))
- time:2084
+ time:8105
  size:42
 ps_partkey_1 42,ps_suppkey_2 42,p_size_3 3,p_type_4 3,p_brand_5 3,p_partkey_6 3,
 "]node52[label="Filter

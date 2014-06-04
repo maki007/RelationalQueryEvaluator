@@ -3,19 +3,21 @@ operator main()->()
 broadcast()->(){3} start;
 TableScan()->(int) TableScan0(name="z",columns="c"); 
 TableScan()->(int) TableScan1(name="x",columns="a"); 
-HashAntiJoin(int)(int)->(int) HashAntiJoin2(left="0",right="1",out="0",leftPartOfCondition="0",rightPartOfCondition="1"); 
-TableScan()->(int) TableScan3(name="y",columns="b"); 
-HashAntiJoin(int)(int)->(int) HashAntiJoin4(left="0",right="1",out="0",leftPartOfCondition="0",rightPartOfCondition="1"); 
+SortOperator(int)->(int) SortOperator2(sortedBy="",sortBy="0:D"); 
+MergeAntiJoin(int)(int)->(int) MergeAntiJoin3(left="0",right="1",out="0",leftPartOfCondition="0:D",rightPartOfCondition="1:D"); 
+TableScan()->(int) TableScan4(name="y",columns="b"); 
+MergeAntiJoin(int)(int)->(int) MergeAntiJoin5(left="0",right="1",out="0",leftPartOfCondition="0:D",rightPartOfCondition="1:D"); 
 Store(int)->() storeResult(); 
 
 source -> start
 start[0] -> TableScan0;
 start[1] -> TableScan1;
-TableScan0 -> [0]HashAntiJoin2;
-TableScan1 -> [1]HashAntiJoin2;
-start[2] -> TableScan3;
-HashAntiJoin2 -> [0]HashAntiJoin4;
-TableScan3 -> [1]HashAntiJoin4;
-HashAntiJoin4 -> storeResult;
+TableScan1 -> SortOperator2;
+TableScan0 -> [0]MergeAntiJoin3;
+SortOperator2 -> [1]MergeAntiJoin3;
+start[2] -> TableScan4;
+MergeAntiJoin3 -> [0]MergeAntiJoin5;
+TableScan4 -> [1]MergeAntiJoin5;
+MergeAntiJoin5 -> storeResult;
 storeResult -> output;
 }

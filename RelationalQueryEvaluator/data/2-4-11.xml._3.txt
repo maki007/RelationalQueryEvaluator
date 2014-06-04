@@ -13,8 +13,8 @@ x_8 = (ps_supplycost_2(0) * ps_availqty_3(0))"]
 node5[label="GroupedJoin
 AND ((ps_suppkey_1(0) == s_suppkey_5(0)),(s_nationkey_4(0) == n_nationkey_6(0)))"]
 node6[label="Table partsup
- number of rows: 200000000.000000
- columns: ps_suppkey_1(int,10000), ps_supplycost_2(int,200000000), ps_availqty_3(int,200000000)
+ number of rows: 2000000.000000
+ columns: ps_suppkey_1(int,10000), ps_supplycost_2(int,2000000), ps_availqty_3(int,2000000)
  indices: "]
 node6 -> node5[headport=s, tailport=n,label="   "]
 node7[label="Table supplier
@@ -41,8 +41,8 @@ ps_partkey_12, x_19 = (ps_supplycost_13(0) * ps_availqty_14(0))"]
 node12[label="GroupedJoin
 AND ((ps_suppkey_11(0) == s_suppkey_16(0)),(s_nationkey_15(0) == n_nationkey_17(0)))"]
 node13[label="Table partsup
- number of rows: 200000000.000000
- columns: ps_suppkey_11(int,10000), ps_partkey_12(int,200000), ps_supplycost_13(int,200000000), ps_availqty_14(int,200000000)
+ number of rows: 2000000.000000
+ columns: ps_suppkey_11(int,10000), ps_partkey_12(int,200000), ps_supplycost_13(int,2000000), ps_availqty_14(int,2000000)
  indices: "]
 node13 -> node12[headport=s, tailport=n,label="   "]
 node14[label="Table supplier

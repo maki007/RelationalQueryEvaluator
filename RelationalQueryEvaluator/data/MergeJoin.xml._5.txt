@@ -36,7 +36,7 @@ Sort by: a_1 desc
 a_1 63096,b_2 63096,
 "]node6[label="Hash Join
 (a_1(0) == b_2(1))
- time:10000000
+ time:18000000
  size:15848932
 a_1 63096,b_2 63096,
 "]node7[label="Table Scan
@@ -59,7 +59,7 @@ Sort by: a_1 desc
 a_1 63096,b_2 63096,
 "]node10[label="Hash Join
 (a_1(0) == b_2(1))
- time:10000000
+ time:18000000
  size:15848932
 a_1 63096,b_2 63096,
 "]node11[label="Sort by index Scan

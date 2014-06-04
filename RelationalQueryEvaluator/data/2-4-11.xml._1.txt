@@ -17,8 +17,8 @@ node6[label="Join
 node7[label="Join
 "]
 node8[label="Table partsup
- number of rows: 200000000.000000
- columns: ps_suppkey_-1(int,10000), ps_supplycost_-1(int,200000000), ps_availqty_-1(int,200000000)
+ number of rows: 2000000.000000
+ columns: ps_suppkey_-1(int,10000), ps_supplycost_-1(int,2000000), ps_availqty_-1(int,2000000)
  indices: "]
 node8 -> node7[headport=s, tailport=n,label="   "]
 node9[label="Table supplier
@@ -48,8 +48,8 @@ node14[label="Join
 node15[label="Join
 "]
 node16[label="Table partsup
- number of rows: 200000000.000000
- columns: ps_suppkey_-1(int,10000), ps_partkey_-1(int,200000), ps_supplycost_-1(int,200000000), ps_availqty_-1(int,200000000)
+ number of rows: 2000000.000000
+ columns: ps_suppkey_-1(int,10000), ps_partkey_-1(int,200000), ps_supplycost_-1(int,2000000), ps_availqty_-1(int,2000000)
  indices: "]
 node16 -> node15[headport=s, tailport=n,label="   "]
 node17[label="Table supplier

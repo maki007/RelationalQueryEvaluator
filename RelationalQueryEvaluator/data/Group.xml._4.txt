@@ -32,7 +32,7 @@ Sort by: country_4 desc
 country_4 252,count_5 1585,x_6 1585,
 "]node5[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
- time:103000
+ time:183000
  size:1585
 country_4 252,count_5 1585,x_6 1585,
 "]node6[label="Table Scan
@@ -49,7 +49,7 @@ Sort by: country_4 desc
 country_4 252,count_5 1585,x_6 1585,
 "]node8[label="Hash Group
 country_2, count_5=count();x_6=max(parameter_3);
- time:103000
+ time:183000
  size:1585
 country_4 252,count_5 1585,x_6 1585,
 "]node9[label="Sort by index Scan
