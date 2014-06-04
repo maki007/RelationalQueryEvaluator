@@ -33,7 +33,9 @@ typedef unsigned int uint;
 class AlgebraVisitor;
 
 
-//nodes
+/*!
+* ... Qt style comments ...
+*/
 class AlgebraNodeBase
 {
 public:

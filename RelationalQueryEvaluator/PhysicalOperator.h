@@ -117,6 +117,8 @@ public:
 	std::shared_ptr<Expression> condition;
 	void accept(PhysicalOperatorVisitor &v);
 	std::vector<SortParameter> sortParameters;
+	std::vector<SortParameter> left;
+	std::vector<SortParameter> right;
 	MergeNonEquiJoin(const std::shared_ptr<Expression> & condition)
 	{
 		this->condition = condition;

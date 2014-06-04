@@ -277,8 +277,47 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin *
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeNonEquiJoin(MergeNonEquiJoin * node)
 {
-	writeBinaryOperator("MergeNonEquiJoin", node, writeJoinParameters(node));
-}
+	std::map<int, ColumnInfo> columns = node->leftChild->columns;
+	columns.insert(node->rightChild->columns.begin(), node->rightChild->columns.end());
+	map<int, int> cols;
+	convertColumns(columns, cols);
+	string leftString = "leftInputSortedBy = \"";
+	string rightString = "rightInputSortedBy = \"";
+	for (ulong i = 0; i < node->left.size(); ++i)
+	{
+		leftString += to_string(cols[node->left[i].column.id]);
+		if (node->left[i].order == SortOrder::ASCENDING)
+		{
+			leftString += ":A";
+		}
+		else
+		{
+			leftString += ":D";
+		}
+		leftString += ",";
+	}
+
+	for (ulong i = 0; i < node->right.size(); ++i)
+	{
+		rightString += to_string(cols[node->right[i].column.id]);
+		if (node->right[i].order == SortOrder::ASCENDING)
+		{
+			rightString += ":A";
+		}
+		else
+		{
+			rightString += ":D";
+		}
+		rightString += ",";
+	}
+
+	leftString[leftString.size() - 1] = '\"';
+	rightString[rightString.size() - 1] = '\"';
+
+	BoboxWritingExpressionVisitor writer(cols);
+	node->condition->accept(writer);
+	writeBinaryOperator("MergeNonEquiJoin", node, writeJoinParameters(node) + "," + leftString + ", " + rightString + ",condition=\"" + writer.result + "\"");
+} 
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitCrossJoin(CrossJoin * node)
 {

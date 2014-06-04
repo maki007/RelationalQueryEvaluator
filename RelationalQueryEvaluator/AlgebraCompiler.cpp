@@ -1396,12 +1396,20 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 				rightSortParameters.parameters.push_back(SortParameter(newColumns[conditionRepresentation[1]].column, SortOrder::ASCENDING));
 				shared_ptr<PhysicalPlan> rightSortedPlan = generateSortParameters(rightSortParameters, rightPlan);
 				
-				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(new MergeNonEquiJoin(condition), newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
+
+				MergeNonEquiJoin * algorithm = new MergeNonEquiJoin(condition);
+				shared_ptr<PhysicalPlan> mergePlan(new PhysicalPlan(algorithm, newSize, time, newColumns, leftSortedPlan, rightSortedPlan));
+
 				mergePlan->sortedBy.parameters.push_back(SortParameter(newColumns[conditionRepresentation[0]].column, SortOrder::ASCENDING));
+				algorithm->left.push_back(SortParameter(newColumns[conditionRepresentation[0]].column, SortOrder::ASCENDING));
 				mergePlan->sortedBy.parameters.push_back(SortParameter(newColumns[conditionRepresentation[1]].column, SortOrder::ASCENDING));
+				algorithm->right.push_back(SortParameter(newColumns[conditionRepresentation[1]].column, SortOrder::ASCENDING));
+
 				if (conditionRepresentation[2] != -1)
 				{
 					mergePlan->sortedBy.parameters.push_back(SortParameter(newColumns[conditionRepresentation[2]].column, SortOrder::ASCENDING));
+					algorithm->left.push_back(SortParameter(newColumns[conditionRepresentation[2]].column, SortOrder::ASCENDING));
+
 				}
 				insertPlan(newPlan.plans, mergePlan);
 
