@@ -173,6 +173,7 @@
     <ClCompile Include="PhysicalOperatorVisitor.cpp" />
     <ClCompile Include="SemanticChecker.cpp" />
     <ClCompile Include="XmlHandler.cpp" />
+    <ClCompile Include="XmlUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algebra.h" />

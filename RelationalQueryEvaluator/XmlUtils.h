@@ -24,58 +24,15 @@ XERCES_CPP_NAMESPACE_USE
 class XmlUtils
 {
 public:
-	static DOMElement * GetChildElementByName(DOMElement * element, const char * elementName)
-	{
-		XMLCh * name = XMLString::transcode(elementName);
-		DOMNodeList * childs = element->getChildNodes();
-		for (XMLSize_t i = 0; i < childs->getLength(); ++i)
-		{
-			if (childs->item(i)->getNodeType() == DOMElement::ELEMENT_NODE)
-			{
-				if (XMLString::compareString(childs->item(i)->getNodeName(), name) == 0)
-				{
-					return (DOMElement *)(childs->item(i));
-				}
-			}
-		}
-		return 0;
-	}
+	static DOMElement * GetChildElementByName(DOMElement * element, const char * elementName);
 
-	static DOMElement * GetFirstChildElement(DOMElement * element)
-	{
-		DOMNodeList * childs = element->getChildNodes();
-		for (XMLSize_t i = 0; i < childs->getLength(); ++i)
-		{
-			if (childs->item(i)->getNodeType() == DOMElement::ELEMENT_NODE)
-			{
-				return (DOMElement *)childs->item(i);
-			}
-		}
-		return 0;
-	}
+	static DOMElement * GetFirstChildElement(DOMElement * element);
 
-	static std::vector<DOMElement *> GetChildElements(DOMElement * element)
-	{
-		std::vector<DOMElement *> result;
-		DOMNodeList * childs = element->getChildNodes();
-		for (XMLSize_t i = 0; i < childs->getLength(); ++i)
-		{
-			if (childs->item(i)->getNodeType() == DOMElement::ELEMENT_NODE)
-			{
-				result.push_back((DOMElement *)childs->item(i));
-			}
-		}
-		return result;
-	}
+	static std::vector<DOMElement *> GetChildElements(DOMElement * element);
 
-	static std::string ReadAttribute(DOMElement * element, const char * atribute)
-	{
-		return XMLString::transcode(element->getAttribute(XMLString::transcode(atribute)));
-	}
+	static std::string ReadAttribute(DOMElement * element, const char * atribute);
 
-	static std::string GetElementName(DOMElement * element)
-	{
-		return std::string(XMLString::transcode(element->getNodeName()));
-	}
+	static std::string GetElementName(DOMElement * element);
+
 };
 #endif

@@ -75,9 +75,19 @@ double TimeComplexity::crossJoin(double leftSize, double rightSize)
 	return TimeComplexity::CROSS_JOIN*leftSize*rightSize;
 }
 
+Filter::Filter(const std::shared_ptr<Expression> & condition)
+{
+	this->condition = condition;
+}
+
 void Filter::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitFilter(this);
+}
+
+FilterKeepingOrder::FilterKeepingOrder(const std::shared_ptr<Expression> & condition)
+{
+	this->condition = condition;
 }
 
 void FilterKeepingOrder::accept(PhysicalOperatorVisitor &v)
@@ -85,14 +95,30 @@ void FilterKeepingOrder::accept(PhysicalOperatorVisitor &v)
 	v.visitFilterKeepingOrder(this);
 }
 
+SortOperator::SortOperator(const PossibleSortParameters &  sortedBy, const PossibleSortParameters & sortBy)
+{
+	this->sortedBy = sortedBy;
+	this->sortBy = sortBy;
+}
+
 void SortOperator::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitSortOperator(this);
 }
 
+MergeEquiJoin::MergeEquiJoin(const shared_ptr<Expression> & condition)
+{
+	this->condition = condition;
+}
+
 void MergeEquiJoin::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitMergeEquiJoin(this);
+}
+
+MergeNonEquiJoin::MergeNonEquiJoin(const std::shared_ptr<Expression> & condition)
+{
+	this->condition = condition;
 }
 
 void MergeNonEquiJoin::accept(PhysicalOperatorVisitor &v)
@@ -105,14 +131,34 @@ void CrossJoin::accept(PhysicalOperatorVisitor &v)
 	v.visitCrossJoin(this);
 }
 
+HashJoin::HashJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+{
+	this->condition = condition;
+	this->left = left;
+	this->right = right;
+}
+
+
 void HashJoin::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitHashJoin(this);
 }
 
+HashAntiJoin::HashAntiJoin(const shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+{
+	this->condition = condition;
+	this->left = left;
+	this->right = right;
+}
+
 void HashAntiJoin::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitHashAntiJoin(this);
+}
+
+MergeAntiJoin::MergeAntiJoin(const shared_ptr<Expression> & condition)
+{
+	this->condition = condition;
 }
 
 void MergeAntiJoin::accept(PhysicalOperatorVisitor &v)
@@ -125,9 +171,21 @@ void UnionOperator::accept(PhysicalOperatorVisitor &v)
 	v.visitUnionOperator(this);
 }
 
+HashGroup::HashGroup(const vector<GroupColumn> & groupColumns, const vector<AgregateFunction> & agregateFunctions)
+{
+	this->groupColumns = groupColumns;
+	this->agregateFunctions = agregateFunctions;
+}
+
 void HashGroup::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitHashGroup(this);
+}
+
+SortedGroup::SortedGroup(const vector<GroupColumn> & groupColumns, const vector<AgregateFunction> & agregateFunctions)
+{
+	this->groupColumns = groupColumns;
+	this->agregateFunctions = agregateFunctions;
 }
 
 void SortedGroup::accept(PhysicalOperatorVisitor &v)
@@ -135,9 +193,20 @@ void SortedGroup::accept(PhysicalOperatorVisitor &v)
 	v.visitSortedGroup(this);
 }
 
+ColumnsOperationsOperator::ColumnsOperationsOperator(const std::vector<ColumnOperation> & operations)
+{
+	this->operations = operations;
+}
+
 void ColumnsOperationsOperator::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitColumnsOperationsOperator(this);
+}
+
+ScanAndSortByIndex::ScanAndSortByIndex(const std::string & name, const Index & index)
+{
+	tableName = name;
+	this->index = index;
 }
 
 void ScanAndSortByIndex::accept(PhysicalOperatorVisitor &v)
@@ -145,9 +214,21 @@ void ScanAndSortByIndex::accept(PhysicalOperatorVisitor &v)
 	v.visitScanAndSortByIndex(this);
 }
 
+TableScan::TableScan(const std::string & name)
+{
+	tableName = name;
+}
+
 void TableScan::accept(PhysicalOperatorVisitor &v)
 {
 	v.visitTableScan(this);
+}
+
+IndexScan::IndexScan(const string & name, const std::shared_ptr<Expression> & condition, const Index & index)
+{
+	tableName = name;
+	this->condition = condition;
+	this->index = index;
 }
 
 void IndexScan::accept(PhysicalOperatorVisitor &v)
@@ -159,4 +240,57 @@ PhysicalPlan::PhysicalPlan()
 {
 	timeComplexity = 0;
 	plan = 0;
+}
+
+PhysicalPlan::PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, std::vector<ColumnInfo> & cols)
+{
+
+	plan = std::shared_ptr<PhysicalOperator>(op);
+	plan->size = numberOfRows;
+	timeComplexity = time;
+	plan->timeComplexity = time;
+	for (auto it2 = cols.begin(); it2 != cols.end(); ++it2)
+	{
+		op->columns[it2->column.id] = *it2;
+	}
+}
+
+PhysicalPlan::PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, const std::map<int, ColumnInfo> & newColumns)
+{
+
+	plan = std::shared_ptr<PhysicalOperator>(op);
+	plan->size = numberOfRows;
+	timeComplexity = time;
+	plan->timeComplexity = time;
+	op->columns = newColumns;
+}
+
+
+PhysicalPlan::PhysicalPlan(UnaryPhysicalOperator * op, double newSize, double time, const std::map<int, ColumnInfo> & newColumns, const std::shared_ptr<PhysicalPlan> & oldPlan)
+{
+	op->child = oldPlan->plan;
+	plan = std::shared_ptr<PhysicalOperator>(op);
+	plan->size = newSize;
+	plan->timeComplexity = time;
+	timeComplexity = oldPlan->timeComplexity + plan->timeComplexity;
+	op->columns = newColumns;
+}
+
+
+
+PhysicalPlan::PhysicalPlan(BinaryPhysicalOperator * op, double newSize, double time, const std::map<int, ColumnInfo> & newColumns, const std::shared_ptr<PhysicalPlan> & oldPlan1, const std::shared_ptr<PhysicalPlan> & oldPlan2)
+{
+	op->leftChild = oldPlan1->plan;
+	op->rightChild = oldPlan2->plan;
+	plan = std::shared_ptr<PhysicalOperator>(op);
+	plan->size = newSize;
+	plan->timeComplexity = time;
+	timeComplexity = oldPlan1->timeComplexity + oldPlan2->timeComplexity + plan->timeComplexity;
+	op->columns = newColumns;
+
+}
+
+bool PhysicalPlan::Comparator(std::shared_ptr<PhysicalPlan> & i, std::shared_ptr<PhysicalPlan> & j)
+{
+	return (i->timeComplexity < j->timeComplexity);
 }

@@ -33,103 +33,37 @@ private:
 	XMLCh*  wStr;
 
 public:
-	WStr(const char* str)
-	{
-		wStr = XMLString::transcode(str);
-	}
+	WStr(const char* str);
 
-	~WStr()
-	{
-		XMLString::release(&wStr);
-	}
+	~WStr();
 
-	operator const XMLCh*() const
-	{
-		return wStr;
-	}
+	operator const XMLCh*() const;
 };
 
 class ParserErrorHandler : public ErrorHandler
 {
-private:
-	void reportParseException(const SAXParseException& ex)
-	{
-		errors++;
-		char* msg = XMLString::transcode(ex.getMessage());
-		fprintf(stderr, "at line %llu column %llu, %s\n",
-			ex.getColumnNumber(), ex.getLineNumber(), msg);
-		XMLString::release(&msg);
-	}
-
 public:
 	int errors;
 
-	ParserErrorHandler()
-	{
-		errors = 0;
-	}
+	ParserErrorHandler();
 
-	void warning(const SAXParseException& ex)
-	{
-		reportParseException(ex);
-	}
+	void reportParseException(const SAXParseException& ex);
 
-	void error(const SAXParseException& ex)
-	{
-		reportParseException(ex);
-	}
+	void warning(const SAXParseException& ex);
 
-	void fatalError(const SAXParseException& ex)
-	{
-		reportParseException(ex);
-	}
+	void error(const SAXParseException& ex);
 
-	void resetErrors()
-	{
-		errors = 0;
-	}
+	void fatalError(const SAXParseException& ex);
+
+	void resetErrors();
 };
+
 class XmlHandler
 {
 public:
-	static std::unique_ptr<AlgebraNodeBase> ValidateSchema(const char* xmlFilePath)
-	{
-		XercesDOMParser domParser;
+	static std::unique_ptr<AlgebraNodeBase> ValidateSchema(const char* xmlFilePath);
+	
+	static std::unique_ptr<AlgebraNodeBase> GenerateRelationalAlgebra(const char *filename);
 
-		ParserErrorHandler parserErrorHandler;
-
-		domParser.setErrorHandler(&parserErrorHandler);
-		domParser.setValidationScheme(XercesDOMParser::Val_Auto);
-		domParser.setDoNamespaces(true);
-		domParser.setDoSchema(true);
-		domParser.setValidationConstraintFatal(true);
-
-		domParser.parse(xmlFilePath);
-		if (domParser.getErrorCount() == 0 && parserErrorHandler.errors == 0)
-		{
-			printf("XML file ");
-			printf(xmlFilePath);
-			printf(" validated against the schema successfully\n");
-
-			DOMDocument * xmlDoc = domParser.getDocument();
-			DOMElement* elementRoot = xmlDoc->getDocumentElement();
-			return std::unique_ptr<AlgebraNodeBase>(new Sort(elementRoot));
-		}
-		else
-		{
-			printf("XML file ");
-			printf(xmlFilePath);
-			printf("  doesn't conform to the schema\n");
-		}
-		return 0;
-	}
-
-	static std::unique_ptr<AlgebraNodeBase> GenerateRelationalAlgebra(const char *filename)
-	{
-		XMLPlatformUtils::Initialize();
-		std::unique_ptr<AlgebraNodeBase> result = ValidateSchema(filename);
-		XMLPlatformUtils::Terminate();
-		return result;
-	}
 };
 #endif
