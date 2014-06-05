@@ -97,7 +97,7 @@ Expression * Expression::constructChildren(DOMElement * node)
 	}
 	else
 	{
-		throw new exception("not suported");
+		throw exception("not suported");
 	}
 
 

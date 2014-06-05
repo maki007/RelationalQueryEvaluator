@@ -109,7 +109,7 @@ shared_ptr<AlgebraNodeBase> BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase 
 	}
 	else
 	{
-		throw new exception("child not found");
+		throw exception("child not found");
 	}
 	return result;
 }
@@ -141,7 +141,7 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 
 shared_ptr<AlgebraNodeBase> NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, shared_ptr<AlgebraNodeBase> & newChild)
 {
-	throw new exception("not suported");
+	throw exception("not suported");
 }
 
 shared_ptr<AlgebraNodeBase> GroupedAlgebraNode::replaceChild(AlgebraNodeBase * oldChild, shared_ptr<AlgebraNodeBase> & newChild)
@@ -156,6 +156,7 @@ shared_ptr<AlgebraNodeBase> GroupedAlgebraNode::replaceChild(AlgebraNodeBase * o
 			return result;
 		}
 	}
+	throw exception("fild not found");
 }
 
 Table::Table(DOMElement * element)

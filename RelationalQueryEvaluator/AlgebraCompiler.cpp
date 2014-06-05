@@ -634,7 +634,7 @@ void AlgebraCompiler::visitSelection(Selection * node)
 
 void AlgebraCompiler::visitJoin(Join * node)
 {
-	throw new exception("Not Suported: join should be replaced with groupedJoin");
+	throw exception("Not Suported: join should be replaced with groupedJoin");
 }
 
 void AlgebraCompiler::visitUnion(Union * node)
@@ -1363,12 +1363,12 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 					}
 					else
 					{
-						throw new exception("not suported");
+						throw exception("not suported");
 					}
 				}
 				else
 				{
-					throw new exception("not suported");
+					throw exception("not suported");
 				}
 
 				shared_ptr<PhysicalPlan> leftPlan;
@@ -1419,7 +1419,7 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 
 	if (otherConditions.size() > 0)
 	{
-		throw new exception("other condition should be empty");
+		throw exception("other condition should be empty");
 	}
 
 
@@ -1567,6 +1567,20 @@ void AlgebraCompiler::visitAntiJoin(AntiJoin * node)
 	columns = allColumns;
 }
 
+shared_ptr<Expression> AlgebraCompiler::deserializeConditionInfo(const vector<shared_ptr<ConditionInfo>> & a, const vector<shared_ptr<ConditionInfo>> & b)
+{
+	vector<shared_ptr<Expression> >  data;
+	for (auto it = a.begin(); it != a.end(); ++it)
+	{
+		data.push_back((*it)->condition);
+	}
+	for (auto it = b.begin(); it != b.end(); ++it)
+	{
+		data.push_back((*it)->condition);
+	}
+	return deserializeExpression(data);
+}
+
 void JoinInfo::RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns)
 {
 	std::set<ulong> allColumns;
@@ -1634,4 +1648,13 @@ void JoinInfo::RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColu
 		AlgebraCompiler::updateSortParameters(PossibleSortParameters((*it)->sortedBy), (*it), (*it)->plan->columns);
 	}
 
+}
+
+bool JoinInfo::Comparator(const JoinInfo& lhs, const JoinInfo&rhs)
+{
+	return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
+}
+bool JoinInfo::PointerComparator(const std::shared_ptr<JoinInfo> & lhs, const std::shared_ptr<JoinInfo> &rhs)
+{
+	return (lhs->plans[0]->timeComplexity < rhs->plans[0]->timeComplexity);
 }

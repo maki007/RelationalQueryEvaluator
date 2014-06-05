@@ -495,7 +495,7 @@ void BoboxWritingExpressionVisitor::visitUnaryExpression(UnaryExpression * expre
 		result += "OP_NOT(";
 		break;
 	default:
-		throw new exception("operator not found");
+		throw exception("operator not found");
 	}
 	expression->child->accept(*this);
 	result += ")";
@@ -538,7 +538,7 @@ void BoboxWritingExpressionVisitor::visitBinaryExpression(BinaryExpression * exp
 		opName += "OP_LOWER_OR_EQUAL";
 		break;
 	default:
-		throw new exception("operator not found");
+		throw exception("operator not found");
 	}
 	result += opName + "(";
 	expression->leftChild->accept(*this);
@@ -585,7 +585,7 @@ void BoboxWritingExpressionVisitor::visitGroupedExpression(GroupedExpression * e
 		opName += "OP_OR";
 		break;
 	default:
-		throw new exception("operator not found");
+		throw exception("operator not found");
 	}
 	result += opName + "(";
 	ulong i = 0;

@@ -290,7 +290,7 @@ void SemanticChecker::visitUnion(Union * node)
 
 void SemanticChecker::visitGroupedJoin(GroupedJoin * node)
 {
-	throw new exception("Not Suported: GroupedJoin cannot be in input algebra");
+	throw exception("Not Suported: GroupedJoin cannot be in input algebra");
 }
 
 void SemanticChecker::ReportError(const char * error)

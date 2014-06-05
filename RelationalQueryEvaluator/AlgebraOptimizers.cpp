@@ -94,7 +94,7 @@ void PushSelectionDownVisitor::visitTable(Table * node)
 
 void PushSelectionDownVisitor::visitSort(Sort * node)
 {
-	throw new exception("should not happen");
+	throw exception("should not happen");
 }
 
 void PushSelectionDownVisitor::visitGroup(Group * node)
@@ -169,7 +169,7 @@ void PushSelectionDownVisitor::visitSelection(Selection * node)
 
 void PushSelectionDownVisitor::visitJoin(Join * node)
 {
-	throw new exception("not supported");
+	throw exception("not supported");
 }
 
 void PushSelectionDownVisitor::visitAntiJoin(AntiJoin * node)
@@ -244,7 +244,7 @@ void PushSelectionDownVisitor::visitGroupedJoin(GroupedJoin * node)
 
 void PushSelectionUpVisitor::visitTable(Table * node)
 {
-	throw new exception("should not happen");
+	throw exception("should not happen");
 }
 
 void PushSelectionUpVisitor::visitSort(Sort * node)
@@ -269,7 +269,7 @@ void PushSelectionUpVisitor::visitSelection(Selection * node)
 
 void PushSelectionUpVisitor::visitJoin(Join * node)
 {
-	throw new exception("not supported");
+	throw exception("not supported");
 }
 
 void PushSelectionUpVisitor::visitAntiJoin(AntiJoin * node)

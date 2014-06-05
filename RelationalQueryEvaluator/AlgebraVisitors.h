@@ -136,7 +136,7 @@ public:
 				}
 				else
 				{
-					throw new std::exception("Error");
+					throw std::exception("Error");
 				}
 			}
 			else
@@ -210,14 +210,10 @@ public:
 	std::vector<std::shared_ptr<ConditionInfo>> condition;
 	std::map <ulong, JoinColumnInfo> columns;
 	double size;
-	static bool Comparator(const JoinInfo& lhs, const JoinInfo&rhs)
-	{
-		return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
-	}
-	static bool PointerComparator(const std::shared_ptr<JoinInfo> & lhs, const std::shared_ptr<JoinInfo> &rhs)
-	{
-		return (lhs->plans[0]->timeComplexity < rhs->plans[0]->timeComplexity);
-	}
+	static bool Comparator(const JoinInfo& lhs, const JoinInfo&rhs);
+
+	static bool PointerComparator(const std::shared_ptr<JoinInfo> & lhs, const std::shared_ptr<JoinInfo> &rhs);
+	
 	void RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns);
 	
 };
@@ -272,19 +268,7 @@ private:
 
 	void getMergeJoinSortedParametes(PossibleSortParameters & resultParameters, std::map<int, int> & equalPairsReverse, std::map<int, ColumnInfo> & otherColumns);
 
-	std::shared_ptr<Expression> deserializeConditionInfo(const std::vector<std::shared_ptr<ConditionInfo>> & a, const std::vector<std::shared_ptr<ConditionInfo>> & b)
-	{
-		std::vector<std::shared_ptr<Expression> >  data;
-		for (auto it = a.begin(); it != a.end(); ++it)
-		{
-			data.push_back((*it)->condition);
-		}
-		for (auto it = b.begin(); it != b.end(); ++it)
-		{
-			data.push_back((*it)->condition);
-		}
-		return deserializeExpression(data);
-	}
+	std::shared_ptr<Expression> deserializeConditionInfo(const std::vector<std::shared_ptr<ConditionInfo>> & a, const std::vector<std::shared_ptr<ConditionInfo>> & b);
 
 	template< typename T>
 	ulong setIndex(const T input) const
@@ -309,7 +293,6 @@ private:
 class SelectionSpitingVisitor : public AlgebraVisitor
 {
 public:
-
 	void visitSelection(Selection * node);
 
 };
@@ -317,7 +300,6 @@ public:
 class SelectionFusingVisitor : public AlgebraVisitor
 {
 public:
-
 	void visitSelection(Selection * node);
 
 };
