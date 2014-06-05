@@ -955,8 +955,8 @@ void AlgebraCompiler::generateSortParametersForMergeJoin(PossibleSortParameters 
 	SortParameter parameter;
 	for (auto cond = conditions.begin(); cond != conditions.end(); ++cond)
 	{
-		ulong firstColumn = *((*cond)->inputs.begin());
-		ulong secondColumn = *(--((*cond)->inputs.end()));
+		int firstColumn = *((*cond)->inputs.begin());
+		int secondColumn = *(--((*cond)->inputs.end()));
 
 
 		if (columns.find(firstColumn) != columns.end())

@@ -197,7 +197,7 @@ class ConditionInfo
 {
 public:
 	std::shared_ptr<Expression> condition;
-	std::set<uint> inputs;
+	std::set<int> inputs;
 	ConditionType type;
 };
 
@@ -314,7 +314,7 @@ public:
 class PushSelectionDownVisitor : public AlgebraVisitor
 {
 private:
-	std::set<uint> columns;
+	std::set<int> columns;
 	ConditionType conditionType;
 
 	Selection * nodePointer;

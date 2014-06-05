@@ -69,7 +69,7 @@ shared_ptr<AlgebraNodeBase> UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase *
 	}
 	else
 	{
-		//exception
+		throw exception("child not found");
 	}
 }
 UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)

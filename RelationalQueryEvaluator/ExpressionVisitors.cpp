@@ -282,6 +282,208 @@ void SemanticExpressionVisitor::visitColumn(Column * expression)
 	}
 }
 
+SizeEstimatingExpressionVisitor::SizeEstimatingExpressionVisitor(const std::map<int, ColumnInfo> * columns)
+{
+	size = 1;
+	this->columns = columns;
+}
+
+void SizeEstimatingExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
+{
+	//NOT operator
+	expression->child->accept(*this);
+	size = 1 - size;
+}
+
+void SizeEstimatingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
+{
+	switch (expression->operation)
+	{
+	case BinaryOperator::EQUALS:
+	case BinaryOperator::NOT_EQUALS:
+		if ((typeid(*((expression->leftChild))) == typeid(Column)))
+		{
+			if ((typeid(*((expression->rightChild))) == typeid(Column)))
+			{
+				std::shared_ptr<Column> leftColumn = std::dynamic_pointer_cast<Column>(expression->leftChild);
+				std::shared_ptr<Column> rightColumn = std::dynamic_pointer_cast<Column>(expression->rightChild);
+				//todo change
+				size = 1 / std::max(columns->at(leftColumn->column.id).numberOfUniqueValues, columns->at(rightColumn->column.id).numberOfUniqueValues);
+				//, columns->at(rightColumn->name));
+			}
+			else
+			{
+				std::shared_ptr<Constant> constant = std::dynamic_pointer_cast<Constant>(expression->rightChild);
+				std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(expression->leftChild);
+				size = 1 / columns->at(column->column.id).numberOfUniqueValues;
+			}
+
+		}
+		else
+		{
+			if ((typeid(*((expression->rightChild))) == typeid(Column)))
+			{
+				std::shared_ptr<Constant> constant = std::dynamic_pointer_cast<Constant>(expression->leftChild);
+				std::shared_ptr<Column> column = std::dynamic_pointer_cast<Column>(expression->rightChild);
+				size = 1 / columns->at(column->column.id).numberOfUniqueValues;
+
+			}
+			else
+			{
+				std::shared_ptr<Constant> leftConstant = std::dynamic_pointer_cast<Constant>(expression->leftChild);
+				std::shared_ptr<Constant> rightConstant = std::dynamic_pointer_cast<Constant>(expression->rightChild);
+				if (leftConstant->value == rightConstant->value)
+				{
+					size = 1;
+				}
+				else
+				{
+					size = 0;
+				}
+			}
+		}
+		if (expression->operation == BinaryOperator::NOT_EQUALS)
+		{
+			size = 1 - size;
+		}
+		break;
+	case BinaryOperator::LOWER:
+		size = double(1) / 3;
+		break;
+	case BinaryOperator::LOWER_OR_EQUAL:
+		size = double(1) / 3;
+		break;
+	default:
+		break;
+	}
+}
+
+void SizeEstimatingExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
+{
+	size = double(1) / 3;
+}
+
+
+void SizeEstimatingExpressionVisitor::visitGroupedExpression(GroupedExpression * expression)
+{
+	double newSize = 1;
+
+	switch (expression->operation)
+	{
+	case GroupedOperator::AND:
+		for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
+		{
+			(*it)->accept(*this);
+			newSize *= size;
+		}
+		break;
+	case GroupedOperator::OR:
+		for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
+		{
+			(*it)->accept(*this);
+			newSize *= 1 - size;
+		}
+		newSize = 1 - newSize;
+		break;
+	}
+	size = newSize;
+}
+
+JoinInfoReadingExpressionVisitor::JoinInfoReadingExpressionVisitor(std::set<int> * data, ConditionType * type)
+{
+	this->data = data;
+	data->clear();
+	conditionType = type;
+	(*conditionType) = ConditionType::OTHER;
+}
+
+void JoinInfoReadingExpressionVisitor::visitColumn(Column * expression)
+{
+	data->insert(expression->column.id);
+}
+
+void JoinInfoReadingExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
+{
+	expression->child->accept(*this);
+	(*conditionType) = ConditionType::OTHER;
+}
+
+void JoinInfoReadingExpressionVisitor::visitBinaryExpression(BinaryExpression * expression)
+{
+	expression->leftChild->accept(*this);
+	expression->rightChild->accept(*this);
+
+	switch (expression->operation)
+	{
+	case BinaryOperator::EQUALS:
+		(*conditionType) = ConditionType::EQUALS;
+		break;
+	case BinaryOperator::LOWER:
+	case BinaryOperator::LOWER_OR_EQUAL:
+		(*conditionType) = ConditionType::LOWER;
+		break;
+	default:
+		(*conditionType) = ConditionType::OTHER;
+		break;
+	}
+}
+
+void JoinInfoReadingExpressionVisitor::visitNnaryExpression(NnaryExpression * expression)
+{
+	for (auto it = expression->arguments.begin(); it != expression->arguments.end(); ++it)
+	{
+		(*it)->accept(*this);
+	}
+	(*conditionType) = ConditionType::OTHER;
+}
+
+void JoinInfoReadingExpressionVisitor::visitConstant(Constant * expression)
+{
+
+}
+
+void JoinInfoReadingExpressionVisitor::visitGroupedExpression(GroupedExpression * expression)
+{
+	for (auto it = expression->children.begin(); it != expression->children.end(); ++it)
+	{
+		(*it)->accept(*this);
+	}
+	(*conditionType) = ConditionType::OTHER;
+}
+
+RenamingJoinConditionExpressionVisitor::RenamingJoinConditionExpressionVisitor(ulong i, std::vector<JoinColumnInfo> * inputColumns)
+{
+	n = i;
+	this->inputColumns = inputColumns;
+}
+void RenamingJoinConditionExpressionVisitor::visitColumn(Column * expression)
+{
+	if (expression->input == n)
+	{
+		for (auto it = inputColumns->begin(); it != inputColumns->end(); ++it)
+		{
+			if (it->column.name != it->newColumn)
+			{
+				if (it->newColumn == expression->column.name)
+				{
+					expression->column.name = it->column.name;
+				}
+			}
+		}
+	}
+
+}
+
+MaxOfUniqueValuesExpressionVisitor::MaxOfUniqueValuesExpressionVisitor(std::map<int, ColumnInfo> * cols)
+{
+	this->result = 1;
+	columns = cols;
+}
+
+void MaxOfUniqueValuesExpressionVisitor::visitColumn(Column * expression)
+{
+	this->result = std::max(this->result, columns->at(expression->column.id).numberOfUniqueValues);
+}
 
 void TypeResolvingExpressionVisitor::visitUnaryExpression(UnaryExpression * expression)
 {
@@ -394,3 +596,15 @@ void CloningExpressionVisitor::visitGroupedExpression(GroupedExpression * expres
 	result = shared_ptr<Expression>(node);
 }
 
+RenameColumnsVisitor::RenameColumnsVisitor(std::map<int, int>  * pairs)
+{
+	this->pairs = pairs;
+}
+
+void RenameColumnsVisitor::visitColumn(Column * expression)
+{
+	if (pairs->find(expression->column.id) != pairs->end())
+	{
+		expression->column.id = pairs->at(expression->column.id);
+	}
+}
