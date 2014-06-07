@@ -254,6 +254,7 @@ void GroupingExpressionVisitor::visitBinaryExpression(BinaryExpression * express
 SemanticExpressionVisitor::SemanticExpressionVisitor()
 {
 	containsErrors = false;
+	missingColumn = "";
 }
 
 void SemanticExpressionVisitor::visitColumn(Column * expression)
@@ -263,6 +264,10 @@ void SemanticExpressionVisitor::visitColumn(Column * expression)
 		if (outputColumns0.find(expression->column.name) == outputColumns0.end())
 		{
 			containsErrors = true;
+			if (missingColumn == "")
+			{
+				missingColumn = expression->column.name;
+			}
 		}
 		else
 		{
@@ -274,6 +279,10 @@ void SemanticExpressionVisitor::visitColumn(Column * expression)
 		if (outputColumns1.find(expression->column.name) == outputColumns1.end())
 		{
 			containsErrors = true;
+			if (missingColumn == "")
+			{
+				missingColumn = expression->column.name;
+			}
 		}
 		else
 		{

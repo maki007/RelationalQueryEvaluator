@@ -73,6 +73,7 @@ class SemanticExpressionVisitor : public ExpressionVisitorBase
 {
 public:
 	bool containsErrors;
+	std::string missingColumn;
 	std::map<std::string, ColumnInfo> outputColumns0;
 	std::map<std::string, ColumnInfo> outputColumns1;
 	SemanticExpressionVisitor();

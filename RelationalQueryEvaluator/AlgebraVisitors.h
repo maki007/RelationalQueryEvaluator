@@ -84,7 +84,7 @@ public:
 class SemanticChecker : public AlgebraVisitor
 {
 private:
-	void ReportError(const char * error,std::string nodeName, const int lineNumber);
+	void ReportError(const std::string error, std::string nodeName, const int lineNumber);
 	std::map<std::string, ColumnInfo> outputColumns;
 	std::vector<std::string> nodeStack;
 	int lastId;
@@ -111,7 +111,7 @@ public:
 				{
 					if (outputColumns0.find(it->column.name) == outputColumns0.end())
 					{
-						ReportError("Column not found in input 0","join",node->lineNumber);
+						ReportError("Column " + it->column.name+ " not found in first input", "join", node->lineNumber);
 					}
 					else
 					{
@@ -125,7 +125,7 @@ public:
 				{
 					if (outputColumns1.find(it->column.name) == outputColumns1.end())
 					{
-						ReportError("Column not found in input 1", "join", node->lineNumber);
+						ReportError("Column " + it->column.name + " not found in second input", "join", node->lineNumber);
 					}
 					else
 					{
@@ -142,7 +142,7 @@ public:
 			}
 			else
 			{
-				ReportError("Cannot use same column twice", "join", node->lineNumber);
+				ReportError("Output column " + it->newColumn + " is allready used", "join", node->lineNumber);
 			}
 		}
 
