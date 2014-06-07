@@ -40,8 +40,10 @@ class AlgebraNodeBase
 {
 public:
 	std::map<int, ColumnInfo> outputColumns;
+	int lineNumber = 0;
 	AlgebraNodeBase * parent;
-	AlgebraNodeBase();
+	AlgebraNodeBase::AlgebraNodeBase();
+	AlgebraNodeBase(DOMElement * element);
 	AlgebraNodeBase * constructChildren(DOMElement * node);
 	virtual void accept(AlgebraVisitor &v) = 0;
 	virtual std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild) = 0;
@@ -81,7 +83,7 @@ public:
 class NullaryAlgebraNodeBase : public AlgebraNodeBase
 {
 public:
-
+	NullaryAlgebraNodeBase(DOMElement * element);
 	virtual void accept(AlgebraVisitor &v) = 0;
 	std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild);
 };

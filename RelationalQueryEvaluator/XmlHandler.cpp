@@ -50,18 +50,22 @@ void ParserErrorHandler::resetErrors()
 	errors = 0;
 }
 
+void setDocumentLocator(const Locator *const locator)
+{
+
+}
+
 std::unique_ptr<AlgebraNodeBase> XmlHandler::ValidateSchema(const char* xmlFilePath)
 {
-	XercesDOMParser domParser;
+	x domParser;
 
 	ParserErrorHandler parserErrorHandler;
 
 	domParser.setErrorHandler(&parserErrorHandler);
-	domParser.setValidationScheme(XercesDOMParser::Val_Auto);
+	domParser.setValidationScheme(XercesDOMParser::Val_Always);
 	domParser.setDoNamespaces(true);
 	domParser.setDoSchema(true);
 	domParser.setValidationConstraintFatal(true);
-
 	domParser.parse(xmlFilePath);
 	if (domParser.getErrorCount() == 0 && parserErrorHandler.errors == 0)
 	{
@@ -71,7 +75,8 @@ std::unique_ptr<AlgebraNodeBase> XmlHandler::ValidateSchema(const char* xmlFileP
 
 		DOMDocument * xmlDoc = domParser.getDocument();
 		DOMElement* elementRoot = xmlDoc->getDocumentElement();
-		return std::unique_ptr<AlgebraNodeBase>(new Sort(elementRoot));
+		Sort * root = new Sort(elementRoot);
+		return std::unique_ptr<AlgebraNodeBase>(root);
 	}
 	else
 	{

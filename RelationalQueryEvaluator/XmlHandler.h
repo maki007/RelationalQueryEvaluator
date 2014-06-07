@@ -17,6 +17,7 @@
 #include <xercesc/dom/DOMNodeIterator.hpp>
 #include <xercesc/dom/DOMNodeList.hpp>
 #include <xercesc/dom/DOMText.hpp>
+#include <xercesc/internal/XMLScanner.hpp>
 
 #include <iostream>
 #include <stdio.h>
@@ -56,14 +57,36 @@ public:
 	void fatalError(const SAXParseException& ex);
 
 	void resetErrors();
+
+	void setDocumentLocator(const Locator *const locator);
 };
 
 class XmlHandler
 {
 public:
 	static std::unique_ptr<AlgebraNodeBase> ValidateSchema(const char* xmlFilePath);
-	
+
 	static std::unique_ptr<AlgebraNodeBase> GenerateRelationalAlgebra(const char *filename);
 
 };
+
+
+
+
+
+class x : public XercesDOMParser
+{
+public:
+	void startElement(const XMLElementDecl& elemDecl, const unsigned int urlId, const XMLCh* const elemPrefix, const RefVectorOf<XMLAttr>& attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot)
+	{
+		XercesDOMParser::startElement(elemDecl, urlId, elemPrefix, attrList,
+			attrCount, isEmpty, isRoot);
+		const Locator* locator = getScanner()->getLocator();
+		int lineNumber = locator->getLineNumber();
+		XercesDOMParser::fCurrentNode->setUserData(XMLString::transcode("line"), new int(locator->getLineNumber()),0);
+	}
+
+};
+
 #endif
+

@@ -8,8 +8,14 @@
 using namespace std;
 
 AlgebraNodeBase::AlgebraNodeBase()
-{
+{}
 
+
+AlgebraNodeBase::AlgebraNodeBase(DOMElement * element)
+{
+	int * line = (int *)element->getUserData(XMLString::transcode("line"));
+	lineNumber = *line;
+	delete line;
 }
 
 AlgebraNodeBase *  AlgebraNodeBase::constructChildren(DOMElement * node)
@@ -72,7 +78,7 @@ shared_ptr<AlgebraNodeBase> UnaryAlgebraNodeBase::replaceChild(AlgebraNodeBase *
 		throw exception("child not found");
 	}
 }
-UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
+UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element) : AlgebraNodeBase(element)
 {
 	parent = 0;
 	DOMNode * inputNode = XmlUtils::GetChildElementByName(element, "input");
@@ -89,7 +95,7 @@ UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement * element)
 }
 
 
-BinaryAlgebraNodeBase::BinaryAlgebraNodeBase()
+BinaryAlgebraNodeBase::BinaryAlgebraNodeBase() 
 {
 
 }
@@ -114,7 +120,7 @@ shared_ptr<AlgebraNodeBase> BinaryAlgebraNodeBase::replaceChild(AlgebraNodeBase 
 	return result;
 }
 
-BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
+BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element) : AlgebraNodeBase(element)
 {
 	bool leftChildInitialized = false;
 	parent = 0;
@@ -139,6 +145,11 @@ BinaryAlgebraNodeBase::BinaryAlgebraNodeBase(DOMElement * element)
 	}
 }
 
+NullaryAlgebraNodeBase::NullaryAlgebraNodeBase(DOMElement * element) : AlgebraNodeBase(element)
+{
+
+}
+
 shared_ptr<AlgebraNodeBase> NullaryAlgebraNodeBase::replaceChild(AlgebraNodeBase * oldChild, shared_ptr<AlgebraNodeBase> & newChild)
 {
 	throw exception("not suported");
@@ -159,7 +170,7 @@ shared_ptr<AlgebraNodeBase> GroupedAlgebraNode::replaceChild(AlgebraNodeBase * o
 	throw exception("fild not found");
 }
 
-Table::Table(DOMElement * element)
+Table::Table(DOMElement * element) : NullaryAlgebraNodeBase(element)
 {
 	name = XmlUtils::ReadAttribute(element, "name");
 	if (XmlUtils::ReadAttribute(element, "numberOfRows") == "")
@@ -226,6 +237,8 @@ void Table::accept(AlgebraVisitor &v)
 
 Sort::Sort(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
+
+
 	DOMNode * inputNode = XmlUtils::GetChildElementByName(element, "parameters");
 	for (XMLSize_t i = 0; i < inputNode->getChildNodes()->getLength(); ++i)
 	{

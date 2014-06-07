@@ -41,7 +41,7 @@ void SemanticChecker::visitTable(Table * node)
 		}
 		else
 		{
-			ReportError("Column names should be unique");
+			ReportError("Column names should be unique","table",node->lineNumber);
 		}
 	}
 
@@ -56,7 +56,7 @@ void SemanticChecker::visitTable(Table * node)
 			}
 			else
 			{
-				ReportError("Table can contain only one clustered index");
+				ReportError("Table can contain only one clustered index", "table", node->lineNumber);
 			}
 		}
 		set<string>  indexSet;
@@ -64,7 +64,7 @@ void SemanticChecker::visitTable(Table * node)
 		{
 			if (hashSet.find(it2->column.name) == hashSet.end())
 			{
-				ReportError("Index cannot be on non-existing column");
+				ReportError("Index cannot be on non-existing column", "table", node->lineNumber);
 			}
 			else
 			{
@@ -76,7 +76,7 @@ void SemanticChecker::visitTable(Table * node)
 			}
 			else
 			{
-				ReportError("Index contains same column multiple times");
+				ReportError("Index contains same column multiple times", "table", node->lineNumber);
 			}
 		}
 	}
@@ -90,7 +90,7 @@ void SemanticChecker::visitSort(Sort * node)
 	{
 		if (outputColumns.find(it->column.name) == outputColumns.end())
 		{
-			ReportError("Column doesn't exist");
+			ReportError("Column doesn't exist","sort", node->lineNumber);
 		}
 		else
 		{
@@ -109,7 +109,7 @@ void SemanticChecker::visitGroup(Group * node)
 		{
 			if (outputColumns.find(it->parameter.name) == outputColumns.end())
 			{
-				ReportError("Column doesn't exist");
+				ReportError("Column doesn't exist", "group", node->lineNumber);
 			}
 			else
 			{
@@ -122,7 +122,7 @@ void SemanticChecker::visitGroup(Group * node)
 	{
 		if (outputColumns.find(it->input.name) == outputColumns.end())
 		{
-			ReportError("Column doesn't exist");
+			ReportError("Column doesn't exist", "group", node->lineNumber);
 		}
 		else
 		{
@@ -137,7 +137,7 @@ void SemanticChecker::visitGroup(Group * node)
 			}
 			else
 			{
-				ReportError("Cannot group by same column twice");
+				ReportError("Cannot group by same column twice", "group", node->lineNumber);
 			}
 		}
 
@@ -153,12 +153,12 @@ void SemanticChecker::visitGroup(Group * node)
 		}
 		else
 		{
-			ReportError("Columns must have different name");
+			ReportError("Output columns must have different name", "group", node->lineNumber);
 		}
 	}
 	if (outputColumns.size() == 0)
 	{
-		ReportError("Group must group by one column or must contain at least one aggregate function");
+		ReportError("Group must group by one column or must contain at least one aggregate function", "group", node->lineNumber);
 	}
 	convertColumns(outputColumns, node);
 }
@@ -174,13 +174,16 @@ void SemanticChecker::visitColumnOperations(ColumnOperations * node)
 			SemanticExpressionVisitor expresionVisitor;
 			expresionVisitor.outputColumns0 = outputColumns;
 			it->expression->accept(expresionVisitor);
-			containsErrors |= expresionVisitor.containsErrors;
+			if (expresionVisitor.containsErrors)
+			{
+				ReportError("Column expression doesn't exists", "columnoperations", node->lineNumber);
+			}
 		}
 		else
 		{
 			if (outputColumns.find(it->result.name) == outputColumns.end())
 			{
-				ReportError("Column allready used");
+				ReportError("Column allready used", "columnoperations", node->lineNumber);
 			}
 			else
 			{
@@ -207,7 +210,7 @@ void SemanticChecker::visitColumnOperations(ColumnOperations * node)
 		}
 		else
 		{
-			ReportError("Columns must have different name");
+			ReportError("Columns must have different name", "columnoperations", node->lineNumber);
 		}
 	}
 	convertColumns(outputColumns, node);
@@ -219,7 +222,10 @@ void SemanticChecker::visitSelection(Selection * node)
 	SemanticExpressionVisitor expresionVisitor;
 	expresionVisitor.outputColumns0 = outputColumns;
 	node->condition->accept(expresionVisitor);
-	containsErrors |= expresionVisitor.containsErrors;
+	if (expresionVisitor.containsErrors)
+	{
+		ReportError("Column expression doesn't exists", "selection", node->lineNumber);
+	}
 	convertColumns(outputColumns, node);
 }
 
@@ -274,14 +280,14 @@ void SemanticChecker::visitUnion(Union * node)
 
 	if (outputColumns0.size() != outputColumns1.size())
 	{
-		ReportError("Union requires inputs to have same size");
+		ReportError("Union requires inputs to have same size","union",node->lineNumber);
 	}
 
 	for (auto it = outputColumns0.begin(); it != outputColumns0.end(); ++it)
 	{
 		if (outputColumns1.find(it->first) == outputColumns1.end())
 		{
-			ReportError("Union requires inputs to have same columns");
+			ReportError("Union requires inputs to have same columns", "union", node->lineNumber);
 		}
 	}
 	outputColumns = outputColumns0;
@@ -293,8 +299,8 @@ void SemanticChecker::visitGroupedJoin(GroupedJoin * node)
 	throw exception("Not Suported: GroupedJoin cannot be in input algebra");
 }
 
-void SemanticChecker::ReportError(const char * error)
+void SemanticChecker::ReportError(const char * error, string nodeName, const int lineNumber)
 {
 	containsErrors = true;
-	cout << error << endl;
+	cout << "Error in operator " << nodeName << " at line " << lineNumber << ":" << error << endl;
 }
