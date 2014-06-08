@@ -11,7 +11,7 @@ var searchData=
   ['sort',['Sort',['../class_sort.html',1,'Sort'],['../class_sort.html#a3b177337159d6d3246cd91b033c824c4',1,'Sort::Sort()']]],
   ['sortedgroup',['SortedGroup',['../class_sorted_group.html',1,'']]],
   ['sortoperator',['SortOperator',['../class_sort_operator.html',1,'']]],
-  ['sortparameter',['SortParameter',['../class_sort_parameter.html',1,'']]],
-  ['sortparameters',['SortParameters',['../class_sort_parameters.html',1,'']]],
+  ['sortparameter',['SortParameter',['../class_sort_parameter.html',1,'SortParameter'],['../class_sort_parameter.html#aef62c54532ba4260cdc41dfe6157db6b',1,'SortParameter::SortParameter(const ColumnIdentifier &amp;column, SortOrder order)'],['../class_sort_parameter.html#ae50120282e94b4918e1cf33dc1b9cc50',1,'SortParameter::SortParameter(const ColumnIdentifier &amp;column, const ColumnIdentifier &amp;other, SortOrder order)'],['../class_sort_parameter.html#a059b71791c331f735f453ce67ae2af23',1,'SortParameter::SortParameter()']]],
+  ['sortparameters',['SortParameters',['../class_sort_parameters.html',1,'SortParameters'],['../class_sort_parameters.html#a3e09d106c13d4436e73109c8b0cfa60d',1,'SortParameters::SortParameters(const SortParameter &amp;value)'],['../class_sort_parameters.html#aa126d980ea7fd9ec7c088f3c642d788c',1,'SortParameters::SortParameters(const std::vector&lt; SortParameter &gt; &amp;values)'],['../class_sort_parameters.html#ab5776bf717741ef321cf59bc712f55eb',1,'SortParameters::SortParameters()']]],
   ['sortresolvingphysicaloperatorvisitor',['SortResolvingPhysicalOperatorVisitor',['../class_sort_resolving_physical_operator_visitor.html',1,'']]]
 ];

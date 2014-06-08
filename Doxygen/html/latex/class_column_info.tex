@@ -1,6 +1,10 @@
 \hypertarget{class_column_info}{\section{Column\+Info Class Reference}
 \label{class_column_info}\index{Column\+Info@{Column\+Info}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Structures.\+h$>$}
+
 Inheritance diagram for Column\+Info\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,31 +14,114 @@ Inheritance diagram for Column\+Info\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_column_info_a1068047ba3c85b84076e69619f64123a}{{\bfseries Column\+Info} (std\+::string name, std\+::string type)}\label{class_column_info_a1068047ba3c85b84076e69619f64123a}
-
+\hyperlink{class_column_info_a1068047ba3c85b84076e69619f64123a}{Column\+Info} (std\+::string name, std\+::string \hyperlink{class_column_info_add303d9d4415fc18b790d9a904831c29}{type})
 \item 
-\hypertarget{class_column_info_ae8dc9720185a9312e3b33b2ecb92ba7e}{{\bfseries Column\+Info} (std\+::string name, double number\+Of\+Unique\+Values, std\+::string type)}\label{class_column_info_ae8dc9720185a9312e3b33b2ecb92ba7e}
-
+\hyperlink{class_column_info_a12b2dd59f7b6c13008291c3ef03ba7f4}{Column\+Info} ()
 \item 
-\hypertarget{class_column_info_a64cd8f7c77b3fe41434b85b05fa88344}{{\bfseries Column\+Info} (const \hyperlink{class_column_identifier}{Column\+Identifier} \&column, double number\+Of\+Unique\+Values, std\+::string type)}\label{class_column_info_a64cd8f7c77b3fe41434b85b05fa88344}
-
+\hyperlink{class_column_info_ae8dc9720185a9312e3b33b2ecb92ba7e}{Column\+Info} (std\+::string name, double \hyperlink{class_column_info_add402bfa7bed26aa6072c5da9b06dda9}{number\+Of\+Unique\+Values}, std\+::string \hyperlink{class_column_info_add303d9d4415fc18b790d9a904831c29}{type})
 \item 
-\hypertarget{class_column_info_af5487ed1e204fe47f66414f7570eb649}{{\bfseries Column\+Info} (const \hyperlink{class_join_column_info}{Join\+Column\+Info} \&info)}\label{class_column_info_af5487ed1e204fe47f66414f7570eb649}
-
+\hyperlink{class_column_info_a64cd8f7c77b3fe41434b85b05fa88344}{Column\+Info} (const \hyperlink{class_column_identifier}{Column\+Identifier} \&\hyperlink{class_column_info_a13c87a82665272f3eb3e18a8323d0d7e}{column}, double \hyperlink{class_column_info_add402bfa7bed26aa6072c5da9b06dda9}{number\+Of\+Unique\+Values}, std\+::string \hyperlink{class_column_info_add303d9d4415fc18b790d9a904831c29}{type})
+\item 
+\hyperlink{class_column_info_af5487ed1e204fe47f66414f7570eb649}{Column\+Info} (const \hyperlink{class_join_column_info}{Join\+Column\+Info} \&info)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_column_info_a13c87a82665272f3eb3e18a8323d0d7e}{\hyperlink{class_column_identifier}{Column\+Identifier} {\bfseries column}}\label{class_column_info_a13c87a82665272f3eb3e18a8323d0d7e}
-
+\hyperlink{class_column_identifier}{Column\+Identifier} \hyperlink{class_column_info_a13c87a82665272f3eb3e18a8323d0d7e}{column}
 \item 
-\hypertarget{class_column_info_add303d9d4415fc18b790d9a904831c29}{std\+::string {\bfseries type}}\label{class_column_info_add303d9d4415fc18b790d9a904831c29}
-
+std\+::string \hyperlink{class_column_info_add303d9d4415fc18b790d9a904831c29}{type}
 \item 
-\hypertarget{class_column_info_add402bfa7bed26aa6072c5da9b06dda9}{double {\bfseries number\+Of\+Unique\+Values}}\label{class_column_info_add402bfa7bed26aa6072c5da9b06dda9}
-
+double \hyperlink{class_column_info_add402bfa7bed26aa6072c5da9b06dda9}{number\+Of\+Unique\+Values}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Stored information about column, like identifier, number of uniquevalues and type. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_column_info_a1068047ba3c85b84076e69619f64123a}{\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{std\+::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_column_info_a1068047ba3c85b84076e69619f64123a}
+Create the instance of \hyperlink{class_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ column name \\
+\hline
+{\em type} & -\/ column type \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_column_info_a12b2dd59f7b6c13008291c3ef03ba7f4}{\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_column_info_a12b2dd59f7b6c13008291c3ef03ba7f4}
+Create the instance of \hyperlink{class_column_info}{Column\+Info}. \hypertarget{class_column_info_ae8dc9720185a9312e3b33b2ecb92ba7e}{\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{double}]{number\+Of\+Unique\+Values, }
+\item[{std\+::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_column_info_ae8dc9720185a9312e3b33b2ecb92ba7e}
+Create the instance of \hyperlink{class_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ column name \\
+\hline
+{\em number\+Of\+Unique\+Values} & \\
+\hline
+{\em type} & -\/ type of column \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_column_info_a64cd8f7c77b3fe41434b85b05fa88344}{\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{const {\bf Column\+Identifier} \&}]{column, }
+\item[{double}]{number\+Of\+Unique\+Values, }
+\item[{std\+::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_column_info_a64cd8f7c77b3fe41434b85b05fa88344}
+Create the instance of \hyperlink{class_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em column} & -\/ \hyperlink{class_column_identifier}{Column\+Identifier} of the column \\
+\hline
+{\em number\+Of\+Unique\+Values} & \\
+\hline
+{\em type} & -\/ type of column \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_column_info_af5487ed1e204fe47f66414f7570eb649}{\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!Column\+Info@{Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{const {\bf Join\+Column\+Info} \&}]{info}
+\end{DoxyParamCaption}
+)}}\label{class_column_info_af5487ed1e204fe47f66414f7570eb649}
+Create the instance of \hyperlink{class_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em info} & -\/ \hyperlink{class_join_column_info}{Join\+Column\+Info} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_column_info_a13c87a82665272f3eb3e18a8323d0d7e}{\index{Column\+Info@{Column\+Info}!column@{column}}
+\index{column@{column}!Column\+Info@{Column\+Info}}
+\subsubsection[{column}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Column\+Identifier} Column\+Info\+::column}}\label{class_column_info_a13c87a82665272f3eb3e18a8323d0d7e}
+Columns identifier. \hypertarget{class_column_info_add402bfa7bed26aa6072c5da9b06dda9}{\index{Column\+Info@{Column\+Info}!number\+Of\+Unique\+Values@{number\+Of\+Unique\+Values}}
+\index{number\+Of\+Unique\+Values@{number\+Of\+Unique\+Values}!Column\+Info@{Column\+Info}}
+\subsubsection[{number\+Of\+Unique\+Values}]{\setlength{\rightskip}{0pt plus 5cm}double Column\+Info\+::number\+Of\+Unique\+Values}}\label{class_column_info_add402bfa7bed26aa6072c5da9b06dda9}
+Stores number of unique values for joining purposes. \hypertarget{class_column_info_add303d9d4415fc18b790d9a904831c29}{\index{Column\+Info@{Column\+Info}!type@{type}}
+\index{type@{type}!Column\+Info@{Column\+Info}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Column\+Info\+::type}}\label{class_column_info_add303d9d4415fc18b790d9a904831c29}
+Type of the column. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,8 +1,6 @@
 var searchData=
 [
   ['operations',['operations',['../class_column_operations.html#a31aab19a9f8b104f772c111e920dd682',1,'ColumnOperations']]],
-  ['operator_3c',['operator&lt;',['../class_column_identifier.html#a07e32ed45a2b7c8e09f0358fd31a1f74',1,'ColumnIdentifier']]],
-  ['operator_3d_3d',['operator==',['../class_column_identifier.html#a3833af96f5281573cae9a70c440c1cce',1,'ColumnIdentifier']]],
   ['order',['order',['../class_sort_parameter.html#a768e8eeb0a9857820c1596ed50c0c13a',1,'SortParameter']]],
   ['others',['others',['../class_sort_parameter.html#ad898e5ea54ea4599db663b480af94cfd',1,'SortParameter']]],
   ['output',['output',['../class_agregate_function.html#ae78c0ff39b17f1d341f89c6660d7f448',1,'AgregateFunction::output()'],['../class_group_column.html#a512e089dfed68312aeadfcbdd1b80a21',1,'GroupColumn::output()']]],

@@ -88,26 +88,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">ColumnOperation Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_algebra_structures_8h_source.html">AlgebraStructures.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aab22c48d83db533c5b153136a4da6db7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab22c48d83db533c5b153136a4da6db7"></a>
-<a class="el" href="class_column_identifier.html">ColumnIdentifier</a>&#160;</td><td class="memItemRight" valign="bottom"><b>result</b></td></tr>
+<tr class="memitem:aab22c48d83db533c5b153136a4da6db7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_column_identifier.html">ColumnIdentifier</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_column_operation.html#aab22c48d83db533c5b153136a4da6db7">result</a></td></tr>
 <tr class="separator:aab22c48d83db533c5b153136a4da6db7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d5d373009098230cb3a2bfa3aa3cc33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d5d373009098230cb3a2bfa3aa3cc33"></a>
-std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>expression</b></td></tr>
+<tr class="memitem:a4d5d373009098230cb3a2bfa3aa3cc33"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_column_operation.html#a4d5d373009098230cb3a2bfa3aa3cc33">expression</a></td></tr>
 <tr class="separator:a4d5d373009098230cb3a2bfa3aa3cc33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae04fd07588173c74291e80032f80f991"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae04fd07588173c74291e80032f80f991"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
+<tr class="memitem:ae04fd07588173c74291e80032f80f991"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_column_operation.html#ae04fd07588173c74291e80032f80f991">type</a></td></tr>
 <tr class="separator:ae04fd07588173c74291e80032f80f991"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Stores information about operation on columns from extended projection operator. </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a4d5d373009098230cb3a2bfa3aa3cc33"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_expression.html">Expression</a>&gt; ColumnOperation::expression</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="class_expression.html">Expression</a> to compute new column. If it is null column is only copied to output. </p>
+
+</div>
+</div>
+<a class="anchor" id="aab22c48d83db533c5b153136a4da6db7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_column_identifier.html">ColumnIdentifier</a> ColumnOperation::result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Identifier of output column. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae04fd07588173c74291e80032f80f991"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ColumnOperation::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Type of the column. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_algebra_structures_8h_source.html">AlgebraStructures.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jun 8 2014 23:43:07 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 9 2014 01:18:01 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

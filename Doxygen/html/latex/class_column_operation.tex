@@ -1,19 +1,35 @@
 \hypertarget{class_column_operation}{\section{Column\+Operation Class Reference}
 \label{class_column_operation}\index{Column\+Operation@{Column\+Operation}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Structures.\+h$>$}
+
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_column_operation_aab22c48d83db533c5b153136a4da6db7}{\hyperlink{class_column_identifier}{Column\+Identifier} {\bfseries result}}\label{class_column_operation_aab22c48d83db533c5b153136a4da6db7}
-
+\hyperlink{class_column_identifier}{Column\+Identifier} \hyperlink{class_column_operation_aab22c48d83db533c5b153136a4da6db7}{result}
 \item 
-\hypertarget{class_column_operation_a4d5d373009098230cb3a2bfa3aa3cc33}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries expression}}\label{class_column_operation_a4d5d373009098230cb3a2bfa3aa3cc33}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_column_operation_a4d5d373009098230cb3a2bfa3aa3cc33}{expression}
 \item 
-\hypertarget{class_column_operation_ae04fd07588173c74291e80032f80f991}{std\+::string {\bfseries type}}\label{class_column_operation_ae04fd07588173c74291e80032f80f991}
-
+std\+::string \hyperlink{class_column_operation_ae04fd07588173c74291e80032f80f991}{type}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Stores information about operation on columns from extended projection operator. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_column_operation_a4d5d373009098230cb3a2bfa3aa3cc33}{\index{Column\+Operation@{Column\+Operation}!expression@{expression}}
+\index{expression@{expression}!Column\+Operation@{Column\+Operation}}
+\subsubsection[{expression}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Column\+Operation\+::expression}}\label{class_column_operation_a4d5d373009098230cb3a2bfa3aa3cc33}
+\hyperlink{class_expression}{Expression} to compute new column. If it is null column is only copied to output. \hypertarget{class_column_operation_aab22c48d83db533c5b153136a4da6db7}{\index{Column\+Operation@{Column\+Operation}!result@{result}}
+\index{result@{result}!Column\+Operation@{Column\+Operation}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Column\+Identifier} Column\+Operation\+::result}}\label{class_column_operation_aab22c48d83db533c5b153136a4da6db7}
+Identifier of output column. \hypertarget{class_column_operation_ae04fd07588173c74291e80032f80f991}{\index{Column\+Operation@{Column\+Operation}!type@{type}}
+\index{type@{type}!Column\+Operation@{Column\+Operation}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Column\+Operation\+::type}}\label{class_column_operation_ae04fd07588173c74291e80032f80f991}
+Type of the column. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
