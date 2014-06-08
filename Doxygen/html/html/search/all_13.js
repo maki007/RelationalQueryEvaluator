@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['writingexpressionvisitor',['WritingExpressionVisitor',['../class_writing_expression_visitor.html',1,'']]],
-  ['wstr',['WStr',['../class_w_str.html',1,'']]]
+  ['values',['values',['../class_sort_parameters.html#ad40f9ae2cd97faa92c29f2fc1c3941d0',1,'SortParameters']]]
 ];

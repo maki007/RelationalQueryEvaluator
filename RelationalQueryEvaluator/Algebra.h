@@ -61,7 +61,7 @@ public:
 
 	/**
 	* Helper method for creating algebra tree from dom.
-	* @param element representing input node.
+	* @param node representing input node.
 	* @return newely created Algebra node
 	*/
 	AlgebraNodeBase * constructChildren(DOMElement * node);
@@ -268,8 +268,7 @@ public:
 	
 	std::shared_ptr<Expression> condition;  /**< Condition for joining.*/ 
 	
-	std::vector<JoinColumnInfo> outputJoinColumns; /**< list of output columns from join*/
-
+	std::vector<JoinColumnInfo> outputJoinColumns; /**< List of output columns from join*/
 
 	/**
 	* Create the instance of Join.
@@ -308,6 +307,10 @@ public:
 class Union : public BinaryAlgebraNodeBase
 {
 public:
+	/**
+	* Create the instance of Union.
+	* @param element representing input node.
+	*/
 	Union(DOMElement * element);
 	void accept(AlgebraVisitor &v);
 };
@@ -318,9 +321,8 @@ public:
 class GroupedJoin : public GroupedAlgebraNode
 {
 public:
-	std::shared_ptr<Expression> condition;
-	std::shared_ptr<Expression> nonJoincondition;
-	std::vector<JoinColumnInfo> outputJoinColumns;
+	std::shared_ptr<Expression> condition;  /**< Condition for joining.*/ 
+	std::vector<JoinColumnInfo> outputJoinColumns; /**< List of output columns from join*/
 	void accept(AlgebraVisitor &v);
 };
 

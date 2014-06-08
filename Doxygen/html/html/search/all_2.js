@@ -11,7 +11,7 @@ var searchData=
   ['columnoperations',['ColumnOperations',['../class_column_operations.html',1,'ColumnOperations'],['../class_column_operations.html#a3d2c43e31201238da369906ef863c959',1,'ColumnOperations::ColumnOperations()']]],
   ['columns',['columns',['../class_table.html#ad6e2d1b269aa5c182e0357b75f46eee0',1,'Table::columns()'],['../class_index.html#aacff426f599d6f3d4c244456bcf2d594',1,'Index::columns()']]],
   ['columnsoperationsoperator',['ColumnsOperationsOperator',['../class_columns_operations_operator.html',1,'']]],
-  ['condition',['condition',['../class_selection.html#a2356634cb924e5b5814c4d2bfee51d65',1,'Selection::condition()'],['../class_join.html#aa1374c434547d1a0a478a914ac0445bb',1,'Join::condition()'],['../class_anti_join.html#a55e3da2742c4a24af7eee18cc5309206',1,'AntiJoin::condition()']]],
+  ['condition',['condition',['../class_selection.html#a2356634cb924e5b5814c4d2bfee51d65',1,'Selection::condition()'],['../class_join.html#aa1374c434547d1a0a478a914ac0445bb',1,'Join::condition()'],['../class_anti_join.html#a55e3da2742c4a24af7eee18cc5309206',1,'AntiJoin::condition()'],['../class_grouped_join.html#a517b47e21d6852335b50537c474c9c62',1,'GroupedJoin::condition()']]],
   ['conditioninfo',['ConditionInfo',['../class_condition_info.html',1,'']]],
   ['constant',['Constant',['../class_constant.html',1,'']]],
   ['constructchildren',['constructChildren',['../class_algebra_node_base.html#a19f93dd9f8b3da0a216a37f2ceb61ebe',1,'AlgebraNodeBase']]],

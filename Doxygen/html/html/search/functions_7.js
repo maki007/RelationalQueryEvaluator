@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['possiblesortparameters',['PossibleSortParameters',['../class_possible_sort_parameters.html#a08aad6763c347ad2a4dc2f20183efc24',1,'PossibleSortParameters::PossibleSortParameters(const std::vector&lt; SortParameters &gt; &amp;parameters)'],['../class_possible_sort_parameters.html#abf5abacee677c21a76de099cac60aa1a',1,'PossibleSortParameters::PossibleSortParameters(const std::vector&lt; SortParameter &gt; &amp;parameters)'],['../class_possible_sort_parameters.html#a0193033d9b018482a26f1501d489f4ba',1,'PossibleSortParameters::PossibleSortParameters()']]]
+  ['operator_3c',['operator&lt;',['../class_column_identifier.html#a07e32ed45a2b7c8e09f0358fd31a1f74',1,'ColumnIdentifier']]],
+  ['operator_3d_3d',['operator==',['../class_column_identifier.html#a3833af96f5281573cae9a70c440c1cce',1,'ColumnIdentifier']]]
 ];

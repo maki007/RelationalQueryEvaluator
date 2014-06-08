@@ -1,25 +1,30 @@
 \hypertarget{class_sort_parameters}{\section{Sort\+Parameters Class Reference}
 \label{class_sort_parameters}\index{Sort\+Parameters@{Sort\+Parameters}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Structures.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{class_sort_parameters_a3e09d106c13d4436e73109c8b0cfa60d}{Sort\+Parameters} (const \hyperlink{class_sort_parameter}{Sort\+Parameter} \&value)
 \item 
-\hyperlink{class_sort_parameters_aa126d980ea7fd9ec7c088f3c642d788c}{Sort\+Parameters} (const std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \&values)
+\hyperlink{class_sort_parameters_aa126d980ea7fd9ec7c088f3c642d788c}{Sort\+Parameters} (const std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \&\hyperlink{class_sort_parameters_ad40f9ae2cd97faa92c29f2fc1c3941d0}{values})
 \item 
 \hyperlink{class_sort_parameters_ab5776bf717741ef321cf59bc712f55eb}{Sort\+Parameters} ()
 \item 
-\hypertarget{class_sort_parameters_aa29d3a50f026c0d840c16af26f8d7b07}{bool {\bfseries is\+Known} () const }\label{class_sort_parameters_aa29d3a50f026c0d840c16af26f8d7b07}
-
+bool \hyperlink{class_sort_parameters_aa29d3a50f026c0d840c16af26f8d7b07}{is\+Known} () const 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sort_parameters_ad40f9ae2cd97faa92c29f2fc1c3941d0}{std\+::list$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries values}}\label{class_sort_parameters_ad40f9ae2cd97faa92c29f2fc1c3941d0}
-
+std\+::list$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_sort_parameters_ad40f9ae2cd97faa92c29f2fc1c3941d0}{values}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents sort parameters. If there is more that one value in values vector than means that the actual order can change. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_sort_parameters_a3e09d106c13d4436e73109c8b0cfa60d}{\index{Sort\+Parameters@{Sort\+Parameters}!Sort\+Parameters@{Sort\+Parameters}}
@@ -29,14 +34,24 @@
 \item[{const {\bf Sort\+Parameter} \&}]{value}
 \end{DoxyParamCaption}
 )}}\label{class_sort_parameters_a3e09d106c13d4436e73109c8b0cfa60d}
-Create the instance of \hyperlink{class_sort_parameters}{Sort\+Parameters}. \hypertarget{class_sort_parameters_aa126d980ea7fd9ec7c088f3c642d788c}{\index{Sort\+Parameters@{Sort\+Parameters}!Sort\+Parameters@{Sort\+Parameters}}
+Create the instance of \hyperlink{class_sort_parameters}{Sort\+Parameters}. 
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_sort_parameters_aa126d980ea7fd9ec7c088f3c642d788c}{\index{Sort\+Parameters@{Sort\+Parameters}!Sort\+Parameters@{Sort\+Parameters}}
 \index{Sort\+Parameters@{Sort\+Parameters}!Sort\+Parameters@{Sort\+Parameters}}
 \subsubsection[{Sort\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}Sort\+Parameters\+::\+Sort\+Parameters (
 \begin{DoxyParamCaption}
 \item[{const std\+::vector$<$ {\bf Sort\+Parameter} $>$ \&}]{values}
 \end{DoxyParamCaption}
 )}}\label{class_sort_parameters_aa126d980ea7fd9ec7c088f3c642d788c}
-Create the instance of \hyperlink{class_sort_parameters}{Sort\+Parameters}. \hypertarget{class_sort_parameters_ab5776bf717741ef321cf59bc712f55eb}{\index{Sort\+Parameters@{Sort\+Parameters}!Sort\+Parameters@{Sort\+Parameters}}
+Create the instance of \hyperlink{class_sort_parameters}{Sort\+Parameters}. 
+\begin{DoxyParams}{Parameters}
+{\em values} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_sort_parameters_ab5776bf717741ef321cf59bc712f55eb}{\index{Sort\+Parameters@{Sort\+Parameters}!Sort\+Parameters@{Sort\+Parameters}}
 \index{Sort\+Parameters@{Sort\+Parameters}!Sort\+Parameters@{Sort\+Parameters}}
 \subsubsection[{Sort\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}Sort\+Parameters\+::\+Sort\+Parameters (
 \begin{DoxyParamCaption}
@@ -44,6 +59,22 @@ Create the instance of \hyperlink{class_sort_parameters}{Sort\+Parameters}. \hyp
 \end{DoxyParamCaption}
 )}}\label{class_sort_parameters_ab5776bf717741ef321cf59bc712f55eb}
 Create the instance of \hyperlink{class_sort_parameters}{Sort\+Parameters}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_sort_parameters_aa29d3a50f026c0d840c16af26f8d7b07}{\index{Sort\+Parameters@{Sort\+Parameters}!is\+Known@{is\+Known}}
+\index{is\+Known@{is\+Known}!Sort\+Parameters@{Sort\+Parameters}}
+\subsubsection[{is\+Known}]{\setlength{\rightskip}{0pt plus 5cm}bool Sort\+Parameters\+::is\+Known (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_sort_parameters_aa29d3a50f026c0d840c16af26f8d7b07}
+Indicates if there is only one option. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_sort_parameters_ad40f9ae2cd97faa92c29f2fc1c3941d0}{\index{Sort\+Parameters@{Sort\+Parameters}!values@{values}}
+\index{values@{values}!Sort\+Parameters@{Sort\+Parameters}}
+\subsubsection[{values}]{\setlength{\rightskip}{0pt plus 5cm}std\+::list$<${\bf Sort\+Parameter}$>$ Sort\+Parameters\+::values}}\label{class_sort_parameters_ad40f9ae2cd97faa92c29f2fc1c3941d0}
+Vector of \hyperlink{class_sort_parameter}{Sort\+Parameter}. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

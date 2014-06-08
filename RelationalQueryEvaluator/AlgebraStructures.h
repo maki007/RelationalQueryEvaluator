@@ -115,11 +115,16 @@ public:
 
 	/**
 	* Create the instance of SortParameter.
+	* @param column - column identifier.
+	* @param order - sortOrder.
 	*/
 	SortParameter(const ColumnIdentifier & column, SortOrder order);
 
 	/**
 	* Create the instance of SortParameter.
+	* @param column - column identifier.
+	* @param other - order column which equals column.
+	* @param order - sortOrder.
 	*/
 	SortParameter(const ColumnIdentifier & column, const ColumnIdentifier & other, SortOrder order);
 
@@ -130,18 +135,25 @@ public:
 
 };
 
+/**
+* Represents sort parameters.
+* If there is more that one value in values vector than means that the actual order can change.
+*/
 class SortParameters
 {
 public:
-	std::list<SortParameter> values;
+
+	std::list<SortParameter> values; /**< Vector of SortParameter. */
 
 	/**
 	* Create the instance of SortParameters.
+	* @param value 
 	*/
 	SortParameters(const SortParameter & value);
 
 	/**
 	* Create the instance of SortParameters.
+	* @param values
 	*/
 	SortParameters(const std::vector<SortParameter> & values);
 
@@ -150,28 +162,32 @@ public:
 	*/
 	SortParameters();
 
-
+	/**
+	* Indicates if there is only one option.
+	*/
 	bool isKnown() const;
 
 };
 
 /**
 * Represents all possibilities how relation can be sorted.
+* It contains vector of list of SortParameter. 
+* The list inside of vector means that the order of columns is not determined.
 */
 class PossibleSortParameters
 {
 public:
-	std::vector<SortParameters> parameters;
+	std::vector<SortParameters> parameters; /**< Vector of SortParameters. */
 	
 	/**
 	* Create the instance of PossibleSortParameters.
-	*
+	* @param parameters - vector<SortParameters>.
 	*/
 	PossibleSortParameters(const std::vector<SortParameters> & parameters);
 
 	/**
 	* Create the instance of PossibleSortParameters.
-	* 
+	* @param parameters - vector<SortParameter.
 	*/
 	PossibleSortParameters(const std::vector<SortParameter> & parameters);
 

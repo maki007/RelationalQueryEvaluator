@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['operator_3c',['operator&lt;',['../class_column_identifier.html#a07e32ed45a2b7c8e09f0358fd31a1f74',1,'ColumnIdentifier']]],
-  ['operator_3d_3d',['operator==',['../class_column_identifier.html#a3833af96f5281573cae9a70c440c1cce',1,'ColumnIdentifier']]]
+  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../class_nullary_algebra_node_base.html#a73108e19c00005dcda32af0b05060ea0',1,'NullaryAlgebraNodeBase']]]
 ];
