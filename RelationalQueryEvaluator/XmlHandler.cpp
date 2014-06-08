@@ -57,7 +57,7 @@ void setDocumentLocator(const Locator *const locator)
 
 std::unique_ptr<AlgebraNodeBase> XmlHandler::ValidateSchema(const char* xmlFilePath)
 {
-	x domParser;
+	DOMParser domParser;
 
 	ParserErrorHandler parserErrorHandler;
 

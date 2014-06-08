@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,11 +99,10 @@ Inheritance diagram for AlgebraVisitor:</div>
 <area href="class_graph_drawing_visitor.html" alt="GraphDrawingVisitor" shape="rect" coords="170,112,330,136"/>
 <area href="class_grouping_visitor.html" alt="GroupingVisitor" shape="rect" coords="170,168,330,192"/>
 <area href="class_push_selection_down_visitor.html" alt="PushSelectionDownVisitor" shape="rect" coords="170,224,330,248"/>
-<area href="class_push_selection_up_visitor.html" alt="PushSelectionUpVisitor" shape="rect" coords="170,280,330,304"/>
-<area href="class_selection_colecting_visitor.html" alt="SelectionColectingVisitor" shape="rect" coords="170,336,330,360"/>
-<area href="class_selection_fusing_visitor.html" alt="SelectionFusingVisitor" shape="rect" coords="170,392,330,416"/>
-<area href="class_selection_spiting_visitor.html" alt="SelectionSpitingVisitor" shape="rect" coords="170,448,330,472"/>
-<area href="class_semantic_checker.html" alt="SemanticChecker" shape="rect" coords="170,504,330,528"/>
+<area href="class_selection_colecting_visitor.html" alt="SelectionColectingVisitor" shape="rect" coords="170,280,330,304"/>
+<area href="class_selection_fusing_visitor.html" alt="SelectionFusingVisitor" shape="rect" coords="170,336,330,360"/>
+<area href="class_selection_spiting_visitor.html" alt="SelectionSpitingVisitor" shape="rect" coords="170,392,330,416"/>
+<area href="class_semantic_checker.html" alt="SemanticChecker" shape="rect" coords="170,448,330,472"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -174,7 +174,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>insertSelectio
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 4 2014 23:44:42 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 8 2014 23:43:04 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

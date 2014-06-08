@@ -1,6 +1,10 @@
 \hypertarget{class_group}{\section{Group Class Reference}
 \label{class_group}\index{Group@{Group}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Group\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,64 @@ Inheritance diagram for Group\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_group_ae331a9b7095f8c2481e2031d41d88164}{{\bfseries Group} (D\+O\+M\+Element $\ast$element)}\label{class_group_ae331a9b7095f8c2481e2031d41d88164}
-
+\hyperlink{class_group_ae331a9b7095f8c2481e2031d41d88164}{Group} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_group_a5286b05dd9be36f3a76d075a43191184}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_group_a5286b05dd9be36f3a76d075a43191184}
-
+void \hyperlink{class_group_a5286b05dd9be36f3a76d075a43191184}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_group_a811076e176eaa4e3bb8373b7bd515c7e}{std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ {\bfseries group\+Columns}}\label{class_group_a811076e176eaa4e3bb8373b7bd515c7e}
-
+std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \hyperlink{class_group_a811076e176eaa4e3bb8373b7bd515c7e}{group\+Columns}
 \item 
-\hypertarget{class_group_afd02ca31d700990cddc2860d562635c2}{std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ {\bfseries agregate\+Functions}}\label{class_group_afd02ca31d700990cddc2860d562635c2}
-
+std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \hyperlink{class_group_afd02ca31d700990cddc2860d562635c2}{agregate\+Functions}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents algebraic operation group. It groups by given columns and also computes agregate functions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_group_ae331a9b7095f8c2481e2031d41d88164}{\index{Group@{Group}!Group@{Group}}
+\index{Group@{Group}!Group@{Group}}
+\subsubsection[{Group}]{\setlength{\rightskip}{0pt plus 5cm}Group\+::\+Group (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_group_ae331a9b7095f8c2481e2031d41d88164}
+Create the instance of \hyperlink{class_group}{Group}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_group_a5286b05dd9be36f3a76d075a43191184}{\index{Group@{Group}!accept@{accept}}
+\index{accept@{accept}!Group@{Group}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Group\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_group_a5286b05dd9be36f3a76d075a43191184}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_algebra_node_base_a33355111a226cb460c9a13efaf922e32}{Unary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_group_afd02ca31d700990cddc2860d562635c2}{\index{Group@{Group}!agregate\+Functions@{agregate\+Functions}}
+\index{agregate\+Functions@{agregate\+Functions}!Group@{Group}}
+\subsubsection[{agregate\+Functions}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Agregate\+Function}$>$ Group\+::agregate\+Functions}}\label{class_group_afd02ca31d700990cddc2860d562635c2}
+Stores agregate function information associated with this group node. \hypertarget{class_group_a811076e176eaa4e3bb8373b7bd515c7e}{\index{Group@{Group}!group\+Columns@{group\+Columns}}
+\index{group\+Columns@{group\+Columns}!Group@{Group}}
+\subsubsection[{group\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Group\+Column}$>$ Group\+::group\+Columns}}\label{class_group_a811076e176eaa4e3bb8373b7bd515c7e}
+Determines by which columns should current relation by grouped by. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

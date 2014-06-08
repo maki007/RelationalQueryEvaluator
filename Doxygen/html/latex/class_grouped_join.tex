@@ -1,6 +1,10 @@
 \hypertarget{class_grouped_join}{\section{Grouped\+Join Class Reference}
 \label{class_grouped_join}\index{Grouped\+Join@{Grouped\+Join}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Grouped\+Join\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,8 +14,7 @@ Inheritance diagram for Grouped\+Join\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_grouped_join_aa067c1a349478bfdeae77ed3a541375d}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_grouped_join_aa067c1a349478bfdeae77ed3a541375d}
-
+void \hyperlink{class_grouped_join_aa067c1a349478bfdeae77ed3a541375d}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -25,6 +28,28 @@ Inheritance diagram for Grouped\+Join\+:\begin{figure}[H]
 \hypertarget{class_grouped_join_ab4e436f7abb9990000a7f2ef0596960e}{std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ {\bfseries output\+Join\+Columns}}\label{class_grouped_join_ab4e436f7abb9990000a7f2ef0596960e}
 
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents algebraic operation join on multiple tables 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_grouped_join_aa067c1a349478bfdeae77ed3a541375d}{\index{Grouped\+Join@{Grouped\+Join}!accept@{accept}}
+\index{accept@{accept}!Grouped\+Join@{Grouped\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Grouped\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_grouped_join_aa067c1a349478bfdeae77ed3a541375d}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_grouped_algebra_node_a60aae470b5aee869eca9a504fdf79f32}{Grouped\+Algebra\+Node}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

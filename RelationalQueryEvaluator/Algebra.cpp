@@ -343,6 +343,11 @@ void ColumnOperations::accept(AlgebraVisitor &v)
 	v.visitColumnOperations(this);
 }
 
+Selection::Selection()
+{
+
+}
+
 Selection::Selection(DOMElement * element) :UnaryAlgebraNodeBase(element)
 {
 	DOMElement * parametersNode = XmlUtils::GetChildElementByName(element, "parameters");

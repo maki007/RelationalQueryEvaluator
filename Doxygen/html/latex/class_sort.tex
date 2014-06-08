@@ -1,6 +1,10 @@
 \hypertarget{class_sort}{\section{Sort Class Reference}
 \label{class_sort}\index{Sort@{Sort}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Sort\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,19 +14,59 @@ Inheritance diagram for Sort\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sort_a3b177337159d6d3246cd91b033c824c4}{{\bfseries Sort} (D\+O\+M\+Element $\ast$element)}\label{class_sort_a3b177337159d6d3246cd91b033c824c4}
-
+\hyperlink{class_sort_a3b177337159d6d3246cd91b033c824c4}{Sort} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_sort_a488c889b0dff867a125ada831e2c46c2}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_sort_a488c889b0dff867a125ada831e2c46c2}
-
+void \hyperlink{class_sort_a488c889b0dff867a125ada831e2c46c2}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sort_abc86726752639b928cd08812538a251a}{std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries parameters}}\label{class_sort_abc86726752639b928cd08812538a251a}
-
+std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_sort_abc86726752639b928cd08812538a251a}{parameters}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents algebraic operation sort table, this node can be only on the top of algebra tree. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_sort_a3b177337159d6d3246cd91b033c824c4}{\index{Sort@{Sort}!Sort@{Sort}}
+\index{Sort@{Sort}!Sort@{Sort}}
+\subsubsection[{Sort}]{\setlength{\rightskip}{0pt plus 5cm}Sort\+::\+Sort (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_sort_a3b177337159d6d3246cd91b033c824c4}
+Create the instance of \hyperlink{class_sort}{Sort}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_sort_a488c889b0dff867a125ada831e2c46c2}{\index{Sort@{Sort}!accept@{accept}}
+\index{accept@{accept}!Sort@{Sort}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Sort\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_sort_a488c889b0dff867a125ada831e2c46c2}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_algebra_node_base_a33355111a226cb460c9a13efaf922e32}{Unary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_sort_abc86726752639b928cd08812538a251a}{\index{Sort@{Sort}!parameters@{parameters}}
+\index{parameters@{parameters}!Sort@{Sort}}
+\subsubsection[{parameters}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ Sort\+::parameters}}\label{class_sort_abc86726752639b928cd08812538a251a}
+Determines by which columns and what direction should \hyperlink{class_sort}{Sort} sort current relation. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

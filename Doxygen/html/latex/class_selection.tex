@@ -1,6 +1,10 @@
 \hypertarget{class_selection}{\section{Selection Class Reference}
 \label{class_selection}\index{Selection@{Selection}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Selection\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,82 @@ Inheritance diagram for Selection\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_selection_a83b3073a2d490708256e3dc725560836}{{\bfseries Selection} (D\+O\+M\+Element $\ast$element)}\label{class_selection_a83b3073a2d490708256e3dc725560836}
-
+\hyperlink{class_selection_a53d1bd270d6d257d34d5bc8d50028049}{Selection} ()
 \item 
-\hypertarget{class_selection_a086ad5ebceb2f48c7b66c150c4f1d92c}{{\bfseries Selection} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&cond)}\label{class_selection_a086ad5ebceb2f48c7b66c150c4f1d92c}
-
+\hyperlink{class_selection_a83b3073a2d490708256e3dc725560836}{Selection} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_selection_afe7f64aed777d583797f1c9c13b378ac}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_selection_afe7f64aed777d583797f1c9c13b378ac}
-
+\hyperlink{class_selection_a086ad5ebceb2f48c7b66c150c4f1d92c}{Selection} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&cond)
+\item 
+void \hyperlink{class_selection_afe7f64aed777d583797f1c9c13b378ac}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_selection_a2356634cb924e5b5814c4d2bfee51d65}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_selection_a2356634cb924e5b5814c4d2bfee51d65}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_selection_a2356634cb924e5b5814c4d2bfee51d65}{condition}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents algebraic operation selection. It filters input rows and copies to output only rows satisfying given condition. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_selection_a53d1bd270d6d257d34d5bc8d50028049}{\index{Selection@{Selection}!Selection@{Selection}}
+\index{Selection@{Selection}!Selection@{Selection}}
+\subsubsection[{Selection}]{\setlength{\rightskip}{0pt plus 5cm}Selection\+::\+Selection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_selection_a53d1bd270d6d257d34d5bc8d50028049}
+Create the instance of \hyperlink{class_selection}{Selection}. \hypertarget{class_selection_a83b3073a2d490708256e3dc725560836}{\index{Selection@{Selection}!Selection@{Selection}}
+\index{Selection@{Selection}!Selection@{Selection}}
+\subsubsection[{Selection}]{\setlength{\rightskip}{0pt plus 5cm}Selection\+::\+Selection (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_selection_a83b3073a2d490708256e3dc725560836}
+Create the instance of \hyperlink{class_selection}{Selection}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_selection_a086ad5ebceb2f48c7b66c150c4f1d92c}{\index{Selection@{Selection}!Selection@{Selection}}
+\index{Selection@{Selection}!Selection@{Selection}}
+\subsubsection[{Selection}]{\setlength{\rightskip}{0pt plus 5cm}Selection\+::\+Selection (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{cond}
+\end{DoxyParamCaption}
+)}}\label{class_selection_a086ad5ebceb2f48c7b66c150c4f1d92c}
+Create the instance of \hyperlink{class_selection}{Selection}. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{class_expression}{Expression} -\/ filter condition \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_selection_afe7f64aed777d583797f1c9c13b378ac}{\index{Selection@{Selection}!accept@{accept}}
+\index{accept@{accept}!Selection@{Selection}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Selection\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_selection_afe7f64aed777d583797f1c9c13b378ac}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_algebra_node_base_a33355111a226cb460c9a13efaf922e32}{Unary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_selection_a2356634cb924e5b5814c4d2bfee51d65}{\index{Selection@{Selection}!condition@{condition}}
+\index{condition@{condition}!Selection@{Selection}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Selection\+::condition}}\label{class_selection_a2356634cb924e5b5814c4d2bfee51d65}
+Condition for filtetring given input. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

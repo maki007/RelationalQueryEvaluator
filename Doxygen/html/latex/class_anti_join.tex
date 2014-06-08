@@ -1,6 +1,10 @@
 \hypertarget{class_anti_join}{\section{Anti\+Join Class Reference}
 \label{class_anti_join}\index{Anti\+Join@{Anti\+Join}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Anti\+Join\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,64 @@ Inheritance diagram for Anti\+Join\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_anti_join_a5cc6257a7d3b85eebc2326e2a5996dec}{{\bfseries Anti\+Join} (D\+O\+M\+Element $\ast$element)}\label{class_anti_join_a5cc6257a7d3b85eebc2326e2a5996dec}
-
+\hyperlink{class_anti_join_a5cc6257a7d3b85eebc2326e2a5996dec}{Anti\+Join} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_anti_join_a95d753b1ed036be43a4fe00b40b775cf}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_anti_join_a95d753b1ed036be43a4fe00b40b775cf}
-
+void \hyperlink{class_anti_join_a95d753b1ed036be43a4fe00b40b775cf}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_anti_join_a55e3da2742c4a24af7eee18cc5309206}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_anti_join_a55e3da2742c4a24af7eee18cc5309206}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_anti_join_a55e3da2742c4a24af7eee18cc5309206}{condition}
 \item 
-\hypertarget{class_anti_join_af033e50994f2155c9f33926ec2ecd375}{std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ {\bfseries output\+Join\+Columns}}\label{class_anti_join_af033e50994f2155c9f33926ec2ecd375}
-
+std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ \hyperlink{class_anti_join_af033e50994f2155c9f33926ec2ecd375}{output\+Join\+Columns}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents algebraic operation antijoin. Antijoin is basicly generalized difference but the columns doesn't have to be same. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_anti_join_a5cc6257a7d3b85eebc2326e2a5996dec}{\index{Anti\+Join@{Anti\+Join}!Anti\+Join@{Anti\+Join}}
+\index{Anti\+Join@{Anti\+Join}!Anti\+Join@{Anti\+Join}}
+\subsubsection[{Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}Anti\+Join\+::\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_anti_join_a5cc6257a7d3b85eebc2326e2a5996dec}
+Create the instance of \hyperlink{class_anti_join}{Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_anti_join_a95d753b1ed036be43a4fe00b40b775cf}{\index{Anti\+Join@{Anti\+Join}!accept@{accept}}
+\index{accept@{accept}!Anti\+Join@{Anti\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Anti\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_anti_join_a95d753b1ed036be43a4fe00b40b775cf}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}{Binary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_anti_join_a55e3da2742c4a24af7eee18cc5309206}{\index{Anti\+Join@{Anti\+Join}!condition@{condition}}
+\index{condition@{condition}!Anti\+Join@{Anti\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Anti\+Join\+::condition}}\label{class_anti_join_a55e3da2742c4a24af7eee18cc5309206}
+Condition for antijoin joining. \hypertarget{class_anti_join_af033e50994f2155c9f33926ec2ecd375}{\index{Anti\+Join@{Anti\+Join}!output\+Join\+Columns@{output\+Join\+Columns}}
+\index{output\+Join\+Columns@{output\+Join\+Columns}!Anti\+Join@{Anti\+Join}}
+\subsubsection[{output\+Join\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Join\+Column\+Info}$>$ Anti\+Join\+::output\+Join\+Columns}}\label{class_anti_join_af033e50994f2155c9f33926ec2ecd375}
+list of output columns from join 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

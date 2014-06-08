@@ -74,7 +74,7 @@ public:
 
 
 
-class x : public XercesDOMParser
+class DOMParser : public XercesDOMParser
 {
 public:
 	void startElement(const XMLElementDecl& elemDecl, const unsigned int urlId, const XMLCh* const elemPrefix, const RefVectorOf<XMLAttr>& attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot)

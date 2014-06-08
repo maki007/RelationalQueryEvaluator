@@ -1,6 +1,10 @@
 \hypertarget{class_join}{\section{Join Class Reference}
 \label{class_join}\index{Join@{Join}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Join\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,64 @@ Inheritance diagram for Join\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_join_ac9d8f69a2f72ce85df3e581292c46fc0}{{\bfseries Join} (D\+O\+M\+Element $\ast$element)}\label{class_join_ac9d8f69a2f72ce85df3e581292c46fc0}
-
+\hyperlink{class_join_ac9d8f69a2f72ce85df3e581292c46fc0}{Join} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_join_a387b23cf52fa9dc5390f003bcc051cc1}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_join_a387b23cf52fa9dc5390f003bcc051cc1}
-
+void \hyperlink{class_join_a387b23cf52fa9dc5390f003bcc051cc1}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_join_aa1374c434547d1a0a478a914ac0445bb}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_join_aa1374c434547d1a0a478a914ac0445bb}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_join_aa1374c434547d1a0a478a914ac0445bb}{condition}
 \item 
-\hypertarget{class_join_ad0fbf6166d055f84e2a1e9ec5af9824a}{std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ {\bfseries output\+Join\+Columns}}\label{class_join_ad0fbf6166d055f84e2a1e9ec5af9824a}
-
+std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ \hyperlink{class_join_ad0fbf6166d055f84e2a1e9ec5af9824a}{output\+Join\+Columns}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents algebraic operation join on two tables 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_join_ac9d8f69a2f72ce85df3e581292c46fc0}{\index{Join@{Join}!Join@{Join}}
+\index{Join@{Join}!Join@{Join}}
+\subsubsection[{Join}]{\setlength{\rightskip}{0pt plus 5cm}Join\+::\+Join (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_join_ac9d8f69a2f72ce85df3e581292c46fc0}
+Create the instance of \hyperlink{class_join}{Join}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_join_a387b23cf52fa9dc5390f003bcc051cc1}{\index{Join@{Join}!accept@{accept}}
+\index{accept@{accept}!Join@{Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_join_a387b23cf52fa9dc5390f003bcc051cc1}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}{Binary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_join_aa1374c434547d1a0a478a914ac0445bb}{\index{Join@{Join}!condition@{condition}}
+\index{condition@{condition}!Join@{Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Join\+::condition}}\label{class_join_aa1374c434547d1a0a478a914ac0445bb}
+Condition for joining. \hypertarget{class_join_ad0fbf6166d055f84e2a1e9ec5af9824a}{\index{Join@{Join}!output\+Join\+Columns@{output\+Join\+Columns}}
+\index{output\+Join\+Columns@{output\+Join\+Columns}!Join@{Join}}
+\subsubsection[{output\+Join\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Join\+Column\+Info}$>$ Join\+::output\+Join\+Columns}}\label{class_join_ad0fbf6166d055f84e2a1e9ec5af9824a}
+list of output columns from join 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

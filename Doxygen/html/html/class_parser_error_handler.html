@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,6 +100,9 @@ Inheritance diagram for ParserErrorHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a7e9893b8664f42e38cecb483f0d26791"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e9893b8664f42e38cecb483f0d26791"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>reportParseException</b> (const SAXParseException &amp;ex)</td></tr>
+<tr class="separator:a7e9893b8664f42e38cecb483f0d26791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa63a6f504a4524985be39e0cdfa4e630"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa63a6f504a4524985be39e0cdfa4e630"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>warning</b> (const SAXParseException &amp;ex)</td></tr>
 <tr class="separator:aa63a6f504a4524985be39e0cdfa4e630"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,6 +115,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>fatalError</b> (const
 <tr class="memitem:afcd94fcf4b801a4767a90b88721b432c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afcd94fcf4b801a4767a90b88721b432c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>resetErrors</b> ()</td></tr>
 <tr class="separator:afcd94fcf4b801a4767a90b88721b432c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ce19b1e204d760ee30e4f7cd0dfc443"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ce19b1e204d760ee30e4f7cd0dfc443"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setDocumentLocator</b> (const Locator *const locator)</td></tr>
+<tr class="separator:a1ce19b1e204d760ee30e4f7cd0dfc443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -118,13 +125,14 @@ Public Attributes</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>errors</b></td></tr>
 <tr class="separator:a1929eecf90414ca41886580f1d61248f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_xml_handler_8h_source.html">XmlHandler.h</a></li>
+<li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/XmlHandler.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 4 2014 23:44:53 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 8 2014 23:43:15 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

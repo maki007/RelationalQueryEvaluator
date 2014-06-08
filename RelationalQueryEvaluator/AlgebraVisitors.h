@@ -344,26 +344,5 @@ public:
 	void visitGroupedJoin(GroupedJoin * node);
 };
 
-class PushSelectionUpVisitor : public AlgebraVisitor
-{
-public:
-	void visitTable(Table * node);
-
-	void visitSort(Sort * node);
-
-	void visitGroup(Group * node);
-
-	void visitColumnOperations(ColumnOperations * node);
-
-	void visitSelection(Selection * node);
-
-	void visitJoin(Join * node);
-
-	void visitAntiJoin(AntiJoin * node);
-
-	void visitUnion(Union * node);
-
-	void visitGroupedJoin(GroupedJoin * node);
-};
 
 #endif

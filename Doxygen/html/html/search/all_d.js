@@ -1,17 +1,6 @@
 var searchData=
 [
-  ['scanandsortbyindex',['ScanAndSortByIndex',['../class_scan_and_sort_by_index.html',1,'']]],
-  ['selection',['Selection',['../class_selection.html',1,'']]],
-  ['selectioncolectingvisitor',['SelectionColectingVisitor',['../class_selection_colecting_visitor.html',1,'']]],
-  ['selectionfusingvisitor',['SelectionFusingVisitor',['../class_selection_fusing_visitor.html',1,'']]],
-  ['selectionspitingvisitor',['SelectionSpitingVisitor',['../class_selection_spiting_visitor.html',1,'']]],
-  ['semanticchecker',['SemanticChecker',['../class_semantic_checker.html',1,'']]],
-  ['semanticexpressionvisitor',['SemanticExpressionVisitor',['../class_semantic_expression_visitor.html',1,'']]],
-  ['sizeestimatingexpressionvisitor',['SizeEstimatingExpressionVisitor',['../class_size_estimating_expression_visitor.html',1,'']]],
-  ['sort',['Sort',['../class_sort.html',1,'']]],
-  ['sortedgroup',['SortedGroup',['../class_sorted_group.html',1,'']]],
-  ['sortoperator',['SortOperator',['../class_sort_operator.html',1,'']]],
-  ['sortparameter',['SortParameter',['../class_sort_parameter.html',1,'']]],
-  ['sortparameters',['SortParameters',['../class_sort_parameters.html',1,'']]],
-  ['sortresolvingphysicaloperatorvisitor',['SortResolvingPhysicalOperatorVisitor',['../class_sort_resolving_physical_operator_visitor.html',1,'']]]
+  ['operations',['operations',['../class_column_operations.html#a31aab19a9f8b104f772c111e920dd682',1,'ColumnOperations']]],
+  ['outputcolumns',['outputColumns',['../class_algebra_node_base.html#ac59c590aea4f109c7fab18f714c588c1',1,'AlgebraNodeBase']]],
+  ['outputjoincolumns',['outputJoinColumns',['../class_join.html#ad0fbf6166d055f84e2a1e9ec5af9824a',1,'Join::outputJoinColumns()'],['../class_anti_join.html#af033e50994f2155c9f33926ec2ecd375',1,'AntiJoin::outputJoinColumns()']]]
 ];

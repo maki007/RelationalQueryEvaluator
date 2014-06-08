@@ -1,14 +1,20 @@
 var searchData=
 [
+  ['child',['child',['../class_unary_algebra_node_base.html#a411f3922d4ab886c364e502f2370752e',1,'UnaryAlgebraNodeBase']]],
+  ['children',['children',['../class_grouped_algebra_node.html#acabb532765e4d32cec630651bb5d726f',1,'GroupedAlgebraNode']]],
   ['cloningexpressionvisitor',['CloningExpressionVisitor',['../class_cloning_expression_visitor.html',1,'']]],
   ['cloningphysicaloperatorvisitor',['CloningPhysicalOperatorVisitor',['../class_cloning_physical_operator_visitor.html',1,'']]],
   ['column',['Column',['../class_column.html',1,'']]],
   ['columnidentifier',['ColumnIdentifier',['../class_column_identifier.html',1,'']]],
   ['columninfo',['ColumnInfo',['../class_column_info.html',1,'']]],
   ['columnoperation',['ColumnOperation',['../class_column_operation.html',1,'']]],
-  ['columnoperations',['ColumnOperations',['../class_column_operations.html',1,'']]],
+  ['columnoperations',['ColumnOperations',['../class_column_operations.html',1,'ColumnOperations'],['../class_column_operations.html#a3d2c43e31201238da369906ef863c959',1,'ColumnOperations::ColumnOperations()']]],
+  ['columns',['columns',['../class_table.html#ad6e2d1b269aa5c182e0357b75f46eee0',1,'Table']]],
   ['columnsoperationsoperator',['ColumnsOperationsOperator',['../class_columns_operations_operator.html',1,'']]],
+  ['condition',['condition',['../class_selection.html#a2356634cb924e5b5814c4d2bfee51d65',1,'Selection::condition()'],['../class_join.html#aa1374c434547d1a0a478a914ac0445bb',1,'Join::condition()'],['../class_anti_join.html#a55e3da2742c4a24af7eee18cc5309206',1,'AntiJoin::condition()']]],
   ['conditioninfo',['ConditionInfo',['../class_condition_info.html',1,'']]],
   ['constant',['Constant',['../class_constant.html',1,'']]],
+  ['constructchildren',['constructChildren',['../class_algebra_node_base.html#a19f93dd9f8b3da0a216a37f2ceb61ebe',1,'AlgebraNodeBase']]],
+  ['constructjoinparameters',['constructJoinParameters',['../class_binary_algebra_node_base.html#a266f8e4526337e86f97ebeabb326be22',1,'BinaryAlgebraNodeBase']]],
   ['crossjoin',['CrossJoin',['../class_cross_join.html',1,'']]]
 ];

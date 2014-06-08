@@ -1,6 +1,10 @@
 \hypertarget{class_binary_algebra_node_base}{\section{Binary\+Algebra\+Node\+Base Class Reference}
 \label{class_binary_algebra_node_base}\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Binary\+Algebra\+Node\+Base\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,28 +14,112 @@ Inheritance diagram for Binary\+Algebra\+Node\+Base\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_binary_algebra_node_base_a0a44a290bb4c433b83f58d948240a0d0}{{\bfseries Binary\+Algebra\+Node\+Base} (D\+O\+M\+Element $\ast$element)}\label{class_binary_algebra_node_base_a0a44a290bb4c433b83f58d948240a0d0}
-
+\hyperlink{class_binary_algebra_node_base_a86e98adfda4ff8d492a9600de4f37100}{Binary\+Algebra\+Node\+Base} ()
 \item 
-\hypertarget{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}{virtual void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)=0}\label{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}
-
+\hyperlink{class_binary_algebra_node_base_a0a44a290bb4c433b83f58d948240a0d0}{Binary\+Algebra\+Node\+Base} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_binary_algebra_node_base_a266f8e4526337e86f97ebeabb326be22}{void {\bfseries construct\+Join\+Parameters} (D\+O\+M\+Element $\ast$node, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition, std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ \&output\+Columns)}\label{class_binary_algebra_node_base_a266f8e4526337e86f97ebeabb326be22}
-
+void \hyperlink{class_binary_algebra_node_base_a266f8e4526337e86f97ebeabb326be22}{construct\+Join\+Parameters} (D\+O\+M\+Element $\ast$node, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition, std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ \&\hyperlink{class_algebra_node_base_ac59c590aea4f109c7fab18f714c588c1}{output\+Columns})
 \item 
-\hypertarget{class_binary_algebra_node_base_a6e466b62966a9851c3c34e1fb588a496}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ {\bfseries replace\+Child} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)}\label{class_binary_algebra_node_base_a6e466b62966a9851c3c34e1fb588a496}
-
+virtual void \hyperlink{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)=0
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{class_binary_algebra_node_base_a6e466b62966a9851c3c34e1fb588a496}{replace\+Child} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_binary_algebra_node_base_ab62ff77c5d90bd941b07a6f34e39f14b}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ {\bfseries left\+Child}}\label{class_binary_algebra_node_base_ab62ff77c5d90bd941b07a6f34e39f14b}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{class_binary_algebra_node_base_ab62ff77c5d90bd941b07a6f34e39f14b}{left\+Child}
 \item 
-\hypertarget{class_binary_algebra_node_base_ac97784ae724c411daca8b17664ce1122}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ {\bfseries right\+Child}}\label{class_binary_algebra_node_base_ac97784ae724c411daca8b17664ce1122}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{class_binary_algebra_node_base_ac97784ae724c411daca8b17664ce1122}{right\+Child}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Abstract class for binary algebraic operation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_binary_algebra_node_base_a86e98adfda4ff8d492a9600de4f37100}{\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\subsubsection[{Binary\+Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}Binary\+Algebra\+Node\+Base\+::\+Binary\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_binary_algebra_node_base_a86e98adfda4ff8d492a9600de4f37100}
+Create the instance of \hyperlink{class_binary_algebra_node_base}{Binary\+Algebra\+Node\+Base}. \hypertarget{class_binary_algebra_node_base_a0a44a290bb4c433b83f58d948240a0d0}{\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\subsubsection[{Binary\+Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}Binary\+Algebra\+Node\+Base\+::\+Binary\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_binary_algebra_node_base_a0a44a290bb4c433b83f58d948240a0d0}
+Create the instance of \hyperlink{class_unary_algebra_node_base}{Unary\+Algebra\+Node\+Base}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}{\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!accept@{accept}}
+\index{accept@{accept}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Binary\+Algebra\+Node\+Base\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_algebra_node_base_a33bee3ec6fe1eb4228c0471c95c90d66}{Algebra\+Node\+Base}.
+
+
+
+Implemented in \hyperlink{class_union_a3a6b25cdee04be26d42e6f531e358e34}{Union}, \hyperlink{class_anti_join_a95d753b1ed036be43a4fe00b40b775cf}{Anti\+Join}, and \hyperlink{class_join_a387b23cf52fa9dc5390f003bcc051cc1}{Join}.
+
+\hypertarget{class_binary_algebra_node_base_a266f8e4526337e86f97ebeabb326be22}{\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!construct\+Join\+Parameters@{construct\+Join\+Parameters}}
+\index{construct\+Join\+Parameters@{construct\+Join\+Parameters}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\subsubsection[{construct\+Join\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Binary\+Algebra\+Node\+Base\+::construct\+Join\+Parameters (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition, }
+\item[{std\+::vector$<$ {\bf Join\+Column\+Info} $>$ \&}]{output\+Columns}
+\end{DoxyParamCaption}
+)}}\label{class_binary_algebra_node_base_a266f8e4526337e86f97ebeabb326be22}
+Helper method for join and antijoin. Reeds all needed parameters from dom tree. \hypertarget{class_binary_algebra_node_base_a6e466b62966a9851c3c34e1fb588a496}{\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ Binary\+Algebra\+Node\+Base\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Node\+Base} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ \&}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_binary_algebra_node_base_a6e466b62966a9851c3c34e1fb588a496}
+Replaces one child of this node with other one 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & node to be replaced \\
+\hline
+{\em new\+Child} & new node to replace old one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+replaced child 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_algebra_node_base_aa9bdd02b0ddf793bda18bd146ccacb0d}{Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_binary_algebra_node_base_ab62ff77c5d90bd941b07a6f34e39f14b}{\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!left\+Child@{left\+Child}}
+\index{left\+Child@{left\+Child}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\subsubsection[{left\+Child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Algebra\+Node\+Base}$>$ Binary\+Algebra\+Node\+Base\+::left\+Child}}\label{class_binary_algebra_node_base_ab62ff77c5d90bd941b07a6f34e39f14b}
+Stores pointer to left child node. \hypertarget{class_binary_algebra_node_base_ac97784ae724c411daca8b17664ce1122}{\index{Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}!right\+Child@{right\+Child}}
+\index{right\+Child@{right\+Child}!Binary\+Algebra\+Node\+Base@{Binary\+Algebra\+Node\+Base}}
+\subsubsection[{right\+Child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Algebra\+Node\+Base}$>$ Binary\+Algebra\+Node\+Base\+::right\+Child}}\label{class_binary_algebra_node_base_ac97784ae724c411daca8b17664ce1122}
+Stores pointer to right child node. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

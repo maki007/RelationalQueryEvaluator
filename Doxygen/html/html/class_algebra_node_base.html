@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -114,36 +115,216 @@ Inheritance diagram for AlgebraNodeBase:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a19f93dd9f8b3da0a216a37f2ceb61ebe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19f93dd9f8b3da0a216a37f2ceb61ebe"></a>
-<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>constructChildren</b> (DOMElement *node)</td></tr>
+<tr class="memitem:a8905b9abbf0ef7c0f84b79c8d0c100d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#a8905b9abbf0ef7c0f84b79c8d0c100d8">AlgebraNodeBase</a> ()</td></tr>
+<tr class="separator:a8905b9abbf0ef7c0f84b79c8d0c100d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af86499c41554b02be3fb17da057b60ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#af86499c41554b02be3fb17da057b60ad">AlgebraNodeBase</a> (DOMElement *element)</td></tr>
+<tr class="separator:af86499c41554b02be3fb17da057b60ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19f93dd9f8b3da0a216a37f2ceb61ebe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#a19f93dd9f8b3da0a216a37f2ceb61ebe">constructChildren</a> (DOMElement *node)</td></tr>
 <tr class="separator:a19f93dd9f8b3da0a216a37f2ceb61ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33bee3ec6fe1eb4228c0471c95c90d66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a33bee3ec6fe1eb4228c0471c95c90d66"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="class_algebra_visitor.html">AlgebraVisitor</a> &amp;v)=0</td></tr>
+<tr class="memitem:a33bee3ec6fe1eb4228c0471c95c90d66"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#a33bee3ec6fe1eb4228c0471c95c90d66">accept</a> (<a class="el" href="class_algebra_visitor.html">AlgebraVisitor</a> &amp;v)=0</td></tr>
 <tr class="separator:a33bee3ec6fe1eb4228c0471c95c90d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9bdd02b0ddf793bda18bd146ccacb0d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9bdd02b0ddf793bda18bd146ccacb0d"></a>
-virtual std::shared_ptr<br class="typebreak" />
-&lt; <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>replaceChild</b> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *oldChild, std::shared_ptr&lt; <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> &gt; &amp;newChild)=0</td></tr>
+<tr class="memitem:aa9bdd02b0ddf793bda18bd146ccacb0d"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr<br class="typebreak" />
+&lt; <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#aa9bdd02b0ddf793bda18bd146ccacb0d">replaceChild</a> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *oldChild, std::shared_ptr&lt; <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> &gt; &amp;newChild)=0</td></tr>
 <tr class="separator:aa9bdd02b0ddf793bda18bd146ccacb0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac59c590aea4f109c7fab18f714c588c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac59c590aea4f109c7fab18f714c588c1"></a>
-std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>outputColumns</b></td></tr>
+<tr class="memitem:ac59c590aea4f109c7fab18f714c588c1"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#ac59c590aea4f109c7fab18f714c588c1">outputColumns</a></td></tr>
 <tr class="separator:ac59c590aea4f109c7fab18f714c588c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b2834cce900dec172763d4ef4b38f66"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b2834cce900dec172763d4ef4b38f66"></a>
-<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>parent</b></td></tr>
+<tr class="memitem:ac98b5887b911ee27411307c94db7fc94"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#ac98b5887b911ee27411307c94db7fc94">lineNumber</a> = 0</td></tr>
+<tr class="separator:ac98b5887b911ee27411307c94db7fc94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b2834cce900dec172763d4ef4b38f66"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66">parent</a></td></tr>
 <tr class="separator:a5b2834cce900dec172763d4ef4b38f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>... Qt style comments ... </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+<div class="textblock"><p>Abstract class for algebraic operaton. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a8905b9abbf0ef7c0f84b79c8d0c100d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AlgebraNodeBase::AlgebraNodeBase </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create the instance of <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="af86499c41554b02be3fb17da057b60ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AlgebraNodeBase::AlgebraNodeBase </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create the instance of <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>representing input node. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a33bee3ec6fe1eb4228c0471c95c90d66"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void AlgebraNodeBase::accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_algebra_visitor.html">AlgebraVisitor</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method for calling visit[node] on given <a class="el" href="class_algebra_visitor.html">AlgebraVisitor</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td><a class="el" href="class_algebra_visitor.html">AlgebraVisitor</a>, on which to call function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_grouped_join.html#aa067c1a349478bfdeae77ed3a541375d">GroupedJoin</a>, <a class="el" href="class_union.html#a3a6b25cdee04be26d42e6f531e358e34">Union</a>, <a class="el" href="class_anti_join.html#a95d753b1ed036be43a4fe00b40b775cf">AntiJoin</a>, <a class="el" href="class_join.html#a387b23cf52fa9dc5390f003bcc051cc1">Join</a>, <a class="el" href="class_selection.html#afe7f64aed777d583797f1c9c13b378ac">Selection</a>, <a class="el" href="class_column_operations.html#aa33d719aa0407f588cd4ddc2d54368a6">ColumnOperations</a>, <a class="el" href="class_group.html#a5286b05dd9be36f3a76d075a43191184">Group</a>, <a class="el" href="class_sort.html#a488c889b0dff867a125ada831e2c46c2">Sort</a>, <a class="el" href="class_table.html#a4496e1f66e8faa9b4fcf5c115a9b16f3">Table</a>, <a class="el" href="class_nullary_algebra_node_base.html#a48446f68e1ddfc2357dcd048fd82ba80">NullaryAlgebraNodeBase</a>, <a class="el" href="class_grouped_algebra_node.html#a60aae470b5aee869eca9a504fdf79f32">GroupedAlgebraNode</a>, <a class="el" href="class_binary_algebra_node_base.html#ab6521a638b418e4f0939270bab77b901">BinaryAlgebraNodeBase</a>, and <a class="el" href="class_unary_algebra_node_base.html#a33355111a226cb460c9a13efaf922e32">UnaryAlgebraNodeBase</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a19f93dd9f8b3da0a216a37f2ceb61ebe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> * AlgebraNodeBase::constructChildren </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Helper method for creating algebra tree from dom. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>representing input node. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>newely created Algebra node </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa9bdd02b0ddf793bda18bd146ccacb0d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>&gt; AlgebraNodeBase::replaceChild </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *&#160;</td>
+          <td class="paramname"><em>oldChild</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>newChild</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Replaces one child of this node with other one </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldChild</td><td>node to be replaced </td></tr>
+    <tr><td class="paramname">newChild</td><td>new node to replace old one </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>replaced child </dd></dl>
+
+<p>Implemented in <a class="el" href="class_nullary_algebra_node_base.html#af5a5e7f02db8509605ab852ef65b201b">NullaryAlgebraNodeBase</a>, <a class="el" href="class_grouped_algebra_node.html#a463e6303f6332fc9ed2a885e3456b58e">GroupedAlgebraNode</a>, <a class="el" href="class_binary_algebra_node_base.html#a6e466b62966a9851c3c34e1fb588a496">BinaryAlgebraNodeBase</a>, and <a class="el" href="class_unary_algebra_node_base.html#a26aeeaeb45f97051d618cfcceccd5949">UnaryAlgebraNodeBase</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ac98b5887b911ee27411307c94db7fc94"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AlgebraNodeBase::lineNumber = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores the line number of input element of this node. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac59c590aea4f109c7fab18f714c588c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, <a class="el" href="class_column_info.html">ColumnInfo</a>&gt; AlgebraNodeBase::outputColumns</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores ouput columns of this node. Key is unique column identifier and values stores information about column. </p>
+
+</div>
+</div>
+<a class="anchor" id="a5b2834cce900dec172763d4ef4b38f66"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>* AlgebraNodeBase::parent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores the parent in algebra tree. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_algebra_8h_source.html">Algebra.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/Algebra.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 4 2014 23:44:42 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 8 2014 23:43:04 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

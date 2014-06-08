@@ -1,6 +1,10 @@
 \hypertarget{class_union}{\section{Union Class Reference}
 \label{class_union}\index{Union@{Union}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Union\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,10 +17,31 @@ Inheritance diagram for Union\+:\begin{figure}[H]
 \hypertarget{class_union_a092a85229eefb0a218bec53bd12b9433}{{\bfseries Union} (D\+O\+M\+Element $\ast$element)}\label{class_union_a092a85229eefb0a218bec53bd12b9433}
 
 \item 
-\hypertarget{class_union_a3a6b25cdee04be26d42e6f531e358e34}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_union_a3a6b25cdee04be26d42e6f531e358e34}
-
+void \hyperlink{class_union_a3a6b25cdee04be26d42e6f531e358e34}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Represents algebraic operation set union. Rows from second input will be appended to rows from first input. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_union_a3a6b25cdee04be26d42e6f531e358e34}{\index{Union@{Union}!accept@{accept}}
+\index{accept@{accept}!Union@{Union}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Union\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_union_a3a6b25cdee04be26d42e6f531e358e34}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}{Binary\+Algebra\+Node\+Base}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

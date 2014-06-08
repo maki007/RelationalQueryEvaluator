@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,22 +88,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_union.html">Union</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>accept</b>(AlgebraVisitor &amp;v) (defined in <a class="el" href="class_union.html">Union</a>)</td><td class="entry"><a class="el" href="class_union.html">Union</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>AlgebraNodeBase</b>() (defined in <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>BinaryAlgebraNodeBase</b>(DOMElement *element) (defined in <a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>BinaryAlgebraNodeBase</b>() (defined in <a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>constructChildren</b>(DOMElement *node) (defined in <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>constructJoinParameters</b>(DOMElement *node, std::shared_ptr&lt; Expression &gt; &amp;condition, std::vector&lt; JoinColumnInfo &gt; &amp;outputColumns) (defined in <a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>leftChild</b> (defined in <a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>outputColumns</b> (defined in <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>parent</b> (defined in <a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>replaceChild</b>(AlgebraNodeBase *oldChild, std::shared_ptr&lt; AlgebraNodeBase &gt; &amp;newChild) (defined in <a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>rightChild</b> (defined in <a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a>)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_union.html#a3a6b25cdee04be26d42e6f531e358e34">accept</a>(AlgebraVisitor &amp;v)</td><td class="entry"><a class="el" href="class_union.html">Union</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_algebra_node_base.html#a8905b9abbf0ef7c0f84b79c8d0c100d8">AlgebraNodeBase</a>()</td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_algebra_node_base.html#af86499c41554b02be3fb17da057b60ad">AlgebraNodeBase</a>(DOMElement *element)</td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_binary_algebra_node_base.html#a86e98adfda4ff8d492a9600de4f37100">BinaryAlgebraNodeBase</a>()</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_binary_algebra_node_base.html#a0a44a290bb4c433b83f58d948240a0d0">BinaryAlgebraNodeBase</a>(DOMElement *element)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_algebra_node_base.html#a19f93dd9f8b3da0a216a37f2ceb61ebe">constructChildren</a>(DOMElement *node)</td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_binary_algebra_node_base.html#a266f8e4526337e86f97ebeabb326be22">constructJoinParameters</a>(DOMElement *node, std::shared_ptr&lt; Expression &gt; &amp;condition, std::vector&lt; JoinColumnInfo &gt; &amp;outputColumns)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_binary_algebra_node_base.html#ab62ff77c5d90bd941b07a6f34e39f14b">leftChild</a></td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_algebra_node_base.html#ac98b5887b911ee27411307c94db7fc94">lineNumber</a></td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_algebra_node_base.html#ac59c590aea4f109c7fab18f714c588c1">outputColumns</a></td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66">parent</a></td><td class="entry"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_binary_algebra_node_base.html#a6e466b62966a9851c3c34e1fb588a496">replaceChild</a>(AlgebraNodeBase *oldChild, std::shared_ptr&lt; AlgebraNodeBase &gt; &amp;newChild)</td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_binary_algebra_node_base.html#ac97784ae724c411daca8b17664ce1122">rightChild</a></td><td class="entry"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>Union</b>(DOMElement *element) (defined in <a class="el" href="class_union.html">Union</a>)</td><td class="entry"><a class="el" href="class_union.html">Union</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 4 2014 23:45:00 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 8 2014 23:43:22 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

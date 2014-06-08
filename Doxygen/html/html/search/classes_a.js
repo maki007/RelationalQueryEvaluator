@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['nnaryexpression',['NnaryExpression',['../class_nnary_expression.html',1,'']]],
-  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../class_nullary_algebra_node_base.html',1,'']]],
-  ['nullaryphysicaloperator',['NullaryPhysicalOperator',['../class_nullary_physical_operator.html',1,'']]],
-  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../class_number_columns_in_join_visitor.html',1,'']]]
+  ['maxofuniquevaluesexpressionvisitor',['MaxOfUniqueValuesExpressionVisitor',['../class_max_of_unique_values_expression_visitor.html',1,'']]],
+  ['mergeantijoin',['MergeAntiJoin',['../class_merge_anti_join.html',1,'']]],
+  ['mergeequijoin',['MergeEquiJoin',['../class_merge_equi_join.html',1,'']]],
+  ['mergenonequijoin',['MergeNonEquiJoin',['../class_merge_non_equi_join.html',1,'']]]
 ];

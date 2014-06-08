@@ -1,6 +1,10 @@
 \hypertarget{class_column_operations}{\section{Column\+Operations Class Reference}
 \label{class_column_operations}\index{Column\+Operations@{Column\+Operations}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Column\+Operations\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,19 +14,59 @@ Inheritance diagram for Column\+Operations\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_column_operations_a3d2c43e31201238da369906ef863c959}{{\bfseries Column\+Operations} (D\+O\+M\+Element $\ast$element)}\label{class_column_operations_a3d2c43e31201238da369906ef863c959}
-
+\hyperlink{class_column_operations_a3d2c43e31201238da369906ef863c959}{Column\+Operations} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_column_operations_aa33d719aa0407f588cd4ddc2d54368a6}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_column_operations_aa33d719aa0407f588cd4ddc2d54368a6}
-
+void \hyperlink{class_column_operations_aa33d719aa0407f588cd4ddc2d54368a6}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_column_operations_a31aab19a9f8b104f772c111e920dd682}{std\+::vector$<$ \hyperlink{class_column_operation}{Column\+Operation} $>$ {\bfseries operations}}\label{class_column_operations_a31aab19a9f8b104f772c111e920dd682}
-
+std\+::vector$<$ \hyperlink{class_column_operation}{Column\+Operation} $>$ \hyperlink{class_column_operations_a31aab19a9f8b104f772c111e920dd682}{operations}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents algebraic operation extended projection. It eliminates some columns and computes new ones using simple operation like +,-\/,$\ast$,/ or other functions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_column_operations_a3d2c43e31201238da369906ef863c959}{\index{Column\+Operations@{Column\+Operations}!Column\+Operations@{Column\+Operations}}
+\index{Column\+Operations@{Column\+Operations}!Column\+Operations@{Column\+Operations}}
+\subsubsection[{Column\+Operations}]{\setlength{\rightskip}{0pt plus 5cm}Column\+Operations\+::\+Column\+Operations (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_column_operations_a3d2c43e31201238da369906ef863c959}
+Create the instance of \hyperlink{class_column_operations}{Column\+Operations}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_column_operations_aa33d719aa0407f588cd4ddc2d54368a6}{\index{Column\+Operations@{Column\+Operations}!accept@{accept}}
+\index{accept@{accept}!Column\+Operations@{Column\+Operations}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Column\+Operations\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_column_operations_aa33d719aa0407f588cd4ddc2d54368a6}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_algebra_node_base_a33355111a226cb460c9a13efaf922e32}{Unary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_column_operations_a31aab19a9f8b104f772c111e920dd682}{\index{Column\+Operations@{Column\+Operations}!operations@{operations}}
+\index{operations@{operations}!Column\+Operations@{Column\+Operations}}
+\subsubsection[{operations}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Operation}$>$ Column\+Operations\+::operations}}\label{class_column_operations_a31aab19a9f8b104f772c111e920dd682}
+Stores list of to be performed operations on columns. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

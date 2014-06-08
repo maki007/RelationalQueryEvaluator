@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
       <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,12 +102,12 @@ Inheritance diagram for SortOperator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aff5d834234616ce2d36efda9639b734b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff5d834234616ce2d36efda9639b734b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)</td></tr>
-<tr class="separator:aff5d834234616ce2d36efda9639b734b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae40824efc238dfbf2bbde0badb66138"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae40824efc238dfbf2bbde0badb66138"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SortOperator</b> (const <a class="el" href="class_possible_sort_parameters.html">PossibleSortParameters</a> &amp;sortedBy, const <a class="el" href="class_possible_sort_parameters.html">PossibleSortParameters</a> &amp;sortBy)</td></tr>
 <tr class="separator:aae40824efc238dfbf2bbde0badb66138"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff5d834234616ce2d36efda9639b734b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff5d834234616ce2d36efda9639b734b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)</td></tr>
+<tr class="separator:aff5d834234616ce2d36efda9639b734b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -138,7 +139,7 @@ std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 4 2014 23:44:58 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jun 8 2014 23:43:20 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

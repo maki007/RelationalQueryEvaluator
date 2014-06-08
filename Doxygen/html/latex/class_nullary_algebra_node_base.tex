@@ -1,6 +1,10 @@
 \hypertarget{class_nullary_algebra_node_base}{\section{Nullary\+Algebra\+Node\+Base Class Reference}
 \label{class_nullary_algebra_node_base}\index{Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Nullary\+Algebra\+Node\+Base\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,13 +14,76 @@ Inheritance diagram for Nullary\+Algebra\+Node\+Base\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_nullary_algebra_node_base_a48446f68e1ddfc2357dcd048fd82ba80}{virtual void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)=0}\label{class_nullary_algebra_node_base_a48446f68e1ddfc2357dcd048fd82ba80}
-
+\hyperlink{class_nullary_algebra_node_base_a73108e19c00005dcda32af0b05060ea0}{Nullary\+Algebra\+Node\+Base} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_nullary_algebra_node_base_af5a5e7f02db8509605ab852ef65b201b}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ {\bfseries replace\+Child} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)}\label{class_nullary_algebra_node_base_af5a5e7f02db8509605ab852ef65b201b}
-
+virtual void \hyperlink{class_nullary_algebra_node_base_a48446f68e1ddfc2357dcd048fd82ba80}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)=0
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{class_nullary_algebra_node_base_af5a5e7f02db8509605ab852ef65b201b}{replace\+Child} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Abstract class for nullary algebraic operation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_nullary_algebra_node_base_a73108e19c00005dcda32af0b05060ea0}{\index{Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}!Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}}
+\index{Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}!Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}}
+\subsubsection[{Nullary\+Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}Nullary\+Algebra\+Node\+Base\+::\+Nullary\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_nullary_algebra_node_base_a73108e19c00005dcda32af0b05060ea0}
+Create the instance of \hyperlink{class_nullary_algebra_node_base}{Nullary\+Algebra\+Node\+Base}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_nullary_algebra_node_base_a48446f68e1ddfc2357dcd048fd82ba80}{\index{Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}!accept@{accept}}
+\index{accept@{accept}!Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Nullary\+Algebra\+Node\+Base\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_nullary_algebra_node_base_a48446f68e1ddfc2357dcd048fd82ba80}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_algebra_node_base_a33bee3ec6fe1eb4228c0471c95c90d66}{Algebra\+Node\+Base}.
+
+
+
+Implemented in \hyperlink{class_table_a4496e1f66e8faa9b4fcf5c115a9b16f3}{Table}.
+
+\hypertarget{class_nullary_algebra_node_base_af5a5e7f02db8509605ab852ef65b201b}{\index{Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ Nullary\+Algebra\+Node\+Base\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Node\+Base} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ \&}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_nullary_algebra_node_base_af5a5e7f02db8509605ab852ef65b201b}
+Replaces one child of this node with other one 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & node to be replaced \\
+\hline
+{\em new\+Child} & new node to replace old one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+replaced child 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_algebra_node_base_aa9bdd02b0ddf793bda18bd146ccacb0d}{Algebra\+Node\+Base}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

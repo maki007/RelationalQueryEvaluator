@@ -1,6 +1,10 @@
 \hypertarget{class_table}{\section{Table Class Reference}
 \label{class_table}\index{Table@{Table}}
 }
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
 Inheritance diagram for Table\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,28 +14,74 @@ Inheritance diagram for Table\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_table_ab2c4d8adebfd7136e19d843c8bcf44c3}{{\bfseries Table} (D\+O\+M\+Element $\ast$element)}\label{class_table_ab2c4d8adebfd7136e19d843c8bcf44c3}
-
+\hyperlink{class_table_ab2c4d8adebfd7136e19d843c8bcf44c3}{Table} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_table_a4496e1f66e8faa9b4fcf5c115a9b16f3}{void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)}\label{class_table_a4496e1f66e8faa9b4fcf5c115a9b16f3}
-
+void \hyperlink{class_table_a4496e1f66e8faa9b4fcf5c115a9b16f3}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_table_a776e2cab59507b3b59d475a964e347b8}{std\+::string {\bfseries name}}\label{class_table_a776e2cab59507b3b59d475a964e347b8}
-
+std\+::string \hyperlink{class_table_a776e2cab59507b3b59d475a964e347b8}{name}
 \item 
-\hypertarget{class_table_ad6e2d1b269aa5c182e0357b75f46eee0}{std\+::vector$<$ \hyperlink{class_column_info}{Column\+Info} $>$ {\bfseries columns}}\label{class_table_ad6e2d1b269aa5c182e0357b75f46eee0}
-
+std\+::vector$<$ \hyperlink{class_column_info}{Column\+Info} $>$ \hyperlink{class_table_ad6e2d1b269aa5c182e0357b75f46eee0}{columns}
 \item 
-\hypertarget{class_table_ae85736953b357d0d44a50fd4a47de796}{double {\bfseries number\+Of\+Rows}}\label{class_table_ae85736953b357d0d44a50fd4a47de796}
-
+double \hyperlink{class_table_ae85736953b357d0d44a50fd4a47de796}{number\+Of\+Rows}
 \item 
-\hypertarget{class_table_a985077d6ec6eacb7828b78b9b9bc6157}{std\+::vector$<$ \hyperlink{class_index}{Index} $>$ {\bfseries indices}}\label{class_table_a985077d6ec6eacb7828b78b9b9bc6157}
-
+std\+::vector$<$ \hyperlink{class_index}{Index} $>$ \hyperlink{class_table_a985077d6ec6eacb7828b78b9b9bc6157}{indices}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents algebraic operation reading table. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_table_ab2c4d8adebfd7136e19d843c8bcf44c3}{\index{Table@{Table}!Table@{Table}}
+\index{Table@{Table}!Table@{Table}}
+\subsubsection[{Table}]{\setlength{\rightskip}{0pt plus 5cm}Table\+::\+Table (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_table_ab2c4d8adebfd7136e19d843c8bcf44c3}
+Create the instance of \hyperlink{class_table}{Table}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_table_a4496e1f66e8faa9b4fcf5c115a9b16f3}{\index{Table@{Table}!accept@{accept}}
+\index{accept@{accept}!Table@{Table}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Table\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_table_a4496e1f66e8faa9b4fcf5c115a9b16f3}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_nullary_algebra_node_base_a48446f68e1ddfc2357dcd048fd82ba80}{Nullary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_table_ad6e2d1b269aa5c182e0357b75f46eee0}{\index{Table@{Table}!columns@{columns}}
+\index{columns@{columns}!Table@{Table}}
+\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Info}$>$ Table\+::columns}}\label{class_table_ad6e2d1b269aa5c182e0357b75f46eee0}
+List holding column information. \hypertarget{class_table_a985077d6ec6eacb7828b78b9b9bc6157}{\index{Table@{Table}!indices@{indices}}
+\index{indices@{indices}!Table@{Table}}
+\subsubsection[{indices}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Index}$>$ Table\+::indices}}\label{class_table_a985077d6ec6eacb7828b78b9b9bc6157}
+Stores list of indices on this table. \hypertarget{class_table_a776e2cab59507b3b59d475a964e347b8}{\index{Table@{Table}!name@{name}}
+\index{name@{name}!Table@{Table}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Table\+::name}}\label{class_table_a776e2cab59507b3b59d475a964e347b8}
+Name of the table. \hypertarget{class_table_ae85736953b357d0d44a50fd4a47de796}{\index{Table@{Table}!number\+Of\+Rows@{number\+Of\+Rows}}
+\index{number\+Of\+Rows@{number\+Of\+Rows}!Table@{Table}}
+\subsubsection[{number\+Of\+Rows}]{\setlength{\rightskip}{0pt plus 5cm}double Table\+::number\+Of\+Rows}}\label{class_table_ae85736953b357d0d44a50fd4a47de796}
+Stores number of rows in current table. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

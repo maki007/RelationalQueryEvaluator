@@ -128,7 +128,6 @@ int main(int argc, const char *argv[])
 			SelectionColectingVisitor selectionColecter;
 			algebraRoot->accept(selectionColecter);
 
-			//move selection up
 
 			for (auto it = selectionColecter.selections.begin(); it != selectionColecter.selections.end(); ++it)
 			{
@@ -139,8 +138,6 @@ int main(int argc, const char *argv[])
 			SelectionFusingVisitor selectionFuser;
 			algebraRoot->accept(selectionFuser);
 			
-
-
 			drawAlgebra(algebraRoot, line + string("._3.txt"));
 
 			AlgebraCompiler algebraCompiler;

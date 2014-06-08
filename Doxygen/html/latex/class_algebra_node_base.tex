@@ -14,29 +14,120 @@ Inheritance diagram for Algebra\+Node\+Base\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_algebra_node_base_a19f93dd9f8b3da0a216a37f2ceb61ebe}{\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$ {\bfseries construct\+Children} (D\+O\+M\+Element $\ast$node)}\label{class_algebra_node_base_a19f93dd9f8b3da0a216a37f2ceb61ebe}
-
+\hyperlink{class_algebra_node_base_a8905b9abbf0ef7c0f84b79c8d0c100d8}{Algebra\+Node\+Base} ()
 \item 
-\hypertarget{class_algebra_node_base_a33bee3ec6fe1eb4228c0471c95c90d66}{virtual void {\bfseries accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)=0}\label{class_algebra_node_base_a33bee3ec6fe1eb4228c0471c95c90d66}
-
+\hyperlink{class_algebra_node_base_af86499c41554b02be3fb17da057b60ad}{Algebra\+Node\+Base} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_algebra_node_base_aa9bdd02b0ddf793bda18bd146ccacb0d}{virtual std\+::shared\+\_\+ptr\\*
-$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ {\bfseries replace\+Child} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)=0}\label{class_algebra_node_base_aa9bdd02b0ddf793bda18bd146ccacb0d}
-
+\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$ \hyperlink{class_algebra_node_base_a19f93dd9f8b3da0a216a37f2ceb61ebe}{construct\+Children} (D\+O\+M\+Element $\ast$node)
+\item 
+virtual void \hyperlink{class_algebra_node_base_a33bee3ec6fe1eb4228c0471c95c90d66}{accept} (\hyperlink{class_algebra_visitor}{Algebra\+Visitor} \&v)=0
+\item 
+virtual std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{class_algebra_node_base_aa9bdd02b0ddf793bda18bd146ccacb0d}{replace\+Child} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)=0
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_algebra_node_base_ac59c590aea4f109c7fab18f714c588c1}{std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ {\bfseries output\+Columns}}\label{class_algebra_node_base_ac59c590aea4f109c7fab18f714c588c1}
-
+std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \hyperlink{class_algebra_node_base_ac59c590aea4f109c7fab18f714c588c1}{output\+Columns}
 \item 
-\hypertarget{class_algebra_node_base_a5b2834cce900dec172763d4ef4b38f66}{\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$ {\bfseries parent}}\label{class_algebra_node_base_a5b2834cce900dec172763d4ef4b38f66}
-
+int \hyperlink{class_algebra_node_base_ac98b5887b911ee27411307c94db7fc94}{line\+Number} = 0
+\item 
+\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$ \hyperlink{class_algebra_node_base_a5b2834cce900dec172763d4ef4b38f66}{parent}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-... Qt style comments ... 
+Abstract class for algebraic operaton. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_algebra_node_base_a8905b9abbf0ef7c0f84b79c8d0c100d8}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}Algebra\+Node\+Base\+::\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_algebra_node_base_a8905b9abbf0ef7c0f84b79c8d0c100d8}
+Create the instance of \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base}. \hypertarget{class_algebra_node_base_af86499c41554b02be3fb17da057b60ad}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}Algebra\+Node\+Base\+::\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_algebra_node_base_af86499c41554b02be3fb17da057b60ad}
+Create the instance of \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_algebra_node_base_a33bee3ec6fe1eb4228c0471c95c90d66}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!accept@{accept}}
+\index{accept@{accept}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Algebra\+Node\+Base\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_algebra_node_base_a33bee3ec6fe1eb4228c0471c95c90d66}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_algebra_visitor}{Algebra\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_algebra_visitor}{Algebra\+Visitor}, on which to call function \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_grouped_join_aa067c1a349478bfdeae77ed3a541375d}{Grouped\+Join}, \hyperlink{class_union_a3a6b25cdee04be26d42e6f531e358e34}{Union}, \hyperlink{class_anti_join_a95d753b1ed036be43a4fe00b40b775cf}{Anti\+Join}, \hyperlink{class_join_a387b23cf52fa9dc5390f003bcc051cc1}{Join}, \hyperlink{class_selection_afe7f64aed777d583797f1c9c13b378ac}{Selection}, \hyperlink{class_column_operations_aa33d719aa0407f588cd4ddc2d54368a6}{Column\+Operations}, \hyperlink{class_group_a5286b05dd9be36f3a76d075a43191184}{Group}, \hyperlink{class_sort_a488c889b0dff867a125ada831e2c46c2}{Sort}, \hyperlink{class_table_a4496e1f66e8faa9b4fcf5c115a9b16f3}{Table}, \hyperlink{class_nullary_algebra_node_base_a48446f68e1ddfc2357dcd048fd82ba80}{Nullary\+Algebra\+Node\+Base}, \hyperlink{class_grouped_algebra_node_a60aae470b5aee869eca9a504fdf79f32}{Grouped\+Algebra\+Node}, \hyperlink{class_binary_algebra_node_base_ab6521a638b418e4f0939270bab77b901}{Binary\+Algebra\+Node\+Base}, and \hyperlink{class_unary_algebra_node_base_a33355111a226cb460c9a13efaf922e32}{Unary\+Algebra\+Node\+Base}.
+
+\hypertarget{class_algebra_node_base_a19f93dd9f8b3da0a216a37f2ceb61ebe}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!construct\+Children@{construct\+Children}}
+\index{construct\+Children@{construct\+Children}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{construct\+Children}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Algebra\+Node\+Base} $\ast$ Algebra\+Node\+Base\+::construct\+Children (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_algebra_node_base_a19f93dd9f8b3da0a216a37f2ceb61ebe}
+Helper method for creating algebra tree from dom. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+newely created Algebra node 
+\end{DoxyReturn}
+\hypertarget{class_algebra_node_base_aa9bdd02b0ddf793bda18bd146ccacb0d}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::shared\+\_\+ptr$<${\bf Algebra\+Node\+Base}$>$ Algebra\+Node\+Base\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Node\+Base} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ \&}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_algebra_node_base_aa9bdd02b0ddf793bda18bd146ccacb0d}
+Replaces one child of this node with other one 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & node to be replaced \\
+\hline
+{\em new\+Child} & new node to replace old one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+replaced child 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_nullary_algebra_node_base_af5a5e7f02db8509605ab852ef65b201b}{Nullary\+Algebra\+Node\+Base}, \hyperlink{class_grouped_algebra_node_a463e6303f6332fc9ed2a885e3456b58e}{Grouped\+Algebra\+Node}, \hyperlink{class_binary_algebra_node_base_a6e466b62966a9851c3c34e1fb588a496}{Binary\+Algebra\+Node\+Base}, and \hyperlink{class_unary_algebra_node_base_a26aeeaeb45f97051d618cfcceccd5949}{Unary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_algebra_node_base_ac98b5887b911ee27411307c94db7fc94}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!line\+Number@{line\+Number}}
+\index{line\+Number@{line\+Number}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{line\+Number}]{\setlength{\rightskip}{0pt plus 5cm}int Algebra\+Node\+Base\+::line\+Number = 0}}\label{class_algebra_node_base_ac98b5887b911ee27411307c94db7fc94}
+Stores the line number of input element of this node. \hypertarget{class_algebra_node_base_ac59c590aea4f109c7fab18f714c588c1}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!output\+Columns@{output\+Columns}}
+\index{output\+Columns@{output\+Columns}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{output\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf Column\+Info}$>$ Algebra\+Node\+Base\+::output\+Columns}}\label{class_algebra_node_base_ac59c590aea4f109c7fab18f714c588c1}
+Stores ouput columns of this node. Key is unique column identifier and values stores information about column. \hypertarget{class_algebra_node_base_a5b2834cce900dec172763d4ef4b38f66}{\index{Algebra\+Node\+Base@{Algebra\+Node\+Base}!parent@{parent}}
+\index{parent@{parent}!Algebra\+Node\+Base@{Algebra\+Node\+Base}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Algebra\+Node\+Base}$\ast$ Algebra\+Node\+Base\+::parent}}\label{class_algebra_node_base_a5b2834cce900dec172763d4ef4b38f66}
+Stores the parent in algebra tree. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
