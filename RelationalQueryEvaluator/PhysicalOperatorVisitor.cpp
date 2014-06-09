@@ -3,24 +3,6 @@
 
 using namespace std;
 
-void PhysicalOperatorVisitor::visitPhysicalOperator(PhysicalOperator * node)
-{
-	node->accept(*this);
-}
-void PhysicalOperatorVisitor::visitNullaryPhysicalOperator(NullaryPhysicalOperator * node)
-{
-	node->accept(*this);
-}
-
-void PhysicalOperatorVisitor::visitUnaryPhysicalOperator(UnaryPhysicalOperator * node)
-{
-	node->accept(*this);
-}
-
-void PhysicalOperatorVisitor::visitBinaryPhysicalOperator(BinaryPhysicalOperator * node)
-{
-	node->accept(*this);
-}
 
 void PhysicalOperatorVisitor::visitFilter(Filter * node)
 {

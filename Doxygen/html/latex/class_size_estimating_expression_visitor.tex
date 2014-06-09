@@ -13,17 +13,13 @@ Inheritance diagram for Size\+Estimating\+Expression\+Visitor\+:\begin{figure}[H
 \hypertarget{class_size_estimating_expression_visitor_a161843e94155226df99a16ab2227a024}{{\bfseries Size\+Estimating\+Expression\+Visitor} (const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$columns)}\label{class_size_estimating_expression_visitor_a161843e94155226df99a16ab2227a024}
 
 \item 
-\hypertarget{class_size_estimating_expression_visitor_a6cbd26f2d5997577bd7f18d68f1cf866}{void {\bfseries visit\+Unary\+Expression} (\hyperlink{class_unary_expression}{Unary\+Expression} $\ast$expression)}\label{class_size_estimating_expression_visitor_a6cbd26f2d5997577bd7f18d68f1cf866}
-
+void \hyperlink{class_size_estimating_expression_visitor_a6cbd26f2d5997577bd7f18d68f1cf866}{visit\+Unary\+Expression} (\hyperlink{class_unary_expression}{Unary\+Expression} $\ast$expression)
 \item 
-\hypertarget{class_size_estimating_expression_visitor_a40a902ac926af0d18d976769abda5af3}{void {\bfseries visit\+Binary\+Expression} (\hyperlink{class_binary_expression}{Binary\+Expression} $\ast$expression)}\label{class_size_estimating_expression_visitor_a40a902ac926af0d18d976769abda5af3}
-
+void \hyperlink{class_size_estimating_expression_visitor_a40a902ac926af0d18d976769abda5af3}{visit\+Binary\+Expression} (\hyperlink{class_binary_expression}{Binary\+Expression} $\ast$expression)
 \item 
-\hypertarget{class_size_estimating_expression_visitor_a1eeaaf34393c7c79fd4079bf8ea97bc9}{void {\bfseries visit\+Nnary\+Expression} (\hyperlink{class_nnary_expression}{Nnary\+Expression} $\ast$expression)}\label{class_size_estimating_expression_visitor_a1eeaaf34393c7c79fd4079bf8ea97bc9}
-
+void \hyperlink{class_size_estimating_expression_visitor_a1eeaaf34393c7c79fd4079bf8ea97bc9}{visit\+Nnary\+Expression} (\hyperlink{class_nnary_expression}{Nnary\+Expression} $\ast$expression)
 \item 
-\hypertarget{class_size_estimating_expression_visitor_a8015f22031b44cbe54579f92b7e9cc00}{void {\bfseries visit\+Grouped\+Expression} (\hyperlink{class_grouped_expression}{Grouped\+Expression} $\ast$expression)}\label{class_size_estimating_expression_visitor_a8015f22031b44cbe54579f92b7e9cc00}
-
+void \hyperlink{class_size_estimating_expression_visitor_a8015f22031b44cbe54579f92b7e9cc00}{visit\+Grouped\+Expression} (\hyperlink{class_grouped_expression}{Grouped\+Expression} $\ast$expression)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -34,6 +30,73 @@ Inheritance diagram for Size\+Estimating\+Expression\+Visitor\+:\begin{figure}[H
 \hypertarget{class_size_estimating_expression_visitor_a882681f529d9c9cb182ad76a1734921e}{double {\bfseries size}}\label{class_size_estimating_expression_visitor_a882681f529d9c9cb182ad76a1734921e}
 
 \end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_size_estimating_expression_visitor_a40a902ac926af0d18d976769abda5af3}{\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
+\index{visit\+Binary\+Expression@{visit\+Binary\+Expression}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\subsubsection[{visit\+Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void Size\+Estimating\+Expression\+Visitor\+::visit\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_size_estimating_expression_visitor_a40a902ac926af0d18d976769abda5af3}
+Visits \hyperlink{class_binary_expression}{Binary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{class_binary_expression}{Binary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_expression_visitor_base_aebbbbe9a1cecabe4c4804bf1ef82a9f9}{Expression\+Visitor\+Base}.
+
+\hypertarget{class_size_estimating_expression_visitor_a8015f22031b44cbe54579f92b7e9cc00}{\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!visit\+Grouped\+Expression@{visit\+Grouped\+Expression}}
+\index{visit\+Grouped\+Expression@{visit\+Grouped\+Expression}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\subsubsection[{visit\+Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void Size\+Estimating\+Expression\+Visitor\+::visit\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Grouped\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_size_estimating_expression_visitor_a8015f22031b44cbe54579f92b7e9cc00}
+Visits \hyperlink{class_grouped_expression}{Grouped\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{class_grouped_expression}{Grouped\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_expression_visitor_base_aec22a7bb476fc79e7997d188423514c0}{Expression\+Visitor\+Base}.
+
+\hypertarget{class_size_estimating_expression_visitor_a1eeaaf34393c7c79fd4079bf8ea97bc9}{\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!visit\+Nnary\+Expression@{visit\+Nnary\+Expression}}
+\index{visit\+Nnary\+Expression@{visit\+Nnary\+Expression}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\subsubsection[{visit\+Nnary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void Size\+Estimating\+Expression\+Visitor\+::visit\+Nnary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Nnary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_size_estimating_expression_visitor_a1eeaaf34393c7c79fd4079bf8ea97bc9}
+Visits \hyperlink{class_nnary_expression}{Nnary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{class_nnary_expression}{Nnary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_expression_visitor_base_a010c5ba36b255c8576a2b36aaf9692d8}{Expression\+Visitor\+Base}.
+
+\hypertarget{class_size_estimating_expression_visitor_a6cbd26f2d5997577bd7f18d68f1cf866}{\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!visit\+Unary\+Expression@{visit\+Unary\+Expression}}
+\index{visit\+Unary\+Expression@{visit\+Unary\+Expression}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\subsubsection[{visit\+Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void Size\+Estimating\+Expression\+Visitor\+::visit\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_size_estimating_expression_visitor_a6cbd26f2d5997577bd7f18d68f1cf866}
+Visits \hyperlink{class_unary_expression}{Unary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{class_unary_expression}{Unary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_expression_visitor_base_a9750397f5588263509a28ca9f17e8bc4}{Expression\+Visitor\+Base}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

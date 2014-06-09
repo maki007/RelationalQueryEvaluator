@@ -1,6 +1,10 @@
 \hypertarget{class_grouping_visitor}{\section{Grouping\+Visitor Class Reference}
 \label{class_grouping_visitor}\index{Grouping\+Visitor@{Grouping\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
 Inheritance diagram for Grouping\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,114 @@ Inheritance diagram for Grouping\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_grouping_visitor_a2c1557a18e53aaa43665318001df3726}{void {\bfseries visit\+Column\+Operations} (\hyperlink{class_column_operations}{Column\+Operations} $\ast$node)}\label{class_grouping_visitor_a2c1557a18e53aaa43665318001df3726}
-
+\hyperlink{class_grouping_visitor_adc7a72ec400998ac4dcaacf5c85fb86c}{Grouping\+Visitor} ()
 \item 
-\hypertarget{class_grouping_visitor_a4e3563b131b9d26942a6d4693f5c194a}{void {\bfseries visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_grouping_visitor_a4e3563b131b9d26942a6d4693f5c194a}
-
+void \hyperlink{class_grouping_visitor_a2c1557a18e53aaa43665318001df3726}{visit\+Column\+Operations} (\hyperlink{class_column_operations}{Column\+Operations} $\ast$node)
 \item 
-\hypertarget{class_grouping_visitor_aaa2345624497de18ab3a608e909573aa}{void {\bfseries visit\+Join} (\hyperlink{class_join}{Join} $\ast$node)}\label{class_grouping_visitor_aaa2345624497de18ab3a608e909573aa}
-
+void \hyperlink{class_grouping_visitor_a4e3563b131b9d26942a6d4693f5c194a}{visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)
 \item 
-\hypertarget{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}{void {\bfseries visit\+Anti\+Join} (\hyperlink{class_anti_join}{Anti\+Join} $\ast$node)}\label{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}
-
+void \hyperlink{class_grouping_visitor_aaa2345624497de18ab3a608e909573aa}{visit\+Join} (\hyperlink{class_join}{Join} $\ast$node)
 \item 
-\hypertarget{class_grouping_visitor_aa36813aa195f82b46a29f079b4ef56df}{void {\bfseries resolve\+Joins} (\hyperlink{class_binary_algebra_node_base}{Binary\+Algebra\+Node\+Base} $\ast$node, \hyperlink{class_grouped_join}{Grouped\+Join} $\ast$grouped\+Operator, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ $>$ \&old\+Children)}\label{class_grouping_visitor_aa36813aa195f82b46a29f079b4ef56df}
-
+void \hyperlink{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}{visit\+Anti\+Join} (\hyperlink{class_anti_join}{Anti\+Join} $\ast$node)
+\item 
+void \hyperlink{class_grouping_visitor_a7c6760e32033d79e45159d7907aa8886}{resolve\+Joins} (\hyperlink{class_join}{Join} $\ast$node, \hyperlink{class_grouped_join}{Grouped\+Join} $\ast$grouped\+Operator)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This algebra visitor groupes neighbour join into one groupped join. It also calls \hyperlink{class_grouping_expression_visitor}{Grouping\+Expression\+Visitor} on every condition. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_grouping_visitor_adc7a72ec400998ac4dcaacf5c85fb86c}{\index{Grouping\+Visitor@{Grouping\+Visitor}!Grouping\+Visitor@{Grouping\+Visitor}}
+\index{Grouping\+Visitor@{Grouping\+Visitor}!Grouping\+Visitor@{Grouping\+Visitor}}
+\subsubsection[{Grouping\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Grouping\+Visitor\+::\+Grouping\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_grouping_visitor_adc7a72ec400998ac4dcaacf5c85fb86c}
+Creates new instance of \hyperlink{class_grouping_visitor}{Grouping\+Visitor}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_grouping_visitor_a7c6760e32033d79e45159d7907aa8886}{\index{Grouping\+Visitor@{Grouping\+Visitor}!resolve\+Joins@{resolve\+Joins}}
+\index{resolve\+Joins@{resolve\+Joins}!Grouping\+Visitor@{Grouping\+Visitor}}
+\subsubsection[{resolve\+Joins}]{\setlength{\rightskip}{0pt plus 5cm}void Grouping\+Visitor\+::resolve\+Joins (
+\begin{DoxyParamCaption}
+\item[{{\bf Join} $\ast$}]{node, }
+\item[{{\bf Grouped\+Join} $\ast$}]{grouped\+Operator}
+\end{DoxyParamCaption}
+)}}\label{class_grouping_visitor_a7c6760e32033d79e45159d7907aa8886}
+Hepler method, which merges join node to \hyperlink{class_grouped_join}{Grouped\+Join} and update all nedded parameters like condition and outputcolumns. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ node to merge \\
+\hline
+{\em grouped\+Operator} & -\/ node to be merge to \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}{\index{Grouping\+Visitor@{Grouping\+Visitor}!visit\+Anti\+Join@{visit\+Anti\+Join}}
+\index{visit\+Anti\+Join@{visit\+Anti\+Join}!Grouping\+Visitor@{Grouping\+Visitor}}
+\subsubsection[{visit\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void Grouping\+Visitor\+::visit\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}
+Visits \hyperlink{class_anti_join}{Anti\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_anti_join}{Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}{Algebra\+Visitor}.
+
+\hypertarget{class_grouping_visitor_a2c1557a18e53aaa43665318001df3726}{\index{Grouping\+Visitor@{Grouping\+Visitor}!visit\+Column\+Operations@{visit\+Column\+Operations}}
+\index{visit\+Column\+Operations@{visit\+Column\+Operations}!Grouping\+Visitor@{Grouping\+Visitor}}
+\subsubsection[{visit\+Column\+Operations}]{\setlength{\rightskip}{0pt plus 5cm}void Grouping\+Visitor\+::visit\+Column\+Operations (
+\begin{DoxyParamCaption}
+\item[{{\bf Column\+Operations} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_grouping_visitor_a2c1557a18e53aaa43665318001df3726}
+Visits \hyperlink{class_column_operations}{Column\+Operations} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_column_operations}{Column\+Operations}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}{Algebra\+Visitor}.
+
+\hypertarget{class_grouping_visitor_aaa2345624497de18ab3a608e909573aa}{\index{Grouping\+Visitor@{Grouping\+Visitor}!visit\+Join@{visit\+Join}}
+\index{visit\+Join@{visit\+Join}!Grouping\+Visitor@{Grouping\+Visitor}}
+\subsubsection[{visit\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void Grouping\+Visitor\+::visit\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_grouping_visitor_aaa2345624497de18ab3a608e909573aa}
+Visits \hyperlink{class_join}{Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_join}{Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_algebra_visitor_a841875539a07c979b912ef44455b873c}{Algebra\+Visitor}.
+
+\hypertarget{class_grouping_visitor_a4e3563b131b9d26942a6d4693f5c194a}{\index{Grouping\+Visitor@{Grouping\+Visitor}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!Grouping\+Visitor@{Grouping\+Visitor}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void Grouping\+Visitor\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_grouping_visitor_a4e3563b131b9d26942a6d4693f5c194a}
+Visits \hyperlink{class_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{Algebra\+Visitor}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,6 +1,10 @@
 \hypertarget{class_selection_fusing_visitor}{\section{Selection\+Fusing\+Visitor Class Reference}
 \label{class_selection_fusing_visitor}\index{Selection\+Fusing\+Visitor@{Selection\+Fusing\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
 Inheritance diagram for Selection\+Fusing\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,10 +14,31 @@ Inheritance diagram for Selection\+Fusing\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_selection_fusing_visitor_af7999d106685c9938c907c6984ba4f2d}{void {\bfseries visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_selection_fusing_visitor_af7999d106685c9938c907c6984ba4f2d}
-
+void \hyperlink{class_selection_fusing_visitor_af7999d106685c9938c907c6984ba4f2d}{visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Merges neighbouring selections into one selection and insert it into tree instred of original chain of selections. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_selection_fusing_visitor_af7999d106685c9938c907c6984ba4f2d}{\index{Selection\+Fusing\+Visitor@{Selection\+Fusing\+Visitor}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!Selection\+Fusing\+Visitor@{Selection\+Fusing\+Visitor}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void Selection\+Fusing\+Visitor\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_selection_fusing_visitor_af7999d106685c9938c907c6984ba4f2d}
+Visits \hyperlink{class_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{Algebra\+Visitor}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

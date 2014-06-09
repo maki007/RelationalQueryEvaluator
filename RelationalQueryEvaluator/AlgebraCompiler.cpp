@@ -939,10 +939,10 @@ void AlgebraCompiler::greedyJoin(GroupedJoin * node, JoinInfo & it, set<ulong>::
 			insertedPlan->size = newPlans.size;
 			insertedPlan->plans.push_back(*it3);
 			heap.push_back(shared_ptr<JoinInfo>(insertedPlan));
-			push_heap(heap.begin(), heap.end(), JoinInfo::PointerComparator);
+			push_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
 			while (heap.size() > MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM)
 			{
-				pop_heap(heap.begin(), heap.end(), JoinInfo::PointerComparator);
+				pop_heap(heap.begin(), heap.end(), JoinInfo::Comparator);
 				heap.pop_back();
 			}
 		}
@@ -1650,11 +1650,7 @@ void JoinInfo::RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColu
 
 }
 
-bool JoinInfo::Comparator(const JoinInfo& lhs, const JoinInfo&rhs)
-{
-	return (lhs.plans[0]->timeComplexity < rhs.plans[0]->timeComplexity);
-}
-bool JoinInfo::PointerComparator(const std::shared_ptr<JoinInfo> & lhs, const std::shared_ptr<JoinInfo> &rhs)
+bool JoinInfo::Comparator(const std::shared_ptr<JoinInfo> & lhs, const std::shared_ptr<JoinInfo> &rhs)
 {
 	return (lhs->plans[0]->timeComplexity < rhs->plans[0]->timeComplexity);
 }

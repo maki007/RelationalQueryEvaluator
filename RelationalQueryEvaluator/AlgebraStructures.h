@@ -16,7 +16,7 @@ typedef unsigned long long int ulong;
 */
 enum class UnaryOperator
 {
-	NOT /**< Represents boolean negation.*/
+	NOT
 };
 
 /**
@@ -24,16 +24,7 @@ enum class UnaryOperator
 */
 enum class BinaryOperator
 {
-	AND, /**< Represents boolean operation and. */
-	OR, /**< Represents boolean operation or. */
-	PLUS, /**< Represents additions on numbers. */ 
-	MINUS, /**< Represents substraction on numbers. */ 
-	TIMES, /**< Represents multiplication on numbers. */ 
-	DIVIDE, /**< Represents division on numbers. */ 
-	EQUALS, /**< Represents equals comparision */ 
-	NOT_EQUALS, /**< Represents not equals comparision. */ 
-	LOWER, /**< Represents condition lower. */ 
-	LOWER_OR_EQUAL/**< Represents condition lower or equals. */ 
+	AND, OR, PLUS, MINUS, TIMES, DIVIDE, EQUALS, NOT_EQUALS, LOWER, LOWER_OR_EQUAL
 };
 
 /**
@@ -103,6 +94,7 @@ enum SortOrder
 
 /**
 * Represents how the relation is sorted.
+* Stores one columns and sort order.
 */
 class SortParameter
 {
@@ -173,6 +165,7 @@ public:
 * Represents all possibilities how relation can be sorted.
 * It contains vector of list of SortParameter. 
 * The list inside of vector means that the order of columns is not determined.
+* The vector order is set and will not change.
 */
 class PossibleSortParameters
 {

@@ -356,7 +356,7 @@ Selection::Selection(DOMElement * element) :UnaryAlgebraNodeBase(element)
 
 }
 
-Selection::Selection(shared_ptr<Expression> & cond)
+Selection::Selection(std::shared_ptr<Expression> & cond)
 {
 	condition = cond;
 

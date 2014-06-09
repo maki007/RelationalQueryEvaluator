@@ -1,6 +1,10 @@
 \hypertarget{class_algebra_visitor}{\section{Algebra\+Visitor Class Reference}
 \label{class_algebra_visitor}\index{Algebra\+Visitor@{Algebra\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
 Inheritance diagram for Algebra\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,64 +14,243 @@ Inheritance diagram for Algebra\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_algebra_visitor_a97257e8a65f77f30540b1223d92127fb}{virtual void {\bfseries visit\+Algebra\+Node\+Base} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a97257e8a65f77f30540b1223d92127fb}
-
+virtual void \hyperlink{class_algebra_visitor_ac14f3c3c195373e3bae5d01d04f1ea09}{visit\+Table} (\hyperlink{class_table}{Table} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_a371a822b60caab82b78c5750eff67b4b}{virtual void {\bfseries visit\+Unary\+Algebra\+Node\+Base} (\hyperlink{class_unary_algebra_node_base}{Unary\+Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a371a822b60caab82b78c5750eff67b4b}
-
+virtual void \hyperlink{class_algebra_visitor_ac350bf44664ce021c0cfec18258a14e8}{visit\+Sort} (\hyperlink{class_sort}{Sort} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_a00b2a6a2fb076160c0a8f713dd48d6d1}{virtual void {\bfseries visit\+Binary\+Algebra\+Node\+Base} (\hyperlink{class_binary_algebra_node_base}{Binary\+Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a00b2a6a2fb076160c0a8f713dd48d6d1}
-
+virtual void \hyperlink{class_algebra_visitor_af77bf2aaa949ea27cf992053c43a391b}{visit\+Group} (\hyperlink{class_group}{Group} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_a5b5642743b1985cc5fd1e12002972388}{virtual void {\bfseries visit\+Nullary\+Algebra\+Node\+Base} (\hyperlink{class_nullary_algebra_node_base}{Nullary\+Algebra\+Node\+Base} $\ast$node)}\label{class_algebra_visitor_a5b5642743b1985cc5fd1e12002972388}
-
+virtual void \hyperlink{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}{visit\+Column\+Operations} (\hyperlink{class_column_operations}{Column\+Operations} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_a21ccc9b452a5c842d91cab7ec0855cfe}{virtual void {\bfseries visit\+Grouped\+Algebra\+Node} (\hyperlink{class_grouped_algebra_node}{Grouped\+Algebra\+Node} $\ast$node)}\label{class_algebra_visitor_a21ccc9b452a5c842d91cab7ec0855cfe}
-
+virtual void \hyperlink{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_ac14f3c3c195373e3bae5d01d04f1ea09}{virtual void {\bfseries visit\+Table} (\hyperlink{class_table}{Table} $\ast$node)}\label{class_algebra_visitor_ac14f3c3c195373e3bae5d01d04f1ea09}
-
+virtual void \hyperlink{class_algebra_visitor_a841875539a07c979b912ef44455b873c}{visit\+Join} (\hyperlink{class_join}{Join} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_ac350bf44664ce021c0cfec18258a14e8}{virtual void {\bfseries visit\+Sort} (\hyperlink{class_sort}{Sort} $\ast$node)}\label{class_algebra_visitor_ac350bf44664ce021c0cfec18258a14e8}
-
+virtual void \hyperlink{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}{visit\+Anti\+Join} (\hyperlink{class_anti_join}{Anti\+Join} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_af77bf2aaa949ea27cf992053c43a391b}{virtual void {\bfseries visit\+Group} (\hyperlink{class_group}{Group} $\ast$node)}\label{class_algebra_visitor_af77bf2aaa949ea27cf992053c43a391b}
-
+virtual void \hyperlink{class_algebra_visitor_a681732083691701f0e9c10980392dd3c}{visit\+Union} (\hyperlink{class_union}{Union} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}{virtual void {\bfseries visit\+Column\+Operations} (\hyperlink{class_column_operations}{Column\+Operations} $\ast$node)}\label{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}
-
-\item 
-\hypertarget{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{virtual void {\bfseries visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}
-
-\item 
-\hypertarget{class_algebra_visitor_a841875539a07c979b912ef44455b873c}{virtual void {\bfseries visit\+Join} (\hyperlink{class_join}{Join} $\ast$node)}\label{class_algebra_visitor_a841875539a07c979b912ef44455b873c}
-
-\item 
-\hypertarget{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}{virtual void {\bfseries visit\+Anti\+Join} (\hyperlink{class_anti_join}{Anti\+Join} $\ast$node)}\label{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}
-
-\item 
-\hypertarget{class_algebra_visitor_a681732083691701f0e9c10980392dd3c}{virtual void {\bfseries visit\+Union} (\hyperlink{class_union}{Union} $\ast$node)}\label{class_algebra_visitor_a681732083691701f0e9c10980392dd3c}
-
-\item 
-\hypertarget{class_algebra_visitor_ae92c2f0a465dacc4f42a71e879346c94}{virtual void {\bfseries visit\+Grouped\+Join} (\hyperlink{class_grouped_join}{Grouped\+Join} $\ast$node)}\label{class_algebra_visitor_ae92c2f0a465dacc4f42a71e879346c94}
-
+virtual void \hyperlink{class_algebra_visitor_ae92c2f0a465dacc4f42a71e879346c94}{visit\+Grouped\+Join} (\hyperlink{class_grouped_join}{Grouped\+Join} $\ast$node)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_algebra_visitor_aa8f4149dca3babdefa323050bb6e82f9}{static void {\bfseries serialize\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \&result)}\label{class_algebra_visitor_aa8f4149dca3babdefa323050bb6e82f9}
-
+static void \hyperlink{class_algebra_visitor_aa8f4149dca3babdefa323050bb6e82f9}{serialize\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \&result)
 \item 
-\hypertarget{class_algebra_visitor_a20d1215ba30361d19d0317a939a9b860}{static std\+::shared\+\_\+ptr\\*
-$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries deserialize\+Expression} (const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \&condition)}\label{class_algebra_visitor_a20d1215ba30361d19d0317a939a9b860}
-
+static std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_algebra_visitor_a20d1215ba30361d19d0317a939a9b860}{deserialize\+Expression} (const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \&condition)
 \item 
-\hypertarget{class_algebra_visitor_a78119cf006ac64137b8c29223ab77885}{static void {\bfseries remove\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_algebra_visitor_a78119cf006ac64137b8c29223ab77885}
-
+static void \hyperlink{class_algebra_visitor_a78119cf006ac64137b8c29223ab77885}{remove\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)
 \item 
-\hypertarget{class_algebra_visitor_adbcb61f031cfc4808d150b076f6aa63d}{static void {\bfseries insert\+Selection} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$node, std\+::shared\+\_\+ptr$<$ \hyperlink{class_selection}{Selection} $>$ \&selection)}\label{class_algebra_visitor_adbcb61f031cfc4808d150b076f6aa63d}
-
+static void \hyperlink{class_algebra_visitor_adbcb61f031cfc4808d150b076f6aa63d}{insert\+Selection} (\hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $\ast$node, std\+::shared\+\_\+ptr$<$ \hyperlink{class_selection}{Selection} $>$ \&selection)
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for algebra tree visitors. Every virtual method does nothing only visits node all children. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_algebra_visitor_a20d1215ba30361d19d0317a939a9b860}{\index{Algebra\+Visitor@{Algebra\+Visitor}!deserialize\+Expression@{deserialize\+Expression}}
+\index{deserialize\+Expression@{deserialize\+Expression}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{deserialize\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<$ {\bf Expression} $>$ Algebra\+Visitor\+::deserialize\+Expression (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ $>$ \&}]{condition}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_algebra_visitor_a20d1215ba30361d19d0317a939a9b860}
+Convert expresion vector of subexpression to expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & vector of \hyperlink{class_expression}{Expression} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+tree condition 
+\end{DoxyReturn}
+\hypertarget{class_algebra_visitor_adbcb61f031cfc4808d150b076f6aa63d}{\index{Algebra\+Visitor@{Algebra\+Visitor}!insert\+Selection@{insert\+Selection}}
+\index{insert\+Selection@{insert\+Selection}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{insert\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::insert\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Node\+Base} $\ast$}]{node, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Selection} $>$ \&}]{selection}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_algebra_visitor_adbcb61f031cfc4808d150b076f6aa63d}
+Insert selection into tree. New node will be inserted as parent from first argument. 
+\begin{DoxyParams}{Parameters}
+{\em node} & \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} where new node will be inserted \\
+\hline
+{\em selection} & -\/ \hyperlink{class_selection}{Selection} to be inserted \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_algebra_visitor_a78119cf006ac64137b8c29223ab77885}{\index{Algebra\+Visitor@{Algebra\+Visitor}!remove\+Selection@{remove\+Selection}}
+\index{remove\+Selection@{remove\+Selection}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{remove\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::remove\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_algebra_visitor_a78119cf006ac64137b8c29223ab77885}
+Remove selection node from tree. 
+\begin{DoxyParams}{Parameters}
+{\em node} & \hyperlink{class_selection}{Selection} to be removed \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_algebra_visitor_aa8f4149dca3babdefa323050bb6e82f9}{\index{Algebra\+Visitor@{Algebra\+Visitor}!serialize\+Expression@{serialize\+Expression}}
+\index{serialize\+Expression@{serialize\+Expression}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{serialize\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::serialize\+Expression (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition, }
+\item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ $>$ \&}]{result}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_algebra_visitor_aa8f4149dca3babdefa323050bb6e82f9}
+Convert expresion from tree to vector of subconditions. Condition will be splited into subconditions which are connected with and. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & \hyperlink{class_expression}{Expression} to convert. \\
+\hline
+{\em result} & vector of \hyperlink{class_expression}{Expression}. Result of the function will be stored in this variable. Input needs to be empty. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Anti\+Join@{visit\+Anti\+Join}}
+\index{visit\+Anti\+Join@{visit\+Anti\+Join}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_add62415db5f188e572cef1c36faa842e}
+Visits \hyperlink{class_anti_join}{Anti\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_anti_join}{Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_a85d6088ea2c478aa85cf62603f30d83a}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_a4903d8f81d9da91037ce65b6aaeb7fa4}{Algebra\+Compiler}, \hyperlink{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}{Grouping\+Visitor}, \hyperlink{class_semantic_checker_aed141e3f22e681c74355fb3b84deb2d4}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_ae25e72a771d8ec5949caa0a92a1e61aa}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Column\+Operations@{visit\+Column\+Operations}}
+\index{visit\+Column\+Operations@{visit\+Column\+Operations}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Column\+Operations}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Column\+Operations (
+\begin{DoxyParamCaption}
+\item[{{\bf Column\+Operations} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_a1109510d982a8e5b90fc56d443109ef9}
+Visits \hyperlink{class_column_operations}{Column\+Operations} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_column_operations}{Column\+Operations}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_a09ade5d0a2d194fee1b5b555d36104a4}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_add29b612e4c40532405924b72f739092}{Algebra\+Compiler}, \hyperlink{class_grouping_visitor_a2c1557a18e53aaa43665318001df3726}{Grouping\+Visitor}, \hyperlink{class_semantic_checker_a5bd2ca32010822a95a6ef0a78190fc91}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_a8cc0865d330a29411e83261205382eeb}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_af77bf2aaa949ea27cf992053c43a391b}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Group@{visit\+Group}}
+\index{visit\+Group@{visit\+Group}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Group}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Group (
+\begin{DoxyParamCaption}
+\item[{{\bf Group} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_af77bf2aaa949ea27cf992053c43a391b}
+Visits \hyperlink{class_group}{Group} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_group}{Group}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_a551561414b97bce56c1bba3829ff9769}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_aaf1f80df836121f8f8b7abd01e7ac4dd}{Algebra\+Compiler}, \hyperlink{class_semantic_checker_a8dfc703b185f05a0f57749e1eb3c0a56}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_aabe646e1bc301a127722a54568479653}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_ae92c2f0a465dacc4f42a71e879346c94}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Grouped\+Join@{visit\+Grouped\+Join}}
+\index{visit\+Grouped\+Join@{visit\+Grouped\+Join}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Grouped\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Grouped\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Grouped\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_ae92c2f0a465dacc4f42a71e879346c94}
+Visits \hyperlink{class_grouped_join}{Grouped\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_grouped_join}{Grouped\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_aadf48938c2e165db563095720e10eca6}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_acebcb46237fd029f910ae9d06718c1b4}{Algebra\+Compiler}, \hyperlink{class_semantic_checker_a44c4c5cf8cde9785a2a11f446d8fb90a}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_a4d92f0106ac1d8035498c8b5e1490919}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_a841875539a07c979b912ef44455b873c}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Join@{visit\+Join}}
+\index{visit\+Join@{visit\+Join}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_a841875539a07c979b912ef44455b873c}
+Visits \hyperlink{class_join}{Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_join}{Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_a25ff28bccfd9c35119d06117e63465be}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_a430ba2ac25d10e94b1408e23def965e6}{Algebra\+Compiler}, \hyperlink{class_grouping_visitor_aaa2345624497de18ab3a608e909573aa}{Grouping\+Visitor}, \hyperlink{class_semantic_checker_a047de398ed6fab98a4ec6c1db533a66e}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_a77fbec744cd6a2ac39e22120114c7edd}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}
+Visits \hyperlink{class_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_a2534debe115bf3f6648281cc6d0d10ac}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_selection_colecting_visitor_a29c5a9ecf7dbfdc4b563b94385c61de3}{Selection\+Colecting\+Visitor}, \hyperlink{class_selection_fusing_visitor_af7999d106685c9938c907c6984ba4f2d}{Selection\+Fusing\+Visitor}, \hyperlink{class_selection_spiting_visitor_ac494bc17989d4fe23736f6ce55972aba}{Selection\+Spiting\+Visitor}, \hyperlink{class_algebra_compiler_a22f8846f5665f898e8f67815abe64015}{Algebra\+Compiler}, \hyperlink{class_grouping_visitor_a4e3563b131b9d26942a6d4693f5c194a}{Grouping\+Visitor}, \hyperlink{class_semantic_checker_ac2825bf63bbda696b461166f915bacfe}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_a8c533a1dc5b55e26608615ff392e384b}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_ac350bf44664ce021c0cfec18258a14e8}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Sort@{visit\+Sort}}
+\index{visit\+Sort@{visit\+Sort}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Sort}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Sort (
+\begin{DoxyParamCaption}
+\item[{{\bf Sort} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_ac350bf44664ce021c0cfec18258a14e8}
+Visits \hyperlink{class_sort}{Sort} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_sort}{Sort}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_a15fb2f0fb19d10c40405c4683fd2a2d8}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_ab0a1083d8237aeb66e2d8e3c0baff201}{Algebra\+Compiler}, \hyperlink{class_semantic_checker_ae7cbd8a1c92f544a282de4b741d1e19e}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_aae222309bf242fc78da5add861cfde20}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_ac14f3c3c195373e3bae5d01d04f1ea09}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Table@{visit\+Table}}
+\index{visit\+Table@{visit\+Table}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Table}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Table (
+\begin{DoxyParamCaption}
+\item[{{\bf Table} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_ac14f3c3c195373e3bae5d01d04f1ea09}
+Visits \hyperlink{class_table}{Table} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_table}{Table}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_af848a068e14d7c1227fc19411607c463}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_a5b2f264009e5ed18fcc28c739f67d48a}{Algebra\+Compiler}, \hyperlink{class_semantic_checker_a915d3f58ab60a0e6ba6f248e3c81f0c5}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_a396774ef87bd463ac1a588fef83b885a}{Graph\+Drawing\+Visitor}.
+
+\hypertarget{class_algebra_visitor_a681732083691701f0e9c10980392dd3c}{\index{Algebra\+Visitor@{Algebra\+Visitor}!visit\+Union@{visit\+Union}}
+\index{visit\+Union@{visit\+Union}!Algebra\+Visitor@{Algebra\+Visitor}}
+\subsubsection[{visit\+Union}]{\setlength{\rightskip}{0pt plus 5cm}void Algebra\+Visitor\+::visit\+Union (
+\begin{DoxyParamCaption}
+\item[{{\bf Union} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_algebra_visitor_a681732083691701f0e9c10980392dd3c}
+Visits \hyperlink{class_union}{Union} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_union}{Union}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{class_push_selection_down_visitor_a82783e1b22e71264102b53f39d057897}{Push\+Selection\+Down\+Visitor}, \hyperlink{class_algebra_compiler_a6c5170534fba2aa8ed5899f92ceeee8f}{Algebra\+Compiler}, \hyperlink{class_semantic_checker_a120a86891155bd0296b9f3e878462bc6}{Semantic\+Checker}, and \hyperlink{class_graph_drawing_visitor_af0a1bb8a0ba7f47a89a8ae01288af625}{Graph\+Drawing\+Visitor}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">AlgebraVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_algebra_visitors_8h_source.html">AlgebraVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for AlgebraVisitor:</div>
 <div class="dyncontent">
@@ -108,65 +110,471 @@ Inheritance diagram for AlgebraVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a97257e8a65f77f30540b1223d92127fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97257e8a65f77f30540b1223d92127fb"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitAlgebraNodeBase</b> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a97257e8a65f77f30540b1223d92127fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a371a822b60caab82b78c5750eff67b4b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a371a822b60caab82b78c5750eff67b4b"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitUnaryAlgebraNodeBase</b> (<a class="el" href="class_unary_algebra_node_base.html">UnaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a371a822b60caab82b78c5750eff67b4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00b2a6a2fb076160c0a8f713dd48d6d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00b2a6a2fb076160c0a8f713dd48d6d1"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitBinaryAlgebraNodeBase</b> (<a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a00b2a6a2fb076160c0a8f713dd48d6d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b5642743b1985cc5fd1e12002972388"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b5642743b1985cc5fd1e12002972388"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitNullaryAlgebraNodeBase</b> (<a class="el" href="class_nullary_algebra_node_base.html">NullaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a5b5642743b1985cc5fd1e12002972388"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21ccc9b452a5c842d91cab7ec0855cfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21ccc9b452a5c842d91cab7ec0855cfe"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitGroupedAlgebraNode</b> (<a class="el" href="class_grouped_algebra_node.html">GroupedAlgebraNode</a> *node)</td></tr>
-<tr class="separator:a21ccc9b452a5c842d91cab7ec0855cfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac14f3c3c195373e3bae5d01d04f1ea09"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac14f3c3c195373e3bae5d01d04f1ea09"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitTable</b> (<a class="el" href="class_table.html">Table</a> *node)</td></tr>
+<tr class="memitem:ac14f3c3c195373e3bae5d01d04f1ea09"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#ac14f3c3c195373e3bae5d01d04f1ea09">visitTable</a> (<a class="el" href="class_table.html">Table</a> *node)</td></tr>
 <tr class="separator:ac14f3c3c195373e3bae5d01d04f1ea09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac350bf44664ce021c0cfec18258a14e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac350bf44664ce021c0cfec18258a14e8"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitSort</b> (<a class="el" href="class_sort.html">Sort</a> *node)</td></tr>
+<tr class="memitem:ac350bf44664ce021c0cfec18258a14e8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#ac350bf44664ce021c0cfec18258a14e8">visitSort</a> (<a class="el" href="class_sort.html">Sort</a> *node)</td></tr>
 <tr class="separator:ac350bf44664ce021c0cfec18258a14e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af77bf2aaa949ea27cf992053c43a391b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af77bf2aaa949ea27cf992053c43a391b"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitGroup</b> (<a class="el" href="class_group.html">Group</a> *node)</td></tr>
+<tr class="memitem:af77bf2aaa949ea27cf992053c43a391b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#af77bf2aaa949ea27cf992053c43a391b">visitGroup</a> (<a class="el" href="class_group.html">Group</a> *node)</td></tr>
 <tr class="separator:af77bf2aaa949ea27cf992053c43a391b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1109510d982a8e5b90fc56d443109ef9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1109510d982a8e5b90fc56d443109ef9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitColumnOperations</b> (<a class="el" href="class_column_operations.html">ColumnOperations</a> *node)</td></tr>
+<tr class="memitem:a1109510d982a8e5b90fc56d443109ef9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a1109510d982a8e5b90fc56d443109ef9">visitColumnOperations</a> (<a class="el" href="class_column_operations.html">ColumnOperations</a> *node)</td></tr>
 <tr class="separator:a1109510d982a8e5b90fc56d443109ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d9b0618ac2fdd036abdab27cbb83d40"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d9b0618ac2fdd036abdab27cbb83d40"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitSelection</b> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
+<tr class="memitem:a7d9b0618ac2fdd036abdab27cbb83d40"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a7d9b0618ac2fdd036abdab27cbb83d40">visitSelection</a> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
 <tr class="separator:a7d9b0618ac2fdd036abdab27cbb83d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a841875539a07c979b912ef44455b873c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a841875539a07c979b912ef44455b873c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitJoin</b> (<a class="el" href="class_join.html">Join</a> *node)</td></tr>
+<tr class="memitem:a841875539a07c979b912ef44455b873c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a841875539a07c979b912ef44455b873c">visitJoin</a> (<a class="el" href="class_join.html">Join</a> *node)</td></tr>
 <tr class="separator:a841875539a07c979b912ef44455b873c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add62415db5f188e572cef1c36faa842e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add62415db5f188e572cef1c36faa842e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitAntiJoin</b> (<a class="el" href="class_anti_join.html">AntiJoin</a> *node)</td></tr>
+<tr class="memitem:add62415db5f188e572cef1c36faa842e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#add62415db5f188e572cef1c36faa842e">visitAntiJoin</a> (<a class="el" href="class_anti_join.html">AntiJoin</a> *node)</td></tr>
 <tr class="separator:add62415db5f188e572cef1c36faa842e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a681732083691701f0e9c10980392dd3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a681732083691701f0e9c10980392dd3c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitUnion</b> (<a class="el" href="class_union.html">Union</a> *node)</td></tr>
+<tr class="memitem:a681732083691701f0e9c10980392dd3c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a681732083691701f0e9c10980392dd3c">visitUnion</a> (<a class="el" href="class_union.html">Union</a> *node)</td></tr>
 <tr class="separator:a681732083691701f0e9c10980392dd3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae92c2f0a465dacc4f42a71e879346c94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae92c2f0a465dacc4f42a71e879346c94"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitGroupedJoin</b> (<a class="el" href="class_grouped_join.html">GroupedJoin</a> *node)</td></tr>
+<tr class="memitem:ae92c2f0a465dacc4f42a71e879346c94"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#ae92c2f0a465dacc4f42a71e879346c94">visitGroupedJoin</a> (<a class="el" href="class_grouped_join.html">GroupedJoin</a> *node)</td></tr>
 <tr class="separator:ae92c2f0a465dacc4f42a71e879346c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:aa8f4149dca3babdefa323050bb6e82f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8f4149dca3babdefa323050bb6e82f9"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>serializeExpression</b> (std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &amp;condition, std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;result)</td></tr>
+<tr class="memitem:aa8f4149dca3babdefa323050bb6e82f9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#aa8f4149dca3babdefa323050bb6e82f9">serializeExpression</a> (std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &amp;condition, std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;result)</td></tr>
 <tr class="separator:aa8f4149dca3babdefa323050bb6e82f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20d1215ba30361d19d0317a939a9b860"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20d1215ba30361d19d0317a939a9b860"></a>
-static std::shared_ptr<br class="typebreak" />
-&lt; <a class="el" href="class_expression.html">Expression</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>deserializeExpression</b> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;condition)</td></tr>
+<tr class="memitem:a20d1215ba30361d19d0317a939a9b860"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr<br class="typebreak" />
+&lt; <a class="el" href="class_expression.html">Expression</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a20d1215ba30361d19d0317a939a9b860">deserializeExpression</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;condition)</td></tr>
 <tr class="separator:a20d1215ba30361d19d0317a939a9b860"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78119cf006ac64137b8c29223ab77885"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78119cf006ac64137b8c29223ab77885"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>removeSelection</b> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
+<tr class="memitem:a78119cf006ac64137b8c29223ab77885"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a78119cf006ac64137b8c29223ab77885">removeSelection</a> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
 <tr class="separator:a78119cf006ac64137b8c29223ab77885"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbcb61f031cfc4808d150b076f6aa63d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbcb61f031cfc4808d150b076f6aa63d"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>insertSelection</b> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *node, std::shared_ptr&lt; <a class="el" href="class_selection.html">Selection</a> &gt; &amp;selection)</td></tr>
+<tr class="memitem:adbcb61f031cfc4808d150b076f6aa63d"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#adbcb61f031cfc4808d150b076f6aa63d">insertSelection</a> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *node, std::shared_ptr&lt; <a class="el" href="class_selection.html">Selection</a> &gt; &amp;selection)</td></tr>
 <tr class="separator:adbcb61f031cfc4808d150b076f6aa63d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for algebra tree visitors. Every virtual method does nothing only visits node all children. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a20d1215ba30361d19d0317a939a9b860"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; AlgebraVisitor::deserializeExpression </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>condition</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Convert expresion vector of subexpression to expression tree. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition</td><td>vector of <a class="el" href="class_expression.html">Expression</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>tree condition </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="adbcb61f031cfc4808d150b076f6aa63d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::insertSelection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_selection.html">Selection</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>selection</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Insert selection into tree. New node will be inserted as parent from first argument. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td><a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> where new node will be inserted </td></tr>
+    <tr><td class="paramname">selection</td><td>- <a class="el" href="class_selection.html">Selection</a> to be inserted </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a78119cf006ac64137b8c29223ab77885"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::removeSelection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_selection.html">Selection</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Remove selection node from tree. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td><a class="el" href="class_selection.html">Selection</a> to be removed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa8f4149dca3babdefa323050bb6e82f9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::serializeExpression </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>condition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Convert expresion from tree to vector of subconditions. Condition will be splited into subconditions which are connected with and. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">condition</td><td><a class="el" href="class_expression.html">Expression</a> to convert. </td></tr>
+    <tr><td class="paramname">result</td><td>vector of <a class="el" href="class_expression.html">Expression</a>. Result of the function will be stored in this variable. Input needs to be empty. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="add62415db5f188e572cef1c36faa842e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitAntiJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_anti_join.html">AntiJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_anti_join.html">AntiJoin</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_anti_join.html">AntiJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#a85d6088ea2c478aa85cf62603f30d83a">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#a4903d8f81d9da91037ce65b6aaeb7fa4">AlgebraCompiler</a>, <a class="el" href="class_grouping_visitor.html#a1ddb0cf950feb1df7c2518b543e0d0ad">GroupingVisitor</a>, <a class="el" href="class_semantic_checker.html#aed141e3f22e681c74355fb3b84deb2d4">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#ae25e72a771d8ec5949caa0a92a1e61aa">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1109510d982a8e5b90fc56d443109ef9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitColumnOperations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_column_operations.html">ColumnOperations</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_column_operations.html">ColumnOperations</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_column_operations.html">ColumnOperations</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#a09ade5d0a2d194fee1b5b555d36104a4">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#add29b612e4c40532405924b72f739092">AlgebraCompiler</a>, <a class="el" href="class_grouping_visitor.html#a2c1557a18e53aaa43665318001df3726">GroupingVisitor</a>, <a class="el" href="class_semantic_checker.html#a5bd2ca32010822a95a6ef0a78190fc91">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#a8cc0865d330a29411e83261205382eeb">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af77bf2aaa949ea27cf992053c43a391b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitGroup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_group.html">Group</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_group.html">Group</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_group.html">Group</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#a551561414b97bce56c1bba3829ff9769">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#aaf1f80df836121f8f8b7abd01e7ac4dd">AlgebraCompiler</a>, <a class="el" href="class_semantic_checker.html#a8dfc703b185f05a0f57749e1eb3c0a56">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#aabe646e1bc301a127722a54568479653">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae92c2f0a465dacc4f42a71e879346c94"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitGroupedJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_grouped_join.html">GroupedJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_grouped_join.html">GroupedJoin</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_grouped_join.html">GroupedJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#aadf48938c2e165db563095720e10eca6">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#acebcb46237fd029f910ae9d06718c1b4">AlgebraCompiler</a>, <a class="el" href="class_semantic_checker.html#a44c4c5cf8cde9785a2a11f446d8fb90a">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#a4d92f0106ac1d8035498c8b5e1490919">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a841875539a07c979b912ef44455b873c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_join.html">Join</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_join.html">Join</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_join.html">Join</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#a25ff28bccfd9c35119d06117e63465be">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#a430ba2ac25d10e94b1408e23def965e6">AlgebraCompiler</a>, <a class="el" href="class_grouping_visitor.html#aaa2345624497de18ab3a608e909573aa">GroupingVisitor</a>, <a class="el" href="class_semantic_checker.html#a047de398ed6fab98a4ec6c1db533a66e">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#a77fbec744cd6a2ac39e22120114c7edd">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7d9b0618ac2fdd036abdab27cbb83d40"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitSelection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_selection.html">Selection</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_selection.html">Selection</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_selection.html">Selection</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#a2534debe115bf3f6648281cc6d0d10ac">PushSelectionDownVisitor</a>, <a class="el" href="class_selection_colecting_visitor.html#a29c5a9ecf7dbfdc4b563b94385c61de3">SelectionColectingVisitor</a>, <a class="el" href="class_selection_fusing_visitor.html#af7999d106685c9938c907c6984ba4f2d">SelectionFusingVisitor</a>, <a class="el" href="class_selection_spiting_visitor.html#ac494bc17989d4fe23736f6ce55972aba">SelectionSpitingVisitor</a>, <a class="el" href="class_algebra_compiler.html#a22f8846f5665f898e8f67815abe64015">AlgebraCompiler</a>, <a class="el" href="class_grouping_visitor.html#a4e3563b131b9d26942a6d4693f5c194a">GroupingVisitor</a>, <a class="el" href="class_semantic_checker.html#ac2825bf63bbda696b461166f915bacfe">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#a8c533a1dc5b55e26608615ff392e384b">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac350bf44664ce021c0cfec18258a14e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitSort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sort.html">Sort</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_sort.html">Sort</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_sort.html">Sort</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#a15fb2f0fb19d10c40405c4683fd2a2d8">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#ab0a1083d8237aeb66e2d8e3c0baff201">AlgebraCompiler</a>, <a class="el" href="class_semantic_checker.html#ae7cbd8a1c92f544a282de4b741d1e19e">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#aae222309bf242fc78da5add861cfde20">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac14f3c3c195373e3bae5d01d04f1ea09"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_table.html">Table</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_table.html">Table</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_table.html">Table</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#af848a068e14d7c1227fc19411607c463">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#a5b2f264009e5ed18fcc28c739f67d48a">AlgebraCompiler</a>, <a class="el" href="class_semantic_checker.html#a915d3f58ab60a0e6ba6f248e3c81f0c5">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#a396774ef87bd463ac1a588fef83b885a">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a681732083691701f0e9c10980392dd3c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AlgebraVisitor::visitUnion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_union.html">Union</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_union.html">Union</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_union.html">Union</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_push_selection_down_visitor.html#a82783e1b22e71264102b53f39d057897">PushSelectionDownVisitor</a>, <a class="el" href="class_algebra_compiler.html#a6c5170534fba2aa8ed5899f92ceeee8f">AlgebraCompiler</a>, <a class="el" href="class_semantic_checker.html#a120a86891155bd0296b9f3e878462bc6">SemanticChecker</a>, and <a class="el" href="class_graph_drawing_visitor.html#af0a1bb8a0ba7f47a89a8ae01288af625">GraphDrawingVisitor</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_algebra_visitors_8h_source.html">AlgebraVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/AlgebraVisitors.cpp</li>
@@ -174,7 +582,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>insertSelectio
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 9 2014 01:42:12 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 10 2014 01:20:21 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

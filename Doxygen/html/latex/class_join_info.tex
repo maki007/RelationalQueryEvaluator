@@ -1,45 +1,90 @@
 \hypertarget{class_join_info}{\section{Join\+Info Class Reference}
 \label{class_join_info}\index{Join\+Info@{Join\+Info}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_join_info_aa4c03bd8c1d0a7f4a5b89287d69f89b5}{void {\bfseries Remove\+Unnecessary\+Columns} (std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ \&output\+Columns)}\label{class_join_info_aa4c03bd8c1d0a7f4a5b89287d69f89b5}
-
+void \hyperlink{class_join_info_aa4c03bd8c1d0a7f4a5b89287d69f89b5}{Remove\+Unnecessary\+Columns} (std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ \&output\+Columns)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_join_info_a133e207c2642a61245a1152414ff4918}{static bool {\bfseries Comparator} (const \hyperlink{class_join_info}{Join\+Info} \&lhs, const \hyperlink{class_join_info}{Join\+Info} \&rhs)}\label{class_join_info_a133e207c2642a61245a1152414ff4918}
-
-\item 
-\hypertarget{class_join_info_a06c71078ad1716a98122f06f6b55f234}{static bool {\bfseries Pointer\+Comparator} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_join_info}{Join\+Info} $>$ \&lhs, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_join_info}{Join\+Info} $>$ \&rhs)}\label{class_join_info_a06c71078ad1716a98122f06f6b55f234}
-
+static bool \hyperlink{class_join_info_ae7be09d7cdeb95ad59d9352ee37de990}{Comparator} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_join_info}{Join\+Info} $>$ \&lhs, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_join_info}{Join\+Info} $>$ \&rhs)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_join_info_acbddcf9cd01e91396492b94a627bdf69}{std\+::vector$<$ std\+::shared\+\_\+ptr\\*
-$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ $>$ {\bfseries plans}}\label{class_join_info_acbddcf9cd01e91396492b94a627bdf69}
-
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ $>$ \hyperlink{class_join_info_acbddcf9cd01e91396492b94a627bdf69}{plans}
 \item 
-\hypertarget{class_join_info_a584f1ea54151c8e0c506911a6595c7cb}{std\+::set$<$ ulong $>$ {\bfseries processed\+Plans}}\label{class_join_info_a584f1ea54151c8e0c506911a6595c7cb}
-
+std\+::set$<$ ulong $>$ \hyperlink{class_join_info_a584f1ea54151c8e0c506911a6595c7cb}{processed\+Plans}
 \item 
-\hypertarget{class_join_info_ac6d0b302590c265ce7f3c47db28bad44}{std\+::set$<$ ulong $>$ {\bfseries un\+Processed\+Plans}}\label{class_join_info_ac6d0b302590c265ce7f3c47db28bad44}
-
+std\+::set$<$ ulong $>$ \hyperlink{class_join_info_ac6d0b302590c265ce7f3c47db28bad44}{un\+Processed\+Plans}
 \item 
-\hypertarget{class_join_info_a0b9f3b02df4e768208f53c549e0b6e61}{std\+::vector$<$ std\+::shared\+\_\+ptr\\*
-$<$ \hyperlink{class_condition_info}{Condition\+Info} $>$ $>$ {\bfseries condition}}\label{class_join_info_a0b9f3b02df4e768208f53c549e0b6e61}
-
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_condition_info}{Condition\+Info} $>$ $>$ \hyperlink{class_join_info_a0b9f3b02df4e768208f53c549e0b6e61}{condition}
 \item 
-\hypertarget{class_join_info_a4890e0bbeaf9718d16765b8f408ec1b5}{std\+::map$<$ ulong, \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ {\bfseries columns}}\label{class_join_info_a4890e0bbeaf9718d16765b8f408ec1b5}
-
+std\+::map$<$ ulong, \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ \hyperlink{class_join_info_a4890e0bbeaf9718d16765b8f408ec1b5}{columns}
 \item 
-\hypertarget{class_join_info_a526146b07ef6d1bba7475f7998bf0588}{double {\bfseries size}}\label{class_join_info_a526146b07ef6d1bba7475f7998bf0588}
-
+double \hyperlink{class_join_info_a526146b07ef6d1bba7475f7998bf0588}{size}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Structures storing information in selecting join order algoritm. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_join_info_ae7be09d7cdeb95ad59d9352ee37de990}{\index{Join\+Info@{Join\+Info}!Comparator@{Comparator}}
+\index{Comparator@{Comparator}!Join\+Info@{Join\+Info}}
+\subsubsection[{Comparator}]{\setlength{\rightskip}{0pt plus 5cm}bool Join\+Info\+::\+Comparator (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Join\+Info} $>$ \&}]{lhs, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Join\+Info} $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_join_info_ae7be09d7cdeb95ad59d9352ee37de990}
+Comparer for head in greedy join order algorirthm. Compares plans bases on timecomplexity of plans\mbox{[}0\mbox{]}. Greedy join order algorirthm uses this structure with only one plan. 
+\begin{DoxyParams}{Parameters}
+{\em lhs} & -\/ first plan to compare \\
+\hline
+{\em rhs} & -\/ second plan to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if lsf is faster then rhs 
+\end{DoxyReturn}
+\hypertarget{class_join_info_aa4c03bd8c1d0a7f4a5b89287d69f89b5}{\index{Join\+Info@{Join\+Info}!Remove\+Unnecessary\+Columns@{Remove\+Unnecessary\+Columns}}
+\index{Remove\+Unnecessary\+Columns@{Remove\+Unnecessary\+Columns}!Join\+Info@{Join\+Info}}
+\subsubsection[{Remove\+Unnecessary\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}void Join\+Info\+::\+Remove\+Unnecessary\+Columns (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Join\+Column\+Info} $>$ \&}]{output\+Columns}
+\end{DoxyParamCaption}
+)}}\label{class_join_info_aa4c03bd8c1d0a7f4a5b89287d69f89b5}
+Remove unecessary columns from current plans. Unnecessary columns are the one, which are not in condition out in output of procesed Group\+Join.  output\+Columns columns which are necessary. 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_join_info_a4890e0bbeaf9718d16765b8f408ec1b5}{\index{Join\+Info@{Join\+Info}!columns@{columns}}
+\index{columns@{columns}!Join\+Info@{Join\+Info}}
+\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$ulong, {\bf Join\+Column\+Info}$>$ Join\+Info\+::columns}}\label{class_join_info_a4890e0bbeaf9718d16765b8f408ec1b5}
+Output columns from current plans. \hypertarget{class_join_info_a0b9f3b02df4e768208f53c549e0b6e61}{\index{Join\+Info@{Join\+Info}!condition@{condition}}
+\index{condition@{condition}!Join\+Info@{Join\+Info}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Condition\+Info}$>$ $>$ Join\+Info\+::condition}}\label{class_join_info_a0b9f3b02df4e768208f53c549e0b6e61}
+Joiun condition to be processed. \hypertarget{class_join_info_acbddcf9cd01e91396492b94a627bdf69}{\index{Join\+Info@{Join\+Info}!plans@{plans}}
+\index{plans@{plans}!Join\+Info@{Join\+Info}}
+\subsubsection[{plans}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Physical\+Plan}$>$ $>$ Join\+Info\+::plans}}\label{class_join_info_acbddcf9cd01e91396492b94a627bdf69}
+Generated plans. \hypertarget{class_join_info_a584f1ea54151c8e0c506911a6595c7cb}{\index{Join\+Info@{Join\+Info}!processed\+Plans@{processed\+Plans}}
+\index{processed\+Plans@{processed\+Plans}!Join\+Info@{Join\+Info}}
+\subsubsection[{processed\+Plans}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$ulong$>$ Join\+Info\+::processed\+Plans}}\label{class_join_info_a584f1ea54151c8e0c506911a6595c7cb}
+Numbers of processed inputs. \hypertarget{class_join_info_a526146b07ef6d1bba7475f7998bf0588}{\index{Join\+Info@{Join\+Info}!size@{size}}
+\index{size@{size}!Join\+Info@{Join\+Info}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}double Join\+Info\+::size}}\label{class_join_info_a526146b07ef6d1bba7475f7998bf0588}
+Size of the processed relation. \hypertarget{class_join_info_ac6d0b302590c265ce7f3c47db28bad44}{\index{Join\+Info@{Join\+Info}!un\+Processed\+Plans@{un\+Processed\+Plans}}
+\index{un\+Processed\+Plans@{un\+Processed\+Plans}!Join\+Info@{Join\+Info}}
+\subsubsection[{un\+Processed\+Plans}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$ulong$>$ Join\+Info\+::un\+Processed\+Plans}}\label{class_join_info_ac6d0b302590c265ce7f3c47db28bad44}
+Numbers of unprocessed inputs. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

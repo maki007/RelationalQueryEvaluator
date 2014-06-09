@@ -1,6 +1,10 @@
 \hypertarget{class_selection_spiting_visitor}{\section{Selection\+Spiting\+Visitor Class Reference}
 \label{class_selection_spiting_visitor}\index{Selection\+Spiting\+Visitor@{Selection\+Spiting\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
 Inheritance diagram for Selection\+Spiting\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,10 +14,31 @@ Inheritance diagram for Selection\+Spiting\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_selection_spiting_visitor_ac494bc17989d4fe23736f6ce55972aba}{void {\bfseries visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_selection_spiting_visitor_ac494bc17989d4fe23736f6ce55972aba}
-
+void \hyperlink{class_selection_spiting_visitor_ac494bc17989d4fe23736f6ce55972aba}{visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Splits selections into partial condition and insert them into tree at place where the original selection was. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_selection_spiting_visitor_ac494bc17989d4fe23736f6ce55972aba}{\index{Selection\+Spiting\+Visitor@{Selection\+Spiting\+Visitor}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!Selection\+Spiting\+Visitor@{Selection\+Spiting\+Visitor}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void Selection\+Spiting\+Visitor\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_selection_spiting_visitor_ac494bc17989d4fe23736f6ce55972aba}
+Visits \hyperlink{class_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{Algebra\+Visitor}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

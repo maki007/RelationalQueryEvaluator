@@ -7,44 +7,101 @@
 class PhysicalOperatorVisitor
 {
 public:
-	virtual void visitPhysicalOperator(PhysicalOperator * node);
 
-	virtual void visitNullaryPhysicalOperator(NullaryPhysicalOperator * node);
-
-	virtual void visitUnaryPhysicalOperator(UnaryPhysicalOperator * node);
-
-	virtual void visitBinaryPhysicalOperator(BinaryPhysicalOperator * node);
-
+	/**
+	* Visits physical operator Filter.
+	* @param node visited Filter.
+	*/
 	virtual void visitFilter(Filter * node);
 
+	/**
+	* Visits physical operator FilterKeepingOrder.
+	* @param node visited FilterKeepingOrder.
+	*/
 	virtual void visitFilterKeepingOrder(FilterKeepingOrder * node);
 
+	/**
+	* Visits physical operator SortOperator.
+	* @param node visited SortOperator.
+	*/
 	virtual void visitSortOperator(SortOperator * node);
 
+	/**
+	* Visits physical operator MergeEquiJoin.
+	* @param node visited MergeEquiJoin.
+	*/
 	virtual void visitMergeEquiJoin(MergeEquiJoin * node);
 
+	/**
+	* Visits physical operator MergeNonEquiJoin.
+	* @param node visited MergeNonEquiJoin.
+	*/
 	virtual void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
 
+	/**
+	* Visits physical operator CrossJoin.
+	* @param node visited CrossJoin.
+	*/
 	virtual void visitCrossJoin(CrossJoin * node);
 
+	/**
+	* Visits physical operator HashJoin.
+	* @param node visited HashJoin.
+	*/
 	virtual void visitHashJoin(HashJoin * node);
 
+	/**
+	* Visits physical operator HashAntiJoin.
+	* @param node visited HashAntiJoin.
+	*/
 	virtual void visitHashAntiJoin(HashAntiJoin * node);
 
+	/**
+	* Visits physical operator MergeAntiJoin.
+	* @param node visited MergeAntiJoin.
+	*/
 	virtual void visitMergeAntiJoin(MergeAntiJoin * node);
 
+	/**
+	* Visits physical operator UnionOperator.
+	* @param node visited UnionOperator.
+	*/
 	virtual void visitUnionOperator(UnionOperator * node);
 
+	/**
+	* Visits physical operator HashGroup.
+	* @param node visited HashGroup.
+	*/
 	virtual void visitHashGroup(HashGroup * node);
 
+	/**
+	* Visits physical operator SortedGroup.
+	* @param node visited SortedGroup.
+	*/
 	virtual void visitSortedGroup(SortedGroup * node);
 
+	/**
+	* Visits physical operator ColumnsOperationsOperator.
+	* @param node visited ColumnsOperationsOperator.
+	*/
 	virtual void visitColumnsOperationsOperator(ColumnsOperationsOperator * node);
 
+	/**
+	* Visits physical operator ScanAndSortByIndex.
+	* @param node visited ScanAndSortByIndex.
+	*/
 	virtual void visitScanAndSortByIndex(ScanAndSortByIndex * node);
 
+	/**
+	* Visits physical operator TableScan.
+	* @param node visited TableScan.
+	*/
 	virtual void visitTableScan(TableScan * node);
 
+	/**
+	* Visits physical operator IndexScan.
+	* @param node visited IndexScan.
+	*/
 	virtual void visitIndexScan(IndexScan * node);
 };
 

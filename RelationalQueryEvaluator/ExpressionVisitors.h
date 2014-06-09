@@ -11,18 +11,41 @@
 class ExpressionVisitorBase
 {
 public:
-	virtual void visitExpression(Expression * expression);
 
+	/**
+	* Visits UnaryExpression element.
+	* @param expression visited UnaryExpression.
+	*/
 	virtual void visitUnaryExpression(UnaryExpression * expression);
 
+	/**
+	* Visits BinaryExpression element.
+	* @param expression visited BinaryExpression.
+	*/
 	virtual void visitBinaryExpression(BinaryExpression * expression);
 
+	/**
+	* Visits NnaryExpression element.
+	* @param expression visited NnaryExpression.
+	*/
 	virtual void visitNnaryExpression(NnaryExpression * expression);
 
+	/**
+	* Visits Constant element.
+	* @param expression visited Constant.
+	*/
 	virtual void visitConstant(Constant * expression);
 
+	/**
+	* Visits Column element.
+	* @param expression visited Column.
+	*/
 	virtual void visitColumn(Column * expression);
 
+	/**
+	* Visits GroupedExpression element.
+	* @param expression visited GroupedExpression.
+	*/
 	virtual void visitGroupedExpression(GroupedExpression * expression);
 };
 

@@ -1,15 +1,8 @@
-
-
 #include "Expressions.h"
 #include "ExpressionVisitors.h"
 
 
 using namespace std;
-
-void ExpressionVisitorBase::visitExpression(Expression * expression)
-{
-	expression->accept(*this);
-}
 
 void ExpressionVisitorBase::visitUnaryExpression(UnaryExpression * expression)
 {

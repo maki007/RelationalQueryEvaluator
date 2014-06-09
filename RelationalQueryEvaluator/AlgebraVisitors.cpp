@@ -6,29 +6,6 @@
 
 using namespace std;
 
-void AlgebraVisitor::visitAlgebraNodeBase(AlgebraNodeBase * node)
-{
-	node->accept(*this);
-}
-
-void  AlgebraVisitor::visitUnaryAlgebraNodeBase(UnaryAlgebraNodeBase * node)
-{
-	node->accept(*this);
-}
-
-void  AlgebraVisitor::visitBinaryAlgebraNodeBase(BinaryAlgebraNodeBase * node)
-{
-	node->accept(*this);
-}
-void AlgebraVisitor::visitGroupedAlgebraNode(GroupedAlgebraNode * node)
-{
-	node->accept(*this);
-}
-void AlgebraVisitor::visitNullaryAlgebraNodeBase(NullaryAlgebraNodeBase * node)
-{
-	node->accept(*this);
-}
-
 void  AlgebraVisitor::visitTable(Table * node)
 {
 
@@ -140,7 +117,7 @@ GraphDrawingVisitor::GraphDrawingVisitor()
 	nodeCounter = 0;
 }
 
-void GraphDrawingVisitor::generateText(string & label, UnaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(std::string & label, UnaryAlgebraNodeBase * node)
 {
 	int identifier = nodeCounter;
 
@@ -158,7 +135,7 @@ void GraphDrawingVisitor::generateText(string & label, UnaryAlgebraNodeBase * no
 
 }
 
-void GraphDrawingVisitor::generateText(string & label, BinaryAlgebraNodeBase * node)
+void GraphDrawingVisitor::generateText(std::string & label, BinaryAlgebraNodeBase * node)
 {
 	int identifier = nodeCounter;
 
@@ -357,7 +334,7 @@ void GraphDrawingVisitor::visitUnion(Union * node)
 	generateText(string("Union"), node);
 }
 
-void GraphDrawingVisitor::generateText(string & label, GroupedAlgebraNode * node)
+void GraphDrawingVisitor::generateText(std::string & label, GroupedAlgebraNode * node)
 {
 	int identifier = nodeCounter;
 
@@ -420,11 +397,8 @@ void GroupingVisitor::visitJoin(Join * node)
 
 
 	groupedOperator->condition = node->condition;
-	vector<shared_ptr<AlgebraNodeBase> > oldChildren;
-	oldChildren.resize(2);
-	oldChildren[0] = node->leftChild;
-	oldChildren[1] = node->rightChild;
-	resolveJoins(node, groupedOperator, oldChildren);
+
+	resolveJoins(node, groupedOperator);
 	for (auto it = groupedOperator->children.begin(); it != groupedOperator->children.end(); ++it)
 	{
 		(*it)->parent=groupedOperator;
@@ -432,9 +406,13 @@ void GroupingVisitor::visitJoin(Join * node)
 
 }
 
-void GroupingVisitor::resolveJoins(BinaryAlgebraNodeBase * node, GroupedJoin * groupedOperator, vector<shared_ptr<AlgebraNodeBase> > & oldChildren)
-{
 
+void GroupingVisitor::resolveJoins(Join * node, GroupedJoin * groupedOperator)
+{
+	vector<shared_ptr<AlgebraNodeBase> > oldChildren;
+	oldChildren.resize(2);
+	oldChildren[0] = node->leftChild;
+	oldChildren[1] = node->rightChild;
 	shared_ptr<Expression> newCondition = 0;
 	ulong numberOfChildreninFirstChild = 0;
 	for (ulong i = 0; i < 2; ++i)

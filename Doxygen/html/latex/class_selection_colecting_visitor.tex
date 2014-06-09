@@ -1,6 +1,10 @@
 \hypertarget{class_selection_colecting_visitor}{\section{Selection\+Colecting\+Visitor Class Reference}
 \label{class_selection_colecting_visitor}\index{Selection\+Colecting\+Visitor@{Selection\+Colecting\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
 Inheritance diagram for Selection\+Colecting\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,17 +14,43 @@ Inheritance diagram for Selection\+Colecting\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_selection_colecting_visitor_a29c5a9ecf7dbfdc4b563b94385c61de3}{void {\bfseries visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)}\label{class_selection_colecting_visitor_a29c5a9ecf7dbfdc4b563b94385c61de3}
-
+void \hyperlink{class_selection_colecting_visitor_a29c5a9ecf7dbfdc4b563b94385c61de3}{visit\+Selection} (\hyperlink{class_selection}{Selection} $\ast$node)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_selection_colecting_visitor_a6323b360276b0ff23f5dcaa19b2317eb}{std\+::vector$<$ \hyperlink{class_selection}{Selection} $\ast$ $>$ {\bfseries selections}}\label{class_selection_colecting_visitor_a6323b360276b0ff23f5dcaa19b2317eb}
-
+std\+::vector$<$ \hyperlink{class_selection}{Selection} $\ast$ $>$ \hyperlink{class_selection_colecting_visitor_a6323b360276b0ff23f5dcaa19b2317eb}{selections}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+Collects all selections from tree. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_selection_colecting_visitor_a29c5a9ecf7dbfdc4b563b94385c61de3}{\index{Selection\+Colecting\+Visitor@{Selection\+Colecting\+Visitor}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!Selection\+Colecting\+Visitor@{Selection\+Colecting\+Visitor}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void Selection\+Colecting\+Visitor\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_selection_colecting_visitor_a29c5a9ecf7dbfdc4b563b94385c61de3}
+Visits \hyperlink{class_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{class_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{class_algebra_visitor_a7d9b0618ac2fdd036abdab27cbb83d40}{Algebra\+Visitor}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_selection_colecting_visitor_a6323b360276b0ff23f5dcaa19b2317eb}{\index{Selection\+Colecting\+Visitor@{Selection\+Colecting\+Visitor}!selections@{selections}}
+\index{selections@{selections}!Selection\+Colecting\+Visitor@{Selection\+Colecting\+Visitor}}
+\subsubsection[{selections}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Selection} $\ast$ $>$ Selection\+Colecting\+Visitor\+::selections}}\label{class_selection_colecting_visitor_a6323b360276b0ff23f5dcaa19b2317eb}
+Resulting vector of selection pointers. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

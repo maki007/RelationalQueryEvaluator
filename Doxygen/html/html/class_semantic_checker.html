@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">SemanticChecker Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_algebra_visitors_8h_source.html">AlgebraVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SemanticChecker:</div>
 <div class="dyncontent">
@@ -101,80 +103,441 @@ Inheritance diagram for SemanticChecker:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7bfc82245e0af345db051ab8faea502e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bfc82245e0af345db051ab8faea502e"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>nextId</b> ()</td></tr>
+<tr class="memitem:a35a20bf073bd1fdf1de937db47b9f4c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a35a20bf073bd1fdf1de937db47b9f4c0">SemanticChecker</a> ()</td></tr>
+<tr class="separator:a35a20bf073bd1fdf1de937db47b9f4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bfc82245e0af345db051ab8faea502e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a7bfc82245e0af345db051ab8faea502e">nextId</a> ()</td></tr>
 <tr class="separator:a7bfc82245e0af345db051ab8faea502e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31d420801c78aaf317a4b0094f9da3df"><td class="memTemplParams" colspan="2"><a class="anchor" id="a31d420801c78aaf317a4b0094f9da3df"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a31d420801c78aaf317a4b0094f9da3df"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>checkJoinOutPutParameters</b> (std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;outputColumns0, std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;outputColumns1, T *node)</td></tr>
+<tr class="memitem:a31d420801c78aaf317a4b0094f9da3df"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a31d420801c78aaf317a4b0094f9da3df"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a31d420801c78aaf317a4b0094f9da3df">checkJoinOutPutParameters</a> (std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;outputColumns0, std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;outputColumns1, T *node)</td></tr>
 <tr class="separator:a31d420801c78aaf317a4b0094f9da3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a915d3f58ab60a0e6ba6f248e3c81f0c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a915d3f58ab60a0e6ba6f248e3c81f0c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitTable</b> (<a class="el" href="class_table.html">Table</a> *node)</td></tr>
+<tr class="memitem:a915d3f58ab60a0e6ba6f248e3c81f0c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a915d3f58ab60a0e6ba6f248e3c81f0c5">visitTable</a> (<a class="el" href="class_table.html">Table</a> *node)</td></tr>
 <tr class="separator:a915d3f58ab60a0e6ba6f248e3c81f0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7cbd8a1c92f544a282de4b741d1e19e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7cbd8a1c92f544a282de4b741d1e19e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitSort</b> (<a class="el" href="class_sort.html">Sort</a> *node)</td></tr>
+<tr class="memitem:ae7cbd8a1c92f544a282de4b741d1e19e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#ae7cbd8a1c92f544a282de4b741d1e19e">visitSort</a> (<a class="el" href="class_sort.html">Sort</a> *node)</td></tr>
 <tr class="separator:ae7cbd8a1c92f544a282de4b741d1e19e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dfc703b185f05a0f57749e1eb3c0a56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8dfc703b185f05a0f57749e1eb3c0a56"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitGroup</b> (<a class="el" href="class_group.html">Group</a> *node)</td></tr>
+<tr class="memitem:a8dfc703b185f05a0f57749e1eb3c0a56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a8dfc703b185f05a0f57749e1eb3c0a56">visitGroup</a> (<a class="el" href="class_group.html">Group</a> *node)</td></tr>
 <tr class="separator:a8dfc703b185f05a0f57749e1eb3c0a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bd2ca32010822a95a6ef0a78190fc91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bd2ca32010822a95a6ef0a78190fc91"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitColumnOperations</b> (<a class="el" href="class_column_operations.html">ColumnOperations</a> *node)</td></tr>
+<tr class="memitem:a5bd2ca32010822a95a6ef0a78190fc91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a5bd2ca32010822a95a6ef0a78190fc91">visitColumnOperations</a> (<a class="el" href="class_column_operations.html">ColumnOperations</a> *node)</td></tr>
 <tr class="separator:a5bd2ca32010822a95a6ef0a78190fc91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac2825bf63bbda696b461166f915bacfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2825bf63bbda696b461166f915bacfe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitSelection</b> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
+<tr class="memitem:ac2825bf63bbda696b461166f915bacfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#ac2825bf63bbda696b461166f915bacfe">visitSelection</a> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
 <tr class="separator:ac2825bf63bbda696b461166f915bacfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a047de398ed6fab98a4ec6c1db533a66e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a047de398ed6fab98a4ec6c1db533a66e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitJoin</b> (<a class="el" href="class_join.html">Join</a> *node)</td></tr>
+<tr class="memitem:a047de398ed6fab98a4ec6c1db533a66e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a047de398ed6fab98a4ec6c1db533a66e">visitJoin</a> (<a class="el" href="class_join.html">Join</a> *node)</td></tr>
 <tr class="separator:a047de398ed6fab98a4ec6c1db533a66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed141e3f22e681c74355fb3b84deb2d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed141e3f22e681c74355fb3b84deb2d4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitAntiJoin</b> (<a class="el" href="class_anti_join.html">AntiJoin</a> *node)</td></tr>
+<tr class="memitem:aed141e3f22e681c74355fb3b84deb2d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#aed141e3f22e681c74355fb3b84deb2d4">visitAntiJoin</a> (<a class="el" href="class_anti_join.html">AntiJoin</a> *node)</td></tr>
 <tr class="separator:aed141e3f22e681c74355fb3b84deb2d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a120a86891155bd0296b9f3e878462bc6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a120a86891155bd0296b9f3e878462bc6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitUnion</b> (<a class="el" href="class_union.html">Union</a> *node)</td></tr>
+<tr class="memitem:a120a86891155bd0296b9f3e878462bc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a120a86891155bd0296b9f3e878462bc6">visitUnion</a> (<a class="el" href="class_union.html">Union</a> *node)</td></tr>
 <tr class="separator:a120a86891155bd0296b9f3e878462bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44c4c5cf8cde9785a2a11f446d8fb90a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a44c4c5cf8cde9785a2a11f446d8fb90a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitGroupedJoin</b> (<a class="el" href="class_grouped_join.html">GroupedJoin</a> *node)</td></tr>
+<tr class="memitem:a44c4c5cf8cde9785a2a11f446d8fb90a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a44c4c5cf8cde9785a2a11f446d8fb90a">visitGroupedJoin</a> (<a class="el" href="class_grouped_join.html">GroupedJoin</a> *node)</td></tr>
 <tr class="separator:a44c4c5cf8cde9785a2a11f446d8fb90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_algebra_visitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_algebra_visitor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_algebra_visitor.html">AlgebraVisitor</a></td></tr>
-<tr class="memitem:a97257e8a65f77f30540b1223d92127fb inherit pub_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97257e8a65f77f30540b1223d92127fb"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitAlgebraNodeBase</b> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a97257e8a65f77f30540b1223d92127fb inherit pub_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a371a822b60caab82b78c5750eff67b4b inherit pub_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a371a822b60caab82b78c5750eff67b4b"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitUnaryAlgebraNodeBase</b> (<a class="el" href="class_unary_algebra_node_base.html">UnaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a371a822b60caab82b78c5750eff67b4b inherit pub_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00b2a6a2fb076160c0a8f713dd48d6d1 inherit pub_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00b2a6a2fb076160c0a8f713dd48d6d1"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitBinaryAlgebraNodeBase</b> (<a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a00b2a6a2fb076160c0a8f713dd48d6d1 inherit pub_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b5642743b1985cc5fd1e12002972388 inherit pub_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b5642743b1985cc5fd1e12002972388"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitNullaryAlgebraNodeBase</b> (<a class="el" href="class_nullary_algebra_node_base.html">NullaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a5b5642743b1985cc5fd1e12002972388 inherit pub_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21ccc9b452a5c842d91cab7ec0855cfe inherit pub_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a21ccc9b452a5c842d91cab7ec0855cfe"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitGroupedAlgebraNode</b> (<a class="el" href="class_grouped_algebra_node.html">GroupedAlgebraNode</a> *node)</td></tr>
-<tr class="separator:a21ccc9b452a5c842d91cab7ec0855cfe inherit pub_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a3683f9e8bd069bf8b76c42ea6ff11b96"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3683f9e8bd069bf8b76c42ea6ff11b96"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>containsErrors</b></td></tr>
+<tr class="memitem:a3683f9e8bd069bf8b76c42ea6ff11b96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a3683f9e8bd069bf8b76c42ea6ff11b96">containsErrors</a></td></tr>
 <tr class="separator:a3683f9e8bd069bf8b76c42ea6ff11b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_class_algebra_visitor"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_algebra_visitor')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="class_algebra_visitor.html">AlgebraVisitor</a></td></tr>
-<tr class="memitem:aa8f4149dca3babdefa323050bb6e82f9 inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8f4149dca3babdefa323050bb6e82f9"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>serializeExpression</b> (std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &amp;condition, std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;result)</td></tr>
+<tr class="memitem:aa8f4149dca3babdefa323050bb6e82f9 inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#aa8f4149dca3babdefa323050bb6e82f9">serializeExpression</a> (std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &amp;condition, std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;result)</td></tr>
 <tr class="separator:aa8f4149dca3babdefa323050bb6e82f9 inherit pub_static_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20d1215ba30361d19d0317a939a9b860 inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20d1215ba30361d19d0317a939a9b860"></a>
-static std::shared_ptr<br class="typebreak" />
-&lt; <a class="el" href="class_expression.html">Expression</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>deserializeExpression</b> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;condition)</td></tr>
+<tr class="memitem:a20d1215ba30361d19d0317a939a9b860 inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr<br class="typebreak" />
+&lt; <a class="el" href="class_expression.html">Expression</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a20d1215ba30361d19d0317a939a9b860">deserializeExpression</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; &gt; &amp;condition)</td></tr>
 <tr class="separator:a20d1215ba30361d19d0317a939a9b860 inherit pub_static_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78119cf006ac64137b8c29223ab77885 inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78119cf006ac64137b8c29223ab77885"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>removeSelection</b> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
+<tr class="memitem:a78119cf006ac64137b8c29223ab77885 inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#a78119cf006ac64137b8c29223ab77885">removeSelection</a> (<a class="el" href="class_selection.html">Selection</a> *node)</td></tr>
 <tr class="separator:a78119cf006ac64137b8c29223ab77885 inherit pub_static_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbcb61f031cfc4808d150b076f6aa63d inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbcb61f031cfc4808d150b076f6aa63d"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>insertSelection</b> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *node, std::shared_ptr&lt; <a class="el" href="class_selection.html">Selection</a> &gt; &amp;selection)</td></tr>
+<tr class="memitem:adbcb61f031cfc4808d150b076f6aa63d inherit pub_static_methods_class_algebra_visitor"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_algebra_visitor.html#adbcb61f031cfc4808d150b076f6aa63d">insertSelection</a> (<a class="el" href="class_algebra_node_base.html">AlgebraNodeBase</a> *node, std::shared_ptr&lt; <a class="el" href="class_selection.html">Selection</a> &gt; &amp;selection)</td></tr>
 <tr class="separator:adbcb61f031cfc4808d150b076f6aa63d inherit pub_static_methods_class_algebra_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This visitor is checking:</p><ul>
+<li>if all the requested columns exists</li>
+<li>if the columns are not declared multiple times. Then if error is reported, compilation cannot continue. It also gives columns unique identifier, so other vistors don't have to work with string names. </li>
+</ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a35a20bf073bd1fdf1de937db47b9f4c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SemanticChecker::SemanticChecker </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_semantic_checker.html">SemanticChecker</a>. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a31d420801c78aaf317a4b0094f9da3df"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::checkJoinOutPutParameters </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>outputColumns0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>outputColumns1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>node</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Checks join condition and output columns and reports semantic errors. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outputColumns0,output</td><td>columns from first join input </td></tr>
+    <tr><td class="paramname">outputColumns1,output</td><td>columns from second join input </td></tr>
+    <tr><td class="paramname">node</td><td>- node join or antijoin node </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7bfc82245e0af345db051ab8faea502e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SemanticChecker::nextId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generates new unique column identifier. </p><dl class="section return"><dt>Returns</dt><dd>new unique identifier </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aed141e3f22e681c74355fb3b84deb2d4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitAntiJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_anti_join.html">AntiJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_anti_join.html">AntiJoin</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_anti_join.html">AntiJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#add62415db5f188e572cef1c36faa842e">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5bd2ca32010822a95a6ef0a78190fc91"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitColumnOperations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_column_operations.html">ColumnOperations</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_column_operations.html">ColumnOperations</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_column_operations.html">ColumnOperations</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#a1109510d982a8e5b90fc56d443109ef9">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8dfc703b185f05a0f57749e1eb3c0a56"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitGroup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_group.html">Group</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_group.html">Group</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_group.html">Group</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#af77bf2aaa949ea27cf992053c43a391b">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a44c4c5cf8cde9785a2a11f446d8fb90a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitGroupedJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_grouped_join.html">GroupedJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_grouped_join.html">GroupedJoin</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_grouped_join.html">GroupedJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#ae92c2f0a465dacc4f42a71e879346c94">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a047de398ed6fab98a4ec6c1db533a66e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_join.html">Join</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_join.html">Join</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_join.html">Join</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#a841875539a07c979b912ef44455b873c">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac2825bf63bbda696b461166f915bacfe"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitSelection </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_selection.html">Selection</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_selection.html">Selection</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_selection.html">Selection</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#a7d9b0618ac2fdd036abdab27cbb83d40">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7cbd8a1c92f544a282de4b741d1e19e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitSort </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sort.html">Sort</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_sort.html">Sort</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_sort.html">Sort</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#ac350bf44664ce021c0cfec18258a14e8">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a915d3f58ab60a0e6ba6f248e3c81f0c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitTable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_table.html">Table</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_table.html">Table</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_table.html">Table</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#ac14f3c3c195373e3bae5d01d04f1ea09">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a120a86891155bd0296b9f3e878462bc6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SemanticChecker::visitUnion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_union.html">Union</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits <a class="el" href="class_union.html">Union</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_union.html">Union</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_algebra_visitor.html#a681732083691701f0e9c10980392dd3c">AlgebraVisitor</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a3683f9e8bd069bf8b76c42ea6ff11b96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool SemanticChecker::containsErrors</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Indicates if semantic checker has found any errors. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_algebra_visitors_8h_source.html">AlgebraVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/SemanticChecker.cpp</li>
@@ -182,7 +545,7 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><b>insertSelectio
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 9 2014 01:42:29 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 10 2014 01:20:35 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

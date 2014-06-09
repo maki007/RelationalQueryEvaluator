@@ -142,68 +142,552 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>writeEquiJoinP
 <tr class="memitem:a30e0f62016ad2037261b8daa69752d5f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30e0f62016ad2037261b8daa69752d5f"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>writeMergeEquiJoinParameters</b> (const std::vector&lt; <a class="el" href="class_sort_parameter.html">SortParameter</a> &gt; &amp;left, const std::vector&lt; <a class="el" href="class_sort_parameter.html">SortParameter</a> &gt; &amp;right, <a class="el" href="class_binary_physical_operator.html">BinaryPhysicalOperator</a> *node)</td></tr>
 <tr class="separator:a30e0f62016ad2037261b8daa69752d5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a443e89add4155e51b2d7d1973afb3af5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a443e89add4155e51b2d7d1973afb3af5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitFilter</b> (<a class="el" href="class_filter.html">Filter</a> *node)</td></tr>
+<tr class="memitem:a443e89add4155e51b2d7d1973afb3af5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a443e89add4155e51b2d7d1973afb3af5">visitFilter</a> (<a class="el" href="class_filter.html">Filter</a> *node)</td></tr>
 <tr class="separator:a443e89add4155e51b2d7d1973afb3af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a041f79a1705915af0d45e623ad7a18ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a041f79a1705915af0d45e623ad7a18ac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitFilterKeepingOrder</b> (<a class="el" href="class_filter_keeping_order.html">FilterKeepingOrder</a> *node)</td></tr>
+<tr class="memitem:a041f79a1705915af0d45e623ad7a18ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a041f79a1705915af0d45e623ad7a18ac">visitFilterKeepingOrder</a> (<a class="el" href="class_filter_keeping_order.html">FilterKeepingOrder</a> *node)</td></tr>
 <tr class="separator:a041f79a1705915af0d45e623ad7a18ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac482fb6eae4e0bcb957bad6c572a2c03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac482fb6eae4e0bcb957bad6c572a2c03"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitSortOperator</b> (<a class="el" href="class_sort_operator.html">SortOperator</a> *node)</td></tr>
+<tr class="memitem:ac482fb6eae4e0bcb957bad6c572a2c03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#ac482fb6eae4e0bcb957bad6c572a2c03">visitSortOperator</a> (<a class="el" href="class_sort_operator.html">SortOperator</a> *node)</td></tr>
 <tr class="separator:ac482fb6eae4e0bcb957bad6c572a2c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac66108bf441456b57aded81ac17b111b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac66108bf441456b57aded81ac17b111b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitMergeEquiJoin</b> (<a class="el" href="class_merge_equi_join.html">MergeEquiJoin</a> *node)</td></tr>
+<tr class="memitem:ac66108bf441456b57aded81ac17b111b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#ac66108bf441456b57aded81ac17b111b">visitMergeEquiJoin</a> (<a class="el" href="class_merge_equi_join.html">MergeEquiJoin</a> *node)</td></tr>
 <tr class="separator:ac66108bf441456b57aded81ac17b111b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75a1a20aecd434d712dff1867bf5ec37"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75a1a20aecd434d712dff1867bf5ec37"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitMergeNonEquiJoin</b> (<a class="el" href="class_merge_non_equi_join.html">MergeNonEquiJoin</a> *node)</td></tr>
+<tr class="memitem:a75a1a20aecd434d712dff1867bf5ec37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a75a1a20aecd434d712dff1867bf5ec37">visitMergeNonEquiJoin</a> (<a class="el" href="class_merge_non_equi_join.html">MergeNonEquiJoin</a> *node)</td></tr>
 <tr class="separator:a75a1a20aecd434d712dff1867bf5ec37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a882ad63c59098b1bca68fca5d36b8871"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a882ad63c59098b1bca68fca5d36b8871"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitCrossJoin</b> (<a class="el" href="class_cross_join.html">CrossJoin</a> *node)</td></tr>
+<tr class="memitem:a882ad63c59098b1bca68fca5d36b8871"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a882ad63c59098b1bca68fca5d36b8871">visitCrossJoin</a> (<a class="el" href="class_cross_join.html">CrossJoin</a> *node)</td></tr>
 <tr class="separator:a882ad63c59098b1bca68fca5d36b8871"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5616d43abbe0666c854342af2d3aec94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5616d43abbe0666c854342af2d3aec94"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitHashJoin</b> (<a class="el" href="class_hash_join.html">HashJoin</a> *node)</td></tr>
+<tr class="memitem:a5616d43abbe0666c854342af2d3aec94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a5616d43abbe0666c854342af2d3aec94">visitHashJoin</a> (<a class="el" href="class_hash_join.html">HashJoin</a> *node)</td></tr>
 <tr class="separator:a5616d43abbe0666c854342af2d3aec94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ed46af47fc5c7fb7af2b6b5b2483ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01ed46af47fc5c7fb7af2b6b5b2483ba"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitHashAntiJoin</b> (<a class="el" href="class_hash_anti_join.html">HashAntiJoin</a> *node)</td></tr>
+<tr class="memitem:a01ed46af47fc5c7fb7af2b6b5b2483ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a01ed46af47fc5c7fb7af2b6b5b2483ba">visitHashAntiJoin</a> (<a class="el" href="class_hash_anti_join.html">HashAntiJoin</a> *node)</td></tr>
 <tr class="separator:a01ed46af47fc5c7fb7af2b6b5b2483ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0346b44be20be9fb68d95029908808f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0346b44be20be9fb68d95029908808f6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitMergeAntiJoin</b> (<a class="el" href="class_merge_anti_join.html">MergeAntiJoin</a> *node)</td></tr>
+<tr class="memitem:a0346b44be20be9fb68d95029908808f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a0346b44be20be9fb68d95029908808f6">visitMergeAntiJoin</a> (<a class="el" href="class_merge_anti_join.html">MergeAntiJoin</a> *node)</td></tr>
 <tr class="separator:a0346b44be20be9fb68d95029908808f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87c2ddbe5d05b7dcc30c9d61d540d1f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a87c2ddbe5d05b7dcc30c9d61d540d1f5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitUnionOperator</b> (<a class="el" href="class_union_operator.html">UnionOperator</a> *node)</td></tr>
+<tr class="memitem:a87c2ddbe5d05b7dcc30c9d61d540d1f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a87c2ddbe5d05b7dcc30c9d61d540d1f5">visitUnionOperator</a> (<a class="el" href="class_union_operator.html">UnionOperator</a> *node)</td></tr>
 <tr class="separator:a87c2ddbe5d05b7dcc30c9d61d540d1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e114b9a6e5bf08a691a9197f03efe9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1e114b9a6e5bf08a691a9197f03efe9d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitHashGroup</b> (<a class="el" href="class_hash_group.html">HashGroup</a> *node)</td></tr>
+<tr class="memitem:a1e114b9a6e5bf08a691a9197f03efe9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a1e114b9a6e5bf08a691a9197f03efe9d">visitHashGroup</a> (<a class="el" href="class_hash_group.html">HashGroup</a> *node)</td></tr>
 <tr class="separator:a1e114b9a6e5bf08a691a9197f03efe9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78d8526758ffeb3b335b8fc4a8a2defb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78d8526758ffeb3b335b8fc4a8a2defb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitSortedGroup</b> (<a class="el" href="class_sorted_group.html">SortedGroup</a> *node)</td></tr>
+<tr class="memitem:a78d8526758ffeb3b335b8fc4a8a2defb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a78d8526758ffeb3b335b8fc4a8a2defb">visitSortedGroup</a> (<a class="el" href="class_sorted_group.html">SortedGroup</a> *node)</td></tr>
 <tr class="separator:a78d8526758ffeb3b335b8fc4a8a2defb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe09e3f584a43ff5e06947918cf16a46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afe09e3f584a43ff5e06947918cf16a46"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitColumnsOperationsOperator</b> (<a class="el" href="class_columns_operations_operator.html">ColumnsOperationsOperator</a> *node)</td></tr>
+<tr class="memitem:afe09e3f584a43ff5e06947918cf16a46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#afe09e3f584a43ff5e06947918cf16a46">visitColumnsOperationsOperator</a> (<a class="el" href="class_columns_operations_operator.html">ColumnsOperationsOperator</a> *node)</td></tr>
 <tr class="separator:afe09e3f584a43ff5e06947918cf16a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09cbea340b85723f8e66e50b466d6e68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09cbea340b85723f8e66e50b466d6e68"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitScanAndSortByIndex</b> (<a class="el" href="class_scan_and_sort_by_index.html">ScanAndSortByIndex</a> *node)</td></tr>
+<tr class="memitem:a09cbea340b85723f8e66e50b466d6e68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#a09cbea340b85723f8e66e50b466d6e68">visitScanAndSortByIndex</a> (<a class="el" href="class_scan_and_sort_by_index.html">ScanAndSortByIndex</a> *node)</td></tr>
 <tr class="separator:a09cbea340b85723f8e66e50b466d6e68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8d995c39b2364625c1c10b6d7636b23"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa8d995c39b2364625c1c10b6d7636b23"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitTableScan</b> (<a class="el" href="class_table_scan.html">TableScan</a> *node)</td></tr>
+<tr class="memitem:aa8d995c39b2364625c1c10b6d7636b23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#aa8d995c39b2364625c1c10b6d7636b23">visitTableScan</a> (<a class="el" href="class_table_scan.html">TableScan</a> *node)</td></tr>
 <tr class="separator:aa8d995c39b2364625c1c10b6d7636b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae042371767ff5d9296468da8037efa0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae042371767ff5d9296468da8037efa0f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>visitIndexScan</b> (<a class="el" href="class_index_scan.html">IndexScan</a> *node)</td></tr>
+<tr class="memitem:ae042371767ff5d9296468da8037efa0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_plan_writing_physical_operator_visitor.html#ae042371767ff5d9296468da8037efa0f">visitIndexScan</a> (<a class="el" href="class_index_scan.html">IndexScan</a> *node)</td></tr>
 <tr class="separator:ae042371767ff5d9296468da8037efa0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_physical_operator_visitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_physical_operator_visitor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a></td></tr>
-<tr class="memitem:ade4ed0dbaeb788b5d6dda5aa067ae0b2 inherit pub_methods_class_physical_operator_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade4ed0dbaeb788b5d6dda5aa067ae0b2"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitPhysicalOperator</b> (<a class="el" href="class_physical_operator.html">PhysicalOperator</a> *node)</td></tr>
-<tr class="separator:ade4ed0dbaeb788b5d6dda5aa067ae0b2 inherit pub_methods_class_physical_operator_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03d012d93fa1e96bb95b557bfe0b8d0d inherit pub_methods_class_physical_operator_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03d012d93fa1e96bb95b557bfe0b8d0d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitNullaryPhysicalOperator</b> (<a class="el" href="class_nullary_physical_operator.html">NullaryPhysicalOperator</a> *node)</td></tr>
-<tr class="separator:a03d012d93fa1e96bb95b557bfe0b8d0d inherit pub_methods_class_physical_operator_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e7270113ed6048b7718dd946ec00ea0 inherit pub_methods_class_physical_operator_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e7270113ed6048b7718dd946ec00ea0"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitUnaryPhysicalOperator</b> (<a class="el" href="class_unary_physical_operator.html">UnaryPhysicalOperator</a> *node)</td></tr>
-<tr class="separator:a9e7270113ed6048b7718dd946ec00ea0 inherit pub_methods_class_physical_operator_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19de8665b918063e1be43304aa2286e9 inherit pub_methods_class_physical_operator_visitor"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19de8665b918063e1be43304aa2286e9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitBinaryPhysicalOperator</b> (<a class="el" href="class_binary_physical_operator.html">BinaryPhysicalOperator</a> *node)</td></tr>
-<tr class="separator:a19de8665b918063e1be43304aa2286e9 inherit pub_methods_class_physical_operator_visitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="afe09e3f584a43ff5e06947918cf16a46"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitColumnsOperationsOperator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_columns_operations_operator.html">ColumnsOperationsOperator</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_columns_operations_operator.html">ColumnsOperationsOperator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_columns_operations_operator.html">ColumnsOperationsOperator</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a8c3a41665c8f7ce941532ad9d2052a14">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a882ad63c59098b1bca68fca5d36b8871"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitCrossJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_cross_join.html">CrossJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_cross_join.html">CrossJoin</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_cross_join.html">CrossJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a897e543962a692f2725ff7742efae056">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a443e89add4155e51b2d7d1973afb3af5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitFilter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_filter.html">Filter</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_filter.html">Filter</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_filter.html">Filter</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a30731ff26547314b268e1166f10e57ee">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a041f79a1705915af0d45e623ad7a18ac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitFilterKeepingOrder </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_filter_keeping_order.html">FilterKeepingOrder</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_filter_keeping_order.html">FilterKeepingOrder</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_filter_keeping_order.html">FilterKeepingOrder</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a87aa256f7633364ab8fea61a4a20dd19">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a01ed46af47fc5c7fb7af2b6b5b2483ba"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitHashAntiJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_hash_anti_join.html">HashAntiJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_hash_anti_join.html">HashAntiJoin</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_hash_anti_join.html">HashAntiJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#af1ce499e2c6db52ed03c3e5f57d144d3">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1e114b9a6e5bf08a691a9197f03efe9d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitHashGroup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_hash_group.html">HashGroup</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_hash_group.html">HashGroup</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_hash_group.html">HashGroup</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#aa5591d034ce34887c813affc48b7a19c">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5616d43abbe0666c854342af2d3aec94"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_hash_join.html">HashJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_hash_join.html">HashJoin</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_hash_join.html">HashJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#aedb5da87c0637ad8097b7c2eb129129e">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae042371767ff5d9296468da8037efa0f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitIndexScan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_index_scan.html">IndexScan</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_index_scan.html">IndexScan</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_index_scan.html">IndexScan</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#ae32578d3229a00be39229a86b575c599">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0346b44be20be9fb68d95029908808f6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeAntiJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_merge_anti_join.html">MergeAntiJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_merge_anti_join.html">MergeAntiJoin</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_merge_anti_join.html">MergeAntiJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a3d44b3e23abc47c8c0c56938c12ed98a">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac66108bf441456b57aded81ac17b111b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeEquiJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_merge_equi_join.html">MergeEquiJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_merge_equi_join.html">MergeEquiJoin</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_merge_equi_join.html">MergeEquiJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a4a90fb4cad8fe3ab4877f6ee6f43e1e5">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a75a1a20aecd434d712dff1867bf5ec37"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeNonEquiJoin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_merge_non_equi_join.html">MergeNonEquiJoin</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_merge_non_equi_join.html">MergeNonEquiJoin</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_merge_non_equi_join.html">MergeNonEquiJoin</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a9f8bd69369f2fff2bbc74b7aadceaab5">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a09cbea340b85723f8e66e50b466d6e68"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitScanAndSortByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_scan_and_sort_by_index.html">ScanAndSortByIndex</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_scan_and_sort_by_index.html">ScanAndSortByIndex</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_scan_and_sort_by_index.html">ScanAndSortByIndex</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#ad5551e62c8b00b676577ac6b046be696">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a78d8526758ffeb3b335b8fc4a8a2defb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitSortedGroup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sorted_group.html">SortedGroup</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_sorted_group.html">SortedGroup</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_sorted_group.html">SortedGroup</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a3a3499a62341acf3e49f34ee02a8ed61">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac482fb6eae4e0bcb957bad6c572a2c03"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitSortOperator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_sort_operator.html">SortOperator</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_sort_operator.html">SortOperator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_sort_operator.html">SortOperator</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#ae5f81c64ca3acfa04737fc6655d72767">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8d995c39b2364625c1c10b6d7636b23"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitTableScan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_table_scan.html">TableScan</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_table_scan.html">TableScan</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_table_scan.html">TableScan</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#a62063b4a4740e730ef7f6728dd926d52">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a87c2ddbe5d05b7dcc30c9d61d540d1f5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void BoboxPlanWritingPhysicalOperatorVisitor::visitUnionOperator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_union_operator.html">UnionOperator</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Visits physical operator <a class="el" href="class_union_operator.html">UnionOperator</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>visited <a class="el" href="class_union_operator.html">UnionOperator</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_physical_operator_visitor.html#adbb3e6618904bc7e6d0b6aa3958132e9">PhysicalOperatorVisitor</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_physical_operator_visitor_8h_source.html">PhysicalOperatorVisitor.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/BoboxOutput.cpp</li>
@@ -211,7 +695,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>visitBinaryPh
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 9 2014 01:42:13 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 10 2014 01:20:22 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
