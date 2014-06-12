@@ -166,7 +166,7 @@ class Column : public Expression
 public:
 	ColumnIdentifier column; /**< Identifies column with name and unique id. */
 	std::string type; /**< Type of the values stored in the column. */
-	ulong input; /**< This field is only used in joins antijoins and groupjoins for identifing which child columns belong. */
+	ulong input; /**< This field is used for identifing, which child, columns belong. */
 	
 	/**
 	* Creates new instance of Column.

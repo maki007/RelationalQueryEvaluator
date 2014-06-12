@@ -1,6 +1,10 @@
 \hypertarget{class_cloning_expression_visitor}{\section{Cloning\+Expression\+Visitor Class Reference}
 \label{class_cloning_expression_visitor}\index{Cloning\+Expression\+Visitor@{Cloning\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Cloning\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,10 +29,12 @@ void \hyperlink{class_cloning_expression_visitor_af5bd6b26028188a7a582a2236342e3
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_cloning_expression_visitor_aa23b5af5203ff9b14ee556a527173ad3}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries result}}\label{class_cloning_expression_visitor_aa23b5af5203ff9b14ee556a527173ad3}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_cloning_expression_visitor_aa23b5af5203ff9b14ee556a527173ad3}{result}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Visitor maked a copy from visited tree. All nodes are copied. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_cloning_expression_visitor_a6a7ba77a1e2b18837d5968d8c9c6e1bc}{\index{Cloning\+Expression\+Visitor@{Cloning\+Expression\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
@@ -128,6 +134,12 @@ Visits \hyperlink{class_unary_expression}{Unary\+Expression} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a9750397f5588263509a28ca9f17e8bc4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_cloning_expression_visitor_aa23b5af5203ff9b14ee556a527173ad3}{\index{Cloning\+Expression\+Visitor@{Cloning\+Expression\+Visitor}!result@{result}}
+\index{result@{result}!Cloning\+Expression\+Visitor@{Cloning\+Expression\+Visitor}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Cloning\+Expression\+Visitor\+::result}}\label{class_cloning_expression_visitor_aa23b5af5203ff9b14ee556a527173ad3}
+For storing cloned expressoin 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

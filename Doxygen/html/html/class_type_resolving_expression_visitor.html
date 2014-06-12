@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TypeResolvingExpressionVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TypeResolvingExpressionVisitor:</div>
 <div class="dyncontent">
@@ -116,11 +118,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0dee132681e536fb683694a3e7c54e32"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0dee132681e536fb683694a3e7c54e32"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>resultType</b></td></tr>
+<tr class="memitem:a0dee132681e536fb683694a3e7c54e32"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_type_resolving_expression_visitor.html#a0dee132681e536fb683694a3e7c54e32">resultType</a></td></tr>
 <tr class="separator:a0dee132681e536fb683694a3e7c54e32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Visitor make simple type analysis. It assumes that all types are correct and after expression visit, there will be stored type of whole expression in variable resultType. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a6f4aca2ea71660065b44815b2a7e6bd8"></a>
 <div class="memitem">
 <div class="memproto">
@@ -313,6 +316,20 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>resultType</b>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a0dee132681e536fb683694a3e7c54e32"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string TypeResolvingExpressionVisitor::resultType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Visited expression type. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/ExpressionVisitors.cpp</li>
@@ -320,7 +337,7 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>resultType</b>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 16:25:20 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 19:57:56 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

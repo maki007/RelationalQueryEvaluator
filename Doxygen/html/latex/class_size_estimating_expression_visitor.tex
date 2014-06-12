@@ -1,6 +1,10 @@
 \hypertarget{class_size_estimating_expression_visitor}{\section{Size\+Estimating\+Expression\+Visitor Class Reference}
 \label{class_size_estimating_expression_visitor}\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Size\+Estimating\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,8 +14,7 @@ Inheritance diagram for Size\+Estimating\+Expression\+Visitor\+:\begin{figure}[H
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_size_estimating_expression_visitor_a161843e94155226df99a16ab2227a024}{{\bfseries Size\+Estimating\+Expression\+Visitor} (const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$columns)}\label{class_size_estimating_expression_visitor_a161843e94155226df99a16ab2227a024}
-
+\hyperlink{class_size_estimating_expression_visitor_a161843e94155226df99a16ab2227a024}{Size\+Estimating\+Expression\+Visitor} (const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$\hyperlink{class_size_estimating_expression_visitor_ac3830138167760ff403ad52bd606a560}{columns})
 \item 
 void \hyperlink{class_size_estimating_expression_visitor_a6cbd26f2d5997577bd7f18d68f1cf866}{visit\+Unary\+Expression} (\hyperlink{class_unary_expression}{Unary\+Expression} $\ast$expression)
 \item 
@@ -24,12 +27,28 @@ void \hyperlink{class_size_estimating_expression_visitor_a8015f22031b44cbe54579f
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_size_estimating_expression_visitor_ac3830138167760ff403ad52bd606a560}{const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$ {\bfseries columns}}\label{class_size_estimating_expression_visitor_ac3830138167760ff403ad52bd606a560}
-
+const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$ \hyperlink{class_size_estimating_expression_visitor_ac3830138167760ff403ad52bd606a560}{columns}
 \item 
-\hypertarget{class_size_estimating_expression_visitor_a882681f529d9c9cb182ad76a1734921e}{double {\bfseries size}}\label{class_size_estimating_expression_visitor_a882681f529d9c9cb182ad76a1734921e}
-
+double \hyperlink{class_size_estimating_expression_visitor_a882681f529d9c9cb182ad76a1734921e}{size}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor coputes new size of relation after applying current condition. Estimation is made based on number of unique values in columns. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_size_estimating_expression_visitor_a161843e94155226df99a16ab2227a024}{\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\subsubsection[{Size\+Estimating\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Size\+Estimating\+Expression\+Visitor\+::\+Size\+Estimating\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{const std\+::map$<$ int, {\bf Column\+Info} $>$ $\ast$}]{columns}
+\end{DoxyParamCaption}
+)}}\label{class_size_estimating_expression_visitor_a161843e94155226df99a16ab2227a024}
+Creates new instance of \hyperlink{class_size_estimating_expression_visitor}{Size\+Estimating\+Expression\+Visitor} 
+\begin{DoxyParams}{Parameters}
+{\em columns} & -\/ columns, which are used in visited expression. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -98,6 +117,15 @@ Visits \hyperlink{class_unary_expression}{Unary\+Expression} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a9750397f5588263509a28ca9f17e8bc4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_size_estimating_expression_visitor_ac3830138167760ff403ad52bd606a560}{\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!columns@{columns}}
+\index{columns@{columns}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::map$<$int, {\bf Column\+Info}$>$$\ast$ Size\+Estimating\+Expression\+Visitor\+::columns}}\label{class_size_estimating_expression_visitor_ac3830138167760ff403ad52bd606a560}
+Map of columns in this expression. Key is unique column identifier. \hypertarget{class_size_estimating_expression_visitor_a882681f529d9c9cb182ad76a1734921e}{\index{Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}!size@{size}}
+\index{size@{size}!Size\+Estimating\+Expression\+Visitor@{Size\+Estimating\+Expression\+Visitor}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}double Size\+Estimating\+Expression\+Visitor\+::size}}\label{class_size_estimating_expression_visitor_a882681f529d9c9cb182ad76a1734921e}
+Relative size of relation. In constructor it is set to 1. After visit of expression it is a fraction representing relative size of relation. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,6 +1,10 @@
 \hypertarget{class_writing_expression_visitor}{\section{Writing\+Expression\+Visitor Class Reference}
 \label{class_writing_expression_visitor}\index{Writing\+Expression\+Visitor@{Writing\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Writing\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,10 +29,12 @@ void \hyperlink{class_writing_expression_visitor_adcd079cbe5995822236c5b9fdb4b05
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_writing_expression_visitor_a2aa14a9c85538776cf147ed5ff6a27e9}{std\+::string {\bfseries result}}\label{class_writing_expression_visitor_a2aa14a9c85538776cf147ed5ff6a27e9}
-
+std\+::string \hyperlink{class_writing_expression_visitor_a2aa14a9c85538776cf147ed5ff6a27e9}{result}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Writes expression tree into string. \hyperlink{class_expression}{Expression} is written in infix. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_writing_expression_visitor_ad6302b69c3d050b280d10449eb90ee47}{\index{Writing\+Expression\+Visitor@{Writing\+Expression\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
@@ -128,6 +134,12 @@ Visits \hyperlink{class_unary_expression}{Unary\+Expression} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a9750397f5588263509a28ca9f17e8bc4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_writing_expression_visitor_a2aa14a9c85538776cf147ed5ff6a27e9}{\index{Writing\+Expression\+Visitor@{Writing\+Expression\+Visitor}!result@{result}}
+\index{result@{result}!Writing\+Expression\+Visitor@{Writing\+Expression\+Visitor}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Writing\+Expression\+Visitor\+::result}}\label{class_writing_expression_visitor_a2aa14a9c85538776cf147ed5ff6a27e9}
+Stores tree infix representation. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

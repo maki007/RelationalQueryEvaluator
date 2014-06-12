@@ -1,6 +1,10 @@
 \hypertarget{class_grouping_expression_visitor}{\section{Grouping\+Expression\+Visitor Class Reference}
 \label{class_grouping_expression_visitor}\index{Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Grouping\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,17 +14,33 @@ Inheritance diagram for Grouping\+Expression\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_grouping_expression_visitor_a237e5aaa25294095a1b3c14c4ef64794}{{\bfseries Grouping\+Expression\+Visitor} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $\ast$x)}\label{class_grouping_expression_visitor_a237e5aaa25294095a1b3c14c4ef64794}
-
+\hyperlink{class_grouping_expression_visitor_a237e5aaa25294095a1b3c14c4ef64794}{Grouping\+Expression\+Visitor} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $\ast$x)
 \item 
 void \hyperlink{class_grouping_expression_visitor_aba30832e7f966be15e50b17d68badbb1}{visit\+Binary\+Expression} (\hyperlink{class_binary_expression}{Binary\+Expression} $\ast$expression)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_grouping_expression_visitor_a493ef343ca18357dca158d83085b5ab4}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $\ast$ {\bfseries root}}\label{class_grouping_expression_visitor_a493ef343ca18357dca158d83085b5ab4}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ $\ast$ \hyperlink{class_grouping_expression_visitor_a493ef343ca18357dca158d83085b5ab4}{root}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This visitor merges all neighbouring A\+N\+D and O\+R binary expression into Grouped expression. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_grouping_expression_visitor_a237e5aaa25294095a1b3c14c4ef64794}{\index{Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}!Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}}
+\index{Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}!Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}}
+\subsubsection[{Grouping\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Grouping\+Expression\+Visitor\+::\+Grouping\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ $\ast$}]{x}
+\end{DoxyParamCaption}
+)}}\label{class_grouping_expression_visitor_a237e5aaa25294095a1b3c14c4ef64794}
+Creates new instance of \hyperlink{class_grouping_expression_visitor}{Grouping\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em x} & -\/ root of visited expression tree. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -41,6 +61,12 @@ Visits \hyperlink{class_binary_expression}{Binary\+Expression} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_aebbbbe9a1cecabe4c4804bf1ef82a9f9}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_grouping_expression_visitor_a493ef343ca18357dca158d83085b5ab4}{\index{Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}!root@{root}}
+\index{root@{root}!Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$$\ast$ Grouping\+Expression\+Visitor\+::root}}\label{class_grouping_expression_visitor_a493ef343ca18357dca158d83085b5ab4}
+Root of expression tree. If the root is changed it root has to be rewritten. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

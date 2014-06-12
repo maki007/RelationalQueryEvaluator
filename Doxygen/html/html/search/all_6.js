@@ -9,6 +9,6 @@ var searchData=
   ['groupedalgebranode',['GroupedAlgebraNode',['../class_grouped_algebra_node.html',1,'']]],
   ['groupedexpression',['GroupedExpression',['../class_grouped_expression.html',1,'GroupedExpression'],['../class_grouped_expression.html#a7949fd699c0711a9fcad09504193ebf2',1,'GroupedExpression::GroupedExpression()'],['../class_grouped_expression.html#a986d27a72d99ad866ad0d24241795a80',1,'GroupedExpression::GroupedExpression(GroupedOperator operation, const std::vector&lt; std::shared_ptr&lt; Expression &gt;&gt; &amp;children)']]],
   ['groupedjoin',['GroupedJoin',['../class_grouped_join.html',1,'']]],
-  ['groupingexpressionvisitor',['GroupingExpressionVisitor',['../class_grouping_expression_visitor.html',1,'']]],
+  ['groupingexpressionvisitor',['GroupingExpressionVisitor',['../class_grouping_expression_visitor.html',1,'GroupingExpressionVisitor'],['../class_grouping_expression_visitor.html#a237e5aaa25294095a1b3c14c4ef64794',1,'GroupingExpressionVisitor::GroupingExpressionVisitor()']]],
   ['groupingvisitor',['GroupingVisitor',['../class_grouping_visitor.html',1,'GroupingVisitor'],['../class_grouping_visitor.html#adc7a72ec400998ac4dcaacf5c85fb86c',1,'GroupingVisitor::GroupingVisitor()']]]
 ];

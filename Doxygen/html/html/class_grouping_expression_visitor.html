@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">GroupingExpressionVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GroupingExpressionVisitor:</div>
 <div class="dyncontent">
@@ -101,8 +103,7 @@ Inheritance diagram for GroupingExpressionVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a237e5aaa25294095a1b3c14c4ef64794"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a237e5aaa25294095a1b3c14c4ef64794"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GroupingExpressionVisitor</b> (std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; *x)</td></tr>
+<tr class="memitem:a237e5aaa25294095a1b3c14c4ef64794"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grouping_expression_visitor.html#a237e5aaa25294095a1b3c14c4ef64794">GroupingExpressionVisitor</a> (std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; *x)</td></tr>
 <tr class="separator:a237e5aaa25294095a1b3c14c4ef64794"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba30832e7f966be15e50b17d68badbb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grouping_expression_visitor.html#aba30832e7f966be15e50b17d68badbb1">visitBinaryExpression</a> (<a class="el" href="class_binary_expression.html">BinaryExpression</a> *expression)</td></tr>
 <tr class="separator:aba30832e7f966be15e50b17d68badbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,10 +121,34 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a493ef343ca18357dca158d83085b5ab4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a493ef343ca18357dca158d83085b5ab4"></a>
-std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>root</b></td></tr>
+<tr class="memitem:a493ef343ca18357dca158d83085b5ab4"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_grouping_expression_visitor.html#a493ef343ca18357dca158d83085b5ab4">root</a></td></tr>
 <tr class="separator:a493ef343ca18357dca158d83085b5ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This visitor merges all neighbouring AND and OR binary expression into Grouped expression. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a237e5aaa25294095a1b3c14c4ef64794"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GroupingExpressionVisitor::GroupingExpressionVisitor </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_grouping_expression_visitor.html">GroupingExpressionVisitor</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>- root of visited expression tree. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aba30832e7f966be15e50b17d68badbb1"></a>
 <div class="memitem">
@@ -157,6 +182,20 @@ std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &g
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a493ef343ca18357dca158d83085b5ab4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_expression.html">Expression</a>&gt;* GroupingExpressionVisitor::root</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Root of expression tree. If the root is changed it root has to be rewritten. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/ExpressionVisitors.cpp</li>
@@ -164,7 +203,7 @@ std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &g
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 16:25:10 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 19:57:46 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

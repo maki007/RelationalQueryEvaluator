@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['parameter',['parameter',['../class_agregate_function.html#ad37427d3dee4bc5dc7a76d5997bb22fc',1,'AgregateFunction']]],
-  ['parameters',['parameters',['../class_sort.html#abc86726752639b928cd08812538a251a',1,'Sort::parameters()'],['../class_possible_sort_parameters.html#ac7cd94ff83acacceb9adee62c4228e7f',1,'PossibleSortParameters::parameters()']]],
-  ['parent',['parent',['../class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66',1,'AlgebraNodeBase::parent()'],['../class_expression.html#a36284ba467eae6aa796985ed909a6958',1,'Expression::parent()']]],
-  ['plans',['plans',['../class_join_info.html#acbddcf9cd01e91396492b94a627bdf69',1,'JoinInfo']]],
-  ['processedplans',['processedPlans',['../class_join_info.html#a584f1ea54151c8e0c506911a6595c7cb',1,'JoinInfo']]]
+  ['operation',['operation',['../class_unary_expression.html#af585b4a298cc9b170e26bdc0809c5175',1,'UnaryExpression::operation()'],['../class_binary_expression.html#ac3926bbcc2ed7bb00eca10b4d4e590d2',1,'BinaryExpression::operation()'],['../class_grouped_expression.html#a018f4f129a3b9b0be45c8ed10ff21813',1,'GroupedExpression::operation()']]],
+  ['operations',['operations',['../class_column_operations.html#a31aab19a9f8b104f772c111e920dd682',1,'ColumnOperations']]],
+  ['order',['order',['../class_sort_parameter.html#a768e8eeb0a9857820c1596ed50c0c13a',1,'SortParameter']]],
+  ['others',['others',['../class_sort_parameter.html#ad898e5ea54ea4599db663b480af94cfd',1,'SortParameter']]],
+  ['output',['output',['../class_agregate_function.html#ae78c0ff39b17f1d341f89c6660d7f448',1,'AgregateFunction::output()'],['../class_group_column.html#a512e089dfed68312aeadfcbdd1b80a21',1,'GroupColumn::output()']]],
+  ['outputcolumns',['outputColumns',['../class_algebra_node_base.html#ac59c590aea4f109c7fab18f714c588c1',1,'AlgebraNodeBase']]],
+  ['outputcolumns0',['outputColumns0',['../class_semantic_expression_visitor.html#a38fc36443e4cabad8039ac58f9934780',1,'SemanticExpressionVisitor']]],
+  ['outputcolumns1',['outputColumns1',['../class_semantic_expression_visitor.html#aca4d42fbadc6310390ccdbe65a0356fd',1,'SemanticExpressionVisitor']]],
+  ['outputjoincolumns',['outputJoinColumns',['../class_join.html#ad0fbf6166d055f84e2a1e9ec5af9824a',1,'Join::outputJoinColumns()'],['../class_anti_join.html#af033e50994f2155c9f33926ec2ecd375',1,'AntiJoin::outputJoinColumns()'],['../class_grouped_join.html#ab4e436f7abb9990000a7f2ef0596960e',1,'GroupedJoin::outputJoinColumns()']]]
 ];

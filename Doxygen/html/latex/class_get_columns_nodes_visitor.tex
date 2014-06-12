@@ -1,6 +1,10 @@
 \hypertarget{class_get_columns_nodes_visitor}{\section{Get\+Columns\+Nodes\+Visitor Class Reference}
 \label{class_get_columns_nodes_visitor}\index{Get\+Columns\+Nodes\+Visitor@{Get\+Columns\+Nodes\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Get\+Columns\+Nodes\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -15,10 +19,12 @@ void \hyperlink{class_get_columns_nodes_visitor_adcd58020e010392df2b543b6a4bbc46
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_get_columns_nodes_visitor_ac68ee0c1090596d4e25a5dc5a478533b}{std\+::vector$<$ \hyperlink{class_column}{Column} $\ast$ $>$ {\bfseries nodes}}\label{class_get_columns_nodes_visitor_ac68ee0c1090596d4e25a5dc5a478533b}
-
+std\+::vector$<$ \hyperlink{class_column}{Column} $\ast$ $>$ \hyperlink{class_get_columns_nodes_visitor_ac68ee0c1090596d4e25a5dc5a478533b}{nodes}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Visitor, which stores pointer of every column into vector. This visitor doesn't change expression tree. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_get_columns_nodes_visitor_adcd58020e010392df2b543b6a4bbc46b}{\index{Get\+Columns\+Nodes\+Visitor@{Get\+Columns\+Nodes\+Visitor}!visit\+Column@{visit\+Column}}
@@ -38,6 +44,12 @@ Visits \hyperlink{class_column}{Column} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a1ac638b82248ff9e1582dbf520dc6ae4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_get_columns_nodes_visitor_ac68ee0c1090596d4e25a5dc5a478533b}{\index{Get\+Columns\+Nodes\+Visitor@{Get\+Columns\+Nodes\+Visitor}!nodes@{nodes}}
+\index{nodes@{nodes}!Get\+Columns\+Nodes\+Visitor@{Get\+Columns\+Nodes\+Visitor}}
+\subsubsection[{nodes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column} $\ast$$>$ Get\+Columns\+Nodes\+Visitor\+::nodes}}\label{class_get_columns_nodes_visitor_ac68ee0c1090596d4e25a5dc5a478533b}
+Vector for saving column pointers. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

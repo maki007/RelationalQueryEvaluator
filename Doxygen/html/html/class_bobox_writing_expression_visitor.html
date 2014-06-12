@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">BoboxWritingExpressionVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for BoboxWritingExpressionVisitor:</div>
 <div class="dyncontent">
@@ -101,8 +103,7 @@ Inheritance diagram for BoboxWritingExpressionVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a977d27ae446d613bc90fb6e29165504b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a977d27ae446d613bc90fb6e29165504b"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>BoboxWritingExpressionVisitor</b> (std::map&lt; int, int &gt; &amp;cols)</td></tr>
+<tr class="memitem:a977d27ae446d613bc90fb6e29165504b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_writing_expression_visitor.html#a977d27ae446d613bc90fb6e29165504b">BoboxWritingExpressionVisitor</a> (std::map&lt; int, int &gt; &amp;<a class="el" href="class_bobox_writing_expression_visitor.html#a6e0d9ba1a06fd32c8d71dd8e1c068c56">cols</a>)</td></tr>
 <tr class="separator:a977d27ae446d613bc90fb6e29165504b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf4dc22d06dd87f35f577db194b69a71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_writing_expression_visitor.html#abf4dc22d06dd87f35f577db194b69a71">visitUnaryExpression</a> (<a class="el" href="class_unary_expression.html">UnaryExpression</a> *expression)</td></tr>
 <tr class="separator:abf4dc22d06dd87f35f577db194b69a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,13 +120,36 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a222842d9f796beebabc13691b107e5ad"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a222842d9f796beebabc13691b107e5ad"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>result</b></td></tr>
+<tr class="memitem:a222842d9f796beebabc13691b107e5ad"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_writing_expression_visitor.html#a222842d9f796beebabc13691b107e5ad">result</a></td></tr>
 <tr class="separator:a222842d9f796beebabc13691b107e5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e0d9ba1a06fd32c8d71dd8e1c068c56"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e0d9ba1a06fd32c8d71dd8e1c068c56"></a>
-std::map&lt; int, int &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>cols</b></td></tr>
+<tr class="memitem:a6e0d9ba1a06fd32c8d71dd8e1c068c56"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, int &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_bobox_writing_expression_visitor.html#a6e0d9ba1a06fd32c8d71dd8e1c068c56">cols</a></td></tr>
 <tr class="separator:a6e0d9ba1a06fd32c8d71dd8e1c068c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Visitor writes expression in infix for bobox output. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a977d27ae446d613bc90fb6e29165504b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BoboxWritingExpressionVisitor::BoboxWritingExpressionVisitor </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; int, int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cols</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_bobox_writing_expression_visitor.html">BoboxWritingExpressionVisitor</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cols</td><td>- structure mapping column unique identifier to number of column in processed bobox operator </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a4e7d193e7b5d361c67a0ee0b82628120"></a>
 <div class="memitem">
@@ -319,6 +343,33 @@ std::map&lt; int, int &gt; *&#160;</td><td class="memItemRight" valign="bottom">
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a6e0d9ba1a06fd32c8d71dd8e1c068c56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, int&gt;* BoboxWritingExpressionVisitor::cols</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Structure mapping column unique identifier to number of column in processed bobox operator. </p>
+
+</div>
+</div>
+<a class="anchor" id="a222842d9f796beebabc13691b107e5ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string BoboxWritingExpressionVisitor::result</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores tree infix representation. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/BoboxOutput.cpp</li>
@@ -326,7 +377,7 @@ std::map&lt; int, int &gt; *&#160;</td><td class="memItemRight" valign="bottom">
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 16:25:05 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 19:57:41 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,6 +1,10 @@
 \hypertarget{class_rename_columns_visitor}{\section{Rename\+Columns\+Visitor Class Reference}
 \label{class_rename_columns_visitor}\index{Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Rename\+Columns\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,17 +14,33 @@ Inheritance diagram for Rename\+Columns\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_rename_columns_visitor_a119cb79b414164ac4bb2adcfaf6bdcf9}{{\bfseries Rename\+Columns\+Visitor} (std\+::map$<$ int, int $>$ $\ast$pairs)}\label{class_rename_columns_visitor_a119cb79b414164ac4bb2adcfaf6bdcf9}
-
+\hyperlink{class_rename_columns_visitor_a119cb79b414164ac4bb2adcfaf6bdcf9}{Rename\+Columns\+Visitor} (std\+::map$<$ int, int $>$ $\ast$\hyperlink{class_rename_columns_visitor_a40542b4f59af34a28e298d719ca426c1}{pairs})
 \item 
 void \hyperlink{class_rename_columns_visitor_a45835dde3fa3190a803493a0e3f1e75a}{visit\+Column} (\hyperlink{class_column}{Column} $\ast$expression)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_rename_columns_visitor_a40542b4f59af34a28e298d719ca426c1}{std\+::map$<$ int, int $>$ $\ast$ {\bfseries pairs}}\label{class_rename_columns_visitor_a40542b4f59af34a28e298d719ca426c1}
-
+std\+::map$<$ int, int $>$ $\ast$ \hyperlink{class_rename_columns_visitor_a40542b4f59af34a28e298d719ca426c1}{pairs}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor changes column identifiers in \hyperlink{class_column}{Column} nodes. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_rename_columns_visitor_a119cb79b414164ac4bb2adcfaf6bdcf9}{\index{Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}!Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}}
+\index{Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}!Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}}
+\subsubsection[{Rename\+Columns\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Rename\+Columns\+Visitor\+::\+Rename\+Columns\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::map$<$ int, int $>$ $\ast$}]{pairs}
+\end{DoxyParamCaption}
+)}}\label{class_rename_columns_visitor_a119cb79b414164ac4bb2adcfaf6bdcf9}
+Creates new instance of \hyperlink{class_rename_columns_visitor}{Rename\+Columns\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em pairs} & -\/ structure mapping old column id to new id. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -41,6 +61,12 @@ Visits \hyperlink{class_column}{Column} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a1ac638b82248ff9e1582dbf520dc6ae4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_rename_columns_visitor_a40542b4f59af34a28e298d719ca426c1}{\index{Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}!pairs@{pairs}}
+\index{pairs@{pairs}!Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}}
+\subsubsection[{pairs}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, int$>$$\ast$ Rename\+Columns\+Visitor\+::pairs}}\label{class_rename_columns_visitor_a40542b4f59af34a28e298d719ca426c1}
+Structure mapping old id to new id. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['leftchild',['leftChild',['../class_binary_algebra_node_base.html#ab62ff77c5d90bd941b07a6f34e39f14b',1,'BinaryAlgebraNodeBase::leftChild()'],['../class_binary_expression.html#a2388939b40f93649cfd3c531b181025e',1,'BinaryExpression::leftChild()']]],
-  ['limit_5ffor_5fgreedy_5fjoin_5forder_5falgorithm',['LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM',['../class_algebra_compiler.html#a75bdf7e239082b0a6c8560ac5a75e72a',1,'AlgebraCompiler']]],
-  ['linenumber',['lineNumber',['../class_algebra_node_base.html#ac98b5887b911ee27411307c94db7fc94',1,'AlgebraNodeBase']]]
+  ['id',['id',['../class_column_identifier.html#ade5213e0ceeb1ba3fd948e9dc9975a53',1,'ColumnIdentifier']]],
+  ['indices',['indices',['../class_table.html#a985077d6ec6eacb7828b78b9b9bc6157',1,'Table']]],
+  ['input',['input',['../class_join_column_info.html#a6a87e51d648e21dd6806d7a1bd6191da',1,'JoinColumnInfo::input()'],['../class_group_column.html#a2bcc2e12a33f7a9b47633f2b87ebc68b',1,'GroupColumn::input()'],['../class_column.html#addd3816c69df05b9f717348dca79ee21',1,'Column::input()'],['../class_renaming_join_condition_expression_visitor.html#a8ce65701767eb8d0e6e96eeee49276ea',1,'RenamingJoinConditionExpressionVisitor::input()']]],
+  ['inputcolumns',['inputColumns',['../class_renaming_join_condition_expression_visitor.html#a8b8dceeedbf7c4d3aac3761ce3a4c302',1,'RenamingJoinConditionExpressionVisitor']]],
+  ['inputs',['inputs',['../class_condition_info.html#ab800ad40c4040827cd93acc048863213',1,'ConditionInfo']]]
 ];

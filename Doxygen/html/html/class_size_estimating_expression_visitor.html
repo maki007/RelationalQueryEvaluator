@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">SizeEstimatingExpressionVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SizeEstimatingExpressionVisitor:</div>
 <div class="dyncontent">
@@ -101,8 +103,7 @@ Inheritance diagram for SizeEstimatingExpressionVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a161843e94155226df99a16ab2227a024"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a161843e94155226df99a16ab2227a024"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SizeEstimatingExpressionVisitor</b> (const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; *columns)</td></tr>
+<tr class="memitem:a161843e94155226df99a16ab2227a024"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_size_estimating_expression_visitor.html#a161843e94155226df99a16ab2227a024">SizeEstimatingExpressionVisitor</a> (const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; *<a class="el" href="class_size_estimating_expression_visitor.html#ac3830138167760ff403ad52bd606a560">columns</a>)</td></tr>
 <tr class="separator:a161843e94155226df99a16ab2227a024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cbd26f2d5997577bd7f18d68f1cf866"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_size_estimating_expression_visitor.html#a6cbd26f2d5997577bd7f18d68f1cf866">visitUnaryExpression</a> (<a class="el" href="class_unary_expression.html">UnaryExpression</a> *expression)</td></tr>
 <tr class="separator:a6cbd26f2d5997577bd7f18d68f1cf866"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,13 +121,36 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac3830138167760ff403ad52bd606a560"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3830138167760ff403ad52bd606a560"></a>
-const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>columns</b></td></tr>
+<tr class="memitem:ac3830138167760ff403ad52bd606a560"><td class="memItemLeft" align="right" valign="top">const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_size_estimating_expression_visitor.html#ac3830138167760ff403ad52bd606a560">columns</a></td></tr>
 <tr class="separator:ac3830138167760ff403ad52bd606a560"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a882681f529d9c9cb182ad76a1734921e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a882681f529d9c9cb182ad76a1734921e"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+<tr class="memitem:a882681f529d9c9cb182ad76a1734921e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_size_estimating_expression_visitor.html#a882681f529d9c9cb182ad76a1734921e">size</a></td></tr>
 <tr class="separator:a882681f529d9c9cb182ad76a1734921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Visitor coputes new size of relation after applying current condition. Estimation is made based on number of unique values in columns. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a161843e94155226df99a16ab2227a024"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SizeEstimatingExpressionVisitor::SizeEstimatingExpressionVisitor </td>
+          <td>(</td>
+          <td class="paramtype">const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; *&#160;</td>
+          <td class="paramname"><em>columns</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_size_estimating_expression_visitor.html">SizeEstimatingExpressionVisitor</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">columns</td><td>- columns, which are used in visited expression. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a40a902ac926af0d18d976769abda5af3"></a>
 <div class="memitem">
@@ -256,6 +280,33 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ac3830138167760ff403ad52bd606a560"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::map&lt;int, <a class="el" href="class_column_info.html">ColumnInfo</a>&gt;* SizeEstimatingExpressionVisitor::columns</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Map of columns in this expression. Key is unique column identifier. </p>
+
+</div>
+</div>
+<a class="anchor" id="a882681f529d9c9cb182ad76a1734921e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SizeEstimatingExpressionVisitor::size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Relative size of relation. In constructor it is set to 1. After visit of expression it is a fraction representing relative size of relation. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/ExpressionVisitors.cpp</li>
@@ -263,7 +314,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 16:25:18 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 19:57:54 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

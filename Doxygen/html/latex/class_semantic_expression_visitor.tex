@@ -1,6 +1,10 @@
 \hypertarget{class_semantic_expression_visitor}{\section{Semantic\+Expression\+Visitor Class Reference}
 \label{class_semantic_expression_visitor}\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Semantic\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,24 +14,35 @@ Inheritance diagram for Semantic\+Expression\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{class_semantic_expression_visitor_a7b5310f2a8b97f2f370dc2a36239dcbf}{Semantic\+Expression\+Visitor} ()
+\item 
 void \hyperlink{class_semantic_expression_visitor_a5a669aa8f4ff78ca0bfd3aab0a4d11d9}{visit\+Column} (\hyperlink{class_column}{Column} $\ast$expression)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_semantic_expression_visitor_a5355c2bd3477b4d33bc7ab5443408d11}{bool {\bfseries contains\+Errors}}\label{class_semantic_expression_visitor_a5355c2bd3477b4d33bc7ab5443408d11}
-
+bool \hyperlink{class_semantic_expression_visitor_a5355c2bd3477b4d33bc7ab5443408d11}{contains\+Errors}
 \item 
-\hypertarget{class_semantic_expression_visitor_a2082ef4052d1c35fdda7bcc72c5bb132}{std\+::string {\bfseries missing\+Column}}\label{class_semantic_expression_visitor_a2082ef4052d1c35fdda7bcc72c5bb132}
-
+std\+::string \hyperlink{class_semantic_expression_visitor_a2082ef4052d1c35fdda7bcc72c5bb132}{missing\+Column}
 \item 
-\hypertarget{class_semantic_expression_visitor_a38fc36443e4cabad8039ac58f9934780}{std\+::map$<$ std\+::string, \hyperlink{class_column_info}{Column\+Info} $>$ {\bfseries output\+Columns0}}\label{class_semantic_expression_visitor_a38fc36443e4cabad8039ac58f9934780}
-
+std\+::map$<$ std\+::string, \hyperlink{class_column_info}{Column\+Info} $>$ \hyperlink{class_semantic_expression_visitor_a38fc36443e4cabad8039ac58f9934780}{output\+Columns0}
 \item 
-\hypertarget{class_semantic_expression_visitor_aca4d42fbadc6310390ccdbe65a0356fd}{std\+::map$<$ std\+::string, \hyperlink{class_column_info}{Column\+Info} $>$ {\bfseries output\+Columns1}}\label{class_semantic_expression_visitor_aca4d42fbadc6310390ccdbe65a0356fd}
-
+std\+::map$<$ std\+::string, \hyperlink{class_column_info}{Column\+Info} $>$ \hyperlink{class_semantic_expression_visitor_aca4d42fbadc6310390ccdbe65a0356fd}{output\+Columns1}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Checks if columns in expression exists. If not, it stores this information and missing column name. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_semantic_expression_visitor_a7b5310f2a8b97f2f370dc2a36239dcbf}{\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
+\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
+\subsubsection[{Semantic\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Semantic\+Expression\+Visitor\+::\+Semantic\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_semantic_expression_visitor_a7b5310f2a8b97f2f370dc2a36239dcbf}
+Creates new instance of \hyperlink{class_semantic_expression_visitor}{Semantic\+Expression\+Visitor}. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_semantic_expression_visitor_a5a669aa8f4ff78ca0bfd3aab0a4d11d9}{\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!visit\+Column@{visit\+Column}}
@@ -47,6 +62,21 @@ Visits \hyperlink{class_column}{Column} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a1ac638b82248ff9e1582dbf520dc6ae4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_semantic_expression_visitor_a5355c2bd3477b4d33bc7ab5443408d11}{\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!contains\+Errors@{contains\+Errors}}
+\index{contains\+Errors@{contains\+Errors}!Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
+\subsubsection[{contains\+Errors}]{\setlength{\rightskip}{0pt plus 5cm}bool Semantic\+Expression\+Visitor\+::contains\+Errors}}\label{class_semantic_expression_visitor_a5355c2bd3477b4d33bc7ab5443408d11}
+Idicates if visitor found an error. \hypertarget{class_semantic_expression_visitor_a2082ef4052d1c35fdda7bcc72c5bb132}{\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!missing\+Column@{missing\+Column}}
+\index{missing\+Column@{missing\+Column}!Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
+\subsubsection[{missing\+Column}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Semantic\+Expression\+Visitor\+::missing\+Column}}\label{class_semantic_expression_visitor_a2082ef4052d1c35fdda7bcc72c5bb132}
+Stores name of first missing column. \hypertarget{class_semantic_expression_visitor_a38fc36443e4cabad8039ac58f9934780}{\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!output\+Columns0@{output\+Columns0}}
+\index{output\+Columns0@{output\+Columns0}!Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
+\subsubsection[{output\+Columns0}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$std\+::string, {\bf Column\+Info}$>$ Semantic\+Expression\+Visitor\+::output\+Columns0}}\label{class_semantic_expression_visitor_a38fc36443e4cabad8039ac58f9934780}
+Stores columns, which came from first childnode. Key is column name. \hypertarget{class_semantic_expression_visitor_aca4d42fbadc6310390ccdbe65a0356fd}{\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!output\+Columns1@{output\+Columns1}}
+\index{output\+Columns1@{output\+Columns1}!Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
+\subsubsection[{output\+Columns1}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$std\+::string, {\bf Column\+Info}$>$ Semantic\+Expression\+Visitor\+::output\+Columns1}}\label{class_semantic_expression_visitor_aca4d42fbadc6310390ccdbe65a0356fd}
+Stores columns, which came from second childnode if it has one. If not it stays empty. Key is column name. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

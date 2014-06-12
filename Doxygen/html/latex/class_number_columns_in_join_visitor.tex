@@ -1,6 +1,10 @@
 \hypertarget{class_number_columns_in_join_visitor}{\section{Number\+Columns\+In\+Join\+Visitor Class Reference}
 \label{class_number_columns_in_join_visitor}\index{Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Number\+Columns\+In\+Join\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,6 +14,8 @@ Inheritance diagram for Number\+Columns\+In\+Join\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{class_number_columns_in_join_visitor_a5d09cffa1e191e46b312a3bcebc01b60}{Number\+Columns\+In\+Join\+Visitor} ()
+\item 
 void \hyperlink{class_number_columns_in_join_visitor_ac3b174509ec5ec5310ef73e47aa59694}{visit\+Column} (\hyperlink{class_column}{Column} $\ast$expression)
 \item 
 void \hyperlink{class_number_columns_in_join_visitor_a857c2d096fe87b1ac98ea50922d1c958}{visit\+Binary\+Expression} (\hyperlink{class_binary_expression}{Binary\+Expression} $\ast$expression)
@@ -17,10 +23,22 @@ void \hyperlink{class_number_columns_in_join_visitor_a857c2d096fe87b1ac98ea50922
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_number_columns_in_join_visitor_af26374a4ce48016848edd71c935f92a3}{int {\bfseries last\+Numbered\+Column}}\label{class_number_columns_in_join_visitor_af26374a4ce48016848edd71c935f92a3}
-
+int \hyperlink{class_number_columns_in_join_visitor_af26374a4ce48016848edd71c935f92a3}{last\+Numbered\+Column}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Visitor which assign inout number to every column node. It is used in join and antijoin for identifying columns. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_number_columns_in_join_visitor_a5d09cffa1e191e46b312a3bcebc01b60}{\index{Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}!Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}}
+\index{Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}!Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}}
+\subsubsection[{Number\+Columns\+In\+Join\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Number\+Columns\+In\+Join\+Visitor\+::\+Number\+Columns\+In\+Join\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_number_columns_in_join_visitor_a5d09cffa1e191e46b312a3bcebc01b60}
+Creates new instance of \hyperlink{class_number_columns_in_join_visitor}{Number\+Columns\+In\+Join\+Visitor} 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_number_columns_in_join_visitor_a857c2d096fe87b1ac98ea50922d1c958}{\index{Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
@@ -56,6 +74,12 @@ Visits \hyperlink{class_column}{Column} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a1ac638b82248ff9e1582dbf520dc6ae4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_number_columns_in_join_visitor_af26374a4ce48016848edd71c935f92a3}{\index{Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}!last\+Numbered\+Column@{last\+Numbered\+Column}}
+\index{last\+Numbered\+Column@{last\+Numbered\+Column}!Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}}
+\subsubsection[{last\+Numbered\+Column}]{\setlength{\rightskip}{0pt plus 5cm}int Number\+Columns\+In\+Join\+Visitor\+::last\+Numbered\+Column}}\label{class_number_columns_in_join_visitor_af26374a4ce48016848edd71c935f92a3}
+Contains only 0,1. Columns from left join input are numbered 0, and from right join input are numbered 1. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

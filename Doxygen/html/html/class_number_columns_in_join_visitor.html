@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">NumberColumnsInJoinVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for NumberColumnsInJoinVisitor:</div>
 <div class="dyncontent">
@@ -101,6 +103,8 @@ Inheritance diagram for NumberColumnsInJoinVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a5d09cffa1e191e46b312a3bcebc01b60"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_number_columns_in_join_visitor.html#a5d09cffa1e191e46b312a3bcebc01b60">NumberColumnsInJoinVisitor</a> ()</td></tr>
+<tr class="separator:a5d09cffa1e191e46b312a3bcebc01b60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3b174509ec5ec5310ef73e47aa59694"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_number_columns_in_join_visitor.html#ac3b174509ec5ec5310ef73e47aa59694">visitColumn</a> (<a class="el" href="class_column.html">Column</a> *expression)</td></tr>
 <tr class="separator:ac3b174509ec5ec5310ef73e47aa59694"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a857c2d096fe87b1ac98ea50922d1c958"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_number_columns_in_join_visitor.html#a857c2d096fe87b1ac98ea50922d1c958">visitBinaryExpression</a> (<a class="el" href="class_binary_expression.html">BinaryExpression</a> *expression)</td></tr>
@@ -117,10 +121,28 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:af26374a4ce48016848edd71c935f92a3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af26374a4ce48016848edd71c935f92a3"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>lastNumberedColumn</b></td></tr>
+<tr class="memitem:af26374a4ce48016848edd71c935f92a3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_number_columns_in_join_visitor.html#af26374a4ce48016848edd71c935f92a3">lastNumberedColumn</a></td></tr>
 <tr class="separator:af26374a4ce48016848edd71c935f92a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Visitor which assign inout number to every column node. It is used in join and antijoin for identifying columns. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5d09cffa1e191e46b312a3bcebc01b60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NumberColumnsInJoinVisitor::NumberColumnsInJoinVisitor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_number_columns_in_join_visitor.html">NumberColumnsInJoinVisitor</a> </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a857c2d096fe87b1ac98ea50922d1c958"></a>
 <div class="memitem">
@@ -186,6 +208,20 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastNumberedColumn</b>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af26374a4ce48016848edd71c935f92a3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NumberColumnsInJoinVisitor::lastNumberedColumn</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Contains only 0,1. Columns from left join input are numbered 0, and from right join input are numbered 1. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/ExpressionVisitors.cpp</li>
@@ -193,7 +229,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>lastNumberedColumn</b>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 16:25:14 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 19:57:50 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -1,6 +1,10 @@
 \hypertarget{class_type_resolving_expression_visitor}{\section{Type\+Resolving\+Expression\+Visitor Class Reference}
 \label{class_type_resolving_expression_visitor}\index{Type\+Resolving\+Expression\+Visitor@{Type\+Resolving\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Type\+Resolving\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,10 +29,12 @@ void \hyperlink{class_type_resolving_expression_visitor_a51d54742c7529b2e14b1e3b
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_type_resolving_expression_visitor_a0dee132681e536fb683694a3e7c54e32}{std\+::string {\bfseries result\+Type}}\label{class_type_resolving_expression_visitor_a0dee132681e536fb683694a3e7c54e32}
-
+std\+::string \hyperlink{class_type_resolving_expression_visitor_a0dee132681e536fb683694a3e7c54e32}{result\+Type}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Visitor make simple type analysis. It assumes that all types are correct and after expression visit, there will be stored type of whole expression in variable result\+Type. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_type_resolving_expression_visitor_a6f4aca2ea71660065b44815b2a7e6bd8}{\index{Type\+Resolving\+Expression\+Visitor@{Type\+Resolving\+Expression\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
@@ -128,6 +134,12 @@ Visits \hyperlink{class_unary_expression}{Unary\+Expression} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a9750397f5588263509a28ca9f17e8bc4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_type_resolving_expression_visitor_a0dee132681e536fb683694a3e7c54e32}{\index{Type\+Resolving\+Expression\+Visitor@{Type\+Resolving\+Expression\+Visitor}!result\+Type@{result\+Type}}
+\index{result\+Type@{result\+Type}!Type\+Resolving\+Expression\+Visitor@{Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{result\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Type\+Resolving\+Expression\+Visitor\+::result\+Type}}\label{class_type_resolving_expression_visitor_a0dee132681e536fb683694a3e7c54e32}
+Visited expression type. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

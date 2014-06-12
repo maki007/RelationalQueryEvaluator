@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['result',['result',['../class_column_operation.html#aab22c48d83db533c5b153136a4da6db7',1,'ColumnOperation::result()'],['../class_graph_drawing_visitor.html#a99563612519b31409a263df7b3ae2372',1,'GraphDrawingVisitor::result()'],['../class_algebra_compiler.html#acf3202bd193e4552a1d4fadb6d0b356c',1,'AlgebraCompiler::result()']]],
-  ['returntype',['returnType',['../class_nnary_expression.html#a70b8058f410ed9f52b610e74489bf03f',1,'NnaryExpression']]],
-  ['rightchild',['rightChild',['../class_binary_algebra_node_base.html#ac97784ae724c411daca8b17664ce1122',1,'BinaryAlgebraNodeBase::rightChild()'],['../class_binary_expression.html#a97803d6333b2fbe6098491136a1445af',1,'BinaryExpression::rightChild()']]]
+  ['pairs',['pairs',['../class_rename_columns_visitor.html#a40542b4f59af34a28e298d719ca426c1',1,'RenameColumnsVisitor']]],
+  ['parameter',['parameter',['../class_agregate_function.html#ad37427d3dee4bc5dc7a76d5997bb22fc',1,'AgregateFunction']]],
+  ['parameters',['parameters',['../class_sort.html#abc86726752639b928cd08812538a251a',1,'Sort::parameters()'],['../class_possible_sort_parameters.html#ac7cd94ff83acacceb9adee62c4228e7f',1,'PossibleSortParameters::parameters()']]],
+  ['parent',['parent',['../class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66',1,'AlgebraNodeBase::parent()'],['../class_expression.html#a36284ba467eae6aa796985ed909a6958',1,'Expression::parent()']]],
+  ['plans',['plans',['../class_join_info.html#acbddcf9cd01e91396492b94a627bdf69',1,'JoinInfo']]],
+  ['processedplans',['processedPlans',['../class_join_info.html#a584f1ea54151c8e0c506911a6595c7cb',1,'JoinInfo']]]
 ];

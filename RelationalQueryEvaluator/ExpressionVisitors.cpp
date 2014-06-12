@@ -455,12 +455,12 @@ void JoinInfoReadingExpressionVisitor::visitGroupedExpression(GroupedExpression 
 
 RenamingJoinConditionExpressionVisitor::RenamingJoinConditionExpressionVisitor(ulong i, std::vector<JoinColumnInfo> * inputColumns)
 {
-	n = i;
+	input = i;
 	this->inputColumns = inputColumns;
 }
 void RenamingJoinConditionExpressionVisitor::visitColumn(Column * expression)
 {
-	if (expression->input == n)
+	if (expression->input == input)
 	{
 		for (auto it = inputColumns->begin(); it != inputColumns->end(); ++it)
 		{

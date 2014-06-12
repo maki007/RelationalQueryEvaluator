@@ -5,12 +5,7 @@
 #include "Algebra.h"
 
 using namespace std;
-/*
-void Expression::accept(ExpressionVisitorBase &v)
-{
 
-}
-*/
 Expression * Expression::constructChildren(DOMElement * node)
 {
 	Expression * child = 0;

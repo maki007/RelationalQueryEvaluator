@@ -1,6 +1,10 @@
 \hypertarget{class_bobox_writing_expression_visitor}{\section{Bobox\+Writing\+Expression\+Visitor Class Reference}
 \label{class_bobox_writing_expression_visitor}\index{Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Bobox\+Writing\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,8 +14,7 @@ Inheritance diagram for Bobox\+Writing\+Expression\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_bobox_writing_expression_visitor_a977d27ae446d613bc90fb6e29165504b}{{\bfseries Bobox\+Writing\+Expression\+Visitor} (std\+::map$<$ int, int $>$ \&cols)}\label{class_bobox_writing_expression_visitor_a977d27ae446d613bc90fb6e29165504b}
-
+\hyperlink{class_bobox_writing_expression_visitor_a977d27ae446d613bc90fb6e29165504b}{Bobox\+Writing\+Expression\+Visitor} (std\+::map$<$ int, int $>$ \&\hyperlink{class_bobox_writing_expression_visitor_a6e0d9ba1a06fd32c8d71dd8e1c068c56}{cols})
 \item 
 void \hyperlink{class_bobox_writing_expression_visitor_abf4dc22d06dd87f35f577db194b69a71}{visit\+Unary\+Expression} (\hyperlink{class_unary_expression}{Unary\+Expression} $\ast$expression)
 \item 
@@ -28,12 +31,28 @@ void \hyperlink{class_bobox_writing_expression_visitor_a12180fc75d31108cf8c54251
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_bobox_writing_expression_visitor_a222842d9f796beebabc13691b107e5ad}{std\+::string {\bfseries result}}\label{class_bobox_writing_expression_visitor_a222842d9f796beebabc13691b107e5ad}
-
+std\+::string \hyperlink{class_bobox_writing_expression_visitor_a222842d9f796beebabc13691b107e5ad}{result}
 \item 
-\hypertarget{class_bobox_writing_expression_visitor_a6e0d9ba1a06fd32c8d71dd8e1c068c56}{std\+::map$<$ int, int $>$ $\ast$ {\bfseries cols}}\label{class_bobox_writing_expression_visitor_a6e0d9ba1a06fd32c8d71dd8e1c068c56}
-
+std\+::map$<$ int, int $>$ $\ast$ \hyperlink{class_bobox_writing_expression_visitor_a6e0d9ba1a06fd32c8d71dd8e1c068c56}{cols}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor writes expression in infix for bobox output. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_bobox_writing_expression_visitor_a977d27ae446d613bc90fb6e29165504b}{\index{Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}!Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}}
+\index{Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}!Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{Bobox\+Writing\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Bobox\+Writing\+Expression\+Visitor\+::\+Bobox\+Writing\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::map$<$ int, int $>$ \&}]{cols}
+\end{DoxyParamCaption}
+)}}\label{class_bobox_writing_expression_visitor_a977d27ae446d613bc90fb6e29165504b}
+Creates new instance of \hyperlink{class_bobox_writing_expression_visitor}{Bobox\+Writing\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em cols} & -\/ structure mapping column unique identifier to number of column in processed bobox operator \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -134,6 +153,15 @@ Visits \hyperlink{class_unary_expression}{Unary\+Expression} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a9750397f5588263509a28ca9f17e8bc4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_bobox_writing_expression_visitor_a6e0d9ba1a06fd32c8d71dd8e1c068c56}{\index{Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}!cols@{cols}}
+\index{cols@{cols}!Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{cols}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, int$>$$\ast$ Bobox\+Writing\+Expression\+Visitor\+::cols}}\label{class_bobox_writing_expression_visitor_a6e0d9ba1a06fd32c8d71dd8e1c068c56}
+Structure mapping column unique identifier to number of column in processed bobox operator. \hypertarget{class_bobox_writing_expression_visitor_a222842d9f796beebabc13691b107e5ad}{\index{Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}!result@{result}}
+\index{result@{result}!Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Bobox\+Writing\+Expression\+Visitor\+::result}}\label{class_bobox_writing_expression_visitor_a222842d9f796beebabc13691b107e5ad}
+Stores tree infix representation. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

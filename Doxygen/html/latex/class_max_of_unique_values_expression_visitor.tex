@@ -1,6 +1,10 @@
 \hypertarget{class_max_of_unique_values_expression_visitor}{\section{Max\+Of\+Unique\+Values\+Expression\+Visitor Class Reference}
 \label{class_max_of_unique_values_expression_visitor}\index{Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Max\+Of\+Unique\+Values\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,20 +14,35 @@ Inheritance diagram for Max\+Of\+Unique\+Values\+Expression\+Visitor\+:\begin{fi
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_max_of_unique_values_expression_visitor_adf863a6e2406f90466e4f4decab1f4e4}{{\bfseries Max\+Of\+Unique\+Values\+Expression\+Visitor} (std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$cols)}\label{class_max_of_unique_values_expression_visitor_adf863a6e2406f90466e4f4decab1f4e4}
-
+\hyperlink{class_max_of_unique_values_expression_visitor_adf863a6e2406f90466e4f4decab1f4e4}{Max\+Of\+Unique\+Values\+Expression\+Visitor} (std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$cols)
 \item 
 void \hyperlink{class_max_of_unique_values_expression_visitor_a1e924d4d6d63474f401adc0c8ba6a455}{visit\+Column} (\hyperlink{class_column}{Column} $\ast$expression)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_max_of_unique_values_expression_visitor_a4d1359a778ac14a3709c63bff3a01383}{double {\bfseries result}}\label{class_max_of_unique_values_expression_visitor_a4d1359a778ac14a3709c63bff3a01383}
-
+double \hyperlink{class_max_of_unique_values_expression_visitor_a4d1359a778ac14a3709c63bff3a01383}{result}
 \item 
-\hypertarget{class_max_of_unique_values_expression_visitor_a1f0ca5cd4e5fd0eb513fa64ea21ecae6}{std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$ {\bfseries columns}}\label{class_max_of_unique_values_expression_visitor_a1f0ca5cd4e5fd0eb513fa64ea21ecae6}
-
+std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ $\ast$ \hyperlink{class_max_of_unique_values_expression_visitor_a1f0ca5cd4e5fd0eb513fa64ea21ecae6}{columns}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor is used in join calculation to estimate size of relation after join. It computes maximum of unique values in each colum and stores the result in result variable. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_max_of_unique_values_expression_visitor_adf863a6e2406f90466e4f4decab1f4e4}{\index{Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}!Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}}
+\index{Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}!Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}}
+\subsubsection[{Max\+Of\+Unique\+Values\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Max\+Of\+Unique\+Values\+Expression\+Visitor\+::\+Max\+Of\+Unique\+Values\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::map$<$ int, {\bf Column\+Info} $>$ $\ast$}]{cols}
+\end{DoxyParamCaption}
+)}}\label{class_max_of_unique_values_expression_visitor_adf863a6e2406f90466e4f4decab1f4e4}
+Creates new instance of \hyperlink{class_max_of_unique_values_expression_visitor}{Max\+Of\+Unique\+Values\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em cols} & -\/ structure mapping column unique identifier to number of column in processed bobox operator \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -44,6 +63,15 @@ Visits \hyperlink{class_column}{Column} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a1ac638b82248ff9e1582dbf520dc6ae4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_max_of_unique_values_expression_visitor_a1f0ca5cd4e5fd0eb513fa64ea21ecae6}{\index{Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}!columns@{columns}}
+\index{columns@{columns}!Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}}
+\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf Column\+Info}$>$$\ast$ Max\+Of\+Unique\+Values\+Expression\+Visitor\+::columns}}\label{class_max_of_unique_values_expression_visitor_a1f0ca5cd4e5fd0eb513fa64ea21ecae6}
+Map of columns in this expression. Key is unique column identifier. \hypertarget{class_max_of_unique_values_expression_visitor_a4d1359a778ac14a3709c63bff3a01383}{\index{Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}!result@{result}}
+\index{result@{result}!Max\+Of\+Unique\+Values\+Expression\+Visitor@{Max\+Of\+Unique\+Values\+Expression\+Visitor}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}double Max\+Of\+Unique\+Values\+Expression\+Visitor\+::result}}\label{class_max_of_unique_values_expression_visitor_a4d1359a778ac14a3709c63bff3a01383}
+Visitor stores here maximum of unique values of all columns in visited expression. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

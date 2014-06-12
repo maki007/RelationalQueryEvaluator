@@ -1,6 +1,10 @@
 \hypertarget{class_renaming_join_condition_expression_visitor}{\section{Renaming\+Join\+Condition\+Expression\+Visitor Class Reference}
 \label{class_renaming_join_condition_expression_visitor}\index{Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Renaming\+Join\+Condition\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,20 +14,38 @@ Inheritance diagram for Renaming\+Join\+Condition\+Expression\+Visitor\+:\begin{
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_renaming_join_condition_expression_visitor_a2b0669f3664fd3b9170e431bfcde9851}{{\bfseries Renaming\+Join\+Condition\+Expression\+Visitor} (ulong i, std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ $\ast$input\+Columns)}\label{class_renaming_join_condition_expression_visitor_a2b0669f3664fd3b9170e431bfcde9851}
-
+\hyperlink{class_renaming_join_condition_expression_visitor_a2b0669f3664fd3b9170e431bfcde9851}{Renaming\+Join\+Condition\+Expression\+Visitor} (ulong i, std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ $\ast$\hyperlink{class_renaming_join_condition_expression_visitor_a8b8dceeedbf7c4d3aac3761ce3a4c302}{input\+Columns})
 \item 
 void \hyperlink{class_renaming_join_condition_expression_visitor_aa55184f591960115d4e11eff4be0d3d5}{visit\+Column} (\hyperlink{class_column}{Column} $\ast$expression)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_renaming_join_condition_expression_visitor_aa9eacf839bdb9a30653d5cae0448532b}{ulong {\bfseries n}}\label{class_renaming_join_condition_expression_visitor_aa9eacf839bdb9a30653d5cae0448532b}
-
+ulong \hyperlink{class_renaming_join_condition_expression_visitor_a8ce65701767eb8d0e6e96eeee49276ea}{input}
 \item 
-\hypertarget{class_renaming_join_condition_expression_visitor_a8b8dceeedbf7c4d3aac3761ce3a4c302}{std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ $\ast$ {\bfseries input\+Columns}}\label{class_renaming_join_condition_expression_visitor_a8b8dceeedbf7c4d3aac3761ce3a4c302}
-
+std\+::vector$<$ \hyperlink{class_join_column_info}{Join\+Column\+Info} $>$ $\ast$ \hyperlink{class_renaming_join_condition_expression_visitor_a8b8dceeedbf7c4d3aac3761ce3a4c302}{input\+Columns}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor is used for renaming join condition while grouping joins. \hyperlink{class_join}{Join} can rename column and in this case can happen, that condition in groupped join doesn't have correct column name. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_renaming_join_condition_expression_visitor_a2b0669f3664fd3b9170e431bfcde9851}{\index{Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}!Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}}
+\index{Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}!Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}}
+\subsubsection[{Renaming\+Join\+Condition\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Renaming\+Join\+Condition\+Expression\+Visitor\+::\+Renaming\+Join\+Condition\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{ulong}]{i, }
+\item[{std\+::vector$<$ {\bf Join\+Column\+Info} $>$ $\ast$}]{input\+Columns}
+\end{DoxyParamCaption}
+)}}\label{class_renaming_join_condition_expression_visitor_a2b0669f3664fd3b9170e431bfcde9851}
+Creates new instance of \hyperlink{class_renaming_join_condition_expression_visitor}{Renaming\+Join\+Condition\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em i} & -\/ input number. \\
+\hline
+{\em input\+Columns} & -\/ Possible columns to rename. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -44,6 +66,15 @@ Visits \hyperlink{class_column}{Column} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a1ac638b82248ff9e1582dbf520dc6ae4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_renaming_join_condition_expression_visitor_a8ce65701767eb8d0e6e96eeee49276ea}{\index{Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}!input@{input}}
+\index{input@{input}!Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}}
+\subsubsection[{input}]{\setlength{\rightskip}{0pt plus 5cm}ulong Renaming\+Join\+Condition\+Expression\+Visitor\+::input}}\label{class_renaming_join_condition_expression_visitor_a8ce65701767eb8d0e6e96eeee49276ea}
+Information which input is beeing processed. \hypertarget{class_renaming_join_condition_expression_visitor_a8b8dceeedbf7c4d3aac3761ce3a4c302}{\index{Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}!input\+Columns@{input\+Columns}}
+\index{input\+Columns@{input\+Columns}!Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}}
+\subsubsection[{input\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Join\+Column\+Info}$>$$\ast$ Renaming\+Join\+Condition\+Expression\+Visitor\+::input\+Columns}}\label{class_renaming_join_condition_expression_visitor_a8b8dceeedbf7c4d3aac3761ce3a4c302}
+Possible columns to rename. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">JoinInfoReadingExpressionVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for JoinInfoReadingExpressionVisitor:</div>
 <div class="dyncontent">
@@ -101,8 +103,7 @@ Inheritance diagram for JoinInfoReadingExpressionVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab9cdf35ad447efd3cfba98440d3e135a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9cdf35ad447efd3cfba98440d3e135a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>JoinInfoReadingExpressionVisitor</b> (std::set&lt; int &gt; *data, ConditionType *type)</td></tr>
+<tr class="memitem:ab9cdf35ad447efd3cfba98440d3e135a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_join_info_reading_expression_visitor.html#ab9cdf35ad447efd3cfba98440d3e135a">JoinInfoReadingExpressionVisitor</a> (std::set&lt; int &gt; *<a class="el" href="class_join_info_reading_expression_visitor.html#aa7bdb75b8bb8ddbbb551c26f798503ca">data</a>, ConditionType *type)</td></tr>
 <tr class="separator:ab9cdf35ad447efd3cfba98440d3e135a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03c3ec1bc690b6d9dc66a97efa75f2be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_join_info_reading_expression_visitor.html#a03c3ec1bc690b6d9dc66a97efa75f2be">visitColumn</a> (<a class="el" href="class_column.html">Column</a> *expression)</td></tr>
 <tr class="separator:a03c3ec1bc690b6d9dc66a97efa75f2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,13 +120,47 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa7bdb75b8bb8ddbbb551c26f798503ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7bdb75b8bb8ddbbb551c26f798503ca"></a>
-std::set&lt; int &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>data</b></td></tr>
+<tr class="memitem:aa7bdb75b8bb8ddbbb551c26f798503ca"><td class="memItemLeft" align="right" valign="top">std::set&lt; int &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_join_info_reading_expression_visitor.html#aa7bdb75b8bb8ddbbb551c26f798503ca">data</a></td></tr>
 <tr class="separator:aa7bdb75b8bb8ddbbb551c26f798503ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7219e9cb55b9a59763a06df0656a63f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7219e9cb55b9a59763a06df0656a63f"></a>
-ConditionType *&#160;</td><td class="memItemRight" valign="bottom"><b>conditionType</b></td></tr>
+<tr class="memitem:af7219e9cb55b9a59763a06df0656a63f"><td class="memItemLeft" align="right" valign="top">ConditionType *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_join_info_reading_expression_visitor.html#af7219e9cb55b9a59763a06df0656a63f">conditionType</a></td></tr>
 <tr class="separator:af7219e9cb55b9a59763a06df0656a63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Reads all columns identifiers from expression and determing what kind of condition is expression representing. It can be equal condition a=b or le condition a1&lt;b&lt;a2. Other conditions should not be in joins. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="ab9cdf35ad447efd3cfba98440d3e135a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">JoinInfoReadingExpressionVisitor::JoinInfoReadingExpressionVisitor </td>
+          <td>(</td>
+          <td class="paramtype">std::set&lt; int &gt; *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ConditionType *&#160;</td>
+          <td class="paramname"><em>type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_join_info_reading_expression_visitor.html">JoinInfoReadingExpressionVisitor</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>- visitor will store here unique column identifiers. </td></tr>
+    <tr><td class="paramname">type</td><td>- visitor will store here condition type. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a6c6326b1ca8218ed35ac86ab7d487a0e"></a>
 <div class="memitem">
@@ -319,6 +354,33 @@ ConditionType *&#160;</td><td class="memItemRight" valign="bottom"><b>conditionT
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af7219e9cb55b9a59763a06df0656a63f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConditionType* JoinInfoReadingExpressionVisitor::conditionType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Type of join condition. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa7bdb75b8bb8ddbbb551c26f798503ca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::set&lt;int&gt;* JoinInfoReadingExpressionVisitor::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set of unique columns identifiers. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/ExpressionVisitors.cpp</li>
@@ -326,7 +388,7 @@ ConditionType *&#160;</td><td class="memItemRight" valign="bottom"><b>conditionT
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 16:25:12 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 19:57:48 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

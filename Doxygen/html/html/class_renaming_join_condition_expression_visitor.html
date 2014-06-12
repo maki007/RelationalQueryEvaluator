@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">RenamingJoinConditionExpressionVisitor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for RenamingJoinConditionExpressionVisitor:</div>
 <div class="dyncontent">
@@ -101,8 +103,7 @@ Inheritance diagram for RenamingJoinConditionExpressionVisitor:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2b0669f3664fd3b9170e431bfcde9851"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b0669f3664fd3b9170e431bfcde9851"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>RenamingJoinConditionExpressionVisitor</b> (ulong i, std::vector&lt; <a class="el" href="class_join_column_info.html">JoinColumnInfo</a> &gt; *inputColumns)</td></tr>
+<tr class="memitem:a2b0669f3664fd3b9170e431bfcde9851"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renaming_join_condition_expression_visitor.html#a2b0669f3664fd3b9170e431bfcde9851">RenamingJoinConditionExpressionVisitor</a> (ulong i, std::vector&lt; <a class="el" href="class_join_column_info.html">JoinColumnInfo</a> &gt; *<a class="el" href="class_renaming_join_condition_expression_visitor.html#a8b8dceeedbf7c4d3aac3761ce3a4c302">inputColumns</a>)</td></tr>
 <tr class="separator:a2b0669f3664fd3b9170e431bfcde9851"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa55184f591960115d4e11eff4be0d3d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renaming_join_condition_expression_visitor.html#aa55184f591960115d4e11eff4be0d3d5">visitColumn</a> (<a class="el" href="class_column.html">Column</a> *expression)</td></tr>
 <tr class="separator:aa55184f591960115d4e11eff4be0d3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,13 +121,47 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa9eacf839bdb9a30653d5cae0448532b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9eacf839bdb9a30653d5cae0448532b"></a>
-ulong&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
-<tr class="separator:aa9eacf839bdb9a30653d5cae0448532b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b8dceeedbf7c4d3aac3761ce3a4c302"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b8dceeedbf7c4d3aac3761ce3a4c302"></a>
-std::vector&lt; <a class="el" href="class_join_column_info.html">JoinColumnInfo</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><b>inputColumns</b></td></tr>
+<tr class="memitem:a8ce65701767eb8d0e6e96eeee49276ea"><td class="memItemLeft" align="right" valign="top">ulong&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renaming_join_condition_expression_visitor.html#a8ce65701767eb8d0e6e96eeee49276ea">input</a></td></tr>
+<tr class="separator:a8ce65701767eb8d0e6e96eeee49276ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b8dceeedbf7c4d3aac3761ce3a4c302"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_join_column_info.html">JoinColumnInfo</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_renaming_join_condition_expression_visitor.html#a8b8dceeedbf7c4d3aac3761ce3a4c302">inputColumns</a></td></tr>
 <tr class="separator:a8b8dceeedbf7c4d3aac3761ce3a4c302"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Visitor is used for renaming join condition while grouping joins. <a class="el" href="class_join.html">Join</a> can rename column and in this case can happen, that condition in groupped join doesn't have correct column name. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a2b0669f3664fd3b9170e431bfcde9851"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RenamingJoinConditionExpressionVisitor::RenamingJoinConditionExpressionVisitor </td>
+          <td>(</td>
+          <td class="paramtype">ulong&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_join_column_info.html">JoinColumnInfo</a> &gt; *&#160;</td>
+          <td class="paramname"><em>inputColumns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_renaming_join_condition_expression_visitor.html">RenamingJoinConditionExpressionVisitor</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>- input number. </td></tr>
+    <tr><td class="paramname">inputColumns</td><td>- Possible columns to rename. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aa55184f591960115d4e11eff4be0d3d5"></a>
 <div class="memitem">
@@ -160,6 +195,33 @@ std::vector&lt; <a class="el" href="class_join_column_info.html">JoinColumnInfo<
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8ce65701767eb8d0e6e96eeee49276ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ulong RenamingJoinConditionExpressionVisitor::input</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Information which input is beeing processed. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8b8dceeedbf7c4d3aac3761ce3a4c302"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_join_column_info.html">JoinColumnInfo</a>&gt;* RenamingJoinConditionExpressionVisitor::inputColumns</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Possible columns to rename. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expression_visitors_8h_source.html">ExpressionVisitors.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/ExpressionVisitors.cpp</li>
@@ -167,7 +229,7 @@ std::vector&lt; <a class="el" href="class_join_column_info.html">JoinColumnInfo<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 16:25:16 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 19:57:52 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

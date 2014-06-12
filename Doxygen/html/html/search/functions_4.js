@@ -5,5 +5,6 @@ var searchData=
   ['group',['Group',['../class_group.html#ae331a9b7095f8c2481e2031d41d88164',1,'Group']]],
   ['groupcolumn',['GroupColumn',['../class_group_column.html#a6b48cfe01058e5c5a06e2882d329b5ca',1,'GroupColumn']]],
   ['groupedexpression',['GroupedExpression',['../class_grouped_expression.html#a7949fd699c0711a9fcad09504193ebf2',1,'GroupedExpression::GroupedExpression()'],['../class_grouped_expression.html#a986d27a72d99ad866ad0d24241795a80',1,'GroupedExpression::GroupedExpression(GroupedOperator operation, const std::vector&lt; std::shared_ptr&lt; Expression &gt;&gt; &amp;children)']]],
+  ['groupingexpressionvisitor',['GroupingExpressionVisitor',['../class_grouping_expression_visitor.html#a237e5aaa25294095a1b3c14c4ef64794',1,'GroupingExpressionVisitor']]],
   ['groupingvisitor',['GroupingVisitor',['../class_grouping_visitor.html#adc7a72ec400998ac4dcaacf5c85fb86c',1,'GroupingVisitor']]]
 ];

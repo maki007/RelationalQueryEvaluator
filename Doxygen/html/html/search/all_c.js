@@ -5,10 +5,11 @@ var searchData=
   ['nextid',['nextId',['../class_semantic_checker.html#a7bfc82245e0af345db051ab8faea502e',1,'SemanticChecker']]],
   ['nnaryexpression',['NnaryExpression',['../class_nnary_expression.html',1,'NnaryExpression'],['../class_nnary_expression.html#a38f44966213fd5d674aaff3ef9de37da',1,'NnaryExpression::NnaryExpression()']]],
   ['nodecounter',['nodeCounter',['../class_graph_drawing_visitor.html#a0761312fb1e24b1951c0b263b19f268c',1,'GraphDrawingVisitor']]],
+  ['nodes',['nodes',['../class_get_columns_nodes_visitor.html#ac68ee0c1090596d4e25a5dc5a478533b',1,'GetColumnsNodesVisitor']]],
   ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../class_nullary_algebra_node_base.html',1,'NullaryAlgebraNodeBase'],['../class_nullary_algebra_node_base.html#a73108e19c00005dcda32af0b05060ea0',1,'NullaryAlgebraNodeBase::NullaryAlgebraNodeBase()']]],
   ['nullaryphysicaloperator',['NullaryPhysicalOperator',['../class_nullary_physical_operator.html',1,'']]],
   ['number_5fof_5fplans',['NUMBER_OF_PLANS',['../class_algebra_compiler.html#ab1a348c2daa3ca8f805f7cec2b35e29d',1,'AlgebraCompiler']]],
-  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../class_number_columns_in_join_visitor.html',1,'']]],
+  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../class_number_columns_in_join_visitor.html',1,'NumberColumnsInJoinVisitor'],['../class_number_columns_in_join_visitor.html#a5d09cffa1e191e46b312a3bcebc01b60',1,'NumberColumnsInJoinVisitor::NumberColumnsInJoinVisitor()']]],
   ['numberofrows',['numberOfRows',['../class_table.html#ae85736953b357d0d44a50fd4a47de796',1,'Table']]],
   ['numberofuniquevalues',['numberOfUniqueValues',['../class_column_info.html#add402bfa7bed26aa6072c5da9b06dda9',1,'ColumnInfo']]]
 ];

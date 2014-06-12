@@ -1,6 +1,10 @@
 \hypertarget{class_join_info_reading_expression_visitor}{\section{Join\+Info\+Reading\+Expression\+Visitor Class Reference}
 \label{class_join_info_reading_expression_visitor}\index{Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
 Inheritance diagram for Join\+Info\+Reading\+Expression\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,8 +14,7 @@ Inheritance diagram for Join\+Info\+Reading\+Expression\+Visitor\+:\begin{figure
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_join_info_reading_expression_visitor_ab9cdf35ad447efd3cfba98440d3e135a}{{\bfseries Join\+Info\+Reading\+Expression\+Visitor} (std\+::set$<$ int $>$ $\ast$data, Condition\+Type $\ast$type)}\label{class_join_info_reading_expression_visitor_ab9cdf35ad447efd3cfba98440d3e135a}
-
+\hyperlink{class_join_info_reading_expression_visitor_ab9cdf35ad447efd3cfba98440d3e135a}{Join\+Info\+Reading\+Expression\+Visitor} (std\+::set$<$ int $>$ $\ast$\hyperlink{class_join_info_reading_expression_visitor_aa7bdb75b8bb8ddbbb551c26f798503ca}{data}, Condition\+Type $\ast$type)
 \item 
 void \hyperlink{class_join_info_reading_expression_visitor_a03c3ec1bc690b6d9dc66a97efa75f2be}{visit\+Column} (\hyperlink{class_column}{Column} $\ast$expression)
 \item 
@@ -28,12 +31,31 @@ void \hyperlink{class_join_info_reading_expression_visitor_af727a4e4a952f05080c8
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_join_info_reading_expression_visitor_aa7bdb75b8bb8ddbbb551c26f798503ca}{std\+::set$<$ int $>$ $\ast$ {\bfseries data}}\label{class_join_info_reading_expression_visitor_aa7bdb75b8bb8ddbbb551c26f798503ca}
-
+std\+::set$<$ int $>$ $\ast$ \hyperlink{class_join_info_reading_expression_visitor_aa7bdb75b8bb8ddbbb551c26f798503ca}{data}
 \item 
-\hypertarget{class_join_info_reading_expression_visitor_af7219e9cb55b9a59763a06df0656a63f}{Condition\+Type $\ast$ {\bfseries condition\+Type}}\label{class_join_info_reading_expression_visitor_af7219e9cb55b9a59763a06df0656a63f}
-
+Condition\+Type $\ast$ \hyperlink{class_join_info_reading_expression_visitor_af7219e9cb55b9a59763a06df0656a63f}{condition\+Type}
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Reads all columns identifiers from expression and determing what kind of condition is expression representing. It can be equal condition a=b or le condition a1$<$b$<$a2. Other conditions should not be in joins. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_join_info_reading_expression_visitor_ab9cdf35ad447efd3cfba98440d3e135a}{\index{Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}!Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}}
+\index{Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}!Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}}
+\subsubsection[{Join\+Info\+Reading\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Join\+Info\+Reading\+Expression\+Visitor\+::\+Join\+Info\+Reading\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::set$<$ int $>$ $\ast$}]{data, }
+\item[{Condition\+Type $\ast$}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_join_info_reading_expression_visitor_ab9cdf35ad447efd3cfba98440d3e135a}
+Creates new instance of \hyperlink{class_join_info_reading_expression_visitor}{Join\+Info\+Reading\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em data} & -\/ visitor will store here unique column identifiers. \\
+\hline
+{\em type} & -\/ visitor will store here condition type. \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
@@ -134,6 +156,15 @@ Visits \hyperlink{class_unary_expression}{Unary\+Expression} element.
 Reimplemented from \hyperlink{class_expression_visitor_base_a9750397f5588263509a28ca9f17e8bc4}{Expression\+Visitor\+Base}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_join_info_reading_expression_visitor_af7219e9cb55b9a59763a06df0656a63f}{\index{Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}!condition\+Type@{condition\+Type}}
+\index{condition\+Type@{condition\+Type}!Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}}
+\subsubsection[{condition\+Type}]{\setlength{\rightskip}{0pt plus 5cm}Condition\+Type$\ast$ Join\+Info\+Reading\+Expression\+Visitor\+::condition\+Type}}\label{class_join_info_reading_expression_visitor_af7219e9cb55b9a59763a06df0656a63f}
+Type of join condition. \hypertarget{class_join_info_reading_expression_visitor_aa7bdb75b8bb8ddbbb551c26f798503ca}{\index{Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}!data@{data}}
+\index{data@{data}!Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$int$>$$\ast$ Join\+Info\+Reading\+Expression\+Visitor\+::data}}\label{class_join_info_reading_expression_visitor_aa7bdb75b8bb8ddbbb551c26f798503ca}
+Set of unique columns identifiers. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
