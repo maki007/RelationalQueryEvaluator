@@ -12,7 +12,7 @@ class Expression;
 typedef unsigned long long int ulong;
 
 /**
-* Enum for unary operations.
+* Enum for unary expression operations.
 */
 enum class UnaryOperator
 {
@@ -20,7 +20,7 @@ enum class UnaryOperator
 };
 
 /**
-* Enum for binary operations.
+* Enum for binary expression operations.
 */
 enum class BinaryOperator
 {

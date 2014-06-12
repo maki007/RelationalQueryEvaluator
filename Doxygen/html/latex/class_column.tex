@@ -1,6 +1,10 @@
 \hypertarget{class_column}{\section{Column Class Reference}
 \label{class_column}\index{Column@{Column}}
 }
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
 Inheritance diagram for Column\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,29 +14,91 @@ Inheritance diagram for Column\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_column_a9934481a60fd2373bfe7ced5f208b505}{{\bfseries Column} (D\+O\+M\+Element $\ast$node)}\label{class_column_a9934481a60fd2373bfe7ced5f208b505}
-
+\hyperlink{class_column_a9934481a60fd2373bfe7ced5f208b505}{Column} (D\+O\+M\+Element $\ast$node)
 \item 
-\hypertarget{class_column_a6e925985b1e87ed92795d318c52e5470}{void {\bfseries accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)}\label{class_column_a6e925985b1e87ed92795d318c52e5470}
-
+void \hyperlink{class_column_a6e925985b1e87ed92795d318c52e5470}{accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
 \item 
-\hypertarget{class_column_af1571fb51f887aeb1dcf7ff44382a72b}{void {\bfseries replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)}\label{class_column_af1571fb51f887aeb1dcf7ff44382a72b}
-
+void \hyperlink{class_column_af1571fb51f887aeb1dcf7ff44382a72b}{replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_column_a22e87a2e1f67da45c085a9898156e31c}{\hyperlink{class_column_identifier}{Column\+Identifier} {\bfseries column}}\label{class_column_a22e87a2e1f67da45c085a9898156e31c}
-
+\hyperlink{class_column_identifier}{Column\+Identifier} \hyperlink{class_column_a22e87a2e1f67da45c085a9898156e31c}{column}
 \item 
-\hypertarget{class_column_a18cd6b6f12a338f6e08c36da7fadb7ec}{std\+::string {\bfseries type}}\label{class_column_a18cd6b6f12a338f6e08c36da7fadb7ec}
-
+std\+::string \hyperlink{class_column_a18cd6b6f12a338f6e08c36da7fadb7ec}{type}
 \item 
-\hypertarget{class_column_addd3816c69df05b9f717348dca79ee21}{ulong {\bfseries input}}\label{class_column_addd3816c69df05b9f717348dca79ee21}
-
+ulong \hyperlink{class_column_addd3816c69df05b9f717348dca79ee21}{input}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+Represents table column in expression tree. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_column_a9934481a60fd2373bfe7ced5f208b505}{\index{Column@{Column}!Column@{Column}}
+\index{Column@{Column}!Column@{Column}}
+\subsubsection[{Column}]{\setlength{\rightskip}{0pt plus 5cm}Column\+::\+Column (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_column_a9934481a60fd2373bfe7ced5f208b505}
+Creates new instance of \hyperlink{class_column}{Column}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ element storing information about column. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_column_a6e925985b1e87ed92795d318c52e5470}{\index{Column@{Column}!accept@{accept}}
+\index{accept@{accept}!Column@{Column}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Column\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_column_a6e925985b1e87ed92795d318c52e5470}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{Expression}.
+
+\hypertarget{class_column_af1571fb51f887aeb1dcf7ff44382a72b}{\index{Column@{Column}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Column@{Column}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void Column\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_column_af1571fb51f887aeb1dcf7ff44382a72b}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_column_a22e87a2e1f67da45c085a9898156e31c}{\index{Column@{Column}!column@{column}}
+\index{column@{column}!Column@{Column}}
+\subsubsection[{column}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Column\+Identifier} Column\+::column}}\label{class_column_a22e87a2e1f67da45c085a9898156e31c}
+Identifies column with name and unique id. \hypertarget{class_column_addd3816c69df05b9f717348dca79ee21}{\index{Column@{Column}!input@{input}}
+\index{input@{input}!Column@{Column}}
+\subsubsection[{input}]{\setlength{\rightskip}{0pt plus 5cm}ulong Column\+::input}}\label{class_column_addd3816c69df05b9f717348dca79ee21}
+This field is only used in joins antijoins and groupjoins for identifing which child columns belong. \hypertarget{class_column_a18cd6b6f12a338f6e08c36da7fadb7ec}{\index{Column@{Column}!type@{type}}
+\index{type@{type}!Column@{Column}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Column\+::type}}\label{class_column_a18cd6b6f12a338f6e08c36da7fadb7ec}
+Type of the values stored in the column. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

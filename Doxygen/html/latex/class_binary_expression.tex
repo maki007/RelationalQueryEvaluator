@@ -1,6 +1,10 @@
 \hypertarget{class_binary_expression}{\section{Binary\+Expression Class Reference}
 \label{class_binary_expression}\index{Binary\+Expression@{Binary\+Expression}}
 }
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
 Inheritance diagram for Binary\+Expression\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,32 +14,114 @@ Inheritance diagram for Binary\+Expression\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_binary_expression_a5d19c8f759e63c10af90f1951b5a760d}{{\bfseries Binary\+Expression} (D\+O\+M\+Element $\ast$node, Binary\+Operator op)}\label{class_binary_expression_a5d19c8f759e63c10af90f1951b5a760d}
-
+\hyperlink{class_binary_expression_a5d19c8f759e63c10af90f1951b5a760d}{Binary\+Expression} (D\+O\+M\+Element $\ast$node, Binary\+Operator op)
 \item 
-\hypertarget{class_binary_expression_af3c15a9d05697963ebac1e010e894c04}{{\bfseries Binary\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&left\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&right\+Child, Binary\+Operator op)}\label{class_binary_expression_af3c15a9d05697963ebac1e010e894c04}
-
+\hyperlink{class_binary_expression_af3c15a9d05697963ebac1e010e894c04}{Binary\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&\hyperlink{class_binary_expression_a2388939b40f93649cfd3c531b181025e}{left\+Child}, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&\hyperlink{class_binary_expression_a97803d6333b2fbe6098491136a1445af}{right\+Child}, Binary\+Operator op)
 \item 
-\hypertarget{class_binary_expression_a12ea9a0735a8809b01059988b6466d7c}{void {\bfseries accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)}\label{class_binary_expression_a12ea9a0735a8809b01059988b6466d7c}
-
+void \hyperlink{class_binary_expression_a12ea9a0735a8809b01059988b6466d7c}{accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
 \item 
-\hypertarget{class_binary_expression_a7ff9236432aef24bca655ab45cf475f2}{void {\bfseries replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)}\label{class_binary_expression_a7ff9236432aef24bca655ab45cf475f2}
-
+void \hyperlink{class_binary_expression_a7ff9236432aef24bca655ab45cf475f2}{replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_binary_expression_ac3926bbcc2ed7bb00eca10b4d4e590d2}{Binary\+Operator {\bfseries operation}}\label{class_binary_expression_ac3926bbcc2ed7bb00eca10b4d4e590d2}
-
+Binary\+Operator \hyperlink{class_binary_expression_ac3926bbcc2ed7bb00eca10b4d4e590d2}{operation}
 \item 
-\hypertarget{class_binary_expression_a2388939b40f93649cfd3c531b181025e}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries left\+Child}}\label{class_binary_expression_a2388939b40f93649cfd3c531b181025e}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_binary_expression_a2388939b40f93649cfd3c531b181025e}{left\+Child}
 \item 
-\hypertarget{class_binary_expression_a97803d6333b2fbe6098491136a1445af}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries right\+Child}}\label{class_binary_expression_a97803d6333b2fbe6098491136a1445af}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_binary_expression_a97803d6333b2fbe6098491136a1445af}{right\+Child}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+Class representing binary expression (two children). It is used to store artimeric(+,-\/,$\ast$,/) and logic operations (and,or). 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_binary_expression_a5d19c8f759e63c10af90f1951b5a760d}{\index{Binary\+Expression@{Binary\+Expression}!Binary\+Expression@{Binary\+Expression}}
+\index{Binary\+Expression@{Binary\+Expression}!Binary\+Expression@{Binary\+Expression}}
+\subsubsection[{Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}Binary\+Expression\+::\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node, }
+\item[{Binary\+Operator}]{op}
+\end{DoxyParamCaption}
+)}}\label{class_binary_expression_a5d19c8f759e63c10af90f1951b5a760d}
+Creates new instance of \hyperlink{class_binary_expression}{Binary\+Expression} 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ domelement hoding information about node and its child nodes. \\
+\hline
+{\em op} & -\/ type of binary operation \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_binary_expression_af3c15a9d05697963ebac1e010e894c04}{\index{Binary\+Expression@{Binary\+Expression}!Binary\+Expression@{Binary\+Expression}}
+\index{Binary\+Expression@{Binary\+Expression}!Binary\+Expression@{Binary\+Expression}}
+\subsubsection[{Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}Binary\+Expression\+::\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{left\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{right\+Child, }
+\item[{Binary\+Operator}]{op}
+\end{DoxyParamCaption}
+)}}\label{class_binary_expression_af3c15a9d05697963ebac1e010e894c04}
+Creates new instance of \hyperlink{class_binary_expression}{Binary\+Expression}. 
+\begin{DoxyParams}{Parameters}
+{\em left\+Child} & -\/ new left child node \\
+\hline
+{\em right\+Child} & -\/ new right child node \\
+\hline
+{\em op} & -\/ type of binary operation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_binary_expression_a12ea9a0735a8809b01059988b6466d7c}{\index{Binary\+Expression@{Binary\+Expression}!accept@{accept}}
+\index{accept@{accept}!Binary\+Expression@{Binary\+Expression}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Binary\+Expression\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_binary_expression_a12ea9a0735a8809b01059988b6466d7c}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{Expression}.
+
+\hypertarget{class_binary_expression_a7ff9236432aef24bca655ab45cf475f2}{\index{Binary\+Expression@{Binary\+Expression}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Binary\+Expression@{Binary\+Expression}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void Binary\+Expression\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_binary_expression_a7ff9236432aef24bca655ab45cf475f2}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_binary_expression_a2388939b40f93649cfd3c531b181025e}{\index{Binary\+Expression@{Binary\+Expression}!left\+Child@{left\+Child}}
+\index{left\+Child@{left\+Child}!Binary\+Expression@{Binary\+Expression}}
+\subsubsection[{left\+Child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Binary\+Expression\+::left\+Child}}\label{class_binary_expression_a2388939b40f93649cfd3c531b181025e}
+Stores pointer to left child tree node. \hypertarget{class_binary_expression_ac3926bbcc2ed7bb00eca10b4d4e590d2}{\index{Binary\+Expression@{Binary\+Expression}!operation@{operation}}
+\index{operation@{operation}!Binary\+Expression@{Binary\+Expression}}
+\subsubsection[{operation}]{\setlength{\rightskip}{0pt plus 5cm}Binary\+Operator Binary\+Expression\+::operation}}\label{class_binary_expression_ac3926bbcc2ed7bb00eca10b4d4e590d2}
+Stores infromation about type of binary operation. \hypertarget{class_binary_expression_a97803d6333b2fbe6098491136a1445af}{\index{Binary\+Expression@{Binary\+Expression}!right\+Child@{right\+Child}}
+\index{right\+Child@{right\+Child}!Binary\+Expression@{Binary\+Expression}}
+\subsubsection[{right\+Child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Binary\+Expression\+::right\+Child}}\label{class_binary_expression_a97803d6333b2fbe6098491136a1445af}
+Stores pointer to right child tree node. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

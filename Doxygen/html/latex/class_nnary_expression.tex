@@ -1,6 +1,10 @@
 \hypertarget{class_nnary_expression}{\section{Nnary\+Expression Class Reference}
 \label{class_nnary_expression}\index{Nnary\+Expression@{Nnary\+Expression}}
 }
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
 Inheritance diagram for Nnary\+Expression\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,30 +14,98 @@ Inheritance diagram for Nnary\+Expression\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_nnary_expression_a38f44966213fd5d674aaff3ef9de37da}{{\bfseries Nnary\+Expression} (D\+O\+M\+Element $\ast$node, const std\+::string \&name, const std\+::string \&return\+Type)}\label{class_nnary_expression_a38f44966213fd5d674aaff3ef9de37da}
-
+\hyperlink{class_nnary_expression_a38f44966213fd5d674aaff3ef9de37da}{Nnary\+Expression} (D\+O\+M\+Element $\ast$node, const std\+::string \&\hyperlink{class_nnary_expression_ab21462327a70e8955c74cd8cc3fc428f}{name}, const std\+::string \&\hyperlink{class_nnary_expression_a70b8058f410ed9f52b610e74489bf03f}{return\+Type})
 \item 
-\hypertarget{class_nnary_expression_a5934f3925e13888b3241f6b269d5ee44}{void {\bfseries accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)}\label{class_nnary_expression_a5934f3925e13888b3241f6b269d5ee44}
-
+void \hyperlink{class_nnary_expression_a5934f3925e13888b3241f6b269d5ee44}{accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
 \item 
-\hypertarget{class_nnary_expression_a1161a6f8776c4cc946d769e4526339a2}{void {\bfseries replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)}\label{class_nnary_expression_a1161a6f8776c4cc946d769e4526339a2}
-
+void \hyperlink{class_nnary_expression_a1161a6f8776c4cc946d769e4526339a2}{replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_nnary_expression_ab21462327a70e8955c74cd8cc3fc428f}{std\+::string {\bfseries name}}\label{class_nnary_expression_ab21462327a70e8955c74cd8cc3fc428f}
-
+std\+::string \hyperlink{class_nnary_expression_ab21462327a70e8955c74cd8cc3fc428f}{name}
 \item 
-\hypertarget{class_nnary_expression_a70b8058f410ed9f52b610e74489bf03f}{std\+::string {\bfseries return\+Type}}\label{class_nnary_expression_a70b8058f410ed9f52b610e74489bf03f}
-
+std\+::string \hyperlink{class_nnary_expression_a70b8058f410ed9f52b610e74489bf03f}{return\+Type}
 \item 
-\hypertarget{class_nnary_expression_ae70d24059bba49f089137557e18f41a9}{std\+::vector$<$ std\+::shared\+\_\+ptr\\*
-$<$ \hyperlink{class_expression}{Expression} $>$ $>$ {\bfseries arguments}}\label{class_nnary_expression_ae70d24059bba49f089137557e18f41a9}
-
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \hyperlink{class_nnary_expression_ae70d24059bba49f089137557e18f41a9}{arguments}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+Represents co called n-\/nary expresion, it is a function call with variable argument number. N-\/nary expression can be for expample sql function like or date or arithmetic function sqrt 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_nnary_expression_a38f44966213fd5d674aaff3ef9de37da}{\index{Nnary\+Expression@{Nnary\+Expression}!Nnary\+Expression@{Nnary\+Expression}}
+\index{Nnary\+Expression@{Nnary\+Expression}!Nnary\+Expression@{Nnary\+Expression}}
+\subsubsection[{Nnary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}Nnary\+Expression\+::\+Nnary\+Expression (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node, }
+\item[{const std\+::string \&}]{name, }
+\item[{const std\+::string \&}]{return\+Type}
+\end{DoxyParamCaption}
+)}}\label{class_nnary_expression_a38f44966213fd5d674aaff3ef9de37da}
+Creates new instace of \hyperlink{class_nnary_expression}{Nnary\+Expression}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ element containing infromation about node and it's children \\
+\hline
+{\em name} & -\/ function name \\
+\hline
+{\em return\+Type} & -\/ return type of function \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_nnary_expression_a5934f3925e13888b3241f6b269d5ee44}{\index{Nnary\+Expression@{Nnary\+Expression}!accept@{accept}}
+\index{accept@{accept}!Nnary\+Expression@{Nnary\+Expression}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Nnary\+Expression\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_nnary_expression_a5934f3925e13888b3241f6b269d5ee44}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{Expression}.
+
+\hypertarget{class_nnary_expression_a1161a6f8776c4cc946d769e4526339a2}{\index{Nnary\+Expression@{Nnary\+Expression}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Nnary\+Expression@{Nnary\+Expression}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void Nnary\+Expression\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_nnary_expression_a1161a6f8776c4cc946d769e4526339a2}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_nnary_expression_ae70d24059bba49f089137557e18f41a9}{\index{Nnary\+Expression@{Nnary\+Expression}!arguments@{arguments}}
+\index{arguments@{arguments}!Nnary\+Expression@{Nnary\+Expression}}
+\subsubsection[{arguments}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Expression}$>$ $>$ Nnary\+Expression\+::arguments}}\label{class_nnary_expression_ae70d24059bba49f089137557e18f41a9}
+Stores call arguments. Arguments are also expression trees. \hypertarget{class_nnary_expression_ab21462327a70e8955c74cd8cc3fc428f}{\index{Nnary\+Expression@{Nnary\+Expression}!name@{name}}
+\index{name@{name}!Nnary\+Expression@{Nnary\+Expression}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Nnary\+Expression\+::name}}\label{class_nnary_expression_ab21462327a70e8955c74cd8cc3fc428f}
+Stores function name. \hypertarget{class_nnary_expression_a70b8058f410ed9f52b610e74489bf03f}{\index{Nnary\+Expression@{Nnary\+Expression}!return\+Type@{return\+Type}}
+\index{return\+Type@{return\+Type}!Nnary\+Expression@{Nnary\+Expression}}
+\subsubsection[{return\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Nnary\+Expression\+::return\+Type}}\label{class_nnary_expression_a70b8058f410ed9f52b610e74489bf03f}
+Stores function return type. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

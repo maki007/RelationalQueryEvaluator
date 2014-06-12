@@ -1,6 +1,10 @@
 \hypertarget{class_expression}{\section{Expression Class Reference}
 \label{class_expression}\index{Expression@{Expression}}
 }
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
 Inheritance diagram for Expression\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,25 +14,80 @@ Inheritance diagram for Expression\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{virtual void {\bfseries accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)=0}\label{class_expression_ae2e6c802668a6329658b7c982f9c7b33}
-
+virtual void \hyperlink{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)=0
 \item 
-\hypertarget{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{virtual void {\bfseries replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)=0}\label{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}
-
+virtual void \hyperlink{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)=0
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_expression_ae1968c4b3272019059f9a51e40d65c41}{static \hyperlink{class_expression}{Expression} $\ast$ {\bfseries construct\+Children} (D\+O\+M\+Element $\ast$node)}\label{class_expression_ae1968c4b3272019059f9a51e40d65c41}
-
+static \hyperlink{class_expression}{Expression} $\ast$ \hyperlink{class_expression_ae1968c4b3272019059f9a51e40d65c41}{construct\+Children} (D\+O\+M\+Element $\ast$node)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_expression_a36284ba467eae6aa796985ed909a6958}{\hyperlink{class_expression}{Expression} $\ast$ {\bfseries parent}}\label{class_expression_a36284ba467eae6aa796985ed909a6958}
-
+\hyperlink{class_expression}{Expression} $\ast$ \hyperlink{class_expression_a36284ba467eae6aa796985ed909a6958}{parent}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Base class for expression in expressionn tree. \hyperlink{class_expression}{Expression} trees are used in algebra nodes like selection, join, antijoin or column operations. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{\index{Expression@{Expression}!accept@{accept}}
+\index{accept@{accept}!Expression@{Expression}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Expression\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_expression_ae2e6c802668a6329658b7c982f9c7b33}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_grouped_expression_a67963e289263b9c2cbf03edad83401b7}{Grouped\+Expression}, \hyperlink{class_column_a6e925985b1e87ed92795d318c52e5470}{Column}, \hyperlink{class_constant_ae30bbf2455dd5d616291e106749ec1ae}{Constant}, \hyperlink{class_nnary_expression_a5934f3925e13888b3241f6b269d5ee44}{Nnary\+Expression}, \hyperlink{class_binary_expression_a12ea9a0735a8809b01059988b6466d7c}{Binary\+Expression}, and \hyperlink{class_unary_expression_a34d44f441b84b899b832cbd46b4b7821}{Unary\+Expression}.
+
+\hypertarget{class_expression_ae1968c4b3272019059f9a51e40d65c41}{\index{Expression@{Expression}!construct\+Children@{construct\+Children}}
+\index{construct\+Children@{construct\+Children}!Expression@{Expression}}
+\subsubsection[{construct\+Children}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Expression} $\ast$ Expression\+::construct\+Children (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_expression_ae1968c4b3272019059f9a51e40d65c41}
+Helper function for choosing which node to conctruct from element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ element containing information expression \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{\index{Expression@{Expression}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Expression@{Expression}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Expression\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_grouped_expression_af1cb9044417df12361b6335962b3bc6c}{Grouped\+Expression}, \hyperlink{class_column_af1571fb51f887aeb1dcf7ff44382a72b}{Column}, \hyperlink{class_constant_acb214c5b00f30970ad525eb6b2f3e04d}{Constant}, \hyperlink{class_nnary_expression_a1161a6f8776c4cc946d769e4526339a2}{Nnary\+Expression}, \hyperlink{class_binary_expression_a7ff9236432aef24bca655ab45cf475f2}{Binary\+Expression}, and \hyperlink{class_unary_expression_ae1a0cfc5fbae6d401c28e8a3158121a3}{Unary\+Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_expression_a36284ba467eae6aa796985ed909a6958}{\index{Expression@{Expression}!parent@{parent}}
+\index{parent@{parent}!Expression@{Expression}}
+\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Expression}$\ast$ Expression\+::parent}}\label{class_expression_a36284ba467eae6aa796985ed909a6958}
+Stores pointer on the parent in expression tree. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['operation',['operation',['../class_unary_expression.html#af585b4a298cc9b170e26bdc0809c5175',1,'UnaryExpression::operation()'],['../class_binary_expression.html#ac3926bbcc2ed7bb00eca10b4d4e590d2',1,'BinaryExpression::operation()'],['../class_grouped_expression.html#a018f4f129a3b9b0be45c8ed10ff21813',1,'GroupedExpression::operation()']]],
   ['operations',['operations',['../class_column_operations.html#a31aab19a9f8b104f772c111e920dd682',1,'ColumnOperations']]],
   ['order',['order',['../class_sort_parameter.html#a768e8eeb0a9857820c1596ed50c0c13a',1,'SortParameter']]],
   ['others',['others',['../class_sort_parameter.html#ad898e5ea54ea4599db663b480af94cfd',1,'SortParameter']]],

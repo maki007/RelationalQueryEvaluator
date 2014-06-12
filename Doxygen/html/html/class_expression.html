@@ -90,6 +90,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Expression Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_expressions_8h_source.html">Expressions.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Expression:</div>
 <div class="dyncontent">
@@ -107,25 +109,143 @@ Inheritance diagram for Expression:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae2e6c802668a6329658b7c982f9c7b33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2e6c802668a6329658b7c982f9c7b33"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="class_expression_visitor_base.html">ExpressionVisitorBase</a> &amp;v)=0</td></tr>
+<tr class="memitem:ae2e6c802668a6329658b7c982f9c7b33"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression.html#ae2e6c802668a6329658b7c982f9c7b33">accept</a> (<a class="el" href="class_expression_visitor_base.html">ExpressionVisitorBase</a> &amp;v)=0</td></tr>
 <tr class="separator:ae2e6c802668a6329658b7c982f9c7b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77ac16bbb0df93de8a7711b2f7de889f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77ac16bbb0df93de8a7711b2f7de889f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>replaceChild</b> (<a class="el" href="class_expression.html">Expression</a> *oldChild, std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; newChild)=0</td></tr>
+<tr class="memitem:a77ac16bbb0df93de8a7711b2f7de889f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression.html#a77ac16bbb0df93de8a7711b2f7de889f">replaceChild</a> (<a class="el" href="class_expression.html">Expression</a> *oldChild, std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt; newChild)=0</td></tr>
 <tr class="separator:a77ac16bbb0df93de8a7711b2f7de889f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae1968c4b3272019059f9a51e40d65c41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1968c4b3272019059f9a51e40d65c41"></a>
-static <a class="el" href="class_expression.html">Expression</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>constructChildren</b> (DOMElement *node)</td></tr>
+<tr class="memitem:ae1968c4b3272019059f9a51e40d65c41"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_expression.html">Expression</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression.html#ae1968c4b3272019059f9a51e40d65c41">constructChildren</a> (DOMElement *node)</td></tr>
 <tr class="separator:ae1968c4b3272019059f9a51e40d65c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a36284ba467eae6aa796985ed909a6958"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36284ba467eae6aa796985ed909a6958"></a>
-<a class="el" href="class_expression.html">Expression</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>parent</b></td></tr>
+<tr class="memitem:a36284ba467eae6aa796985ed909a6958"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_expression.html">Expression</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_expression.html#a36284ba467eae6aa796985ed909a6958">parent</a></td></tr>
 <tr class="separator:a36284ba467eae6aa796985ed909a6958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for expression in expressionn tree. <a class="el" href="class_expression.html">Expression</a> trees are used in algebra nodes like selection, join, antijoin or column operations. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ae2e6c802668a6329658b7c982f9c7b33"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Expression::accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_expression_visitor_base.html">ExpressionVisitorBase</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method for calling visit[node] on given ExpressionVisitor </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td>ExpressionVisitor, on which to call visit function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_grouped_expression.html#a67963e289263b9c2cbf03edad83401b7">GroupedExpression</a>, <a class="el" href="class_column.html#a6e925985b1e87ed92795d318c52e5470">Column</a>, <a class="el" href="class_constant.html#ae30bbf2455dd5d616291e106749ec1ae">Constant</a>, <a class="el" href="class_nnary_expression.html#a5934f3925e13888b3241f6b269d5ee44">NnaryExpression</a>, <a class="el" href="class_binary_expression.html#a12ea9a0735a8809b01059988b6466d7c">BinaryExpression</a>, and <a class="el" href="class_unary_expression.html#a34d44f441b84b899b832cbd46b4b7821">UnaryExpression</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1968c4b3272019059f9a51e40d65c41"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_expression.html">Expression</a> * Expression::constructChildren </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper function for choosing which node to conctruct from element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>- element containing information expression </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a77ac16bbb0df93de8a7711b2f7de889f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Expression::replaceChild </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_expression.html">Expression</a> *&#160;</td>
+          <td class="paramname"><em>oldChild</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_expression.html">Expression</a> &gt;&#160;</td>
+          <td class="paramname"><em>newChild</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Replaces child from this class with new expression tree. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">oldChild</td><td>- child to replace </td></tr>
+    <tr><td class="paramname">newChild</td><td>- child to be replaced </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_grouped_expression.html#af1cb9044417df12361b6335962b3bc6c">GroupedExpression</a>, <a class="el" href="class_column.html#af1571fb51f887aeb1dcf7ff44382a72b">Column</a>, <a class="el" href="class_constant.html#acb214c5b00f30970ad525eb6b2f3e04d">Constant</a>, <a class="el" href="class_nnary_expression.html#a1161a6f8776c4cc946d769e4526339a2">NnaryExpression</a>, <a class="el" href="class_binary_expression.html#a7ff9236432aef24bca655ab45cf475f2">BinaryExpression</a>, and <a class="el" href="class_unary_expression.html#ae1a0cfc5fbae6d401c28e8a3158121a3">UnaryExpression</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a36284ba467eae6aa796985ed909a6958"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_expression.html">Expression</a>* Expression::parent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores pointer on the parent in expression tree. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_expressions_8h_source.html">Expressions.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/Expressions.cpp</li>
@@ -133,7 +253,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 10 2014 01:20:25 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 12 2014 16:25:08 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

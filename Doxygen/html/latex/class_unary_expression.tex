@@ -1,6 +1,10 @@
 \hypertarget{class_unary_expression}{\section{Unary\+Expression Class Reference}
 \label{class_unary_expression}\index{Unary\+Expression@{Unary\+Expression}}
 }
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
 Inheritance diagram for Unary\+Expression\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,29 +14,106 @@ Inheritance diagram for Unary\+Expression\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_unary_expression_aca5476e9c2604e9d4a9d3f7bf5d8e024}{{\bfseries Unary\+Expression} (D\+O\+M\+Element $\ast$node, Unary\+Operator op)}\label{class_unary_expression_aca5476e9c2604e9d4a9d3f7bf5d8e024}
-
+\hyperlink{class_unary_expression_aca5476e9c2604e9d4a9d3f7bf5d8e024}{Unary\+Expression} (D\+O\+M\+Element $\ast$node, Unary\+Operator op)
 \item 
-\hypertarget{class_unary_expression_a4a5ac8375de2f7bdf2e787bd4d19363c}{{\bfseries Unary\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ node, Unary\+Operator op)}\label{class_unary_expression_a4a5ac8375de2f7bdf2e787bd4d19363c}
-
+\hyperlink{class_unary_expression_a4a5ac8375de2f7bdf2e787bd4d19363c}{Unary\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ node, Unary\+Operator op)
 \item 
-\hypertarget{class_unary_expression_a34d44f441b84b899b832cbd46b4b7821}{void {\bfseries accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)}\label{class_unary_expression_a34d44f441b84b899b832cbd46b4b7821}
-
+void \hyperlink{class_unary_expression_a34d44f441b84b899b832cbd46b4b7821}{accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
 \item 
-\hypertarget{class_unary_expression_ae1a0cfc5fbae6d401c28e8a3158121a3}{void {\bfseries replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)}\label{class_unary_expression_ae1a0cfc5fbae6d401c28e8a3158121a3}
-
+void \hyperlink{class_unary_expression_ae1a0cfc5fbae6d401c28e8a3158121a3}{replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_unary_expression_af585b4a298cc9b170e26bdc0809c5175}{Unary\+Operator {\bfseries operation}}\label{class_unary_expression_af585b4a298cc9b170e26bdc0809c5175}
-
+Unary\+Operator \hyperlink{class_unary_expression_af585b4a298cc9b170e26bdc0809c5175}{operation}
 \item 
-\hypertarget{class_unary_expression_ae9f51f996e3ec7f389dfce2105128eaf}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries child}}\label{class_unary_expression_ae9f51f996e3ec7f389dfce2105128eaf}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_unary_expression_ae9f51f996e3ec7f389dfce2105128eaf}{child}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+Class representing unary expression (one child). Currently ony unary expresion is boolean not. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_unary_expression_aca5476e9c2604e9d4a9d3f7bf5d8e024}{\index{Unary\+Expression@{Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
+\index{Unary\+Expression@{Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
+\subsubsection[{Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}Unary\+Expression\+::\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node, }
+\item[{Unary\+Operator}]{op}
+\end{DoxyParamCaption}
+)}}\label{class_unary_expression_aca5476e9c2604e9d4a9d3f7bf5d8e024}
+Creates new instance of \hyperlink{class_unary_expression}{Unary\+Expression}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ domelement hoding information about node and its child nodes. \\
+\hline
+{\em op} & -\/ type of unary operation \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_unary_expression_a4a5ac8375de2f7bdf2e787bd4d19363c}{\index{Unary\+Expression@{Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
+\index{Unary\+Expression@{Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
+\subsubsection[{Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}Unary\+Expression\+::\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{node, }
+\item[{Unary\+Operator}]{op}
+\end{DoxyParamCaption}
+)}}\label{class_unary_expression_a4a5ac8375de2f7bdf2e787bd4d19363c}
+Creates new instance of \hyperlink{class_unary_expression}{Unary\+Expression}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ new child node \\
+\hline
+{\em op} & -\/ type of unary operation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_unary_expression_a34d44f441b84b899b832cbd46b4b7821}{\index{Unary\+Expression@{Unary\+Expression}!accept@{accept}}
+\index{accept@{accept}!Unary\+Expression@{Unary\+Expression}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Unary\+Expression\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_unary_expression_a34d44f441b84b899b832cbd46b4b7821}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{Expression}.
+
+\hypertarget{class_unary_expression_ae1a0cfc5fbae6d401c28e8a3158121a3}{\index{Unary\+Expression@{Unary\+Expression}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Unary\+Expression@{Unary\+Expression}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void Unary\+Expression\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_unary_expression_ae1a0cfc5fbae6d401c28e8a3158121a3}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_unary_expression_ae9f51f996e3ec7f389dfce2105128eaf}{\index{Unary\+Expression@{Unary\+Expression}!child@{child}}
+\index{child@{child}!Unary\+Expression@{Unary\+Expression}}
+\subsubsection[{child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Unary\+Expression\+::child}}\label{class_unary_expression_ae9f51f996e3ec7f389dfce2105128eaf}
+Stores pointer to child tree node. \hypertarget{class_unary_expression_af585b4a298cc9b170e26bdc0809c5175}{\index{Unary\+Expression@{Unary\+Expression}!operation@{operation}}
+\index{operation@{operation}!Unary\+Expression@{Unary\+Expression}}
+\subsubsection[{operation}]{\setlength{\rightskip}{0pt plus 5cm}Unary\+Operator Unary\+Expression\+::operation}}\label{class_unary_expression_af585b4a298cc9b170e26bdc0809c5175}
+Stores infromation about type of unary operation. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

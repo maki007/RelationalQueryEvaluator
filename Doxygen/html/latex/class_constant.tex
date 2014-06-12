@@ -1,6 +1,10 @@
 \hypertarget{class_constant}{\section{Constant Class Reference}
 \label{class_constant}\index{Constant@{Constant}}
 }
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
 Inheritance diagram for Constant\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,26 +14,86 @@ Inheritance diagram for Constant\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_constant_a23cf0950dbddde0872f58ad5a501ff3a}{{\bfseries Constant} (D\+O\+M\+Element $\ast$node)}\label{class_constant_a23cf0950dbddde0872f58ad5a501ff3a}
-
+\hyperlink{class_constant_a23cf0950dbddde0872f58ad5a501ff3a}{Constant} (D\+O\+M\+Element $\ast$node)
 \item 
-\hypertarget{class_constant_ae30bbf2455dd5d616291e106749ec1ae}{void {\bfseries accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)}\label{class_constant_ae30bbf2455dd5d616291e106749ec1ae}
-
+void \hyperlink{class_constant_ae30bbf2455dd5d616291e106749ec1ae}{accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
 \item 
-\hypertarget{class_constant_acb214c5b00f30970ad525eb6b2f3e04d}{void {\bfseries replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)}\label{class_constant_acb214c5b00f30970ad525eb6b2f3e04d}
-
+void \hyperlink{class_constant_acb214c5b00f30970ad525eb6b2f3e04d}{replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_constant_a97bcf14e26810def51c57ae446d69e06}{std\+::string {\bfseries value}}\label{class_constant_a97bcf14e26810def51c57ae446d69e06}
-
+std\+::string \hyperlink{class_constant_a97bcf14e26810def51c57ae446d69e06}{value}
 \item 
-\hypertarget{class_constant_aa730d17869971537ca16ffd658b9d4e0}{std\+::string {\bfseries type}}\label{class_constant_aa730d17869971537ca16ffd658b9d4e0}
-
+std\+::string \hyperlink{class_constant_aa730d17869971537ca16ffd658b9d4e0}{type}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+Represents constant expression. It doesnt have any child expressions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_constant_a23cf0950dbddde0872f58ad5a501ff3a}{\index{Constant@{Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!Constant@{Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}Constant\+::\+Constant (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_constant_a23cf0950dbddde0872f58ad5a501ff3a}
+Creates new instance of \hyperlink{class_constant}{Constant}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ element containing infromation about constant \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_constant_ae30bbf2455dd5d616291e106749ec1ae}{\index{Constant@{Constant}!accept@{accept}}
+\index{accept@{accept}!Constant@{Constant}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Constant\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_constant_ae30bbf2455dd5d616291e106749ec1ae}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{Expression}.
+
+\hypertarget{class_constant_acb214c5b00f30970ad525eb6b2f3e04d}{\index{Constant@{Constant}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Constant@{Constant}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void Constant\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_constant_acb214c5b00f30970ad525eb6b2f3e04d}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_constant_aa730d17869971537ca16ffd658b9d4e0}{\index{Constant@{Constant}!type@{type}}
+\index{type@{type}!Constant@{Constant}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Constant\+::type}}\label{class_constant_aa730d17869971537ca16ffd658b9d4e0}
+Stores constant type. \hypertarget{class_constant_a97bcf14e26810def51c57ae446d69e06}{\index{Constant@{Constant}!value@{value}}
+\index{value@{value}!Constant@{Constant}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Constant\+::value}}\label{class_constant_a97bcf14e26810def51c57ae446d69e06}
+Stores constant value. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

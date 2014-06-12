@@ -1,6 +1,10 @@
 \hypertarget{class_grouped_expression}{\section{Grouped\+Expression Class Reference}
 \label{class_grouped_expression}\index{Grouped\+Expression@{Grouped\+Expression}}
 }
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
 Inheritance diagram for Grouped\+Expression\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,27 +14,99 @@ Inheritance diagram for Grouped\+Expression\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_grouped_expression_a986d27a72d99ad866ad0d24241795a80}{{\bfseries Grouped\+Expression} (Grouped\+Operator operation, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$$>$ \&children)}\label{class_grouped_expression_a986d27a72d99ad866ad0d24241795a80}
-
+\hyperlink{class_grouped_expression_a7949fd699c0711a9fcad09504193ebf2}{Grouped\+Expression} ()
 \item 
-\hypertarget{class_grouped_expression_a67963e289263b9c2cbf03edad83401b7}{void {\bfseries accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)}\label{class_grouped_expression_a67963e289263b9c2cbf03edad83401b7}
-
+\hyperlink{class_grouped_expression_a986d27a72d99ad866ad0d24241795a80}{Grouped\+Expression} (Grouped\+Operator \hyperlink{class_grouped_expression_a018f4f129a3b9b0be45c8ed10ff21813}{operation}, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$$>$ \&\hyperlink{class_grouped_expression_aabace43c5af51a0e913ff9033b71295c}{children})
 \item 
-\hypertarget{class_grouped_expression_af1cb9044417df12361b6335962b3bc6c}{void {\bfseries replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)}\label{class_grouped_expression_af1cb9044417df12361b6335962b3bc6c}
-
+void \hyperlink{class_grouped_expression_a67963e289263b9c2cbf03edad83401b7}{accept} (\hyperlink{class_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
+\item 
+void \hyperlink{class_grouped_expression_af1cb9044417df12361b6335962b3bc6c}{replace\+Child} (\hyperlink{class_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ new\+Child)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_grouped_expression_a018f4f129a3b9b0be45c8ed10ff21813}{Grouped\+Operator {\bfseries operation}}\label{class_grouped_expression_a018f4f129a3b9b0be45c8ed10ff21813}
-
+Grouped\+Operator \hyperlink{class_grouped_expression_a018f4f129a3b9b0be45c8ed10ff21813}{operation}
 \item 
-\hypertarget{class_grouped_expression_aabace43c5af51a0e913ff9033b71295c}{std\+::vector$<$ std\+::shared\+\_\+ptr\\*
-$<$ \hyperlink{class_expression}{Expression} $>$ $>$ {\bfseries children}}\label{class_grouped_expression_aabace43c5af51a0e913ff9033b71295c}
-
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{class_expression}{Expression} $>$ $>$ \hyperlink{class_grouped_expression_aabace43c5af51a0e913ff9033b71295c}{children}
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Detailed Description}
+Repressents grouped logical or aritmetic comutative expression. It has variable number of children. Currently it is used only for local A\+N\+D and O\+R operations. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_grouped_expression_a7949fd699c0711a9fcad09504193ebf2}{\index{Grouped\+Expression@{Grouped\+Expression}!Grouped\+Expression@{Grouped\+Expression}}
+\index{Grouped\+Expression@{Grouped\+Expression}!Grouped\+Expression@{Grouped\+Expression}}
+\subsubsection[{Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}Grouped\+Expression\+::\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_grouped_expression_a7949fd699c0711a9fcad09504193ebf2}
+Creates new instance of Groupped\+Expression. \hypertarget{class_grouped_expression_a986d27a72d99ad866ad0d24241795a80}{\index{Grouped\+Expression@{Grouped\+Expression}!Grouped\+Expression@{Grouped\+Expression}}
+\index{Grouped\+Expression@{Grouped\+Expression}!Grouped\+Expression@{Grouped\+Expression}}
+\subsubsection[{Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}Grouped\+Expression\+::\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+\item[{Grouped\+Operator}]{operation, }
+\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$$>$ \&}]{children}
+\end{DoxyParamCaption}
+)}}\label{class_grouped_expression_a986d27a72d99ad866ad0d24241795a80}
+Creates new instance of Groupped\+Expression. 
+\begin{DoxyParams}{Parameters}
+{\em operation} & -\/ type of operation \\
+\hline
+{\em children} & -\/ child nodes \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_grouped_expression_a67963e289263b9c2cbf03edad83401b7}{\index{Grouped\+Expression@{Grouped\+Expression}!accept@{accept}}
+\index{accept@{accept}!Grouped\+Expression@{Grouped\+Expression}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Grouped\+Expression\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_grouped_expression_a67963e289263b9c2cbf03edad83401b7}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_ae2e6c802668a6329658b7c982f9c7b33}{Expression}.
+
+\hypertarget{class_grouped_expression_af1cb9044417df12361b6335962b3bc6c}{\index{Grouped\+Expression@{Grouped\+Expression}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!Grouped\+Expression@{Grouped\+Expression}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void Grouped\+Expression\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_grouped_expression_af1cb9044417df12361b6335962b3bc6c}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_expression_a77ac16bbb0df93de8a7711b2f7de889f}{Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_grouped_expression_aabace43c5af51a0e913ff9033b71295c}{\index{Grouped\+Expression@{Grouped\+Expression}!children@{children}}
+\index{children@{children}!Grouped\+Expression@{Grouped\+Expression}}
+\subsubsection[{children}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Expression}$>$ $>$ Grouped\+Expression\+::children}}\label{class_grouped_expression_aabace43c5af51a0e913ff9033b71295c}
+Stores call arguments. Arguments are also expression trees. \hypertarget{class_grouped_expression_a018f4f129a3b9b0be45c8ed10ff21813}{\index{Grouped\+Expression@{Grouped\+Expression}!operation@{operation}}
+\index{operation@{operation}!Grouped\+Expression@{Grouped\+Expression}}
+\subsubsection[{operation}]{\setlength{\rightskip}{0pt plus 5cm}Grouped\+Operator Grouped\+Expression\+::operation}}\label{class_grouped_expression_a018f4f129a3b9b0be45c8ed10ff21813}
+Identifies column with name and unique id. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

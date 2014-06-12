@@ -111,7 +111,7 @@ UnaryExpression::UnaryExpression(DOMElement * node, UnaryOperator op)
 	child->parent = this;
 }
 
-UnaryExpression::UnaryExpression(shared_ptr<Expression> node, UnaryOperator op)
+UnaryExpression::UnaryExpression(std::shared_ptr<Expression> node, UnaryOperator op)
 {
 	child = node;
 	child->parent = this;
@@ -142,7 +142,7 @@ BinaryExpression::BinaryExpression(DOMElement * node, BinaryOperator op)
 	operation = op;
 }
 
-BinaryExpression::BinaryExpression(shared_ptr<Expression> & leftChild, shared_ptr<Expression> & rightChild, BinaryOperator op)
+BinaryExpression::BinaryExpression(std::shared_ptr<Expression> & leftChild, std::shared_ptr<Expression> & rightChild, BinaryOperator op)
 {
 	this->leftChild = leftChild;
 	this->rightChild = rightChild;
@@ -232,7 +232,7 @@ GroupedExpression::GroupedExpression()
 {
 }
 
-GroupedExpression::GroupedExpression(GroupedOperator operation, const vector<shared_ptr<Expression>> & children)
+GroupedExpression::GroupedExpression(GroupedOperator operation, const std::vector<std::shared_ptr<Expression>> & children)
 {
 	this->operation = operation;
 	this->children = children;
