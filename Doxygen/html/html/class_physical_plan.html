@@ -90,43 +90,362 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">PhysicalPlan Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1cf06adf78f2ccb7cbd2d93b119a25f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1cf06adf78f2ccb7cbd2d93b119a25f6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPlan</b> (<a class="el" href="class_nullary_physical_operator.html">NullaryPhysicalOperator</a> *op, double numberOfRows, double time, std::vector&lt; <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;cols)</td></tr>
+<tr class="memitem:a4030a09eb03efd4093f0d237aea9505e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a4030a09eb03efd4093f0d237aea9505e">PhysicalPlan</a> ()</td></tr>
+<tr class="separator:a4030a09eb03efd4093f0d237aea9505e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cf06adf78f2ccb7cbd2d93b119a25f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a1cf06adf78f2ccb7cbd2d93b119a25f6">PhysicalPlan</a> (<a class="el" href="class_nullary_physical_operator.html">NullaryPhysicalOperator</a> *op, double numberOfRows, double time, std::vector&lt; <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;cols)</td></tr>
 <tr class="separator:a1cf06adf78f2ccb7cbd2d93b119a25f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f1bdc130a27a973a12a2da3b66ca43d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f1bdc130a27a973a12a2da3b66ca43d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPlan</b> (<a class="el" href="class_nullary_physical_operator.html">NullaryPhysicalOperator</a> *op, double numberOfRows, double time, const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;newColumns)</td></tr>
+<tr class="memitem:a7f1bdc130a27a973a12a2da3b66ca43d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a7f1bdc130a27a973a12a2da3b66ca43d">PhysicalPlan</a> (<a class="el" href="class_nullary_physical_operator.html">NullaryPhysicalOperator</a> *op, double numberOfRows, double time, const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;newColumns)</td></tr>
 <tr class="separator:a7f1bdc130a27a973a12a2da3b66ca43d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b8c83da5833167badf7740947297b75"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b8c83da5833167badf7740947297b75"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPlan</b> (<a class="el" href="class_unary_physical_operator.html">UnaryPhysicalOperator</a> *op, double newSize, double time, const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;newColumns, const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;oldPlan)</td></tr>
+<tr class="memitem:a6b8c83da5833167badf7740947297b75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a6b8c83da5833167badf7740947297b75">PhysicalPlan</a> (<a class="el" href="class_unary_physical_operator.html">UnaryPhysicalOperator</a> *op, double newSize, double time, const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;newColumns, const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;oldPlan)</td></tr>
 <tr class="separator:a6b8c83da5833167badf7740947297b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad6b6a033d32215d38c720904d16a44e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aad6b6a033d32215d38c720904d16a44e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalPlan</b> (<a class="el" href="class_binary_physical_operator.html">BinaryPhysicalOperator</a> *op, double newSize, double time, const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;newColumns, const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;oldPlan1, const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;oldPlan2)</td></tr>
+<tr class="memitem:aad6b6a033d32215d38c720904d16a44e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#aad6b6a033d32215d38c720904d16a44e">PhysicalPlan</a> (<a class="el" href="class_binary_physical_operator.html">BinaryPhysicalOperator</a> *op, double newSize, double time, const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;newColumns, const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;oldPlan1, const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;oldPlan2)</td></tr>
 <tr class="separator:aad6b6a033d32215d38c720904d16a44e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a52cbdf31b5d5c9dcdc6730dd1b516e7b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a52cbdf31b5d5c9dcdc6730dd1b516e7b"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>Comparator</b> (std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;i, std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;j)</td></tr>
+<tr class="memitem:a52cbdf31b5d5c9dcdc6730dd1b516e7b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a52cbdf31b5d5c9dcdc6730dd1b516e7b">Comparator</a> (std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;i, std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;j)</td></tr>
 <tr class="separator:a52cbdf31b5d5c9dcdc6730dd1b516e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4d8ba56ef7d228a2a11176da541af5ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d8ba56ef7d228a2a11176da541af5ef"></a>
-std::vector&lt; <a class="el" href="class_index.html">Index</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>indices</b></td></tr>
+<tr class="memitem:a4d8ba56ef7d228a2a11176da541af5ef"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_index.html">Index</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a4d8ba56ef7d228a2a11176da541af5ef">indices</a></td></tr>
 <tr class="separator:a4d8ba56ef7d228a2a11176da541af5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a49fcbbcb8e22d1f573106de5847c45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a49fcbbcb8e22d1f573106de5847c45"></a>
-<a class="el" href="class_possible_sort_parameters.html">PossibleSortParameters</a>&#160;</td><td class="memItemRight" valign="bottom"><b>sortedBy</b></td></tr>
+<tr class="memitem:a6a49fcbbcb8e22d1f573106de5847c45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_possible_sort_parameters.html">PossibleSortParameters</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a6a49fcbbcb8e22d1f573106de5847c45">sortedBy</a></td></tr>
 <tr class="separator:a6a49fcbbcb8e22d1f573106de5847c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2176d32a64b58406206181395c4127bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2176d32a64b58406206181395c4127bc"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>timeComplexity</b></td></tr>
+<tr class="memitem:a2176d32a64b58406206181395c4127bc"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a2176d32a64b58406206181395c4127bc">timeComplexity</a></td></tr>
 <tr class="separator:a2176d32a64b58406206181395c4127bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a97349262f468410057d66f00334003a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a97349262f468410057d66f00334003a5"></a>
-std::shared_ptr&lt; <a class="el" href="class_physical_operator.html">PhysicalOperator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>plan</b></td></tr>
+<tr class="memitem:a97349262f468410057d66f00334003a5"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_physical_operator.html">PhysicalOperator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_plan.html#a97349262f468410057d66f00334003a5">plan</a></td></tr>
 <tr class="separator:a97349262f468410057d66f00334003a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class representing whole physical plan, that means operator tree and aditional informations. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a4030a09eb03efd4093f0d237aea9505e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PhysicalPlan::PhysicalPlan </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_physical_plan.html">PhysicalPlan</a>. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1cf06adf78f2ccb7cbd2d93b119a25f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PhysicalPlan::PhysicalPlan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_nullary_physical_operator.html">NullaryPhysicalOperator</a> *&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>numberOfRows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>cols</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_physical_plan.html">PhysicalPlan</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op</td><td>- new tree root </td></tr>
+    <tr><td class="paramname">numberOfRows</td><td>- new relation size </td></tr>
+    <tr><td class="paramname">time</td><td>- time to execute op </td></tr>
+    <tr><td class="paramname">cols</td><td>- new columns </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7f1bdc130a27a973a12a2da3b66ca43d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PhysicalPlan::PhysicalPlan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_nullary_physical_operator.html">NullaryPhysicalOperator</a> *&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>numberOfRows</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>newColumns</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_physical_plan.html">PhysicalPlan</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op</td><td>- new tree root </td></tr>
+    <tr><td class="paramname">numberOfRows</td><td>- new relation size </td></tr>
+    <tr><td class="paramname">time</td><td>- time to execute op </td></tr>
+    <tr><td class="paramname">newColumns</td><td>- new columns </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6b8c83da5833167badf7740947297b75"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PhysicalPlan::PhysicalPlan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_unary_physical_operator.html">UnaryPhysicalOperator</a> *&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>newSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>newColumns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oldPlan</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_physical_plan.html">PhysicalPlan</a>. It connects op to operator tree. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op</td><td>- new tree root </td></tr>
+    <tr><td class="paramname">newSize</td><td>- new relation size </td></tr>
+    <tr><td class="paramname">time</td><td>- time to execute op </td></tr>
+    <tr><td class="paramname">newColumns</td><td>- new columns </td></tr>
+    <tr><td class="paramname">oldPlan</td><td>- new child for op </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aad6b6a033d32215d38c720904d16a44e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PhysicalPlan::PhysicalPlan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_binary_physical_operator.html">BinaryPhysicalOperator</a> *&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>newSize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>newColumns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oldPlan1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>oldPlan2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_physical_plan.html">PhysicalPlan</a>. It connects op to operator tree. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">op</td><td>- new tree root </td></tr>
+    <tr><td class="paramname">newSize</td><td>- new relation size </td></tr>
+    <tr><td class="paramname">time</td><td>- time to execute op </td></tr>
+    <tr><td class="paramname">newColumns</td><td>- new columns </td></tr>
+    <tr><td class="paramname">oldPlan1</td><td>- new left child for op </td></tr>
+    <tr><td class="paramname">oldPlan2</td><td>- new right child for op </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a52cbdf31b5d5c9dcdc6730dd1b516e7b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PhysicalPlan::Comparator </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_physical_plan.html">PhysicalPlan</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Compares two plans. Operation less is defined: i &lt; j &lt;=&gt; i.timeComplexity&lt;j.timeComplexity </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>- first plan </td></tr>
+    <tr><td class="paramname">j</td><td>- second plan </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if i&lt;j </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a4d8ba56ef7d228a2a11176da541af5ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_index.html">Index</a>&gt; PhysicalPlan::indices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Information if current table has iny indices. </p>
+
+</div>
+</div>
+<a class="anchor" id="a97349262f468410057d66f00334003a5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="class_physical_operator.html">PhysicalOperator</a>&gt; PhysicalPlan::plan</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer on the root of operator tree. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6a49fcbbcb8e22d1f573106de5847c45"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_possible_sort_parameters.html">PossibleSortParameters</a> PhysicalPlan::sortedBy</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Information how is the output sorted by. </p>
+
+</div>
+</div>
+<a class="anchor" id="a2176d32a64b58406206181395c4127bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double PhysicalPlan::timeComplexity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Time, how much will it take to evaluate plan. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/PhysicalOperator.cpp</li>
@@ -134,7 +453,7 @@ std::shared_ptr&lt; <a class="el" href="class_physical_operator.html">PhysicalOp
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 19:57:51 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 17 2014 23:05:52 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

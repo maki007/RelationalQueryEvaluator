@@ -1,6 +1,10 @@
 \hypertarget{class_union_operator}{\section{Union\+Operator Class Reference}
 \label{class_union_operator}\index{Union\+Operator@{Union\+Operator}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Union\+Operator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,10 +14,31 @@ Inheritance diagram for Union\+Operator\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_union_operator_a534cf044caa5074d4a493edff1209e16}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_union_operator_a534cf044caa5074d4a493edff1209e16}
-
+void \hyperlink{class_union_operator_a534cf044caa5074d4a493edff1209e16}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Represets set union. Operator copies the rst input to output and append the data from second input. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_union_operator_a534cf044caa5074d4a493edff1209e16}{\index{Union\+Operator@{Union\+Operator}!accept@{accept}}
+\index{accept@{accept}!Union\+Operator@{Union\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Union\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_union_operator_a534cf044caa5074d4a493edff1209e16}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_physical_operator_a29ec622920006cb5428bf2c259918347}{Binary\+Physical\+Operator}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

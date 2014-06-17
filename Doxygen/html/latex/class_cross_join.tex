@@ -1,6 +1,10 @@
 \hypertarget{class_cross_join}{\section{Cross\+Join Class Reference}
 \label{class_cross_join}\index{Cross\+Join@{Cross\+Join}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Cross\+Join\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,10 +14,31 @@ Inheritance diagram for Cross\+Join\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_cross_join_a92a1a35e3940c6c8bdaa6722d476c5db}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_cross_join_a92a1a35e3940c6c8bdaa6722d476c5db}
-
+void \hyperlink{class_cross_join_a92a1a35e3940c6c8bdaa6722d476c5db}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Represents physical cross join operator. Operator computes Cartesian product from given inputs. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_cross_join_a92a1a35e3940c6c8bdaa6722d476c5db}{\index{Cross\+Join@{Cross\+Join}!accept@{accept}}
+\index{accept@{accept}!Cross\+Join@{Cross\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Cross\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_cross_join_a92a1a35e3940c6c8bdaa6722d476c5db}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_physical_operator_a29ec622920006cb5428bf2c259918347}{Binary\+Physical\+Operator}.
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

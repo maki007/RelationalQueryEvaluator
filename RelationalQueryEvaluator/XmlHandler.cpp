@@ -1,20 +1,5 @@
 #include "XmlHandler.h"
 
-WStr::WStr(const char* str)
-{
-	wStr = XMLString::transcode(str);
-}
-
-WStr::~WStr()
-{
-	XMLString::release(&wStr);
-}
-
-WStr::operator const XMLCh*() const
-{
-	return wStr;
-}
-
 
 void ParserErrorHandler::reportParseException(const SAXParseException& ex)
 {

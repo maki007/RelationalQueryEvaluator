@@ -1,6 +1,10 @@
 \hypertarget{class_unary_physical_operator}{\section{Unary\+Physical\+Operator Class Reference}
 \label{class_unary_physical_operator}\index{Unary\+Physical\+Operator@{Unary\+Physical\+Operator}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Unary\+Physical\+Operator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,16 +14,46 @@ Inheritance diagram for Unary\+Physical\+Operator\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{virtual void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0}\label{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}
-
+virtual void \hyperlink{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_unary_physical_operator_acb7166fc6eabb3c8fd32e7a4d0b76425}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_operator}{Physical\+Operator} $>$ {\bfseries child}}\label{class_unary_physical_operator_acb7166fc6eabb3c8fd32e7a4d0b76425}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_operator}{Physical\+Operator} $>$ \hyperlink{class_unary_physical_operator_acb7166fc6eabb3c8fd32e7a4d0b76425}{child}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Base class for operators with one input. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{\index{Unary\+Physical\+Operator@{Unary\+Physical\+Operator}!accept@{accept}}
+\index{accept@{accept}!Unary\+Physical\+Operator@{Unary\+Physical\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Unary\+Physical\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_physical_operator_aec6926a904c71c0619d6e9e1457252cd}{Physical\+Operator}.
+
+
+
+Implemented in \hyperlink{class_columns_operations_operator_a5d40e806cb9dbd2969b45c28d7729f76}{Columns\+Operations\+Operator}, \hyperlink{class_sorted_group_aba97fdc1722858dc33723052e6bc7e5a}{Sorted\+Group}, \hyperlink{class_hash_group_a300c7ad6b7a4e39c9a7dc5a57389b85f}{Hash\+Group}, \hyperlink{class_sort_operator_aff5d834234616ce2d36efda9639b734b}{Sort\+Operator}, \hyperlink{class_filter_keeping_order_a3d970e81588d96ac0d6538c17a22144c}{Filter\+Keeping\+Order}, and \hyperlink{class_filter_a1df50e05d64ad3b2cc45d2f9e28127c4}{Filter}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_unary_physical_operator_acb7166fc6eabb3c8fd32e7a4d0b76425}{\index{Unary\+Physical\+Operator@{Unary\+Physical\+Operator}!child@{child}}
+\index{child@{child}!Unary\+Physical\+Operator@{Unary\+Physical\+Operator}}
+\subsubsection[{child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Physical\+Operator}$>$ Unary\+Physical\+Operator\+::child}}\label{class_unary_physical_operator_acb7166fc6eabb3c8fd32e7a4d0b76425}
+Stores input operator. 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

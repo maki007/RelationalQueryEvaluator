@@ -1,6 +1,10 @@
 \hypertarget{class_merge_anti_join}{\section{Merge\+Anti\+Join Class Reference}
 \label{class_merge_anti_join}\index{Merge\+Anti\+Join@{Merge\+Anti\+Join}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Merge\+Anti\+Join\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,25 +14,69 @@ Inheritance diagram for Merge\+Anti\+Join\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_merge_anti_join_a314a1c84c2b6c6848f5f4664c2b13c77}{{\bfseries Merge\+Anti\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition)}\label{class_merge_anti_join_a314a1c84c2b6c6848f5f4664c2b13c77}
-
+\hyperlink{class_merge_anti_join_a314a1c84c2b6c6848f5f4664c2b13c77}{Merge\+Anti\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&\hyperlink{class_merge_anti_join_ae616cc88814ffd21b31ed48693ac60a6}{condition})
 \item 
-\hypertarget{class_merge_anti_join_a15758e7f808703b243101faa382a0156}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_merge_anti_join_a15758e7f808703b243101faa382a0156}
-
+void \hyperlink{class_merge_anti_join_a15758e7f808703b243101faa382a0156}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_merge_anti_join_ae616cc88814ffd21b31ed48693ac60a6}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_merge_anti_join_ae616cc88814ffd21b31ed48693ac60a6}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_merge_anti_join_ae616cc88814ffd21b31ed48693ac60a6}{condition}
 \item 
-\hypertarget{class_merge_anti_join_a1dedfa039b1172db367fc7d3cd0304fc}{std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries left}}\label{class_merge_anti_join_a1dedfa039b1172db367fc7d3cd0304fc}
-
+std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_merge_anti_join_a1dedfa039b1172db367fc7d3cd0304fc}{left}
 \item 
-\hypertarget{class_merge_anti_join_a28f20cf708052a9357799187831c8a33}{std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries right}}\label{class_merge_anti_join_a28f20cf708052a9357799187831c8a33}
-
+std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_merge_anti_join_a28f20cf708052a9357799187831c8a33}{right}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents Merge equijoin. Operator computes equiantijoin from given sorted inputs. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_merge_anti_join_a314a1c84c2b6c6848f5f4664c2b13c77}{\index{Merge\+Anti\+Join@{Merge\+Anti\+Join}!Merge\+Anti\+Join@{Merge\+Anti\+Join}}
+\index{Merge\+Anti\+Join@{Merge\+Anti\+Join}!Merge\+Anti\+Join@{Merge\+Anti\+Join}}
+\subsubsection[{Merge\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}Merge\+Anti\+Join\+::\+Merge\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition}
+\end{DoxyParamCaption}
+)}}\label{class_merge_anti_join_a314a1c84c2b6c6848f5f4664c2b13c77}
+Creates new instance of \hyperlink{class_merge_anti_join}{Merge\+Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ join condition. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_merge_anti_join_a15758e7f808703b243101faa382a0156}{\index{Merge\+Anti\+Join@{Merge\+Anti\+Join}!accept@{accept}}
+\index{accept@{accept}!Merge\+Anti\+Join@{Merge\+Anti\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Merge\+Anti\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_merge_anti_join_a15758e7f808703b243101faa382a0156}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_physical_operator_a29ec622920006cb5428bf2c259918347}{Binary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_merge_anti_join_ae616cc88814ffd21b31ed48693ac60a6}{\index{Merge\+Anti\+Join@{Merge\+Anti\+Join}!condition@{condition}}
+\index{condition@{condition}!Merge\+Anti\+Join@{Merge\+Anti\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Merge\+Anti\+Join\+::condition}}\label{class_merge_anti_join_ae616cc88814ffd21b31ed48693ac60a6}
+Anti join condition. \hypertarget{class_merge_anti_join_a1dedfa039b1172db367fc7d3cd0304fc}{\index{Merge\+Anti\+Join@{Merge\+Anti\+Join}!left@{left}}
+\index{left@{left}!Merge\+Anti\+Join@{Merge\+Anti\+Join}}
+\subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ Merge\+Anti\+Join\+::left}}\label{class_merge_anti_join_a1dedfa039b1172db367fc7d3cd0304fc}
+Stored information how first input is sorted. \hypertarget{class_merge_anti_join_a28f20cf708052a9357799187831c8a33}{\index{Merge\+Anti\+Join@{Merge\+Anti\+Join}!right@{right}}
+\index{right@{right}!Merge\+Anti\+Join@{Merge\+Anti\+Join}}
+\subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ Merge\+Anti\+Join\+::right}}\label{class_merge_anti_join_a28f20cf708052a9357799187831c8a33}
+Stored information how second input is sorted. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

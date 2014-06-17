@@ -81,7 +81,7 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<Physic
 	result += declaration("Store", getColumnTypeOutput(plan->columns), "", "storeResult", "") + "\n";
 	result += "source -> start\n";
 	result += code;
-	result += connect(lastWritttenNode, "storeResult");
+	result += connect(lastWrittenNode, "storeResult");
 	result += connect("storeResult", "output");
 	result += "}";
 	return result;
@@ -90,19 +90,19 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<Physic
 
 void BoboxPlanWritingPhysicalOperatorVisitor::writeNullaryOperator(const string & type, const std::map<int, ColumnInfo> & columns, const string & costructorParameters)
 {
-	lastWritttenNode = type + getId();
-	declarations += declaration(type, "", getColumnTypeOutput(columns), lastWritttenNode, costructorParameters);
-	code += connect("start[" + to_string(numberOfLeafs) + "]", lastWritttenNode);
+	lastWrittenNode = type + getId();
+	declarations += declaration(type, "", getColumnTypeOutput(columns), lastWrittenNode, costructorParameters);
+	code += connect("start[" + to_string(numberOfLeafs) + "]", lastWrittenNode);
 	++numberOfLeafs;
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::writeUnaryOperator(const string & type, UnaryPhysicalOperator * node, const string & costructorParameters)
 {
 	node->child->accept(*this);
-	string newlastWritttenNode = type + getId();
-	declarations += declaration(type, getColumnTypeOutput(node->child->columns), getColumnTypeOutput(node->columns), newlastWritttenNode, costructorParameters);
-	code += connect(lastWritttenNode, newlastWritttenNode);
-	lastWritttenNode = newlastWritttenNode;
+	string newlastWrittenNode = type + getId();
+	declarations += declaration(type, getColumnTypeOutput(node->child->columns), getColumnTypeOutput(node->columns), newlastWrittenNode, costructorParameters);
+	code += connect(lastWrittenNode, newlastWrittenNode);
+	lastWrittenNode = newlastWrittenNode;
 }
 
 
@@ -111,14 +111,14 @@ void BoboxPlanWritingPhysicalOperatorVisitor::writeBinaryOperator(const string &
 {
 	string leftNode, rightNode;
 	node->leftChild->accept(*this);
-	leftNode = lastWritttenNode;
+	leftNode = lastWrittenNode;
 	node->rightChild->accept(*this);
-	rightNode = lastWritttenNode;
-	string newlastWritttenNode = type + getId();
-	declarations += declaration(type, getColumnTypeOutput(node->leftChild->columns) + ")(" + getColumnTypeOutput(node->rightChild->columns), getColumnTypeOutput(node->columns), newlastWritttenNode, costructorParameters);
-	code += connect(leftNode, "[0]" + newlastWritttenNode);
-	code += connect(rightNode, "[1]" + newlastWritttenNode);
-	lastWritttenNode = newlastWritttenNode;
+	rightNode = lastWrittenNode;
+	string newlastWrittenNode = type + getId();
+	declarations += declaration(type, getColumnTypeOutput(node->leftChild->columns) + ")(" + getColumnTypeOutput(node->rightChild->columns), getColumnTypeOutput(node->columns), newlastWrittenNode, costructorParameters);
+	code += connect(leftNode, "[0]" + newlastWrittenNode);
+	code += connect(rightNode, "[1]" + newlastWrittenNode);
+	lastWrittenNode = newlastWrittenNode;
 
 }
 
@@ -262,12 +262,12 @@ void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeEquiJoin(MergeEquiJoin *
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitHashJoin(HashJoin * node)
 {
-	writeBinaryOperator("HashJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->left, node->right, node));
+	writeBinaryOperator("HashJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->leftPartOfCondition, node->rightPartOfCondition, node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitHashAntiJoin(HashAntiJoin * node)
 {
-	writeBinaryOperator("HashAntiJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->left, node->right, node));
+	writeBinaryOperator("HashAntiJoin", node, writeJoinParameters(node) + writeEquiJoinParameters(node->leftPartOfCondition, node->rightPartOfCondition, node));
 }
 
 void BoboxPlanWritingPhysicalOperatorVisitor::visitMergeAntiJoin(MergeAntiJoin * node)

@@ -1,6 +1,10 @@
 \hypertarget{class_index_scan}{\section{Index\+Scan Class Reference}
 \label{class_index_scan}\index{Index\+Scan@{Index\+Scan}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Index\+Scan\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,25 +14,75 @@ Inheritance diagram for Index\+Scan\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_index_scan_a25eeb21a925a19209af7100de3f42ef5}{{\bfseries Index\+Scan} (const std\+::string \&name, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition, const \hyperlink{class_index}{Index} \&index)}\label{class_index_scan_a25eeb21a925a19209af7100de3f42ef5}
-
+\hyperlink{class_index_scan_a25eeb21a925a19209af7100de3f42ef5}{Index\+Scan} (const std\+::string \&name, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&\hyperlink{class_index_scan_a9adcd1af97f3df02679f18fed687af21}{condition}, const \hyperlink{class_index}{Index} \&\hyperlink{class_index_scan_a8ffc3e0a33fb2db655471ea28e47bc9e}{index})
 \item 
-\hypertarget{class_index_scan_a683950e9802678a2351f026ddb2a9881}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_index_scan_a683950e9802678a2351f026ddb2a9881}
-
+void \hyperlink{class_index_scan_a683950e9802678a2351f026ddb2a9881}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_index_scan_a8557a6ffee853f05298881acf8bebe14}{std\+::string {\bfseries table\+Name}}\label{class_index_scan_a8557a6ffee853f05298881acf8bebe14}
-
+std\+::string \hyperlink{class_index_scan_a8557a6ffee853f05298881acf8bebe14}{table\+Name}
 \item 
-\hypertarget{class_index_scan_a9adcd1af97f3df02679f18fed687af21}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_index_scan_a9adcd1af97f3df02679f18fed687af21}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_index_scan_a9adcd1af97f3df02679f18fed687af21}{condition}
 \item 
-\hypertarget{class_index_scan_a8ffc3e0a33fb2db655471ea28e47bc9e}{\hyperlink{class_index}{Index} {\bfseries index}}\label{class_index_scan_a8ffc3e0a33fb2db655471ea28e47bc9e}
-
+\hyperlink{class_index}{Index} \hyperlink{class_index_scan_a8ffc3e0a33fb2db655471ea28e47bc9e}{index}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents operator, which reads part of the table using index. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_index_scan_a25eeb21a925a19209af7100de3f42ef5}{\index{Index\+Scan@{Index\+Scan}!Index\+Scan@{Index\+Scan}}
+\index{Index\+Scan@{Index\+Scan}!Index\+Scan@{Index\+Scan}}
+\subsubsection[{Index\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}Index\+Scan\+::\+Index\+Scan (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{name, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition, }
+\item[{const {\bf Index} \&}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_index_scan_a25eeb21a925a19209af7100de3f42ef5}
+Creates new instance of \hyperlink{class_index_scan}{Index\+Scan}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & of table to read. \\
+\hline
+{\em condition} & to apply while reading. \\
+\hline
+{\em index} & -\/ index to user for reading. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_index_scan_a683950e9802678a2351f026ddb2a9881}{\index{Index\+Scan@{Index\+Scan}!accept@{accept}}
+\index{accept@{accept}!Index\+Scan@{Index\+Scan}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Index\+Scan\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_index_scan_a683950e9802678a2351f026ddb2a9881}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_nullary_physical_operator_a053a51bc73b06d883fba982adeeb122c}{Nullary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_index_scan_a9adcd1af97f3df02679f18fed687af21}{\index{Index\+Scan@{Index\+Scan}!condition@{condition}}
+\index{condition@{condition}!Index\+Scan@{Index\+Scan}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Index\+Scan\+::condition}}\label{class_index_scan_a9adcd1af97f3df02679f18fed687af21}
+Condition to apply while reading. \hypertarget{class_index_scan_a8ffc3e0a33fb2db655471ea28e47bc9e}{\index{Index\+Scan@{Index\+Scan}!index@{index}}
+\index{index@{index}!Index\+Scan@{Index\+Scan}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Index} Index\+Scan\+::index}}\label{class_index_scan_a8ffc3e0a33fb2db655471ea28e47bc9e}
+\hyperlink{class_table}{Table} index to use. \hypertarget{class_index_scan_a8557a6ffee853f05298881acf8bebe14}{\index{Index\+Scan@{Index\+Scan}!table\+Name@{table\+Name}}
+\index{table\+Name@{table\+Name}!Index\+Scan@{Index\+Scan}}
+\subsubsection[{table\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Index\+Scan\+::table\+Name}}\label{class_index_scan_a8557a6ffee853f05298881acf8bebe14}
+\hyperlink{class_table}{Table} to read. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

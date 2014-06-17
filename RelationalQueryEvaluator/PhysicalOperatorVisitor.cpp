@@ -109,14 +109,14 @@ string columns(std::map<int, ColumnInfo> & columns)
 	return result;
 }
 
-void PhysicalOperatorDrawingVisitor::generateText(string & label, NullaryPhysicalOperator * node)
+void PhysicalOperatorDrawingVisitor::generateText(std::string & label, NullaryPhysicalOperator * node)
 {
 	result.append("node");
 	result.append(to_string(nodeCounter));
 	result.append("[label=\"" + label + "\n time:" + to_string((ulong)node->timeComplexity) + "\n size:" + to_string((ulong)ceil(node->size)) + "\n" + columns(node->columns) + "\n\"]");
 }
 
-void PhysicalOperatorDrawingVisitor::generateText(string & label, UnaryPhysicalOperator * node)
+void PhysicalOperatorDrawingVisitor::generateText(std::string & label, UnaryPhysicalOperator * node)
 {
 	ulong identifier = nodeCounter;
 
@@ -134,7 +134,7 @@ void PhysicalOperatorDrawingVisitor::generateText(string & label, UnaryPhysicalO
 
 }
 
-void PhysicalOperatorDrawingVisitor::generateText(string & label, BinaryPhysicalOperator * node)
+void PhysicalOperatorDrawingVisitor::generateText(std::string & label, BinaryPhysicalOperator * node)
 {
 	ulong identifier = nodeCounter;
 

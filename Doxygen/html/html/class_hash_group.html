@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">HashGroup Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for HashGroup:</div>
 <div class="dyncontent">
@@ -102,36 +104,124 @@ Inheritance diagram for HashGroup:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af175f06e72f0fd7476e652ec5ffcbeb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af175f06e72f0fd7476e652ec5ffcbeb7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>HashGroup</b> (const std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt; &amp;groupColumns, const std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt; &amp;agregateFunctions)</td></tr>
+<tr class="memitem:af175f06e72f0fd7476e652ec5ffcbeb7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_group.html#af175f06e72f0fd7476e652ec5ffcbeb7">HashGroup</a> (const std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt; &amp;<a class="el" href="class_hash_group.html#a61af9515cad55af148210493431c5df6">groupColumns</a>, const std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt; &amp;<a class="el" href="class_hash_group.html#a8a813f6713413f2bd401bfa77be774de">agregateFunctions</a>)</td></tr>
 <tr class="separator:af175f06e72f0fd7476e652ec5ffcbeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a300c7ad6b7a4e39c9a7dc5a57389b85f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a300c7ad6b7a4e39c9a7dc5a57389b85f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)</td></tr>
+<tr class="memitem:a300c7ad6b7a4e39c9a7dc5a57389b85f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_group.html#a300c7ad6b7a4e39c9a7dc5a57389b85f">accept</a> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)</td></tr>
 <tr class="separator:a300c7ad6b7a4e39c9a7dc5a57389b85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a61af9515cad55af148210493431c5df6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a61af9515cad55af148210493431c5df6"></a>
-std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>groupColumns</b></td></tr>
+<tr class="memitem:a61af9515cad55af148210493431c5df6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_group.html#a61af9515cad55af148210493431c5df6">groupColumns</a></td></tr>
 <tr class="separator:a61af9515cad55af148210493431c5df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a813f6713413f2bd401bfa77be774de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8a813f6713413f2bd401bfa77be774de"></a>
-std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>agregateFunctions</b></td></tr>
+<tr class="memitem:a8a813f6713413f2bd401bfa77be774de"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_hash_group.html#a8a813f6713413f2bd401bfa77be774de">agregateFunctions</a></td></tr>
 <tr class="separator:a8a813f6713413f2bd401bfa77be774de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_unary_physical_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_unary_physical_operator')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_unary_physical_operator.html">UnaryPhysicalOperator</a></td></tr>
-<tr class="memitem:acb7166fc6eabb3c8fd32e7a4d0b76425 inherit pub_attribs_class_unary_physical_operator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acb7166fc6eabb3c8fd32e7a4d0b76425"></a>
-std::shared_ptr&lt; <a class="el" href="class_physical_operator.html">PhysicalOperator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>child</b></td></tr>
+<tr class="memitem:acb7166fc6eabb3c8fd32e7a4d0b76425 inherit pub_attribs_class_unary_physical_operator"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_physical_operator.html">PhysicalOperator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_unary_physical_operator.html#acb7166fc6eabb3c8fd32e7a4d0b76425">child</a></td></tr>
 <tr class="separator:acb7166fc6eabb3c8fd32e7a4d0b76425 inherit pub_attribs_class_unary_physical_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_physical_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_physical_operator')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_physical_operator.html">PhysicalOperator</a></td></tr>
-<tr class="memitem:a88836a2b6453889b6ad852a2121ca512 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88836a2b6453889b6ad852a2121ca512"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>timeComplexity</b></td></tr>
+<tr class="memitem:a88836a2b6453889b6ad852a2121ca512 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#a88836a2b6453889b6ad852a2121ca512">timeComplexity</a></td></tr>
 <tr class="separator:a88836a2b6453889b6ad852a2121ca512 inherit pub_attribs_class_physical_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a744971579c457601553e8e9a70a5cee1 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a744971579c457601553e8e9a70a5cee1"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+<tr class="memitem:a744971579c457601553e8e9a70a5cee1 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#a744971579c457601553e8e9a70a5cee1">size</a></td></tr>
 <tr class="separator:a744971579c457601553e8e9a70a5cee1 inherit pub_attribs_class_physical_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf7e49cbadd48e7b0b30e9a84367e5de inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf7e49cbadd48e7b0b30e9a84367e5de"></a>
-std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>columns</b></td></tr>
+<tr class="memitem:aaf7e49cbadd48e7b0b30e9a84367e5de inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#aaf7e49cbadd48e7b0b30e9a84367e5de">columns</a></td></tr>
 <tr class="separator:aaf7e49cbadd48e7b0b30e9a84367e5de inherit pub_attribs_class_physical_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represent hash group algorithm. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af175f06e72f0fd7476e652ec5ffcbeb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HashGroup::HashGroup </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>groupColumns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>agregateFunctions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_hash_group.html">HashGroup</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">groupColumns</td><td>- group by columns. </td></tr>
+    <tr><td class="paramname">agregateFunctions</td><td>- information about agreggate functions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a300c7ad6b7a4e39c9a7dc5a57389b85f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HashGroup::accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method for calling visit[node] on given <a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td><a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a>, on which to call function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_unary_physical_operator.html#a3b0160d380149213561ef2ba479dbf6a">UnaryPhysicalOperator</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8a813f6713413f2bd401bfa77be774de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_agregate_function.html">AgregateFunction</a>&gt; HashGroup::agregateFunctions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Information about agreggate functions. </p>
+
+</div>
+</div>
+<a class="anchor" id="a61af9515cad55af148210493431c5df6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="class_group_column.html">GroupColumn</a>&gt; HashGroup::groupColumns</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="class_group.html">Group</a> by columns. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/PhysicalOperator.cpp</li>
@@ -139,7 +229,7 @@ std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 19:57:47 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 17 2014 23:05:46 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

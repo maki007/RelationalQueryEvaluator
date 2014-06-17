@@ -4,6 +4,10 @@
 #include <memory>
 #include "PhysicalOperator.h"
 
+/**
+* Base class for physical operator tree visitors.
+* Every virtual method does nothing only visits node all children.
+*/
 class PhysicalOperatorVisitor
 {
 public:
@@ -105,19 +109,47 @@ public:
 	virtual void visitIndexScan(IndexScan * node);
 };
 
+/**
+* Vsitor generates serialize physical tree to dot code.
+*/
 class PhysicalOperatorDrawingVisitor : public PhysicalOperatorVisitor
 {
 public:
-	std::string result;
-	ulong nodeCounter;
+	std::string result; /**< Final dot representation. */
+	ulong nodeCounter;  /**< Variable that counts nodes. */
+
+	/**
+	* Creates new instance of PhysicalOperatorDrawingVisitor.
+	*/
 	PhysicalOperatorDrawingVisitor();
 
+	/**
+	* Generates node representation in dot.
+	* @param label - label for newly generated node
+	* @param node - processed node
+	*/
 	void generateText(std::string & label, NullaryPhysicalOperator * node);
 
+	/**
+	* Generates node representation in dot.
+	* Calls this visitor on child and connects generated nodes.
+	* @param label - label for newly generated node
+	* @param node  processed node
+	*/
 	void generateText(std::string & label, UnaryPhysicalOperator * node);
 
+	/**
+	* Generates node representation in dot.
+	* Calls this visitor on children and connects generated nodes.
+	* @param label - label for newly generated node
+	* @param node - processed node
+	*/
 	void generateText(std::string & label, BinaryPhysicalOperator * node);
 
+	/**
+	*
+	*
+	*/
 	std::string PhysicalOperatorDrawingVisitor::writeGroupParameters(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 
 	void visitFilter(Filter * node);
@@ -126,9 +158,9 @@ public:
 
 	void visitSortOperator(SortOperator * node);
 
-	virtual void visitMergeEquiJoin(MergeEquiJoin * node);
+	void visitMergeEquiJoin(MergeEquiJoin * node);
 
-	virtual void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
+	void visitMergeNonEquiJoin(MergeNonEquiJoin * node);
 
 	void visitCrossJoin(CrossJoin * node);
 
@@ -153,10 +185,13 @@ public:
 	void visitIndexScan(IndexScan * node);
 };
 
+/**
+* Clones physial operator tree.
+*/
 class CloningPhysicalOperatorVisitor : public PhysicalOperatorVisitor
 {
 public:
-	std::shared_ptr<PhysicalOperator> result;
+	std::shared_ptr<PhysicalOperator> result; /**< Cloned result. */
 
 	void processUnaryOperator(UnaryPhysicalOperator * res);
 
@@ -195,10 +230,15 @@ public:
 	void visitIndexScan(IndexScan * node);
 };
 
+/**
+* After physical plan is generated some sort parameters can be unknown (direciotn or order of columns).
+* This visitor visits whole tree from top a set this parameters to known values.
+*/
 class SortResolvingPhysicalOperatorVisitor : public PhysicalOperatorVisitor
 {
 public:
-	std::vector<SortParameter> sortParameters;
+	std::vector<SortParameter> sortParameters; /**< Current sorted state. */
+
 	void visitFilter(Filter * node);
 
 	void visitFilterKeepingOrder(FilterKeepingOrder * node);
@@ -232,31 +272,37 @@ public:
 	void visitIndexScan(IndexScan * node);
 };
 
+/**
+* Vsitor generates serialize physical tree to dot code.
+* It is equal to PhysicalOperatorDrawingVisitor except it doens't write sorts, which output and input are sorted same size.
+*/
 class PhysicalOperatorDrawingVisitorWithouSorts : public PhysicalOperatorDrawingVisitor
 {
 	void visitSortOperator(SortOperator * node);
-
-
 };
 
 
+/**
+* Generates bobox string output.
+*/
 class BoboxPlanWritingPhysicalOperatorVisitor : public PhysicalOperatorVisitor
 {
 private:
-	ulong numberOfLeafs;
+	ulong numberOfLeafs; /**< Counts number of leafs in tree. */
 
-	std::string declarations;
+	std::string declarations; /**< Stores declaration of bobox operatos.*/
 
-	std::string code;
+	std::string code; /**< Stores connections between bobox operators. */
 
-	ulong lastId;
+	ulong lastId; /**< Stores last generated uniwue id for node. */
 
-	std::string lastWritttenNode;
+	std::string lastWrittenNode; /**< Stores last written node, so the next node can connect to it. */
 
 public:
 
 	std::string declaration(const std::string & type, const std::string & inputColumns,
 		const std::string & outputColumns, const std::string & name, const std::string & constructParameters);
+
 
 	std::string connect(const std::string & from, const std::string & to);
 

@@ -1,6 +1,10 @@
 \hypertarget{class_sort_operator}{\section{Sort\+Operator Class Reference}
 \label{class_sort_operator}\index{Sort\+Operator@{Sort\+Operator}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Sort\+Operator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,67 @@ Inheritance diagram for Sort\+Operator\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sort_operator_aae40824efc238dfbf2bbde0badb66138}{{\bfseries Sort\+Operator} (const \hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \&sorted\+By, const \hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \&sort\+By)}\label{class_sort_operator_aae40824efc238dfbf2bbde0badb66138}
-
+\hyperlink{class_sort_operator_aae40824efc238dfbf2bbde0badb66138}{Sort\+Operator} (const \hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \&\hyperlink{class_sort_operator_a7e3eb99b6ce1ed9d927a5e3975269be5}{sorted\+By}, const \hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \&\hyperlink{class_sort_operator_a36cfb27acb196ceb5d801b62dc2494cc}{sort\+By})
 \item 
-\hypertarget{class_sort_operator_aff5d834234616ce2d36efda9639b734b}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_sort_operator_aff5d834234616ce2d36efda9639b734b}
-
+void \hyperlink{class_sort_operator_aff5d834234616ce2d36efda9639b734b}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sort_operator_a7e3eb99b6ce1ed9d927a5e3975269be5}{\hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} {\bfseries sorted\+By}}\label{class_sort_operator_a7e3eb99b6ce1ed9d927a5e3975269be5}
-
+\hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \hyperlink{class_sort_operator_a7e3eb99b6ce1ed9d927a5e3975269be5}{sorted\+By}
 \item 
-\hypertarget{class_sort_operator_a36cfb27acb196ceb5d801b62dc2494cc}{\hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} {\bfseries sort\+By}}\label{class_sort_operator_a36cfb27acb196ceb5d801b62dc2494cc}
-
+\hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \hyperlink{class_sort_operator_a36cfb27acb196ceb5d801b62dc2494cc}{sort\+By}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents physical sort operator. \hyperlink{class_sort}{Sort} can be also partial sort when input is partially sorted by desired columns. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_sort_operator_aae40824efc238dfbf2bbde0badb66138}{\index{Sort\+Operator@{Sort\+Operator}!Sort\+Operator@{Sort\+Operator}}
+\index{Sort\+Operator@{Sort\+Operator}!Sort\+Operator@{Sort\+Operator}}
+\subsubsection[{Sort\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}Sort\+Operator\+::\+Sort\+Operator (
+\begin{DoxyParamCaption}
+\item[{const {\bf Possible\+Sort\+Parameters} \&}]{sorted\+By, }
+\item[{const {\bf Possible\+Sort\+Parameters} \&}]{sort\+By}
+\end{DoxyParamCaption}
+)}}\label{class_sort_operator_aae40824efc238dfbf2bbde0badb66138}
+Creates new instance of \hyperlink{class_sort_operator}{Sort\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em sorted\+By} & -\/ columns -\/ which the relation is sorted by. \\
+\hline
+{\em sort\+By} & -\/ columns -\/ which the relation should be sorted by. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_sort_operator_aff5d834234616ce2d36efda9639b734b}{\index{Sort\+Operator@{Sort\+Operator}!accept@{accept}}
+\index{accept@{accept}!Sort\+Operator@{Sort\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Sort\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_sort_operator_aff5d834234616ce2d36efda9639b734b}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_sort_operator_a36cfb27acb196ceb5d801b62dc2494cc}{\index{Sort\+Operator@{Sort\+Operator}!sort\+By@{sort\+By}}
+\index{sort\+By@{sort\+By}!Sort\+Operator@{Sort\+Operator}}
+\subsubsection[{sort\+By}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Possible\+Sort\+Parameters} Sort\+Operator\+::sort\+By}}\label{class_sort_operator_a36cfb27acb196ceb5d801b62dc2494cc}
+Stores colums, which the relation should be sorted by. \hypertarget{class_sort_operator_a7e3eb99b6ce1ed9d927a5e3975269be5}{\index{Sort\+Operator@{Sort\+Operator}!sorted\+By@{sorted\+By}}
+\index{sorted\+By@{sorted\+By}!Sort\+Operator@{Sort\+Operator}}
+\subsubsection[{sorted\+By}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Possible\+Sort\+Parameters} Sort\+Operator\+::sorted\+By}}\label{class_sort_operator_a7e3eb99b6ce1ed9d927a5e3975269be5}
+Stores columns, which the relation is sorted by. Can be empty. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

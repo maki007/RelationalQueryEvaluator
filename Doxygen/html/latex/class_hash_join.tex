@@ -1,6 +1,10 @@
 \hypertarget{class_hash_join}{\section{Hash\+Join Class Reference}
 \label{class_hash_join}\index{Hash\+Join@{Hash\+Join}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Hash\+Join\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,25 +14,75 @@ Inheritance diagram for Hash\+Join\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_hash_join_aa07baceba7a4436481b76f4c5210f39d}{{\bfseries Hash\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition, const std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \&left, const std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \&right)}\label{class_hash_join_aa07baceba7a4436481b76f4c5210f39d}
-
+\hyperlink{class_hash_join_aade828aa470db22861011b21f1335111}{Hash\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&\hyperlink{class_hash_join_ac2524a0455d2379287a55d8cb148c40d}{condition}, const std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \&\hyperlink{class_hash_join_a8ce73a163fdc30d10144277b51689541}{left\+Part\+Of\+Condition}, const std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \&\hyperlink{class_hash_join_ad4f1b144fc9a52d5218b1d2368c295b7}{right\+Part\+Of\+Condition})
 \item 
-\hypertarget{class_hash_join_a11dc03e38397ff42352772a3c759e145}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_hash_join_a11dc03e38397ff42352772a3c759e145}
-
+void \hyperlink{class_hash_join_a11dc03e38397ff42352772a3c759e145}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_hash_join_ac2524a0455d2379287a55d8cb148c40d}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_hash_join_ac2524a0455d2379287a55d8cb148c40d}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_hash_join_ac2524a0455d2379287a55d8cb148c40d}{condition}
 \item 
-\hypertarget{class_hash_join_a042d26672ea770645e428d4a2828ef24}{std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ {\bfseries left}}\label{class_hash_join_a042d26672ea770645e428d4a2828ef24}
-
+std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \hyperlink{class_hash_join_a8ce73a163fdc30d10144277b51689541}{left\+Part\+Of\+Condition}
 \item 
-\hypertarget{class_hash_join_a92d3fbbb90a427c9d48f2aca03cd9552}{std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ {\bfseries right}}\label{class_hash_join_a92d3fbbb90a427c9d48f2aca03cd9552}
-
+std\+::vector$<$ \hyperlink{class_column_identifier}{Column\+Identifier} $>$ \hyperlink{class_hash_join_ad4f1b144fc9a52d5218b1d2368c295b7}{right\+Part\+Of\+Condition}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents hash join physical operator. Operator computes equijoin using hash table. First input will be stored in hash table. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hash_join_aade828aa470db22861011b21f1335111}{\index{Hash\+Join@{Hash\+Join}!Hash\+Join@{Hash\+Join}}
+\index{Hash\+Join@{Hash\+Join}!Hash\+Join@{Hash\+Join}}
+\subsubsection[{Hash\+Join}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Join\+::\+Hash\+Join (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition, }
+\item[{const std\+::vector$<$ {\bf Column\+Identifier} $>$ \&}]{left\+Part\+Of\+Condition, }
+\item[{const std\+::vector$<$ {\bf Column\+Identifier} $>$ \&}]{right\+Part\+Of\+Condition}
+\end{DoxyParamCaption}
+)}}\label{class_hash_join_aade828aa470db22861011b21f1335111}
+Creates new instance of \hyperlink{class_hash_join}{Hash\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ join condition. \\
+\hline
+{\em left\+Part\+Of\+Condition} & -\/ condition columns from first input \\
+\hline
+{\em right\+Part\+Of\+Condition} & -\/ condition columns from second input \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hash_join_a11dc03e38397ff42352772a3c759e145}{\index{Hash\+Join@{Hash\+Join}!accept@{accept}}
+\index{accept@{accept}!Hash\+Join@{Hash\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Hash\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_hash_join_a11dc03e38397ff42352772a3c759e145}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_physical_operator_a29ec622920006cb5428bf2c259918347}{Binary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_hash_join_ac2524a0455d2379287a55d8cb148c40d}{\index{Hash\+Join@{Hash\+Join}!condition@{condition}}
+\index{condition@{condition}!Hash\+Join@{Hash\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Hash\+Join\+::condition}}\label{class_hash_join_ac2524a0455d2379287a55d8cb148c40d}
+\hyperlink{class_join}{Join} condition. \hypertarget{class_hash_join_a8ce73a163fdc30d10144277b51689541}{\index{Hash\+Join@{Hash\+Join}!left\+Part\+Of\+Condition@{left\+Part\+Of\+Condition}}
+\index{left\+Part\+Of\+Condition@{left\+Part\+Of\+Condition}!Hash\+Join@{Hash\+Join}}
+\subsubsection[{left\+Part\+Of\+Condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Identifier}$>$ Hash\+Join\+::left\+Part\+Of\+Condition}}\label{class_hash_join_a8ce73a163fdc30d10144277b51689541}
+Stores columns from left input, which belongs to condition. \hypertarget{class_hash_join_ad4f1b144fc9a52d5218b1d2368c295b7}{\index{Hash\+Join@{Hash\+Join}!right\+Part\+Of\+Condition@{right\+Part\+Of\+Condition}}
+\index{right\+Part\+Of\+Condition@{right\+Part\+Of\+Condition}!Hash\+Join@{Hash\+Join}}
+\subsubsection[{right\+Part\+Of\+Condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Identifier}$>$ Hash\+Join\+::right\+Part\+Of\+Condition}}\label{class_hash_join_ad4f1b144fc9a52d5218b1d2368c295b7}
+Stores columns from right input, which belongs to condition. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

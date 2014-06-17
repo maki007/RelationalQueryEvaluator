@@ -1,6 +1,10 @@
 \hypertarget{class_filter}{\section{Filter Class Reference}
 \label{class_filter}\index{Filter@{Filter}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Filter\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,19 +14,59 @@ Inheritance diagram for Filter\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_filter_a4e75723e5596f5b77b84a395c7453853}{{\bfseries Filter} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition)}\label{class_filter_a4e75723e5596f5b77b84a395c7453853}
-
+\hyperlink{class_filter_a4e75723e5596f5b77b84a395c7453853}{Filter} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&\hyperlink{class_filter_acc551fc888d4b2e9bc36364a3877dbb8}{condition})
 \item 
-\hypertarget{class_filter_a1df50e05d64ad3b2cc45d2f9e28127c4}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_filter_a1df50e05d64ad3b2cc45d2f9e28127c4}
-
+void \hyperlink{class_filter_a1df50e05d64ad3b2cc45d2f9e28127c4}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_filter_acc551fc888d4b2e9bc36364a3877dbb8}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_filter_acc551fc888d4b2e9bc36364a3877dbb8}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_filter_acc551fc888d4b2e9bc36364a3877dbb8}{condition}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Class representing filter physical algorithm. Operator lters given rows and output only rows satisfying condition. Output doesn't have to be sorted same way as input. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_filter_a4e75723e5596f5b77b84a395c7453853}{\index{Filter@{Filter}!Filter@{Filter}}
+\index{Filter@{Filter}!Filter@{Filter}}
+\subsubsection[{Filter}]{\setlength{\rightskip}{0pt plus 5cm}Filter\+::\+Filter (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition}
+\end{DoxyParamCaption}
+)}}\label{class_filter_a4e75723e5596f5b77b84a395c7453853}
+Creates new instance of \hyperlink{class_filter}{Filter}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ filter condition. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_filter_a1df50e05d64ad3b2cc45d2f9e28127c4}{\index{Filter@{Filter}!accept@{accept}}
+\index{accept@{accept}!Filter@{Filter}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Filter\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_filter_a1df50e05d64ad3b2cc45d2f9e28127c4}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_filter_acc551fc888d4b2e9bc36364a3877dbb8}{\index{Filter@{Filter}!condition@{condition}}
+\index{condition@{condition}!Filter@{Filter}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Filter\+::condition}}\label{class_filter_acc551fc888d4b2e9bc36364a3877dbb8}
+Condition for filtering relation. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

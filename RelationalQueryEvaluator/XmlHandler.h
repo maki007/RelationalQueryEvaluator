@@ -28,18 +28,6 @@
 
 XERCES_CPP_NAMESPACE_USE
 
-class WStr
-{
-private:
-	XMLCh*  wStr;
-
-public:
-	WStr(const char* str);
-
-	~WStr();
-
-	operator const XMLCh*() const;
-};
 
 class ParserErrorHandler : public ErrorHandler
 {

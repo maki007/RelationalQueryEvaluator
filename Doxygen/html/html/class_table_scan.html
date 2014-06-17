@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">TableScan Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TableScan:</div>
 <div class="dyncontent">
@@ -102,29 +104,95 @@ Inheritance diagram for TableScan:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a25018f9d7a3c6b0d0389403ec81cc862"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a25018f9d7a3c6b0d0389403ec81cc862"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TableScan</b> (const std::string &amp;name)</td></tr>
+<tr class="memitem:a25018f9d7a3c6b0d0389403ec81cc862"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_table_scan.html#a25018f9d7a3c6b0d0389403ec81cc862">TableScan</a> (const std::string &amp;name)</td></tr>
 <tr class="separator:a25018f9d7a3c6b0d0389403ec81cc862"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51a770478fbad11e95ad5f91dd7af31a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51a770478fbad11e95ad5f91dd7af31a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)</td></tr>
+<tr class="memitem:a51a770478fbad11e95ad5f91dd7af31a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_table_scan.html#a51a770478fbad11e95ad5f91dd7af31a">accept</a> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)</td></tr>
 <tr class="separator:a51a770478fbad11e95ad5f91dd7af31a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a8ac51489c963d33273bfa178a5c033c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ac51489c963d33273bfa178a5c033c1"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>tableName</b></td></tr>
+<tr class="memitem:a8ac51489c963d33273bfa178a5c033c1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_table_scan.html#a8ac51489c963d33273bfa178a5c033c1">tableName</a></td></tr>
 <tr class="separator:a8ac51489c963d33273bfa178a5c033c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_physical_operator"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_physical_operator')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_physical_operator.html">PhysicalOperator</a></td></tr>
-<tr class="memitem:a88836a2b6453889b6ad852a2121ca512 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88836a2b6453889b6ad852a2121ca512"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>timeComplexity</b></td></tr>
+<tr class="memitem:a88836a2b6453889b6ad852a2121ca512 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#a88836a2b6453889b6ad852a2121ca512">timeComplexity</a></td></tr>
 <tr class="separator:a88836a2b6453889b6ad852a2121ca512 inherit pub_attribs_class_physical_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a744971579c457601553e8e9a70a5cee1 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a744971579c457601553e8e9a70a5cee1"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+<tr class="memitem:a744971579c457601553e8e9a70a5cee1 inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#a744971579c457601553e8e9a70a5cee1">size</a></td></tr>
 <tr class="separator:a744971579c457601553e8e9a70a5cee1 inherit pub_attribs_class_physical_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf7e49cbadd48e7b0b30e9a84367e5de inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf7e49cbadd48e7b0b30e9a84367e5de"></a>
-std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>columns</b></td></tr>
+<tr class="memitem:aaf7e49cbadd48e7b0b30e9a84367e5de inherit pub_attribs_class_physical_operator"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#aaf7e49cbadd48e7b0b30e9a84367e5de">columns</a></td></tr>
 <tr class="separator:aaf7e49cbadd48e7b0b30e9a84367e5de inherit pub_attribs_class_physical_operator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Represents operator, which reads whole table. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a25018f9d7a3c6b0d0389403ec81cc862"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TableScan::TableScan </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates new instance of <a class="el" href="class_table_scan.html">TableScan</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>of table to read. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a51a770478fbad11e95ad5f91dd7af31a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TableScan::accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method for calling visit[node] on given <a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td><a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a>, on which to call function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="class_nullary_physical_operator.html#a053a51bc73b06d883fba982adeeb122c">NullaryPhysicalOperator</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8ac51489c963d33273bfa178a5c033c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string TableScan::tableName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p><a class="el" href="class_table.html">Table</a> to read. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/PhysicalOperator.cpp</li>
@@ -132,7 +200,7 @@ std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 19:57:55 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 17 2014 23:05:57 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

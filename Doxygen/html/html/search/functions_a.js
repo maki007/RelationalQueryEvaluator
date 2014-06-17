@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['possiblesortparameters',['PossibleSortParameters',['../class_possible_sort_parameters.html#a08aad6763c347ad2a4dc2f20183efc24',1,'PossibleSortParameters::PossibleSortParameters(const std::vector&lt; SortParameters &gt; &amp;parameters)'],['../class_possible_sort_parameters.html#abf5abacee677c21a76de099cac60aa1a',1,'PossibleSortParameters::PossibleSortParameters(const std::vector&lt; SortParameter &gt; &amp;parameters)'],['../class_possible_sort_parameters.html#a0193033d9b018482a26f1501d489f4ba',1,'PossibleSortParameters::PossibleSortParameters()']]],
-  ['pushdown',['pushDown',['../class_push_selection_down_visitor.html#a343e4e8b9742602455232d5877bf2e15',1,'PushSelectionDownVisitor']]],
-  ['pushselectiondownvisitor',['PushSelectionDownVisitor',['../class_push_selection_down_visitor.html#a1be0a28ee1650a54e5c23af1d8effc54',1,'PushSelectionDownVisitor']]]
+  ['nextid',['nextId',['../class_semantic_checker.html#a7bfc82245e0af345db051ab8faea502e',1,'SemanticChecker']]],
+  ['nnaryexpression',['NnaryExpression',['../class_nnary_expression.html#a38f44966213fd5d674aaff3ef9de37da',1,'NnaryExpression']]],
+  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../class_nullary_algebra_node_base.html#a73108e19c00005dcda32af0b05060ea0',1,'NullaryAlgebraNodeBase']]],
+  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../class_number_columns_in_join_visitor.html#a5d09cffa1e191e46b312a3bcebc01b60',1,'NumberColumnsInJoinVisitor']]]
 ];

@@ -1,6 +1,10 @@
 \hypertarget{class_merge_non_equi_join}{\section{Merge\+Non\+Equi\+Join Class Reference}
 \label{class_merge_non_equi_join}\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Merge\+Non\+Equi\+Join\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,28 +14,74 @@ Inheritance diagram for Merge\+Non\+Equi\+Join\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_merge_non_equi_join_a3e7a12e0e21a2bf755608c9bc2e5d4ed}{{\bfseries Merge\+Non\+Equi\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&condition)}\label{class_merge_non_equi_join_a3e7a12e0e21a2bf755608c9bc2e5d4ed}
-
+\hyperlink{class_merge_non_equi_join_a3e7a12e0e21a2bf755608c9bc2e5d4ed}{Merge\+Non\+Equi\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \&\hyperlink{class_merge_non_equi_join_ad1307cbe8f5e88f685ece833fcea67c2}{condition})
 \item 
-\hypertarget{class_merge_non_equi_join_a117ec79e9941977b4f90c65bea5cea65}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_merge_non_equi_join_a117ec79e9941977b4f90c65bea5cea65}
-
+void \hyperlink{class_merge_non_equi_join_a117ec79e9941977b4f90c65bea5cea65}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_merge_non_equi_join_ad1307cbe8f5e88f685ece833fcea67c2}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ {\bfseries condition}}\label{class_merge_non_equi_join_ad1307cbe8f5e88f685ece833fcea67c2}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_expression}{Expression} $>$ \hyperlink{class_merge_non_equi_join_ad1307cbe8f5e88f685ece833fcea67c2}{condition}
 \item 
-\hypertarget{class_merge_non_equi_join_a5f8b68c20d65ec2e07f41f2c2c4079d6}{std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries sort\+Parameters}}\label{class_merge_non_equi_join_a5f8b68c20d65ec2e07f41f2c2c4079d6}
-
+std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_merge_non_equi_join_a5f8b68c20d65ec2e07f41f2c2c4079d6}{sort\+Parameters}
 \item 
-\hypertarget{class_merge_non_equi_join_a785b0aeaa5ec15536c03272a21f8ebe0}{std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries left}}\label{class_merge_non_equi_join_a785b0aeaa5ec15536c03272a21f8ebe0}
-
+std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_merge_non_equi_join_a785b0aeaa5ec15536c03272a21f8ebe0}{left}
 \item 
-\hypertarget{class_merge_non_equi_join_ae3631adf9752e5ab861dbf986b92ff00}{std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries right}}\label{class_merge_non_equi_join_ae3631adf9752e5ab861dbf986b92ff00}
-
+std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_merge_non_equi_join_ae3631adf9752e5ab861dbf986b92ff00}{right}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents merge join joining by condition a1 $<$ b $<$ a2, where a1 and a2 are columns from 1st input, b is from 2nd input. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_merge_non_equi_join_a3e7a12e0e21a2bf755608c9bc2e5d4ed}{\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}!Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
+\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}!Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
+\subsubsection[{Merge\+Non\+Equi\+Join}]{\setlength{\rightskip}{0pt plus 5cm}Merge\+Non\+Equi\+Join\+::\+Merge\+Non\+Equi\+Join (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition}
+\end{DoxyParamCaption}
+)}}\label{class_merge_non_equi_join_a3e7a12e0e21a2bf755608c9bc2e5d4ed}
+Creates new instance of \hyperlink{class_merge_non_equi_join}{Merge\+Non\+Equi\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ join condition. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_merge_non_equi_join_a117ec79e9941977b4f90c65bea5cea65}{\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}!accept@{accept}}
+\index{accept@{accept}!Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Merge\+Non\+Equi\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_merge_non_equi_join_a117ec79e9941977b4f90c65bea5cea65}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_binary_physical_operator_a29ec622920006cb5428bf2c259918347}{Binary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_merge_non_equi_join_ad1307cbe8f5e88f685ece833fcea67c2}{\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}!condition@{condition}}
+\index{condition@{condition}!Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ Merge\+Non\+Equi\+Join\+::condition}}\label{class_merge_non_equi_join_ad1307cbe8f5e88f685ece833fcea67c2}
+\hyperlink{class_join}{Join} condition. \hypertarget{class_merge_non_equi_join_a785b0aeaa5ec15536c03272a21f8ebe0}{\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}!left@{left}}
+\index{left@{left}!Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
+\subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ Merge\+Non\+Equi\+Join\+::left}}\label{class_merge_non_equi_join_a785b0aeaa5ec15536c03272a21f8ebe0}
+Stored information how first input is sorted. \hypertarget{class_merge_non_equi_join_ae3631adf9752e5ab861dbf986b92ff00}{\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}!right@{right}}
+\index{right@{right}!Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
+\subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ Merge\+Non\+Equi\+Join\+::right}}\label{class_merge_non_equi_join_ae3631adf9752e5ab861dbf986b92ff00}
+Stored information how second input is sorted. \hypertarget{class_merge_non_equi_join_a5f8b68c20d65ec2e07f41f2c2c4079d6}{\index{Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}!sort\+Parameters@{sort\+Parameters}}
+\index{sort\+Parameters@{sort\+Parameters}!Merge\+Non\+Equi\+Join@{Merge\+Non\+Equi\+Join}}
+\subsubsection[{sort\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ Merge\+Non\+Equi\+Join\+::sort\+Parameters}}\label{class_merge_non_equi_join_a5f8b68c20d65ec2e07f41f2c2c4079d6}
+Stored information how output is sorted. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

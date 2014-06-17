@@ -1,6 +1,10 @@
 \hypertarget{class_sorted_group}{\section{Sorted\+Group Class Reference}
 \label{class_sorted_group}\index{Sorted\+Group@{Sorted\+Group}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Sorted\+Group\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,67 @@ Inheritance diagram for Sorted\+Group\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sorted_group_a5f6798dee7afc557e3510b32558cab05}{{\bfseries Sorted\+Group} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&group\+Columns, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&agregate\+Functions)}\label{class_sorted_group_a5f6798dee7afc557e3510b32558cab05}
-
+\hyperlink{class_sorted_group_a5f6798dee7afc557e3510b32558cab05}{Sorted\+Group} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&\hyperlink{class_sorted_group_af4ccedafc52d06be95d88eec6e235ba2}{group\+Columns}, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&\hyperlink{class_sorted_group_ab3d59776a6c7516df046d09b0bcd2f4e}{agregate\+Functions})
 \item 
-\hypertarget{class_sorted_group_aba97fdc1722858dc33723052e6bc7e5a}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_sorted_group_aba97fdc1722858dc33723052e6bc7e5a}
-
+void \hyperlink{class_sorted_group_aba97fdc1722858dc33723052e6bc7e5a}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sorted_group_af4ccedafc52d06be95d88eec6e235ba2}{std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ {\bfseries group\+Columns}}\label{class_sorted_group_af4ccedafc52d06be95d88eec6e235ba2}
-
+std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \hyperlink{class_sorted_group_af4ccedafc52d06be95d88eec6e235ba2}{group\+Columns}
 \item 
-\hypertarget{class_sorted_group_ab3d59776a6c7516df046d09b0bcd2f4e}{std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ {\bfseries agregate\+Functions}}\label{class_sorted_group_ab3d59776a6c7516df046d09b0bcd2f4e}
-
+std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \hyperlink{class_sorted_group_ab3d59776a6c7516df046d09b0bcd2f4e}{agregate\+Functions}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents group algorithm, which groups input sorted by group columns. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_sorted_group_a5f6798dee7afc557e3510b32558cab05}{\index{Sorted\+Group@{Sorted\+Group}!Sorted\+Group@{Sorted\+Group}}
+\index{Sorted\+Group@{Sorted\+Group}!Sorted\+Group@{Sorted\+Group}}
+\subsubsection[{Sorted\+Group}]{\setlength{\rightskip}{0pt plus 5cm}Sorted\+Group\+::\+Sorted\+Group (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Group\+Column} $>$ \&}]{group\+Columns, }
+\item[{const std\+::vector$<$ {\bf Agregate\+Function} $>$ \&}]{agregate\+Functions}
+\end{DoxyParamCaption}
+)}}\label{class_sorted_group_a5f6798dee7afc557e3510b32558cab05}
+Creates new instance of \hyperlink{class_hash_group}{Hash\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em group\+Columns} & -\/ group by columns. \\
+\hline
+{\em agregate\+Functions} & -\/ information about agreggate functions. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_sorted_group_aba97fdc1722858dc33723052e6bc7e5a}{\index{Sorted\+Group@{Sorted\+Group}!accept@{accept}}
+\index{accept@{accept}!Sorted\+Group@{Sorted\+Group}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Sorted\+Group\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_sorted_group_aba97fdc1722858dc33723052e6bc7e5a}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_sorted_group_ab3d59776a6c7516df046d09b0bcd2f4e}{\index{Sorted\+Group@{Sorted\+Group}!agregate\+Functions@{agregate\+Functions}}
+\index{agregate\+Functions@{agregate\+Functions}!Sorted\+Group@{Sorted\+Group}}
+\subsubsection[{agregate\+Functions}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Agregate\+Function}$>$ Sorted\+Group\+::agregate\+Functions}}\label{class_sorted_group_ab3d59776a6c7516df046d09b0bcd2f4e}
+Information about agreggate functions. \hypertarget{class_sorted_group_af4ccedafc52d06be95d88eec6e235ba2}{\index{Sorted\+Group@{Sorted\+Group}!group\+Columns@{group\+Columns}}
+\index{group\+Columns@{group\+Columns}!Sorted\+Group@{Sorted\+Group}}
+\subsubsection[{group\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Group\+Column}$>$ Sorted\+Group\+::group\+Columns}}\label{class_sorted_group_af4ccedafc52d06be95d88eec6e235ba2}
+\hyperlink{class_group}{Group} by columns. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

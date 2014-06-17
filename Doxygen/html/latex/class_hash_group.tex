@@ -1,6 +1,10 @@
 \hypertarget{class_hash_group}{\section{Hash\+Group Class Reference}
 \label{class_hash_group}\index{Hash\+Group@{Hash\+Group}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Hash\+Group\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,67 @@ Inheritance diagram for Hash\+Group\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_hash_group_af175f06e72f0fd7476e652ec5ffcbeb7}{{\bfseries Hash\+Group} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&group\+Columns, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&agregate\+Functions)}\label{class_hash_group_af175f06e72f0fd7476e652ec5ffcbeb7}
-
+\hyperlink{class_hash_group_af175f06e72f0fd7476e652ec5ffcbeb7}{Hash\+Group} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&\hyperlink{class_hash_group_a61af9515cad55af148210493431c5df6}{group\+Columns}, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&\hyperlink{class_hash_group_a8a813f6713413f2bd401bfa77be774de}{agregate\+Functions})
 \item 
-\hypertarget{class_hash_group_a300c7ad6b7a4e39c9a7dc5a57389b85f}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_hash_group_a300c7ad6b7a4e39c9a7dc5a57389b85f}
-
+void \hyperlink{class_hash_group_a300c7ad6b7a4e39c9a7dc5a57389b85f}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_hash_group_a61af9515cad55af148210493431c5df6}{std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ {\bfseries group\+Columns}}\label{class_hash_group_a61af9515cad55af148210493431c5df6}
-
+std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \hyperlink{class_hash_group_a61af9515cad55af148210493431c5df6}{group\+Columns}
 \item 
-\hypertarget{class_hash_group_a8a813f6713413f2bd401bfa77be774de}{std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ {\bfseries agregate\+Functions}}\label{class_hash_group_a8a813f6713413f2bd401bfa77be774de}
-
+std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \hyperlink{class_hash_group_a8a813f6713413f2bd401bfa77be774de}{agregate\+Functions}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represent hash group algorithm. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_hash_group_af175f06e72f0fd7476e652ec5ffcbeb7}{\index{Hash\+Group@{Hash\+Group}!Hash\+Group@{Hash\+Group}}
+\index{Hash\+Group@{Hash\+Group}!Hash\+Group@{Hash\+Group}}
+\subsubsection[{Hash\+Group}]{\setlength{\rightskip}{0pt plus 5cm}Hash\+Group\+::\+Hash\+Group (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Group\+Column} $>$ \&}]{group\+Columns, }
+\item[{const std\+::vector$<$ {\bf Agregate\+Function} $>$ \&}]{agregate\+Functions}
+\end{DoxyParamCaption}
+)}}\label{class_hash_group_af175f06e72f0fd7476e652ec5ffcbeb7}
+Creates new instance of \hyperlink{class_hash_group}{Hash\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em group\+Columns} & -\/ group by columns. \\
+\hline
+{\em agregate\+Functions} & -\/ information about agreggate functions. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_hash_group_a300c7ad6b7a4e39c9a7dc5a57389b85f}{\index{Hash\+Group@{Hash\+Group}!accept@{accept}}
+\index{accept@{accept}!Hash\+Group@{Hash\+Group}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Hash\+Group\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_hash_group_a300c7ad6b7a4e39c9a7dc5a57389b85f}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_hash_group_a8a813f6713413f2bd401bfa77be774de}{\index{Hash\+Group@{Hash\+Group}!agregate\+Functions@{agregate\+Functions}}
+\index{agregate\+Functions@{agregate\+Functions}!Hash\+Group@{Hash\+Group}}
+\subsubsection[{agregate\+Functions}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Agregate\+Function}$>$ Hash\+Group\+::agregate\+Functions}}\label{class_hash_group_a8a813f6713413f2bd401bfa77be774de}
+Information about agreggate functions. \hypertarget{class_hash_group_a61af9515cad55af148210493431c5df6}{\index{Hash\+Group@{Hash\+Group}!group\+Columns@{group\+Columns}}
+\index{group\+Columns@{group\+Columns}!Hash\+Group@{Hash\+Group}}
+\subsubsection[{group\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Group\+Column}$>$ Hash\+Group\+::group\+Columns}}\label{class_hash_group_a61af9515cad55af148210493431c5df6}
+\hyperlink{class_group}{Group} by columns. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

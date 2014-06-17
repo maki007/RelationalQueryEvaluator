@@ -89,6 +89,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">PhysicalOperator Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PhysicalOperator:</div>
 <div class="dyncontent">
@@ -119,29 +121,100 @@ Inheritance diagram for PhysicalOperator:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aec6926a904c71c0619d6e9e1457252cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec6926a904c71c0619d6e9e1457252cd"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>accept</b> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)=0</td></tr>
+<tr class="memitem:aec6926a904c71c0619d6e9e1457252cd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#aec6926a904c71c0619d6e9e1457252cd">accept</a> (<a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;v)=0</td></tr>
 <tr class="separator:aec6926a904c71c0619d6e9e1457252cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a88836a2b6453889b6ad852a2121ca512"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88836a2b6453889b6ad852a2121ca512"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>timeComplexity</b></td></tr>
+<tr class="memitem:a88836a2b6453889b6ad852a2121ca512"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#a88836a2b6453889b6ad852a2121ca512">timeComplexity</a></td></tr>
 <tr class="separator:a88836a2b6453889b6ad852a2121ca512"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a744971579c457601553e8e9a70a5cee1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a744971579c457601553e8e9a70a5cee1"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>size</b></td></tr>
+<tr class="memitem:a744971579c457601553e8e9a70a5cee1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#a744971579c457601553e8e9a70a5cee1">size</a></td></tr>
 <tr class="separator:a744971579c457601553e8e9a70a5cee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf7e49cbadd48e7b0b30e9a84367e5de"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf7e49cbadd48e7b0b30e9a84367e5de"></a>
-std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>columns</b></td></tr>
+<tr class="memitem:aaf7e49cbadd48e7b0b30e9a84367e5de"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator.html#aaf7e49cbadd48e7b0b30e9a84367e5de">columns</a></td></tr>
 <tr class="separator:aaf7e49cbadd48e7b0b30e9a84367e5de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for physical algorithms. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aec6926a904c71c0619d6e9e1457252cd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void PhysicalOperator::accept </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Method for calling visit[node] on given <a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v</td><td><a class="el" href="class_physical_operator_visitor.html">PhysicalOperatorVisitor</a>, on which to call function. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_index_scan.html#a683950e9802678a2351f026ddb2a9881">IndexScan</a>, <a class="el" href="class_table_scan.html#a51a770478fbad11e95ad5f91dd7af31a">TableScan</a>, <a class="el" href="class_scan_and_sort_by_index.html#a9e0d99d88104c8215bacb470e298b363">ScanAndSortByIndex</a>, <a class="el" href="class_columns_operations_operator.html#a5d40e806cb9dbd2969b45c28d7729f76">ColumnsOperationsOperator</a>, <a class="el" href="class_sorted_group.html#aba97fdc1722858dc33723052e6bc7e5a">SortedGroup</a>, <a class="el" href="class_hash_group.html#a300c7ad6b7a4e39c9a7dc5a57389b85f">HashGroup</a>, <a class="el" href="class_union_operator.html#a534cf044caa5074d4a493edff1209e16">UnionOperator</a>, <a class="el" href="class_merge_anti_join.html#a15758e7f808703b243101faa382a0156">MergeAntiJoin</a>, <a class="el" href="class_hash_anti_join.html#a8a629e5592d9a42ce155dd83f7f551d0">HashAntiJoin</a>, <a class="el" href="class_hash_join.html#a11dc03e38397ff42352772a3c759e145">HashJoin</a>, <a class="el" href="class_merge_equi_join.html#a0a88e744444a5a539d58aac25c609a9c">MergeEquiJoin</a>, <a class="el" href="class_merge_non_equi_join.html#a117ec79e9941977b4f90c65bea5cea65">MergeNonEquiJoin</a>, <a class="el" href="class_cross_join.html#a92a1a35e3940c6c8bdaa6722d476c5db">CrossJoin</a>, <a class="el" href="class_sort_operator.html#aff5d834234616ce2d36efda9639b734b">SortOperator</a>, <a class="el" href="class_filter_keeping_order.html#a3d970e81588d96ac0d6538c17a22144c">FilterKeepingOrder</a>, <a class="el" href="class_filter.html#a1df50e05d64ad3b2cc45d2f9e28127c4">Filter</a>, <a class="el" href="class_binary_physical_operator.html#a29ec622920006cb5428bf2c259918347">BinaryPhysicalOperator</a>, <a class="el" href="class_unary_physical_operator.html#a3b0160d380149213561ef2ba479dbf6a">UnaryPhysicalOperator</a>, and <a class="el" href="class_nullary_physical_operator.html#a053a51bc73b06d883fba982adeeb122c">NullaryPhysicalOperator</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aaf7e49cbadd48e7b0b30e9a84367e5de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;int, <a class="el" href="class_column_info.html">ColumnInfo</a>&gt; PhysicalOperator::columns</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores information about output columns from this operator. </p>
+
+</div>
+</div>
+<a class="anchor" id="a744971579c457601553e8e9a70a5cee1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double PhysicalOperator::size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores size of output relation. </p>
+
+</div>
+</div>
+<a class="anchor" id="a88836a2b6453889b6ad852a2121ca512"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double PhysicalOperator::timeComplexity</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Stores information about how much time algorithm will need. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_physical_operator_8h_source.html">PhysicalOperator.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 19:57:50 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 17 2014 23:05:51 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

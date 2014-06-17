@@ -116,21 +116,21 @@ public:
 	/**
 	* Generates node from node and calls iteself on child. Then it connect created nodes.
 	* @param label for generated node
-	* @param node, on which to call children
+	* @param node - on which to call children
 	*/
 	void generateText(std::string & label, UnaryAlgebraNodeBase * node);
 
 	/**
 	* Generates node from node and calls iteself on it's childs. Then it connect created nodes.
 	* @param label for generated node
-	* @param node, on which to call children
+	* @param node - on which to call children
 	*/
 	void generateText(std::string & label, BinaryAlgebraNodeBase * node);
 
 	/**
 	* Generates node from node and calls iteself on it's childs. Then it connect created nodes.
 	* @param label for generated node
-	* @param node, on which to call children
+	* @param node - on which to call children
 	*/
 	void generateText(std::string & label, GroupedAlgebraNode * node);
 
@@ -199,8 +199,8 @@ public:
 	
 	/**
 	* Checks join condition and output columns and reports semantic errors.
-	* @param outputColumns0, output columns from first join input
-	* @param outputColumns1, output columns from second join input
+	* @param outputColumns0 - output columns from first join input
+	* @param outputColumns1 - output columns from second join input
 	* @param node - node join or antijoin node
 	*/
 	template <typename T>
@@ -348,7 +348,7 @@ public:
 	/**
 	* Remove unecessary columns from current plans.
 	* Unnecessary columns are the one, which are not in condition out in output of procesed GroupJoin.
-	* @params outputColumns columns which are necessary.
+	* @param outputColumns columns which are necessary.
 	*/
 	void RemoveUnnecessaryColumns(std::vector<JoinColumnInfo> & outputColumns);
 	

@@ -116,76 +116,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;XERCES_CPP_NAMESPACE_USE</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_w_str.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_w_str.html">WStr</a></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    XMLCh*  wStr;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_w_str.html">WStr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_parser_error_handler.html">   32</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_parser_error_handler.html">ParserErrorHandler</a> : <span class="keyword">public</span> ErrorHandler</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> errors;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="class_parser_error_handler.html">ParserErrorHandler</a>();</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ~<a class="code" href="class_w_str.html">WStr</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> reportParseException(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">operator</span> <span class="keyword">const</span> XMLCh*() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_parser_error_handler.html">   44</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_parser_error_handler.html">ParserErrorHandler</a> : <span class="keyword">public</span> ErrorHandler</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">int</span> errors;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> warning(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> error(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> fatalError(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> resetErrors();</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="class_parser_error_handler.html">ParserErrorHandler</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> reportParseException(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> warning(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> error(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> setDocumentLocator(<span class="keyword">const</span> Locator *<span class="keyword">const</span> locator);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="class_xml_handler.html">   52</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_xml_handler.html">XmlHandler</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">static</span> std::unique_ptr&lt;AlgebraNodeBase&gt; ValidateSchema(<span class="keyword">const</span> <span class="keywordtype">char</span>* xmlFilePath);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> fatalError(<span class="keyword">const</span> SAXParseException&amp; ex);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">static</span> std::unique_ptr&lt;AlgebraNodeBase&gt; GenerateRelationalAlgebra(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> resetErrors();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> setDocumentLocator(<span class="keyword">const</span> Locator *<span class="keyword">const</span> locator);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_xml_handler.html">   64</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_xml_handler.html">XmlHandler</a></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">static</span> std::unique_ptr&lt;AlgebraNodeBase&gt; ValidateSchema(<span class="keyword">const</span> <span class="keywordtype">char</span>* xmlFilePath);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">static</span> std::unique_ptr&lt;AlgebraNodeBase&gt; GenerateRelationalAlgebra(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_d_o_m_parser.html">   65</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_d_o_m_parser.html">DOMParser</a> : <span class="keyword">public</span> XercesDOMParser</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> startElement(<span class="keyword">const</span> XMLElementDecl&amp; elemDecl, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> urlId, <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> elemPrefix, <span class="keyword">const</span> RefVectorOf&lt;XMLAttr&gt;&amp; attrList, <span class="keyword">const</span> XMLSize_t attrCount, <span class="keyword">const</span> <span class="keywordtype">bool</span> isEmpty, <span class="keyword">const</span> <span class="keywordtype">bool</span> isRoot)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        XercesDOMParser::startElement(elemDecl, urlId, elemPrefix, attrList,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            attrCount, isEmpty, isRoot);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">const</span> Locator* locator = getScanner()-&gt;getLocator();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordtype">int</span> lineNumber = locator-&gt;getLineNumber();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        XercesDOMParser::fCurrentNode-&gt;setUserData(XMLString::transcode(<span class="stringliteral">&quot;line&quot;</span>), <span class="keyword">new</span> <span class="keywordtype">int</span>(locator-&gt;getLineNumber()),0);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_d_o_m_parser.html">   77</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_d_o_m_parser.html">DOMParser</a> : <span class="keyword">public</span> XercesDOMParser</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> startElement(<span class="keyword">const</span> XMLElementDecl&amp; elemDecl, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> urlId, <span class="keyword">const</span> XMLCh* <span class="keyword">const</span> elemPrefix, <span class="keyword">const</span> RefVectorOf&lt;XMLAttr&gt;&amp; attrList, <span class="keyword">const</span> XMLSize_t attrCount, <span class="keyword">const</span> <span class="keywordtype">bool</span> isEmpty, <span class="keyword">const</span> <span class="keywordtype">bool</span> isRoot)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        XercesDOMParser::startElement(elemDecl, urlId, elemPrefix, attrList,</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            attrCount, isEmpty, isRoot);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keyword">const</span> Locator* locator = getScanner()-&gt;getLocator();</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">int</span> lineNumber = locator-&gt;getLineNumber();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        XercesDOMParser::fCurrentNode-&gt;setUserData(XMLString::transcode(<span class="stringliteral">&quot;line&quot;</span>), <span class="keyword">new</span> <span class="keywordtype">int</span>(locator-&gt;getLineNumber()),0);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="ttc" id="class_xml_handler_html"><div class="ttname"><a href="class_xml_handler.html">XmlHandler</a></div><div class="ttdef"><b>Definition:</b> XmlHandler.h:64</div></div>
-<div class="ttc" id="class_parser_error_handler_html"><div class="ttname"><a href="class_parser_error_handler.html">ParserErrorHandler</a></div><div class="ttdef"><b>Definition:</b> XmlHandler.h:44</div></div>
-<div class="ttc" id="class_d_o_m_parser_html"><div class="ttname"><a href="class_d_o_m_parser.html">DOMParser</a></div><div class="ttdef"><b>Definition:</b> XmlHandler.h:77</div></div>
-<div class="ttc" id="class_w_str_html"><div class="ttname"><a href="class_w_str.html">WStr</a></div><div class="ttdef"><b>Definition:</b> XmlHandler.h:31</div></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="ttc" id="class_xml_handler_html"><div class="ttname"><a href="class_xml_handler.html">XmlHandler</a></div><div class="ttdef"><b>Definition:</b> XmlHandler.h:52</div></div>
+<div class="ttc" id="class_parser_error_handler_html"><div class="ttname"><a href="class_parser_error_handler.html">ParserErrorHandler</a></div><div class="ttdef"><b>Definition:</b> XmlHandler.h:32</div></div>
+<div class="ttc" id="class_d_o_m_parser_html"><div class="ttname"><a href="class_d_o_m_parser.html">DOMParser</a></div><div class="ttdef"><b>Definition:</b> XmlHandler.h:65</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 19:57:38 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 17 2014 23:05:36 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

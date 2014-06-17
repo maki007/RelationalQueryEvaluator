@@ -1,6 +1,10 @@
 \hypertarget{class_columns_operations_operator}{\section{Columns\+Operations\+Operator Class Reference}
 \label{class_columns_operations_operator}\index{Columns\+Operations\+Operator@{Columns\+Operations\+Operator}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Columns\+Operations\+Operator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,19 +14,59 @@ Inheritance diagram for Columns\+Operations\+Operator\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_columns_operations_operator_a19cb4f96df418cd1a94a4906da06e20d}{{\bfseries Columns\+Operations\+Operator} (const std\+::vector$<$ \hyperlink{class_column_operation}{Column\+Operation} $>$ \&operations)}\label{class_columns_operations_operator_a19cb4f96df418cd1a94a4906da06e20d}
-
+\hyperlink{class_columns_operations_operator_a19cb4f96df418cd1a94a4906da06e20d}{Columns\+Operations\+Operator} (const std\+::vector$<$ \hyperlink{class_column_operation}{Column\+Operation} $>$ \&\hyperlink{class_columns_operations_operator_ae2384aeda586f5c60013dbe0cb5a3030}{operations})
 \item 
-\hypertarget{class_columns_operations_operator_a5d40e806cb9dbd2969b45c28d7729f76}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_columns_operations_operator_a5d40e806cb9dbd2969b45c28d7729f76}
-
+void \hyperlink{class_columns_operations_operator_a5d40e806cb9dbd2969b45c28d7729f76}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_columns_operations_operator_ae2384aeda586f5c60013dbe0cb5a3030}{std\+::vector$<$ \hyperlink{class_column_operation}{Column\+Operation} $>$ {\bfseries operations}}\label{class_columns_operations_operator_ae2384aeda586f5c60013dbe0cb5a3030}
-
+std\+::vector$<$ \hyperlink{class_column_operation}{Column\+Operation} $>$ \hyperlink{class_columns_operations_operator_ae2384aeda586f5c60013dbe0cb5a3030}{operations}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+This is extended projection operator, it eliminates certain columns and computes new ones. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_columns_operations_operator_a19cb4f96df418cd1a94a4906da06e20d}{\index{Columns\+Operations\+Operator@{Columns\+Operations\+Operator}!Columns\+Operations\+Operator@{Columns\+Operations\+Operator}}
+\index{Columns\+Operations\+Operator@{Columns\+Operations\+Operator}!Columns\+Operations\+Operator@{Columns\+Operations\+Operator}}
+\subsubsection[{Columns\+Operations\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}Columns\+Operations\+Operator\+::\+Columns\+Operations\+Operator (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Column\+Operation} $>$ \&}]{operations}
+\end{DoxyParamCaption}
+)}}\label{class_columns_operations_operator_a19cb4f96df418cd1a94a4906da06e20d}
+Creates new instance of \hyperlink{class_columns_operations_operator}{Columns\+Operations\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em operations} & -\/ information about output and new computed columns. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_columns_operations_operator_a5d40e806cb9dbd2969b45c28d7729f76}{\index{Columns\+Operations\+Operator@{Columns\+Operations\+Operator}!accept@{accept}}
+\index{accept@{accept}!Columns\+Operations\+Operator@{Columns\+Operations\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Columns\+Operations\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_columns_operations_operator_a5d40e806cb9dbd2969b45c28d7729f76}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_unary_physical_operator_a3b0160d380149213561ef2ba479dbf6a}{Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_columns_operations_operator_ae2384aeda586f5c60013dbe0cb5a3030}{\index{Columns\+Operations\+Operator@{Columns\+Operations\+Operator}!operations@{operations}}
+\index{operations@{operations}!Columns\+Operations\+Operator@{Columns\+Operations\+Operator}}
+\subsubsection[{operations}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Operation}$>$ Columns\+Operations\+Operator\+::operations}}\label{class_columns_operations_operator_ae2384aeda586f5c60013dbe0cb5a3030}
+Information about output and new computed columns. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

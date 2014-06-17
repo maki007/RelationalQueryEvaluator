@@ -1,6 +1,10 @@
 \hypertarget{class_physical_operator_visitor}{\section{Physical\+Operator\+Visitor Class Reference}
 \label{class_physical_operator_visitor}\index{Physical\+Operator\+Visitor@{Physical\+Operator\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator\+Visitor.\+h$>$}
+
 Inheritance diagram for Physical\+Operator\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -43,6 +47,9 @@ virtual void \hyperlink{class_physical_operator_visitor_a62063b4a4740e730ef7f672
 virtual void \hyperlink{class_physical_operator_visitor_ae32578d3229a00be39229a86b575c599}{visit\+Index\+Scan} (\hyperlink{class_index_scan}{Index\+Scan} $\ast$node)
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Base class for physical operator tree visitors. Every virtual method does nothing only visits node all children. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_physical_operator_visitor_a8c3a41665c8f7ce941532ad9d2052a14}{\index{Physical\+Operator\+Visitor@{Physical\+Operator\+Visitor}!visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}}

@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['result',['result',['../class_column_operation.html#aab22c48d83db533c5b153136a4da6db7',1,'ColumnOperation::result()'],['../class_graph_drawing_visitor.html#a99563612519b31409a263df7b3ae2372',1,'GraphDrawingVisitor::result()'],['../class_algebra_compiler.html#acf3202bd193e4552a1d4fadb6d0b356c',1,'AlgebraCompiler::result()'],['../class_writing_expression_visitor.html#a2aa14a9c85538776cf147ed5ff6a27e9',1,'WritingExpressionVisitor::result()'],['../class_max_of_unique_values_expression_visitor.html#a4d1359a778ac14a3709c63bff3a01383',1,'MaxOfUniqueValuesExpressionVisitor::result()'],['../class_bobox_writing_expression_visitor.html#a222842d9f796beebabc13691b107e5ad',1,'BoboxWritingExpressionVisitor::result()'],['../class_cloning_expression_visitor.html#aa23b5af5203ff9b14ee556a527173ad3',1,'CloningExpressionVisitor::result()']]],
-  ['resulttype',['resultType',['../class_type_resolving_expression_visitor.html#a0dee132681e536fb683694a3e7c54e32',1,'TypeResolvingExpressionVisitor']]],
-  ['returntype',['returnType',['../class_nnary_expression.html#a70b8058f410ed9f52b610e74489bf03f',1,'NnaryExpression']]],
-  ['rightchild',['rightChild',['../class_binary_algebra_node_base.html#ac97784ae724c411daca8b17664ce1122',1,'BinaryAlgebraNodeBase::rightChild()'],['../class_binary_expression.html#a97803d6333b2fbe6098491136a1445af',1,'BinaryExpression::rightChild()']]],
-  ['root',['root',['../class_grouping_expression_visitor.html#a493ef343ca18357dca158d83085b5ab4',1,'GroupingExpressionVisitor']]]
+  ['pairs',['pairs',['../class_rename_columns_visitor.html#a40542b4f59af34a28e298d719ca426c1',1,'RenameColumnsVisitor']]],
+  ['parameter',['parameter',['../class_agregate_function.html#ad37427d3dee4bc5dc7a76d5997bb22fc',1,'AgregateFunction']]],
+  ['parameters',['parameters',['../class_sort.html#abc86726752639b928cd08812538a251a',1,'Sort::parameters()'],['../class_possible_sort_parameters.html#ac7cd94ff83acacceb9adee62c4228e7f',1,'PossibleSortParameters::parameters()']]],
+  ['parent',['parent',['../class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66',1,'AlgebraNodeBase::parent()'],['../class_expression.html#a36284ba467eae6aa796985ed909a6958',1,'Expression::parent()']]],
+  ['plan',['plan',['../class_physical_plan.html#a97349262f468410057d66f00334003a5',1,'PhysicalPlan']]],
+  ['plans',['plans',['../class_join_info.html#acbddcf9cd01e91396492b94a627bdf69',1,'JoinInfo']]],
+  ['processedplans',['processedPlans',['../class_join_info.html#a584f1ea54151c8e0c506911a6595c7cb',1,'JoinInfo']]]
 ];

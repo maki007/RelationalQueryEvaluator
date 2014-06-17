@@ -1,9 +1,5 @@
 var searchData=
 [
-  ['removeselection',['removeSelection',['../class_algebra_visitor.html#a78119cf006ac64137b8c29223ab77885',1,'AlgebraVisitor']]],
-  ['removeunnecessarycolumns',['RemoveUnnecessaryColumns',['../class_join_info.html#aa4c03bd8c1d0a7f4a5b89287d69f89b5',1,'JoinInfo']]],
-  ['renamecolumnsvisitor',['RenameColumnsVisitor',['../class_rename_columns_visitor.html#a119cb79b414164ac4bb2adcfaf6bdcf9',1,'RenameColumnsVisitor']]],
-  ['renamingjoinconditionexpressionvisitor',['RenamingJoinConditionExpressionVisitor',['../class_renaming_join_condition_expression_visitor.html#a2b0669f3664fd3b9170e431bfcde9851',1,'RenamingJoinConditionExpressionVisitor']]],
-  ['replacechild',['replaceChild',['../class_algebra_node_base.html#aa9bdd02b0ddf793bda18bd146ccacb0d',1,'AlgebraNodeBase::replaceChild()'],['../class_unary_algebra_node_base.html#a26aeeaeb45f97051d618cfcceccd5949',1,'UnaryAlgebraNodeBase::replaceChild()'],['../class_binary_algebra_node_base.html#a6e466b62966a9851c3c34e1fb588a496',1,'BinaryAlgebraNodeBase::replaceChild()'],['../class_grouped_algebra_node.html#a463e6303f6332fc9ed2a885e3456b58e',1,'GroupedAlgebraNode::replaceChild()'],['../class_nullary_algebra_node_base.html#af5a5e7f02db8509605ab852ef65b201b',1,'NullaryAlgebraNodeBase::replaceChild()'],['../class_expression.html#a77ac16bbb0df93de8a7711b2f7de889f',1,'Expression::replaceChild()'],['../class_unary_expression.html#ae1a0cfc5fbae6d401c28e8a3158121a3',1,'UnaryExpression::replaceChild()'],['../class_binary_expression.html#a7ff9236432aef24bca655ab45cf475f2',1,'BinaryExpression::replaceChild()'],['../class_nnary_expression.html#a1161a6f8776c4cc946d769e4526339a2',1,'NnaryExpression::replaceChild()'],['../class_constant.html#acb214c5b00f30970ad525eb6b2f3e04d',1,'Constant::replaceChild()'],['../class_column.html#af1571fb51f887aeb1dcf7ff44382a72b',1,'Column::replaceChild()'],['../class_grouped_expression.html#af1cb9044417df12361b6335962b3bc6c',1,'GroupedExpression::replaceChild()']]],
-  ['resolvejoins',['resolveJoins',['../class_grouping_visitor.html#a7c6760e32033d79e45159d7907aa8886',1,'GroupingVisitor']]]
+  ['operator_3c',['operator&lt;',['../class_column_identifier.html#a07e32ed45a2b7c8e09f0358fd31a1f74',1,'ColumnIdentifier']]],
+  ['operator_3d_3d',['operator==',['../class_column_identifier.html#a3833af96f5281573cae9a70c440c1cce',1,'ColumnIdentifier']]]
 ];

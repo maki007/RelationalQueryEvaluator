@@ -131,11 +131,11 @@ void CrossJoin::accept(PhysicalOperatorVisitor &v)
 	v.visitCrossJoin(this);
 }
 
-HashJoin::HashJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+HashJoin::HashJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & leftPartOfCondition, const std::vector<ColumnIdentifier> & rightPartOfCondition)
 {
 	this->condition = condition;
-	this->left = left;
-	this->right = right;
+	this->leftPartOfCondition = leftPartOfCondition;
+	this->rightPartOfCondition = rightPartOfCondition;
 }
 
 
@@ -144,11 +144,11 @@ void HashJoin::accept(PhysicalOperatorVisitor &v)
 	v.visitHashJoin(this);
 }
 
-HashAntiJoin::HashAntiJoin(const shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right)
+HashAntiJoin::HashAntiJoin(const shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & leftPartOfCondition, const std::vector<ColumnIdentifier> & rightPartOfCondition)
 {
 	this->condition = condition;
-	this->left = left;
-	this->right = right;
+	this->leftPartOfCondition = leftPartOfCondition;
+	this->rightPartOfCondition = rightPartOfCondition;
 }
 
 void HashAntiJoin::accept(PhysicalOperatorVisitor &v)

@@ -1,6 +1,10 @@
 \hypertarget{class_physical_operator_drawing_visitor}{\section{Physical\+Operator\+Drawing\+Visitor Class Reference}
 \label{class_physical_operator_drawing_visitor}\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator\+Visitor.\+h$>$}
+
 Inheritance diagram for Physical\+Operator\+Drawing\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,14 +14,13 @@ Inheritance diagram for Physical\+Operator\+Drawing\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_physical_operator_drawing_visitor_a50acb8aae6d2b5fffff964f7d84b079f}{void {\bfseries generate\+Text} (std\+::string \&label, \hyperlink{class_nullary_physical_operator}{Nullary\+Physical\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_a50acb8aae6d2b5fffff964f7d84b079f}
-
+\hyperlink{class_physical_operator_drawing_visitor_a2168858696bd1ce675cef6b895fe995b}{Physical\+Operator\+Drawing\+Visitor} ()
 \item 
-\hypertarget{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877363ede4a9}{void {\bfseries generate\+Text} (std\+::string \&label, \hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877363ede4a9}
-
+void \hyperlink{class_physical_operator_drawing_visitor_a50acb8aae6d2b5fffff964f7d84b079f}{generate\+Text} (std\+::string \&label, \hyperlink{class_nullary_physical_operator}{Nullary\+Physical\+Operator} $\ast$node)
 \item 
-\hypertarget{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}{void {\bfseries generate\+Text} (std\+::string \&label, \hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node)}\label{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}
-
+void \hyperlink{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877363ede4a9}{generate\+Text} (std\+::string \&label, \hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$node)
+\item 
+void \hyperlink{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}{generate\+Text} (std\+::string \&label, \hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node)
 \item 
 \hypertarget{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}{std\+::string {\bfseries write\+Group\+Parameters} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&group\+Columns, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&agregate\+Functions)}\label{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}
 
@@ -28,9 +31,9 @@ void \hyperlink{class_physical_operator_drawing_visitor_a0e517a5b635ad9dd2624ca2
 \item 
 void \hyperlink{class_physical_operator_drawing_visitor_af0aaa68b27e6e562744b0c8211a63b9a}{visit\+Sort\+Operator} (\hyperlink{class_sort_operator}{Sort\+Operator} $\ast$node)
 \item 
-virtual void \hyperlink{class_physical_operator_drawing_visitor_a78f01a744a33b84011ddedca236e95e1}{visit\+Merge\+Equi\+Join} (\hyperlink{class_merge_equi_join}{Merge\+Equi\+Join} $\ast$node)
+void \hyperlink{class_physical_operator_drawing_visitor_a78f01a744a33b84011ddedca236e95e1}{visit\+Merge\+Equi\+Join} (\hyperlink{class_merge_equi_join}{Merge\+Equi\+Join} $\ast$node)
 \item 
-virtual void \hyperlink{class_physical_operator_drawing_visitor_acdfdd3b9f711abff9fb064495e8512e1}{visit\+Merge\+Non\+Equi\+Join} (\hyperlink{class_merge_non_equi_join}{Merge\+Non\+Equi\+Join} $\ast$node)
+void \hyperlink{class_physical_operator_drawing_visitor_acdfdd3b9f711abff9fb064495e8512e1}{visit\+Merge\+Non\+Equi\+Join} (\hyperlink{class_merge_non_equi_join}{Merge\+Non\+Equi\+Join} $\ast$node)
 \item 
 void \hyperlink{class_physical_operator_drawing_visitor_aaeb9fbec796677a5483384cbddd3f827}{visit\+Cross\+Join} (\hyperlink{class_cross_join}{Cross\+Join} $\ast$node)
 \item 
@@ -57,15 +60,71 @@ void \hyperlink{class_physical_operator_drawing_visitor_a3d8f7b6bff44d79fb741b27
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_physical_operator_drawing_visitor_a5663f7f6a5c8a6ad25d0c4c8f918123e}{std\+::string {\bfseries result}}\label{class_physical_operator_drawing_visitor_a5663f7f6a5c8a6ad25d0c4c8f918123e}
-
+std\+::string \hyperlink{class_physical_operator_drawing_visitor_a5663f7f6a5c8a6ad25d0c4c8f918123e}{result}
 \item 
-\hypertarget{class_physical_operator_drawing_visitor_a75aa4987d070c40a3ec2e4e9c950c9e0}{ulong {\bfseries node\+Counter}}\label{class_physical_operator_drawing_visitor_a75aa4987d070c40a3ec2e4e9c950c9e0}
-
+ulong \hyperlink{class_physical_operator_drawing_visitor_a75aa4987d070c40a3ec2e4e9c950c9e0}{node\+Counter}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+Vsitor generates serialize physical tree to dot code. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_physical_operator_drawing_visitor_a2168858696bd1ce675cef6b895fe995b}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\subsubsection[{Physical\+Operator\+Drawing\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Operator\+Drawing\+Visitor\+::\+Physical\+Operator\+Drawing\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_physical_operator_drawing_visitor_a2168858696bd1ce675cef6b895fe995b}
+Creates new instance of \hyperlink{class_physical_operator_drawing_visitor}{Physical\+Operator\+Drawing\+Visitor}. 
+
 \subsection{Member Function Documentation}
+\hypertarget{class_physical_operator_drawing_visitor_a50acb8aae6d2b5fffff964f7d84b079f}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!generate\+Text@{generate\+Text}}
+\index{generate\+Text@{generate\+Text}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\subsubsection[{generate\+Text}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Operator\+Drawing\+Visitor\+::generate\+Text (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{label, }
+\item[{{\bf Nullary\+Physical\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_physical_operator_drawing_visitor_a50acb8aae6d2b5fffff964f7d84b079f}
+Generates node representation in dot. 
+\begin{DoxyParams}{Parameters}
+{\em label} & -\/ label for newly generated node \\
+\hline
+{\em node} & -\/ processed node \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877363ede4a9}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!generate\+Text@{generate\+Text}}
+\index{generate\+Text@{generate\+Text}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\subsubsection[{generate\+Text}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Operator\+Drawing\+Visitor\+::generate\+Text (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{label, }
+\item[{{\bf Unary\+Physical\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877363ede4a9}
+Generates node representation in dot. Calls this visitor on child and connects generated nodes. 
+\begin{DoxyParams}{Parameters}
+{\em label} & -\/ label for newly generated node \\
+\hline
+{\em node} & processed node \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!generate\+Text@{generate\+Text}}
+\index{generate\+Text@{generate\+Text}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\subsubsection[{generate\+Text}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Operator\+Drawing\+Visitor\+::generate\+Text (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{label, }
+\item[{{\bf Binary\+Physical\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}
+Generates node representation in dot. Calls this visitor on children and connects generated nodes. 
+\begin{DoxyParams}{Parameters}
+{\em label} & -\/ label for newly generated node \\
+\hline
+{\em node} & -\/ processed node \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_physical_operator_drawing_visitor_ad1fb3f6d50ba14ad674a71e5f6c35d12}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}}
 \index{visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
 \subsubsection[{visit\+Columns\+Operations\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void Physical\+Operator\+Drawing\+Visitor\+::visit\+Columns\+Operations\+Operator (
@@ -323,6 +382,15 @@ Visits physical operator \hyperlink{class_union_operator}{Union\+Operator}.
 Reimplemented from \hyperlink{class_physical_operator_visitor_adbb3e6618904bc7e6d0b6aa3958132e9}{Physical\+Operator\+Visitor}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_physical_operator_drawing_visitor_a75aa4987d070c40a3ec2e4e9c950c9e0}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!node\+Counter@{node\+Counter}}
+\index{node\+Counter@{node\+Counter}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\subsubsection[{node\+Counter}]{\setlength{\rightskip}{0pt plus 5cm}ulong Physical\+Operator\+Drawing\+Visitor\+::node\+Counter}}\label{class_physical_operator_drawing_visitor_a75aa4987d070c40a3ec2e4e9c950c9e0}
+Variable that counts nodes. \hypertarget{class_physical_operator_drawing_visitor_a5663f7f6a5c8a6ad25d0c4c8f918123e}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!result@{result}}
+\index{result@{result}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Physical\+Operator\+Drawing\+Visitor\+::result}}\label{class_physical_operator_drawing_visitor_a5663f7f6a5c8a6ad25d0c4c8f918123e}
+Final dot representation. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

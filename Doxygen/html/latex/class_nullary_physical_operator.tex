@@ -1,6 +1,10 @@
 \hypertarget{class_nullary_physical_operator}{\section{Nullary\+Physical\+Operator Class Reference}
 \label{class_nullary_physical_operator}\index{Nullary\+Physical\+Operator@{Nullary\+Physical\+Operator}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Nullary\+Physical\+Operator\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,10 +14,35 @@ Inheritance diagram for Nullary\+Physical\+Operator\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_nullary_physical_operator_a053a51bc73b06d883fba982adeeb122c}{virtual void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0}\label{class_nullary_physical_operator_a053a51bc73b06d883fba982adeeb122c}
-
+virtual void \hyperlink{class_nullary_physical_operator_a053a51bc73b06d883fba982adeeb122c}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Base class for operators with no input. It is used for leafs like read table, read table by index and index scan. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_nullary_physical_operator_a053a51bc73b06d883fba982adeeb122c}{\index{Nullary\+Physical\+Operator@{Nullary\+Physical\+Operator}!accept@{accept}}
+\index{accept@{accept}!Nullary\+Physical\+Operator@{Nullary\+Physical\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Nullary\+Physical\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_nullary_physical_operator_a053a51bc73b06d883fba982adeeb122c}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_physical_operator_aec6926a904c71c0619d6e9e1457252cd}{Physical\+Operator}.
+
+
+
+Implemented in \hyperlink{class_index_scan_a683950e9802678a2351f026ddb2a9881}{Index\+Scan}, \hyperlink{class_table_scan_a51a770478fbad11e95ad5f91dd7af31a}{Table\+Scan}, and \hyperlink{class_scan_and_sort_by_index_a9e0d99d88104c8215bacb470e298b363}{Scan\+And\+Sort\+By\+Index}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

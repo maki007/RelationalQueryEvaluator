@@ -80,6 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
@@ -112,8 +113,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 &#160;
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>AGGREGATE
+: <a class="el" href="class_time_complexity.html#a9bb16133f1284faf24bd901d8947b896">TimeComplexity</a>
+</li>
 <li>agregateFunctions
 : <a class="el" href="class_group.html#afd02ca31d700990cddc2860d562635c2">Group</a>
+, <a class="el" href="class_hash_group.html#a8a813f6713413f2bd401bfa77be774de">HashGroup</a>
+, <a class="el" href="class_sorted_group.html#ab3d59776a6c7516df046d09b0bcd2f4e">SortedGroup</a>
 </li>
 <li>arguments
 : <a class="el" href="class_nnary_expression.html#ae70d24059bba49f089137557e18f41a9">NnaryExpression</a>
@@ -125,10 +131,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>child
 : <a class="el" href="class_unary_algebra_node_base.html#a411f3922d4ab886c364e502f2370752e">UnaryAlgebraNodeBase</a>
 , <a class="el" href="class_unary_expression.html#ae9f51f996e3ec7f389dfce2105128eaf">UnaryExpression</a>
+, <a class="el" href="class_unary_physical_operator.html#acb7166fc6eabb3c8fd32e7a4d0b76425">UnaryPhysicalOperator</a>
 </li>
 <li>children
 : <a class="el" href="class_grouped_algebra_node.html#acabb532765e4d32cec630651bb5d726f">GroupedAlgebraNode</a>
 , <a class="el" href="class_grouped_expression.html#aabace43c5af51a0e913ff9033b71295c">GroupedExpression</a>
+</li>
+<li>CLUSTERED_SCAN
+: <a class="el" href="class_time_complexity.html#a5d917c41e7784cc85a29650ea9e54db2">TimeComplexity</a>
 </li>
 <li>cols
 : <a class="el" href="class_bobox_writing_expression_visitor.html#a6e0d9ba1a06fd32c8d71dd8e1c068c56">BoboxWritingExpressionVisitor</a>
@@ -143,15 +153,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="class_index.html#aacff426f599d6f3d4c244456bcf2d594">Index</a>
 , <a class="el" href="class_join_info.html#a4890e0bbeaf9718d16765b8f408ec1b5">JoinInfo</a>
 , <a class="el" href="class_max_of_unique_values_expression_visitor.html#a1f0ca5cd4e5fd0eb513fa64ea21ecae6">MaxOfUniqueValuesExpressionVisitor</a>
+, <a class="el" href="class_physical_operator.html#aaf7e49cbadd48e7b0b30e9a84367e5de">PhysicalOperator</a>
 , <a class="el" href="class_size_estimating_expression_visitor.html#ac3830138167760ff403ad52bd606a560">SizeEstimatingExpressionVisitor</a>
 , <a class="el" href="class_table.html#ad6e2d1b269aa5c182e0357b75f46eee0">Table</a>
 </li>
 <li>condition
 : <a class="el" href="class_anti_join.html#a55e3da2742c4a24af7eee18cc5309206">AntiJoin</a>
 , <a class="el" href="class_condition_info.html#a57923bd70f56a79ca3ae8d09bb14f550">ConditionInfo</a>
+, <a class="el" href="class_filter.html#acc551fc888d4b2e9bc36364a3877dbb8">Filter</a>
+, <a class="el" href="class_filter_keeping_order.html#a9958c9755be1bcd46a9fa67116d07e67">FilterKeepingOrder</a>
 , <a class="el" href="class_grouped_join.html#a517b47e21d6852335b50537c474c9c62">GroupedJoin</a>
+, <a class="el" href="class_hash_anti_join.html#a94f542040c9ee014a520ddf0b9267ff2">HashAntiJoin</a>
+, <a class="el" href="class_hash_join.html#ac2524a0455d2379287a55d8cb148c40d">HashJoin</a>
+, <a class="el" href="class_index_scan.html#a9adcd1af97f3df02679f18fed687af21">IndexScan</a>
 , <a class="el" href="class_join.html#aa1374c434547d1a0a478a914ac0445bb">Join</a>
 , <a class="el" href="class_join_info.html#a0b9f3b02df4e768208f53c549e0b6e61">JoinInfo</a>
+, <a class="el" href="class_merge_anti_join.html#ae616cc88814ffd21b31ed48693ac60a6">MergeAntiJoin</a>
+, <a class="el" href="class_merge_equi_join.html#ac334a1377a90c2876f9a5fad38d1836e">MergeEquiJoin</a>
+, <a class="el" href="class_merge_non_equi_join.html#ad1307cbe8f5e88f685ece833fcea67c2">MergeNonEquiJoin</a>
 , <a class="el" href="class_selection.html#a2356634cb924e5b5814c4d2bfee51d65">Selection</a>
 </li>
 <li>conditionType
@@ -160,6 +179,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>containsErrors
 : <a class="el" href="class_semantic_checker.html#a3683f9e8bd069bf8b76c42ea6ff11b96">SemanticChecker</a>
 , <a class="el" href="class_semantic_expression_visitor.html#a5355c2bd3477b4d33bc7ab5443408d11">SemanticExpressionVisitor</a>
+</li>
+<li>CROSS_JOIN
+: <a class="el" href="class_time_complexity.html#afe17c2e0735b25c3fe8df95d00affc91">TimeComplexity</a>
 </li>
 </ul>
 
@@ -179,6 +201,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>FILTER
+: <a class="el" href="class_time_complexity.html#a4a30ee8b7f0778df1564a9c0baa259bd">TimeComplexity</a>
+</li>
+<li>FILTER_KEEPING_ORDER
+: <a class="el" href="class_time_complexity.html#a31c8e9e4ede24384d6dfc199d7dd1df6">TimeComplexity</a>
+</li>
 <li>function
 : <a class="el" href="class_agregate_function.html#afc2ef5318021e8fa5aac765f48cc2561">AgregateFunction</a>
 </li>
@@ -191,6 +219,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>groupColumns
 : <a class="el" href="class_group.html#a811076e176eaa4e3bb8373b7bd515c7e">Group</a>
+, <a class="el" href="class_hash_group.html#a61af9515cad55af148210493431c5df6">HashGroup</a>
+, <a class="el" href="class_sorted_group.html#af4ccedafc52d06be95d88eec6e235ba2">SortedGroup</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>HASH
+: <a class="el" href="class_time_complexity.html#a052631ae60c26ad4f0d840f012193898">TimeComplexity</a>
 </li>
 </ul>
 
@@ -199,8 +236,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>id
 : <a class="el" href="class_column_identifier.html#ade5213e0ceeb1ba3fd948e9dc9975a53">ColumnIdentifier</a>
 </li>
+<li>index
+: <a class="el" href="class_index_scan.html#a8ffc3e0a33fb2db655471ea28e47bc9e">IndexScan</a>
+, <a class="el" href="class_scan_and_sort_by_index.html#a132a795383838f5cc3e6c17288509e15">ScanAndSortByIndex</a>
+</li>
+<li>INDEX_SEARCH
+: <a class="el" href="class_time_complexity.html#ae8697720bb5788db90670f511073a606">TimeComplexity</a>
+</li>
 <li>indices
-: <a class="el" href="class_table.html#a985077d6ec6eacb7828b78b9b9bc6157">Table</a>
+: <a class="el" href="class_physical_plan.html#a4d8ba56ef7d228a2a11176da541af5ef">PhysicalPlan</a>
+, <a class="el" href="class_table.html#a985077d6ec6eacb7828b78b9b9bc6157">Table</a>
 </li>
 <li>input
 : <a class="el" href="class_column.html#addd3816c69df05b9f717348dca79ee21">Column</a>
@@ -221,9 +266,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>lastNumberedColumn
 : <a class="el" href="class_number_columns_in_join_visitor.html#af26374a4ce48016848edd71c935f92a3">NumberColumnsInJoinVisitor</a>
 </li>
+<li>left
+: <a class="el" href="class_merge_anti_join.html#a1dedfa039b1172db367fc7d3cd0304fc">MergeAntiJoin</a>
+, <a class="el" href="class_merge_equi_join.html#a10a2e1737a5d7c2e554f55b0e0863d04">MergeEquiJoin</a>
+, <a class="el" href="class_merge_non_equi_join.html#a785b0aeaa5ec15536c03272a21f8ebe0">MergeNonEquiJoin</a>
+</li>
 <li>leftChild
 : <a class="el" href="class_binary_algebra_node_base.html#ab62ff77c5d90bd941b07a6f34e39f14b">BinaryAlgebraNodeBase</a>
 , <a class="el" href="class_binary_expression.html#a2388939b40f93649cfd3c531b181025e">BinaryExpression</a>
+, <a class="el" href="class_binary_physical_operator.html#a60ea09dbc34f680f024a9946c3634cbd">BinaryPhysicalOperator</a>
+</li>
+<li>leftPartOfCondition
+: <a class="el" href="class_hash_anti_join.html#a7f63b0f5f9cbcde2c6c8819d25b0b68d">HashAntiJoin</a>
+, <a class="el" href="class_hash_join.html#a8ce73a163fdc30d10144277b51689541">HashJoin</a>
 </li>
 <li>LIMIT_FOR_GREEDY_JOIN_ORDER_ALGORITHM
 : <a class="el" href="class_algebra_compiler.html#a75bdf7e239082b0a6c8560ac5a75e72a">AlgebraCompiler</a>
@@ -237,6 +292,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
 <li>MAX_HEAP_SIZE_IN_GREEDY_ALGORITHM
 : <a class="el" href="class_algebra_compiler.html#aa67a35b24af1850ef0294e353f8a7184">AlgebraCompiler</a>
+</li>
+<li>MERGE_EQUI_JOIN
+: <a class="el" href="class_time_complexity.html#a6d5c9703d95ebce5c94a159991de53b5">TimeComplexity</a>
+</li>
+<li>MERGE_NONEQUI_JOIN
+: <a class="el" href="class_time_complexity.html#a5c7a2b2c29677f090bae490f57d486fa">TimeComplexity</a>
 </li>
 <li>missingColumn
 : <a class="el" href="class_semantic_expression_visitor.html#a2082ef4052d1c35fdda7bcc72c5bb132">SemanticExpressionVisitor</a>
@@ -256,6 +317,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>nodeCounter
 : <a class="el" href="class_graph_drawing_visitor.html#a0761312fb1e24b1951c0b263b19f268c">GraphDrawingVisitor</a>
+, <a class="el" href="class_physical_operator_drawing_visitor.html#a75aa4987d070c40a3ec2e4e9c950c9e0">PhysicalOperatorDrawingVisitor</a>
 </li>
 <li>nodes
 : <a class="el" href="class_get_columns_nodes_visitor.html#ac68ee0c1090596d4e25a5dc5a478533b">GetColumnsNodesVisitor</a>
@@ -280,6 +342,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>operations
 : <a class="el" href="class_column_operations.html#a31aab19a9f8b104f772c111e920dd682">ColumnOperations</a>
+, <a class="el" href="class_columns_operations_operator.html#ae2384aeda586f5c60013dbe0cb5a3030">ColumnsOperationsOperator</a>
 </li>
 <li>order
 : <a class="el" href="class_sort_parameter.html#a768e8eeb0a9857820c1596ed50c0c13a">SortParameter</a>
@@ -323,6 +386,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66">AlgebraNodeBase</a>
 , <a class="el" href="class_expression.html#a36284ba467eae6aa796985ed909a6958">Expression</a>
 </li>
+<li>plan
+: <a class="el" href="class_physical_plan.html#a97349262f468410057d66f00334003a5">PhysicalPlan</a>
+</li>
 <li>plans
 : <a class="el" href="class_join_info.html#acbddcf9cd01e91396492b94a627bdf69">JoinInfo</a>
 </li>
@@ -333,13 +399,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>READ_HASH_TABLE
+: <a class="el" href="class_time_complexity.html#a7b47ef70ce9096d049a233c819c850de">TimeComplexity</a>
+</li>
 <li>result
 : <a class="el" href="class_algebra_compiler.html#acf3202bd193e4552a1d4fadb6d0b356c">AlgebraCompiler</a>
 , <a class="el" href="class_bobox_writing_expression_visitor.html#a222842d9f796beebabc13691b107e5ad">BoboxWritingExpressionVisitor</a>
 , <a class="el" href="class_cloning_expression_visitor.html#aa23b5af5203ff9b14ee556a527173ad3">CloningExpressionVisitor</a>
+, <a class="el" href="class_cloning_physical_operator_visitor.html#aa3705b767976ef07fdfe39458543138e">CloningPhysicalOperatorVisitor</a>
 , <a class="el" href="class_column_operation.html#aab22c48d83db533c5b153136a4da6db7">ColumnOperation</a>
 , <a class="el" href="class_graph_drawing_visitor.html#a99563612519b31409a263df7b3ae2372">GraphDrawingVisitor</a>
 , <a class="el" href="class_max_of_unique_values_expression_visitor.html#a4d1359a778ac14a3709c63bff3a01383">MaxOfUniqueValuesExpressionVisitor</a>
+, <a class="el" href="class_physical_operator_drawing_visitor.html#a5663f7f6a5c8a6ad25d0c4c8f918123e">PhysicalOperatorDrawingVisitor</a>
 , <a class="el" href="class_writing_expression_visitor.html#a2aa14a9c85538776cf147ed5ff6a27e9">WritingExpressionVisitor</a>
 </li>
 <li>resultType
@@ -348,9 +419,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>returnType
 : <a class="el" href="class_nnary_expression.html#a70b8058f410ed9f52b610e74489bf03f">NnaryExpression</a>
 </li>
+<li>right
+: <a class="el" href="class_merge_anti_join.html#a28f20cf708052a9357799187831c8a33">MergeAntiJoin</a>
+, <a class="el" href="class_merge_equi_join.html#a0d32b50a198ce479cae3bbdc52b9766a">MergeEquiJoin</a>
+, <a class="el" href="class_merge_non_equi_join.html#ae3631adf9752e5ab861dbf986b92ff00">MergeNonEquiJoin</a>
+</li>
 <li>rightChild
 : <a class="el" href="class_binary_algebra_node_base.html#ac97784ae724c411daca8b17664ce1122">BinaryAlgebraNodeBase</a>
 , <a class="el" href="class_binary_expression.html#a97803d6333b2fbe6098491136a1445af">BinaryExpression</a>
+, <a class="el" href="class_binary_physical_operator.html#a9247498cd4b4e35968e2aa78bac17016">BinaryPhysicalOperator</a>
+</li>
+<li>rightPartOfCondition
+: <a class="el" href="class_hash_anti_join.html#a7dc5742715a982de107f7703ef01d95b">HashAntiJoin</a>
+, <a class="el" href="class_hash_join.html#ad4f1b144fc9a52d5218b1d2368c295b7">HashJoin</a>
 </li>
 <li>root
 : <a class="el" href="class_grouping_expression_visitor.html#a493ef343ca18357dca158d83085b5ab4">GroupingExpressionVisitor</a>
@@ -365,12 +446,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>size
 : <a class="el" href="class_algebra_compiler.html#adcc3f8ba764b873c170cfb28d4636b16">AlgebraCompiler</a>
 , <a class="el" href="class_join_info.html#a526146b07ef6d1bba7475f7998bf0588">JoinInfo</a>
+, <a class="el" href="class_physical_operator.html#a744971579c457601553e8e9a70a5cee1">PhysicalOperator</a>
 , <a class="el" href="class_size_estimating_expression_visitor.html#a882681f529d9c9cb182ad76a1734921e">SizeEstimatingExpressionVisitor</a>
+</li>
+<li>SORT
+: <a class="el" href="class_time_complexity.html#ab8e878b2dcc5d2943614849a27e4edbb">TimeComplexity</a>
+</li>
+<li>sortBy
+: <a class="el" href="class_sort_operator.html#a36cfb27acb196ceb5d801b62dc2494cc">SortOperator</a>
+</li>
+<li>SORTED_GROUP
+: <a class="el" href="class_time_complexity.html#ad2ed168a66bfcbd9f5831360e4d6437a">TimeComplexity</a>
+</li>
+<li>sortedBy
+: <a class="el" href="class_physical_plan.html#a6a49fcbbcb8e22d1f573106de5847c45">PhysicalPlan</a>
+, <a class="el" href="class_sort_operator.html#a7e3eb99b6ce1ed9d927a5e3975269be5">SortOperator</a>
+</li>
+<li>sortParameters
+: <a class="el" href="class_merge_non_equi_join.html#a5f8b68c20d65ec2e07f41f2c2c4079d6">MergeNonEquiJoin</a>
+, <a class="el" href="class_sort_resolving_physical_operator_visitor.html#aa962193d5211541430e94f2a0961c641">SortResolvingPhysicalOperatorVisitor</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
+<li>tableName
+: <a class="el" href="class_index_scan.html#a8557a6ffee853f05298881acf8bebe14">IndexScan</a>
+, <a class="el" href="class_scan_and_sort_by_index.html#a04ad43495fcb141d4e7c51d9907f3a42">ScanAndSortByIndex</a>
+, <a class="el" href="class_table_scan.html#a8ac51489c963d33273bfa178a5c033c1">TableScan</a>
+</li>
+<li>timeComplexity
+: <a class="el" href="class_physical_operator.html#a88836a2b6453889b6ad852a2121ca512">PhysicalOperator</a>
+, <a class="el" href="class_physical_plan.html#a2176d32a64b58406206181395c4127bc">PhysicalPlan</a>
+</li>
 <li>type
 : <a class="el" href="class_column.html#a18cd6b6f12a338f6e08c36da7fadb7ec">Column</a>
 , <a class="el" href="class_column_info.html#add303d9d4415fc18b790d9a904831c29">ColumnInfo</a>
@@ -383,6 +491,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>UNCLUSTERED_SCAN
+: <a class="el" href="class_time_complexity.html#a271a2e8ae589bd80b438ab11908cad02">TimeComplexity</a>
+</li>
+<li>UNION
+: <a class="el" href="class_time_complexity.html#a91493cbef5029bd9aa68e0106c603f6a">TimeComplexity</a>
+</li>
 <li>unProcessedPlans
 : <a class="el" href="class_join_info.html#ac6d0b302590c265ce7f3c47db28bad44">JoinInfo</a>
 </li>
@@ -400,7 +514,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 12 2014 19:57:57 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 17 2014 23:05:59 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

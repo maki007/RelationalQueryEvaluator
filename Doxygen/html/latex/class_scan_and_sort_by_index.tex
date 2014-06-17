@@ -1,6 +1,10 @@
 \hypertarget{class_scan_and_sort_by_index}{\section{Scan\+And\+Sort\+By\+Index Class Reference}
 \label{class_scan_and_sort_by_index}\index{Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 Inheritance diagram for Scan\+And\+Sort\+By\+Index\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,22 +14,67 @@ Inheritance diagram for Scan\+And\+Sort\+By\+Index\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_scan_and_sort_by_index_a8304f98fd2eea171365ad996666fdd01}{{\bfseries Scan\+And\+Sort\+By\+Index} (const std\+::string \&name, const \hyperlink{class_index}{Index} \&index)}\label{class_scan_and_sort_by_index_a8304f98fd2eea171365ad996666fdd01}
-
+\hyperlink{class_scan_and_sort_by_index_a8304f98fd2eea171365ad996666fdd01}{Scan\+And\+Sort\+By\+Index} (const std\+::string \&name, const \hyperlink{class_index}{Index} \&\hyperlink{class_scan_and_sort_by_index_a132a795383838f5cc3e6c17288509e15}{index})
 \item 
-\hypertarget{class_scan_and_sort_by_index_a9e0d99d88104c8215bacb470e298b363}{void {\bfseries accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)}\label{class_scan_and_sort_by_index_a9e0d99d88104c8215bacb470e298b363}
-
+void \hyperlink{class_scan_and_sort_by_index_a9e0d99d88104c8215bacb470e298b363}{accept} (\hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_scan_and_sort_by_index_a04ad43495fcb141d4e7c51d9907f3a42}{std\+::string {\bfseries table\+Name}}\label{class_scan_and_sort_by_index_a04ad43495fcb141d4e7c51d9907f3a42}
-
+std\+::string \hyperlink{class_scan_and_sort_by_index_a04ad43495fcb141d4e7c51d9907f3a42}{table\+Name}
 \item 
-\hypertarget{class_scan_and_sort_by_index_a132a795383838f5cc3e6c17288509e15}{\hyperlink{class_index}{Index} {\bfseries index}}\label{class_scan_and_sort_by_index_a132a795383838f5cc3e6c17288509e15}
-
+\hyperlink{class_index}{Index} \hyperlink{class_scan_and_sort_by_index_a132a795383838f5cc3e6c17288509e15}{index}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Represents operator, which reads whole table using index. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_scan_and_sort_by_index_a8304f98fd2eea171365ad996666fdd01}{\index{Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}!Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}}
+\index{Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}!Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{Scan\+And\+Sort\+By\+Index}]{\setlength{\rightskip}{0pt plus 5cm}Scan\+And\+Sort\+By\+Index\+::\+Scan\+And\+Sort\+By\+Index (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{name, }
+\item[{const {\bf Index} \&}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_scan_and_sort_by_index_a8304f98fd2eea171365ad996666fdd01}
+Creates new instance of \hyperlink{class_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & of table to read. \\
+\hline
+{\em index} & -\/ index to user for reading. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_scan_and_sort_by_index_a9e0d99d88104c8215bacb470e298b363}{\index{Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}!accept@{accept}}
+\index{accept@{accept}!Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Scan\+And\+Sort\+By\+Index\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_scan_and_sort_by_index_a9e0d99d88104c8215bacb470e298b363}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{class_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_nullary_physical_operator_a053a51bc73b06d883fba982adeeb122c}{Nullary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_scan_and_sort_by_index_a132a795383838f5cc3e6c17288509e15}{\index{Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}!index@{index}}
+\index{index@{index}!Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Index} Scan\+And\+Sort\+By\+Index\+::index}}\label{class_scan_and_sort_by_index_a132a795383838f5cc3e6c17288509e15}
+\hyperlink{class_table}{Table} index to use. \hypertarget{class_scan_and_sort_by_index_a04ad43495fcb141d4e7c51d9907f3a42}{\index{Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}!table\+Name@{table\+Name}}
+\index{table\+Name@{table\+Name}!Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{table\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Scan\+And\+Sort\+By\+Index\+::table\+Name}}\label{class_scan_and_sort_by_index_a04ad43495fcb141d4e7c51d9907f3a42}
+\hyperlink{class_table}{Table} to read. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,43 +1,182 @@
 \hypertarget{class_physical_plan}{\section{Physical\+Plan Class Reference}
 \label{class_physical_plan}\index{Physical\+Plan@{Physical\+Plan}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_physical_plan_a1cf06adf78f2ccb7cbd2d93b119a25f6}{{\bfseries Physical\+Plan} (\hyperlink{class_nullary_physical_operator}{Nullary\+Physical\+Operator} $\ast$op, double number\+Of\+Rows, double time, std\+::vector$<$ \hyperlink{class_column_info}{Column\+Info} $>$ \&cols)}\label{class_physical_plan_a1cf06adf78f2ccb7cbd2d93b119a25f6}
-
+\hyperlink{class_physical_plan_a4030a09eb03efd4093f0d237aea9505e}{Physical\+Plan} ()
 \item 
-\hypertarget{class_physical_plan_a7f1bdc130a27a973a12a2da3b66ca43d}{{\bfseries Physical\+Plan} (\hyperlink{class_nullary_physical_operator}{Nullary\+Physical\+Operator} $\ast$op, double number\+Of\+Rows, double time, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&new\+Columns)}\label{class_physical_plan_a7f1bdc130a27a973a12a2da3b66ca43d}
-
+\hyperlink{class_physical_plan_a1cf06adf78f2ccb7cbd2d93b119a25f6}{Physical\+Plan} (\hyperlink{class_nullary_physical_operator}{Nullary\+Physical\+Operator} $\ast$op, double number\+Of\+Rows, double time, std\+::vector$<$ \hyperlink{class_column_info}{Column\+Info} $>$ \&cols)
 \item 
-\hypertarget{class_physical_plan_a6b8c83da5833167badf7740947297b75}{{\bfseries Physical\+Plan} (\hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$op, double new\+Size, double time, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&new\+Columns, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&old\+Plan)}\label{class_physical_plan_a6b8c83da5833167badf7740947297b75}
-
+\hyperlink{class_physical_plan_a7f1bdc130a27a973a12a2da3b66ca43d}{Physical\+Plan} (\hyperlink{class_nullary_physical_operator}{Nullary\+Physical\+Operator} $\ast$op, double number\+Of\+Rows, double time, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&new\+Columns)
 \item 
-\hypertarget{class_physical_plan_aad6b6a033d32215d38c720904d16a44e}{{\bfseries Physical\+Plan} (\hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$op, double new\+Size, double time, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&new\+Columns, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&old\+Plan1, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&old\+Plan2)}\label{class_physical_plan_aad6b6a033d32215d38c720904d16a44e}
-
+\hyperlink{class_physical_plan_a6b8c83da5833167badf7740947297b75}{Physical\+Plan} (\hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$op, double new\+Size, double time, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&new\+Columns, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&old\+Plan)
+\item 
+\hyperlink{class_physical_plan_aad6b6a033d32215d38c720904d16a44e}{Physical\+Plan} (\hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$op, double new\+Size, double time, const std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \&new\+Columns, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&old\+Plan1, const std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&old\+Plan2)
 \end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_physical_plan_a52cbdf31b5d5c9dcdc6730dd1b516e7b}{static bool {\bfseries Comparator} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&i, std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&j)}\label{class_physical_plan_a52cbdf31b5d5c9dcdc6730dd1b516e7b}
-
+static bool \hyperlink{class_physical_plan_a52cbdf31b5d5c9dcdc6730dd1b516e7b}{Comparator} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&i, std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ \&j)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_physical_plan_a4d8ba56ef7d228a2a11176da541af5ef}{std\+::vector$<$ \hyperlink{class_index}{Index} $>$ {\bfseries indices}}\label{class_physical_plan_a4d8ba56ef7d228a2a11176da541af5ef}
-
+std\+::vector$<$ \hyperlink{class_index}{Index} $>$ \hyperlink{class_physical_plan_a4d8ba56ef7d228a2a11176da541af5ef}{indices}
 \item 
-\hypertarget{class_physical_plan_a6a49fcbbcb8e22d1f573106de5847c45}{\hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} {\bfseries sorted\+By}}\label{class_physical_plan_a6a49fcbbcb8e22d1f573106de5847c45}
-
+\hyperlink{class_possible_sort_parameters}{Possible\+Sort\+Parameters} \hyperlink{class_physical_plan_a6a49fcbbcb8e22d1f573106de5847c45}{sorted\+By}
 \item 
-\hypertarget{class_physical_plan_a2176d32a64b58406206181395c4127bc}{double {\bfseries time\+Complexity}}\label{class_physical_plan_a2176d32a64b58406206181395c4127bc}
-
+double \hyperlink{class_physical_plan_a2176d32a64b58406206181395c4127bc}{time\+Complexity}
 \item 
-\hypertarget{class_physical_plan_a97349262f468410057d66f00334003a5}{std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_operator}{Physical\+Operator} $>$ {\bfseries plan}}\label{class_physical_plan_a97349262f468410057d66f00334003a5}
-
+std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_operator}{Physical\+Operator} $>$ \hyperlink{class_physical_plan_a97349262f468410057d66f00334003a5}{plan}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Class representing whole physical plan, that means operator tree and aditional informations. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_physical_plan_a4030a09eb03efd4093f0d237aea9505e}{\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{Physical\+Plan}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Plan\+::\+Physical\+Plan (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_physical_plan_a4030a09eb03efd4093f0d237aea9505e}
+Creates new instance of \hyperlink{class_physical_plan}{Physical\+Plan}. \hypertarget{class_physical_plan_a1cf06adf78f2ccb7cbd2d93b119a25f6}{\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{Physical\+Plan}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Plan\+::\+Physical\+Plan (
+\begin{DoxyParamCaption}
+\item[{{\bf Nullary\+Physical\+Operator} $\ast$}]{op, }
+\item[{double}]{number\+Of\+Rows, }
+\item[{double}]{time, }
+\item[{std\+::vector$<$ {\bf Column\+Info} $>$ \&}]{cols}
+\end{DoxyParamCaption}
+)}}\label{class_physical_plan_a1cf06adf78f2ccb7cbd2d93b119a25f6}
+Creates new instance of \hyperlink{class_physical_plan}{Physical\+Plan}. 
+\begin{DoxyParams}{Parameters}
+{\em op} & -\/ new tree root \\
+\hline
+{\em number\+Of\+Rows} & -\/ new relation size \\
+\hline
+{\em time} & -\/ time to execute op \\
+\hline
+{\em cols} & -\/ new columns \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_physical_plan_a7f1bdc130a27a973a12a2da3b66ca43d}{\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{Physical\+Plan}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Plan\+::\+Physical\+Plan (
+\begin{DoxyParamCaption}
+\item[{{\bf Nullary\+Physical\+Operator} $\ast$}]{op, }
+\item[{double}]{number\+Of\+Rows, }
+\item[{double}]{time, }
+\item[{const std\+::map$<$ int, {\bf Column\+Info} $>$ \&}]{new\+Columns}
+\end{DoxyParamCaption}
+)}}\label{class_physical_plan_a7f1bdc130a27a973a12a2da3b66ca43d}
+Creates new instance of \hyperlink{class_physical_plan}{Physical\+Plan}. 
+\begin{DoxyParams}{Parameters}
+{\em op} & -\/ new tree root \\
+\hline
+{\em number\+Of\+Rows} & -\/ new relation size \\
+\hline
+{\em time} & -\/ time to execute op \\
+\hline
+{\em new\+Columns} & -\/ new columns \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_physical_plan_a6b8c83da5833167badf7740947297b75}{\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{Physical\+Plan}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Plan\+::\+Physical\+Plan (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Physical\+Operator} $\ast$}]{op, }
+\item[{double}]{new\+Size, }
+\item[{double}]{time, }
+\item[{const std\+::map$<$ int, {\bf Column\+Info} $>$ \&}]{new\+Columns, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Physical\+Plan} $>$ \&}]{old\+Plan}
+\end{DoxyParamCaption}
+)}}\label{class_physical_plan_a6b8c83da5833167badf7740947297b75}
+Creates new instance of \hyperlink{class_physical_plan}{Physical\+Plan}. It connects op to operator tree. 
+\begin{DoxyParams}{Parameters}
+{\em op} & -\/ new tree root \\
+\hline
+{\em new\+Size} & -\/ new relation size \\
+\hline
+{\em time} & -\/ time to execute op \\
+\hline
+{\em new\+Columns} & -\/ new columns \\
+\hline
+{\em old\+Plan} & -\/ new child for op \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_physical_plan_aad6b6a033d32215d38c720904d16a44e}{\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\index{Physical\+Plan@{Physical\+Plan}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{Physical\+Plan}]{\setlength{\rightskip}{0pt plus 5cm}Physical\+Plan\+::\+Physical\+Plan (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Physical\+Operator} $\ast$}]{op, }
+\item[{double}]{new\+Size, }
+\item[{double}]{time, }
+\item[{const std\+::map$<$ int, {\bf Column\+Info} $>$ \&}]{new\+Columns, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Physical\+Plan} $>$ \&}]{old\+Plan1, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Physical\+Plan} $>$ \&}]{old\+Plan2}
+\end{DoxyParamCaption}
+)}}\label{class_physical_plan_aad6b6a033d32215d38c720904d16a44e}
+Creates new instance of \hyperlink{class_physical_plan}{Physical\+Plan}. It connects op to operator tree. 
+\begin{DoxyParams}{Parameters}
+{\em op} & -\/ new tree root \\
+\hline
+{\em new\+Size} & -\/ new relation size \\
+\hline
+{\em time} & -\/ time to execute op \\
+\hline
+{\em new\+Columns} & -\/ new columns \\
+\hline
+{\em old\+Plan1} & -\/ new left child for op \\
+\hline
+{\em old\+Plan2} & -\/ new right child for op \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_physical_plan_a52cbdf31b5d5c9dcdc6730dd1b516e7b}{\index{Physical\+Plan@{Physical\+Plan}!Comparator@{Comparator}}
+\index{Comparator@{Comparator}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{Comparator}]{\setlength{\rightskip}{0pt plus 5cm}bool Physical\+Plan\+::\+Comparator (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Physical\+Plan} $>$ \&}]{i, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Physical\+Plan} $>$ \&}]{j}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_physical_plan_a52cbdf31b5d5c9dcdc6730dd1b516e7b}
+Compares two plans. Operation less is defined\+: i $<$ j $<$=$>$ i.\+time\+Complexity$<$j.\+time\+Complexity 
+\begin{DoxyParams}{Parameters}
+{\em i} & -\/ first plan \\
+\hline
+{\em j} & -\/ second plan \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if i$<$j 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_physical_plan_a4d8ba56ef7d228a2a11176da541af5ef}{\index{Physical\+Plan@{Physical\+Plan}!indices@{indices}}
+\index{indices@{indices}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{indices}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Index}$>$ Physical\+Plan\+::indices}}\label{class_physical_plan_a4d8ba56ef7d228a2a11176da541af5ef}
+Information if current table has iny indices. \hypertarget{class_physical_plan_a97349262f468410057d66f00334003a5}{\index{Physical\+Plan@{Physical\+Plan}!plan@{plan}}
+\index{plan@{plan}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{plan}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Physical\+Operator}$>$ Physical\+Plan\+::plan}}\label{class_physical_plan_a97349262f468410057d66f00334003a5}
+Pointer on the root of operator tree. \hypertarget{class_physical_plan_a6a49fcbbcb8e22d1f573106de5847c45}{\index{Physical\+Plan@{Physical\+Plan}!sorted\+By@{sorted\+By}}
+\index{sorted\+By@{sorted\+By}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{sorted\+By}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Possible\+Sort\+Parameters} Physical\+Plan\+::sorted\+By}}\label{class_physical_plan_a6a49fcbbcb8e22d1f573106de5847c45}
+Information how is the output sorted by. \hypertarget{class_physical_plan_a2176d32a64b58406206181395c4127bc}{\index{Physical\+Plan@{Physical\+Plan}!time\+Complexity@{time\+Complexity}}
+\index{time\+Complexity@{time\+Complexity}!Physical\+Plan@{Physical\+Plan}}
+\subsubsection[{time\+Complexity}]{\setlength{\rightskip}{0pt plus 5cm}double Physical\+Plan\+::time\+Complexity}}\label{class_physical_plan_a2176d32a64b58406206181395c4127bc}
+Time, how much will it take to evaluate plan. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

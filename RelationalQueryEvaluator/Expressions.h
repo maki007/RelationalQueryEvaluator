@@ -32,7 +32,7 @@ typedef unsigned long long int ulong;
 
 class ExpressionVisitorBase;
 /**
-* Base class for expression in expressionn tree.
+* Base class for expression in expression tree.
 * Expression trees are used in algebra nodes like selection, join, antijoin or column operations.
 */
 class Expression

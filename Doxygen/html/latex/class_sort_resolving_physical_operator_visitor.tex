@@ -1,6 +1,10 @@
 \hypertarget{class_sort_resolving_physical_operator_visitor}{\section{Sort\+Resolving\+Physical\+Operator\+Visitor Class Reference}
 \label{class_sort_resolving_physical_operator_visitor}\index{Sort\+Resolving\+Physical\+Operator\+Visitor@{Sort\+Resolving\+Physical\+Operator\+Visitor}}
 }
+
+
+{\ttfamily \#include $<$Physical\+Operator\+Visitor.\+h$>$}
+
 Inheritance diagram for Sort\+Resolving\+Physical\+Operator\+Visitor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,10 +49,12 @@ void \hyperlink{class_sort_resolving_physical_operator_visitor_a2ea2205b6cdf14ab
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_sort_resolving_physical_operator_visitor_aa962193d5211541430e94f2a0961c641}{std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ {\bfseries sort\+Parameters}}\label{class_sort_resolving_physical_operator_visitor_aa962193d5211541430e94f2a0961c641}
-
+std\+::vector$<$ \hyperlink{class_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{class_sort_resolving_physical_operator_visitor_aa962193d5211541430e94f2a0961c641}{sort\+Parameters}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+After physical plan is generated some sort parameters can be unknown (direciotn or order of columns). This visitor visits whole tree from top a set this parameters to known values. 
 
 \subsection{Member Function Documentation}
 \hypertarget{class_sort_resolving_physical_operator_visitor_a22bf2c5442c65d923a166269ac45f5ab}{\index{Sort\+Resolving\+Physical\+Operator\+Visitor@{Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}}
@@ -308,6 +314,12 @@ Visits physical operator \hyperlink{class_union_operator}{Union\+Operator}.
 Reimplemented from \hyperlink{class_physical_operator_visitor_adbb3e6618904bc7e6d0b6aa3958132e9}{Physical\+Operator\+Visitor}.
 
 
+
+\subsection{Member Data Documentation}
+\hypertarget{class_sort_resolving_physical_operator_visitor_aa962193d5211541430e94f2a0961c641}{\index{Sort\+Resolving\+Physical\+Operator\+Visitor@{Sort\+Resolving\+Physical\+Operator\+Visitor}!sort\+Parameters@{sort\+Parameters}}
+\index{sort\+Parameters@{sort\+Parameters}!Sort\+Resolving\+Physical\+Operator\+Visitor@{Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{sort\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ Sort\+Resolving\+Physical\+Operator\+Visitor\+::sort\+Parameters}}\label{class_sort_resolving_physical_operator_visitor_aa962193d5211541430e94f2a0961c641}
+Current sorted state. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

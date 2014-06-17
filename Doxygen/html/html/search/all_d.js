@@ -1,7 +1,7 @@
 var searchData=
 [
   ['operation',['operation',['../class_unary_expression.html#af585b4a298cc9b170e26bdc0809c5175',1,'UnaryExpression::operation()'],['../class_binary_expression.html#ac3926bbcc2ed7bb00eca10b4d4e590d2',1,'BinaryExpression::operation()'],['../class_grouped_expression.html#a018f4f129a3b9b0be45c8ed10ff21813',1,'GroupedExpression::operation()']]],
-  ['operations',['operations',['../class_column_operations.html#a31aab19a9f8b104f772c111e920dd682',1,'ColumnOperations']]],
+  ['operations',['operations',['../class_column_operations.html#a31aab19a9f8b104f772c111e920dd682',1,'ColumnOperations::operations()'],['../class_columns_operations_operator.html#ae2384aeda586f5c60013dbe0cb5a3030',1,'ColumnsOperationsOperator::operations()']]],
   ['operator_3c',['operator&lt;',['../class_column_identifier.html#a07e32ed45a2b7c8e09f0358fd31a1f74',1,'ColumnIdentifier']]],
   ['operator_3d_3d',['operator==',['../class_column_identifier.html#a3833af96f5281573cae9a70c440c1cce',1,'ColumnIdentifier']]],
   ['order',['order',['../class_sort_parameter.html#a768e8eeb0a9857820c1596ed50c0c13a',1,'SortParameter']]],

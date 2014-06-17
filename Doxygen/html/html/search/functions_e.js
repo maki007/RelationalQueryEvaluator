@@ -1,7 +1,14 @@
 var searchData=
 [
-  ['unaryalgebranodebase',['UnaryAlgebraNodeBase',['../class_unary_algebra_node_base.html#a61929152fac70f4ee299452bcae9ce7d',1,'UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()'],['../class_unary_algebra_node_base.html#a557e3eb8be4cc10c3febe5c3d8918c86',1,'UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement *element)']]],
-  ['unaryexpression',['UnaryExpression',['../class_unary_expression.html#aca5476e9c2604e9d4a9d3f7bf5d8e024',1,'UnaryExpression::UnaryExpression(DOMElement *node, UnaryOperator op)'],['../class_unary_expression.html#a4a5ac8375de2f7bdf2e787bd4d19363c',1,'UnaryExpression::UnaryExpression(std::shared_ptr&lt; Expression &gt; node, UnaryOperator op)']]],
-  ['union',['Union',['../class_union.html#a092a85229eefb0a218bec53bd12b9433',1,'Union']]],
-  ['updatesortparameters',['updateSortParameters',['../class_algebra_compiler.html#a64b17061a41e21787cb35572b60d826d',1,'AlgebraCompiler']]]
+  ['scanandsortbyindex',['ScanAndSortByIndex',['../class_scan_and_sort_by_index.html#a8304f98fd2eea171365ad996666fdd01',1,'ScanAndSortByIndex']]],
+  ['selection',['Selection',['../class_selection.html#a53d1bd270d6d257d34d5bc8d50028049',1,'Selection::Selection()'],['../class_selection.html#a83b3073a2d490708256e3dc725560836',1,'Selection::Selection(DOMElement *element)'],['../class_selection.html#a086ad5ebceb2f48c7b66c150c4f1d92c',1,'Selection::Selection(std::shared_ptr&lt; Expression &gt; &amp;cond)']]],
+  ['semanticchecker',['SemanticChecker',['../class_semantic_checker.html#a35a20bf073bd1fdf1de937db47b9f4c0',1,'SemanticChecker']]],
+  ['semanticexpressionvisitor',['SemanticExpressionVisitor',['../class_semantic_expression_visitor.html#a7b5310f2a8b97f2f370dc2a36239dcbf',1,'SemanticExpressionVisitor']]],
+  ['serializeexpression',['serializeExpression',['../class_algebra_visitor.html#aa8f4149dca3babdefa323050bb6e82f9',1,'AlgebraVisitor']]],
+  ['sizeestimatingexpressionvisitor',['SizeEstimatingExpressionVisitor',['../class_size_estimating_expression_visitor.html#a161843e94155226df99a16ab2227a024',1,'SizeEstimatingExpressionVisitor']]],
+  ['sort',['sort',['../class_time_complexity.html#ab84b18ddf8b7af7725dd0f2d90e8f7ae',1,'TimeComplexity::sort()'],['../class_sort.html#a3b177337159d6d3246cd91b033c824c4',1,'Sort::Sort()']]],
+  ['sortedgroup',['SortedGroup',['../class_sorted_group.html#a5f6798dee7afc557e3510b32558cab05',1,'SortedGroup::SortedGroup()'],['../class_time_complexity.html#aa8fa3fdb0f32cf1d2753271c0979e8d4',1,'TimeComplexity::sortedGroup()']]],
+  ['sortoperator',['SortOperator',['../class_sort_operator.html#aae40824efc238dfbf2bbde0badb66138',1,'SortOperator']]],
+  ['sortparameter',['SortParameter',['../class_sort_parameter.html#aef62c54532ba4260cdc41dfe6157db6b',1,'SortParameter::SortParameter(const ColumnIdentifier &amp;column, SortOrder order)'],['../class_sort_parameter.html#ae50120282e94b4918e1cf33dc1b9cc50',1,'SortParameter::SortParameter(const ColumnIdentifier &amp;column, const ColumnIdentifier &amp;other, SortOrder order)'],['../class_sort_parameter.html#a059b71791c331f735f453ce67ae2af23',1,'SortParameter::SortParameter()']]],
+  ['sortparameters',['SortParameters',['../class_sort_parameters.html#a3e09d106c13d4436e73109c8b0cfa60d',1,'SortParameters::SortParameters(const SortParameter &amp;value)'],['../class_sort_parameters.html#aa126d980ea7fd9ec7c088f3c642d788c',1,'SortParameters::SortParameters(const std::vector&lt; SortParameter &gt; &amp;values)'],['../class_sort_parameters.html#ab5776bf717741ef321cf59bc712f55eb',1,'SortParameters::SortParameters()']]]
 ];
