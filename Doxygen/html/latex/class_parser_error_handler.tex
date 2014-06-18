@@ -1,6 +1,10 @@
 \hypertarget{class_parser_error_handler}{\section{Parser\+Error\+Handler Class Reference}
 \label{class_parser_error_handler}\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}}
 }
+
+
+{\ttfamily \#include $<$Xml\+Handler.\+h$>$}
+
 Inheritance diagram for Parser\+Error\+Handler\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,31 +14,101 @@ Inheritance diagram for Parser\+Error\+Handler\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_parser_error_handler_a7e9893b8664f42e38cecb483f0d26791}{void {\bfseries report\+Parse\+Exception} (const S\+A\+X\+Parse\+Exception \&ex)}\label{class_parser_error_handler_a7e9893b8664f42e38cecb483f0d26791}
-
+\hyperlink{class_parser_error_handler_a9809b43585476fac40b013e6b3f27f1a}{Parser\+Error\+Handler} ()
 \item 
-\hypertarget{class_parser_error_handler_aa63a6f504a4524985be39e0cdfa4e630}{void {\bfseries warning} (const S\+A\+X\+Parse\+Exception \&ex)}\label{class_parser_error_handler_aa63a6f504a4524985be39e0cdfa4e630}
-
+void \hyperlink{class_parser_error_handler_a7e9893b8664f42e38cecb483f0d26791}{report\+Parse\+Exception} (const S\+A\+X\+Parse\+Exception \&ex)
 \item 
-\hypertarget{class_parser_error_handler_aa636e61f4f0fb47f38151e09c3711ee7}{void {\bfseries error} (const S\+A\+X\+Parse\+Exception \&ex)}\label{class_parser_error_handler_aa636e61f4f0fb47f38151e09c3711ee7}
-
+void \hyperlink{class_parser_error_handler_aa63a6f504a4524985be39e0cdfa4e630}{warning} (const S\+A\+X\+Parse\+Exception \&ex)
 \item 
-\hypertarget{class_parser_error_handler_a95dede361c7ef584c9a732ca716c61a4}{void {\bfseries fatal\+Error} (const S\+A\+X\+Parse\+Exception \&ex)}\label{class_parser_error_handler_a95dede361c7ef584c9a732ca716c61a4}
-
+void \hyperlink{class_parser_error_handler_aa636e61f4f0fb47f38151e09c3711ee7}{error} (const S\+A\+X\+Parse\+Exception \&ex)
 \item 
-\hypertarget{class_parser_error_handler_afcd94fcf4b801a4767a90b88721b432c}{void {\bfseries reset\+Errors} ()}\label{class_parser_error_handler_afcd94fcf4b801a4767a90b88721b432c}
-
+void \hyperlink{class_parser_error_handler_a95dede361c7ef584c9a732ca716c61a4}{fatal\+Error} (const S\+A\+X\+Parse\+Exception \&ex)
 \item 
-\hypertarget{class_parser_error_handler_a1ce19b1e204d760ee30e4f7cd0dfc443}{void {\bfseries set\+Document\+Locator} (const Locator $\ast$const locator)}\label{class_parser_error_handler_a1ce19b1e204d760ee30e4f7cd0dfc443}
-
+void \hyperlink{class_parser_error_handler_afcd94fcf4b801a4767a90b88721b432c}{reset\+Errors} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_parser_error_handler_a1929eecf90414ca41886580f1d61248f}{int {\bfseries errors}}\label{class_parser_error_handler_a1929eecf90414ca41886580f1d61248f}
-
+int \hyperlink{class_parser_error_handler_a1929eecf90414ca41886580f1d61248f}{errors}
 \end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+Doma parser error handler. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_parser_error_handler_a9809b43585476fac40b013e6b3f27f1a}{\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\subsubsection[{Parser\+Error\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}Parser\+Error\+Handler\+::\+Parser\+Error\+Handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_parser_error_handler_a9809b43585476fac40b013e6b3f27f1a}
+Creates new instance of \hyperlink{class_parser_error_handler}{Parser\+Error\+Handler}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_parser_error_handler_aa636e61f4f0fb47f38151e09c3711ee7}{\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!error@{error}}
+\index{error@{error}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void Parser\+Error\+Handler\+::error (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{class_parser_error_handler_aa636e61f4f0fb47f38151e09c3711ee7}
+Reports error. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported error. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_parser_error_handler_a95dede361c7ef584c9a732ca716c61a4}{\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!fatal\+Error@{fatal\+Error}}
+\index{fatal\+Error@{fatal\+Error}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\subsubsection[{fatal\+Error}]{\setlength{\rightskip}{0pt plus 5cm}void Parser\+Error\+Handler\+::fatal\+Error (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{class_parser_error_handler_a95dede361c7ef584c9a732ca716c61a4}
+Reports fatal error. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported error. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_parser_error_handler_a7e9893b8664f42e38cecb483f0d26791}{\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!report\+Parse\+Exception@{report\+Parse\+Exception}}
+\index{report\+Parse\+Exception@{report\+Parse\+Exception}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\subsubsection[{report\+Parse\+Exception}]{\setlength{\rightskip}{0pt plus 5cm}void Parser\+Error\+Handler\+::report\+Parse\+Exception (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{class_parser_error_handler_a7e9893b8664f42e38cecb483f0d26791}
+Reports S\+A\+X\+Parse\+Exception. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported exception \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_parser_error_handler_afcd94fcf4b801a4767a90b88721b432c}{\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!reset\+Errors@{reset\+Errors}}
+\index{reset\+Errors@{reset\+Errors}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\subsubsection[{reset\+Errors}]{\setlength{\rightskip}{0pt plus 5cm}void Parser\+Error\+Handler\+::reset\+Errors (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_parser_error_handler_afcd94fcf4b801a4767a90b88721b432c}
+Resets reported errors. \hypertarget{class_parser_error_handler_aa63a6f504a4524985be39e0cdfa4e630}{\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!warning@{warning}}
+\index{warning@{warning}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\subsubsection[{warning}]{\setlength{\rightskip}{0pt plus 5cm}void Parser\+Error\+Handler\+::warning (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{class_parser_error_handler_aa63a6f504a4524985be39e0cdfa4e630}
+Reports warning. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported warning. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_parser_error_handler_a1929eecf90414ca41886580f1d61248f}{\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!errors@{errors}}
+\index{errors@{errors}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\subsubsection[{errors}]{\setlength{\rightskip}{0pt plus 5cm}int Parser\+Error\+Handler\+::errors}}\label{class_parser_error_handler_a1929eecf90414ca41886580f1d61248f}
+Stores number of errors. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['maxofuniquevaluesexpressionvisitor',['MaxOfUniqueValuesExpressionVisitor',['../class_max_of_unique_values_expression_visitor.html#adf863a6e2406f90466e4f4decab1f4e4',1,'MaxOfUniqueValuesExpressionVisitor']]],
-  ['mergeantijoin',['MergeAntiJoin',['../class_merge_anti_join.html#a314a1c84c2b6c6848f5f4664c2b13c77',1,'MergeAntiJoin']]],
-  ['mergeequijoin',['mergeEquiJoin',['../class_time_complexity.html#a01770767aca97b500d1006659ada4599',1,'TimeComplexity::mergeEquiJoin()'],['../class_merge_equi_join.html#a16fa9f23ebbd531c398b121a99c18afc',1,'MergeEquiJoin::MergeEquiJoin()']]],
-  ['mergeequinonjoin',['mergeEquiNonJoin',['../class_time_complexity.html#a450314407ba001db82fbdea4f01c1cfc',1,'TimeComplexity']]],
-  ['mergenonequijoin',['MergeNonEquiJoin',['../class_merge_non_equi_join.html#a3e7a12e0e21a2bf755608c9bc2e5d4ed',1,'MergeNonEquiJoin']]]
+  ['join',['Join',['../class_join.html#ac9d8f69a2f72ce85df3e581292c46fc0',1,'Join']]],
+  ['joincolumninfo',['JoinColumnInfo',['../class_join_column_info.html#a87471f04a13b3b2a5ff4bd60065e18d9',1,'JoinColumnInfo::JoinColumnInfo(const ColumnInfo &amp;col)'],['../class_join_column_info.html#a6264c2ada06ad66c052657f00784e217',1,'JoinColumnInfo::JoinColumnInfo()']]],
+  ['joininforeadingexpressionvisitor',['JoinInfoReadingExpressionVisitor',['../class_join_info_reading_expression_visitor.html#ab9cdf35ad447efd3cfba98440d3e135a',1,'JoinInfoReadingExpressionVisitor']]]
 ];

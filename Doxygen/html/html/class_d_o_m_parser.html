@@ -88,6 +88,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">DOMParser Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_xml_handler_8h_source.html">XmlHandler.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DOMParser:</div>
 <div class="dyncontent">
@@ -99,17 +101,77 @@ Inheritance diagram for DOMParser:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad1d0d1baa8de927488a0a528d6ef0298"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1d0d1baa8de927488a0a528d6ef0298"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>startElement</b> (const XMLElementDecl &amp;elemDecl, const unsigned int urlId, const XMLCh *const elemPrefix, const RefVectorOf&lt; XMLAttr &gt; &amp;attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot)</td></tr>
+<tr class="memitem:ad1d0d1baa8de927488a0a528d6ef0298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_o_m_parser.html#ad1d0d1baa8de927488a0a528d6ef0298">startElement</a> (const XMLElementDecl &amp;elemDecl, const unsigned int urlId, const XMLCh *const elemPrefix, const RefVectorOf&lt; XMLAttr &gt; &amp;attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot)</td></tr>
 <tr class="separator:ad1d0d1baa8de927488a0a528d6ef0298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Custom dom parser which creates dom and adds information about line number to every element. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ad1d0d1baa8de927488a0a528d6ef0298"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DOMParser::startElement </td>
+          <td>(</td>
+          <td class="paramtype">const XMLElementDecl &amp;&#160;</td>
+          <td class="paramname"><em>elemDecl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>urlId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const XMLCh *const&#160;</td>
+          <td class="paramname"><em>elemPrefix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const RefVectorOf&lt; XMLAttr &gt; &amp;&#160;</td>
+          <td class="paramname"><em>attrList</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const XMLSize_t&#160;</td>
+          <td class="paramname"><em>attrCount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>isEmpty</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>isRoot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Overriden method startElement, where parser adds information about line number to processed element. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_xml_handler_8h_source.html">XmlHandler.h</a></li>
+<li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/XmlHandler.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 17 2014 23:05:42 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 19 2014 01:19:54 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

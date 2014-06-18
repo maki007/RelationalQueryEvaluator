@@ -35,10 +35,6 @@ void ParserErrorHandler::resetErrors()
 	errors = 0;
 }
 
-void setDocumentLocator(const Locator *const locator)
-{
-
-}
 
 std::unique_ptr<AlgebraNodeBase> XmlHandler::ValidateSchema(const char* xmlFilePath)
 {
@@ -78,4 +74,13 @@ std::unique_ptr<AlgebraNodeBase> XmlHandler::GenerateRelationalAlgebra(const cha
 	std::unique_ptr<AlgebraNodeBase> result = ValidateSchema(filename);
 	XMLPlatformUtils::Terminate();
 	return result;
+}
+
+void DOMParser::startElement(const XMLElementDecl& elemDecl, const unsigned int urlId, const XMLCh* const elemPrefix, const RefVectorOf<XMLAttr>& attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot)
+{
+	XercesDOMParser::startElement(elemDecl, urlId, elemPrefix, attrList,
+		attrCount, isEmpty, isRoot);
+	const Locator* locator = getScanner()->getLocator();
+	int lineNumber = locator->getLineNumber();
+	XercesDOMParser::fCurrentNode->setUserData(XMLString::transcode("line"), new int(locator->getLineNumber()), 0);
 }

@@ -1,24 +1,110 @@
 \hypertarget{class_xml_utils}{\section{Xml\+Utils Class Reference}
 \label{class_xml_utils}\index{Xml\+Utils@{Xml\+Utils}}
 }
+
+
+{\ttfamily \#include $<$Xml\+Utils.\+h$>$}
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_xml_utils_a657d5ac4fb8383745b85e7bf81b4cb0a}{static D\+O\+M\+Element $\ast$ {\bfseries Get\+Child\+Element\+By\+Name} (D\+O\+M\+Element $\ast$element, const char $\ast$element\+Name)}\label{class_xml_utils_a657d5ac4fb8383745b85e7bf81b4cb0a}
-
+static D\+O\+M\+Element $\ast$ \hyperlink{class_xml_utils_a657d5ac4fb8383745b85e7bf81b4cb0a}{Get\+Child\+Element\+By\+Name} (D\+O\+M\+Element $\ast$element, const char $\ast$element\+Name)
 \item 
-\hypertarget{class_xml_utils_a5c7a6b135f074beade050a508b6f64be}{static D\+O\+M\+Element $\ast$ {\bfseries Get\+First\+Child\+Element} (D\+O\+M\+Element $\ast$element)}\label{class_xml_utils_a5c7a6b135f074beade050a508b6f64be}
-
+static D\+O\+M\+Element $\ast$ \hyperlink{class_xml_utils_a5c7a6b135f074beade050a508b6f64be}{Get\+First\+Child\+Element} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_xml_utils_a7177dd1569d717224308a40ef025902d}{static std\+::vector$<$ D\+O\+M\+Element $\ast$ $>$ {\bfseries Get\+Child\+Elements} (D\+O\+M\+Element $\ast$element)}\label{class_xml_utils_a7177dd1569d717224308a40ef025902d}
-
+static std\+::vector$<$ D\+O\+M\+Element $\ast$ $>$ \hyperlink{class_xml_utils_a7177dd1569d717224308a40ef025902d}{Get\+Child\+Elements} (D\+O\+M\+Element $\ast$element)
 \item 
-\hypertarget{class_xml_utils_a4eed191983df809da662f9913bca0546}{static std\+::string {\bfseries Read\+Attribute} (D\+O\+M\+Element $\ast$element, const char $\ast$atribute)}\label{class_xml_utils_a4eed191983df809da662f9913bca0546}
-
+static std\+::string \hyperlink{class_xml_utils_a8c3f74361f1ab2d877eb4c078a07359e}{Read\+Attribute} (D\+O\+M\+Element $\ast$element, const char $\ast$attribute)
 \item 
-\hypertarget{class_xml_utils_a915f9bd1d5d359914acf37fb5f0f40a7}{static std\+::string {\bfseries Get\+Element\+Name} (D\+O\+M\+Element $\ast$element)}\label{class_xml_utils_a915f9bd1d5d359914acf37fb5f0f40a7}
-
+static std\+::string \hyperlink{class_xml_utils_a915f9bd1d5d359914acf37fb5f0f40a7}{Get\+Element\+Name} (D\+O\+M\+Element $\ast$element)
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Static class providing methods for helping reading dom. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_xml_utils_a657d5ac4fb8383745b85e7bf81b4cb0a}{\index{Xml\+Utils@{Xml\+Utils}!Get\+Child\+Element\+By\+Name@{Get\+Child\+Element\+By\+Name}}
+\index{Get\+Child\+Element\+By\+Name@{Get\+Child\+Element\+By\+Name}!Xml\+Utils@{Xml\+Utils}}
+\subsubsection[{Get\+Child\+Element\+By\+Name}]{\setlength{\rightskip}{0pt plus 5cm}D\+O\+M\+Element $\ast$ Xml\+Utils\+::\+Get\+Child\+Element\+By\+Name (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element, }
+\item[{const char $\ast$}]{element\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_xml_utils_a657d5ac4fb8383745b85e7bf81b4cb0a}
+Return elemenet child, which name matches given value. 
+\begin{DoxyParams}{Parameters}
+{\em element} & -\/ element, which return child from \\
+\hline
+{\em element\+Name} & -\/ child element name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+child element matching element\+Name 
+\end{DoxyReturn}
+\hypertarget{class_xml_utils_a7177dd1569d717224308a40ef025902d}{\index{Xml\+Utils@{Xml\+Utils}!Get\+Child\+Elements@{Get\+Child\+Elements}}
+\index{Get\+Child\+Elements@{Get\+Child\+Elements}!Xml\+Utils@{Xml\+Utils}}
+\subsubsection[{Get\+Child\+Elements}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ D\+O\+M\+Element $\ast$ $>$ Xml\+Utils\+::\+Get\+Child\+Elements (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_xml_utils_a7177dd1569d717224308a40ef025902d}
+Return all child elements of element node. 
+\begin{DoxyParams}{Parameters}
+{\em element} & -\/ element node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+all child elements 
+\end{DoxyReturn}
+\hypertarget{class_xml_utils_a915f9bd1d5d359914acf37fb5f0f40a7}{\index{Xml\+Utils@{Xml\+Utils}!Get\+Element\+Name@{Get\+Element\+Name}}
+\index{Get\+Element\+Name@{Get\+Element\+Name}!Xml\+Utils@{Xml\+Utils}}
+\subsubsection[{Get\+Element\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Xml\+Utils\+::\+Get\+Element\+Name (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_xml_utils_a915f9bd1d5d359914acf37fb5f0f40a7}
+Return element name as string. 
+\begin{DoxyParams}{Parameters}
+{\em element} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+element name as string. 
+\end{DoxyReturn}
+\hypertarget{class_xml_utils_a5c7a6b135f074beade050a508b6f64be}{\index{Xml\+Utils@{Xml\+Utils}!Get\+First\+Child\+Element@{Get\+First\+Child\+Element}}
+\index{Get\+First\+Child\+Element@{Get\+First\+Child\+Element}!Xml\+Utils@{Xml\+Utils}}
+\subsubsection[{Get\+First\+Child\+Element}]{\setlength{\rightskip}{0pt plus 5cm}D\+O\+M\+Element $\ast$ Xml\+Utils\+::\+Get\+First\+Child\+Element (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_xml_utils_a5c7a6b135f074beade050a508b6f64be}
+Returns first child element from given element. 
+\begin{DoxyParams}{Parameters}
+{\em element} & -\/ element node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+first child element from given element 
+\end{DoxyReturn}
+\hypertarget{class_xml_utils_a8c3f74361f1ab2d877eb4c078a07359e}{\index{Xml\+Utils@{Xml\+Utils}!Read\+Attribute@{Read\+Attribute}}
+\index{Read\+Attribute@{Read\+Attribute}!Xml\+Utils@{Xml\+Utils}}
+\subsubsection[{Read\+Attribute}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Xml\+Utils\+::\+Read\+Attribute (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element, }
+\item[{const char $\ast$}]{attribute}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_xml_utils_a8c3f74361f1ab2d877eb4c078a07359e}
+Reads atrribute and returns attribute values as string. 
+\begin{DoxyParams}{Parameters}
+{\em element} & -\/ dom element \\
+\hline
+{\em attribute} & -\/ attribute name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+attribude value. 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['nextid',['nextId',['../class_semantic_checker.html#a7bfc82245e0af345db051ab8faea502e',1,'SemanticChecker']]],
-  ['nnaryexpression',['NnaryExpression',['../class_nnary_expression.html#a38f44966213fd5d674aaff3ef9de37da',1,'NnaryExpression']]],
-  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../class_nullary_algebra_node_base.html#a73108e19c00005dcda32af0b05060ea0',1,'NullaryAlgebraNodeBase']]],
-  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../class_number_columns_in_join_visitor.html#a5d09cffa1e191e46b312a3bcebc01b60',1,'NumberColumnsInJoinVisitor']]]
+  ['maxofuniquevaluesexpressionvisitor',['MaxOfUniqueValuesExpressionVisitor',['../class_max_of_unique_values_expression_visitor.html#adf863a6e2406f90466e4f4decab1f4e4',1,'MaxOfUniqueValuesExpressionVisitor']]],
+  ['mergeantijoin',['MergeAntiJoin',['../class_merge_anti_join.html#a314a1c84c2b6c6848f5f4664c2b13c77',1,'MergeAntiJoin']]],
+  ['mergeequijoin',['mergeEquiJoin',['../class_time_complexity.html#a01770767aca97b500d1006659ada4599',1,'TimeComplexity::mergeEquiJoin()'],['../class_merge_equi_join.html#a16fa9f23ebbd531c398b121a99c18afc',1,'MergeEquiJoin::MergeEquiJoin()']]],
+  ['mergeequinonjoin',['mergeEquiNonJoin',['../class_time_complexity.html#a450314407ba001db82fbdea4f01c1cfc',1,'TimeComplexity']]],
+  ['mergenonequijoin',['MergeNonEquiJoin',['../class_merge_non_equi_join.html#a3e7a12e0e21a2bf755608c9bc2e5d4ed',1,'MergeNonEquiJoin']]]
 ];

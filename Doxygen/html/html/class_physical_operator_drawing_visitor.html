@@ -112,8 +112,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab2637eab548a1c1d832a877363ede4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3abc3dcacc46a1004f7a9fb26f56154b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator_drawing_visitor.html#a3abc3dcacc46a1004f7a9fb26f56154b">generateText</a> (std::string &amp;label, <a class="el" href="class_binary_physical_operator.html">BinaryPhysicalOperator</a> *node)</td></tr>
 <tr class="separator:a3abc3dcacc46a1004f7a9fb26f56154b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4729d5a2f38e5318f44149942fb8e3c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4729d5a2f38e5318f44149942fb8e3c3"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>writeGroupParameters</b> (const std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt; &amp;groupColumns, const std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt; &amp;agregateFunctions)</td></tr>
+<tr class="memitem:a4729d5a2f38e5318f44149942fb8e3c3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator_drawing_visitor.html#a4729d5a2f38e5318f44149942fb8e3c3">writeGroupParameters</a> (const std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt; &amp;groupColumns, const std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt; &amp;agregateFunctions)</td></tr>
 <tr class="separator:a4729d5a2f38e5318f44149942fb8e3c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5a712a2a8dac447846849d91d20821e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_physical_operator_drawing_visitor.html#af5a712a2a8dac447846849d91d20821e">visitFilter</a> (<a class="el" href="class_filter.html">Filter</a> *node)</td></tr>
 <tr class="separator:af5a712a2a8dac447846849d91d20821e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -786,6 +785,40 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4729d5a2f38e5318f44149942fb8e3c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string PhysicalOperatorDrawingVisitor::writeGroupParameters </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_group_column.html">GroupColumn</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>groupColumns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="class_agregate_function.html">AgregateFunction</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>agregateFunctions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Generates group parametes as string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">groupColumns</td><td>- group by columns </td></tr>
+    <tr><td class="paramname">agregateFunctions</td><td>- agregate function information </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string representation of group paramaters </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a75aa4987d070c40a3ec2e4e9c950c9e0"></a>
 <div class="memitem">
@@ -820,7 +853,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 17 2014 23:05:51 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 19 2014 01:20:02 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

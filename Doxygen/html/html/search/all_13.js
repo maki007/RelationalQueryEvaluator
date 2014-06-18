@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['validateschema',['ValidateSchema',['../class_xml_handler.html#ae43484089c410e94ea54c1f8e7545559',1,'XmlHandler']]],
   ['value',['value',['../class_constant.html#a97bcf14e26810def51c57ae446d69e06',1,'Constant']]],
   ['values',['values',['../class_sort_parameters.html#ad40f9ae2cd97faa92c29f2fc1c3941d0',1,'SortParameters']]],
   ['visitantijoin',['visitAntiJoin',['../class_algebra_visitor.html#add62415db5f188e572cef1c36faa842e',1,'AlgebraVisitor::visitAntiJoin()'],['../class_graph_drawing_visitor.html#ae25e72a771d8ec5949caa0a92a1e61aa',1,'GraphDrawingVisitor::visitAntiJoin()'],['../class_semantic_checker.html#aed141e3f22e681c74355fb3b84deb2d4',1,'SemanticChecker::visitAntiJoin()'],['../class_grouping_visitor.html#a1ddb0cf950feb1df7c2518b543e0d0ad',1,'GroupingVisitor::visitAntiJoin()'],['../class_algebra_compiler.html#a4903d8f81d9da91037ce65b6aaeb7fa4',1,'AlgebraCompiler::visitAntiJoin()'],['../class_push_selection_down_visitor.html#a85d6088ea2c478aa85cf62603f30d83a',1,'PushSelectionDownVisitor::visitAntiJoin()']]],

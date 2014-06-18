@@ -22,8 +22,7 @@ void \hyperlink{class_physical_operator_drawing_visitor_ab2637eab548a1c1d832a877
 \item 
 void \hyperlink{class_physical_operator_drawing_visitor_a3abc3dcacc46a1004f7a9fb26f56154b}{generate\+Text} (std\+::string \&label, \hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$node)
 \item 
-\hypertarget{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}{std\+::string {\bfseries write\+Group\+Parameters} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&group\+Columns, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&agregate\+Functions)}\label{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}
-
+std\+::string \hyperlink{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}{write\+Group\+Parameters} (const std\+::vector$<$ \hyperlink{class_group_column}{Group\+Column} $>$ \&group\+Columns, const std\+::vector$<$ \hyperlink{class_agregate_function}{Agregate\+Function} $>$ \&agregate\+Functions)
 \item 
 void \hyperlink{class_physical_operator_drawing_visitor_af5a712a2a8dac447846849d91d20821e}{visit\+Filter} (\hyperlink{class_filter}{Filter} $\ast$node)
 \item 
@@ -381,6 +380,24 @@ Visits physical operator \hyperlink{class_union_operator}{Union\+Operator}.
 
 Reimplemented from \hyperlink{class_physical_operator_visitor_adbb3e6618904bc7e6d0b6aa3958132e9}{Physical\+Operator\+Visitor}.
 
+\hypertarget{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}{\index{Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}!write\+Group\+Parameters@{write\+Group\+Parameters}}
+\index{write\+Group\+Parameters@{write\+Group\+Parameters}!Physical\+Operator\+Drawing\+Visitor@{Physical\+Operator\+Drawing\+Visitor}}
+\subsubsection[{write\+Group\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}string Physical\+Operator\+Drawing\+Visitor\+::write\+Group\+Parameters (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Group\+Column} $>$ \&}]{group\+Columns, }
+\item[{const std\+::vector$<$ {\bf Agregate\+Function} $>$ \&}]{agregate\+Functions}
+\end{DoxyParamCaption}
+)}}\label{class_physical_operator_drawing_visitor_a4729d5a2f38e5318f44149942fb8e3c3}
+Generates group parametes as string. 
+\begin{DoxyParams}{Parameters}
+{\em group\+Columns} & -\/ group by columns \\
+\hline
+{\em agregate\+Functions} & -\/ agregate function information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string representation of group paramaters 
+\end{DoxyReturn}
 
 
 \subsection{Member Data Documentation}

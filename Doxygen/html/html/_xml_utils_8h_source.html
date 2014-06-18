@@ -109,26 +109,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;XERCES_CPP_NAMESPACE_USE</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_xml_utils.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_xml_utils.html">XmlUtils</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">static</span> DOMElement * GetChildElementByName(DOMElement * element, <span class="keyword">const</span> <span class="keywordtype">char</span> * elementName);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">static</span> DOMElement * GetFirstChildElement(DOMElement * element);</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_xml_utils.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_xml_utils.html">XmlUtils</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">static</span> std::vector&lt;DOMElement *&gt; GetChildElements(DOMElement * element);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">static</span> std::string ReadAttribute(DOMElement * element, <span class="keyword">const</span> <span class="keywordtype">char</span> * atribute);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">static</span> std::string GetElementName(DOMElement * element);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_xml_utils_html"><div class="ttname"><a href="class_xml_utils.html">XmlUtils</a></div><div class="ttdef"><b>Definition:</b> XmlUtils.h:24</div></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">static</span> DOMElement * <a class="code" href="class_xml_utils.html#a657d5ac4fb8383745b85e7bf81b4cb0a">GetChildElementByName</a>(DOMElement * element, <span class="keyword">const</span> <span class="keywordtype">char</span> * elementName);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">static</span> DOMElement * <a class="code" href="class_xml_utils.html#a5c7a6b135f074beade050a508b6f64be">GetFirstChildElement</a>(DOMElement * element);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">static</span> std::vector&lt;DOMElement *&gt; <a class="code" href="class_xml_utils.html#a7177dd1569d717224308a40ef025902d">GetChildElements</a>(DOMElement * element);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">static</span> std::string <a class="code" href="class_xml_utils.html#a8c3f74361f1ab2d877eb4c078a07359e">ReadAttribute</a>(DOMElement * element, <span class="keyword">const</span> <span class="keywordtype">char</span> * attribute);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">static</span> std::string <a class="code" href="class_xml_utils.html#a915f9bd1d5d359914acf37fb5f0f40a7">GetElementName</a>(DOMElement * element);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_xml_utils_html_a7177dd1569d717224308a40ef025902d"><div class="ttname"><a href="class_xml_utils.html#a7177dd1569d717224308a40ef025902d">XmlUtils::GetChildElements</a></div><div class="ttdeci">static std::vector&lt; DOMElement * &gt; GetChildElements(DOMElement *element)</div><div class="ttdef"><b>Definition:</b> XmlUtils.cpp:35</div></div>
+<div class="ttc" id="class_xml_utils_html_a5c7a6b135f074beade050a508b6f64be"><div class="ttname"><a href="class_xml_utils.html#a5c7a6b135f074beade050a508b6f64be">XmlUtils::GetFirstChildElement</a></div><div class="ttdeci">static DOMElement * GetFirstChildElement(DOMElement *element)</div><div class="ttdef"><b>Definition:</b> XmlUtils.cpp:22</div></div>
+<div class="ttc" id="class_xml_utils_html_a657d5ac4fb8383745b85e7bf81b4cb0a"><div class="ttname"><a href="class_xml_utils.html#a657d5ac4fb8383745b85e7bf81b4cb0a">XmlUtils::GetChildElementByName</a></div><div class="ttdeci">static DOMElement * GetChildElementByName(DOMElement *element, const char *elementName)</div><div class="ttdef"><b>Definition:</b> XmlUtils.cpp:5</div></div>
+<div class="ttc" id="class_xml_utils_html_a915f9bd1d5d359914acf37fb5f0f40a7"><div class="ttname"><a href="class_xml_utils.html#a915f9bd1d5d359914acf37fb5f0f40a7">XmlUtils::GetElementName</a></div><div class="ttdeci">static std::string GetElementName(DOMElement *element)</div><div class="ttdef"><b>Definition:</b> XmlUtils.cpp:54</div></div>
+<div class="ttc" id="class_xml_utils_html_a8c3f74361f1ab2d877eb4c078a07359e"><div class="ttname"><a href="class_xml_utils.html#a8c3f74361f1ab2d877eb4c078a07359e">XmlUtils::ReadAttribute</a></div><div class="ttdeci">static std::string ReadAttribute(DOMElement *element, const char *attribute)</div><div class="ttdef"><b>Definition:</b> XmlUtils.cpp:49</div></div>
+<div class="ttc" id="class_xml_utils_html"><div class="ttname"><a href="class_xml_utils.html">XmlUtils</a></div><div class="ttdef"><b>Definition:</b> XmlUtils.h:27</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 17 2014 23:05:36 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 19 2014 01:19:49 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

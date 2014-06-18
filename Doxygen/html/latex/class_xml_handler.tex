@@ -1,17 +1,55 @@
 \hypertarget{class_xml_handler}{\section{Xml\+Handler Class Reference}
 \label{class_xml_handler}\index{Xml\+Handler@{Xml\+Handler}}
 }
+
+
+{\ttfamily \#include $<$Xml\+Handler.\+h$>$}
+
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_xml_handler_ae43484089c410e94ea54c1f8e7545559}{static std\+::unique\+\_\+ptr\\*
-$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ {\bfseries Validate\+Schema} (const char $\ast$xml\+File\+Path)}\label{class_xml_handler_ae43484089c410e94ea54c1f8e7545559}
-
+static std\+::unique\+\_\+ptr\\*
+$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{class_xml_handler_ae43484089c410e94ea54c1f8e7545559}{Validate\+Schema} (const char $\ast$xml\+File\+Path)
 \item 
-\hypertarget{class_xml_handler_a055645461fb5e727208e3282176e4220}{static std\+::unique\+\_\+ptr\\*
-$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ {\bfseries Generate\+Relational\+Algebra} (const char $\ast$filename)}\label{class_xml_handler_a055645461fb5e727208e3282176e4220}
-
+static std\+::unique\+\_\+ptr\\*
+$<$ \hyperlink{class_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{class_xml_handler_a055645461fb5e727208e3282176e4220}{Generate\+Relational\+Algebra} (const char $\ast$filename)
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Static class for generating relation algebra from dom xml. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_xml_handler_a055645461fb5e727208e3282176e4220}{\index{Xml\+Handler@{Xml\+Handler}!Generate\+Relational\+Algebra@{Generate\+Relational\+Algebra}}
+\index{Generate\+Relational\+Algebra@{Generate\+Relational\+Algebra}!Xml\+Handler@{Xml\+Handler}}
+\subsubsection[{Generate\+Relational\+Algebra}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ Xml\+Handler\+::\+Generate\+Relational\+Algebra (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_xml_handler_a055645461fb5e727208e3282176e4220}
+Generates relation algebra tree from dom xml. Xml will be valiadated. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/ name of file containing xml \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+root of algebra tree 
+\end{DoxyReturn}
+\hypertarget{class_xml_handler_ae43484089c410e94ea54c1f8e7545559}{\index{Xml\+Handler@{Xml\+Handler}!Validate\+Schema@{Validate\+Schema}}
+\index{Validate\+Schema@{Validate\+Schema}!Xml\+Handler@{Xml\+Handler}}
+\subsubsection[{Validate\+Schema}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ Xml\+Handler\+::\+Validate\+Schema (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{xml\+File\+Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_xml_handler_ae43484089c410e94ea54c1f8e7545559}
+Generates relation algebra tree from dom xml. Xml will be valiadated. Does not initlialize or cleans dom parser. This is done in Generate\+Relational\+Algebra. 
+\begin{DoxyParams}{Parameters}
+{\em xml\+File\+Path} & -\/ name of file containing xml \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+root of algebra tree 
+\end{DoxyReturn}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

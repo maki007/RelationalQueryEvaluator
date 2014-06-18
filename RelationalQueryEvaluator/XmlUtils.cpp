@@ -46,9 +46,9 @@ std::vector<DOMElement *> XmlUtils::GetChildElements(DOMElement * element)
 	return result;
 }
 
-std::string XmlUtils::ReadAttribute(DOMElement * element, const char * atribute)
+std::string XmlUtils::ReadAttribute(DOMElement * element, const char * attribute)
 {
-	return XMLString::transcode(element->getAttribute(XMLString::transcode(atribute)));
+	return XMLString::transcode(element->getAttribute(XMLString::transcode(attribute)));
 }
 
 std::string XmlUtils::GetElementName(DOMElement * element)

@@ -147,8 +147,10 @@ public:
 	void generateText(std::string & label, BinaryPhysicalOperator * node);
 
 	/**
-	*
-	*
+	* Generates group parametes as string.
+	* @param groupColumns - group by columns
+	* @param agregateFunctions - agregate function information
+	* @returns string representation of group paramaters
 	*/
 	std::string PhysicalOperatorDrawingVisitor::writeGroupParameters(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 
@@ -193,8 +195,16 @@ class CloningPhysicalOperatorVisitor : public PhysicalOperatorVisitor
 public:
 	std::shared_ptr<PhysicalOperator> result; /**< Cloned result. */
 
+	/**
+	* Calls this visitor on unary operator's child.
+	* @param res - unary operator
+	*/
 	void processUnaryOperator(UnaryPhysicalOperator * res);
 
+	/**
+	* Calls this visitor on binary operator's children.
+	* @param res - binary operator
+	*/
 	void processBinaryOperator(BinaryPhysicalOperator * res);
 
 	void visitFilter(Filter * node);
@@ -300,38 +310,126 @@ private:
 
 public:
 
+	/**
+	* Generates physical operator declaration.
+	* @param type - type of operator
+	* @param inputColumns - input columns of operator
+	* @param outputColumns - output columns of operator
+	* @param name - new variable name
+	* @param constructParameters
+	* @returns string representation of physical operator.
+	*/
 	std::string declaration(const std::string & type, const std::string & inputColumns,
 		const std::string & outputColumns, const std::string & name, const std::string & constructParameters);
 
-
+	/**
+	* Generates string representation of connection between operators.
+	* @param from - new child of node to
+	* @param to - node to connect
+	* @returns string representation of connection between nodes.
+	*/
 	std::string connect(const std::string & from, const std::string & to);
 
-
+	/**
+	* Creates new instace of BoboxPlanWritingPhysicalOperatorVisitor.
+	*/
 	BoboxPlanWritingPhysicalOperatorVisitor();
 
+	/**
+	* Generates bobox output of physical plan.
+	* @param plan - plan to write
+	* @returns bobox plan representation
+	*/
 	std::string writePlan(std::shared_ptr<PhysicalOperator> & plan);
 
+	/**
+	* Generates string output from columns. Output example (columnsName1,columnsName2,columnsName3)
+	* @param columns - columns to generate output from
+	*/
 	std::string getColumnTypeOutput(const std::map<int, ColumnInfo> & columns);
 
+	/**
+	* Generates string output from columns. Output example: (columnsType1,columnsType2,columnsType3)
+	* @param columns - columns to generate output from
+	*/
 	std::string getColumnNameOutput(const std::map<int, ColumnInfo> & columns);
 
+	/**
+	* Generates new string unique identifier for operator.
+	* @return new string unique identifier.
+	*/
 	std::string getId();
 
+	/**
+	* Convert structure map<column id, column info> to map<column id, order nummer in first structure> 
+	* This output is used for numbering operator columns.
+	* @param columns - in parameter
+	* @param result - out parameter
+	*/
 	void BoboxPlanWritingPhysicalOperatorVisitor::convertColumns(const std::map<int, ColumnInfo> & columns, std::map<int, int> & result);
 
+	/**
+	* Writes daclaration of nullary operator to variable declarations.
+	* @param type - opearator type
+	* @param columns - output columns of operator
+	* @param costructorParameters - parameter for constructor like table name
+	*/
 	void writeNullaryOperator(const std::string & type, const std::map<int, ColumnInfo> & columns, const std::string & costructorParameters);
 
+	/**
+	* Writes daclaration of nullary operator to variable declarations.
+	* @param type - opearator type
+	* @param node - node information
+	* @param costructorParameters - parameter for constructor like table name
+	*/
 	void writeUnaryOperator(const std::string & type, UnaryPhysicalOperator * node, const std::string & costructorParameters);
 
+	/**
+	* Writes daclaration of nullary operator to variable declarations.
+	* @param type - opearator type
+	* @param node - node information
+	* @param costructorParameters - parameter for constructor like table name
+	*/
 	void writeBinaryOperator(const std::string & type, BinaryPhysicalOperator * node, const std::string & costructorParameters);
 
+	/**
+	* Generates group parameters.
+	* @param outputColumns - output columns of group operator
+	* @param inputColumns - input columns of group operator
+	* @param groupColumns - information from group by
+	* @param agregateFunctions - information about agreagate function 
+	* @return string representation of group parameters
+	*/
 	std::string writeGroupParameters(const std::map<int, ColumnInfo> & outputColumns, const std::map<int, ColumnInfo> & inputColumns,
 		const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
+	
+	/**
+	* Generates columns from left, right input and from output.
+	* Example: left="0,1,2,3,4,5",right="6,7",out="1,2,3,4"
+	* @param node - Join node
+	* @returns string representation of columns
+	*/
 	std::string BoboxPlanWritingPhysicalOperatorVisitor::writeJoinParameters(BinaryPhysicalOperator * node);
 
+	/**
+	* Generates information about condition in hash equijoin.
+	* Example: leftPartOfCondition="0,1",rightPartOfCondition="2,3"
+	* @param left - left part of condition
+	* @param right - right part of condition
+	* @param node - join operator
+	* @return string representation of join codition
+	*/
 	std::string writeEquiJoinParameters(const std::vector<ColumnIdentifier> & left, const std::vector<ColumnIdentifier> & right, BinaryPhysicalOperator * node);
 
-	std::string  writeMergeEquiJoinParameters(const std::vector<SortParameter> & left, const std::vector<SortParameter> & right, BinaryPhysicalOperator * node);
+	/**
+	* Generates information about condition in merge equijoin.
+	* Example: left="0",right="1",out="0,1",leftPartOfCondition="0:D",rightPartOfCondition="1:D"
+	* @param left - left part of condition
+	* @param right - right part of condition
+	* @param node - join operator
+	* @return string representation of join codition
+	*/
+	std::string writeMergeEquiJoinParameters(const std::vector<SortParameter> & left, const std::vector<SortParameter> & right, BinaryPhysicalOperator * node);
 
 	void visitFilter(Filter * node);
 

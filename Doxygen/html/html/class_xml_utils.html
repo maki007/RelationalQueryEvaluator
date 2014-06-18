@@ -88,25 +88,202 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">XmlUtils Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_xml_utils_8h_source.html">XmlUtils.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a657d5ac4fb8383745b85e7bf81b4cb0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a657d5ac4fb8383745b85e7bf81b4cb0a"></a>
-static DOMElement *&#160;</td><td class="memItemRight" valign="bottom"><b>GetChildElementByName</b> (DOMElement *element, const char *elementName)</td></tr>
+<tr class="memitem:a657d5ac4fb8383745b85e7bf81b4cb0a"><td class="memItemLeft" align="right" valign="top">static DOMElement *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xml_utils.html#a657d5ac4fb8383745b85e7bf81b4cb0a">GetChildElementByName</a> (DOMElement *element, const char *elementName)</td></tr>
 <tr class="separator:a657d5ac4fb8383745b85e7bf81b4cb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c7a6b135f074beade050a508b6f64be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c7a6b135f074beade050a508b6f64be"></a>
-static DOMElement *&#160;</td><td class="memItemRight" valign="bottom"><b>GetFirstChildElement</b> (DOMElement *element)</td></tr>
+<tr class="memitem:a5c7a6b135f074beade050a508b6f64be"><td class="memItemLeft" align="right" valign="top">static DOMElement *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xml_utils.html#a5c7a6b135f074beade050a508b6f64be">GetFirstChildElement</a> (DOMElement *element)</td></tr>
 <tr class="separator:a5c7a6b135f074beade050a508b6f64be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7177dd1569d717224308a40ef025902d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7177dd1569d717224308a40ef025902d"></a>
-static std::vector&lt; DOMElement * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>GetChildElements</b> (DOMElement *element)</td></tr>
+<tr class="memitem:a7177dd1569d717224308a40ef025902d"><td class="memItemLeft" align="right" valign="top">static std::vector&lt; DOMElement * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xml_utils.html#a7177dd1569d717224308a40ef025902d">GetChildElements</a> (DOMElement *element)</td></tr>
 <tr class="separator:a7177dd1569d717224308a40ef025902d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4eed191983df809da662f9913bca0546"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4eed191983df809da662f9913bca0546"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>ReadAttribute</b> (DOMElement *element, const char *atribute)</td></tr>
-<tr class="separator:a4eed191983df809da662f9913bca0546"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a915f9bd1d5d359914acf37fb5f0f40a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a915f9bd1d5d359914acf37fb5f0f40a7"></a>
-static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetElementName</b> (DOMElement *element)</td></tr>
+<tr class="memitem:a8c3f74361f1ab2d877eb4c078a07359e"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xml_utils.html#a8c3f74361f1ab2d877eb4c078a07359e">ReadAttribute</a> (DOMElement *element, const char *attribute)</td></tr>
+<tr class="separator:a8c3f74361f1ab2d877eb4c078a07359e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915f9bd1d5d359914acf37fb5f0f40a7"><td class="memItemLeft" align="right" valign="top">static std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_xml_utils.html#a915f9bd1d5d359914acf37fb5f0f40a7">GetElementName</a> (DOMElement *element)</td></tr>
 <tr class="separator:a915f9bd1d5d359914acf37fb5f0f40a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Static class providing methods for helping reading dom. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a657d5ac4fb8383745b85e7bf81b4cb0a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DOMElement * XmlUtils::GetChildElementByName </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>element</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>elementName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return elemenet child, which name matches given value. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>- element, which return child from </td></tr>
+    <tr><td class="paramname">elementName</td><td>- child element name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>child element matching elementName </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7177dd1569d717224308a40ef025902d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; DOMElement * &gt; XmlUtils::GetChildElements </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return all child elements of element node. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>- element node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>all child elements </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a915f9bd1d5d359914acf37fb5f0f40a7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string XmlUtils::GetElementName </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return element name as string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>element name as string. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5c7a6b135f074beade050a508b6f64be"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DOMElement * XmlUtils::GetFirstChildElement </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>element</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns first child element from given element. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>- element node </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>first child element from given element </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8c3f74361f1ab2d877eb4c078a07359e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string XmlUtils::ReadAttribute </td>
+          <td>(</td>
+          <td class="paramtype">DOMElement *&#160;</td>
+          <td class="paramname"><em>element</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>attribute</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reads atrribute and returns attribute values as string. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">element</td><td>- dom element </td></tr>
+    <tr><td class="paramname">attribute</td><td>- attribute name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>attribude value. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/<a class="el" href="_xml_utils_8h_source.html">XmlUtils.h</a></li>
 <li>C:/Users/Marcel/Documents/Visual Studio 2012/Projects/RelationalQueryEvaluator/RelationalQueryEvaluator/XmlUtils.cpp</li>
@@ -114,7 +291,7 @@ static std::string&#160;</td><td class="memItemRight" valign="bottom"><b>GetElem
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 17 2014 23:05:59 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 19 2014 01:20:08 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

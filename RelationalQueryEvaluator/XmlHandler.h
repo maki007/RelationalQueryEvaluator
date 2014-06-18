@@ -28,51 +28,84 @@
 
 XERCES_CPP_NAMESPACE_USE
 
-
+/**
+* Doma parser error handler.
+*/
 class ParserErrorHandler : public ErrorHandler
 {
 public:
-	int errors;
+	int errors; /**< Stores number of errors. */
 
+	/**
+	* Creates new instance of ParserErrorHandler.
+	*/
 	ParserErrorHandler();
 
+	/**
+	* Reports SAXParseException.
+	* @param ex - reported exception
+	*/
 	void reportParseException(const SAXParseException& ex);
 
+	/**
+	* Reports warning.
+	* @param ex - reported warning.
+	*/
 	void warning(const SAXParseException& ex);
 
+	/**
+	* Reports error.
+	* @param ex - reported error.
+	*/
 	void error(const SAXParseException& ex);
 
+	/**
+	* Reports fatal error.
+	* @param ex - reported error.
+	*/
 	void fatalError(const SAXParseException& ex);
 
+	/**
+	* Resets reported errors.
+	*/
 	void resetErrors();
 
-	void setDocumentLocator(const Locator *const locator);
 };
 
+/**
+* Static class for generating relation algebra from dom xml.
+*/
 class XmlHandler
 {
 public:
-	static std::unique_ptr<AlgebraNodeBase> ValidateSchema(const char* xmlFilePath);
 
+	/**
+	* Generates relation algebra tree from dom xml. Xml will be valiadated.
+	* Does not initlialize or cleans dom parser. This is done in GenerateRelationalAlgebra.
+	* @param xmlFilePath - name of file containing xml
+	* @return root of algebra tree
+	*/
+	static std::unique_ptr<AlgebraNodeBase> XmlHandler::ValidateSchema(const char* xmlFilePath);
+	
+	/**
+	* Generates relation algebra tree from dom xml. Xml will be valiadated.
+	* @param filename - name of file containing xml
+	* @return root of algebra tree 
+	*/
 	static std::unique_ptr<AlgebraNodeBase> GenerateRelationalAlgebra(const char *filename);
-
 };
 
-
-
-
-
+/**
+* Custom dom parser which creates dom and adds information about line number to every element.
+*/
 class DOMParser : public XercesDOMParser
 {
 public:
-	void startElement(const XMLElementDecl& elemDecl, const unsigned int urlId, const XMLCh* const elemPrefix, const RefVectorOf<XMLAttr>& attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot)
-	{
-		XercesDOMParser::startElement(elemDecl, urlId, elemPrefix, attrList,
-			attrCount, isEmpty, isRoot);
-		const Locator* locator = getScanner()->getLocator();
-		int lineNumber = locator->getLineNumber();
-		XercesDOMParser::fCurrentNode->setUserData(XMLString::transcode("line"), new int(locator->getLineNumber()),0);
-	}
+	/**
+	* Overriden method startElement, where parser adds information about line number to processed element.
+	*/
+	void DOMParser::startElement(const XMLElementDecl& elemDecl, const unsigned int urlId, const XMLCh* const elemPrefix, const RefVectorOf<XMLAttr>& attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot);
+
 
 };
 

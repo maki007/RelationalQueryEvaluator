@@ -14,11 +14,9 @@ Inheritance diagram for Cloning\+Physical\+Operator\+Visitor\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{class_cloning_physical_operator_visitor_ac57b783d90f26dd8c1a9418aab5ab2a6}{void {\bfseries process\+Unary\+Operator} (\hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$res)}\label{class_cloning_physical_operator_visitor_ac57b783d90f26dd8c1a9418aab5ab2a6}
-
+void \hyperlink{class_cloning_physical_operator_visitor_ac57b783d90f26dd8c1a9418aab5ab2a6}{process\+Unary\+Operator} (\hyperlink{class_unary_physical_operator}{Unary\+Physical\+Operator} $\ast$res)
 \item 
-\hypertarget{class_cloning_physical_operator_visitor_a47cf1dcc2e5dedb2328f66676de4102b}{void {\bfseries process\+Binary\+Operator} (\hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$res)}\label{class_cloning_physical_operator_visitor_a47cf1dcc2e5dedb2328f66676de4102b}
-
+void \hyperlink{class_cloning_physical_operator_visitor_a47cf1dcc2e5dedb2328f66676de4102b}{process\+Binary\+Operator} (\hyperlink{class_binary_physical_operator}{Binary\+Physical\+Operator} $\ast$res)
 \item 
 void \hyperlink{class_cloning_physical_operator_visitor_ac1b811ff2fd316b05d64f85c2e87fd9c}{visit\+Filter} (\hyperlink{class_filter}{Filter} $\ast$node)
 \item 
@@ -63,6 +61,30 @@ std\+::shared\+\_\+ptr$<$ \hyperlink{class_physical_operator}{Physical\+Operator
 Clones physial operator tree. 
 
 \subsection{Member Function Documentation}
+\hypertarget{class_cloning_physical_operator_visitor_a47cf1dcc2e5dedb2328f66676de4102b}{\index{Cloning\+Physical\+Operator\+Visitor@{Cloning\+Physical\+Operator\+Visitor}!process\+Binary\+Operator@{process\+Binary\+Operator}}
+\index{process\+Binary\+Operator@{process\+Binary\+Operator}!Cloning\+Physical\+Operator\+Visitor@{Cloning\+Physical\+Operator\+Visitor}}
+\subsubsection[{process\+Binary\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void Cloning\+Physical\+Operator\+Visitor\+::process\+Binary\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Physical\+Operator} $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{class_cloning_physical_operator_visitor_a47cf1dcc2e5dedb2328f66676de4102b}
+Calls this visitor on binary operator's children. 
+\begin{DoxyParams}{Parameters}
+{\em res} & -\/ binary operator \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_cloning_physical_operator_visitor_ac57b783d90f26dd8c1a9418aab5ab2a6}{\index{Cloning\+Physical\+Operator\+Visitor@{Cloning\+Physical\+Operator\+Visitor}!process\+Unary\+Operator@{process\+Unary\+Operator}}
+\index{process\+Unary\+Operator@{process\+Unary\+Operator}!Cloning\+Physical\+Operator\+Visitor@{Cloning\+Physical\+Operator\+Visitor}}
+\subsubsection[{process\+Unary\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void Cloning\+Physical\+Operator\+Visitor\+::process\+Unary\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Physical\+Operator} $\ast$}]{res}
+\end{DoxyParamCaption}
+)}}\label{class_cloning_physical_operator_visitor_ac57b783d90f26dd8c1a9418aab5ab2a6}
+Calls this visitor on unary operator's child. 
+\begin{DoxyParams}{Parameters}
+{\em res} & -\/ unary operator \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_cloning_physical_operator_visitor_ad818258fa87a049e49d255107f655819}{\index{Cloning\+Physical\+Operator\+Visitor@{Cloning\+Physical\+Operator\+Visitor}!visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}}
 \index{visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}!Cloning\+Physical\+Operator\+Visitor@{Cloning\+Physical\+Operator\+Visitor}}
 \subsubsection[{visit\+Columns\+Operations\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void Cloning\+Physical\+Operator\+Visitor\+::visit\+Columns\+Operations\+Operator (
