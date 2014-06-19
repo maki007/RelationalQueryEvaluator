@@ -123,6 +123,7 @@ public:
 	*/
 	PhysicalOperatorDrawingVisitor();
 
+private:
 	/**
 	* Generates node representation in dot.
 	* @param label - label for newly generated node
@@ -154,6 +155,7 @@ public:
 	*/
 	std::string PhysicalOperatorDrawingVisitor::writeGroupParameters(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 
+public:
 	void visitFilter(Filter * node);
 
 	void visitFilterKeepingOrder(FilterKeepingOrder * node);
@@ -195,6 +197,8 @@ class CloningPhysicalOperatorVisitor : public PhysicalOperatorVisitor
 public:
 	std::shared_ptr<PhysicalOperator> result; /**< Cloned result. */
 
+private:
+
 	/**
 	* Calls this visitor on unary operator's child.
 	* @param res - unary operator
@@ -206,6 +210,8 @@ public:
 	* @param res - binary operator
 	*/
 	void processBinaryOperator(BinaryPhysicalOperator * res);
+
+public:
 
 	void visitFilter(Filter * node);
 
@@ -308,7 +314,7 @@ private:
 
 	std::string lastWrittenNode; /**< Stores last written node, so the next node can connect to it. */
 
-public:
+
 
 	/**
 	* Generates physical operator declaration.
@@ -329,18 +335,6 @@ public:
 	* @returns string representation of connection between nodes.
 	*/
 	std::string connect(const std::string & from, const std::string & to);
-
-	/**
-	* Creates new instace of BoboxPlanWritingPhysicalOperatorVisitor.
-	*/
-	BoboxPlanWritingPhysicalOperatorVisitor();
-
-	/**
-	* Generates bobox output of physical plan.
-	* @param plan - plan to write
-	* @returns bobox plan representation
-	*/
-	std::string writePlan(std::shared_ptr<PhysicalOperator> & plan);
 
 	/**
 	* Generates string output from columns. Output example (columnsName1,columnsName2,columnsName3)
@@ -430,6 +424,20 @@ public:
 	* @return string representation of join codition
 	*/
 	std::string writeMergeEquiJoinParameters(const std::vector<SortParameter> & left, const std::vector<SortParameter> & right, BinaryPhysicalOperator * node);
+
+public:
+
+	/**
+	* Creates new instace of BoboxPlanWritingPhysicalOperatorVisitor.
+	*/
+	BoboxPlanWritingPhysicalOperatorVisitor();
+
+	/**
+	* Generates bobox output of physical plan.
+	* @param plan - plan to write
+	* @returns bobox plan representation
+	*/
+	std::string writePlan(std::shared_ptr<PhysicalOperator> & plan);
 
 	void visitFilter(Filter * node);
 

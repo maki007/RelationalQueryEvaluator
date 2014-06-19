@@ -23,8 +23,6 @@ void \hyperlink{class_grouping_visitor_a4e3563b131b9d26942a6d4693f5c194a}{visit\
 void \hyperlink{class_grouping_visitor_aaa2345624497de18ab3a608e909573aa}{visit\+Join} (\hyperlink{class_join}{Join} $\ast$node)
 \item 
 void \hyperlink{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}{visit\+Anti\+Join} (\hyperlink{class_anti_join}{Anti\+Join} $\ast$node)
-\item 
-void \hyperlink{class_grouping_visitor_a7c6760e32033d79e45159d7907aa8886}{resolve\+Joins} (\hyperlink{class_join}{Join} $\ast$node, \hyperlink{class_grouped_join}{Grouped\+Join} $\ast$grouped\+Operator)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
@@ -43,21 +41,6 @@ This algebra visitor groupes neighbour join into one groupped join. It also call
 Creates new instance of \hyperlink{class_grouping_visitor}{Grouping\+Visitor}. 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_grouping_visitor_a7c6760e32033d79e45159d7907aa8886}{\index{Grouping\+Visitor@{Grouping\+Visitor}!resolve\+Joins@{resolve\+Joins}}
-\index{resolve\+Joins@{resolve\+Joins}!Grouping\+Visitor@{Grouping\+Visitor}}
-\subsubsection[{resolve\+Joins}]{\setlength{\rightskip}{0pt plus 5cm}void Grouping\+Visitor\+::resolve\+Joins (
-\begin{DoxyParamCaption}
-\item[{{\bf Join} $\ast$}]{node, }
-\item[{{\bf Grouped\+Join} $\ast$}]{grouped\+Operator}
-\end{DoxyParamCaption}
-)}}\label{class_grouping_visitor_a7c6760e32033d79e45159d7907aa8886}
-Hepler method, which merges join node to \hyperlink{class_grouped_join}{Grouped\+Join} and update all nedded parameters like condition and outputcolumns. 
-\begin{DoxyParams}{Parameters}
-{\em node} & -\/ node to merge \\
-\hline
-{\em grouped\+Operator} & -\/ node to be merge to \\
-\hline
-\end{DoxyParams}
 \hypertarget{class_grouping_visitor_a1ddb0cf950feb1df7c2518b543e0d0ad}{\index{Grouping\+Visitor@{Grouping\+Visitor}!visit\+Anti\+Join@{visit\+Anti\+Join}}
 \index{visit\+Anti\+Join@{visit\+Anti\+Join}!Grouping\+Visitor@{Grouping\+Visitor}}
 \subsubsection[{visit\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void Grouping\+Visitor\+::visit\+Anti\+Join (

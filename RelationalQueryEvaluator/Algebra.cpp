@@ -13,7 +13,7 @@ AlgebraNodeBase::AlgebraNodeBase()
 
 AlgebraNodeBase::AlgebraNodeBase(DOMElement * element)
 {
-	int * line = (int *)element->getUserData(XMLString::transcode("line"));
+	ulong * line = (ulong *)element->getUserData(XMLString::transcode("line"));
 	lineNumber = *line;
 	delete line;
 }

@@ -81,7 +81,8 @@ public:
 class NumberColumnsInJoinVisitor : public ExpressionVisitorBase
 {
 public:
-	int lastNumberedColumn; /**< Contains only 0,1. Columns from left join input are numbered 0, and from right join input are numbered 1. */
+	int lastNumberedColumn; /**< Contains only 0or 1. Columns from left join input are numbered 0, and from right join input are numbered 1. */
+
 	/**
 	* Creates new instance of NumberColumnsInJoinVisitor
 	*/

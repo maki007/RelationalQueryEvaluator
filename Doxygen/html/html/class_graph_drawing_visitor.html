@@ -105,12 +105,6 @@ Inheritance diagram for GraphDrawingVisitor:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d02755cb6c2b10984a573a28751ed8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_drawing_visitor.html#a9d02755cb6c2b10984a573a28751ed8a">GraphDrawingVisitor</a> ()</td></tr>
 <tr class="separator:a9d02755cb6c2b10984a573a28751ed8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a613ff576e75d1bf181b5786a3b7eec63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_drawing_visitor.html#a613ff576e75d1bf181b5786a3b7eec63">generateText</a> (std::string &amp;label, <a class="el" href="class_unary_algebra_node_base.html">UnaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a613ff576e75d1bf181b5786a3b7eec63"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cd34c4d34ae0a9fb1cefc801010db91"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_drawing_visitor.html#a4cd34c4d34ae0a9fb1cefc801010db91">generateText</a> (std::string &amp;label, <a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a> *node)</td></tr>
-<tr class="separator:a4cd34c4d34ae0a9fb1cefc801010db91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67f47186f477b41da99574dc83ae2cee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_drawing_visitor.html#a67f47186f477b41da99574dc83ae2cee">generateText</a> (std::string &amp;label, <a class="el" href="class_grouped_algebra_node.html">GroupedAlgebraNode</a> *node)</td></tr>
-<tr class="separator:a67f47186f477b41da99574dc83ae2cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae222309bf242fc78da5add861cfde20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_drawing_visitor.html#aae222309bf242fc78da5add861cfde20">visitSort</a> (<a class="el" href="class_sort.html">Sort</a> *node)</td></tr>
 <tr class="separator:aae222309bf242fc78da5add861cfde20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabe646e1bc301a127722a54568479653"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph_drawing_visitor.html#aabe646e1bc301a127722a54568479653">visitGroup</a> (<a class="el" href="class_group.html">Group</a> *node)</td></tr>
@@ -170,105 +164,6 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a613ff576e75d1bf181b5786a3b7eec63"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GraphDrawingVisitor::generateText </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>label</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_unary_algebra_node_base.html">UnaryAlgebraNodeBase</a> *&#160;</td>
-          <td class="paramname"><em>node</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Generates node from node and calls iteself on child. Then it connect created nodes. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">label</td><td>for generated node </td></tr>
-    <tr><td class="paramname">node</td><td>- on which to call children </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a4cd34c4d34ae0a9fb1cefc801010db91"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GraphDrawingVisitor::generateText </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>label</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_binary_algebra_node_base.html">BinaryAlgebraNodeBase</a> *&#160;</td>
-          <td class="paramname"><em>node</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Generates node from node and calls iteself on it's childs. Then it connect created nodes. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">label</td><td>for generated node </td></tr>
-    <tr><td class="paramname">node</td><td>- on which to call children </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a67f47186f477b41da99574dc83ae2cee"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void GraphDrawingVisitor::generateText </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&#160;</td>
-          <td class="paramname"><em>label</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_grouped_algebra_node.html">GroupedAlgebraNode</a> *&#160;</td>
-          <td class="paramname"><em>node</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Generates node from node and calls iteself on it's childs. Then it connect created nodes. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">label</td><td>for generated node </td></tr>
-    <tr><td class="paramname">node</td><td>- on which to call children </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ae25e72a771d8ec5949caa0a92a1e61aa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -591,7 +486,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 19 2014 01:19:56 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 19 2014 13:45:05 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

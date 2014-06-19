@@ -81,6 +81,6 @@ void DOMParser::startElement(const XMLElementDecl& elemDecl, const unsigned int 
 	XercesDOMParser::startElement(elemDecl, urlId, elemPrefix, attrList,
 		attrCount, isEmpty, isRoot);
 	const Locator* locator = getScanner()->getLocator();
-	int lineNumber = locator->getLineNumber();
-	XercesDOMParser::fCurrentNode->setUserData(XMLString::transcode("line"), new int(locator->getLineNumber()), 0);
+	ulong lineNumber = locator->getLineNumber();
+	XercesDOMParser::fCurrentNode->setUserData(XMLString::transcode("line"), new ulong(locator->getLineNumber()), 0);
 }

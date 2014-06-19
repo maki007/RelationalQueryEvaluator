@@ -42,10 +42,6 @@ static void \hyperlink{class_algebra_compiler_a64b17061a41e21787cb35572b60d826d}
 \item 
 std\+::vector$<$ std\+::shared\+\_\+ptr\\*
 $<$ \hyperlink{class_physical_plan}{Physical\+Plan} $>$ $>$ \hyperlink{class_algebra_compiler_acf3202bd193e4552a1d4fadb6d0b356c}{result}
-\item 
-std\+::map$<$ int, \hyperlink{class_column_info}{Column\+Info} $>$ \hyperlink{class_algebra_compiler_a33ca2507927649bb0176c00ea5944d21}{columns}
-\item 
-double \hyperlink{class_algebra_compiler_adcc3f8ba764b873c170cfb28d4636b16}{size}
 \end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
@@ -227,10 +223,7 @@ Reimplemented from \hyperlink{class_algebra_visitor_a681732083691701f0e9c1098039
 
 
 \subsection{Member Data Documentation}
-\hypertarget{class_algebra_compiler_a33ca2507927649bb0176c00ea5944d21}{\index{Algebra\+Compiler@{Algebra\+Compiler}!columns@{columns}}
-\index{columns@{columns}!Algebra\+Compiler@{Algebra\+Compiler}}
-\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf Column\+Info}$>$ Algebra\+Compiler\+::columns}}\label{class_algebra_compiler_a33ca2507927649bb0176c00ea5944d21}
-Columns containing plans after each subtree. \hypertarget{class_algebra_compiler_a75bdf7e239082b0a6c8560ac5a75e72a}{\index{Algebra\+Compiler@{Algebra\+Compiler}!L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}}
+\hypertarget{class_algebra_compiler_a75bdf7e239082b0a6c8560ac5a75e72a}{\index{Algebra\+Compiler@{Algebra\+Compiler}!L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}}
 \index{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}!Algebra\+Compiler@{Algebra\+Compiler}}
 \subsubsection[{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}]{\setlength{\rightskip}{0pt plus 5cm}const ulong Algebra\+Compiler\+::\+L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M = 5\hspace{0.3cm}{\ttfamily [static]}}}\label{class_algebra_compiler_a75bdf7e239082b0a6c8560ac5a75e72a}
 Determines maximal number of inputs in group join to uses brute force join order algorithm. Otherwise greedy algorithm is used. \hypertarget{class_algebra_compiler_aa67a35b24af1850ef0294e353f8a7184}{\index{Algebra\+Compiler@{Algebra\+Compiler}!M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}}
@@ -242,10 +235,7 @@ Determines how many plans can be stored in greddy join algorithm. \hypertarget{c
 Determines what number of plans are used from visited subtree. \hypertarget{class_algebra_compiler_acf3202bd193e4552a1d4fadb6d0b356c}{\index{Algebra\+Compiler@{Algebra\+Compiler}!result@{result}}
 \index{result@{result}!Algebra\+Compiler@{Algebra\+Compiler}}
 \subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Physical\+Plan}$>$ $>$ Algebra\+Compiler\+::result}}\label{class_algebra_compiler_acf3202bd193e4552a1d4fadb6d0b356c}
-Stores plans after processing subtree. \hypertarget{class_algebra_compiler_adcc3f8ba764b873c170cfb28d4636b16}{\index{Algebra\+Compiler@{Algebra\+Compiler}!size@{size}}
-\index{size@{size}!Algebra\+Compiler@{Algebra\+Compiler}}
-\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}double Algebra\+Compiler\+::size}}\label{class_algebra_compiler_adcc3f8ba764b873c170cfb28d4636b16}
-Size of relation computed after each subtree. 
+Stores plans after processing subtree. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

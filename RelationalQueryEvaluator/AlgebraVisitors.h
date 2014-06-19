@@ -113,27 +113,29 @@ public:
 	*/
 	GraphDrawingVisitor();
 
+private:
 	/**
-	* Generates node from node and calls iteself on child. Then it connect created nodes.
+	* Generates string representation from node and calls iteself on child. Then it connect created nodes.
 	* @param label for generated node
 	* @param node - on which to call children
 	*/
 	void generateText(std::string & label, UnaryAlgebraNodeBase * node);
 
 	/**
-	* Generates node from node and calls iteself on it's childs. Then it connect created nodes.
+	* Generates  string representation from node and calls iteself on it's childs. Then it connect created nodes.
 	* @param label for generated node
 	* @param node - on which to call children
 	*/
 	void generateText(std::string & label, BinaryAlgebraNodeBase * node);
 
 	/**
-	* Generates node from node and calls iteself on it's childs. Then it connect created nodes.
+	* Generates  string representation from node and calls iteself on it's childs. Then it connect created nodes.
 	* @param label for generated node
 	* @param node - on which to call children
 	*/
 	void generateText(std::string & label, GroupedAlgebraNode * node);
 
+public:
 	void visitSort(Sort * node);
 
 	void visitGroup(Group * node);
@@ -180,23 +182,14 @@ private:
 	* @param nodeName name of algebra node, where the error was found.
 	* @param lineNumber number of line, where error was found.
 	*/
-	void ReportError(const std::string error, std::string nodeName, const int lineNumber);
-
-public:
-
-	bool containsErrors; /**< Indicates if semantic checker has found any errors. */
-
-	/**
-	* Creates new instance of SemanticChecker.
-	*/
-	SemanticChecker();
+	void ReportError(const std::string error, std::string nodeName, ulong lineNumber);
 
 	/**
 	* Generates new unique column identifier.
 	* @return new unique identifier
 	*/
 	int nextId();
-	
+
 	/**
 	* Checks join condition and output columns and reports semantic errors.
 	* @param outputColumns0 - output columns from first join input
@@ -215,7 +208,7 @@ public:
 				{
 					if (outputColumns0.find(it->column.name) == outputColumns0.end())
 					{
-						ReportError("Column " + it->column.name+ " not found in first input", "join", node->lineNumber);
+						ReportError("Column " + it->column.name + " not found in first input", "join", node->lineNumber);
 					}
 					else
 					{
@@ -251,6 +244,15 @@ public:
 		}
 
 	}
+
+public:
+
+	bool containsErrors; /**< Indicates if semantic checker has found any errors. */
+
+	/**
+	* Creates new instance of SemanticChecker.
+	*/
+	SemanticChecker();
 
 	void visitTable(Table * node);
 
@@ -293,6 +295,7 @@ public:
 
 	void visitAntiJoin(AntiJoin * node);
 
+private:
 	/**
 	* Hepler method, which merges join node to GroupedJoin and update all nedded parameters like condition and outputcolumns.
 	* @param node - node to merge
@@ -331,8 +334,8 @@ public:
 	std::vector<std::shared_ptr<PhysicalPlan> > plans; /**< Generated plans. */
 	std::set<ulong> processedPlans; /**< Numbers of processed inputs. */
 	std::set<ulong> unProcessedPlans; /**< Numbers of unprocessed inputs. */
-	std::vector<std::shared_ptr<ConditionInfo>> condition;  /**< Joiun condition to be processed. */
-	std::map <ulong, JoinColumnInfo> columns; /**< Output columns from current plans. */
+	std::vector<std::shared_ptr<ConditionInfo>> condition;  /**< Join condition to be processed. */
+	std::map <int, JoinColumnInfo> columns; /**< Output columns from current plans. */
 	double size; /**< Size of the processed relation. */
 
 
@@ -367,9 +370,7 @@ public:
 
 	std::vector<std::shared_ptr<PhysicalPlan> > result; /**< Stores plans after processing subtree. */
 
-	std::map<int, ColumnInfo> columns; /**< Columns containing plans after each subtree. */
 
-	double size; /**< Size of relation computed after each subtree. */
 
 	void visitTable(Table * node);
 
@@ -398,6 +399,10 @@ public:
 	static void updateSortParameters(const PossibleSortParameters & possibleSortParameters, std::shared_ptr<PhysicalPlan> & newPlan, std::map<int, ColumnInfo> & newColumns);
 
 private:
+
+	std::map<int, ColumnInfo> columns; /**< Columns containing plans after each subtree. */
+
+	double size; /**< Size of relation computed after each subtree. */
 
 	/**
 	* Inserts physical plan into heap of physical plans and removes the slowest, if the heap size > NUMBER_OF_PLANS
@@ -428,7 +433,7 @@ private:
 	* @param node - GroupedJoin beeing processed
 	* @param left - first inputs into join
 	* @param right - second inputs into join
-	* @param newPlan -for storing results
+	* @param newPlan - for storing results
 	*/
 	void join(GroupedJoin * node, const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
@@ -565,7 +570,7 @@ public:
 class PushSelectionDownVisitor : public AlgebraVisitor
 {
 private:
-	std::set<int> columns; /**< Cet of column identifiers of pushed condition. */
+	std::set<int> columns; /**< Set of column identifiers of pushed condition. */
 	ConditionType conditionType; /**< Condition type of pushed condition. */
 
 	Selection * nodePointer; /**< Pointer to pushed down selection. */

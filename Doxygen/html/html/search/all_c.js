@@ -2,7 +2,6 @@ var searchData=
 [
   ['name',['name',['../class_table.html#a776e2cab59507b3b59d475a964e347b8',1,'Table::name()'],['../class_column_identifier.html#af401adcef91c0fb4087102182dddb6ea',1,'ColumnIdentifier::name()'],['../class_index.html#af557cb673e8298bc13d74e369f050084',1,'Index::name()'],['../class_nnary_expression.html#ab21462327a70e8955c74cd8cc3fc428f',1,'NnaryExpression::name()']]],
   ['newcolumn',['newColumn',['../class_join_column_info.html#a4fdb28a84e69012cdb314463f9c0d674',1,'JoinColumnInfo']]],
-  ['nextid',['nextId',['../class_semantic_checker.html#a7bfc82245e0af345db051ab8faea502e',1,'SemanticChecker']]],
   ['nnaryexpression',['NnaryExpression',['../class_nnary_expression.html',1,'NnaryExpression'],['../class_nnary_expression.html#a38f44966213fd5d674aaff3ef9de37da',1,'NnaryExpression::NnaryExpression()']]],
   ['nodecounter',['nodeCounter',['../class_graph_drawing_visitor.html#a0761312fb1e24b1951c0b263b19f268c',1,'GraphDrawingVisitor::nodeCounter()'],['../class_physical_operator_drawing_visitor.html#a75aa4987d070c40a3ec2e4e9c950c9e0',1,'PhysicalOperatorDrawingVisitor::nodeCounter()']]],
   ['nodes',['nodes',['../class_get_columns_nodes_visitor.html#ac68ee0c1090596d4e25a5dc5a478533b',1,'GetColumnsNodesVisitor']]],

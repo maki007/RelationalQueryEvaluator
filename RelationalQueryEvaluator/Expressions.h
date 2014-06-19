@@ -151,7 +151,7 @@ public:
 
 	/**
 	* Creates new instance of Constant.
-	* @param node - element containing infromation about constant
+	* @param node - element containing infromation about constant.
 	*/
 	Constant(DOMElement * node);
 	void accept(ExpressionVisitorBase &v);
@@ -194,8 +194,8 @@ public:
 	
 	/**
 	* Creates new instance of GrouppedExpression.
-	* @param operation - type of operation
-	* @param children - child nodes  
+	* @param operation - type of operation.
+	* @param children - child nodes.
 	*/
 	GroupedExpression(GroupedOperator operation, const std::vector<std::shared_ptr<Expression>> & children);
 	void accept(ExpressionVisitorBase &v);

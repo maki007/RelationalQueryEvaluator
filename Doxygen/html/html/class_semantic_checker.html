@@ -105,11 +105,6 @@ Inheritance diagram for SemanticChecker:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a35a20bf073bd1fdf1de937db47b9f4c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a35a20bf073bd1fdf1de937db47b9f4c0">SemanticChecker</a> ()</td></tr>
 <tr class="separator:a35a20bf073bd1fdf1de937db47b9f4c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bfc82245e0af345db051ab8faea502e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a7bfc82245e0af345db051ab8faea502e">nextId</a> ()</td></tr>
-<tr class="separator:a7bfc82245e0af345db051ab8faea502e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31d420801c78aaf317a4b0094f9da3df"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a31d420801c78aaf317a4b0094f9da3df"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a31d420801c78aaf317a4b0094f9da3df">checkJoinOutPutParameters</a> (std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;outputColumns0, std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;outputColumns1, T *node)</td></tr>
-<tr class="separator:a31d420801c78aaf317a4b0094f9da3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a915d3f58ab60a0e6ba6f248e3c81f0c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#a915d3f58ab60a0e6ba6f248e3c81f0c5">visitTable</a> (<a class="el" href="class_table.html">Table</a> *node)</td></tr>
 <tr class="separator:a915d3f58ab60a0e6ba6f248e3c81f0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7cbd8a1c92f544a282de4b741d1e19e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_semantic_checker.html#ae7cbd8a1c92f544a282de4b741d1e19e">visitSort</a> (<a class="el" href="class_sort.html">Sort</a> *node)</td></tr>
@@ -170,72 +165,6 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a31d420801c78aaf317a4b0094f9da3df"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void SemanticChecker::checkJoinOutPutParameters </td>
-          <td>(</td>
-          <td class="paramtype">std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>outputColumns0</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::map&lt; std::string, <a class="el" href="class_column_info.html">ColumnInfo</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>outputColumns1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">T *&#160;</td>
-          <td class="paramname"><em>node</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Checks join condition and output columns and reports semantic errors. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">outputColumns0</td><td>- output columns from first join input </td></tr>
-    <tr><td class="paramname">outputColumns1</td><td>- output columns from second join input </td></tr>
-    <tr><td class="paramname">node</td><td>- node join or antijoin node </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a7bfc82245e0af345db051ab8faea502e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int SemanticChecker::nextId </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Generates new unique column identifier. </p><dl class="section return"><dt>Returns</dt><dd>new unique identifier </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="aed141e3f22e681c74355fb3b84deb2d4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -545,7 +474,7 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 19 2014 01:20:05 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 19 2014 13:45:15 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

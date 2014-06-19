@@ -28,7 +28,7 @@ enum class BinaryOperator
 };
 
 /**
-* Enum for grouped operator.
+* Enum for grouped operations.
 */
 enum class GroupedOperator
 {
@@ -239,7 +239,7 @@ public:
 class JoinColumnInfo;
 
 /**
-* Stored information about column, like identifier, number of uniquevalues and type.
+* Stored information about column, like identifier, number of unique values and type.
 */
 class ColumnInfo
 {
@@ -285,7 +285,7 @@ public:
 };
 
 /**
-* Inherits from ColumnInfo and stores information from which input column is and new column name.
+* Inherits from ColumnInfo and stores information which input is column from and new column name.
 */
 class JoinColumnInfo : public ColumnInfo
 {

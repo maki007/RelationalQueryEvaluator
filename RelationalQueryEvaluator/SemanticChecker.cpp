@@ -305,7 +305,7 @@ void SemanticChecker::visitGroupedJoin(GroupedJoin * node)
 	throw exception("Not Suported: GroupedJoin cannot be in input algebra");
 }
 
-void SemanticChecker::ReportError(const string error, string nodeName, const int lineNumber)
+void SemanticChecker::ReportError(const string error, string nodeName, ulong lineNumber)
 {
 	containsErrors = true;
 	cout << "Error in operator " << nodeName << " at line " << lineNumber << ": " << error << endl;

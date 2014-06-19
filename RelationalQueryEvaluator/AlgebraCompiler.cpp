@@ -977,8 +977,8 @@ void AlgebraCompiler::getEqualPairsFromCondition(const vector<shared_ptr<Conditi
 {
 	for (auto cond = conditions.begin(); cond != conditions.end(); ++cond)
 	{
-		ulong firstColumn = *((*cond)->inputs.begin());
-		ulong secondColumn = *(--((*cond)->inputs.end()));
+		int firstColumn = *((*cond)->inputs.begin());
+		int secondColumn = *(--((*cond)->inputs.end()));
 
 
 		if (leftColumns.find(firstColumn) != leftColumns.end())
@@ -1158,7 +1158,7 @@ void AlgebraCompiler::join(GroupedJoin * node, const JoinInfo & left, const Join
 		}
 		newSize = max(double(1), newSize);
 		newPlan.size = newSize;
-		for (std::map <ulong, JoinColumnInfo>::iterator it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
+		for (std::map <int, JoinColumnInfo>::iterator it = newPlan.columns.begin(); it != newPlan.columns.end(); ++it)
 		{
 			it->second.numberOfUniqueValues = min(it->second.numberOfUniqueValues, newSize);
 		}

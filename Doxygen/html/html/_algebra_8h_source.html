@@ -126,7 +126,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_algebra_node_base.html#ac59c590aea4f109c7fab18f714c588c1">   45</a></span>&#160;    std::map&lt;int, ColumnInfo&gt; <a class="code" href="class_algebra_node_base.html#ac59c590aea4f109c7fab18f714c588c1">outputColumns</a>;  </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_algebra_node_base.html#ac98b5887b911ee27411307c94db7fc94">   47</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_algebra_node_base.html#ac98b5887b911ee27411307c94db7fc94">lineNumber</a> = 0; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_algebra_node_base.html#a4ec1eb0806465aa32681272c771a87ba">   47</a></span>&#160;    ulong <a class="code" href="class_algebra_node_base.html#a4ec1eb0806465aa32681272c771a87ba">lineNumber</a> = 0; </div>
 <div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66">   49</a></span>&#160;    <a class="code" href="class_algebra_node_base.html">AlgebraNodeBase</a> * <a class="code" href="class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66">parent</a>; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_algebra_node_base.html#a8905b9abbf0ef7c0f84b79c8d0c100d8">AlgebraNodeBase::AlgebraNodeBase</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
@@ -298,7 +298,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="class_binary_algebra_node_base_html_a6e466b62966a9851c3c34e1fb588a496"><div class="ttname"><a href="class_binary_algebra_node_base.html#a6e466b62966a9851c3c34e1fb588a496">BinaryAlgebraNodeBase::replaceChild</a></div><div class="ttdeci">std::shared_ptr&lt; AlgebraNodeBase &gt; replaceChild(AlgebraNodeBase *oldChild, std::shared_ptr&lt; AlgebraNodeBase &gt; &amp;newChild)</div><div class="ttdef"><b>Definition:</b> Algebra.cpp:103</div></div>
 <div class="ttc" id="class_group_html"><div class="ttname"><a href="class_group.html">Group</a></div><div class="ttdef"><b>Definition:</b> Algebra.h:201</div></div>
 <div class="ttc" id="class_group_html_ae331a9b7095f8c2481e2031d41d88164"><div class="ttname"><a href="class_group.html#ae331a9b7095f8c2481e2031d41d88164">Group::Group</a></div><div class="ttdeci">Group(DOMElement *element)</div><div class="ttdef"><b>Definition:</b> Algebra.cpp:270</div></div>
-<div class="ttc" id="class_algebra_node_base_html_ac98b5887b911ee27411307c94db7fc94"><div class="ttname"><a href="class_algebra_node_base.html#ac98b5887b911ee27411307c94db7fc94">AlgebraNodeBase::lineNumber</a></div><div class="ttdeci">int lineNumber</div><div class="ttdef"><b>Definition:</b> Algebra.h:47</div></div>
 <div class="ttc" id="class_join_html"><div class="ttname"><a href="class_join.html">Join</a></div><div class="ttdef"><b>Definition:</b> Algebra.h:265</div></div>
 <div class="ttc" id="class_grouped_algebra_node_html"><div class="ttname"><a href="class_grouped_algebra_node.html">GroupedAlgebraNode</a></div><div class="ttdef"><b>Definition:</b> Algebra.h:139</div></div>
 <div class="ttc" id="class_algebra_node_base_html_aa9bdd02b0ddf793bda18bd146ccacb0d"><div class="ttname"><a href="class_algebra_node_base.html#aa9bdd02b0ddf793bda18bd146ccacb0d">AlgebraNodeBase::replaceChild</a></div><div class="ttdeci">virtual std::shared_ptr&lt; AlgebraNodeBase &gt; replaceChild(AlgebraNodeBase *oldChild, std::shared_ptr&lt; AlgebraNodeBase &gt; &amp;newChild)=0</div></div>
@@ -326,6 +325,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="class_nullary_algebra_node_base_html_a48446f68e1ddfc2357dcd048fd82ba80"><div class="ttname"><a href="class_nullary_algebra_node_base.html#a48446f68e1ddfc2357dcd048fd82ba80">NullaryAlgebraNodeBase::accept</a></div><div class="ttdeci">virtual void accept(AlgebraVisitor &amp;v)=0</div></div>
 <div class="ttc" id="class_anti_join_html"><div class="ttname"><a href="class_anti_join.html">AntiJoin</a></div><div class="ttdef"><b>Definition:</b> Algebra.h:286</div></div>
 <div class="ttc" id="class_group_html_a811076e176eaa4e3bb8373b7bd515c7e"><div class="ttname"><a href="class_group.html#a811076e176eaa4e3bb8373b7bd515c7e">Group::groupColumns</a></div><div class="ttdeci">std::vector&lt; GroupColumn &gt; groupColumns</div><div class="ttdef"><b>Definition:</b> Algebra.h:204</div></div>
+<div class="ttc" id="class_algebra_node_base_html_a4ec1eb0806465aa32681272c771a87ba"><div class="ttname"><a href="class_algebra_node_base.html#a4ec1eb0806465aa32681272c771a87ba">AlgebraNodeBase::lineNumber</a></div><div class="ttdeci">ulong lineNumber</div><div class="ttdef"><b>Definition:</b> Algebra.h:47</div></div>
 <div class="ttc" id="class_anti_join_html_a95d753b1ed036be43a4fe00b40b775cf"><div class="ttname"><a href="class_anti_join.html#a95d753b1ed036be43a4fe00b40b775cf">AntiJoin::accept</a></div><div class="ttdeci">void accept(AlgebraVisitor &amp;v)</div><div class="ttdef"><b>Definition:</b> Algebra.cpp:429</div></div>
 <div class="ttc" id="class_binary_algebra_node_base_html_ab6521a638b418e4f0939270bab77b901"><div class="ttname"><a href="class_binary_algebra_node_base.html#ab6521a638b418e4f0939270bab77b901">BinaryAlgebraNodeBase::accept</a></div><div class="ttdeci">virtual void accept(AlgebraVisitor &amp;v)=0</div></div>
 <div class="ttc" id="class_selection_html_afe7f64aed777d583797f1c9c13b378ac"><div class="ttname"><a href="class_selection.html#afe7f64aed777d583797f1c9c13b378ac">Selection::accept</a></div><div class="ttdeci">void accept(AlgebraVisitor &amp;v)</div><div class="ttdef"><b>Definition:</b> Algebra.cpp:365</div></div>
@@ -346,7 +346,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 19 2014 01:19:49 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 19 2014 13:44:58 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

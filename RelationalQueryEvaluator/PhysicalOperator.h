@@ -170,7 +170,7 @@ public:
 
 /**
 * Class representing filter physical algorithm.
-* Operator lters given rows and output only rows satisfying condition. 
+* Operator filters given rows and output only rows satisfying condition. 
 * Output doesn't have to be sorted same way as input.
 */
 class Filter : public UnaryPhysicalOperator
@@ -180,7 +180,7 @@ public:
 	
 	/**
 	* Creates new instance of Filter.
-	*  @param condition - filter condition.
+	* @param condition - filter condition.
 	*/
 	Filter(const std::shared_ptr<Expression> & condition);
 

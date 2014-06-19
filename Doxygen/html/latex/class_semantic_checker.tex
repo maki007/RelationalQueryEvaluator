@@ -16,10 +16,6 @@ Inheritance diagram for Semantic\+Checker\+:\begin{figure}[H]
 \item 
 \hyperlink{class_semantic_checker_a35a20bf073bd1fdf1de937db47b9f4c0}{Semantic\+Checker} ()
 \item 
-int \hyperlink{class_semantic_checker_a7bfc82245e0af345db051ab8faea502e}{next\+Id} ()
-\item 
-{\footnotesize template$<$typename T $>$ }\\void \hyperlink{class_semantic_checker_a31d420801c78aaf317a4b0094f9da3df}{check\+Join\+Out\+Put\+Parameters} (std\+::map$<$ std\+::string, \hyperlink{class_column_info}{Column\+Info} $>$ \&output\+Columns0, std\+::map$<$ std\+::string, \hyperlink{class_column_info}{Column\+Info} $>$ \&output\+Columns1, T $\ast$node)
-\item 
 void \hyperlink{class_semantic_checker_a915d3f58ab60a0e6ba6f248e3c81f0c5}{visit\+Table} (\hyperlink{class_table}{Table} $\ast$node)
 \item 
 void \hyperlink{class_semantic_checker_ae7cbd8a1c92f544a282de4b741d1e19e}{visit\+Sort} (\hyperlink{class_sort}{Sort} $\ast$node)
@@ -64,34 +60,6 @@ This visitor is checking\+:
 Creates new instance of \hyperlink{class_semantic_checker}{Semantic\+Checker}. 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_semantic_checker_a31d420801c78aaf317a4b0094f9da3df}{\index{Semantic\+Checker@{Semantic\+Checker}!check\+Join\+Out\+Put\+Parameters@{check\+Join\+Out\+Put\+Parameters}}
-\index{check\+Join\+Out\+Put\+Parameters@{check\+Join\+Out\+Put\+Parameters}!Semantic\+Checker@{Semantic\+Checker}}
-\subsubsection[{check\+Join\+Out\+Put\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void Semantic\+Checker\+::check\+Join\+Out\+Put\+Parameters (
-\begin{DoxyParamCaption}
-\item[{std\+::map$<$ std\+::string, {\bf Column\+Info} $>$ \&}]{output\+Columns0, }
-\item[{std\+::map$<$ std\+::string, {\bf Column\+Info} $>$ \&}]{output\+Columns1, }
-\item[{T $\ast$}]{node}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_semantic_checker_a31d420801c78aaf317a4b0094f9da3df}
-Checks join condition and output columns and reports semantic errors. 
-\begin{DoxyParams}{Parameters}
-{\em output\+Columns0} & -\/ output columns from first join input \\
-\hline
-{\em output\+Columns1} & -\/ output columns from second join input \\
-\hline
-{\em node} & -\/ node join or antijoin node \\
-\hline
-\end{DoxyParams}
-\hypertarget{class_semantic_checker_a7bfc82245e0af345db051ab8faea502e}{\index{Semantic\+Checker@{Semantic\+Checker}!next\+Id@{next\+Id}}
-\index{next\+Id@{next\+Id}!Semantic\+Checker@{Semantic\+Checker}}
-\subsubsection[{next\+Id}]{\setlength{\rightskip}{0pt plus 5cm}int Semantic\+Checker\+::next\+Id (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{class_semantic_checker_a7bfc82245e0af345db051ab8faea502e}
-Generates new unique column identifier. \begin{DoxyReturn}{Returns}
-new unique identifier 
-\end{DoxyReturn}
 \hypertarget{class_semantic_checker_aed141e3f22e681c74355fb3b84deb2d4}{\index{Semantic\+Checker@{Semantic\+Checker}!visit\+Anti\+Join@{visit\+Anti\+Join}}
 \index{visit\+Anti\+Join@{visit\+Anti\+Join}!Semantic\+Checker@{Semantic\+Checker}}
 \subsubsection[{visit\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void Semantic\+Checker\+::visit\+Anti\+Join (

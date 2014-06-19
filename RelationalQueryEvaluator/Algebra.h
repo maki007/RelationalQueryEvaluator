@@ -34,17 +34,17 @@ class AlgebraVisitor;
 
 
 /**
-* Abstract class for algebraic operaton.
+* Abstract class for algebraic operation.
 */
 class AlgebraNodeBase
 {
 public:
 	/**
-	* Stores ouput columns of this node. Key is unique column identifier and values stores information about column.
+	* Stores ouput columns of this node. Key is unique column identifier and value stores information about column.
 	*/
 	std::map<int, ColumnInfo> outputColumns;  
 	
-	int lineNumber = 0; /**< Stores the line number of input element of this node. */  
+	ulong lineNumber = 0; /**< Stores the line number of input element of this node. */
 	
 	AlgebraNodeBase * parent; /**< Stores the parent in algebra tree. */
 	
@@ -237,7 +237,7 @@ public:
 class Selection : public UnaryAlgebraNodeBase
 {
 public:
-	std::shared_ptr<Expression> condition; /**< Condition for filtetring given input.*/ 
+	std::shared_ptr<Expression> condition; /**< Condition for filtering given input.*/ 
 	
 	/**
 	* Create the instance of Selection.
