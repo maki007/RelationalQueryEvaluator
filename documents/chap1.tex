@@ -34,7 +34,7 @@ There are two special boxes, which have to be in every execution plan:
 
 \end{itemize}
 
-Evaluation starts with scheduling $init$ box, which sends poisoned pills to all of its output. All of it's output boxes will be scheduled. They can read data from hard drive or network, process it and sent it to other boxes for further processing. Other boxes usually receives data in envelopes in their inputs. Box $term$ waits for every it's input to receive poisoned pill.
+Evaluation starts with scheduling $init$ box, which sends poisoned pills to all of its output. All of it's output boxes will be scheduled. They can read data from hard drive or network, process it and sent it to other boxes for further processing. Other boxes usually receives data in envelopes in their inputs. Box $term$ waits for every it's input to receive poisoned pill and then evaluation ends.
 
 \section{Bobolang}
 
