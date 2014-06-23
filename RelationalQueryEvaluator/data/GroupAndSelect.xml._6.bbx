@@ -6,7 +6,7 @@ SortedGroup(string,string,int)->(string,int,int) SortedGroup1(groupBy="1",functi
 SortOperator(string,int,int)->(string,int,int) SortOperator2(sortedBy="",sortBy="0:D"); 
 Store(string,int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> IndexScan0;
 IndexScan0 -> SortedGroup1;
 SortedGroup1 -> SortOperator2;

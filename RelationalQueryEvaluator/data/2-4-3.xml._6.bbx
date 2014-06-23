@@ -12,7 +12,7 @@ HashGroup(int,int,int,double)->(int,int,int,double) HashGroup7(groupBy="0,1,2",f
 SortOperator(int,int,int,double)->(int,int,int,double) SortOperator8(sortedBy="",sortBy="3:D,1:A"); 
 Store(int,int,int,double)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> IndexScan0;
 start[1] -> IndexScan1;
 IndexScan0 -> [0]HashJoin2;

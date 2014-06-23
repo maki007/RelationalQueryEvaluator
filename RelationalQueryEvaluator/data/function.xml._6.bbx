@@ -5,7 +5,7 @@ TableScan()->(string,int) TableScan0(name="people_from_city",columns="name,id");
 ColumnsOperations(string,int)->(string,int) ColumnsOperations1(out="0,OP_sqrt(1"); 
 Store(string,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> ColumnsOperations1;
 ColumnsOperations1 -> storeResult;

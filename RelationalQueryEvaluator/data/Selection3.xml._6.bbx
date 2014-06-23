@@ -5,7 +5,7 @@ IndexScan()->(int,int) IndexScan0(name="users",index="index",columns="a,b",condi
 Filter(int,int)->(int,int) Filter1(condition="OP_AND(OP_LOWER(0,OP_int_CONSTANT(-1)),OP_LOWER(1,OP_int_CONSTANT(8000)))"); 
 Store(int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> IndexScan0;
 IndexScan0 -> Filter1;
 Filter1 -> storeResult;

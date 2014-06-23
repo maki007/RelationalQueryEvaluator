@@ -7,7 +7,7 @@ HashJoin(int,int)(int,int)->(int,int,int,int) HashJoin2(left="0,1",right="2,3",o
 SortOperator(int,int,int,int)->(int,int,int,int) SortOperator3(sortedBy="",sortBy="3:D,0:A"); 
 Store(int,int,int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 start[1] -> TableScan1;
 TableScan0 -> [0]HashJoin2;

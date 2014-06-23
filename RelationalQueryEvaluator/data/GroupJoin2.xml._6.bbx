@@ -14,7 +14,7 @@ MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin9(left="0",right="1",out="0,1",l
 MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin10(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="1:A",rightPartOfCondition="2:A"); 
 Store(int,int,int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 start[1] -> TableScan2;

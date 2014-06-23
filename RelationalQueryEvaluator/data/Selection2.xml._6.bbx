@@ -5,7 +5,7 @@ TableScan()->(int) TableScan0(name="users",columns="a");
 Filter(int)->(int) Filter1(condition="OP_OR(OP_EQUALS(0,OP_int_CONSTANT(4)),OP_LOWER(0,OP_int_CONSTANT(-1)))"); 
 Store(int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> Filter1;
 Filter1 -> storeResult;

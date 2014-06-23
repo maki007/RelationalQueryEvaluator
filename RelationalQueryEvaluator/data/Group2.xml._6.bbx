@@ -6,7 +6,7 @@ SortOperator(string,int)->(string,int) SortOperator1(sortedBy="",sortBy="1:D,0:A
 SortedGroup(string,int)->(int,string,int) SortedGroup2(groupBy="1,0",functions="count()"); 
 Store(int,string,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 SortOperator1 -> SortedGroup2;

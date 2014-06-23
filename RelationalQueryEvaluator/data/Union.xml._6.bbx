@@ -8,7 +8,7 @@ Union(int,string)(string,int)->(int,string) Union3(left="0,1",right="1,0",out="0
 Union(int,string)(int,string)->(int,string) Union4(left="0,1",right="0,1",out="0,1"); 
 Store(int,string)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 start[1] -> TableScan1;
 start[2] -> TableScan2;

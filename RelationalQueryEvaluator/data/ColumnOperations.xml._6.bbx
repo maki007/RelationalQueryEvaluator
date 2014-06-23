@@ -5,7 +5,7 @@ TableScan()->(int,int,int) TableScan0(name="users",columns="a,b,c");
 ColumnsOperations(int,int,int)->(int,double,) ColumnsOperations1(out="0,OP_PLUS(0,OP_TIMES(1,OP_int_CONSTANT(5))),2"); 
 Store(int,double,)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> ColumnsOperations1;
 ColumnsOperations1 -> storeResult;

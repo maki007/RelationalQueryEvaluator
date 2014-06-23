@@ -79,7 +79,7 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<Physic
 	result += "broadcast()->(){" + to_string(numberOfLeafs) + "} start;\n";
 	result += declarations;
 	result += declaration("Store", getColumnTypeOutput(plan->columns), "", "storeResult", "") + "\n";
-	result += "source -> start\n";
+	result += "input -> start\n";
 	result += code;
 	result += connect(lastWrittenNode, "storeResult");
 	result += connect("storeResult", "output");

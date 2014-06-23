@@ -6,7 +6,7 @@ ScanAndSortByIndexScan()->(int) ScanAndSortByIndexScan1(name="q",index="index",c
 MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin2(left="0",right="1",out="0,1",leftPartOfCondition="0:A",rightPartOfCondition="1:A"); 
 Store(int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 start[1] -> ScanAndSortByIndexScan1;
 TableScan0 -> [0]MergeEquiJoin2;

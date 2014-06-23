@@ -7,7 +7,7 @@ Filter(string,int,int)->(string,int,int) Filter2(condition="OP_EQUALS(1,OP_int_C
 SortOperator(string,int,int)->(string,int,int) SortOperator3(sortedBy="",sortBy="0:D"); 
 Store(string,int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> HashGroup1;
 HashGroup1 -> Filter2;

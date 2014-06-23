@@ -6,7 +6,7 @@ TableScan()->(int,int) TableScan1(name="b",columns="b1,b2");
 HashAntiJoin(int,int)(int,int)->(int,int) HashAntiJoin2(left="0,1",right="2,3",out="0,1",leftPartOfCondition="0,1",rightPartOfCondition="2,3"); 
 Store(int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 start[1] -> TableScan1;
 TableScan0 -> [0]HashAntiJoin2;

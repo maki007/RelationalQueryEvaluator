@@ -8,7 +8,7 @@ TableScan()->(int) TableScan3(name="y",columns="b");
 HashAntiJoin(int)(int)->(int) HashAntiJoin4(left="0",right="1",out="0",leftPartOfCondition="0",rightPartOfCondition="1"); 
 Store(int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 start[1] -> TableScan1;
 TableScan0 -> [0]HashAntiJoin2;

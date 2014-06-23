@@ -5,7 +5,7 @@ TableScan()->(int,int) TableScan0(name="x",columns="a,b");
 SortOperator(int,int)->(int,int) SortOperator1(sortedBy="",sortBy="0:D,1:D"); 
 Store(int,int)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 SortOperator1 -> storeResult;

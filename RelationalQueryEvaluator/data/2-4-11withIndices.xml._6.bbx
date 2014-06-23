@@ -28,7 +28,7 @@ ColumnsOperations(double,int,double)->(int,double) ColumnsOperations23(out="1,2"
 SortOperator(int,double)->(int,double) SortOperator24(sortedBy="",sortBy="1:D"); 
 Store(int,double)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> ScanAndSortByIndexScan0;
 start[1] -> ScanAndSortByIndexScan1;
 start[2] -> TableScan2;

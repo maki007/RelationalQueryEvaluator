@@ -6,7 +6,7 @@ TableScan()->(int,string) TableScan1(name="countries",columns="id,name");
 HashJoin(string,int)(int,string)->(string,string) HashJoin2(left="0,1",right="2,3",out="0,3",leftPartOfCondition="1",rightPartOfCondition="2"); 
 Store(string,string)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 start[1] -> TableScan1;
 TableScan0 -> [0]HashJoin2;

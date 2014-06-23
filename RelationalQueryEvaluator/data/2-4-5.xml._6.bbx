@@ -19,7 +19,7 @@ HashGroup(string,double)->(string,double) HashGroup14(groupBy="0",functions="sum
 SortOperator(string,double)->(string,double) SortOperator15(sortedBy="",sortBy="1:D"); 
 Store(string,double)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> Filter1;
 start[1] -> TableScan2;

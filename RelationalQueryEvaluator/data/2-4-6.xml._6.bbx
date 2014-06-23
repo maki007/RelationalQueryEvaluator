@@ -7,7 +7,7 @@ ColumnsOperations(date,int,double,double)->(double) ColumnsOperations2(out="OP_T
 SortedGroup(double)->(double) SortedGroup3(groupBy="",functions="sum(0)"); 
 Store(double)->() storeResult(); 
 
-source -> start
+input -> start
 start[0] -> TableScan0;
 TableScan0 -> Filter1;
 Filter1 -> ColumnsOperations2;
