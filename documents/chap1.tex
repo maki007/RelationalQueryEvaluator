@@ -84,6 +84,19 @@ operator main()->()
 \end{figure}
 
 
-\section{Architecture}
+\section{SQL compiler architecture}
+In this section we describe planed SQL compiler. It's architecture is displayed in figure~\ref{fig:sqlarchitecture}. 
+\begin{figure}[h!]
+  \centering
 
-\section{Goal}
+    \includegraphics[width=1\textwidth]{sqlarchitecture}
+    
+      \caption{SQL compiler architecture.}
+        \label{fig:sqlarchitecture}
+\end{figure}
+
+SQL query is written in text. This text is parsed into parse tree, which is transformed into logical query plan (Relational algebra). Relational algebra is then optimized and this form is used for generating physical query plan. Physical plan written in Bobolang is input for Bobox for execution. Physical plan is not enough, we need to also provide implementation of physical algorithms (Bobox operators).
+
+Since SQL is a pretty complicated language, this thesis aim is only implementing optimization and transformation of logical plan into physical plan.
+
+
