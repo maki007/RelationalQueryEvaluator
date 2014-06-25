@@ -1,5 +1,71 @@
 \chapter{Related work}
 
-\section{SQL and relational algebra}
+\section{Relational algebra}
 
-\section{Optimization and plan genenration}
+In this chapter we introduce and describe relational algebra\cite{database}. We start with some basic definitions of relational model.
+
+\begin{mydef}
+$Relation$ is a two dimensional table.
+\end{mydef}
+\begin{mydef}
+$Attribute$ is column of a table.
+\end{mydef}
+\begin{mydef}
+$Schema$ name of the relations and a set of attributes. For example:~$Movie(id,name,lenght)$.
+\end{mydef}
+\begin{mydef}
+$Tupple$ of a relation is a row other than header row.
+\end{mydef}
+
+
+An algebra in general consist of  operators and atomic operands. For example in arithmetic algebra variables like $x$ or constant like 15 and operators are addition multiplication, subtraction and division.
+We can build expression by applying operators on operands or other expressions. Example of an expression in arithmetic algebra is $(15+x)*x$.
+
+Relational algebra  has atomic operands:
+\begin{itemize}
+\item Variables, that are relations.
+\item Constants, that are finite relations. 
+\end{itemize}
+
+In classical relational algebra all operates and expression results are set. All this operations can be applied also to bags.
+Relation algebra operators are:
+\begin{itemize}
+\item Set operations - union, difference, intersection.
+\item Removing operators - selection, which removes rows and projection that eliminates columns from given relation.
+\item Operations that combine two relation, all kinds of joins.
+\item Renaming operations, that doesn't change tuples of the relation bud changes schema.
+\end{itemize}
+Expressions in relational algebra are called $queries$.
+
+\subsection{Set operations on relations}
+
+Sets operations are:
+\begin{itemize}
+\item Union $R\cap S$ is a set of tuples that are in $R$ or $S$.
+\item Intersection $R\cup S$  is a set of tuples that are in both $R$ and $S$. 
+\item Difference $R-S$ is a set of tuples that are in $R$ but not in $S$.
+
+\end{itemize}
+
+Lets have relations $R$ and $S$. If we want to apply some set operation both relations must have the same set of attributes. If we want to compute set theoretic union, difference or intersections the oder of columns must be the same in both relations. 
+We can also use renaming operations if relations doesn't have same number of attributes.
+
+\subsection{Projection}
+
+$Projection$ operator $\pi$ produces from relation R new Relations with reduced set of attributes. Result of a expression $\pi_{A_1,A_3,A_4,...,A_N}(R)$ is relation $R$ with attributes $A_1,A_3,A_4,...,A_N$. 
+
+\subsection{Selection}
+If we apply operator selection $\sigma$ on Relation $R$ with condition $C$ we get a new relation with same attributes and tuples, which satisfy given condition. For example $\sigma_{A_1=4}(R)$.
+
+\subsection{Cartesian product}
+Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the first element of pair to be any element from R and second element of pair to be any element of S. Cartesian product of relations similar. we pair tuples from $R$ with all tuples from $S$.
+
+\subsection{Natural joins}
+Natural join $R\Join S$ and
+
+\subsection{Theta joins}
+$R\Join_C S$
+\subsection{Renaming}
+
+
+\section{Optimization and plan generation}
