@@ -22,13 +22,23 @@
 \contentsline {subsubsection}{Aggregate operations}{10}{section*.14}
 \contentsline {subsubsection}{Grouping operator}{10}{section*.15}
 \contentsline {subsubsection}{Extended projection operator}{10}{section*.16}
-\contentsline {subsubsection}{The sorting operator}{10}{section*.17}
-\contentsline {subsubsection}{Outer joins}{10}{section*.18}
-\contentsline {section}{\numberline {2.2}Optimization and plan generation}{11}{section.2.2}
-\contentsline {chapter}{\numberline {3}Analysis}{12}{chapter.3}
-\contentsline {chapter}{\numberline {4}Implementation}{13}{chapter.4}
-\contentsline {chapter}{Conclusion}{14}{chapter*.19}
-\contentsline {chapter}{Bibliography}{15}{chapter*.20}
-\contentsline {chapter}{List of Tables}{16}{chapter*.21}
-\contentsline {chapter}{List of Abbreviations}{17}{chapter*.22}
-\contentsline {chapter}{Attachments}{18}{chapter*.23}
+\contentsline {subsubsection}{The sorting operator}{11}{section*.17}
+\contentsline {subsubsection}{Outer joins}{11}{section*.18}
+\contentsline {section}{\numberline {2.2}Optimizations of relational algebra}{11}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Commutative and associative laws}{11}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Laws involving selection}{12}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Laws involving projection}{12}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Laws involving joins and products}{13}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Laws involving grouping and aggregation}{13}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Physical plan generation}{13}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Size estimations}{13}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Enumerating plans}{13}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Choosing join order}{13}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Choosing physical algorithms}{13}{subsection.2.3.4}
+\contentsline {chapter}{\numberline {3}Analysis}{14}{chapter.3}
+\contentsline {chapter}{\numberline {4}Implementation}{15}{chapter.4}
+\contentsline {chapter}{Conclusion}{16}{chapter*.19}
+\contentsline {chapter}{Bibliography}{17}{chapter*.20}
+\contentsline {chapter}{List of Tables}{18}{chapter*.21}
+\contentsline {chapter}{List of Abbreviations}{19}{chapter*.22}
+\contentsline {chapter}{Attachments}{20}{chapter*.23}

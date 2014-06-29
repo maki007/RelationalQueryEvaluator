@@ -2,132 +2,141 @@ digraph g {node [shape=box]
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
 Sort by: country_4 desc
- time:0
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node1[label="Sorted Group
+ time:33
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node1[label="Filter
+(country_4(0) == sparta)
+ time:1584
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node2[label="Sorted Group
 country_2, count_5=count();x_6=max(parameter_3);
- time:8
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node2[label="Partial Sort
+ time:13000
+ size:1585
+country_4 252,count_5 1585,x_6 1585,
+"]node3[label="Partial Sort
 Sorted by country_2 asc
 Sort by: 
  time:0
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node3[label="Index Scan
-people
-(country_2(0) == sparta)
-s(country_2:ascending)
- time:98
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node3 -> node2[headport=s, tailport=n,label="   "]
-node2 -> node1[headport=s, tailport=n,label="   "]
-node1 -> node0[headport=s, tailport=n,label="   "]
-node4[label="Sort
-Sort by: country_4 desc
- time:0
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node5[label="Hash Group
-country_2, count_5=count();x_6=max(parameter_3);
- time:115
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node6[label="Index Scan
-people
-(country_2(0) == sparta)
-s(country_2:ascending)
- time:98
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node6 -> node5[headport=s, tailport=n,label="   "]
-node5 -> node4[headport=s, tailport=n,label="   "]
-node7[label="Partial Sort
-Sorted by country_4 desc
-Sort by: 
- time:0
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node8[label="Sorted Group
-country_2, count_5=count();x_6=max(parameter_3);
- time:8
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node9[label="Sort
-Sort by: country_2 both
- time:33
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node10[label="Filter
-(country_2(0) == sparta)
- time:10000
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node11[label="Table Scan
-people
- time:10000
  size:10000
 user_name_1 410,country_2 1585,parameter_3 1585,
-"]node11 -> node10[headport=s, tailport=n,label="   "]
-node10 -> node9[headport=s, tailport=n,label="   "]
-node9 -> node8[headport=s, tailport=n,label="   "]
-node8 -> node7[headport=s, tailport=n,label="   "]
-node12[label="Sort
-Sort by: country_4 desc
- time:0
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node13[label="Hash Group
-country_2, count_5=count();x_6=max(parameter_3);
- time:115
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node14[label="Filter
-(country_2(0) == sparta)
- time:10000
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node15[label="Table Scan
-people
- time:10000
- size:10000
-user_name_1 410,country_2 1585,parameter_3 1585,
-"]node15 -> node14[headport=s, tailport=n,label="   "]
-node14 -> node13[headport=s, tailport=n,label="   "]
-node13 -> node12[headport=s, tailport=n,label="   "]
-node16[label="Partial Sort
-Sorted by country_4 desc
-Sort by: 
- time:0
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node17[label="Sorted Group
-country_2, count_5=count();x_6=max(parameter_3);
- time:8
- size:1
-country_4 1,count_5 1,x_6 1,
-"]node18[label="Sort
-Sort by: country_2 both
- time:33
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node19[label="Filter
-(country_2(0) == sparta)
- time:10000
- size:7
-user_name_1 1,country_2 1,parameter_3 1,
-"]node20[label="Sort by index Scan
+"]node4[label="Sort by index Scan
 people
 s(country_2:ascending)
  time:30000
  size:10000
 user_name_1 410,country_2 1585,parameter_3 1585,
-"]node20 -> node19[headport=s, tailport=n,label="   "]
+"]node4 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node5[label="Sort
+Sort by: country_4 desc
+ time:33
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node6[label="Filter Keeping Order
+(country_4(0) == sparta)
+ time:2060
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node7[label="Sorted Group
+country_2, count_5=count();x_6=max(parameter_3);
+ time:13000
+ size:1585
+country_4 252,count_5 1585,x_6 1585,
+"]node8[label="Partial Sort
+Sorted by country_2 asc
+Sort by: 
+ time:0
+ size:10000
+user_name_1 410,country_2 1585,parameter_3 1585,
+"]node9[label="Sort by index Scan
+people
+s(country_2:ascending)
+ time:30000
+ size:10000
+user_name_1 410,country_2 1585,parameter_3 1585,
+"]node9 -> node8[headport=s, tailport=n,label="   "]
+node8 -> node7[headport=s, tailport=n,label="   "]
+node7 -> node6[headport=s, tailport=n,label="   "]
+node6 -> node5[headport=s, tailport=n,label="   "]
+node10[label="Sort
+Sort by: country_4 desc
+ time:33
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node11[label="Filter
+(country_4(0) == sparta)
+ time:1584
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node12[label="Hash Group
+country_2, count_5=count();x_6=max(parameter_3);
+ time:183000
+ size:1585
+country_4 252,count_5 1585,x_6 1585,
+"]node13[label="Table Scan
+people
+ time:10000
+ size:10000
+user_name_1 410,country_2 1585,parameter_3 1585,
+"]node13 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node11[headport=s, tailport=n,label="   "]
+node11 -> node10[headport=s, tailport=n,label="   "]
+node14[label="Sort
+Sort by: country_4 desc
+ time:33
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node15[label="Filter
+(country_4(0) == sparta)
+ time:1584
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node16[label="Hash Group
+country_2, count_5=count();x_6=max(parameter_3);
+ time:183000
+ size:1585
+country_4 252,count_5 1585,x_6 1585,
+"]node17[label="Sort by index Scan
+people
+s(country_2:ascending)
+ time:30000
+ size:10000
+user_name_1 410,country_2 1585,parameter_3 1585,
+"]node17 -> node16[headport=s, tailport=n,label="   "]
+node16 -> node15[headport=s, tailport=n,label="   "]
+node15 -> node14[headport=s, tailport=n,label="   "]
+node18[label="Sort
+Sort by: country_4 desc
+ time:33
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node19[label="Filter
+(country_4(0) == sparta)
+ time:1584
+ size:7
+country_4 1,count_5 7,x_6 7,
+"]node20[label="Sorted Group
+country_2, count_5=count();x_6=max(parameter_3);
+ time:13000
+ size:1585
+country_4 252,count_5 1585,x_6 1585,
+"]node21[label="Sort
+Sort by: country_2 both
+ time:265754
+ size:10000
+user_name_1 410,country_2 1585,parameter_3 1585,
+"]node22[label="Table Scan
+people
+ time:10000
+ size:10000
+user_name_1 410,country_2 1585,parameter_3 1585,
+"]node22 -> node21[headport=s, tailport=n,label="   "]
+node21 -> node20[headport=s, tailport=n,label="   "]
+node20 -> node19[headport=s, tailport=n,label="   "]
 node19 -> node18[headport=s, tailport=n,label="   "]
-node18 -> node17[headport=s, tailport=n,label="   "]
-node17 -> node16[headport=s, tailport=n,label="   "]
 
 }

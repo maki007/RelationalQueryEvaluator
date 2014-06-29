@@ -1,5 +1,5 @@
 \chapter{Related work}
-
+I the chapter we introduce some theory of relational algebra, it's optimizations and physical plan generation. This informations were used for tool implementation.
 \section{Relational algebra}
 
 In this chapter we introduce and describe relational algebra\cite{database}. We start with some basic definitions of relational model.
@@ -107,7 +107,27 @@ Aggregate operators such as sum are not relational algebra operator but are used
 
 \subsubsection{Grouping operator}
 
+We often doesn't want to compute aggregation function for entire column. We rather compute this function on for some group of columns. For example we can compute average salary for every person in database, or we can group them by companies and get every salary in every company. 
 
+For this purpose we have grouping operator $\gamma_L(R)$. $L$ is a list of:
+
+\begin{enumerate}
+\item Attribute of $R$ by which $R$ will be grouped.
+\item Aggregation operator applied on a attribute of relation.
+\end{enumerate}
+
+Relation computed by expression $\gamma_L(R)$ is constructed:
+
+\begin{enumerate}
+\item Relation will be partitioned into groups. Every group contains all tuples which have same value in all grouping attributes. If there is no grouping attributes, all tuples will be in one group.
+\item For each group operator produces one tuple consisting of:
+ \begin{enumerate}
+ 	\item Grouping attributes values for group.
+ 	\item Results of aggregations over all tuple of processed group.
+ \end{enumerate}
+\end{enumerate}
+
+Duplicate elimination operator is a special case of grouping operator. We can express $\delta(R)$ with $\gamma_{L}(R)$, where $L$ is a list of all attributes of $R$.
 
 \subsubsection{Extended projection operator}
 
@@ -123,7 +143,7 @@ We can extend classical projection operator $\pi_L(R)$ introduced in chapter \re
 
 \subsubsection{The sorting operator}
 
-In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation, $L$ is list of attributes with additional information about sort order, is relation with same tuples like $R$ but different order of tuples. Example:  $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with same $A_1$ value will additionally sorted by their $A_2$ value descending. 
+In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation, $L$ is list of attributes with additional information about sort order, is relation with same tuples like $R$ but different order of tuples. Example:  $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with same $A_1$ value will be additionally sorted by their $A_2$ value descending. 
 
 \subsubsection{Outer joins}
 Lets have join $R\Join_C S$. We call tuple $t$ from relation $R$ or $S$ $dangling$ if
@@ -131,5 +151,80 @@ we didn't find any match in relation $S$ or $R$. Outer join $R\Join^\circ_C S$ i
 
 Left/right outer join is outer join but we only add dangling tuples from left/right relation.
 
-\section{Optimization and plan generation}
+\section{Optimizations of relational algebra}
+
+After initial logical query plan is generated, we can apply some heuristics to improve it, using some algebraic laws that hold for relational algebra. 
+
+
+\subsection{Commutative and associative laws}
+Commutative and associative operators are Cartesian product, natural join, union and intersection. Theta join is commutative but generally is not associative. But if the conditions makes sense where they where positioned, then theta join is associative.
+That means we can make following changes to algebra tree:
+
+\begin{itemize}
+\item $R \oplus S = S \oplus R$
+
+\item $(R \oplus S) \oplus T = R \oplus (S \oplus T)$
+\end{itemize}
+$\oplus$ stands for $\times$, $\cap$, $\cup$, $\Join$ or $\Join_C$.
+
+\subsection{Laws involving selection}
+
+Selection are very important for improving logical plan. They usually reduce size of relation markedly so that's why we need to move them down the tree as far as possible.
+We can change order of selections:
+
+\begin{itemize}
+\item $\sigma_{C_1}(\sigma_C{_2}(R)) = \sigma_C{_2}(\sigma_C{_1}(R))$
+\end{itemize}
+Sometimes we cannot push whole condition but we can split it:
+
+\begin{itemize}
+\item $\sigma_{C_1~AND~C_2}(R)=\sigma_{C_1}(\sigma_{C_2}(R))$
+
+\item $\sigma_{C_1~OR~C_2}(R)=\sigma_{C_1}(R) \cup_S \sigma_{C_2}(R)$
+\end{itemize}
+Last law works only when $R$ is a set. $\cup_S$ stands for set union. We can push selection down union, it has to be pushed to both branches:
+\begin{itemize}
+\item $\sigma_{C}(R \cup S)=\sigma_{C}(R) \cup \sigma_{C}(S)$
+\end{itemize}
+
+When pushing selection through difference we must push it to first branch. Pushing to second branch optional. Laws for difference: 
+\begin{itemize}
+\item $\sigma_{C}(R-S)=\sigma_{C}(R) - \sigma_{C}(S)$
+\item $\sigma_{C}(R-S)=\sigma_{C}(R) - S$
+\end{itemize}
+
+Following laws allow to push selection down both arguments. Let's have selection $\sigma_C$. We can push it to the branch, which contains all attributes used in $C$. If $C$ contains only attributes of $R$:
+\begin{itemize}
+\item $\sigma_{C}(R \oplus S)=\sigma_{C}(R) \oplus S$
+\end{itemize}
+$\oplus$ stands for $\times$, $\cap$, $\cup$, $\Join$ or $\Join_C$. If relation $S$ and $R$ contains all attributes of $C$ we can also use following law:
+\begin{itemize}
+\item $\sigma_{C}(R \Join S)=\sigma_{C}(R) \Join  \sigma_{C}(S)$
+\end{itemize}
+
+
+\subsection{Laws involving projection}
+Principle for manipulation with projections that we can add projection anywhere in the tree as long as it only eliminates attributes which are not used anymore and don't appear in query result.
+\subsection{Laws involving joins and products}
+
+\subsection{Laws involving grouping and aggregation}
+
+
+\section{Physical plan generation}
+
+\subsection{Size estimations}
+
+\subsection{Enumerating plans}
+
+\subsection{Choosing join order}
+
+\subsection{Choosing physical algorithms}
+
+table
+select
+join
+group
+
+
+
 

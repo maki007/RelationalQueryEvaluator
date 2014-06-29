@@ -99,28 +99,7 @@ void PushSelectionDownVisitor::visitSort(Sort * node)
 
 void PushSelectionDownVisitor::visitGroup(Group * node)
 {
-	map<int, int> equalpairs;
-	ulong matchedColumns = 0;
-	for (auto it = node->groupColumns.begin(); it != node->groupColumns.end(); ++it)
-	{
-		equalpairs[it->output.id] = it->input.id;
-		if (columns.find(it->output.id) != columns.end())
-		{
-			++matchedColumns;
-		}
-	}
-	
-	if (matchedColumns == columns.size())
-	{
-		condition->accept(RenameColumnsVisitor(&equalpairs));
-		condition->accept(JoinInfoReadingExpressionVisitor(&columns, &conditionType));
-		node->child->accept(*this);
-	}
-	else
-	{
-		insertSelection(node, shared_ptr<Selection>(new Selection(condition)));
-	}
-
+	insertSelection(node, shared_ptr<Selection>(new Selection(condition)));
 }
 
 void PushSelectionDownVisitor::visitColumnOperations(ColumnOperations * node)
