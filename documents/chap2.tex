@@ -207,12 +207,81 @@ $\oplus$ stands for $\times$, $\cap$, $\cup$, $\Join$ or $\Join_C$. If relation 
 Principle for manipulation with projections that we can add projection anywhere in the tree as long as it only eliminates attributes which are not used anymore and don't appear in query result.
 \subsection{Laws involving joins and products}
 
-\subsection{Laws involving grouping and aggregation}
+We have more laws involving selection that follow directly from definition of the join:
+\begin{itemize}
+\item $\sigma_{C}(R \times S)=R \Join_{C} S$
+\item $R \Join S=\pi_L(\sigma_{C}(R \times S))$, $C$ is condition that equates each pair of attributes of $R$ and $S$, which have the same name and $L$ is a list of attributes of relation $R$.
+\end{itemize}
+
 
 
 \section{Physical plan generation}
 
+After we optimized logical plan, we need to create physical plan. We generate many physical plans a choose one with least estimated cost to run it. This approach is called cost-based enumeration.
+
+For each physical plan we select 
+\begin{enumerate}
+\item An order of grouping and joins.
+\item An algorithm for each operator. For example if we use join based on hashing or sorting.
+\item Additional operators which are not presented in logical plan. For example we can sort relation in order to user faster algorithm which assumes that it's input is sorted.
+\item The way in which arguments are pass to between operators. We can use iterators for it or store result on hard drive.
+\end{enumerate}
+
 \subsection{Size estimations}
+
+The costs of evaluating physical plan are based of estimated size of interme\-dia\-te relations. Ideally we want out estimation to be accurate, easy to compute and logically consistent(size of relation doesn't depend on how relation is computed). We will present simple rules, which will give us give us good estimations in most situation. Goal of estimating sizes is not predict exact size of relation, even an inaccurate sizes will help us with plan generation.
+
+In this section we will use following conventions:
+
+\begin{itemize}
+\item $T(R)$ is number of tuples in relation R.
+\item $V(R,a)$ number of distinct values in attribute $a$. 
+\item $V(R,[a_1,a_2,...,a_n])$ is number of tuples in $\delta(\pi_{a_1,a_2,...,a_n}(R))$
+\end{itemize}
+
+\subsubsection{Estimating the size of projection}
+
+Projection is only operator which size of result is compatible. It doesn't change number ot tuples, their lengths change.
+
+\subsubsection{Estimating the size of selection}
+
+Selection reduces number of tuples.Lets have $S=\sigma_{A=c}(R)$, where $A$ is a attribute of $R$ and $c$ is a constant. Recommended estimation is:
+\begin{itemize}
+\item $T(S)=T(R)/V(R,A)$
+\end{itemize}
+
+More problematic estimation is when selection involves inequality comparison Lets have $S=\sigma_{A<c}(R)$. In average half the tuple satisfies condition, but usually queries select only a small fraction from all tuples. Therefore the estimation is:
+\begin{itemize}
+\item $T(S)=T(R)/3$
+\end{itemize}
+
+For selection where condition is in form $C_1~and~C_2~and~...~and~C_N$ we can treat selection as a cascade of simple selections and estimate size for every simpler condition
+
+When selection involves $not$ and we have $S=\sigma_{not(C)}(R)$ we can use following estimation:
+\begin{itemize}
+\item $T(S)=T(R)-T(\sigma_C(R))$
+\end{itemize}
+
+Little more complicated is when condition involved an $or$ of conditions. Lets have expression $S=\sigma_{C_1~or~C_2}(R)$. We can assume that $C_1$ and $C_2$ are independent. Size of $S$ is:
+
+\begin{itemize}
+\item $T(S)=T(R)(1-(1-\dfrac{m_1}{T(R)})(1-\dfrac{m_2}{T(R)}))$
+\end{itemize}
+
+Expression $1-\dfrac{m_1}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_1$ and $1-\dfrac{m_2}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_2$. Product of these numbers are the fraction of tuples from $R$ which are not in result. One minus the product gives us fraction of tuples in $S$.
+
+\subsubsection{Estimating the size of join}
+
+a
+
+\subsubsection{Estimating the size of union}
+
+\subsubsection{Estimating the size of intersection}
+
+\subsubsection{Estimating the size of difference}
+
+\subsubsection{Estimating the size of grouping}
+
 
 \subsection{Enumerating plans}
 
@@ -223,8 +292,3 @@ Principle for manipulation with projections that we can add projection anywhere 
 table
 select
 join
-group
-
-
-
-

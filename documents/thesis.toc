@@ -29,16 +29,22 @@
 \contentsline {subsection}{\numberline {2.2.2}Laws involving selection}{12}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Laws involving projection}{12}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Laws involving joins and products}{13}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}Laws involving grouping and aggregation}{13}{subsection.2.2.5}
 \contentsline {section}{\numberline {2.3}Physical plan generation}{13}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Size estimations}{13}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Enumerating plans}{13}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Choosing join order}{13}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Choosing physical algorithms}{13}{subsection.2.3.4}
-\contentsline {chapter}{\numberline {3}Analysis}{14}{chapter.3}
-\contentsline {chapter}{\numberline {4}Implementation}{15}{chapter.4}
-\contentsline {chapter}{Conclusion}{16}{chapter*.19}
-\contentsline {chapter}{Bibliography}{17}{chapter*.20}
-\contentsline {chapter}{List of Tables}{18}{chapter*.21}
-\contentsline {chapter}{List of Abbreviations}{19}{chapter*.22}
-\contentsline {chapter}{Attachments}{20}{chapter*.23}
+\contentsline {subsubsection}{Estimating the size of projection}{14}{section*.19}
+\contentsline {subsubsection}{Estimating the size of selection}{14}{section*.20}
+\contentsline {subsubsection}{Estimating the size of join}{14}{section*.21}
+\contentsline {subsubsection}{Estimating the size of union}{15}{section*.22}
+\contentsline {subsubsection}{Estimating the size of intersection}{15}{section*.23}
+\contentsline {subsubsection}{Estimating the size of difference}{15}{section*.24}
+\contentsline {subsubsection}{Estimating the size of grouping}{15}{section*.25}
+\contentsline {subsection}{\numberline {2.3.2}Enumerating plans}{15}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Choosing join order}{15}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Choosing physical algorithms}{15}{subsection.2.3.4}
+\contentsline {chapter}{\numberline {3}Analysis}{16}{chapter.3}
+\contentsline {chapter}{\numberline {4}Implementation}{17}{chapter.4}
+\contentsline {chapter}{Conclusion}{18}{chapter*.26}
+\contentsline {chapter}{Bibliography}{19}{chapter*.27}
+\contentsline {chapter}{List of Tables}{20}{chapter*.28}
+\contentsline {chapter}{List of Abbreviations}{21}{chapter*.29}
+\contentsline {chapter}{Attachments}{22}{chapter*.30}
