@@ -38,13 +38,24 @@
 \contentsline {subsubsection}{Estimating the size of intersection}{15}{section*.23}
 \contentsline {subsubsection}{Estimating the size of difference}{15}{section*.24}
 \contentsline {subsubsection}{Estimating the size of grouping}{15}{section*.25}
-\contentsline {subsection}{\numberline {2.3.2}Enumerating plans}{15}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Choosing join order}{15}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Choosing physical algorithms}{15}{subsection.2.3.4}
-\contentsline {chapter}{\numberline {3}Analysis}{16}{chapter.3}
-\contentsline {chapter}{\numberline {4}Implementation}{17}{chapter.4}
-\contentsline {chapter}{Conclusion}{18}{chapter*.26}
-\contentsline {chapter}{Bibliography}{19}{chapter*.27}
-\contentsline {chapter}{List of Tables}{20}{chapter*.28}
-\contentsline {chapter}{List of Abbreviations}{21}{chapter*.29}
-\contentsline {chapter}{Attachments}{22}{chapter*.30}
+\contentsline {subsection}{\numberline {2.3.2}Enumerating plans}{16}{subsection.2.3.2}
+\contentsline {subsubsection}{Heuristic selection}{16}{section*.26}
+\contentsline {subsubsection}{Branch-and-bound plan enumeration}{16}{section*.27}
+\contentsline {subsubsection}{Hill climbing}{17}{section*.28}
+\contentsline {subsubsection}{Dynamic programming}{17}{section*.29}
+\contentsline {subsubsection}{Selinger-Style Optimization}{17}{section*.30}
+\contentsline {subsection}{\numberline {2.3.3}Choosing join order}{17}{subsection.2.3.3}
+\contentsline {subsubsection}{Dynamic programing to select a join order}{17}{section*.31}
+\contentsline {subsubsection}{Greedy algorithm for selecting a join order}{19}{section*.32}
+\contentsline {subsection}{\numberline {2.3.4}Choosing physical algorithms}{19}{subsection.2.3.4}
+\contentsline {chapter}{\numberline {3}Analysis}{20}{chapter.3}
+\contentsline {section}{\numberline {3.1}Format of relational algebra}{20}{section.3.1}
+\contentsline {section}{\numberline {3.2}Type resolving}{20}{section.3.2}
+\contentsline {section}{\numberline {3.3}Architecture}{20}{section.3.3}
+\contentsline {section}{\numberline {3.4}Optimization}{20}{section.3.4}
+\contentsline {section}{\numberline {3.5}Generating physical plan}{20}{section.3.5}
+\contentsline {chapter}{\numberline {4}Implementation}{21}{chapter.4}
+\contentsline {chapter}{Conclusion}{22}{chapter*.33}
+\contentsline {chapter}{Bibliography}{23}{chapter*.34}
+\contentsline {chapter}{List of figures}{24}{chapter*.35}
+\contentsline {chapter}{Attachments}{25}{chapter*.36}

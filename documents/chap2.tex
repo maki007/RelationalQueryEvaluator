@@ -241,11 +241,11 @@ In this section we will use following conventions:
 
 \subsubsection{Estimating the size of projection}
 
-Projection is only operator which size of result is compatible. It doesn't change number ot tuples, their lengths change.
+Projection is only operator which size of result is computable. It doesn't change number ot tuples, only their lengths change.
 
 \subsubsection{Estimating the size of selection}
 
-Selection reduces number of tuples.Lets have $S=\sigma_{A=c}(R)$, where $A$ is a attribute of $R$ and $c$ is a constant. Recommended estimation is:
+Selection usually reduces number of tuples. Lets have $S=\sigma_{A=c}(R)$, where $A$ is a attribute of $R$ and $c$ is a constant. Recommended estimation is:
 \begin{itemize}
 \item $T(S)=T(R)/V(R,A)$
 \end{itemize}
@@ -255,14 +255,14 @@ More problematic estimation is when selection involves inequality comparison Let
 \item $T(S)=T(R)/3$
 \end{itemize}
 
-For selection where condition is in form $C_1~and~C_2~and~...~and~C_N$ we can treat selection as a cascade of simple selections and estimate size for every simpler condition
+For selection where condition is in form $C_1~and~C_2~and~...~and~C_N$ we can treat selection as a cascade of simple selections and estimate size for every simpler condition.
 
-When selection involves $not$ and we have $S=\sigma_{not(C)}(R)$ we can use following estimation:
+In case we have following condition: $S=\sigma_{not(C)}(R)$, we use this estimation:
 \begin{itemize}
 \item $T(S)=T(R)-T(\sigma_C(R))$
 \end{itemize}
 
-Little more complicated is when condition involved an $or$ of conditions. Lets have expression $S=\sigma_{C_1~or~C_2}(R)$. We can assume that $C_1$ and $C_2$ are independent. Size of $S$ is:
+Little more complicated is when condition involved an $or$ of conditions. Lets have expression $S=\sigma_{C_1~or~C_2}(R)$. We assume that $C_1$ and $C_2$ are independent. Size of $S$ is:
 
 \begin{itemize}
 \item $T(S)=T(R)(1-(1-\dfrac{m_1}{T(R)})(1-\dfrac{m_2}{T(R)}))$
@@ -271,24 +271,159 @@ Little more complicated is when condition involved an $or$ of conditions. Lets h
 Expression $1-\dfrac{m_1}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_1$ and $1-\dfrac{m_2}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_2$. Product of these numbers are the fraction of tuples from $R$ which are not in result. One minus the product gives us fraction of tuples in $S$.
 
 \subsubsection{Estimating the size of join}
+\label{join}
+We start with natural join. Let's have expression $X=R(X,Y)\Join S(Y,Z)$. We join here by one attribute and we use estimation:
 
-a
+\begin{itemize}
+\item $T(X)=\dfrac{T(R)T(S)}{max(V(R,Y),V(S,Y))}$
+\end{itemize}
+
+We can generalize this rule for joining with multiple attributes. For join $R\Join S$, where we join $R$ and $S$ using following attributes $a_1,a_2,...a_n)$, we use this estimation:
+
+\begin{itemize}
+\item $T(R\Join S)=\dfrac{T(R)T(S)}{\prod_{k=1}^{n}{max(V(R,a_k),V(S,a_k))}}$
+\end{itemize}
+
+ 
+
+If we have other type of join (theta join), we can use following rules for it's estimation:
+\begin{enumerate}
+\item Size of product is product of sizes of relations involved.
+\item Equality conditions can be estimated using techniques presented in natural joins.
+\item An inequality compassion can be handled like inequality comparison in expression $\sigma_{A<c}(R)$. We assume that $1/3$ of tuples will satisfy condition. 
+\end{enumerate}
 
 \subsubsection{Estimating the size of union}
 
+If we have bag union, then size of resulting relation is sum of sizes of input relations. Size of set union $R \cup_S S$ can be between $max(T(R),T(S))$ and $T(R)+T(S)$. Recommended estimate is average of this numbers. 
+
 \subsubsection{Estimating the size of intersection}
+Size of relation $R\cup S$ can be between $0$ and $min(T(R),T(S))$. We recommend to take half of size of smaller relation:
+\begin{itemize}
+\item  $min(T(R),T(S))/2$.
+\end{itemize}
 
 \subsubsection{Estimating the size of difference}
 
+Result of expression $R-S$ can be as big as $T(R)$ and as small as $T(R)-T(S)$. Suggested estimate is: 
+\begin{itemize}
+\item  $T(R-S)=T(R)-T(S)$.
+\end{itemize}
 \subsubsection{Estimating the size of grouping}
-
+Size of the result of expression $\gamma_L(R)$ is $V(R,[g_1,g_2,...,g_n])$, where $g_x$ are grouping attributes of $L$. This statistics is almost never available so we need another estimate. $T(\gamma_L(R))$ can be between 1 and $\prod_{k=1}^{n}{V(R,g_k)}$. Upper bound can larger than number of tuple in relation $R$. That's why we suggest:
+\begin{itemize}
+\item $T(\gamma_L(R))=min(\dfrac{T(R)}{2},\prod_{k=1}^{n}{V(R,g_k)})$
+\end{itemize}
+Duplicate elimination can be handled exactly like grouping.
 
 \subsection{Enumerating plans}
+For every logical plan there is exponential many physical plans. in this section we present way to enumerate physical plans so we can choose plan with least estimated cost. There are two broad approaches:
+\begin{itemize}
+\item Top-down: We go down the algebra tree. For each possible implementation of operation, we consider best possible algorithms for it's subtrees. We compute costs of every combination and take the best.
+\item Bottom-up: We go up the tree and for every subexpression we enumerate plans based on plans generated for it's subexpressions.
+\end{itemize}
+
+There is not much difference between this approaches but one method eliminates plans that other method can't and vice versa.
+\subsubsection{Heuristic selection}
+
+We use same approach for generating physical plan as we used to improve logical plan. We make choices based on heuristics. Here are some heuristics that can be used:
+
+\begin{itemize}
+\item If there is selection $\sigma_{A=c}$ and relation $R$ has index on attribute $A$, then we use scanning by index instead of scanning table with filtering result.
+\item More general rule if selection contains condition $A=c$ and selected relation contains index of $A$, then we use scanning by index and filtering result based on other parts of condition.
+\item If an join attribute has an index, we can use joining by index.
+\item If one argument of join is sorted, then we prefer merge join to hash join.
+\item If we compute intersection of union of more than 2 relations, we perform algorithm on smaller relations first.
+\end{itemize}
+
+\subsubsection{Branch-and-bound plan enumeration}
+Branch-and-bound plan enumeration is ofter use in practice. We begin by finding physical plan using heuristics. We denote cost of this plan $C$. Then we can consider other plans for sub-queries. We can eliminate any plan for sub-query with cost greater than $C$. If we get plan with lower estimated cost than $C$ we use this plan instead.
+
+The grate advantage is we can choose when to cut search for better plan. If $C$ is low then we don't continue searching other plan. On the other hand when $C$ is large, it is better to invest some time in finding a  better plan.
+\subsubsection{Hill climbing}
+
+First we start with heuristically selected plan. Then we try to do some changes, for example changing order of joins or replacing operator using hash table for sort-based operator. When we find a plan where no small modification give up better plan, then we make this plan out chosen physical plan.
+
+\subsubsection{Dynamic programming}
+Dynamic programming is variation of bottom-up strategy. For each subexpression we keep only one plan of least cost.
+
+\subsubsection{Selinger-Style Optimization}
+This is a improvement of dynamic programing approach. We keep for every subexpression not only best plan, but also other plans with higher cost, which result is in some way sorted. This might be useful in following situation:
+\begin{enumerate}
+\item The sort operator $\tau_L$ is on the root of tree and we have plan, which is sorted by some or all attributes in $L$.
+\item Plan is sorted by attribute used later in grouping.
+\item We are joining by some sorted attribute.
+\end{enumerate}
+In this situation we don't have to sort input or we need only partial sort and we can use faster algorithm, which takes advantage of sorted input.
+
 
 \subsection{Choosing join order}
+ We have three choices how to choose order of join of multiple relation:
+\begin{enumerate}
+\item Consider all possible options.
+\item Consider only subset of join orders.
+\item Use heuristic to pick one.
+\end{enumerate}
+ 
+In this section we present algorithm that can be used for choosing join order.
+ 
+\subsubsection{Dynamic programing to select a join order}
+ 
+For this algorithm we need a table, where we store information following information:
+ 
+\begin{enumerate}
+\item Estimated size of relation.
+\item Cost to compute current relations.
+\item Expression how was current relation computed.
+\end{enumerate}
 
+We store every single relation $R$ with estimated cost 0. For every pair of relations we compute their estimated size of join and store it into table. Fo that we use estimation describe in section \ref{join}.  
+
+After that we compute entry of all subset of sizes $(3,4,...n)$.
+If we want to consider all possible trees, we need to partition relations in join $R$ into two non empty disjoint sets. For each pair of sets we compute estimated size and cost of their join to get join $R$. For this we use data already in our table. We are estimating join of $k$ relations and all joins of $k-1$ relations are already estimated. The join tree with least estimated cost will be stored in the table.
+
+Example: for estimating join $A\Join B\Join C\Join D$ we try to join following subsets:
+\begin{enumerate}
+\item $A$ and $B\Join C\Join D$
+\item $B$ and $A\Join C\Join D$
+\item $C$ and $A\Join B\Join D$
+\item $D$ and $A\Join B\Join C$
+\item $A\Join B$ and $C\Join D$
+\item $A\Join C$ and $B\Join D$
+\item $A\Join D$ and $B\Join C$
+
+\end{enumerate}
+
+We don't have to consider all trees but only so called left-deep join tree. Tree is called left-deep tree if all of it's right children are leafs. Right-deep tree is tree, where all left children are leafs.
+ 
+We do it the same way like we wanted to include all possible trees, but with one exception. When partitioning $R$ into two non empty disjoint sets, we make sure that one set has only one relation.
+
+Example: for estimating join $A\Join B\Join C\Join D$ we try to join following subsets:
+\begin{enumerate}
+\item $A$ and $B\Join C\Join D$
+\item $B$ and $A\Join C\Join D$
+\item $C$ and $A\Join B\Join D$
+\item $D$ and $A\Join B\Join C$
+\end{enumerate}
+
+\subsubsection{Greedy algorithm for selecting a join order}
+
+Time complexity of using dynamic programming to select an order of join is exponential. We can us it for small amount of relations (maybe maximal 5 or 6).If we don't want to invest time we can use greedy algorithm. This algorithm has to store same information as dynamic programing algorithm for every relation.
+
+We start with a pair fo relations $R_i, R_j$, for which size of $R_i \Join R_j$ is smallest. This join is out current tree.
+
+For other relation that are not yet included we find relation $R_k$, so that it's join with current tree give us smallest estimated size. We continue until we include all relations into tree. 
+
+This algorithm will also create left-deep or right-deep join tree.
+
+There are examples where dynamic algorithm finds plans with lower estimated cost than greedy algorithm.
+ 
 \subsection{Choosing physical algorithms}
 
 table
+
 select
+
 join
+
+other
