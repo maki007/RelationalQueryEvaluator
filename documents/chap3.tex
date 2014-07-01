@@ -2,12 +2,51 @@
 
 \section{Format of relational algebra}
 
+In this section we present relation algebra operators which are used as input of optimizer:
+\begin{enumerate}
+\item Projection - we used extended projection, which remove columns, compute new columns using expressions and rename columns.
+\item Table 
+\item Join - we used theta join $\Join_C$. Condition $C$ can be in following format:
+\begin{itemize}
+\item Empty and in this case join represent Cartesian product.
+\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belong to first relation and $b_k$ belongs to other relation.
+\item $a_1\oplus b \ominus a_2$, where $a_1$ and $a_2$ belong one input and $b$ belongs to second input. $\oplus$ and $\ominus$ can be $<$ or $\leq$.
 
-\section{Type resolving}
+\end{itemize}
+
+In addition to condition we need to specify output attributes of join. They can be from both input and we can optionally assign them new name, in case we need to work with two attributes but they have same name.
+
+Other types or joins are not directly supported, but can be replace with cross join with following selection.
+\item Anti join wasn't presented with other join algorithms. We denote it $\ltimes_C$ where $C$ is anti join condition. Output of expression $R \ltimes_C S$ is relation with tuples from $R$, for which doesn't exist any tuple is $S$ that satisfy condition. We can us join and anti join to express outer join:
+\begin{itemize}
+\item 
+ $R\Join^\circ_C S= (R\Join_C S)\cup (R\ltimes_C S)$
+\end{itemize}
+To be precise we need to add columns contain $null$ to result of anti join.
+ 
+Other use is to compute difference $R-S$. This can be rewritten as $R \ltimes_C S$, where $C$ equates attributes from $R$ with same called attributes in $S$. 
+ 
+Advantages of using this attribute is, that we don't need outer join and difference, which will make working with algebra a little easier.
+
+In implemented tool condition $C$ of anti join can be in following format:
+\begin{itemize}
+\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belong to first relation and $b_k$ belongs to other relation.
+\end{itemize}
+In addition to that, we also need to specify output attributes of anti join and optionally assign them a new name. They can be only from first input relation.
+\item Group operator $\gamma_L$, where L is non empty list of group attributes and aggregate functions. Supported aggregate functions are $min$, $max$, $sum$ and $count$. Function $avg$ is not supported but it can easily computed. All mentioned functions except $count$ take one attribute as input, function count has empty input. 
+
+As we mentioned before, group operator is more general version of duplicate elimination. That's why we don't include duplicate elimination in our algebra.
+\item Sort operator $\tau_L$, where $L$ is a non empty list of attributes with sort directions.
+\item Union - $\cup$ is set union. In case we want to bag union we can compute set union and eliminate duplicate using grouping operator. Requirement is that both relations have same number of columns and they have same name.
+\item Selection
+
+\end{enumerate}
 
 
 \section{Architecture}
 
+
+\section{Type resolving}
 
 
 \section{Optimization}

@@ -329,8 +329,7 @@ There is not much difference between this approaches but one method eliminates p
 We use same approach for generating physical plan as we used to improve logical plan. We make choices based on heuristics. Here are some heuristics that can be used:
 
 \begin{itemize}
-\item If there is selection $\sigma_{A=c}$ and relation $R$ has index on attribute $A$, then we use scanning by index instead of scanning table with filtering result.
-\item More general rule if selection contains condition $A=c$ and selected relation contains index of $A$, then we use scanning by index and filtering result based on other parts of condition.
+
 \item If an join attribute has an index, we can use joining by index.
 \item If one argument of join is sorted, then we prefer merge join to hash join.
 \item If we compute intersection of union of more than 2 relations, we perform algorithm on smaller relations first.
@@ -420,13 +419,28 @@ There are examples where dynamic algorithm finds plans with lower estimated cost
  
 \subsection{Choosing physical algorithms}
 
-To complet physical plan we need to assign physical algorithms to opearations in logical plan.
-\subsubsection{Choosing selection algorithm}
+To complete physical plan we need to assign physical algorithms to operations in logical plan.
+\subsubsection{Choosing selection algorithms}
 
+Basic approach is to use index on relation instead of reading whole relation. We can usel following heuristic for picking selection algorithm: 
+\begin{itemize}
+\item If there is selection $\sigma_{A\oplus c}$ and relation $R$ has index on attribute $A$, $c$ is constant and $\oplus$ is $=$, $<$, $\leq$, $>$ or $\geq$, then we use scanning by index instead of scanning table with filtering result.
+\item More general rule if selection contains condition $A\oplus c$ and selected relation contains index of $A$, then we use scanning by index and filtering result based on other parts of condition.
+\end{itemize}
 
+\subsubsection{Choosing join algorithms}
 
-\subsubsection{Choosing join algorithm}
+We recommend to use sort join when:
 
+\begin{enumerate}
+\item On or both join relations are sorted by join attributes.
+\item There are more join on the same attributes. For join $R(a,b)\Join S(a,c) \Join T(a,d)$ we can join first $R$ and $S$ by sort based algorithm. We can assume that $R \Join S$ will be sorted by attribute $a$ and then we use second sort join.
+
+\end{enumerate}
+
+If we have join $R(a,b)\Join S(b,c)$ and we expect size of relation to be small and $S$ have index on attribute on $b$, we can use join algorithm using this index.
+
+If there are no sorted relation and we don't have any indexes on relations, it is probably best option to use hash base algorithm.
 
 \subsubsection{Choosing scanning algorithms}
 
@@ -435,13 +449,15 @@ Leaf of relation tree will be replaced by scanning operator:
 \begin{itemize}
 \item $TableScan(R)$ - operator reads entire table.
 
-\item $SortScan(R,L)$ - operator reads entire table and sort by attributes in list $L$.
+\item $SortScan(R,L)$ - operator reads entire table and sort by attributes in list~$L$.
 
 \item $IndexScan(R,C)$ - $C$ is a condition in form $A\oplus c$, where $c$ is constant, $A$ is attribute and $\oplus$ is $=$, $<$, $\leq$, $>$, $\geq$. Operator reads tuples satisfying condition using index on $A$, result will be sorted by columns on used index.
 
 \item $TableScan(R,A)$ - $A$ is an attribute. Operator reads entire table using index on $A$, result will be sorted by columns on used index.
 
 \end{itemize}
+
+We choose scan algorithm based of need of sorted output and availability of indexes.
 
 \subsubsection{Other algorithms}
 
