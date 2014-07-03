@@ -2,10 +2,16 @@
 
 \section{Format of relational algebra}
 
-In this section we present relation algebra operators which are used as input of optimizer:
+In this section we present relation algebra operators which are used as input of compiler:
 \begin{enumerate}
-\item Projection - we used extended projection, which remove columns, compute new columns using expressions and rename columns.
-\item Table 
+\item Projection - we used extended projection $\phi_L$, which remove columns, compute new columns using expressions and rename columns
+
+\item Table operator, which is leaf or algebra tree. For this operator we need to provide arguments like:
+\begin{itemize}
+\item table name
+\item information about index, like name and columns
+\item columns to read
+\end{itemize}
 \item Join - we used theta join $\Join_C$. Condition $C$ can be in following format:
 \begin{itemize}
 \item Empty and in this case join represent Cartesian product.
@@ -38,18 +44,54 @@ In addition to that, we also need to specify output attributes of anti join and 
 As we mentioned before, group operator is more general version of duplicate elimination. That's why we don't include duplicate elimination in our algebra.
 \item Sort operator $\tau_L$, where $L$ is a non empty list of attributes with sort directions.
 \item Union - $\cup$ is set union. In case we want to bag union we can compute set union and eliminate duplicate using grouping operator. Requirement is that both relations have same number of columns and they have same name.
-\item Selection
+\item Selection - we used selection as described in classic relational algebra.
 
 \end{enumerate}
 
 
 \section{Architecture}
+The architecture of implemented tool is displayed in figure~\ref{fig:compilerarchitecture}.
 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.5\textwidth]{compilerarchitecture}
 
-\section{Type resolving}
+      \caption{Compiler architecture.}
+          \label{fig:compilerarchitecture}
+\end{figure}
 
+Relational algebra is read from input. the input is in XML format. For this format we decided for following reasons:
+\begin{itemize}
+\item XML has tree like structure exactly like relational algebra.
+\item For validation we only need to write schema.
+\item There are already implemented tools for parsing.
+\item There is no need to write input parser.
+\end{itemize}
+
+After that relational algebra tree is checked in component called semantic checker. Semantic checker checks if all of used attributes are on input of operator or if there are no duplicate operators. 
+
+Semantically correct tree goes to component that groups neighboring joins into one. This is done so we can choose fastest way to join multiple relations.
+
+Algebra tree with grouped joins is optimized. We implemented one most important optimizations pushing selections down the tree. This component also pushes selection to join if selection contains equal condition, where one argument is from first and second argument is from second input.
+
+Optimized algebra tree is processed by compiler, which generates physical plan which. This plan is not final. It's sort operator's parameters doesn't have to be final. For example if we want to sort relation before grouping we can sort it in different directions and than later decide what direction is better.
+
+Final plan is output of component named Sort resolver. This component decides unknown sort order of sort operators.
+
+Final plan is then converted to Bobolang in Output writer.
+
+Implemented tool doesn't check types. Since it will be back end of compiler, the assumption is that front end parsing text will handle types. Types are only copied to output.
+
+\section{Data structures}
 
 \section{Optimization}
 
 
+\section{Physical algorithms}
+
+
 \section{Generating physical plan}
+
+
+
+
