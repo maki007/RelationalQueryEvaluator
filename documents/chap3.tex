@@ -48,6 +48,30 @@ As we mentioned before, group operator is more general version of duplicate elim
 
 \end{enumerate}
 
+\section{Physical algorithms}
+
+In this section we enumerate and describe algorithms which are generated to output. We assume that queries have enough memory and physical operators doesn't have to store intermediate result on hard drive.
+
+Here is a list on algorithms:
+\begin{itemize}
+\item $Filter$ - this algorithm reads input tuples and outputs tuple satisfying given condition. Output doesn't have to be sorted same way as input.
+\item $Filter$ keeping order - this algorithm reads input tuples and outputs tuple satisfying given condition. Output has to be sorted same way as input.
+\item $Hash~group$ - operator group tuples and computes aggregate functions. Grouping is performed using hash table.
+\item $Sorted~group$ - operator groups tuples and computes aggregate functions. Input has to be sorted by group attributes.
+\item $Column~operations$ - this is an implementation of extended projection algebra node. 
+\item $Cross~join$ - this operator computes product of two relations.
+\item $Hash~join$ - computes join with equal conditions using hash table. 
+\item $Merge~equijoin$ - this algorithm computes join with equal conditions. Input relations has to be sorted by join attributes. Algorithm creates join result merging sorted relations.
+\item $Merge~non~equijoin$ - operator computes theta join with condition $a_1\oplus b \ominus a_2$, where $a_1$ and $a_2$ belong one input and $b$ belongs to second input. Signs $\oplus$ and $\ominus$ can be $<$ or $\leq$. Input relations has to be sorted by join attributes. Algorithm computes join merging relations.
+\item $Hash~anti~join$ -  algorithm computes anti join with equal conditions of two relations using hash table.
+\item $Merge~anti~join$ - algorithm computes anti join with equal conditions. Input relations has to be sorted by join attributes.
+\item $Table~scan$ - operator scans whole table from hard drive.
+\item $Scan~and~sort~by~index$ - operator scans whole table from hard drive using index. Output will be sorted by columns on given index.
+\item $Index~Scan$ - this algorithm uses index to read only tuples satisfying given condition.
+\item $Sort$ - this algorithm sorts input. Input can be presorted, in this case operator uses this information and sorts only by not yet sorted attributes.
+\item $Union$ - this operator is bag union, it only append tuples from one relation to another.
+
+\end{itemize}
 
 \section{Architecture}
 The architecture of implemented tool is displayed in figure~\ref{fig:compilerarchitecture}.
@@ -85,10 +109,6 @@ Implemented tool doesn't check types. Since it will be back end of compiler, the
 \section{Data structures}
 
 \section{Optimization}
-
-
-\section{Physical algorithms}
-
 
 \section{Generating physical plan}
 
