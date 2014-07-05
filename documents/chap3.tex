@@ -129,9 +129,19 @@ We choose same structure for physical plan. Physical plan usually doesn't have t
   \centering
     \includegraphics[width=0.6\textwidth]{groupplan}
 
-      \caption{Example of physical plans structure}
+      \caption{Example of physical plans structure.}
           \label{fig:groupplan}
 \end{figure}
+
+Physical and logical plan also contain expressions. Expressions are stored in polymorphic expression tree. We have example of this structure in figure~\ref*{fig:expressiontree}. This structure represents expression $X*Y+874$.
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.6\textwidth]{expressiontree}
+
+      \caption{Example expression tree.}
+          \label{fig:expressiontree}
+\end{figure}
+
 More complicated structure was used to storing join parameters. This structure is stored in every sort physical operator to determine what columns should relation be sorted by. 
 
 If we want to use group operator based on sort and it groups by three columns, we don't know which sort direction to use. Let's have expression $\gamma_{x,y}(R)$. There is four way to sort expression before calling group operator. This ways are:
@@ -164,7 +174,7 @@ All this requirements were use to design structure to store sort parameter witho
 
 In figure \ref{fig:sortparameters} we display an example of sort parameters, which sorts by 6 columns. It usually contains from 1 or more columns group. The meaning is that order of columns groups is set. Order of columns in groups is arbitrary. It means that $F$ has to be on sixth place, but column $E$ can be on forth of fifth. Every column contains information about sort order: $ASC$ (ascending), $Desc$ (descending) or $UNK$ (unknown - can be ascending or descending). Every column also can be list of attributes which are equal to it. If we for example in projection remove attribute $A$, we still have attributes $X$, $Y$ and $Z$ which are equal to it, so one can take it's place.
 
-Figure \ref{fig:sortparameters} represents many sort order possibilities we enumerate only some of then:
+Figure \ref{fig:sortparameters} represents many sort order possibilities we enumerate only some of them:
 \begin{enumerate}
 \item $A:ASC,C:DESC,B:ASC,H:DESC,D:ASC,F:DESC$
 \item $C:DESC,B:ASC,Z:ASC,H:DESC,D:DESC,F:DESC$
@@ -178,9 +188,46 @@ Figure \ref{fig:sortparameters} represents many sort order possibilities we enum
 
 In this section we describe algebra optimization, which were implemented to improve logical plan.
 
+Before we start with optimizations we need to prepare logical plan for it. We group joins algebra nodes and expressions connected with $and$ and $or$.
+
+Basically we go from to of the tree. If we find join we convert to it grouped join. If on of it's children is join we merge it. This representation is used for choosing faster way to order join. We do the same thing for conditions. From expression tree $a=2~and~(b=2~and~c=2)$ we create $AND(a=2,b=2,c=2)$. This representation is useful for splitting condition into simpler conditions.
+
+We implemented very important optimization: pushing selection down the tree. Every selection is spitted into selection with simpler conditions. For every such selection we try to move it down the tree as much as possible. In this phase we used following rules ($\sigma_C$ is being pushed down)
+\begin{enumerate}
+\item $\sigma_C(\sigma_D(R))=\sigma_D(\sigma_C(R))$
+\item $\sigma_C(\pi_L(R))=\pi_L(\sigma_C(R))$, it works only if $C$ doesn't contains new computed columns in extended projection. We also need to rename columns in condition $C$ in case there was some renaming.
+\item  $\sigma_C(R \Join_D S)$ can be rewritten as
+\begin{enumerate}
+\item $\sigma_C(R) \Join_D S$ if $C$ contains only columns from $R$
+\item $R \Join_D \sigma_C(S)$ if $C$ contains only columns from $R$
+\item $R \Join_{D~and~C} S$ if $C$ is in form $a=b$ where $a$ is from $R$ and $b$ is from $S$
+\end{enumerate}
+\item $\sigma_C(R \ltimes_C S)=\sigma_C(R)\ltimes_C S$ if $C$  contains only columns from $R$, which is always because output of $R \ltimes_C S$ can contain only columns $R$
+\item $\sigma_C(R\cup S)=\sigma_C(R)\cup \sigma_C(S)$
+\end{enumerate}
 
 \section{Generating physical plan}
 
+This part is complicated so that's why we try to choose easiest method for generating plans. The decision was between heuristic method and dynamic programming. From amount of programming it was probably the same. We chose dynamic programming, because it can give better results. We just generate all possible plans and choose the fastest.
+
+We process logical plan from leafs. For every node we generate all possible physical algorithms and we insert resulting plans into heap, where we keep all $n$ fastest plans for current node.
+
+For comparing physical plan we estimated run time. For every node we store how long it will run. Estimated time for plan is sum of estimated times of all nodes.
+
+Very important are equations, which compute estimated time for nodes. They depend from size of input relation. Modifying them can resolve in getting better physical plans. For example if physical algorithm hash join takes too much time because of lot random accessing memory, we can modify it so merge sort will be preferred.
+
+Crucial are informations about size of tables. If they are not in input we use default value and physical plan will be probably worse. Other important parameter is number of unique values in table column. Size of join depends on it and since joins usually takes significant amount of time, it is important to have as precise values as possible. 
+
+\subsection{Join order selecting algorithm}
+
+In chapter \ref{joinOrder} we presented algorithm choosing join order. We should choose this order and then assign join algorithms. We do it in one phase for following reason. In case we don't have information about table sizes, we cannot determine join order because all are the same. In this situation we can first join relations which are sorted some way to get a faster plan.
+
+alg 1
+
+alg 2
 
 
 
+
+
+\subsection{Resolving sort parameters}
