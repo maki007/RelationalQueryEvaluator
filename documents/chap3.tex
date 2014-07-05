@@ -73,6 +73,8 @@ Here is a list on algorithms:
 
 \end{itemize}
 
+Nested loop joins are not supported, because it's implementation in Bobox can create cycles.
+
 \section{Architecture}
 The architecture of implemented tool is displayed in figure~\ref{fig:compilerarchitecture}.
 
@@ -174,7 +176,7 @@ Figure \ref{fig:sortparameters} represents many sort order possibilities we enum
 
 \section{Optimization}
 
-
+In this section we describe algebra optimization, which were implemented to improve logical plan.
 
 
 \section{Generating physical plan}
