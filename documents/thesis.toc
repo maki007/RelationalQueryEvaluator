@@ -57,10 +57,10 @@
 \contentsline {section}{\numberline {3.2}Physical algorithms}{23}{section.3.2}
 \contentsline {section}{\numberline {3.3}Architecture}{25}{section.3.3}
 \contentsline {section}{\numberline {3.4}Data structures}{26}{section.3.4}
-\contentsline {section}{\numberline {3.5}Optimization}{26}{section.3.5}
-\contentsline {section}{\numberline {3.6}Generating physical plan}{26}{section.3.6}
-\contentsline {chapter}{\numberline {4}Implementation}{27}{chapter.4}
-\contentsline {chapter}{Conclusion}{28}{chapter*.37}
-\contentsline {chapter}{Bibliography}{29}{chapter*.38}
-\contentsline {chapter}{List of figures}{30}{chapter*.39}
-\contentsline {chapter}{Attachments}{31}{chapter*.40}
+\contentsline {section}{\numberline {3.5}Optimization}{29}{section.3.5}
+\contentsline {section}{\numberline {3.6}Generating physical plan}{29}{section.3.6}
+\contentsline {chapter}{\numberline {4}Implementation}{30}{chapter.4}
+\contentsline {chapter}{Conclusion}{31}{chapter*.37}
+\contentsline {chapter}{Bibliography}{32}{chapter*.38}
+\contentsline {chapter}{List of figures}{33}{chapter*.39}
+\contentsline {chapter}{Attachments}{34}{chapter*.40}

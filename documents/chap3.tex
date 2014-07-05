@@ -104,11 +104,78 @@ Final plan is output of component named Sort resolver. This component decides un
 
 Final plan is then converted to Bobolang in Output writer.
 
-Implemented tool doesn't check types. Since it will be back end of compiler, the assumption is that front end parsing text will handle types. Types are only copied to output.
+Implemented tool doesn't check types. Since it will be back end of compiler, the assumption is that front end parsing text will handle types. Types are only copied to output and we assume that there are no mistakes in types.
 
 \section{Data structures}
 
+In this chapter we describe data structures used in implementing tool.
+
+Relational algebra si stored in polymorphic tree. Every node stores it's parameters pointer on parent in the tree and zero or more pointer on children node. No other structure was considered for this representation since this is efficient way to store logical plan. It allows easily to add new types of relational algebra operators and it is not had to manipulate with the tree. We can remove or add new node very easily. 
+Example of this representation can be found in figure \ref{fig:groupalgebra}. It's representing simple query reading whole table, then grouping it and computing some aggregation functions. The result is sorted at the end. Leaf of the tree also stores some information about indexes on read table, list of columns with their type and number of unique values. Other important parameter is size of relation which is displayed in number of rows parameter.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{groupalgebra}
+
+      \caption{Example of relational algebra structure.}
+          \label{fig:groupalgebra}
+\end{figure}
+
+We choose same structure for physical plan. Physical plan usually doesn't have to changes. The advantage of storing it into polymorphic tree is to ability to easily add new root node. Example of this representation can be found in figure \ref{fig:groupplan}. This figure contains one of possible physical plans for relational algebra in figure  \ref{fig:groupalgebra}. For reading we used algorithm table scan, then we hashed input by requested columns and at the end we sorted it using sort operator. Every nodes stores additional information like output attributes, estimated time it's going to need and size of output relation.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.6\textwidth]{groupplan}
+
+      \caption{Example of physical plans structure}
+          \label{fig:groupplan}
+\end{figure}
+More complicated structure was used to storing join parameters. This structure is stored in every sort physical operator to determine what columns should relation be sorted by. 
+
+If we want to use group operator based on sort and it groups by three columns, we don't know which sort direction to use. Let's have expression $\gamma_{x,y}(R)$. There is four way to sort expression before calling group operator. This ways are:
+\begin{itemize}
+\item $x:A,y:A$
+\item $x:A,y:D$
+\item $x:D,y:A$
+\item $x:D,y:D$
+\end{itemize}
+$A$ means ascending and $D$ is abbreviation for descending.
+
+If we want to use merge join, joining on two attributes, we don't know direction and also which column should be first and which second. For example let's have $R\Join_{r_1=s_1~and~r_2=s_2} S$. In this case we can sort relation $R$ following way:
+\begin{itemize}
+\item $r_1,r_2$
+\item $r_2,r_1$
+\end{itemize}
+Order, how to sort columns is also unknown.
+
+We also want to store information about equality of sort column. After merge join $R\Join_{r_1=s_1} S$ is result sorted by $r_1$ or $s_1$.
+
+All this requirements were use to design structure to store sort parameter without enumerating all possible sort orders.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.9\textwidth]{sortparameters}
+
+      \caption{Structure storing parameters for sort.}
+          \label{fig:sortparameters}
+\end{figure}
+
+In figure \ref{fig:sortparameters} we display an example of sort parameters, which sorts by 6 columns. It usually contains from 1 or more columns group. The meaning is that order of columns groups is set. Order of columns in groups is arbitrary. It means that $F$ has to be on sixth place, but column $E$ can be on forth of fifth. Every column contains information about sort order: $ASC$ (ascending), $Desc$ (descending) or $UNK$ (unknown - can be ascending or descending). Every column also can be list of attributes which are equal to it. If we for example in projection remove attribute $A$, we still have attributes $X$, $Y$ and $Z$ which are equal to it, so one can take it's place.
+
+Figure \ref{fig:sortparameters} represents many sort order possibilities we enumerate only some of then:
+\begin{enumerate}
+\item $A:ASC,C:DESC,B:ASC,H:DESC,D:ASC,F:DESC$
+\item $C:DESC,B:ASC,Z:ASC,H:DESC,D:DESC,F:DESC$
+\item $B:ASC,C:DESC,A:ASC,E:ASC,D:DESC,F:DESC$
+\item $C:DESC,B:ASC,Y:ASC,D:ASC,H:ASC,F:DESC$
+\end{enumerate}
+
+
+
 \section{Optimization}
+
+
+
 
 \section{Generating physical plan}
 
