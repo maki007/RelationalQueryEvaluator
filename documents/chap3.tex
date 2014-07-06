@@ -220,14 +220,28 @@ Crucial are informations about size of tables. If they are not in input we use d
 
 \subsection{Join order selecting algorithm}
 
+
 In chapter \ref{joinOrder} we presented algorithm choosing join order. We should choose this order and then assign join algorithms. We do it in one phase for following reason. In case we don't have information about table sizes, we cannot determine join order because all are the same. In this situation we can first join relations which are sorted some way to get a faster plan.
 
-alg 1
+In this section we describe algorithm for selecting join order. We are using Two algorithms dynamic programming and greedy algorithm. For dynamic programming we use version where we enumerate all possible tree. This algorithm can give us very good plans but has exponential complexity and that's why we use it only if number if joined relations in grouped join node is small. If we join more relations we use greedy algorithm, which only generated left or right deep trees but it's complexity is not exponential only polynomial.
 
-alg 2
+Input in both algorithm are set of plans for every input join relation.
+
+\subsubsection{Dynamic programing for selection join order}
+
+We use a variation of algorithm described in section \ref{dymanicalgorithm}. For every subset we use best plans from it's disjoin subsets to generate new plans. 
+
+Time complexity is at least exponential since we generate all subsets of $n$ relations, this number is $2^n$.
 
 
-
-
-
+\subsubsection{Greedy algorithm for selection join order}
+ This is also a variation of algorithm described in section \ref{greedyalgorithm}. It beginning we create joins of every pair of relations. From them we choose best $k$ trees.
+ 
+ In every following iteration for every tree we generate new trees by adding new relation to tree. In following iteration we continue only with best $k$ join trees.
+ 
 \subsection{Resolving sort parameters}
+
+After we generated physical plan we need to decide  what sort parameters in sort operator to use.
+
+To do this we goes down the tree and store information about how relations is sorted. Based on that we adjust sort parameters or just choose arbitrary order if possible.
+

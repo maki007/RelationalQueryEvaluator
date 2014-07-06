@@ -368,7 +368,7 @@ In this situation we don't have to sort input or we need only partial sort and w
 In this section we present algorithm that can be used for choosing join order.
  
 \subsubsection{Dynamic programing to select a join order}
- 
+\label{dymanicalgorithm}
 For this algorithm we need a table, where we store information following information:
  
 \begin{enumerate}
@@ -407,7 +407,7 @@ Example: for estimating join $A\Join B\Join C\Join D$ we try to join following s
 \end{enumerate}
 
 \subsubsection{Greedy algorithm for selecting a join order}
-
+\label{greedyalgorithm}
 Time complexity of using dynamic programming to select an order of join is exponential. We can us it for small amount of relations (maybe maximal 5 or 6).If we don't want to invest time we can use greedy algorithm. This algorithm has to store same information as dynamic programing algorithm for every relation.
 
 We start with a pair fo relations $R_i, R_j$, for which size of $R_i \Join R_j$ is smallest. This join is our current tree.
