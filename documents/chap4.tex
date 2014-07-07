@@ -32,7 +32,70 @@ This example is taken from Tpc benchmark \cite{benchmark}. $[DATE]$ and $[SEGMEN
 
 \section{Input}
 
+As mentioned input is XML containing logical query plan. In this section we describe it's structure. 
 
+\subsection{Sort}
+
+On root of every tree is sort, even if output hasn't been sorted. in this case it has empty parameters. This is an example of sort in algebra tree:
+
+
+\lstset{
+  language=XML,
+  morekeywords={encoding,
+    xs:schema,xs:element,xs:complexType,xs:sequence,xs:attribute}
+}
+\begin{lstlisting}
+<?xml version="1.0" encoding="utf-8"?>
+<sort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="algebra.xsd">
+  <parameters>
+    <parameter column="revenue" direction="desc" />
+    <parameter column="o_orderdate" direction="asc" />
+  </parameters>
+  <input>
+  ...
+  <input>
+</sort>
+\end{lstlisting}
+
+Sort is a root element of XML file. Inside parameters is specified how to sort relation. In this example we have sort $\tau_{revenue:desc,o\_orderdate:asc}(...)$. In element input there should be one other algebra tree node.
+
+\subsection{Group}
+
+Next example display group node:
+
+\begin{lstlisting}
+<group>
+  <parameters>
+    <group_by column="l_orderkey"/>
+    <group_by column="o_orderdate" />
+    <group_by column="o_shippriority"/>
+    <sum argument="x" output="revenue"/>
+  </parameters>
+  <input>
+  ...
+  <input>
+</group>
+\end{lstlisting}
+
+This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element has to have at least one group by parameter or at least one aggregate function. Inside element input there should be one other operator.
+
+\subsection{Selection}
+
+\subsection{Join}
+
+\subsection{Anti join}
+
+\subsection{Table}
+
+\subsection{union}
+
+\subsection{Extended projection}
+
+
+
+
+ 
 
 \section{Output}
 

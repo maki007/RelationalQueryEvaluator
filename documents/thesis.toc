@@ -65,8 +65,16 @@
 \contentsline {subsection}{\numberline {3.6.2}Resolving sort parameters}{32}{subsection.3.6.2}
 \contentsline {chapter}{\numberline {4}Implementation}{33}{chapter.4}
 \contentsline {section}{\numberline {4.1}Input}{33}{section.4.1}
-\contentsline {section}{\numberline {4.2}Output}{33}{section.4.2}
-\contentsline {chapter}{Conclusion}{34}{chapter*.39}
-\contentsline {chapter}{Bibliography}{35}{chapter*.40}
-\contentsline {chapter}{List of figures}{36}{chapter*.41}
-\contentsline {chapter}{Attachments}{37}{chapter*.42}
+\contentsline {subsection}{\numberline {4.1.1}Sort}{34}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Group}{34}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Selection}{35}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Join}{35}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Anti join}{35}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Table}{35}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}union}{35}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}Extended projection}{35}{subsection.4.1.8}
+\contentsline {section}{\numberline {4.2}Output}{35}{section.4.2}
+\contentsline {chapter}{Conclusion}{36}{chapter*.39}
+\contentsline {chapter}{Bibliography}{37}{chapter*.40}
+\contentsline {chapter}{List of figures}{38}{chapter*.41}
+\contentsline {chapter}{Attachments}{39}{chapter*.42}
