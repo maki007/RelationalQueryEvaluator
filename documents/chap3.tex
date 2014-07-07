@@ -208,28 +208,38 @@ We implemented very important optimization: pushing selection down the tree. Eve
 
 \section{Generating physical plan}
 
-This part is complicated so that's why we try to choose easiest method for generating plans. The decision was between heuristic method and dynamic programming. From amount of programming it was probably the same. We chose dynamic programming, because it can give better results. We just generate all possible plans and choose the fastest.
+We try to choose easiest method for generating plans. The decision was between heuristic method and dynamic programming. From amount of code it was probably the same. We chose dynamic programming, because it can give better results. We just generate all possible plans for each node and choose the fastest.
 
-We process logical plan from leafs. For every node we generate all possible physical algorithms and we insert resulting plans into heap, where we keep all $n$ fastest plans for current node.
+We process logical plan from leafs. For every leafs we generate all possible physical algorithms and we insert resulting plans into heap, where we keep $c$ fastest plans for current node, where $c$ is constant set in compiler.
 
-For comparing physical plan we estimated run time. For every node we store how long it will run. Estimated time for plan is sum of estimated times of all nodes.
+For every node we use plans generated in it's children to generate new plan. This way we go up the logical plan tree up to the root.
 
-Very important are equations, which compute estimated time for nodes. They depend from size of input relation. Modifying them can resolve in getting better physical plans. For example if physical algorithm hash join takes too much time because of lot random accessing memory, we can modify it so merge sort will be preferred.
+For comparing physical plans we estimated run time. For every node we store how long it will run. Estimated time for plan is sum of estimated times of all nodes.
+
+Very important are equations, which compute estimated time for nodes. They depend from size of input relation. Modifying them can resolve in getting better physical plans. For example if physical algorithm hash join takes too much time because of lot random accessing memory, we can modify it so sort with merge join will be preferred.
 
 Crucial are informations about size of tables. If they are not in input we use default value and physical plan will be probably worse. Other important parameter is number of unique values in table column. Size of join depends on it and since joins usually takes significant amount of time, it is important to have as precise values as possible. 
 
 \subsection{Join order selecting algorithm}
 
 
-In chapter \ref{joinOrder} we presented algorithm choosing join order. We should choose this order and then assign join algorithms. We do it in one phase for following reason. In case we don't have information about table sizes, we cannot determine join order because all are the same. In this situation we can first join relations which are sorted some way to get a faster plan.
+In section \ref{joinOrder} we presented algorithm choosing join order. We should choose this order and then assign join algorithms. We do it in one phase for following reason. In case we don't have information about table sizes, we cannot determine join order because all are the same. In this situation we can first join relations which are sorted some way to get a faster plan.
 
-In this section we describe algorithm for selecting join order. We are using Two algorithms dynamic programming and greedy algorithm. For dynamic programming we use version where we enumerate all possible tree. This algorithm can give us very good plans but has exponential complexity and that's why we use it only if number if joined relations in grouped join node is small. If we join more relations we use greedy algorithm, which only generated left or right deep trees but it's complexity is not exponential only polynomial.
+In this section we describe algorithm for selecting join order. We are using Two algorithms dynamic programming and greedy algorithm. For dynamic programming we use version where we enumerate all possible trees. This algorithm can give us very good plans but has exponential complexity and that's why we use it only if number of joined relations in grouped join node is small. If we join more relations we use greedy algorithm, which only generated left or right deep trees but it's complexity is not exponential only polynomial.
 
 Input in both algorithm are set of plans for every input join relation.
 
 \subsubsection{Dynamic programing for selection join order}
 
-We use a variation of algorithm described in section \ref{dymanicalgorithm}. For every subset we use best plans from it's disjoin subsets to generate new plans. 
+We use a variation of algorithm described in section \ref{dymanicalgorithm}. We number then input relations from $1$ to $n$. For actual computation we use table, where we store plans. Key of the table is non empty subset of set $1..n$.
+
+For every table entry we only store $k$ best plans. It represents best plans for, that were created by joining input in key of table.
+
+In begin we store input plans into table entry identified by set containing input number. In first iterator we fill tables entries, which key have two values by combining plans from entries with key size $1$.
+
+Then we compute plans for entries, which have key size $3,4...n$. We do so by spiting set in key of the entry in all possible pairs of non empty disjunctive subsets. We take plans from this subsets and we generate new plans combining them. We only store $k$ fastest plans.
+
+We do this until we compute plans for table entry ${1..n}$. This is our result.
 
 Time complexity is at least exponential since we generate all subsets of $n$ relations, this number is $2^n$.
 
@@ -237,11 +247,13 @@ Time complexity is at least exponential since we generate all subsets of $n$ rel
 \subsubsection{Greedy algorithm for selection join order}
  This is also a variation of algorithm described in section \ref{greedyalgorithm}. It beginning we create joins of every pair of relations. From them we choose best $k$ trees.
  
- In every following iteration for every tree we generate new trees by adding new relation to tree. In following iteration we continue only with best $k$ join trees.
+ In every following iteration for every tree we generate new trees by adding new relation to tree. In following iteration we continue only with best $k$ join trees. At the end we have maximal $k$ plans.
+ 
+ Time complexity is $O(n^2)$. In every iteration we generate from every tree maximal $n$ new trees, but we keep only $k$ of them for next iteration. Number of iteration is $n-1$, because all trees grow by one in every iteration. Number $k$ is a constant so it doesn't change time complexity.
  
 \subsection{Resolving sort parameters}
 
-After we generated physical plan we need to decide  what sort parameters in sort operator to use.
+After we generated physical plan we need to decide what sort parameters in sort operator to use.
 
 To do this we goes down the tree and store information about how relations is sorted. Based on that we adjust sort parameters or just choose arbitrary order if possible.
 

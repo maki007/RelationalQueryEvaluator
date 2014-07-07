@@ -1,5 +1,38 @@
 \chapter{Implementation}
 
-In this chapter we describe implementation details in developed software and describe it's functionality on examples.
+In this chapter we describe implementation details in developed software and describe it's functionality on examples. We will use following example to show optimizations and compiling:
 
+
+\begin{verbatim}
+select
+    l_orderkey,
+    sum(l_extendedprice*(1-l_discount)) as revenue,
+    o_orderdate,
+    o_shippriority
+from
+    customer,
+    orders,
+    lineitem
+where
+    c_mktsegment = '[SEGMENT]'
+    and c_custkey = o_custkey
+    and l_orderkey = o_orderkey
+    and o_orderdate < date '[DATE]'
+    and l_shipdate > date '[DATE]'
+group by
+    l_orderkey,
+    o_orderdate,
+    o_shippriority
+order by
+    revenue desc,
+    o_orderdate;
+\end{verbatim}
+
+This example is taken from Tpc benchmark \cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. In this benchmark there are no indexes on tables.
+
+\section{Input}
+
+
+
+\section{Output}
 

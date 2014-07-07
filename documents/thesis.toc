@@ -61,9 +61,11 @@
 \contentsline {section}{\numberline {3.6}Generating physical plan}{30}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Join order selecting algorithm}{31}{subsection.3.6.1}
 \contentsline {subsubsection}{Dynamic programing for selection join order}{31}{section*.37}
-\contentsline {subsubsection}{Greedy algorithm for selection join order}{31}{section*.38}
+\contentsline {subsubsection}{Greedy algorithm for selection join order}{32}{section*.38}
 \contentsline {subsection}{\numberline {3.6.2}Resolving sort parameters}{32}{subsection.3.6.2}
 \contentsline {chapter}{\numberline {4}Implementation}{33}{chapter.4}
+\contentsline {section}{\numberline {4.1}Input}{33}{section.4.1}
+\contentsline {section}{\numberline {4.2}Output}{33}{section.4.2}
 \contentsline {chapter}{Conclusion}{34}{chapter*.39}
 \contentsline {chapter}{Bibliography}{35}{chapter*.40}
 \contentsline {chapter}{List of figures}{36}{chapter*.41}

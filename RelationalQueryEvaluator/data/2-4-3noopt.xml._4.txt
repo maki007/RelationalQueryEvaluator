@@ -1,0 +1,377 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Sort
+Sort by: revenue_15 desc, o_orderdate_13 asc
+ time:46693
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node1[label="Hash Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
+ time:77360
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node2[label="Columns Operations
+l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
+ time:0
+ size:4228
+l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
+"]node3[label="Hash Join
+(l_orderkey_3(0) == o_orderkey_9(0))
+ time:16001863
+ size:4228
+c_custkey_1 1,c_mktsegment_2 1,l_orderkey_3 4228,l_shipdate_4 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node4[label="Hash Join
+(c_custkey_1(0) == o_custkey_10(0))
+ time:4000108
+ size:187
+c_custkey_1 1,c_mktsegment_2 1,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node5[label="Filter
+(c_mktsegment_2(0) == SEGMENT)
+ time:150000
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node6[label="Table Scan
+customer
+ time:150000
+ size:150000
+c_custkey_1 13832,c_mktsegment_2 13832,
+"]node6 -> node5[headport=s, tailport=n,label="   "]
+node5 -> node4[headport=s, tailport=n,label="   "]
+node7[label="Filter
+(o_orderdate_7(0) < today)
+ time:1500000
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node8[label="Table Scan
+orders
+ time:1500000
+ size:1500000
+o_orderdate_7 87272,o_shippriority_8 87272,o_orderkey_9 87272,o_custkey_10 87272,
+"]node8 -> node7[headport=s, tailport=n,label="   "]
+node7 -> node4[headport=s, tailport=n,label="   "]
+node4 -> node3[headport=s, tailport=n,label="   "]
+node9[label="Filter
+(today < l_shipdate_4(0))
+ time:6000000
+ size:2000000
+l_orderkey_3 88187,l_shipdate_4 88187,l_extendedprice_5 88187,l_discount_6 88187,
+"]node10[label="Table Scan
+lineitem
+ time:6000000
+ size:6000000
+l_orderkey_3 264559,l_shipdate_4 264559,l_extendedprice_5 264559,l_discount_6 264559,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node9 -> node3[headport=s, tailport=n,label="   "]
+node3 -> node2[headport=s, tailport=n,label="   "]
+node2 -> node1[headport=s, tailport=n,label="   "]
+node1 -> node0[headport=s, tailport=n,label="   "]
+node11[label="Sort
+Sort by: revenue_15 desc, o_orderdate_13 asc
+ time:46693
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node12[label="Sorted Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
+ time:5495
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node13[label="Sort
+Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
+ time:101841
+ size:4228
+l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
+"]node14[label="Columns Operations
+l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
+ time:0
+ size:4228
+l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
+"]node15[label="Hash Join
+(l_orderkey_3(0) == o_orderkey_9(0))
+ time:16001863
+ size:4228
+c_custkey_1 1,c_mktsegment_2 1,l_orderkey_3 4228,l_shipdate_4 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node16[label="Hash Join
+(c_custkey_1(0) == o_custkey_10(0))
+ time:4000108
+ size:187
+c_custkey_1 1,c_mktsegment_2 1,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node17[label="Filter
+(c_mktsegment_2(0) == SEGMENT)
+ time:150000
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node18[label="Table Scan
+customer
+ time:150000
+ size:150000
+c_custkey_1 13832,c_mktsegment_2 13832,
+"]node18 -> node17[headport=s, tailport=n,label="   "]
+node17 -> node16[headport=s, tailport=n,label="   "]
+node19[label="Filter
+(o_orderdate_7(0) < today)
+ time:1500000
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node20[label="Table Scan
+orders
+ time:1500000
+ size:1500000
+o_orderdate_7 87272,o_shippriority_8 87272,o_orderkey_9 87272,o_custkey_10 87272,
+"]node20 -> node19[headport=s, tailport=n,label="   "]
+node19 -> node16[headport=s, tailport=n,label="   "]
+node16 -> node15[headport=s, tailport=n,label="   "]
+node21[label="Filter
+(today < l_shipdate_4(0))
+ time:6000000
+ size:2000000
+l_orderkey_3 88187,l_shipdate_4 88187,l_extendedprice_5 88187,l_discount_6 88187,
+"]node22[label="Table Scan
+lineitem
+ time:6000000
+ size:6000000
+l_orderkey_3 264559,l_shipdate_4 264559,l_extendedprice_5 264559,l_discount_6 264559,
+"]node22 -> node21[headport=s, tailport=n,label="   "]
+node21 -> node15[headport=s, tailport=n,label="   "]
+node15 -> node14[headport=s, tailport=n,label="   "]
+node14 -> node13[headport=s, tailport=n,label="   "]
+node13 -> node12[headport=s, tailport=n,label="   "]
+node12 -> node11[headport=s, tailport=n,label="   "]
+node23[label="Sort
+Sort by: revenue_15 desc, o_orderdate_13 asc
+ time:46693
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node24[label="Hash Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
+ time:77360
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node25[label="Columns Operations
+l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
+ time:0
+ size:4228
+l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
+"]node26[label="Hash Join
+(l_orderkey_3(0) == o_orderkey_9(0))
+ time:16001863
+ size:4228
+c_custkey_1 1,c_mktsegment_2 1,l_orderkey_3 4228,l_shipdate_4 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node27[label="Merge Join
+(c_custkey_1(0) == o_custkey_10(0))
+ time:500002
+ size:187
+c_custkey_1 1,c_mktsegment_2 1,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node28[label="Sort
+Sort by: c_custkey_1 both
+ time:74
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node29[label="Filter
+(c_mktsegment_2(0) == SEGMENT)
+ time:150000
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node30[label="Table Scan
+customer
+ time:150000
+ size:150000
+c_custkey_1 13832,c_mktsegment_2 13832,
+"]node30 -> node29[headport=s, tailport=n,label="   "]
+node29 -> node28[headport=s, tailport=n,label="   "]
+node28 -> node27[headport=s, tailport=n,label="   "]
+node31[label="Sort
+Sort by: o_custkey_10 both
+ time:18931568
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node32[label="Filter
+(o_orderdate_7(0) < today)
+ time:1500000
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node33[label="Table Scan
+orders
+ time:1500000
+ size:1500000
+o_orderdate_7 87272,o_shippriority_8 87272,o_orderkey_9 87272,o_custkey_10 87272,
+"]node33 -> node32[headport=s, tailport=n,label="   "]
+node32 -> node31[headport=s, tailport=n,label="   "]
+node31 -> node27[headport=s, tailport=n,label="   "]
+node27 -> node26[headport=s, tailport=n,label="   "]
+node34[label="Filter
+(today < l_shipdate_4(0))
+ time:6000000
+ size:2000000
+l_orderkey_3 88187,l_shipdate_4 88187,l_extendedprice_5 88187,l_discount_6 88187,
+"]node35[label="Table Scan
+lineitem
+ time:6000000
+ size:6000000
+l_orderkey_3 264559,l_shipdate_4 264559,l_extendedprice_5 264559,l_discount_6 264559,
+"]node35 -> node34[headport=s, tailport=n,label="   "]
+node34 -> node26[headport=s, tailport=n,label="   "]
+node26 -> node25[headport=s, tailport=n,label="   "]
+node25 -> node24[headport=s, tailport=n,label="   "]
+node24 -> node23[headport=s, tailport=n,label="   "]
+node36[label="Sort
+Sort by: revenue_15 desc, o_orderdate_13 asc
+ time:46693
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node37[label="Hash Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
+ time:77360
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node38[label="Columns Operations
+l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
+ time:0
+ size:4228
+l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
+"]node39[label="Hash Join
+(l_orderkey_3(0) == o_orderkey_9(0))
+ time:16001863
+ size:4228
+c_custkey_1 1,c_mktsegment_2 1,l_orderkey_3 4228,l_shipdate_4 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node40[label="Merge Join
+(c_custkey_1(0) == o_custkey_10(0))
+ time:500002
+ size:187
+c_custkey_1 1,c_mktsegment_2 1,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node41[label="Sort
+Sort by: c_custkey_1 both
+ time:74
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node42[label="Filter
+(c_mktsegment_2(0) == SEGMENT)
+ time:150000
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node43[label="Table Scan
+customer
+ time:150000
+ size:150000
+c_custkey_1 13832,c_mktsegment_2 13832,
+"]node43 -> node42[headport=s, tailport=n,label="   "]
+node42 -> node41[headport=s, tailport=n,label="   "]
+node41 -> node40[headport=s, tailport=n,label="   "]
+node44[label="Sort
+Sort by: o_custkey_10 both
+ time:18931568
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node45[label="Filter
+(o_orderdate_7(0) < today)
+ time:1500000
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node46[label="Table Scan
+orders
+ time:1500000
+ size:1500000
+o_orderdate_7 87272,o_shippriority_8 87272,o_orderkey_9 87272,o_custkey_10 87272,
+"]node46 -> node45[headport=s, tailport=n,label="   "]
+node45 -> node44[headport=s, tailport=n,label="   "]
+node44 -> node40[headport=s, tailport=n,label="   "]
+node40 -> node39[headport=s, tailport=n,label="   "]
+node47[label="Filter
+(today < l_shipdate_4(0))
+ time:6000000
+ size:2000000
+l_orderkey_3 88187,l_shipdate_4 88187,l_extendedprice_5 88187,l_discount_6 88187,
+"]node48[label="Table Scan
+lineitem
+ time:6000000
+ size:6000000
+l_orderkey_3 264559,l_shipdate_4 264559,l_extendedprice_5 264559,l_discount_6 264559,
+"]node48 -> node47[headport=s, tailport=n,label="   "]
+node47 -> node39[headport=s, tailport=n,label="   "]
+node39 -> node38[headport=s, tailport=n,label="   "]
+node38 -> node37[headport=s, tailport=n,label="   "]
+node37 -> node36[headport=s, tailport=n,label="   "]
+node49[label="Sort
+Sort by: revenue_15 desc, o_orderdate_13 asc
+ time:46693
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node50[label="Sorted Group
+l_orderkey_3, o_orderdate_7, o_shippriority_8, revenue_15=sum(x_11);
+ time:5495
+ size:2114
+l_orderkey_12 2114,o_orderdate_13 94,o_shippriority_14 94,revenue_15 2114,
+"]node51[label="Sort
+Sort by: l_orderkey_3 both, o_orderdate_7 both, o_shippriority_8 both
+ time:101841
+ size:4228
+l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
+"]node52[label="Columns Operations
+l_orderkey, o_orderdate, o_shippriority, x = (l_extendedprice_5(0) * (1 - l_discount_6(0)))
+ time:0
+ size:4228
+l_orderkey_3 4228,o_orderdate_7 187,o_shippriority_8 187,x_11 4228,
+"]node53[label="Hash Join
+(l_orderkey_3(0) == o_orderkey_9(0))
+ time:16001863
+ size:4228
+c_custkey_1 1,c_mktsegment_2 1,l_orderkey_3 4228,l_shipdate_4 4228,l_extendedprice_5 4228,l_discount_6 4228,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node54[label="Merge Join
+(c_custkey_1(0) == o_custkey_10(0))
+ time:500002
+ size:187
+c_custkey_1 1,c_mktsegment_2 1,o_orderdate_7 187,o_shippriority_8 187,o_orderkey_9 187,o_custkey_10 187,
+"]node55[label="Sort
+Sort by: c_custkey_1 both
+ time:74
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node56[label="Filter
+(c_mktsegment_2(0) == SEGMENT)
+ time:150000
+ size:11
+c_custkey_1 1,c_mktsegment_2 1,
+"]node57[label="Table Scan
+customer
+ time:150000
+ size:150000
+c_custkey_1 13832,c_mktsegment_2 13832,
+"]node57 -> node56[headport=s, tailport=n,label="   "]
+node56 -> node55[headport=s, tailport=n,label="   "]
+node55 -> node54[headport=s, tailport=n,label="   "]
+node58[label="Sort
+Sort by: o_custkey_10 both
+ time:18931568
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node59[label="Filter
+(o_orderdate_7(0) < today)
+ time:1500000
+ size:500000
+o_orderdate_7 29091,o_shippriority_8 29091,o_orderkey_9 29091,o_custkey_10 29091,
+"]node60[label="Table Scan
+orders
+ time:1500000
+ size:1500000
+o_orderdate_7 87272,o_shippriority_8 87272,o_orderkey_9 87272,o_custkey_10 87272,
+"]node60 -> node59[headport=s, tailport=n,label="   "]
+node59 -> node58[headport=s, tailport=n,label="   "]
+node58 -> node54[headport=s, tailport=n,label="   "]
+node54 -> node53[headport=s, tailport=n,label="   "]
+node61[label="Filter
+(today < l_shipdate_4(0))
+ time:6000000
+ size:2000000
+l_orderkey_3 88187,l_shipdate_4 88187,l_extendedprice_5 88187,l_discount_6 88187,
+"]node62[label="Table Scan
+lineitem
+ time:6000000
+ size:6000000
+l_orderkey_3 264559,l_shipdate_4 264559,l_extendedprice_5 264559,l_discount_6 264559,
+"]node62 -> node61[headport=s, tailport=n,label="   "]
+node61 -> node53[headport=s, tailport=n,label="   "]
+node53 -> node52[headport=s, tailport=n,label="   "]
+node52 -> node51[headport=s, tailport=n,label="   "]
+node51 -> node50[headport=s, tailport=n,label="   "]
+node50 -> node49[headport=s, tailport=n,label="   "]
+
+}
