@@ -28,7 +28,9 @@ order by
     o_orderdate;
 \end{verbatim}
 
-This example is taken from Tpc benchmark \cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. In this benchmark there are no indexes on tables.
+This example is taken from Tpc benchmark \cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. In this benchmark there are no indexes on tables. Columns which starts wit o\_ are from table order, columns which beginning with l\- are from table lineitem and columns starting with \_c belongs table customers.
+
+
 
 \section{Input}
 
@@ -82,20 +84,334 @@ This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriorit
 
 \subsection{Selection}
 
+This is an example of selection:
+
+\begin{lstlisting}
+
+<selection>
+  <parameters>
+    <condition>
+      <lower>
+        <constant type="date" value="today"/>
+        <column name="l_shipdate"/>
+      </lower>
+    </condition>
+  </parameters>
+  <input>
+  ...
+  </input>
+</selection>
+\end{lstlisting}
+This example represent following expression: $\sigma_{today<l_shipdate}$. In condition element we can have multiple conditions connected by $and$ or $or$ elements. Input algebra supports operators $=$,$<$ and $\leq$. In the leafs of expression tree there can be only column or constant element. We also can call a boolean function from condition, which is represented in following example.
+
+\begin{lstlisting}
+<condition>
+  <boolean_predicate  name="like">
+    <argument>
+      <column name="x"/>
+    </argument>
+    <argument>
+      <constant type="int" value="445" />
+    </argument>
+  </boolean_predicate>
+</condition>
+\end{lstlisting}
+
+While using boolean predicate it has to be supported by runtime(Bobox operators). Compile doesn't check it's existence.
+
 \subsection{Join}
+
+Join without condition is considered to be cross join. We can use join with multiple equal conditions or with simple unequal condition. First example contains equal conditions:
+
+\begin{lstlisting}
+<join>
+  <parameters>
+    <equal_condition>
+      <equals>
+        <column name="a"/>
+        <column name="b"/>
+      </equals>
+      <equals>
+        <column name="c"/>
+        <column name="d"/>
+      </equals>
+    </equal_condition>
+    <column name="a" input="first"/>
+    <column name="b" input="second"/>
+    <column name="c" input="first"/>
+    <column name="d" input="second" newName="e" />
+  </parameters>
+<input>
+...
+</input>
+\end{lstlisting}
+
+This example represents join with condition $a=b~and~c=d$. In join equal conditions has to be first column from first relation and second column from second relation. In example $a$ and $c$ are from first input and $b$ and $d$ are from the other one. Joins doesn't copy to output all column from both input relations. After condition we have to specify non empty sequence of columns. In every column we specify it's name and number of input. We can also rename join output column by using attribute $newName$. In example we renamed column $d$ to $e$.
+
+Next example shows also join but with inequality condition:
+
+\begin{lstlisting}
+<join>
+  <parameters>
+    <less_condition>
+      <and>
+        <lower_or_equals>
+          <column name="a1"/>
+          <column name="b"/>
+        </lower_or_equals>
+      <lower_or_equals>
+        <column name="b"/>
+        <column name="a2"/>
+      </lower_or_equals>
+    </and>
+  </less_condition>
+  <column name="a1" input="first"/>
+  <column name="b" input="second"/>
+  <column name="a2" input="first"/>
+</parameters>
+<input>
+...
+</input>
+</join>
+\end{lstlisting}
+This example represents join with condition $a1\leq b\leq a2$. In first sub condition first column has to be from first input, but in second sub condition first column has to be from second input. Also instead $lower\_or\_equals$ we can use just $lower$ condition. Rules for output column are same like in join with equal conditions.
+
+In element $input$ of join there has to be two operators.
 
 \subsection{Anti join}
 
-\subsection{Table}
+\begin{lstlisting}
+<antijoin>
+  <parameters>
+    <equal_condition>
+      <equals>
+        <column name="d"/>
+        <column name="b"/>
+      </equals>
+    </equal_condition>
+    <column name="d"/>
+  </parameters>
+<input>
+...
+<input>
+</antijoin>
+\end{lstlisting}
+This is an example of antijoin with simple condition $d=b$. Structure is the almost same like join. Output columns can be only from first relation and we can also rename this columns.
 
-\subsection{union}
+\subsection{Table}
+This is a leafs of algebra tree. It specifies name of read table, its columns and indexes. We can specify number of rows in the table to get better plans. If it is not specified we will assume that table has 1000 tuples. For every column we have to specify name and it's type. Other optional parameter is $number\_of\_unique\_values$. This number is important for estimating size of join. If it is not given, we will assume, that $number\_of\_unique\_values$ is size of table to power of $\frac{4}{5}$. This assumption is only experimental, since number of unique values can be from $0$ to size of table. Index can be clustered or unclustered. Table can have only one clustered index. In every index we specify on what attribute it is created. Here is an example or table algebra node:
+ 
+\begin{lstlisting}
+<table name="orders" numberOfRows="1500000">
+  <column name="o_orderdate" type="int"/>
+  <column name="o_shippriority" 
+  type="int" number_of_unique_values="30000"/>
+  <column name="o_orderkey" type="int"/>
+  <column name="o_custkey" type="int" />
+  <index type="clustered" name="index">
+    <column name="o_orderdate" order="asc" />
+    <column name="o_shippriority" order="asc" />
+  </index>
+</table>
+\end{lstlisting}
+
+\subsection{Union}
+Union doesn't have any parameters, but columns from both input have tt have the same name. Here is an example:
+\begin{lstlisting}
+<union>
+  <input>
+  ...
+  </input>
+</union>
+\end{lstlisting}
 
 \subsection{Extended projection}
+Following example of extended projection represents expression \\ $\pi_{l\_orderkey,o\_orderdate,o\_shippriority,x=l\_extendedprice*(1-l\_discount)}(...)$.
+\begin{lstlisting}
+<column_operations>
+  <parameters>
+    <column name="l_orderkey"></column>
+    <column name="o_orderdate"></column>
+    <column name="o_shippriority"></column>
+    <column name="x">
+      <equals>
+        <times>
+          <column name="l_extendedprice"/>
+          <minus>
+            <constant type="double" value="1"/>
+            <column name="l_discount"/>
+          </minus>
+        </times>
+      </equals>
+    </column>
+  </parameters>
+  <input>
+  ...
+  </input>
+</column_operations>
+\end{lstlisting}
+
+Extended projection contains list of columns. If columns is new computed values it contains elements representing expression tree. It cal also contain function call, which has to be supported by Bobox operators. Following example displays function call:
 
 
-
-
+\begin{lstlisting}
+<column_operations>
+  <parameters>
+    <column>
+      <equals>
+        <aritmetic_function name ="sqrt">
+          <argument>
+            <constant type="double" value="2"/>
+          </argument>
+        </aritmetic_function>
+      </equals>
+    </column>
+  </parameters>
+  <input>
+    ...
+  </input>
+</column_operations>
+\end{lstlisting}
  
 
 \section{Output}
+
+In this section we describe text output generated by implemented compiler.
+
+\subsection{Filters}
+Example: 
+\begin{lstlisting}
+Filter(double,double,int)->(double,double,int)
+f(condition="OP_LOWER(OP_double_CONSTANT(4.8),1)"); 
+\end{lstlisting}
+
+Input and output columns are the same and they are numbered from 0.
+This operator takes input of two double streams and integer stream and it filters by condition $4.8<(column~number~1)$. We have also another version of this operator, which guaranteers that input and output are sorted the same way. To use it we write $FilterKeepingOrder$ instead of $Filter$ in operator declaration. 
+
+\subsection{Group}
+Example: 
+\begin{lstlisting}
+HashGroup(string,string,int)->(string,int,int)
+g(groupBy="1",functions="count(),max(2)");
+\end{lstlisting}
+Input columns are numbered from 0. Output columns consists from grouped columns and computed aggregate functions in the same order as in parameters. 
+This example groups by column number 1 and computes aggregate function $COUNT$ and $MAX$. $MAX$ has as parameter column number 2. 
+
+We have also sorted version of this operators. It assumes that input is sorted by group columns. To use it we write $SortedGroup$ instead of $HashGroup$ in declaration.
+
+\subsection{Column operations}
+Example: 
+\begin{lstlisting} 
+ColumnsOperations(int,int,int,int,int)->(int,int,int,double)
+c(out="0,3,4,OP_TIMES(2,OP_MINUS(OP_double_CONSTANT(1),2))"); 
+\end{lstlisting}
+Input columns are numbered from 0. Output is specified in parameter $out$. It if contains number operator, copies input to output, otherwise it computes new column. 
+This example copies columns number $0,3,4$ to output and computes new column with expression: $2*(1-column~number~2)$.
+
+\subsection{Cross join}
+Example:
+\begin{lstlisting} 
+CrossJoin(string,int)(int,string)->(string,string)
+c(left="0,1",right="2,3",out="0,3");
+\end{lstlisting}
+Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. 
+
+\subsection{Hash join}
+Example:
+\begin{lstlisting}
+HashJoin(int,int)(int,int,int,int)->(int,int,int,int,int,int)
+h(left="0,1",right="2,3,4,5",out="0,1,2,3,4,5",
+leftPartOfCondition="0,1","rightPartOfCondition="5,2"); 
+\end{lstlisting}
+Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. This operators works only with equal condition, which is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$. This example computes join with condition:\\
+ $(column~0=column~5)~and~(column~1=column~2)$.
+
+\subsection{Merge equijoin}
+Example:
+\begin{lstlisting}
+MergeEquiJoin(int)(int)->(int,int))
+m(left="0",right="1",out="0,1",leftPartOfCondition="0:D",
+rightPartOfCondition="1:D");
+\end{lstlisting}
+Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$ and they also contain information how are inputs sorted. This example computes join with condition $(0==1)$. First input is sorted by column number 0 descending and the second input is sorted by column 1 descending.
+
+\subsection{Merge non equijoin}
+Example:
+\begin{lstlisting}
+MergeNonEquiJoin(date,date)(date)->(date,date,date)
+m(left="0,1",right="2",out="0,1,2",
+leftInputSortedBy = "0:A,1:A",rightInputSortedBy = "2:A",
+condition="OP_AND(OP_LOWER_OR_EQUAL(0,2)
+,OP_LOWER_OR_EQUAL(2,1))");
+\end{lstlisting}
+
+This operator joins sorted relations. Numbering from left(first) and right(second) input is specified in parameters $left$ and $right$. Parameters $leftInputSortedBy$ and $rightInputSortedBy$ store information about how are input relations sorted. Join condition is in parameter $condition$. Operator in this example joins by condition $column~0 \leq column~2\leq column~1$. First input is sorted by column $0$ ascending and column $1$ ascending and second input is sorted by column $2$ ascending.
+
+\subsection{Hash anti join}
+Example:
+\begin{lstlisting}
+HashAntiJoin(int)(int)->(int)
+h(left="0",right="1",out="0",leftPartOfCondition="0",
+rightPartOfCondition="1"); 
+\end{lstlisting}
+
+Column number from first input is specified in $left$ parameter and columns numbers from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Parameter $out$ can only contains columns from first input. And specifies columns, which goes to output. Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$.This example computes antijoin with condition $(column~0==column~1)$.
+
+\subsection{Merge anti join}
+Example:
+\begin{lstlisting}
+$MergeAntiJoin(int)(int)->(int)
+$m(left="0",right="1",out="0",leftPartOfCondition="0:D",
+rightPartOfCondition="1:D");
+\end{lstlisting}
+
+Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Operator copies to output only rows from first input for which doesn't exist row in second input satisfying given condition.
+Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$ and they also contain information how are inputs sorted. This example computes join with condition $(column~0==column~1)$. First input is sorted by column number 0 descending and the second input is sorted by 1 descending.
+
+\subsection{Table scan}
+Example:
+\begin{lstlisting}
+TableScan()->(int,int,int,int)
+t(name="lineitem",
+columns="l_orderkey,l_shipdate,l_extendedprice,l_discount");
+\end{lstlisting}
+This operator scans table specified in parameter $name$ and reads only columns given in parameter $columns$.
+
+\subsection{Scan And Sort By Index}
+Example:
+\begin{lstlisting}
+ScanAndSortByIndexScan()->(string,string,int)
+s(name="people",index="index",
+columns="user_name,country,parameter"); 
+\end{lstlisting}
+Operator reads whole table given in $name$ using $index$ and reads columns specified in attribute $columns$.
+
+\subsection{Index Scan}
+
+Example:
+\begin{lstlisting}
+IndexScan()->(int,int)
+i(name="customer",index="index2",columns="c_custkey,c_mktsegment",
+condition="OP_EQUALS(1,OP_string_CONSTANT(SEGMENT))");
+\end{lstlisting}
+Operator reads part of table given in $name$ using $index$ and reads columns specified in attribute $columns$. Operator reads only rows satisfying condition given in attribute $condtion$.
+
+
+
+\subsection{Sort}
+Example:
+\begin{lstlisting}
+SortOperator(int,int)->(int,int)
+s(sortedBy="0",sortBy="1:D");
+\end{lstlisting}
+Input and output columns are the same and they are numbered from 0. Parameter $sortedBy$ specifies by which columns is table sorted and parameter $sortBy$ specifies by which columns should table be sorted. Example is already sorted by $colum~0$ and will be sorted by $column~1$ descending.
+
+
+\subsection{Union}
+Example:
+\begin{lstlisting}
+Union(int,string)(string,int)->(int,string)
+u(left="0,1",right="1,0",out="0,1");
+\end{lstlisting}
+Numbering columns from the first input is given in the $left$ parameter, from second input is given in the $right$ parameter and from the output is given in the $out$ parameter.
 
