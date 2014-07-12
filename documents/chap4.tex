@@ -273,6 +273,84 @@ Extended projection contains list of columns. If columns is new computed values 
 </column_operations>
 \end{lstlisting}
  
+\section{Building relational algebra tree} 
+
+In this section we describe in more details structure storing logical plan and it's building.
+
+Relational algebra operators are represented by children of abstract class \texttt{AlgebraNodeBase}. It has following abstract subclasses:
+\begin{itemize}
+
+\item \texttt{UnaryAlgebraNodeBase} - abstract class for algebra operator with one input
+
+\item \texttt{BinaryAlgebraNodeBase}  - abstract class for algebra operator with two inputs
+
+\item \texttt{GroupedAlgebraNode} - abstract class for algebra operator with variable number inputs
+
+\item \texttt{NullaryAlgebraNodeBase} -  abstract class for algebra tree leafs
+
+\end{itemize}
+
+All operators are children of one of mentioned classes. Every operator has pointer to it's parent in tree and smart pointers to it's children if it has any. 
+
+Expressions in nodes are represented by polymorphic trees. All expression nodes are children of class \texttt{Expression}.
+
+For manipulating and reading expression and algebra tree we used visitor pattern. All nodes (algebra and expression) contains method \texttt{accept}. This method calls visitor method on class \texttt{AlgebraVisitor}/\texttt{ExpressionVisitor}. All classes, which manipulate algebra tree, are children of class \texttt{AlgebraVisitor}.
+
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{algebratree1}
+
+      \caption{Example of algebra tree.}
+          \label{fig:algebratree1}
+\end{figure}
+
+In figure~\ref{fig:algebratree1} we have example of algebra tree of query presented in beginning in this chapter. We translated it as cross join of tree tables. After that we apply selection with condition in where clause. From the result we compute new column, group and sort result. In table reading operator we can see that they store additional information, like name of table. Every attribute has $\_-1$, behind name. It is it's unique identifier but after building tree from XML it is not assigned yet and that's why it contains default value $-1$. Columns in expressions also contains number in parenthesis. This number stores information from which input this columns it. Inputs are numbered from $0$. Here we can see that all columns in selection are from $0^{th}$ input. This information is useful mainly in joins.
+
+For parsing and validating input XML file we used library Xerces version 3.1.1\cite{xerces}. It parses input file and create DOM tree. This tree has to be validated so we know it contains valid relational algebra tree. All this functionality is in class \texttt{XmlHandler}.
+
+We know that every tree has to have sort operator on the top. We call \texttt{Sort} constructor on it. This method takes all information from DOM tree and call method, which decide that constructor to call next on it's children. This way we recursively build algebra tree.
+
+
+
+\section{Semantic analysis and node grouping}
+
+This phase in done in class \texttt{SemanticChecker}. It checks columns used in expression exist. It also checks if output columns of operator has unique name. During this checking we assign unique identifier to every column. After this phase we don't need names only this id.
+
+Logical plan is after that visited by \texttt{GroupingVisitor}. In this phase are replaced joins represented by class \texttt{Join} by grouped join with two or more input relations. This node is represented by class \texttt{GroupedJoin}. Also in every expression we apply \texttt{GroupingExpressionVisitor}. It groups expression with $and$ and $or$ operators. This is done for simplifying splitting condition into sub conditions.
+
+\section{Algebra optimization}
+
+We need to prepare logical tree for optimizing it by pushing down selections. To do this we split selection into smaller conditions using rule:
+\begin{itemize}
+\item $\sigma_{A~and~B}(R)=\sigma_{A}(\sigma_{B}(R))$
+\end{itemize}
+From every selection we created chain of selections. This operation is done by \texttt{SelectionSpitingVisitor}.
+
+After that we call \texttt{SelectionColectingVisitor}. This visitor stores pointer of all selection in relational algebra tree. This pointers are input into \texttt{Push\-Selection\-Down\-Visitor}. It pushes all selections down the tree as much as possible and also converts cross joins into regular joins if we have selection with equal condition.
+
+At this moment we have optimized tree, we can find selection chains in it. To resolve this problem we apply \texttt{SelectionFusingVisitor}. This visitor applies following rule to tree:
+\begin{itemize}
+\item $\sigma_{A}(\sigma_{B}(R))=\sigma_{A~and~B}(R)$
+\end{itemize}
+
+In figure~\ref{fig:algebratree2} we can see optimizes algebra tree.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=1.0\textwidth]{algebratree2}
+
+      \caption{Example of optimized algebra tree.}
+          \label{fig:algebratree2}
+\end{figure}
+
+In comparision figure~\ref{fig:algebratree1}, this tree has grouped join with three input relations. Also big selection about joins has been split and moved down the tree. Some part of condition became join condition other were pushed down on of branches of grouped join. Then we can see that new tree has columns with assigned unique identifiers. Becasue we have this identtifiers we don't need to know number of input for each column.
+
+This input is optimized algebra tree. We can of course implement more optimizations to improve logical plan.
+
+\section{Generating plan}
+
+Final logical plan will be processed by \texttt{AlgebraCompiler}, which outputs $n$ best plans. $n$ is a constant in  \texttt{AlgebraCompiler} represented by variable \texttt{NUM\-BER\_\-OF\_\-PLANS}. 
 
 \section{Output}
 

@@ -73,21 +73,25 @@
 \contentsline {subsection}{\numberline {4.1.6}Table}{38}{subsection.4.1.6}
 \contentsline {subsection}{\numberline {4.1.7}Union}{38}{subsection.4.1.7}
 \contentsline {subsection}{\numberline {4.1.8}Extended projection}{38}{subsection.4.1.8}
-\contentsline {section}{\numberline {4.2}Output}{40}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Filters}{40}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Group}{40}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Column operations}{40}{subsection.4.2.3}
-\contentsline {subsection}{\numberline {4.2.4}Cross join}{41}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Hash join}{41}{subsection.4.2.5}
-\contentsline {subsection}{\numberline {4.2.6}Merge equijoin}{41}{subsection.4.2.6}
-\contentsline {subsection}{\numberline {4.2.7}Merge non equijoin}{42}{subsection.4.2.7}
-\contentsline {subsection}{\numberline {4.2.8}Hash anti join}{42}{subsection.4.2.8}
-\contentsline {subsection}{\numberline {4.2.9}Merge anti join}{42}{subsection.4.2.9}
-\contentsline {subsection}{\numberline {4.2.10}Table scan}{43}{subsection.4.2.10}
-\contentsline {subsection}{\numberline {4.2.11}Scan And Sort By Index}{43}{subsection.4.2.11}
-\contentsline {subsection}{\numberline {4.2.12}Index Scan}{43}{subsection.4.2.12}
-\contentsline {subsection}{\numberline {4.2.13}Sort}{44}{subsection.4.2.13}
-\contentsline {subsection}{\numberline {4.2.14}Union}{44}{subsection.4.2.14}
-\contentsline {chapter}{Conclusion}{45}{chapter*.39}
-\contentsline {chapter}{Bibliography}{46}{chapter*.40}
-\contentsline {chapter}{Attachments}{47}{chapter*.41}
+\contentsline {section}{\numberline {4.2}Building relational algebra tree}{40}{section.4.2}
+\contentsline {section}{\numberline {4.3}Semantic analysis and node grouping}{41}{section.4.3}
+\contentsline {section}{\numberline {4.4}Algebra optimization}{42}{section.4.4}
+\contentsline {section}{\numberline {4.5}Generating plan}{42}{section.4.5}
+\contentsline {section}{\numberline {4.6}Output}{42}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Filters}{43}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Group}{43}{subsection.4.6.2}
+\contentsline {subsection}{\numberline {4.6.3}Column operations}{44}{subsection.4.6.3}
+\contentsline {subsection}{\numberline {4.6.4}Cross join}{44}{subsection.4.6.4}
+\contentsline {subsection}{\numberline {4.6.5}Hash join}{44}{subsection.4.6.5}
+\contentsline {subsection}{\numberline {4.6.6}Merge equijoin}{45}{subsection.4.6.6}
+\contentsline {subsection}{\numberline {4.6.7}Merge non equijoin}{45}{subsection.4.6.7}
+\contentsline {subsection}{\numberline {4.6.8}Hash anti join}{45}{subsection.4.6.8}
+\contentsline {subsection}{\numberline {4.6.9}Merge anti join}{46}{subsection.4.6.9}
+\contentsline {subsection}{\numberline {4.6.10}Table scan}{46}{subsection.4.6.10}
+\contentsline {subsection}{\numberline {4.6.11}Scan And Sort By Index}{46}{subsection.4.6.11}
+\contentsline {subsection}{\numberline {4.6.12}Index Scan}{47}{subsection.4.6.12}
+\contentsline {subsection}{\numberline {4.6.13}Sort}{47}{subsection.4.6.13}
+\contentsline {subsection}{\numberline {4.6.14}Union}{47}{subsection.4.6.14}
+\contentsline {chapter}{Conclusion}{48}{chapter*.39}
+\contentsline {chapter}{Bibliography}{49}{chapter*.40}
+\contentsline {chapter}{Attachments}{50}{chapter*.41}

@@ -1,4 +1,5 @@
 digraph g {node [shape=box]
+size="20,30"
  graph[rankdir="BT", concentrate=true];
 node0[label="Sort
 revenue_-1 desc, o_orderdate_-1 asc"]
@@ -7,7 +8,8 @@ groupBy l_orderkey_-1, o_orderdate_-1, o_shippriority_-1, revenue_-1=sum(x_-1);"
 node2[label="ColumnOperations
 l_orderkey_-1, o_orderdate_-1, o_shippriority_-1, x_-1 = (l_extendedprice_-1(0) * (1 - l_discount_-1(0)))"]
 node3[label="Selection
-(((c_mktsegment_-1(0) == SEGMENT) and (c_custkey_-1(0) == o_custkey_-1(0))) and (((o_orderdate_-1(0) < today) and (today < l_shipdate_-1(0))) and (l_orderkey_-1(0) == o_orderkey_-1(0))))"]
+(((c_mktsegment_-1(0) == SEGMENT) and (c_custkey_-1(0) == o_custkey_-1(0))) 
+and (((o_orderdate_-1(0) < today) and (today < l_shipdate_-1(0))) and (l_orderkey_-1(0) == o_orderkey_-1(0))))"]
 node4[label="Join
 "]
 node5[label="Table customer
@@ -19,12 +21,14 @@ node6[label="Join
 "]
 node7[label="Table lineitem
  number of rows: 6000000.000000
- columns: l_orderkey_-1(int,264558), l_shipdate_-1(int,264558), l_extendedprice_-1(int,264558), l_discount_-1(int,264558)
+ columns: l_orderkey_-1(int,264558), l_shipdate_-1(int,264558),
+ l_extendedprice_-1(int,264558), l_discount_-1(int,264558)
  indices: "]
 node7 -> node6[headport=s, tailport=n,label="   "]
 node8[label="Table orders
  number of rows: 1500000.000000
- columns: o_orderdate_-1(int,87271), o_shippriority_-1(int,87271), o_orderkey_-1(int,87271), o_custkey_-1(int,87271)
+ columns: o_orderdate_-1(int,87271), o_shippriority_-1(int,87271),
+ o_orderkey_-1(int,87271), o_custkey_-1(int,87271)
  indices: "]
 node8 -> node6[headport=s, tailport=n,label="   "]
 node6 -> node4[headport=s, tailport=n,label="   "]
