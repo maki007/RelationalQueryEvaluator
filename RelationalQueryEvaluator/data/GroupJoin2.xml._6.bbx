@@ -1,20 +1,20 @@
 operator main()->()
 {
-broadcast()->(){4} start;
+bobox::broadcast()->(),(),(),() start;
 TableScan()->(int) TableScan0(name="d",columns="d"); 
 SortOperator(int)->(int) SortOperator1(sortedBy="",sortBy="0:A"); 
 TableScan()->(int) TableScan2(name="c",columns="c"); 
 SortOperator(int)->(int) SortOperator3(sortedBy="",sortBy="0:A"); 
-MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin4(left="0",right="1",out="0,1",leftPartOfCondition="0:A",rightPartOfCondition="1:A"); 
+MergeEquiJoin(int),(int)->(int,int) MergeEquiJoin4(left="0",right="1",out="0,1",leftPartOfCondition="0:A",rightPartOfCondition="1:A"); 
 TableScan()->(int) TableScan5(name="a",columns="a"); 
 SortOperator(int)->(int) SortOperator6(sortedBy="",sortBy="0:A"); 
 TableScan()->(int) TableScan7(name="b",columns="b"); 
 SortOperator(int)->(int) SortOperator8(sortedBy="",sortBy="0:A"); 
-MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin9(left="0",right="1",out="0,1",leftPartOfCondition="0:A",rightPartOfCondition="1:A"); 
-MergeEquiJoin(int,int)(int,int)->(int,int,int,int) MergeEquiJoin10(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="1:A",rightPartOfCondition="2:A"); 
+MergeEquiJoin(int),(int)->(int,int) MergeEquiJoin9(left="0",right="1",out="0,1",leftPartOfCondition="0:A",rightPartOfCondition="1:A"); 
+MergeEquiJoin(int,int),(int,int)->(int,int,int,int) MergeEquiJoin10(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="1:A",rightPartOfCondition="2:A"); 
 Store(int,int,int,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 start[1] -> TableScan2;

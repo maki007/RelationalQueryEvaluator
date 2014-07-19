@@ -1,13 +1,13 @@
 operator main()->()
 {
-broadcast()->(){1} start;
+bobox::broadcast()->() start;
 ScanAndSortByIndexScan()->(string,string,int) ScanAndSortByIndexScan0(name="people",index="s",columns="user_name,country,parameter"); 
 SortedGroup(string,string,int)->(string,int,int) SortedGroup1(groupBy="1",functions="count(),max(2)"); 
 Filter(string,int,int)->(string,int,int) Filter2(condition="OP_EQUALS(0,OP_string_CONSTANT(sparta))"); 
 SortOperator(string,int,int)->(string,int,int) SortOperator3(sortedBy="",sortBy="0:D"); 
 Store(string,int,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> ScanAndSortByIndexScan0;
 ScanAndSortByIndexScan0 -> SortedGroup1;
 SortedGroup1 -> Filter2;

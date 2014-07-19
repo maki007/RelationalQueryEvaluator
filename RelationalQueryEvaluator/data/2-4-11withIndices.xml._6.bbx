@@ -1,34 +1,34 @@
 operator main()->()
 {
-broadcast()->(){6} start;
+bobox::broadcast()->(),(),(),(),(),() start;
 ScanAndSortByIndexScan()->(int,int,int) ScanAndSortByIndexScan0(name="partsup",index="partsup index",columns="ps_suppkey,ps_supplycost,ps_availqty"); 
 ScanAndSortByIndexScan()->(int,int) ScanAndSortByIndexScan1(name="supplier",index="supplier index secondary",columns="s_nationkey,s_suppkey"); 
 TableScan()->(int,string) TableScan2(name="nation",columns="n_nationkey,n_name"); 
 Filter(int,string)->(int,string) Filter3(condition="OP_EQUALS(1,OP_string_CONSTANT(Slovakia))"); 
 SortOperator(int,string)->(int,string) SortOperator4(sortedBy="",sortBy="0:A"); 
-MergeEquiJoin(int,int)(int,string)->(int,int,int,string) MergeEquiJoin5(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="0:A",rightPartOfCondition="2:A"); 
+MergeEquiJoin(int,int),(int,string)->(int,int,int,string) MergeEquiJoin5(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="0:A",rightPartOfCondition="2:A"); 
 SortOperator(int,int,int,string)->(int,int,int,string) SortOperator6(sortedBy="",sortBy="1:A"); 
-MergeEquiJoin(int,int,int)(int,int,int,string)->(int,int,int,int,int,int,string) MergeEquiJoin7(left="0,1,2",right="3,4,5,6",out="0,1,2,3,4,5,6",leftPartOfCondition="0:A",rightPartOfCondition="4:A"); 
-ColumnsOperations(int,int,int,int,int,int,string)->(double) ColumnsOperations8(out="OP_TIMES(1,2)"); 
-SortedGroup(double)->(double) SortedGroup9(groupBy="",functions="sum(0)"); 
-ColumnsOperations(double)->(double) ColumnsOperations10(out="OP_TIMES(0,OP_double_CONSTANT(0.7))"); 
+MergeEquiJoin(int,int,int),(int,int,int,string)->(int,int,int,int,int,int,string) MergeEquiJoin7(left="0,1,2",right="3,4,5,6",out="0,1,2,3,4,5,6",leftPartOfCondition="0:A",rightPartOfCondition="4:A"); 
+ColumnsOperations(int,int,int,int,int,int,string)->(int) ColumnsOperations8(out="OP_TIMES(1,2)"); 
+SortedGroup(int)->(int) SortedGroup9(groupBy="",functions="sum(0)"); 
+ColumnsOperations(int)->(double) ColumnsOperations10(out="OP_TIMES(0,OP_double_CONSTANT(0.7))"); 
 ScanAndSortByIndexScan()->(int,int,int,int) ScanAndSortByIndexScan11(name="partsup",index="partsup index",columns="ps_suppkey,ps_partkey,ps_supplycost,ps_availqty"); 
 ScanAndSortByIndexScan()->(int,int) ScanAndSortByIndexScan12(name="supplier",index="supplier index secondary",columns="s_nationkey,s_suppkey"); 
 TableScan()->(int,string) TableScan13(name="nation",columns="n_nationkey,n_name"); 
 Filter(int,string)->(int,string) Filter14(condition="OP_EQUALS(1,OP_string_CONSTANT(Slovakia))"); 
 SortOperator(int,string)->(int,string) SortOperator15(sortedBy="",sortBy="0:A"); 
-MergeEquiJoin(int,int)(int,string)->(int,int,int,string) MergeEquiJoin16(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="0:A",rightPartOfCondition="2:A"); 
+MergeEquiJoin(int,int),(int,string)->(int,int,int,string) MergeEquiJoin16(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="0:A",rightPartOfCondition="2:A"); 
 SortOperator(int,int,int,string)->(int,int,int,string) SortOperator17(sortedBy="",sortBy="1:A"); 
-MergeEquiJoin(int,int,int,int)(int,int,int,string)->(int,int,int,int,int,int,int,string) MergeEquiJoin18(left="0,1,2,3",right="4,5,6,7",out="0,1,2,3,4,5,6,7",leftPartOfCondition="0:A",rightPartOfCondition="5:A"); 
-ColumnsOperations(int,int,int,int,int,int,int,string)->(int,double) ColumnsOperations19(out="1,OP_TIMES(2,3)"); 
-HashGroup(int,double)->(int,double) HashGroup20(groupBy="0",functions="sum(1)"); 
-CrossJoin(double)(int,double)->(double,int,double) CrossJoin21(left="0",right="1,2",out="0,1,2"); 
-Filter(double,int,double)->(double,int,double) Filter22(condition="OP_LOWER(0,2)"); 
-ColumnsOperations(double,int,double)->(int,double) ColumnsOperations23(out="1,2"); 
-SortOperator(int,double)->(int,double) SortOperator24(sortedBy="",sortBy="1:D"); 
-Store(int,double)->() storeResult(); 
+MergeEquiJoin(int,int,int,int),(int,int,int,string)->(int,int,int,int,int,int,int,string) MergeEquiJoin18(left="0,1,2,3",right="4,5,6,7",out="0,1,2,3,4,5,6,7",leftPartOfCondition="0:A",rightPartOfCondition="5:A"); 
+ColumnsOperations(int,int,int,int,int,int,int,string)->(int,int) ColumnsOperations19(out="1,OP_TIMES(2,3)"); 
+HashGroup(int,int)->(int,int) HashGroup20(groupBy="0",functions="sum(1)"); 
+CrossJoin(double),(int,int)->(double,int,int) CrossJoin21(left="0",right="1,2",out="0,1,2"); 
+Filter(double,int,int)->(double,int,int) Filter22(condition="OP_LOWER(0,2)"); 
+ColumnsOperations(double,int,int)->(int,int) ColumnsOperations23(out="1,2"); 
+SortOperator(int,int)->(int,int) SortOperator24(sortedBy="",sortBy="1:D"); 
+Store(int,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> ScanAndSortByIndexScan0;
 start[1] -> ScanAndSortByIndexScan1;
 start[2] -> TableScan2;

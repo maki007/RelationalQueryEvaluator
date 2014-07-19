@@ -1,11 +1,11 @@
 operator main()->()
 {
-broadcast()->(){1} start;
+bobox::broadcast()->() start;
 TableScan()->(int,int,int) TableScan0(name="users",columns="a,b,c"); 
-ColumnsOperations(int,int,int)->(int,double,) ColumnsOperations1(out="0,OP_PLUS(0,OP_TIMES(1,OP_int_CONSTANT(5))),2"); 
-Store(int,double,)->() storeResult(); 
+ColumnsOperations(int,int,int)->(int,int,int) ColumnsOperations1(out="0,OP_PLUS(0,OP_TIMES(1,OP_int_CONSTANT(5))),2"); 
+Store(int,int,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> ColumnsOperations1;
 ColumnsOperations1 -> storeResult;

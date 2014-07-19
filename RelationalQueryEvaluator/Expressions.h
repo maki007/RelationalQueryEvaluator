@@ -58,6 +58,11 @@ public:
 	* @param newChild - child to be replaced
 	*/
 	virtual void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild) = 0;
+
+protected:
+	Expression()
+		: parent(0)
+	{}
 };
 
 /**

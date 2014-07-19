@@ -265,6 +265,8 @@ void SemanticExpressionVisitor::visitColumn(Column * expression)
 		else
 		{
 			expression->column.id = outputColumns0[expression->column.name].column.id;
+			expression->type = outputColumns0[expression->column.name].type;
+
 		}
 	}
 	if (expression->input == 1)
@@ -280,6 +282,7 @@ void SemanticExpressionVisitor::visitColumn(Column * expression)
 		else
 		{
 			expression->column.id = outputColumns1[expression->column.name].column.id;
+			expression->type = outputColumns1[expression->column.name].type;
 		}
 	}
 }
@@ -514,7 +517,14 @@ void TypeResolvingExpressionVisitor::visitBinaryExpression(BinaryExpression * ex
 	case BinaryOperator::MINUS:
 	case BinaryOperator::TIMES:
 	case BinaryOperator::DIVIDE:
-		resultType = "double";
+		resultType = "int";
+
+		if (leftType == "double" || rightType == "double")
+		{
+			resultType = "double";
+		}
+
+
 		break;
 
 	default:

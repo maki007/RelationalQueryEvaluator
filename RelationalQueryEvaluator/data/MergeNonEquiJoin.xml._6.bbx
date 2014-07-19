@@ -1,14 +1,14 @@
 operator main()->()
 {
-broadcast()->(){2} start;
+bobox::broadcast()->(),() start;
 TableScan()->(date,date) TableScan0(name="A",columns="a1,a2"); 
 SortOperator(date,date)->(date,date) SortOperator1(sortedBy="",sortBy="0:A,1:A"); 
 TableScan()->(date) TableScan2(name="B",columns="b"); 
 SortOperator(date)->(date) SortOperator3(sortedBy="",sortBy="0:A"); 
-MergeNonEquiJoin(date,date)(date)->(date,date,date) MergeNonEquiJoin4(left="0,1",right="2",out="0,1,2",leftInputSortedBy = "0:A,1:A", rightInputSortedBy = "2:A",condition="OP_AND(OP_LOWER_OR_EQUAL(0,2),OP_LOWER_OR_EQUAL(2,1))"); 
+MergeNonEquiJoin(date,date),(date)->(date,date,date) MergeNonEquiJoin4(left="0,1",right="2",out="0,1,2",leftInputSortedBy = "0:A,1:A", rightInputSortedBy = "2:A",condition="OP_AND(OP_LOWER_OR_EQUAL(0,2),OP_LOWER_OR_EQUAL(2,1))"); 
 Store(date,date,date)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 start[1] -> TableScan2;

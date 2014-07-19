@@ -76,10 +76,15 @@ string BoboxPlanWritingPhysicalOperatorVisitor::writePlan(std::shared_ptr<Physic
 	plan->accept(*this);
 	string result = "operator main()->()\n";
 	result += "{\n";
-	result += "broadcast()->(){" + to_string(numberOfLeafs) + "} start;\n";
+	result += "bobox::broadcast()->()";
+	for (int i = 1; i < numberOfLeafs; ++i)
+	{
+		result += ",()";
+	}
+	result += " start;\n";
 	result += declarations;
 	result += declaration("Store", getColumnTypeOutput(plan->columns), "", "storeResult", "") + "\n";
-	result += "input -> start\n";
+	result += "input -> start;\n";
 	result += code;
 	result += connect(lastWrittenNode, "storeResult");
 	result += connect("storeResult", "output");
@@ -115,7 +120,7 @@ void BoboxPlanWritingPhysicalOperatorVisitor::writeBinaryOperator(const string &
 	node->rightChild->accept(*this);
 	rightNode = lastWrittenNode;
 	string newlastWrittenNode = type + getId();
-	declarations += declaration(type, getColumnTypeOutput(node->leftChild->columns) + ")(" + getColumnTypeOutput(node->rightChild->columns), getColumnTypeOutput(node->columns), newlastWrittenNode, costructorParameters);
+	declarations += declaration(type, getColumnTypeOutput(node->leftChild->columns) + "),(" + getColumnTypeOutput(node->rightChild->columns), getColumnTypeOutput(node->columns), newlastWrittenNode, costructorParameters);
 	code += connect(leftNode, "[0]" + newlastWrittenNode);
 	code += connect(rightNode, "[1]" + newlastWrittenNode);
 	lastWrittenNode = newlastWrittenNode;

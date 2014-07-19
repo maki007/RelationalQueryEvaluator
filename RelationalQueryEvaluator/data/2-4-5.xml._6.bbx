@@ -1,25 +1,25 @@
 operator main()->()
 {
-broadcast()->(){6} start;
+bobox::broadcast()->(),(),(),(),(),() start;
 TableScan()->(int,int) TableScan0(name="region",columns="r_regionkey,r_name"); 
 Filter(int,int)->(int,int) Filter1(condition="OP_EQUALS(1,OP_string_CONSTANT(Africa))"); 
 TableScan()->(int,int,string) TableScan2(name="nation",columns="n_nationkey,n_regionkey,n_name"); 
-HashJoin(int,int)(int,int,string)->(int,int,string,int,int) HashJoin3(left="3,4",right="0,1,2",out="0,1,2,3,4",leftPartOfCondition="3",rightPartOfCondition="1"); 
+HashJoin(int,int),(int,int,string)->(int,int,string,int,int) HashJoin3(left="3,4",right="0,1,2",out="0,1,2,3,4",leftPartOfCondition="3",rightPartOfCondition="1"); 
 TableScan()->(int,int) TableScan4(name="supplier",columns="s_suppkey,s_nationkey"); 
-HashJoin(int,int,string,int,int)(int,int)->(int,int,int,int,string,int,int) HashJoin5(left="2,3,4,5,6",right="0,1",out="0,1,2,3,4,5,6",leftPartOfCondition="1",rightPartOfCondition="2"); 
+HashJoin(int,int,string,int,int),(int,int)->(int,int,int,int,string,int,int) HashJoin5(left="2,3,4,5,6",right="0,1",out="0,1,2,3,4,5,6",leftPartOfCondition="1",rightPartOfCondition="2"); 
 TableScan()->(int,int,int,int) TableScan6(name="lineitem",columns="l_orderkey,l_suppkey,l_extendedprice,l_discount"); 
-HashJoin(int,int,int,int,string,int,int)(int,int,int,int)->(int,int,int,int,int,int,int,int,string,int,int) HashJoin7(left="4,5,6,7,8,9,10",right="0,1,2,3",out="0,1,2,3,4,5,6,7,8,9,10",leftPartOfCondition="1",rightPartOfCondition="4"); 
+HashJoin(int,int,int,int,string,int,int),(int,int,int,int)->(int,int,int,int,int,int,int,int,string,int,int) HashJoin7(left="4,5,6,7,8,9,10",right="0,1,2,3",out="0,1,2,3,4,5,6,7,8,9,10",leftPartOfCondition="1",rightPartOfCondition="4"); 
 TableScan()->(int,int,date) TableScan8(name="orders",columns="o_custkey,o_orderkey,o_orderdate"); 
 Filter(int,int,date)->(int,int,date) Filter9(condition="OP_AND(OP_LOWER_OR_EQUAL(OP_date_CONSTANT(20-11-2013),2),OP_LOWER(2,OP_date_CONSTANT(20-11-2014)))"); 
-HashJoin(int,int,int,int,int,int,int,int,string,int,int)(int,int,date)->(int,int,date,int,int,int,int,int,int,int,int,string,int,int) HashJoin10(left="3,4,5,6,7,8,9,10,11,12,13",right="0,1,2",out="0,1,2,3,4,5,6,7,8,9,10,11,12,13",leftPartOfCondition="1",rightPartOfCondition="3"); 
+HashJoin(int,int,int,int,int,int,int,int,string,int,int),(int,int,date)->(int,int,date,int,int,int,int,int,int,int,int,string,int,int) HashJoin10(left="3,4,5,6,7,8,9,10,11,12,13",right="0,1,2",out="0,1,2,3,4,5,6,7,8,9,10,11,12,13",leftPartOfCondition="1",rightPartOfCondition="3"); 
 TableScan()->(int,int) TableScan11(name="customer",columns="c_custkey,c_nationkey"); 
-HashJoin(int,int,date,int,int,int,int,int,int,int,int,string,int,int)(int,int)->(int,int,int,int,date,int,int,int,int,int,int,int,int,string,int,int) HashJoin12(left="2,3,4,5,6,7,8,9,10,11,12,13,14,15",right="0,1",out="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15",leftPartOfCondition="0,1",rightPartOfCondition="2,10"); 
+HashJoin(int,int,date,int,int,int,int,int,int,int,int,string,int,int),(int,int)->(int,int,int,int,date,int,int,int,int,int,int,int,int,string,int,int) HashJoin12(left="2,3,4,5,6,7,8,9,10,11,12,13,14,15",right="0,1",out="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15",leftPartOfCondition="0,1",rightPartOfCondition="2,10"); 
 ColumnsOperations(int,int,int,int,date,int,int,int,int,int,int,int,int,string,int,int)->(string,double) ColumnsOperations13(out="13,OP_TIMES(7,OP_MINUS(OP_double_CONSTANT(1),8))"); 
 HashGroup(string,double)->(string,double) HashGroup14(groupBy="0",functions="sum(1)"); 
 SortOperator(string,double)->(string,double) SortOperator15(sortedBy="",sortBy="1:D"); 
 Store(string,double)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> Filter1;
 start[1] -> TableScan2;

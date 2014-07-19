@@ -1,11 +1,11 @@
 operator main()->()
 {
-broadcast()->(){1} start;
+bobox::broadcast()->() start;
 IndexScan()->(int,int) IndexScan0(name="users",index="index",columns="a,b",condition="OP_AND(OP_EQUALS(0,OP_int_CONSTANT(4)),OP_EQUALS(1,OP_int_CONSTANT(10)))"); 
 Filter(int,int)->(int,int) Filter1(condition="OP_AND(OP_LOWER(0,OP_int_CONSTANT(-1)),OP_LOWER(1,OP_int_CONSTANT(8000)))"); 
 Store(int,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> IndexScan0;
 IndexScan0 -> Filter1;
 Filter1 -> storeResult;

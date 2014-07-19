@@ -1,17 +1,17 @@
 operator main()->()
 {
-broadcast()->(){3} start;
+bobox::broadcast()->(),(),() start;
 TableScan()->(int,string) TableScan0(name="people_from_city",columns="id,name"); 
 Filter(int,string)->(int,string) Filter1(condition="OP_EQUALS(1,OP_string_CONSTANT(sparta))"); 
 TableScan()->(int,string) TableScan2(name="people_from_city",columns="id,name"); 
 Filter(int,string)->(int,string) Filter3(condition="OP_EQUALS(1,OP_string_CONSTANT(sparta))"); 
 TableScan()->(string,int) TableScan4(name="people_from_city",columns="name,id"); 
 Filter(string,int)->(string,int) Filter5(condition="OP_EQUALS(0,OP_string_CONSTANT(sparta))"); 
-Union(int,string)(string,int)->(int,string) Union6(left="0,1",right="1,0",out="0,1"); 
-Union(int,string)(int,string)->(int,string) Union7(left="0,1",right="0,1",out="0,1"); 
+Union(int,string),(string,int)->(int,string) Union6(left="0,1",right="1,0",out="0,1"); 
+Union(int,string),(int,string)->(int,string) Union7(left="0,1",right="0,1",out="0,1"); 
 Store(int,string)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> Filter1;
 start[1] -> TableScan2;

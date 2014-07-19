@@ -1,13 +1,13 @@
 operator main()->()
 {
-broadcast()->(){1} start;
+bobox::broadcast()->() start;
 TableScan()->(date,int,double,double) TableScan0(name="lineitem",columns="l_shipdate,l_discount,l_extendedprice,l_quantity"); 
 Filter(date,int,double,double)->(date,int,double,double) Filter1(condition="OP_AND(OP_LOWER_OR_EQUAL(OP_date_CONSTANT(today),0),OP_LOWER(0,OP_date_CONSTANT(today+1year)),OP_LOWER(3,OP_double_CONSTANT(5000)),OP_LOWER(OP_double_CONSTANT(0.2),1),OP_LOWER(1,OP_double_CONSTANT(0.3)))"); 
 ColumnsOperations(date,int,double,double)->(double) ColumnsOperations2(out="OP_TIMES(2,1)"); 
 SortedGroup(double)->(double) SortedGroup3(groupBy="",functions="sum(0)"); 
 Store(double)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> Filter1;
 Filter1 -> ColumnsOperations2;

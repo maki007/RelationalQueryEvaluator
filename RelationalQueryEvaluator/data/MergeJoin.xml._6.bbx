@@ -1,14 +1,14 @@
 operator main()->()
 {
-broadcast()->(){2} start;
+bobox::broadcast()->(),() start;
 TableScan()->(int) TableScan0(name="A",columns="a"); 
 SortOperator(int)->(int) SortOperator1(sortedBy="",sortBy="0:D"); 
 TableScan()->(int) TableScan2(name="B",columns="b"); 
 SortOperator(int)->(int) SortOperator3(sortedBy="",sortBy="0:D"); 
-MergeEquiJoin(int)(int)->(int,int) MergeEquiJoin4(left="0",right="1",out="0,1",leftPartOfCondition="0:D",rightPartOfCondition="1:D"); 
+MergeEquiJoin(int),(int)->(int,int) MergeEquiJoin4(left="0",right="1",out="0,1",leftPartOfCondition="0:D",rightPartOfCondition="1:D"); 
 Store(int,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 start[1] -> TableScan2;

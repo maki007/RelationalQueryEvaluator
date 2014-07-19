@@ -1,11 +1,11 @@
 operator main()->()
 {
-broadcast()->(){1} start;
+bobox::broadcast()->() start;
 TableScan()->(int,int) TableScan0(name="x",columns="a,b"); 
 SortOperator(int,int)->(int,int) SortOperator1(sortedBy="0",sortBy="1:D"); 
 Store(int,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 SortOperator1 -> storeResult;

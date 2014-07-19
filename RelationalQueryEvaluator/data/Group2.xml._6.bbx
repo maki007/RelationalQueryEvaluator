@@ -1,12 +1,12 @@
 operator main()->()
 {
-broadcast()->(){1} start;
+bobox::broadcast()->() start;
 TableScan()->(string,int) TableScan0(name="people",columns="user_name,country"); 
 SortOperator(string,int)->(string,int) SortOperator1(sortedBy="",sortBy="1:D,0:A"); 
 SortedGroup(string,int)->(int,string,int) SortedGroup2(groupBy="1,0",functions="count()"); 
 Store(int,string,int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> TableScan0;
 TableScan0 -> SortOperator1;
 SortOperator1 -> SortedGroup2;

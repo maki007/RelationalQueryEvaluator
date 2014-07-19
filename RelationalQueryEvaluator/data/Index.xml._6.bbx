@@ -1,10 +1,10 @@
 operator main()->()
 {
-broadcast()->(){1} start;
+bobox::broadcast()->() start;
 IndexScan()->(int) IndexScan0(name="x",index="index",columns="a",condition="OP_LOWER(0,OP_int_CONSTANT(5))"); 
 Store(int)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> IndexScan0;
 IndexScan0 -> storeResult;
 storeResult -> output;

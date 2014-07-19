@@ -1,18 +1,18 @@
 operator main()->()
 {
-broadcast()->(){3} start;
+bobox::broadcast()->(),(),() start;
 IndexScan()->(int,int) IndexScan0(name="customer",index="index2",columns="c_custkey,c_mktsegment",condition="OP_EQUALS(1,OP_string_CONSTANT(SEGMENT))"); 
 IndexScan()->(int,int,int,int) IndexScan1(name="orders",index="index",columns="o_orderdate,o_shippriority,o_orderkey,o_custkey",condition="OP_LOWER(0,OP_date_CONSTANT(today))"); 
-HashJoin(int,int)(int,int,int,int)->(int,int,int) HashJoin2(left="0,1",right="2,3,4,5",out="2,3,4",leftPartOfCondition="0",rightPartOfCondition="5"); 
+HashJoin(int,int),(int,int,int,int)->(int,int,int) HashJoin2(left="0,1",right="2,3,4,5",out="2,3,4",leftPartOfCondition="0",rightPartOfCondition="5"); 
 TableScan()->(int,int,int,int) TableScan3(name="lineitem",columns="l_orderkey,l_shipdate,l_extendedprice,l_discount"); 
 Filter(int,int,int,int)->(int,int,int,int) Filter4(condition="OP_LOWER(OP_date_CONSTANT(today),1)"); 
-HashJoin(int,int,int)(int,int,int,int)->(int,int,int,int,int) HashJoin5(left="4,5,6",right="0,1,2,3",out="0,2,3,4,5",leftPartOfCondition="6",rightPartOfCondition="0"); 
+HashJoin(int,int,int),(int,int,int,int)->(int,int,int,int,int) HashJoin5(left="4,5,6",right="0,1,2,3",out="0,2,3,4,5",leftPartOfCondition="6",rightPartOfCondition="0"); 
 ColumnsOperations(int,int,int,int,int)->(int,int,int,double) ColumnsOperations6(out="0,3,4,OP_TIMES(1,OP_MINUS(OP_double_CONSTANT(1),2))"); 
 HashGroup(int,int,int,double)->(int,int,int,double) HashGroup7(groupBy="0,1,2",functions="sum(3)"); 
 SortOperator(int,int,int,double)->(int,int,int,double) SortOperator8(sortedBy="",sortBy="3:D,1:A"); 
 Store(int,int,int,double)->() storeResult(); 
 
-input -> start
+input -> start;
 start[0] -> IndexScan0;
 start[1] -> IndexScan1;
 IndexScan0 -> [0]HashJoin2;
