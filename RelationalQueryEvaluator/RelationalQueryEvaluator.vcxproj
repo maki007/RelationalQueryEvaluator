@@ -171,6 +171,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PhysicalOperator.cpp" />
     <ClCompile Include="PhysicalOperatorVisitor.cpp" />
+    <ClCompile Include="rafe.cpp" />
     <ClCompile Include="SemanticChecker.cpp" />
     <ClCompile Include="XmlHandler.cpp" />
     <ClCompile Include="XmlUtils.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="AlgebraVisitors.h" />
     <ClInclude Include="PhysicalOperator.h" />
     <ClInclude Include="PhysicalOperatorVisitor.h" />
+    <ClInclude Include="rafe.hpp" />
     <ClInclude Include="XmlHandler.h" />
     <ClInclude Include="XmlUtils.h" />
   </ItemGroup>
