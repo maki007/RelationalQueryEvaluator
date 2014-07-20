@@ -4,7 +4,7 @@
 
 In this section we present relation algebra operators which are used as input of compiler:
 \begin{enumerate}
-\item Projection - we used extended projection $\phi_L$, which remove columns, compute new columns using expressions and rename columns
+\item Projection - we used extended projection $\pi_L$, which remove columns, compute new columns using expressions and rename columns
 
 \item Table operator, which is leaf or algebra tree. For this operator we need to provide arguments like:
 \begin{itemize}
@@ -73,7 +73,6 @@ Here is a list on algorithms:
 
 \end{itemize}
 
-Nested loop joins are not supported, because it's implementation in Bobox can create cycles.
 
 \section{Architecture}
 The architecture of implemented tool is displayed in figure~\ref{fig:compilerarchitecture}.

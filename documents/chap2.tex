@@ -1,8 +1,8 @@
 \chapter{Related work}
-I the chapter we introduce some theory of relational algebra, it's optimizations and physical plan generation. This informations were used for tool implementation.
+In the chapter we introduce some theory of relational algebra, it's optimizations and physical plan generation. Source of this theory is book\cite{database}. This informations were used for tool implementation.
 \section{Relational algebra}
 
-In this chapter we introduce and describe relational algebra\cite{database}. We start with some basic definitions of relational model.
+In this section we introduce and describe relational algebra\cite{database}. These definitions can vary based on used literature. We start with some basic definitions of relational model.
 
 \begin{mydef}
 $Relation$ is a two dimensional table.
@@ -14,21 +14,17 @@ $Attribute$ is column of a table.
 $Schema$ name of the relations and a set of attributes. For example:~$Movie(id,name,lenght)$.
 \end{mydef}
 \begin{mydef}
-$Tupple$ of a relation is a row other than header row.
+$Tuple$ is a row of a relation.
 \end{mydef}
 
-
-An algebra in general consist of  operators and atomic operands. For example in arithmetic algebra variables like $x$ or constant like 15 and operators are addition multiplication, subtraction and division.
-We can build expression by applying operators on operands or other expressions. Example of an expression in arithmetic algebra is $(15+x)*x$.
-
-Relational algebra  has atomic operands:
+Relational algebra has atomic operands:
 \begin{itemize}
 \item Variables, that are relations.
-\item Constants, that are finite relations. 
+\item Constants, which are relations. 
 \end{itemize}
 
-In classical relational algebra all operates and expression results are set. All this operations can be applied also to bags.
-Relation algebra operators are:
+In classical relational algebra all operates and expression results are set. All this operations can be applied also to bags. Im implemented compiler we used bags.
+Relation algebra operators in classical algebra are:
 \begin{itemize}
 \item Set operations - union, difference, intersection.
 \item Removing operators - selection, which removes rows and projection that eliminates columns from given relation.
@@ -41,27 +37,27 @@ Expressions in relational algebra are called $queries$.
 
 Sets operations are:
 \begin{itemize}
-\item Union $R\cap S$ is a set of tuples that are in $R$ or $S$.
-\item Intersection $R\cup S$  is a set of tuples that are in both $R$ and $S$. 
-\item Difference $R-S$ is a set of tuples that are in $R$ but not in $S$.
+\item Union $R\cap_S S$ is a set of tuples that are in $R$ or $S$.
+\item Intersection $R\cup_S S$  is a set of tuples that are in both $R$ and $S$. 
+\item Difference $R-_S S$ is a set of tuples that are in $R$ but not in $S$.
 
 \end{itemize}
 
-Lets have relations $R$ and $S$. If we want to apply some set operation both relations must have the same set of attributes. If we want to compute set theoretic union, difference or intersections the oder of columns must be the same in both relations. 
+Let's have relations $R$ and $S$. If we want to apply some set operation both relations must have the same set of attributes. If we want to compute set theoretic union, difference or intersections the names of columns must be the same in both relations. 
 We can also use renaming operations if relations doesn't have same number of attributes.
 
 \subsubsection{Projection}
 \label{projection}
-$Projection$ operator $\pi$ produces from relation R new Relations with reduced set of attributes. Result of a expression $\pi_{A_1,A_3,A_4,...,A_N}(R)$ is relation $R$ with attributes $A_1,A_3,A_4,...,A_N$. 
+$Projection$ operator $\pi_S$ produces from relation R new Relations with reduced set of attributes. Result of a expression $\pi_{(S) A_1,A_3,A_4,...,A_N}(R)$ is relation $R$ with attributes $A_1,A_3,A_4,...,A_N$. Set version of this operator also eliminates duplicate tuples.
 
 \subsubsection{Selection}
 If we apply operator selection $\sigma$ on Relation $R$ with condition $C$ we get a new relation with same attributes and tuples, which satisfy given condition. For example $\sigma_{A_1=4}(R)$.
 
 \subsubsection{Cartesian product}
-Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the first element of pair to be any element from R and second element of pair to be any element of S. Cartesian product of relations similar. We pair tuples from $R$ with all tuples from $S$.
+Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the first element of pair to be any element from R and second element of pair to be any element of S. Cartesian product of relations similar. We pair tuples from $R$ with all tuples from $S$. Relations $S$ and $R$ cannot have attribute with same name, because some columns of expression $R\times S$ would same name.
 
 \subsubsection{Natural joins}
-We usually don't want to pair all of the tuples from $R$ to all tuples from $S$. We can par tuple in some other way. The simples join is called natural join of $R$ and $S$ ($R \Join S$). Let schema of $R$ be $R(r_1,r_2,..,r_n,c_1,c_2,...c_n)$ and schema of $S$ be  $S(s_1,s_2,..,s_n,c_1,c_2,...c_n)$. In natural join we pair tuple $r$ from relation $R$ to tuple $s$ from relation $S$ only if $r$ and $s$ agree on all attributes with same name (in this case $c_1,c_2,...c_n$).
+The simplest join is called natural join of $R$ and $S$ ($R \Join S$). Let schema of $R$ be $R(r_1,r_2,..,r_n,c_1,c_2,...c_n)$ and schema of $S$ be  $S(s_1,s_2,..,s_n,c_1,c_2,...c_n)$. In natural join we pair tuple $r$ from relation $R$ to tuple $s$ from relation $S$ only if $r$ and $s$ agree on all attributes with same name (in this case $c_1,c_2,...c_n$).
 
 \subsubsection{Theta joins}
 Natural join forces us to use one specific condition. In may cases we want to join relation with some other condition. For this purpose we have theta-join. The notation for joining relation $R$ and $S$ based on condition $C$ is $R\Join_C S$. The result is constructed in following way:
@@ -71,7 +67,7 @@ Natural join forces us to use one specific condition. In may cases we want to jo
 \item Use selection with condition $C$.
 \end{enumerate}
 
-Basically $R\Join_C S=\sigma_C(R \times S)$
+Basically $R\Join_C S=\sigma_C(R \times S)$ Relations $R$ and $S$ have to have disjunct names of columns.
 
 \subsubsection{Renaming}
 
@@ -79,18 +75,20 @@ In order to control name of attributes or relation name we have renaming operato
 
 \subsection{Relational operations on bags}
 
-Commercial database system almost never are based purely on bags. $Bag$ is a multi-set. Only operation that behave differently are intersection union and difference. 
+Commercial database system almost always are based on bags. $Bag$ is a multi-set. Only operation that behave differently are intersection, union, difference and projection.
 
 \subsubsection{Union}
-Bag union of $R \cup S$ we just add all tuples from $S$ and $R$ together. If tuple $t$ appears in $R$ $m$-times and in $S$ $n$-times then in  $R \cup S$ will $t$ appear $m+n$ time. Both $m$ and $n$ can be zero.
+Bag union of $R \cup_B S$ we just add all tuples from $S$ and $R$ together. If tuple $t$ appears in $R$ $m$-times and in $S$ $n$-times then in  $R \cup S$ will $t$ appear $m+n$ times. Both $m$ and $n$ can be zero.
 
 \subsubsection{Intersection}
 
-Lets have tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times. In the Bag intersection $R \cap S$ will be $t$ $min(m,n)$-times.
+Lets have tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times. In the Bag intersection $R \cap_B S$ will be $t$ $min(m,n)$-times.
 
 \subsubsection{Difference}
-Every tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times, will appear $max(0,m-n)$ times in bag $R-S$.
+Every tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times, will appear $max(0,m-n)$ times in bag $R-_B S$.
 
+\subsubsection{Projection}
+Bag version of projection $\pi_B$ behave like set version $\pi_S$ with one exception. Bag version doesn't eliminate duplicate tuples.
 
 \subsection{Extended operators of Relational algebra}
 
@@ -102,18 +100,18 @@ This operator $\delta(R)$ returns set consisting of one copy of every tuple that
 
 \subsubsection{Aggregate operations}
 
-Aggregate operators such as sum are not relational algebra operator but are used  by grouping operator. They apply on column and produce one number as result. The standard operators are $SUM$, $AVG$(average), $MIN$, $MAX$ and $COUNT$.
+Aggregate operators such as sum are not relational algebra operators but are used by grouping operators. They apply on column and produce one number as result. The standard operators are $SUM$, $AVG$(average), $MIN$, $MAX$ and $COUNT$.
 
 
 \subsubsection{Grouping operator}
 
-We often doesn't want to compute aggregation function for entire column. We rather compute this function on for some group of columns. For example we can compute average salary for every person in database, or we can group them by companies and get every salary in every company. 
+We often don't want to compute aggregation function for entire column. We rather compute this function on for some group of columns. For example we can compute average salary for every person in database, or we can group them by companies and get average salary in every company. 
 
 For this purpose we have grouping operator $\gamma_L(R)$. $L$ is a list of:
 
 \begin{enumerate}
-\item Attribute of $R$ by which $R$ will be grouped.
-\item Aggregation operator applied on a attribute of relation.
+\item Attributes of $R$ by which $R$ will be grouped.
+\item expression $x=f(y)$, where $x$ is new column name, $f$ is aggregation function and $y$ is attribute of relation. When we use function $COUNT$ we don't need to specify argument.
 \end{enumerate}
 
 Relation computed by expression $\gamma_L(R)$ is constructed:
@@ -131,7 +129,7 @@ Duplicate elimination operator is a special case of grouping operator. We can ex
 
 \subsubsection{Extended projection operator}
 
-We can extend classical projection operator $\pi_L(R)$ introduced in chapter \ref{projection}. We denote it also $\pi_L(R)$ but projection list can have following elements:
+We can extend classical bag projection operator $\pi_L(R)$ introduced in chapter \ref{projection}. We denote it also $\pi_L(R)$ but projection list can have following elements:
 
 \begin{enumerate}
 \item Attribute of R, which means attribute will appear in output.
@@ -143,7 +141,7 @@ We can extend classical projection operator $\pi_L(R)$ introduced in chapter \re
 
 \subsubsection{The sorting operator}
 
-In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation, $L$ is list of attributes with additional information about sort order, is relation with same tuples like $R$ but different order of tuples. Example:  $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with same $A_1$ value will be additionally sorted by their $A_2$ value descending. 
+In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation, $L$ is list of attributes with additional information about sort order, is relation with same tuples like $R$ but different order of tuples. Example:  $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with same $A_1$ value will be additionally sorted by their $A_2$ value descending. Result of this operator is not bag or set, since there is no sort order defined in bags or sets. Result is sorted bag or set and it make sense to use this operator only on top of algebra tree.
 
 \subsubsection{Outer joins}
 Lets have join $R\Join_C S$. We call tuple $t$ from relation $R$ or $S$ $dangling$ if
@@ -157,7 +155,7 @@ After initial logical query plan is generated, we can apply some heuristics to i
 
 
 \subsection{Commutative and associative laws}
-Commutative and associative operators are Cartesian product, natural join, union and intersection. Theta join is commutative but generally is not associative. But if the conditions makes sense where they where positioned, then theta join is associative.
+Commutative and associative operators are Cartesian product, natural join, union and intersection. Theta join is commutative but generally is not associative. But if the conditions makes sense where they were positioned, then theta join is associative.
 That means we can make following changes to algebra tree:
 
 \begin{itemize}
@@ -182,7 +180,7 @@ Sometimes we cannot push whole condition but we can split it:
 
 \item $\sigma_{C_1~OR~C_2}(R)=\sigma_{C_1}(R) \cup_S \sigma_{C_2}(R)$
 \end{itemize}
-Last law works only when $R$ is a set. $\cup_S$ stands for set union. We can push selection down union, it has to be pushed to both branches:
+Last law works only when $R$ is a set. We can push selection down union, it has to be pushed to both branches:
 \begin{itemize}
 \item $\sigma_{C}(R \cup S)=\sigma_{C}(R) \cup \sigma_{C}(S)$
 \end{itemize}
@@ -197,20 +195,20 @@ Following laws allow to push selection down both arguments. Let's have selection
 \begin{itemize}
 \item $\sigma_{C}(R \oplus S)=\sigma_{C}(R) \oplus S$
 \end{itemize}
-$\oplus$ stands for $\times$, $\cap$, $\cup$, $\Join$ or $\Join_C$. If relation $S$ and $R$ contains all attributes of $C$ we can also use following law:
+$\oplus$ stands for $\times$, $\Join$ or $\Join_C$. If relation $S$ and $R$ contains all attributes of $C$ we can also use following law:
 \begin{itemize}
 \item $\sigma_{C}(R \Join S)=\sigma_{C}(R) \Join  \sigma_{C}(S)$
 \end{itemize}
 
 
 \subsection{Laws involving projection}
-Principle for manipulation with projections that we can add projection anywhere in the tree as long as it only eliminates attributes which are not used anymore and don't appear in query result.
+We can add projection anywhere in the tree as long as it only eliminates attributes, which are not used anymore and don't appear in query result.
 \subsection{Laws involving joins and products}
 
 We have more laws involving selection that follow directly from definition of the join:
 \begin{itemize}
 \item $\sigma_{C}(R \times S)=R \Join_{C} S$
-\item $R \Join S=\pi_L(\sigma_{C}(R \times S))$, $C$ is condition that equates each pair of attributes of $R$ and $S$, which have the same name and $L$ is a list of attributes of relation $R$.
+\item $R \Join S=\pi_L(\sigma_{C}(\pi_X(R) \times \pi_Y(S)))$. $\pi_X(R)$ renames all attributes of relation $R$ from $attributename$ to $R\_attributename$ and $\pi_Y(S)$renames all attributes of relation $S$ from $attributename$ to $S\_attributename$. $C$ is condition that equates each pair of attributes of $R$ and $S$, which had the same name before renaming. $\pi_L$ keeps all columns not used in condition $C$ and renames them back by removing prefix $S\_$ or $R\_$. It also keeps all columns used in $C$ which came from relation $R$ and renames them by removing prefix $R\_$
 \end{itemize}
 
 
@@ -228,8 +226,8 @@ For each physical plan we select
 \end{enumerate}
 
 \subsection{Size estimations}
-
-The costs of evaluating physical plan are based of estimated size of interme\-dia\-te relations. Ideally we want out estimation to be accurate, easy to compute and logically consistent(size of relation doesn't depend on how relation is computed). We will present simple rules, which will give us give us good estimations in most situation. Goal of estimating sizes is not predict exact size of relation, even an inaccurate sizes will help us with plan generation.
+Estimates used in this section are from book\cite{database}. 
+The costs of evaluating physical plan are based of estimated size of interme\-dia\-te relations. Ideally we want out estimation to be accurate, easy to compute and logically consistent(size of relation doesn't depend on how relation is computed). We will present simple rules, which will give us give us good estimations in most situation. Goal of estimating sizes is not predict exact size of relation, even an inaccurate size will help us with plan generation.
 
 In this section we will use following conventions:
 
@@ -241,7 +239,7 @@ In this section we will use following conventions:
 
 \subsubsection{Estimating the size of projection}
 
-Projection is only operator which size of result is computable. It doesn't change number ot tuples, only their lengths change.
+Bag projection is only operator which size of result is computable. It doesn't change number ot tuples, only their lengths change.
 
 \subsubsection{Estimating the size of selection}
 
@@ -250,7 +248,7 @@ Selection usually reduces number of tuples. Lets have $S=\sigma_{A=c}(R)$, where
 \item $T(S)=T(R)/V(R,A)$
 \end{itemize}
 
-More problematic estimation is when selection involves inequality comparison Lets have $S=\sigma_{A<c}(R)$. In average half the tuple satisfies condition, but usually queries select only a small fraction from all tuples. Therefore the estimation is:
+More problematic estimation is when selection involves inequality comparison Lets have $S=\sigma_{A<c}(R)$. In average half the tuple satisfies condition, but usually queries select only a small fraction from all tuples. Typical inequality will return about third of tuples. Therefore the estimation is:
 \begin{itemize}
 \item $T(S)=T(R)/3$
 \end{itemize}
@@ -268,14 +266,14 @@ Little more complicated is when condition involved an $or$ of conditions. Lets h
 \item $T(S)=T(R)(1-(1-\dfrac{m_1}{T(R)})(1-\dfrac{m_2}{T(R)}))$
 \end{itemize}
 
-Expression $1-\dfrac{m_1}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_1$ and $1-\dfrac{m_2}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_2$. Product of these numbers are the fraction of tuples from $R$ which are not in result. One minus the product gives us fraction of tuples in $S$.
+$m_i=T(\sigma_{C_1}(R))$, where $i\in\{1,2\}$. Expression $1-\dfrac{m_1}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_1$ and $1-\dfrac{m_2}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_2$. Product of these numbers are the fraction of tuples from $R$ which are not in result. One minus the product gives us fraction of tuples in $S$.
 
 \subsubsection{Estimating the size of join}
 \label{join}
-We start with natural join. Let's have expression $X=R(X,Y)\Join S(Y,Z)$. We join here by one attribute and we use estimation:
+We start with natural join. Let's have expression $A=R(X,Y)\Join S(Y,Z)$. We join here by one attribute and we use estimation:
 
 \begin{itemize}
-\item $T(X)=\dfrac{T(R)T(S)}{max(V(R,Y),V(S,Y))}$
+\item $T(A)=\dfrac{T(R)T(S)}{max(V(R,Y),V(S,Y))}$
 \end{itemize}
 
 We can generalize this rule for joining with multiple attributes. For join $R\Join S$, where we join $R$ and $S$ using following attributes $a_1,a_2,...a_n)$, we use this estimation:
@@ -284,7 +282,7 @@ We can generalize this rule for joining with multiple attributes. For join $R\Jo
 \item $T(R\Join S)=\dfrac{T(R)T(S)}{\prod_{k=1}^{n}{max(V(R,a_k),V(S,a_k))}}$
 \end{itemize}
 
- 
+When we join using multiple attributes, than result of this estimation can be smaller than $1$
 
 If we have other type of join (theta join), we can use following rules for it's estimation:
 \begin{enumerate}
@@ -298,16 +296,16 @@ If we have other type of join (theta join), we can use following rules for it's 
 If we have bag union, then size of resulting relation is sum of sizes of input relations. Size of set union $R \cup_S S$ can be between $max(T(R),T(S))$ and $T(R)+T(S)$. Recommended estimate is average of this numbers. 
 
 \subsubsection{Estimating the size of intersection}
-Size of relation $R\cup S$ can be between $0$ and $min(T(R),T(S))$. We recommend to take half of size of smaller relation:
+Size of relations $R\cup_S S$ and $R\cup_B S$ can be between $0$ and $min(T(R),T(S))$. Recommend estimate is to take half of size of smaller relation:
 \begin{itemize}
 \item  $min(T(R),T(S))/2$.
 \end{itemize}
 
 \subsubsection{Estimating the size of difference}
 
-Result of expression $R-S$ can be as big as $T(R)$ and as small as $T(R)-T(S)$. Suggested estimate is: 
+Result of expression $R-S$ can be as big as $T(R)$ and as small as $T(R)-T(S)$. Suggested estimate can be used for bag or set version of difference: 
 \begin{itemize}
-\item  $T(R-S)=T(R)-T(S)$.
+\item  $T(R-S)=T(R)-\frac{T(S)}{2}$.
 \end{itemize}
 \subsubsection{Estimating the size of grouping}
 Size of the result of expression $\gamma_L(R)$ is $V(R,[g_1,g_2,...,g_n])$, where $g_x$ are grouping attributes of $L$. This statistics is almost never available so we need another estimate. $T(\gamma_L(R))$ can be between 1 and $\prod_{k=1}^{n}{V(R,g_k)}$. Upper bound can larger than number of tuple in relation $R$. That's why we suggest:

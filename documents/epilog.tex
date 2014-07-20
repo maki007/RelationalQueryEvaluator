@@ -1,2 +1,14 @@
-\chapter*{Conclusion}
+\chapter{Conclusion}
 \addcontentsline{toc}{chapter}{Conclusion}
+
+The aim of this thesis was to implement part of the SQL compiler. Created program reads input relational algebra, optimizes it and generated physical plan from it. Output is written in Bobolang.
+
+After the introduction we described Bobox and Bobolang. Next chapter contains theory used to implement query transformer. Chapter analysis contains description of used algorithms and important data structures used in implemented tool. Final chapter describe some implementation details of created program.
+
+Created software is a first tool of planed SQL compiler. Front end, which transforms text query to relational algebra, is not yet implemented. At the time of submitting this thesis, the all Bobox runtime operators are not implemented. That's why we couldn't evaluate any queries to prove that plans are correct.
+
+We tested software by transforming some simple queries and queries from benchmark\cite{benchmark}. We can only check generated plans by looking generated debug outputs. From the results we can say that generated plans look correct and also optimal. Based on this result we can say, that this thesis fulfilled it's aim. 
+
+
+Implemented tool can be improved by adding more logical plan optimizations. We can add also support for more algorithms like nested loop joins.
+

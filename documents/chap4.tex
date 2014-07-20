@@ -1,6 +1,6 @@
 \chapter{Implementation}
 
-In this chapter we describe implementation details in developed software and describe it's functionality on examples. We will use following example to show optimizations and compiling:
+In this chapter we describe implementation details in developed software and describe it's functionality on examples. More implementation details can be found in generated doxygen\cite{doxygen} documentation in attachment on CD. We will use following example to show optimizations and compiling:
 
 
 \begin{verbatim}
@@ -28,7 +28,7 @@ order by
     o_orderdate;
 \end{verbatim}
 
-This example is taken from Tpc benchmark \cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. In this benchmark there are no indexes on tables. Columns which starts wit o\_ are from table order, columns which beginning with l\- are from table lineitem and columns starting with \_c belongs table customers.
+This example is taken from benchmark\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. In this benchmark there are no indexes on tables. Columns which starts wit o\_ are from table order, columns which beginning with l\- are from table lineitem and columns starting with \_c belongs table customers.
 
 
 
@@ -342,20 +342,21 @@ At this moment we have optimized tree, we can find selection chains in it. To re
 
 In figure~\ref{fig:algebratree2} we can see optimizes algebra tree. In comparison figure~\ref{fig:algebratree1}, this tree has grouped join with three input relations. Also big selection about joins has been split and moved down the tree. Some part of condition became join condition other were pushed down on of branches of grouped join. Then we can see that new tree has columns with assigned unique identifiers. Because we have this identifiers we don't need to know number of input for each column.
 
-This input is optimized algebra tree. We can of course implement more optimizations to improve logical plan.
+This output is optimized algebra tree. We can of course implement more optimizations to improve logical plan.
 
 \section{Generating plan}
 
 Final logical plan will be processed by \texttt{AlgebraCompiler}, which outputs $n$ best plans. $n$ is a constant in  \texttt{AlgebraCompiler} represented by variable \texttt{NUM\-BER\_\-OF\_\-PLANS}. 
 
-This visitor visits node of algebra tree, the it calls itself on its children. We use generated plans in child nodes to create plans for current node. After that we store best plans in variable \texttt{result} relation size in variable \texttt{size} and output columns in variable \texttt{outputColumns}. 
+This visitor visits node of algebra tree, the it calls itself on its children. We use generated plans for child nodes to create plans for current node. After that we store best plans in variable \texttt{result}, relation size in variable \texttt{size} and output columns in variable \texttt{outputColumns}. 
 
-In every node we generate all possible plans. Structure store in variable \texttt{result}, which is a heap. After inserting plan we remove slowest plan.
+For every node we generate all possible algorithms. Generated plans are stored in variable \texttt{result}. This variables stored a max-heap, where plans are compared by their overall time complexity. This time complexity is computed as sum of time complexity in all physical operators in current plan. This heap has maximal size of $n$. If there are more than $n$ plans we remove plan in root of the heap.
+
+Both join order algorithms can be found in method \texttt{visitGroupedJoin}. If number of join relations is smaller than $k$ we used dynamic programing algorithm to estimate order of join. If we have more relations to join we use greedy algorithm. Constant $k$ is represented in variable \texttt{LI\-MIT\_\-FOR\_\-GREEDY\_\-JOIN\_\-ORDER\_\-ALGORITHM}. Both join algorithm call method \texttt{join}. This method combines plans and generates all possible plans.
+
 
 Physical plan is represented as polymorphic tree. 
 
-
-In figure \ref{fig:physicalplan} we can see best generated physical plan for query presented on the beginning of this chapter. Every operator contains estimated size and time. Below that we can see output columns with their unique identifiers. Since read tables doesn't contain any indexes, we have to read all the tables and filter results. After that we can only use hash join, because sorting relations for merge join would be to expressive and nested loop join is not supported by runtime or compiler. From the result we compute new columns and use hash group algorithm. We didn't use sorted group, because input is not sorted and output has to be sorted by other than group column.
 
 \begin{figure}[h!]
   \centering
@@ -365,9 +366,61 @@ In figure \ref{fig:physicalplan} we can see best generated physical plan for que
           \label{fig:physicalplan}
 \end{figure}
 
+
+In figure \ref{fig:physicalplan} we can see best generated physical plan for query presented on the beginning of this chapter. Every operator contains estimated size and time. Below that we can see output columns with their unique identifiers and estimated number of unique values for each column.. Since read tables doesn't contain any indexes, we have to read all the tables and filter results. After that we can only use hash join, because sorting relations for merge join would be to expressive and nested loop join is not supported by runtime or compiler. From the result we compute new columns and use hash group algorithm. We didn't use sorted group, because input is not sorted and output has to be sorted by other than group column.
+
+Physical operators are chosen based on their estimated time complexity. It is computed from estimated size. In class \texttt{TimeComplexity} we have static functions which compute time complexity for each operation. It also contains constants used in this functions. We assume, that this constants or while function need to be improved. This improvement can be done base on testing and measuring evaluation queries in Bobox. At the time of submitting thesis runtime environment is not fully functional.
+
+
+
+
+\section{Resolving sort parameters}
+
+We take generated plans from class \texttt{AlgebraCompiler}. Sort parameters of sort nodes need to be resolved. Two plans also can contain same physical operator. That's why need to clone plans, to assure that no algorithm representing object are used in two or more plans.
+
+For cloning we used \texttt{CloningPhysicalOperatorVisitor}. Than we resolve generated plans in \texttt{SortResolvingPhysicalOperatorVisitor}. In figure~\ref{fig:plansortunresolved} we can see physical plan with unresolved sort parameters. 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.6\textwidth]{plansortunresolved}
+
+      \caption{Example of physical plan.}
+          \label{fig:plansortunresolved}
+\end{figure}
+
+It contains two sort algorithms. Left one has following possible parameters:
+
+\begin{itemize}
+\item $a:both, c:both$
+\item $c:both, a:both$
+\end{itemize}
+
+Right sort algorithm has sort parameters:
+\begin{itemize}
+\item $b:both, d:both$
+\item $d:both, b:both$
+\end{itemize}
+
+At the time of generating this algorithm, we didn't know that order was the best to chose. After merge join plan has to be sorted by $d:desc,a:asc$. At the top of the tree we generated partial sort. It doesn't do anything because relation is already sorted. It only indicates, that from all sort parameter possibilities we chose $d:desc,a:asc$ and we don't have to do any additional sorting.
+
+\texttt{SortResolvingPhysicalOperatorVisitor} goes down tree. It uses variable \texttt{sortParameters}. We store there information how the input has been sorted before input of visited node. Using this variable we adjust sort parameters of sort algorithm. Adjusted plan is in figure~\ref{fig:plansortresolved}.
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.6\textwidth]{plansortresolved}
+
+      \caption{Example of final physical plan.}
+          \label{fig:plansortresolved}
+\end{figure}
+
+Output od the query has to be sorted by $d:desc,a:asc$. Visitor sets that input of partial sort has to be sorted by $d:desc,a:asc$. After that we resolve in merge join that left input has to be sorted by and right input has to be sorted by $c:desc,a:asc$ $d:desc,b:asc$. Using this information we choose correct sort parameters in sort algorithms. 
+
+There can be situations where we use sort based algorithm but output doesn't been sorted, we can choose arbitrary order of sort parameters. 
+
+
 \section{Output}
 
-In this section we describe text output generated by implemented compiler.
+In this section we describe text output generated by implemented compiler. Output in Bobolang is generated by \texttt{BoboxPlanWritingPhysicalOperatorVisitor}. We can also generate output from algebra tree. Visitor \texttt{GraphDrawingVisitor} can generate output in dot language. We can also generate output from physical plan using \texttt{Physical\-Operator\-Drawing\-Visitor}. We can also use \texttt{Physical\-Operator\-Drawing\-Visitor\-WithouSorts}, which doesn't generate partial sorts with empty sort by parameters. These visitors also generate output in dot language.
 
 \subsection{Filters}
 Example: 

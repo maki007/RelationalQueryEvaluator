@@ -289,7 +289,7 @@ public:
 };
 
 /**
-* Vsitor generates serialize physical tree to dot code.
+* Visitor generates serialize physical tree to dot code.
 * It is equal to PhysicalOperatorDrawingVisitor except it doens't write sorts, which output and input are sorted same size.
 */
 class PhysicalOperatorDrawingVisitorWithouSorts : public PhysicalOperatorDrawingVisitor
