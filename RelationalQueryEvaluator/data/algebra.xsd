@@ -326,7 +326,7 @@
                 <xs:sequence minOccurs="0" maxOccurs="1">
                   <xs:element name="equals" type="unary_aritmetic_expression"></xs:element>
                 </xs:sequence>
-                <xs:attribute name="name"></xs:attribute>
+                <xs:attribute type="non_empty_string" use="required"  name="name"></xs:attribute>
               </xs:complexType>
             </xs:element>
           </xs:sequence>

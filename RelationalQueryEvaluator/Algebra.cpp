@@ -181,7 +181,7 @@ Table::Table(DOMElement * element) : NullaryAlgebraNodeBase(element)
 	{
 		istringstream(XmlUtils::ReadAttribute(element, "numberOfRows")) >> numberOfRows;
 	}
-	vector<DOMElement *> parameters = XmlUtils::GetChildElements(element);
+		vector<DOMElement *> parameters = XmlUtils::GetChildElements(element);
 	for (auto it = parameters.begin(); it != parameters.end(); ++it)
 	{
 		if (XmlUtils::GetElementName(*it) == "column")

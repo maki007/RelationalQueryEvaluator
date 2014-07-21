@@ -4,7 +4,7 @@
 
 In the section we describe basic architecture of Bobox. Information source for this chapter is Doctoral thesis\cite{faltthesis}. 
 
-Overall Bobox architecture is displayed in figure~\ref{fig:bobox}. Framework contains of Boxes. Box is basically a C++ class containing implementation of data processing algorithm or it can be set of connected boxes. Box can have arbitrary number of inputs and outputs. All boxes are connected to a directed acyclic graph.  
+Overall Bobox architecture is displayed in figure~\ref{fig:bobox}. Framework contains of Boxes. Box is basically a C++ class containing implementation of data processing algorithm or it can be a set of connected boxes. Box can have arbitrary number of inputs and outputs. All boxes are connected to a directed acyclic graph.  
 
 \begin{figure}[h!]
   \centering
@@ -38,7 +38,7 @@ Evaluation starts with scheduling $init$ box, which sends poisoned pills to all 
 \section{Bobolang}
 In this section we describe syntax and semantics of Bololang language. We used paper\cite{bobolang} as information source.
 
-Bobolang is a formal description language for Bobox execution plan. Bobox environment provides implementation of basic operators (boxes). Bobolang let's programmer choose which boxes to used, what boxes to use, what type are passed and how the boxes are interconnected. 
+Bobolang is a formal description language for Bobox execution plan. Bobox environment provides implementation of basic operators (boxes). Bobolang let's programmer choose which boxes to use, what type of envelopes are passed between boxes and how the boxes are interconnected. 
 
 We can define whole execution plan using operator main with empty input and output. Example of whole Bobolang plan:
 
@@ -59,7 +59,7 @@ In the first part we declare operators, define type of input and output. For eve
 
 There are explicitly defined operators called \verb|input| and \verb|output|. They represents input and output of declared operator \verb|process|. The line \verb|input -> srce;| represents that input of the operator \verb|process| is connected to output of operator \verb|pre|.
 
-Boblang also allows to declare operators with empty input or output. They have type \verb|()| that means it doesn't transfer any data. Only data allowed is to transfer poisoned pill. When box receives poisoned pill, it means that it should start working, Sending it means that it's work is done.
+Boblang also allows to declare operators with empty input or output. They have type \verb|()| that means it doesn't transfer any data. Only data allowed is to transfer poisoned pill. When box receives poisoned pill, it means that it should start working, Sending it means, that it's work is done.
 
 
  In figure~\ref{fig:exampleplan} we can seen structure of example execution plan. Operators \verb|init| and \verb|term| are added automatically. Operator \verb|init| sends poisoned pill to \verb|source|, which can read data from hard drive or network. These data are send to box \verb|process|. Operator sink stores data and sends poisoned pill to box \verb|term| and the computation ends.

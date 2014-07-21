@@ -1,5 +1,5 @@
 \chapter{Related work}
-In the chapter we introduce some theory of relational algebra, it's optimizations and physical plan generation. Source of this theory is book\cite{database}. This informations were used for tool implementation.
+In the chapter we introduce some theory of relational algebra, it's optimizations and physical plan generation. Source of this theory is book Database systems\cite{database}. This informations were used for tool implementation.
 \section{Relational algebra}
 
 In this section we introduce and describe relational algebra\cite{database}. These definitions can vary based on used literature. We start with some basic definitions of relational model.
@@ -23,13 +23,13 @@ Relational algebra has atomic operands:
 \item Constants, which are relations. 
 \end{itemize}
 
-In classical relational algebra all operates and expression results are set. All this operations can be applied also to bags. Im implemented compiler we used bags.
-Relation algebra operators in classical algebra are:
+In classical relational algebra all operators and expression results are set. All this operations can be applied also to bags. Im implemented compiler we used relational algebra based on bags.
+Classical relation algebra operators are:
 \begin{itemize}
 \item Set operations - union, difference, intersection.
 \item Removing operators - selection, which removes rows and projection that eliminates columns from given relation.
-\item Operations that combine two relation, all kinds of joins.
-\item Renaming operations, that doesn't change tuples of the relation bud changes schema.
+\item Operations that combine two relation: all kinds of joins.
+\item Renaming operations, that doesn't change tuples of the relation bud it's changes schema.
 \end{itemize}
 Expressions in relational algebra are called $queries$.
 \subsection{Classical relational algebra operators}
@@ -44,17 +44,17 @@ Sets operations are:
 \end{itemize}
 
 Let's have relations $R$ and $S$. If we want to apply some set operation both relations must have the same set of attributes. If we want to compute set theoretic union, difference or intersections the names of columns must be the same in both relations. 
-We can also use renaming operations if relations doesn't have same number of attributes.
+We can also use renaming operations if relations doesn't have attribute names.
 
 \subsubsection{Projection}
 \label{projection}
-$Projection$ operator $\pi_S$ produces from relation R new Relations with reduced set of attributes. Result of a expression $\pi_{(S) A_1,A_3,A_4,...,A_N}(R)$ is relation $R$ with attributes $A_1,A_3,A_4,...,A_N$. Set version of this operator also eliminates duplicate tuples.
+$Projection$ operator $\pi_S$ produces from relation R new relations with reduced set of attributes. Result of a expression $\pi_{(S) A_1,A_3,A_4,...,A_N}(R)$ is relation $R$ with attributes $A_1,A_3,A_4,...,A_N$. Set version of this operator also eliminates duplicate tuples.
 
 \subsubsection{Selection}
 If we apply operator selection $\sigma$ on Relation $R$ with condition $C$ we get a new relation with same attributes and tuples, which satisfy given condition. For example $\sigma_{A_1=4}(R)$.
 
 \subsubsection{Cartesian product}
-Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the first element of pair to be any element from R and second element of pair to be any element of S. Cartesian product of relations similar. We pair tuples from $R$ with all tuples from $S$. Relations $S$ and $R$ cannot have attribute with same name, because some columns of expression $R\times S$ would same name.
+Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the first element of pair to be any element from R and second element of pair to be any element of S. Cartesian product of relations similar. We pair tuples from $R$ with all tuples from $S$. Relations $S$ and $R$ cannot have attribute with same name, because some columns of expression $R\times S$ could have same name.
 
 \subsubsection{Natural joins}
 The simplest join is called natural join of $R$ and $S$ ($R \Join S$). Let schema of $R$ be $R(r_1,r_2,..,r_n,c_1,c_2,...c_n)$ and schema of $S$ be  $S(s_1,s_2,..,s_n,c_1,c_2,...c_n)$. In natural join we pair tuple $r$ from relation $R$ to tuple $s$ from relation $S$ only if $r$ and $s$ agree on all attributes with same name (in this case $c_1,c_2,...c_n$).
@@ -71,18 +71,18 @@ Basically $R\Join_C S=\sigma_C(R \times S)$ Relations $R$ and $S$ have to have d
 
 \subsubsection{Renaming}
 
-In order to control name of attributes or relation name we have renaming operator. We can use operator $\rho_{S(A_1,A_2,...,A_n)}(R)$. Result will have the same tuples as $R$ but relation will be called S and attributes will be renamed to $(A_1,A_2,...,A_n)$.
+In order to control name of attributes or relation name we have renaming operator. We can use operator $\rho_{A_1=R_1,A_2=R_2,...,A_n=R_n}(R)$. Result will have the same tuples as $R$ and attributes ($R_1,R_2,...,R_n)$ will be renamed to $(A_1,A_2,...,A_n)$.
 
 \subsection{Relational operations on bags}
 
-Commercial database system almost always are based on bags. $Bag$ is a multi-set. Only operation that behave differently are intersection, union, difference and projection.
+Commercial database system almost always are based on bags. Bag is a multi-set. Only operation that behave differently are intersection, union, difference and projection.
 
 \subsubsection{Union}
 Bag union of $R \cup_B S$ we just add all tuples from $S$ and $R$ together. If tuple $t$ appears in $R$ $m$-times and in $S$ $n$-times then in  $R \cup S$ will $t$ appear $m+n$ times. Both $m$ and $n$ can be zero.
 
 \subsubsection{Intersection}
 
-Lets have tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times. In the Bag intersection $R \cap_B S$ will be $t$ $min(m,n)$-times.
+Let's have tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times. In the Bag intersection $R \cap_B S$ will be $t$ $min(m,n)$-times.
 
 \subsubsection{Difference}
 Every tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times, will appear $max(0,m-n)$ times in bag $R-_B S$.
@@ -121,7 +121,7 @@ Relation computed by expression $\gamma_L(R)$ is constructed:
 \item For each group operator produces one tuple consisting of:
  \begin{enumerate}
  	\item Grouping attributes values for group.
- 	\item Results of aggregations over all tuple of processed group.
+ 	\item Results of aggregations over all tuples of processed group.
  \end{enumerate}
 \end{enumerate}
 
@@ -141,10 +141,10 @@ We can extend classical bag projection operator $\pi_L(R)$ introduced in chapter
 
 \subsubsection{The sorting operator}
 
-In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation, $L$ is list of attributes with additional information about sort order, is relation with same tuples like $R$ but different order of tuples. Example:  $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with same $A_1$ value will be additionally sorted by their $A_2$ value descending. Result of this operator is not bag or set, since there is no sort order defined in bags or sets. Result is sorted bag or set and it make sense to use this operator only on top of algebra tree.
+In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation, $L$ is list of attributes with additional information about sort order, is relation with same tuples like $R$ but different order of tuples. Example:  $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with same $A_1$ value will be additionally sorted by their $A_2$ value descending. Result of this operator is not bag or set, since there is no sort order defined in bags or sets. Result is sorted relation and it make sense to use this operator only on top of algebra tree.
 
 \subsubsection{Outer joins}
-Lets have join $R\Join_C S$. We call tuple $t$ from relation $R$ or $S$ $dangling$ if
+Let's have join $R\Join_C S$. We call tuple $t$ from relation $R$ or $S$ $dangling$ if
 we didn't find any match in relation $S$ or $R$. Outer join $R\Join^\circ_C S$ is formed by creating $R\Join_C S$ and adding dangling tuples from $R$ and $S$. The added tuples must be filled with special $null$ value in all attributes they don't have but appear in join result.
 
 Left/right outer join is outer join but we only add dangling tuples from left/right relation.
@@ -202,7 +202,7 @@ $\oplus$ stands for $\times$, $\Join$ or $\Join_C$. If relation $S$ and $R$ cont
 
 
 \subsection{Laws involving projection}
-We can add projection anywhere in the tree as long as it only eliminates attributes, which are not used anymore and don't appear in query result.
+We can add projection anywhere in the tree as long as it only eliminates attributes, which are not used anymore and they aren't in query result.
 \subsection{Laws involving joins and products}
 
 We have more laws involving selection that follow directly from definition of the join:
@@ -227,7 +227,7 @@ For each physical plan we select
 
 \subsection{Size estimations}
 Estimates used in this section are from book\cite{database}. 
-The costs of evaluating physical plan are based of estimated size of interme\-dia\-te relations. Ideally we want out estimation to be accurate, easy to compute and logically consistent(size of relation doesn't depend on how relation is computed). We will present simple rules, which will give us give us good estimations in most situation. Goal of estimating sizes is not predict exact size of relation, even an inaccurate size will help us with plan generation.
+The costs of evaluating physical plan are based of estimated size of interme\-dia\-te relations. Ideally we want our estimation to be accurate, easy to compute and logically consistent(size of relation doesn't depend on how relation is computed). We will present simple rules, which will give us give us good estimations in most situations. Goal of estimating sizes is not predict exact size of relation, even an inaccurate size will help us with plan generation.
 
 In this section we will use following conventions:
 
@@ -243,12 +243,12 @@ Bag projection is only operator which size of result is computable. It doesn't c
 
 \subsubsection{Estimating the size of selection}
 
-Selection usually reduces number of tuples. Lets have $S=\sigma_{A=c}(R)$, where $A$ is a attribute of $R$ and $c$ is a constant. Recommended estimation is:
+Selection usually reduces number of tuples. Let's have $S=\sigma_{A=c}(R)$, where $A$ is a attribute of $R$ and $c$ is a constant. Recommended estimation is:
 \begin{itemize}
 \item $T(S)=T(R)/V(R,A)$
 \end{itemize}
 
-More problematic estimation is when selection involves inequality comparison Lets have $S=\sigma_{A<c}(R)$. In average half the tuple satisfies condition, but usually queries select only a small fraction from all tuples. Typical inequality will return about third of tuples. Therefore the estimation is:
+More problematic estimation is when selection involves inequality comparison Let's have $S=\sigma_{A<c}(R)$. In average half the tuple satisfies condition, but usually queries select only a small fraction from all tuples. Typical inequality will return about third of tuples. Therefore the estimation is:
 \begin{itemize}
 \item $T(S)=T(R)/3$
 \end{itemize}
@@ -260,7 +260,7 @@ In case we have following condition: $S=\sigma_{not(C)}(R)$, we use this estimat
 \item $T(S)=T(R)-T(\sigma_C(R))$
 \end{itemize}
 
-Little more complicated is when condition involved an $or$ of conditions. Lets have expression $S=\sigma_{C_1~or~C_2}(R)$. We assume that $C_1$ and $C_2$ are independent. Size of $S$ is:
+Little more complicated is when condition involves logical disjunction. Lets have expression $S=\sigma_{C_1~or~C_2}(R)$. We assume that $C_1$ and $C_2$ are independent. Size of $S$ is:
 
 \begin{itemize}
 \item $T(S)=T(R)(1-(1-\dfrac{m_1}{T(R)})(1-\dfrac{m_2}{T(R)}))$
@@ -282,7 +282,7 @@ We can generalize this rule for joining with multiple attributes. For join $R\Jo
 \item $T(R\Join S)=\dfrac{T(R)T(S)}{\prod_{k=1}^{n}{max(V(R,a_k),V(S,a_k))}}$
 \end{itemize}
 
-When we join using multiple attributes, than result of this estimation can be smaller than $1$
+When we join using multiple attributes, than result of this estimation can be smaller than $1$. This estimation indicates that relation will be very small or possibly empty.
 
 If we have other type of join (theta join), we can use following rules for it's estimation:
 \begin{enumerate}
@@ -308,14 +308,14 @@ Result of expression $R-S$ can be as big as $T(R)$ and as small as $T(R)-T(S)$. 
 \item  $T(R-S)=T(R)-\frac{T(S)}{2}$.
 \end{itemize}
 \subsubsection{Estimating the size of grouping}
-Size of the result of expression $\gamma_L(R)$ is $V(R,[g_1,g_2,...,g_n])$, where $g_x$ are grouping attributes of $L$. This statistics is almost never available so we need another estimate. $T(\gamma_L(R))$ can be between 1 and $\prod_{k=1}^{n}{V(R,g_k)}$. Upper bound can larger than number of tuple in relation $R$. That's why we suggest:
+Size of the result of expression $\gamma_L(R)$ is $V(R,[g_1,g_2,...,g_n])$, where $g_x$ are grouping attributes of $L$. This statistics is almost never available so we need another estimate. $T(\gamma_L(R))$ can be between 1 and $\prod_{k=1}^{n}{V(R,g_k)}$. Upper bound can be larger than number of tuples in relation $R$. That's why we suggest:
 \begin{itemize}
 \item $T(\gamma_L(R))=min(\dfrac{T(R)}{2},\prod_{k=1}^{n}{V(R,g_k)})$
 \end{itemize}
-Duplicate elimination can be handled exactly like grouping.
+Estimation of duplicate elimination can be handled exactly like grouping.
 
 \subsection{Enumerating plans}
-For every logical plan there is exponential many physical plans. in this section we present way to enumerate physical plans so we can choose plan with least estimated cost. There are two broad approaches:
+For every logical plan there is exponential many physical plans. in this section we present ways to enumerate physical plans, so we can choose plan with least estimated cost. There are two broad approaches:
 \begin{itemize}
 \item Top-down: We go down the algebra tree. For each possible implementation of operation, we consider best possible algorithms for it's subtrees. We compute costs of every combination and take the best.
 \item Bottom-up: We go up the tree and for every subexpression we enumerate plans based on plans generated for it's subexpressions.
@@ -336,7 +336,7 @@ We use same approach for generating physical plan as we used to improve logical 
 \subsubsection{Branch-and-bound plan enumeration}
 Branch-and-bound plan enumeration is ofter use in practice. We begin by finding physical plan using heuristics. We denote cost of this plan $C$. Then we can consider other plans for sub-queries. We can eliminate any plan for sub-query with cost greater than $C$. If we get plan with lower estimated cost than $C$ we use this plan instead.
 
-The grate advantage is we can choose when to cut search for better plan. If $C$ is low then we don't continue searching other plan. On the other hand when $C$ is large, it is better to invest some time in finding a  better plan.
+The great advantage is we can choose when to cut search for better plan. If $C$ is low then we don't continue searching other plan. On the other hand when $C$ is large, it is better to invest some time in finding faster plan.
 \subsubsection{Hill climbing}
 
 First we start with heuristically selected plan. Then we try to do some changes, for example changing order of joins or replacing operator using hash table for sort-based operator. When we find a plan where no small modification give up better plan, then we make this plan out chosen physical plan.
@@ -367,7 +367,7 @@ In this section we present algorithm that can be used for choosing join order.
  
 \subsubsection{Dynamic programing to select a join order}
 \label{dymanicalgorithm}
-For this algorithm we need a table, where we store information following information:
+For this algorithm we need a table, where we store following informations:
  
 \begin{enumerate}
 \item Estimated size of relation.
@@ -375,7 +375,7 @@ For this algorithm we need a table, where we store information following informa
 \item Expression how was current relation computed.
 \end{enumerate}
 
-We store every single relation $R$ with estimated cost 0. For every pair of relations we compute their estimated size of join and store it into table. Fo that we use estimation describe in section \ref{join}.  
+We store every single input relation with estimated cost 0. For every pair of relations we compute their estimated size of join and store it into table. Fo that we use estimation describe in section \ref{join}.  
 
 After that we compute entry of all subset of sizes $(3,4,...n)$.
 If we want to consider all possible trees, we need to partition relations in join $R$ into two non empty disjoint sets. For each pair of sets we compute estimated size and cost of their join to get join $R$. For this we use data already in our table. We are estimating join of $k$ relations and all joins of $k-1$ relations are already estimated. The join tree with least estimated cost will be stored in the table.
@@ -396,7 +396,7 @@ We don't have to consider all trees but only so called left-deep join tree. Tree
  
 We do it the same way like we wanted to include all possible trees, but with one exception. When partitioning $R$ into two non empty disjoint sets, we make sure that one set has only one relation.
 
-Example: for estimating join $A\Join B\Join C\Join D$ we try to join following subsets:
+For estimating join $A\Join B\Join C\Join D$ we try to join following subsets:
 \begin{enumerate}
 \item $A$ and $B\Join C\Join D$
 \item $B$ and $A\Join C\Join D$
@@ -406,15 +406,13 @@ Example: for estimating join $A\Join B\Join C\Join D$ we try to join following s
 
 \subsubsection{Greedy algorithm for selecting a join order}
 \label{greedyalgorithm}
-Time complexity of using dynamic programming to select an order of join is exponential. We can us it for small amount of relations (maybe maximal 5 or 6).If we don't want to invest time we can use greedy algorithm. This algorithm has to store same information as dynamic programing algorithm for every relation.
+Time complexity of using dynamic programming to select an order of join is exponential. We can us it for small amount of relations. If we don't want to invest time we can use greedy algorithm. This algorithm has to store same information as dynamic programing algorithm for every relation.
 
 We start with a pair fo relations $R_i, R_j$, for which size of $R_i \Join R_j$ is smallest. This join is our current tree.
 
 For other relation that are not yet included we find relation $R_k$, so that it's join with current tree give us smallest estimated size. We continue until we include all relations into tree. 
 
-This algorithm will also create left-deep or right-deep join tree.
-
-There are examples where dynamic algorithm finds plans with lower estimated cost than greedy algorithm.
+This algorithm will also create left-deep or right-deep join tree. There are examples where dynamic algorithm finds plans with lower estimated cost than greedy algorithm.
  
 \subsection{Choosing physical algorithms}
 
