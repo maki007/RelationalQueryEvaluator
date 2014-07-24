@@ -318,7 +318,7 @@ Size of the result of expression $\gamma_L(R)$ is $V(R,[g_1,g_2,...,g_n])$, wher
 Estimation of duplicate elimination can be handled exactly like grouping.
 
 \subsection{Enumerating plans}
-For every logical plan there is exponential many physical plans. in this section we present ways to enumerate physical plans, so we can choose plan with least estimated cost. There are two broad approaches:
+For every logical plan there is exponential many physical plans. This section presents ways to enumerate physical plans, so plan with least estimated cost can be chosen. There are two broad approaches:
 \begin{itemize}
 \item Top-down: We go down the algebra tree. For each possible implementation of operation, we consider best possible algorithms for it's subtrees. We compute costs of every combination and take the best.
 \item Bottom-up: We go up the tree and for every subexpression we enumerate plans based on plans generated for it's subexpressions.
