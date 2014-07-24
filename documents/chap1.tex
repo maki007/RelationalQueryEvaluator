@@ -2,9 +2,9 @@
 
 \section{Bobox}
 
-In the section we describe basic architecture of Bobox. Information source for this chapter is Doctoral thesis\cite{faltthesis}. 
+The purpose of this chapter is description of basic architecture of Bobox. The main source of information for this chapter is the doctoral thesis by Falt~\cite{faltthesis}. 
 
-Overall Bobox architecture is displayed in figure~\ref{fig:bobox}. Framework contains of Boxes. Box is basically a C++ class containing implementation of data processing algorithm or it can be a set of connected boxes. Box can have arbitrary number of inputs and outputs. All boxes are connected to a directed acyclic graph.  
+Overall Bobox architecture is displayed in Figure~\ref{fig:bobox}. Framework consists of Boxes which are C++ classes containing implementation of data processing algorithm. Boxes can be also created as a set of connected boxes. Boxes can have arbitrary number of inputs and outputs. All boxes are connected to a directed acyclic graph.  
 
 \begin{figure}[h!]
   \centering
@@ -14,7 +14,7 @@ Overall Bobox architecture is displayed in figure~\ref{fig:bobox}. Framework con
           \label{fig:bobox}
 \end{figure}
 
-Data streams are implemented as streams of data units called envelopes. Envelope structure is displayed in figure~\ref{fig:envelope}. It consists of sequence tuples, but internally data are stored by columns, that means envelope contains from sequence of columns and it's data is stored in separate list. So to read all attributes of the i-th tuple we have to access all column lists and read it's i-th element. There is special type of envelope having poisoned pill. It is send after all valid data indicating end of data stream. 
+Data streams are implemented as streams of data units called envelopes. Envelope structure is displayed in Figure~\ref{fig:envelope}. It consists of sequence of tuples but internally data are stored in columns. Envelope contains sequence of columns and its data is stored in separate list. In order to read all attributes of the $i$-th tuple, we have to access all column lists and read its $i$-th element. Special type of envelope contains a poisoned pill which is sent after all valid data, thus indicating the end of data stream. 
 
 \begin{figure}[h!]
   \centering
@@ -27,20 +27,21 @@ There are two special boxes, which have to be in every execution plan:
 \begin{itemize}
 
 
-\item $init$ - first box in topological order and it indicates starting box of execution plan
+\item $init$ - first box in topological order indicating starting box of execution plan.
 
-\item $term$ - last box in topological order and indicates that plan has been completely evaluated
+\item $term$ - last box in topological order indicating that plan has been completely evaluated.
 
 \end{itemize}
 
-Evaluation starts with scheduling $init$ box, which sends poisoned pills to all of its output. All of it's output boxes will be scheduled. They can read data from hard drive or network, process it and sent it to other boxes for further processing. Other boxes usually receives data in envelopes in their inputs. Box $term$ waits for every it's input to receive poisoned pill and then evaluation ends.
+Evaluation starts with scheduling $init$ box, which sends poisoned pills to all of its output boxes that will be scheduled. They can read data from the hard drive or network, process it and send it to other boxes for further processing. Other boxes usually receive data in envelopes in their inputs. Box $term$ waits to receive for its every input to receive poisoned pill and then 
+The evaluation ends when the box $term$ receives poisoned pill from each of its inputs.
 
 \section{Bobolang}
-In this section we describe syntax and semantics of Bololang language. We used paper\cite{bobolang} as information source.
+Syntax and semantics of Bobolang language is explained in this section. The work Falt et al.~\cite{bobolang} served as source of information for this text.
 
-Bobolang is a formal description language for Bobox execution plan. Bobox environment provides implementation of basic operators (boxes). Bobolang let's programmer choose which boxes to use, what type of envelopes are passed between boxes and how the boxes are interconnected. 
+Bobolang is a formal description language for Bobox execution plan. Bobox environment provides implementation of basic operators (boxes). Bobolang allows programmer to choose which boxes to use, what type of envelopes are passed between boxes and how the boxes are interconnected. 
 
-We can define whole execution plan using operator main with empty input and output. Example of whole Bobolang plan:
+We can define whole execution plan using operator \verb|main| with empty input and output. An example of complete Bobolang plan:
 
 \begin{verbatim}
 operator main()->()
@@ -55,14 +56,14 @@ operator main()->()
 }
 \end{verbatim}
 
-In the first part we declare operators, define type of input and output. For every declared operator we provide identifier. Second part specifies connection between declared operators. Code \verb|op1 -> op2| indicates that output of \verb|op1| is connected to input of operator \verb|op2|. In this case output type of \verb|op1| has equal to input type of \verb|op2|. Bobolang syntax also allows to create chains of operators like \verb|op1 -> op3| which has semantics like \verb|op1 -> op2| and \verb|op2 -> op3|. 
+In the first part, we declare operators and define type of input and output. We provide identifier for every declared operator. Second part specifies connection between declared operators. Code \verb|op1 -> op2| indicates that output of \verb|op1| is connected to input of operator \verb|op2|. In this case, the output type of \verb|op1| has to be equal to the input type of \verb|op2|. Bobolang syntax also allows to create chains of operators like \verb|op1 -> op2 -> op3| with following semantics: \verb|op1 -> op2| and \verb|op2 -> op3|. 
 
-There are explicitly defined operators called \verb|input| and \verb|output|. They represents input and output of declared operator \verb|process|. The line \verb|input -> srce;| represents that input of the operator \verb|process| is connected to output of operator \verb|pre|.
+There are explicitly defined operators called \verb|input| and \verb|output|. The line \verb|input -> src;| means that input of the operator \verb|main| is connected to the output of operator \verb|src|.
 
-Boblang also allows to declare operators with empty input or output. They have type \verb|()| that means it doesn't transfer any data. Only data allowed is to transfer poisoned pill. When box receives poisoned pill, it means that it should start working, Sending it means, that it's work is done.
+Bobolang also allows to declare operators with empty input or output with the type \verb|()| meaning that they do not transfer any data. These operators transfer only envelopes containing poisoned pills. The box starts working after receiving poisoned pill. Sending the pill means that all data has been processed and the work is done.
 
 
- In figure~\ref{fig:exampleplan} we can seen structure of example execution plan. Operators \verb|init| and \verb|term| are added automatically. Operator \verb|init| sends poisoned pill to \verb|source|, which can read data from hard drive or network. These data are send to box \verb|process|. Operator sink stores data and sends poisoned pill to box \verb|term| and the computation ends.
+ Structure of example execution plan can be seen in Figure~\ref{fig:exampleplan}. Operators \verb|init| and \verb|term| are added automatically. Operator \verb|init| sends poisoned pill to \verb|source|, which can read data from hard drive or network. Data is sent to the box \verb|process|. Operator \verb|sink| stores data and sends poisoned pill to the box \verb|term| and the computation ends.
 \begin{figure}[h!]
   \centering
 

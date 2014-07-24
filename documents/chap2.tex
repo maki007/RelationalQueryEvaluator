@@ -1,17 +1,16 @@
 \chapter{Related work}
-In the chapter we introduce some theory of relational algebra, it's optimizations and physical plan generation. Source of this theory is book Database systems\cite{database}. This informations were used for tool implementation.
+The basics of the theory of relational algebra along with its optimizations and physical plan generation are introduced in this chapter. Information for this chapter and compiler implementation was taken from Database systems~\cite{database}.
 \section{Relational algebra}
 
-In this section we introduce and describe relational algebra\cite{database}. These definitions can vary based on used literature. We start with some basic definitions of relational model.
-
+In this section we introduce and describe relational algebra\cite{database}. Following definitions of relational model can vary depending on used literature.
 \begin{mydef}
 $Relation$ is a two dimensional table.
 \end{mydef}
 \begin{mydef}
-$Attribute$ is column of a table.
+$Attribute$ is a column of a table.
 \end{mydef}
 \begin{mydef}
-$Schema$ name of the relations and a set of attributes. For example:~$Movie(id,name,lenght)$.
+$Schema$ is the name of the relation and the set of its attributes. For example:~$Movie~(id,name,length)$.
 \end{mydef}
 \begin{mydef}
 $Tuple$ is a row of a relation.
@@ -19,17 +18,18 @@ $Tuple$ is a row of a relation.
 
 Relational algebra has atomic operands:
 \begin{itemize}
-\item Variables, that are relations.
-\item Constants, which are relations. 
+\item Variables that are relations.
+\item Constants which are relations. 
 \end{itemize}
 
-In classical relational algebra all operators and expression results are set. All this operations can be applied also to bags. Im implemented compiler we used relational algebra based on bags.
-Classical relation algebra operators are:
+In classical relational algebra all operators and expression results are sets. All these operations can be applied also to bags(multi sets). We used relational algebra based on bags in the implemented compiler.
+
+Classical relational algebra operators are:
 \begin{itemize}
-\item Set operations - union, difference, intersection.
-\item Removing operators - selection, which removes rows and projection that eliminates columns from given relation.
-\item Operations that combine two relation: all kinds of joins.
-\item Renaming operations, that doesn't change tuples of the relation bud it's changes schema.
+\item Set operations -- union, difference, intersection.
+\item Removing operators -- selection, which removes rows and projection that eliminates columns from given relation.
+\item Operations that combine two relations: all kinds of joins.
+\item Renaming operations that do not change tuples of the relation but only its schema.
 \end{itemize}
 Expressions in relational algebra are called $queries$.
 \subsection{Classical relational algebra operators}
@@ -38,26 +38,25 @@ Expressions in relational algebra are called $queries$.
 Sets operations are:
 \begin{itemize}
 \item Union $R\cap_S S$ is a set of tuples that are in $R$ or $S$.
-\item Intersection $R\cup_S S$  is a set of tuples that are in both $R$ and $S$. 
+\item Intersection $R\cup_S S$  is a set of tuples that are both in $R$ and $S$. 
 \item Difference $R-_S S$ is a set of tuples that are in $R$ but not in $S$.
 
 \end{itemize}
 
-Let's have relations $R$ and $S$. If we want to apply some set operation both relations must have the same set of attributes. If we want to compute set theoretic union, difference or intersections the names of columns must be the same in both relations. 
-We can also use renaming operations if relations doesn't have attribute names.
+Considering two relations $R$ and $S$, if one wants to apply some set operation, both relations must have the same set of attributes. We can also use renaming operations if relations do not have same attribute names.
 
 \subsubsection{Projection}
 \label{projection}
-$Projection$ operator $\pi_S$ produces from relation R new relations with reduced set of attributes. Result of a expression $\pi_{(S) A_1,A_3,A_4,...,A_N}(R)$ is relation $R$ with attributes $A_1,A_3,A_4,...,A_N$. Set version of this operator also eliminates duplicate tuples.
+$Projection$ operator $\pi_S$ produces new relation with reduced set of attributes from relation $R$. Result of an expression $\pi_{(S) A_1,A_3,A_4,...,A_N}(R)$ is relation $R$ with attributes $A_1,A_3,A_4,...,A_N$. Set version of this operator also eliminates duplicate tuples.
 
 \subsubsection{Selection}
-If we apply operator selection $\sigma$ on Relation $R$ with condition $C$ we get a new relation with same attributes and tuples, which satisfy given condition. For example $\sigma_{A_1=4}(R)$.
+If the operator selection $\sigma$ is applied on relation $R$ with condition $C$, a new relation with the same attributes and tuples, which satisfy given condition, is obtained, for example $\sigma_{A_1=4}(R)$.
 
 \subsubsection{Cartesian product}
-Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the first element of pair to be any element from R and second element of pair to be any element of S. Cartesian product of relations similar. We pair tuples from $R$ with all tuples from $S$. Relations $S$ and $R$ cannot have attribute with same name, because some columns of expression $R\times S$ could have same name.
+Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the first element of pair to be any element from R and second element of pair to be any element of S. Cartesian product of relations is similar. We pair tuples from $R$ with all tuples from $S$. Relations $S$ and $R$ cannot have attributes with the same name  because some columns of expression $R\times S$ could have the same name.
 
 \subsubsection{Natural joins}
-The simplest join is called natural join of $R$ and $S$ ($R \Join S$). Let schema of $R$ be $R(r_1,r_2,..,r_n,c_1,c_2,...c_n)$ and schema of $S$ be  $S(s_1,s_2,..,s_n,c_1,c_2,...c_n)$. In natural join we pair tuple $r$ from relation $R$ to tuple $s$ from relation $S$ only if $r$ and $s$ agree on all attributes with same name (in this case $c_1,c_2,...c_n$).
+The simplest join is called natural join of $R$ and $S$ ($R \Join S$). Let schema of $R$ be $R(r_1,r_2,..,r_n,c_1,c_2,...c_n)$ and schema of $S$ be  $S(s_1,s_2,..,s_n,c_1,c_2,...c_n)$. In natural join we pair tuple $r$ from relation $R$ to tuple $s$ from relation $S$ only if $r$ and $s$ agree on all attributes with the same name (in this case, $c_1,c_2,...c_n$).
 
 \subsubsection{Theta joins}
 Natural join forces us to use one specific condition. In may cases we want to join relation with some other condition. For this purpose we have theta-join. The notation for joining relation $R$ and $S$ based on condition $C$ is $R\Join_C S$. The result is constructed in following way:

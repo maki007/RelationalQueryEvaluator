@@ -79,98 +79,109 @@ void boboxPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string 
 
 int main(int argc, const char *argv[])
 {
-
-
-	if (argc != 2)
+	try
 	{
-		printf("SchemaValidator <file containg xml file>\n");
+		if (argc != 2)
+		{
+			printf("SchemaValidator <file containg xml file>\n");
+			return 0;
+		}
+
+		ifstream reader;
+		reader.open(argv[1]);
+		if (reader.is_open())
+		{
+			while (!reader.eof())
+			{
+
+				clock_t begin = clock();
+
+				string line;
+				getline(reader, line);
+				if (line.size() == 0)
+					continue;
+
+				line = "data/" + line;
+				shared_ptr<AlgebraNodeBase> algebraRoot = XmlHandler::GenerateRelationalAlgebra(line.c_str());
+				if (algebraRoot == 0)
+				{
+					return 1;
+				}
+				drawAlgebra(algebraRoot, line + string("._1.txt"));
+
+				SemanticChecker semanticChecker;
+				algebraRoot->accept(semanticChecker);
+				if (semanticChecker.containsErrors == true)
+				{
+					cout << "semantic error in " << line << endl;
+					return 1;
+				}
+
+				GroupingVisitor groupVisitor;
+				algebraRoot->accept(groupVisitor);
+				drawAlgebra(algebraRoot, line + string("._2.txt"));
+
+
+				SelectionSpitingVisitor selectionSpliter;
+				algebraRoot->accept(selectionSpliter);
+
+				SelectionColectingVisitor selectionColecter;
+				algebraRoot->accept(selectionColecter);
+
+
+				for (auto it = selectionColecter.selections.begin(); it != selectionColecter.selections.end(); ++it)
+				{
+					PushSelectionDownVisitor pushDownVisitor(*it);
+					pushDownVisitor.pushDown();
+				}
+
+				SelectionFusingVisitor selectionFuser;
+				algebraRoot->accept(selectionFuser);
+
+				drawAlgebra(algebraRoot, line + string("._3.txt"));
+
+				AlgebraCompiler algebraCompiler;
+				algebraRoot->accept(algebraCompiler);
+
+				drawPlan(algebraCompiler.result, line + string("._4.txt"));
+
+				vector<shared_ptr<PhysicalOperator> > clonedPlans;
+
+				for (auto it = algebraCompiler.result.begin(); it != algebraCompiler.result.end(); ++it)
+				{
+
+					CloningPhysicalOperatorVisitor cloner;
+					(*it)->plan->accept(cloner);
+					clonedPlans.push_back(shared_ptr<PhysicalOperator>(cloner.result));
+				}
+
+				for (auto it = clonedPlans.begin(); it != clonedPlans.end(); ++it)
+				{
+					SortResolvingPhysicalOperatorVisitor sortResolver;
+					(*it)->accept(sortResolver);
+				}
+
+				drawPlan(clonedPlans, line + string("._5.txt"));
+
+				boboxPlan(clonedPlans, line + string("._6.bbx"));
+
+
+				clock_t end = clock();
+				double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+				cout << "Elapsed time: " << elapsed_secs << endl;
+			}
+		}
+		else
+		{
+			throw exception("Cannot read input file");
+		}
+		//system("_drawAlgebra.bat");
 		return 0;
 	}
-	
-	ifstream reader;
-	reader.open(argv[1]);
-	if (reader.is_open())
+	catch (exception & e)
 	{
-		while (!reader.eof())
-		{
-
-			clock_t begin = clock();
-
-			string line;
-			getline(reader, line);
-			if (line.size() == 0)
-				continue;
-
-			line = "data/" + line;
-			shared_ptr<AlgebraNodeBase> algebraRoot = XmlHandler::GenerateRelationalAlgebra(line.c_str());
-			if (algebraRoot == 0)
-			{
-				return 1;
-			}
-			drawAlgebra(algebraRoot, line + string("._1.txt"));
-
-			SemanticChecker semanticChecker;
-			algebraRoot->accept(semanticChecker);
-			if (semanticChecker.containsErrors == true)
-			{
-				cout << "semantic error in " << line << endl;
-				return 1;
-			}
-
-			GroupingVisitor groupVisitor;
-			algebraRoot->accept(groupVisitor);
-			drawAlgebra(algebraRoot, line + string("._2.txt"));
-
-
-			SelectionSpitingVisitor selectionSpliter;
-			algebraRoot->accept(selectionSpliter);
-
-			SelectionColectingVisitor selectionColecter;
-			algebraRoot->accept(selectionColecter);
-
-
-			for (auto it = selectionColecter.selections.begin(); it != selectionColecter.selections.end(); ++it)
-			{
-				PushSelectionDownVisitor pushDownVisitor(*it);
-				pushDownVisitor.pushDown();
-			}
-
-			SelectionFusingVisitor selectionFuser;
-			algebraRoot->accept(selectionFuser);
-			
-			drawAlgebra(algebraRoot, line + string("._3.txt"));
-
-			AlgebraCompiler algebraCompiler;
-			algebraRoot->accept(algebraCompiler);
-
-			drawPlan(algebraCompiler.result, line + string("._4.txt"));
-
-			vector<shared_ptr<PhysicalOperator> > clonedPlans;
-
-			for (auto it = algebraCompiler.result.begin(); it != algebraCompiler.result.end(); ++it)
-			{
-
-				CloningPhysicalOperatorVisitor cloner;
-				(*it)->plan->accept(cloner);
-				clonedPlans.push_back(shared_ptr<PhysicalOperator>(cloner.result));
-			}
-
-			for (auto it = clonedPlans.begin(); it != clonedPlans.end(); ++it)
-			{
-				SortResolvingPhysicalOperatorVisitor sortResolver;
-				(*it)->accept(sortResolver);
-			}
-
-			drawPlan(clonedPlans, line + string("._5.txt"));
-
-			boboxPlan(clonedPlans, line + string("._6.bbx"));
-
-
-			clock_t end = clock();
-			double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-			cout << "Elapsed time: " << elapsed_secs << endl;
-		}
+		std::cout << e.what() << endl;
+		return 1;
 	}
-	//system("_drawAlgebra.bat");
-	return 0;
+
 }
