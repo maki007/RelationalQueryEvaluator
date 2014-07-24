@@ -1,0 +1,95 @@
+digraph g {node [shape=box]
+ graph[rankdir="BT", concentrate=true];
+node0[label="Merge Join
+(a_1(0) == b_3(1))
+ time:1200000
+ size:15848932
+a_1 63096,c_2 63096,b_3 63096,d_4 63096,
+"]node1[label="Sort by index Scan
+A
+aa(a_1:descending)
+ time:3000000
+ size:1000000
+a_1 63096,c_2 63096,
+"]node1 -> node0[headport=s, tailport=n,label="   "]
+node2[label="Sort by index Scan
+B
+aas(b_3:descending)
+ time:3000000
+ size:1000000
+b_3 63096,d_4 63096,
+"]node2 -> node0[headport=s, tailport=n,label="   "]
+node3[label="Merge Join
+(a_1(0) == b_3(1))
+ time:1200000
+ size:15848932
+a_1 63096,c_2 63096,b_3 63096,d_4 63096,
+"]node4[label="Sort by index Scan
+A
+aa(a_1:descending)
+ time:3000000
+ size:1000000
+a_1 63096,c_2 63096,
+"]node4 -> node3[headport=s, tailport=n,label="   "]
+node5[label="Sort by index Scan
+B
+aas(b_3:descending)
+ time:3000000
+ size:1000000
+b_3 63096,d_4 63096,
+"]node5 -> node3[headport=s, tailport=n,label="   "]
+node6[label="Hash Join
+(a_1(0) == b_3(1))
+ time:18000000
+ size:15848932
+a_1 63096,c_2 63096,b_3 63096,d_4 63096,
+"]node7[label="Table Scan
+A
+ time:1000000
+ size:1000000
+a_1 63096,c_2 63096,
+"]node7 -> node6[headport=s, tailport=n,label="   "]
+node8[label="Table Scan
+B
+ time:1000000
+ size:1000000
+b_3 63096,d_4 63096,
+"]node8 -> node6[headport=s, tailport=n,label="   "]
+node9[label="Hash Join
+(a_1(0) == b_3(1))
+ time:18000000
+ size:15848932
+a_1 63096,c_2 63096,b_3 63096,d_4 63096,
+"]node10[label="Table Scan
+A
+ time:1000000
+ size:1000000
+a_1 63096,c_2 63096,
+"]node10 -> node9[headport=s, tailport=n,label="   "]
+node11[label="Sort by index Scan
+B
+aas(b_3:descending)
+ time:3000000
+ size:1000000
+b_3 63096,d_4 63096,
+"]node11 -> node9[headport=s, tailport=n,label="   "]
+node12[label="Hash Join
+(a_1(0) == b_3(1))
+ time:18000000
+ size:15848932
+a_1 63096,c_2 63096,b_3 63096,d_4 63096,
+"]node13[label="Sort by index Scan
+A
+aa(a_1:descending)
+ time:3000000
+ size:1000000
+a_1 63096,c_2 63096,
+"]node13 -> node12[headport=s, tailport=n,label="   "]
+node14[label="Table Scan
+B
+ time:1000000
+ size:1000000
+b_3 63096,d_4 63096,
+"]node14 -> node12[headport=s, tailport=n,label="   "]
+
+}

@@ -1,0 +1,16 @@
+operator main()->()
+{
+bobox::broadcast()->(),() start;
+ScanAndSortByIndexScan()->(int,int) ScanAndSortByIndexScan0(name="A",index="aa",columns="a,c"); 
+ScanAndSortByIndexScan()->(int,int) ScanAndSortByIndexScan1(name="B",index="aas",columns="b,d"); 
+MergeEquiJoin(int,int),(int,int)->(int,int,int,int) MergeEquiJoin2(left="0,1",right="2,3",out="0,1,2,3",leftPartOfCondition="0:D",rightPartOfCondition="2:D"); 
+Store(int,int,int,int)->() storeResult(); 
+
+input -> start;
+start[0] -> ScanAndSortByIndexScan0;
+start[1] -> ScanAndSortByIndexScan1;
+ScanAndSortByIndexScan0 -> [0]MergeEquiJoin2;
+ScanAndSortByIndexScan1 -> [1]MergeEquiJoin2;
+MergeEquiJoin2 -> storeResult;
+storeResult -> output;
+}
