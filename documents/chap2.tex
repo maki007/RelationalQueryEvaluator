@@ -255,7 +255,7 @@ More problematic estimation is for selection involving inequality comparison:  $
 \item $T(S)=T(R)/3$
 \end{itemize}
 
-Selection with condition form $C_1~and~C_2~and~...~and~C_N$ can be treated as a cascade of simple selections and we can used estimated size from simpler conditions to compute original selection estimation.
+Selection with condition form $C_1~and~C_2~and~...~and~C_N$ can be treated as a cascade of simple selections and we can use estimated size from simpler conditions to compute original selection estimation.
 
 In case we have following condition: $S=\sigma_{not(C)}(R)$, we use this estimation:
 \begin{itemize}
@@ -296,7 +296,7 @@ If we have other type of join (theta join), we can use following rules for it's 
 
 \subsubsection{Estimating the size of union}
 
-If we have bag union, then size of resulting relation is sum of sizes of input relations. Size of set union $R \cup_S S$ can be between $max(T(R),T(S))$ and $T(R)+T(S)$. Recommended estimate is average of this numbers. 
+Estimated size of expression $R \cup_B S$ is sum of sizes of relations $R$ and $S$. Size of set union $R \cup_S S$ can be between $max(T(R),T(S))$ and $T(R)+T(S)$. Recommended estimate is average of this numbers. 
 
 \subsubsection{Estimating the size of intersection}
 Size of relations $R\cup_S S$ and $R\cup_B S$ can be between $0$ and $min(T(R),T(S))$. Recommend estimate is to take half of size of smaller relation:
@@ -306,46 +306,46 @@ Size of relations $R\cup_S S$ and $R\cup_B S$ can be between $0$ and $min(T(R),T
 
 \subsubsection{Estimating the size of difference}
 
-Result of expression $R-S$ can be as big as $T(R)$ and as small as $T(R)-T(S)$. Suggested estimate can be used for bag or set version of difference: 
+Result of expression $R-S$ can be as big as $T(R)$ and as small as $T(R)-T(S)$. Following estimate can be used for bag or set version of difference operator: 
 \begin{itemize}
 \item  $T(R-S)=T(R)-\frac{T(S)}{2}$.
 \end{itemize}
 \subsubsection{Estimating the size of grouping}
-Size of the result of expression $\gamma_L(R)$ is $V(R,[g_1,g_2,...,g_n])$, where $g_x$ are grouping attributes of $L$. This statistics is almost never available so we need another estimate. $T(\gamma_L(R))$ can be between 1 and $\prod_{k=1}^{n}{V(R,g_k)}$. Upper bound can be larger than number of tuples in relation $R$. That's why we suggest:
+Size of the result of expression $\gamma_L(R)$ is $V(R,[g_1,g_2,...,g_n])$, where $g_x$ are grouping attributes of $L$. This statistics is almost never available and for this case we need another estimate. Size of $\gamma_L(R)$ can be between 1 and $\prod_{k=1}^{n}{V(R,g_k)}$. Suggested estimate is:
 \begin{itemize}
 \item $T(\gamma_L(R))=min(\dfrac{T(R)}{2},\prod_{k=1}^{n}{V(R,g_k)})$
 \end{itemize}
 Estimation of duplicate elimination can be handled exactly like grouping.
 
 \subsection{Enumerating plans}
-For every logical plan there is exponential many physical plans. This section presents ways to enumerate physical plans, so plan with least estimated cost can be chosen. There are two broad approaches:
+For every logical plan there is exponential number of physical plans. This section presents ways to enumerate physical plans, so the plan with least estimated cost can be chosen. There are two broad approaches:
 \begin{itemize}
-\item Top-down: We go down the algebra tree. For each possible implementation of operation, we consider best possible algorithms for it's subtrees. We compute costs of every combination and take the best.
-\item Bottom-up: We go up the tree and for every subexpression we enumerate plans based on plans generated for it's subexpressions.
+\item Top-down: We work down the algebra tree from the root. For each possible implementation for algebra operation at the root, we consider best possible algorithms to evaluate its subtrees. We compute costs of every combination and choose the best one.
+\item Bottom-up: We proceed up the algebra tree and we enumerate plans based on the plans generated for it's subexpressions.
 \end{itemize}
 
-There is not much difference between this approaches but one method eliminates plans that other method can't and vice versa.
+There is not big difference between this approaches but one method eliminates plans that other method cannot and vice versa.
 \subsubsection{Heuristic selection}
 
-We use same approach for generating physical plan as we used to improve logical plan. We make choices based on heuristics. Here are some heuristics that can be used:
+We use same approach for generating physical plan as we used to improve logical plan. We make choices based on heuristics, for example:
 
 \begin{itemize}
 
-\item If an join attribute has an index, we can use joining by index.
+\item If a join attribute has an index, we can use joining by index.
 \item If one argument of join is sorted, then we prefer merge join to hash join.
-\item If we compute intersection of union of more than 2 relations, we perform algorithm on smaller relations first.
+\item If we compute intersection or union of more than two relations, we process smaller relations first.
 \end{itemize}
 
 \subsubsection{Branch-and-bound plan enumeration}
-Branch-and-bound plan enumeration is ofter use in practice. We begin by finding physical plan using heuristics. We denote cost of this plan $C$. Then we can consider other plans for sub-queries. We can eliminate any plan for sub-query with cost greater than $C$. If we get plan with lower estimated cost than $C$ we use this plan instead.
+Branch-and-bound plan enumeration is ofter use in practice. We begin by finding physical plan using heuristics and denote its cost $C$. We can consider other plans for sub-queries. We can eliminate any plan for sub-query with cost greater than~$C$. If we get plan with lower estimated cost than $C$ we use this plan instead.
 
-The great advantage is we can choose when to cut search for better plan. If $C$ is low then we don't continue searching other plan. On the other hand when $C$ is large, it is better to invest some time in finding faster plan.
+The great advantage is we can choose when to cut search for better plan. If~$C$ is low then we do not continue searching other plan. On the other hand when~$C$ is large, it is better to invest some time in finding faster plan.
 \subsubsection{Hill climbing}
 
-First we start with heuristically selected plan. Then we try to do some changes, for example changing order of joins or replacing operator using hash table for sort-based operator. When we find a plan where no small modification give up better plan, then we make this plan out chosen physical plan.
+First we start with heuristically selected plan. After that we try to do some changes, for example changing order of joins or replacing operator using hash table for sort-based operator. In case a plan is found, where no small modification results in better plan, we make that plan our chosen physical plan.
 
 \subsubsection{Dynamic programming}
-Dynamic programming is variation of bottom-up strategy. For each subexpression we keep only one plan of least cost.
+Dynamic programming is variation of bottom-up strategy. For each subexpression we keep only the plan with least estimated cost.
 
 \subsubsection{Selinger-Style Optimization}
 This is a improvement of dynamic programing approach. We keep for every subexpression not only best plan, but also other plans with higher cost, which result is in some way sorted. This might be useful in following situation:
@@ -354,7 +354,7 @@ This is a improvement of dynamic programing approach. We keep for every subexpre
 \item Plan is sorted by attribute used later in grouping.
 \item We are joining by some sorted attribute.
 \end{enumerate}
-In this situation we don't have to sort input or we need only partial sort and we can use faster algorithm, which takes advantage of sorted input.
+In this situation we don not have to sort input or we need only partial sort and we can use faster algorithm, which takes advantage of sorted input.
 
 
 \subsection{Choosing join order}
@@ -363,14 +363,14 @@ In this situation we don't have to sort input or we need only partial sort and w
 \begin{enumerate}
 \item Consider all possible options.
 \item Consider only subset of join orders.
-\item Use heuristic to pick one.
+\item Heuristically to pick one.
 \end{enumerate}
  
-In this section we present algorithm that can be used for choosing join order.
+Algorithm that can be used for choosing join order are presented in this section.
  
 \subsubsection{Dynamic programing to select a join order}
 \label{dymanicalgorithm}
-For this algorithm we need a table, where we store following informations:
+For this dynamic programing algorithm we need a table, for storing following informations:
  
 \begin{enumerate}
 \item Estimated size of relation.
@@ -378,9 +378,9 @@ For this algorithm we need a table, where we store following informations:
 \item Expression how was current relation computed.
 \end{enumerate}
 
-We store every single input relation with estimated cost 0. For every pair of relations we compute their estimated size of join and store it into table. Fo that we use estimation describe in section \ref{join}.  
+Every single input relation with estimated cost 0 is stored in the table. For every pair of relations we compute their estimated size of join and store it to the table. Last described step uses estimations described in Section \ref{join}.  
 
-After that we compute entry of all subset of sizes $(3,4,...n)$.
+Next step is to compute entry of all subset of sizes $(3,4,...n)$.
 If we want to consider all possible trees, we need to partition relations in join $R$ into two non empty disjoint sets. For each pair of sets we compute estimated size and cost of their join to get join $R$. For this we use data already in our table. We are estimating join of $k$ relations and all joins of $k-1$ relations are already estimated. The join tree with least estimated cost will be stored in the table.
 
 Example: for estimating join $A\Join B\Join C\Join D$ we try to join following subsets:
@@ -395,9 +395,9 @@ Example: for estimating join $A\Join B\Join C\Join D$ we try to join following s
 
 \end{enumerate}
 
-We don't have to consider all trees but only so called left-deep join tree. Tree is called left-deep tree if all of it's right children are leafs. Right-deep tree is tree, where all left children are leafs.
+We do not have to consider all trees but only so called left-deep join tree. Tree is called left-deep tree if all of it's right children are leafs. Right-deep tree is tree, where all left children are leafs.
  
-We do it the same way like we wanted to include all possible trees, but with one exception. When partitioning $R$ into two non empty disjoint sets, we make sure that one set has only one relation.
+We do it the same way like we wanted to include all possible trees, but with one exception. When partitioning $R$ into two non empty disjoint sets, we make sure that one set contains only one relation.
 
 For estimating join $A\Join B\Join C\Join D$ we try to join following subsets:
 \begin{enumerate}
@@ -409,23 +409,23 @@ For estimating join $A\Join B\Join C\Join D$ we try to join following subsets:
 
 \subsubsection{Greedy algorithm for selecting a join order}
 \label{greedyalgorithm}
-Time complexity of using dynamic programming to select an order of join is exponential. We can us it for small amount of relations. If we don't want to invest time we can use greedy algorithm. This algorithm has to store same information as dynamic programing algorithm for every relation.
+Time complexity of using dynamic programming to select an order of join is exponential. We can use it only for small amount of relations. If we do not want to invest time we can use faster greedy algorithm. This algorithm stores same information as dynamic programing algorithm for every relation in the table.
 
-We start with a pair fo relations $R_i, R_j$, for which size of $R_i \Join R_j$ is smallest. This join is our current tree.
+We start with a pair of relations $R_i, R_j$, for which size of $R_i \Join R_j$ is the smallest. We denote this join as our current tree.
 
-For other relation that are not yet included we find relation $R_k$, so that it's join with current tree give us smallest estimated size. We continue until we include all relations into tree. 
+For other relations, that are not yet included, we find relation $R_k$, so that its join with current tree give us the smallest estimated size. We continue until we include all relations in out current tree. 
 
-This algorithm will also create left-deep or right-deep join tree. There are examples where dynamic algorithm finds plans with lower estimated cost than greedy algorithm.
+This algorithm will create left-deep or right-deep join tree. There are examples where dynamic algorithm finds plans with lower estimated cost than greedy algorithm.
  
 \subsection{Choosing physical algorithms}
 
 To complete physical plan we need to assign physical algorithms to operations in logical plan.
 \subsubsection{Choosing selection algorithms}
 
-Basic approach is to use index on relation instead of reading whole relation. We can usel following heuristic for picking selection algorithm: 
+We try to use index from scanning table instead of reading all of it. We can use following heuristic for picking selection algorithm: 
 \begin{itemize}
-\item If there is selection $\sigma_{A\oplus c}$ and relation $R$ has index on attribute $A$, $c$ is constant and $\oplus$ is $=$, $<$, $\leq$, $>$ or $\geq$, then we use scanning by index instead of scanning table with filtering result.
-\item More general rule if selection contains condition $A\oplus c$ and selected relation contains index of $A$, then we use scanning by index and filtering result based on other parts of condition.
+\item For selection $\sigma_{A\oplus c}$ and relation $R$ has index on attribute $A$, $c$ is constant and $\oplus$ is $=$, $<$, $\leq$, $>$ or $\geq$, we use scanning by index instead of scanning table and filtering result.
+\item More generally for selections containing condition $A\oplus c$ and selected relation has index on columns $A$, we use scanning by index and filter result by other parts of condition.
 \end{itemize}
 
 \subsubsection{Choosing join algorithms}
@@ -434,26 +434,26 @@ We recommend to use sort join when:
 
 \begin{enumerate}
 \item On or both join relations are sorted by join attributes.
-\item There are more join on the same attributes. For join $R(a,b)\Join S(a,c) \Join T(a,d)$ we can join first $R$ and $S$ by sort based algorithm. We can assume that $R \Join S$ will be sorted by attribute $a$ and then we use second sort join.
+\item There are more joins on the same attribute. For join $R(a,b)\Join S(a,c) \Join T(a,d)$ we can use  sort based algorithm to join $R$ and $S$. If we assume that $R \Join S$ will be sorted by attribute $a$, then we use second sort join for $R\Join S$ and relation $T$.
 
 \end{enumerate}
 
 If we have join $R(a,b)\Join S(b,c)$ and we expect size of relation to be small and $S$ have index on attribute on $b$, we can use join algorithm using this index.
 
-If there are no sorted relation and we don't have any indexes on relations, it is probably best option to use hash base algorithm.
+If there are no sorted relation and we don not have any indexes on any relations, it is probably best option to use hash based algorithm.
 
 \subsubsection{Choosing scanning algorithms}
 
-Leaf of relation tree will be replaced by scanning operator:
+Leaf of algebra tree will be replaced by on of scanning operators:
 
 \begin{itemize}
-\item $TableScan(R)$ - operator reads entire table.
+\item $TableScan(R)$ -- operator reads entire table.
 
-\item $SortScan(R,L)$ - operator reads entire table and sort by attributes in list~$L$.
+\item $SortScan(R,L)$ -- operator reads entire table and sort by attributes in list~$L$.
 
-\item $IndexScan(R,C)$ - $C$ is a condition in form $A\oplus c$, where $c$ is constant, $A$ is attribute and $\oplus$ is $=$, $<$, $\leq$, $>$, $\geq$. Operator reads tuples satisfying condition using index on $A$, result will be sorted by columns on used index.
+\item $IndexScan(R,C)$ -- $C$ is a condition in form $A\oplus c$, where $c$ is constant, $A$ is attribute and $\oplus$ is $=$, $<$, $\leq$, $>$, $\geq$. Operator reads tuples satisfying condition using index on $A$ and result is sorted by columns on used index.
 
-\item $TableScan(R,A)$ - $A$ is an attribute. Operator reads entire table using index on $A$, result will be sorted by columns on used index.
+\item $TableScan(R,A)$ -- $A$ is an attribute. Operator reads entire table using index on $A$ and result will be sorted by columns on used index.
 
 \end{itemize}
 
@@ -461,11 +461,11 @@ We choose scan algorithm based of need of sorted output and availability of inde
 
 \subsubsection{Other algorithms}
 
-Basically for other operators we usually have sort and hash version of algorithm. For example for processing grouping we can create groups using hash table or we can sort relation by grouped operators. We can choose:
+We usually have sort and hash version of algorithm, for example for grouping we can create groups using hash table or we can sort relation by grouped operators. Following rules can be used for replacing algebra operator with physical algorithm:
 
 \begin{itemize}
-\item Hash version of algorithm if the input is not sorted in way we need or if the output doesn't have to be sorted.
+\item hash version of algorithm if the input is not sorted in way we need or if the output doesn't have to be sorted.
 
-\item Sort version of algorithm if we have sorted input by some of requested parameters, or we need sorted input. In case the input is only sorted by some needed attributes we can still use pretty fast partial sort and apply sort based algorithm.
+\item sort version of algorithm if we have sorted input by some of requested parameters, or we need sorted input. In case the input is only sorted by some of the needed attributes we can still use fast partial sort and apply sort based algorithm.
 
 \end{itemize}

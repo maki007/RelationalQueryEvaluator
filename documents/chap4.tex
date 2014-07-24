@@ -378,6 +378,9 @@ Physical operators are chosen based on their estimated time complexity. It is co
 
 \section{Resolving sort parameters}
 
+Sort parameters structure~\ref{fig:sortparameters} is represented by class \texttt{PossibleSortParameters}. Every columns group is stored in class \texttt{SortParameters}. Class \texttt{SortParameter} is used to store column name, sort direction.
+
+
 We take generated plans from class \texttt{AlgebraCompiler}. Sort parameters of sort nodes need to be resolved. Two plans also can contain same physical operator. That's why need to clone plans, to assure that no algorithm representing object are used in two or more plans.
 
 For cloning we used \texttt{CloningPhysicalOperatorVisitor}. Than we resolve generated plans in \texttt{SortResolvingPhysicalOperatorVisitor}. In figure~\ref{fig:plansortunresolved} we can see physical plan with unresolved sort parameters. 
@@ -405,7 +408,7 @@ Right sort algorithm has sort parameters:
 
 At the time of generating this algorithm, we didn't know that order was the best to choose. After merge join plan has to be sorted by $d:desc,a:asc$. At the top of the tree we generated partial sort. It doesn't do anything because relation is already sorted. It only indicates, that from all sort parameter possibilities we chose $d:desc,a:asc$ and we don't have to do any additional sorting.
 
-\texttt{SortResolvingPhysicalOperatorVisitor} goes down tree. It uses variable \texttt{sortParameters}. We store there information how the input has been sorted before input of visited node. Using this variable we adjust sort parameters of sort algorithm. Adjusted plan is in figure~\ref{fig:plansortresolved}.
+\texttt{SortResolvingPhysicalOperatorVisitor} works down tree. It uses variable \texttt{sortParameters}. We store there information how the input has been sorted before input of visited node. Using this variable we adjust sort parameters of sort algorithm. Adjusted plan is in figure~\ref{fig:plansortresolved}.
 
 \begin{figure}[h!]
   \centering
