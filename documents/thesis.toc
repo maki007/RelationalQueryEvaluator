@@ -17,82 +17,82 @@
 \contentsline {subsubsection}{Intersection}{10}{section*.10}
 \contentsline {subsubsection}{Difference}{10}{section*.11}
 \contentsline {subsubsection}{Projection}{11}{section*.12}
-\contentsline {subsection}{\numberline {3.1.3}Extended operators of Relational algebra}{11}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.3}Extended operators of relational algebra}{11}{subsection.3.1.3}
 \contentsline {subsubsection}{Duplicate elimination}{11}{section*.13}
 \contentsline {subsubsection}{Aggregate operations}{11}{section*.14}
 \contentsline {subsubsection}{Grouping operator}{11}{section*.15}
 \contentsline {subsubsection}{Extended projection operator}{12}{section*.16}
 \contentsline {subsubsection}{The sorting operator}{12}{section*.17}
 \contentsline {subsubsection}{Outer joins}{12}{section*.18}
-\contentsline {section}{\numberline {3.2}Optimizations of relational algebra}{12}{section.3.2}
+\contentsline {section}{\numberline {3.2}Optimizations of relational algebra}{13}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Commutative and associative laws}{13}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Laws involving selection}{13}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Laws involving projection}{14}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}Laws involving joins and products}{14}{subsection.3.2.4}
 \contentsline {section}{\numberline {3.3}Physical plan generation}{14}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Size estimations}{14}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Size estimations}{15}{subsection.3.3.1}
 \contentsline {subsubsection}{Estimating the size of projection}{15}{section*.19}
 \contentsline {subsubsection}{Estimating the size of selection}{15}{section*.20}
 \contentsline {subsubsection}{Estimating the size of join}{16}{section*.21}
-\contentsline {subsubsection}{Estimating the size of union}{16}{section*.22}
-\contentsline {subsubsection}{Estimating the size of intersection}{16}{section*.23}
+\contentsline {subsubsection}{Estimating the size of union}{17}{section*.22}
+\contentsline {subsubsection}{Estimating the size of intersection}{17}{section*.23}
 \contentsline {subsubsection}{Estimating the size of difference}{17}{section*.24}
 \contentsline {subsubsection}{Estimating the size of grouping}{17}{section*.25}
 \contentsline {subsection}{\numberline {3.3.2}Enumerating plans}{17}{subsection.3.3.2}
-\contentsline {subsubsection}{Heuristic selection}{17}{section*.26}
+\contentsline {subsubsection}{Heuristic selection}{18}{section*.26}
 \contentsline {subsubsection}{Branch-and-bound plan enumeration}{18}{section*.27}
 \contentsline {subsubsection}{Hill climbing}{18}{section*.28}
 \contentsline {subsubsection}{Dynamic programming}{18}{section*.29}
 \contentsline {subsubsection}{Selinger-Style Optimization}{18}{section*.30}
-\contentsline {subsection}{\numberline {3.3.3}Choosing join order}{18}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.3}Choosing join order}{19}{subsection.3.3.3}
 \contentsline {subsubsection}{Dynamic programing to select a join order}{19}{section*.31}
 \contentsline {subsubsection}{Greedy algorithm for selecting a join order}{20}{section*.32}
 \contentsline {subsection}{\numberline {3.3.4}Choosing physical algorithms}{20}{subsection.3.3.4}
-\contentsline {subsubsection}{Choosing selection algorithms}{20}{section*.33}
+\contentsline {subsubsection}{Choosing selection algorithms}{21}{section*.33}
 \contentsline {subsubsection}{Choosing join algorithms}{21}{section*.34}
 \contentsline {subsubsection}{Choosing scanning algorithms}{21}{section*.35}
-\contentsline {subsubsection}{Other algorithms}{21}{section*.36}
-\contentsline {chapter}{\numberline {4}Analysis}{22}{chapter.4}
-\contentsline {section}{\numberline {4.1}Format of relational algebra}{22}{section.4.1}
-\contentsline {section}{\numberline {4.2}Physical algorithms}{23}{section.4.2}
-\contentsline {section}{\numberline {4.3}Architecture}{25}{section.4.3}
-\contentsline {section}{\numberline {4.4}Data structures}{26}{section.4.4}
-\contentsline {section}{\numberline {4.5}Optimization}{29}{section.4.5}
-\contentsline {section}{\numberline {4.6}Generating physical plan}{30}{section.4.6}
-\contentsline {subsection}{\numberline {4.6.1}Join order selecting algorithm}{31}{subsection.4.6.1}
-\contentsline {subsubsection}{Dynamic programing for selection join order}{31}{section*.37}
-\contentsline {subsubsection}{Greedy algorithm for selection join order}{32}{section*.38}
-\contentsline {subsection}{\numberline {4.6.2}Resolving sort parameters}{32}{subsection.4.6.2}
-\contentsline {chapter}{\numberline {5}Implementation}{33}{chapter.5}
-\contentsline {section}{\numberline {5.1}Input}{33}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Sort}{34}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Group}{34}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Selection}{35}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Join}{35}{subsection.5.1.4}
-\contentsline {subsection}{\numberline {5.1.5}Anti join}{37}{subsection.5.1.5}
-\contentsline {subsection}{\numberline {5.1.6}Table}{38}{subsection.5.1.6}
-\contentsline {subsection}{\numberline {5.1.7}Union}{38}{subsection.5.1.7}
-\contentsline {subsection}{\numberline {5.1.8}Extended projection}{38}{subsection.5.1.8}
-\contentsline {section}{\numberline {5.2}Building relational algebra tree}{40}{section.5.2}
-\contentsline {section}{\numberline {5.3}Semantic analysis and node grouping}{41}{section.5.3}
-\contentsline {section}{\numberline {5.4}Algebra optimization}{42}{section.5.4}
-\contentsline {section}{\numberline {5.5}Generating plan}{43}{section.5.5}
-\contentsline {section}{\numberline {5.6}Resolving sort parameters}{45}{section.5.6}
-\contentsline {section}{\numberline {5.7}Output}{46}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}Filters}{47}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}Group}{47}{subsection.5.7.2}
-\contentsline {subsection}{\numberline {5.7.3}Column operations}{47}{subsection.5.7.3}
-\contentsline {subsection}{\numberline {5.7.4}Cross join}{48}{subsection.5.7.4}
-\contentsline {subsection}{\numberline {5.7.5}Hash join}{48}{subsection.5.7.5}
-\contentsline {subsection}{\numberline {5.7.6}Merge equijoin}{48}{subsection.5.7.6}
-\contentsline {subsection}{\numberline {5.7.7}Merge non equijoin}{49}{subsection.5.7.7}
-\contentsline {subsection}{\numberline {5.7.8}Hash anti join}{49}{subsection.5.7.8}
-\contentsline {subsection}{\numberline {5.7.9}Merge anti join}{49}{subsection.5.7.9}
-\contentsline {subsection}{\numberline {5.7.10}Table scan}{50}{subsection.5.7.10}
-\contentsline {subsection}{\numberline {5.7.11}Scan And Sort By Index}{50}{subsection.5.7.11}
-\contentsline {subsection}{\numberline {5.7.12}Index Scan}{50}{subsection.5.7.12}
-\contentsline {subsection}{\numberline {5.7.13}Sort}{50}{subsection.5.7.13}
-\contentsline {subsection}{\numberline {5.7.14}Union}{51}{subsection.5.7.14}
-\contentsline {chapter}{\numberline {6}Conclusion}{52}{chapter.6}
-\contentsline {chapter}{Bibliography}{53}{chapter*.39}
-\contentsline {chapter}{Attachments}{54}{chapter*.40}
+\contentsline {subsubsection}{Other algorithms}{22}{section*.36}
+\contentsline {chapter}{\numberline {4}Analysis}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Format of relational algebra}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Physical algorithms}{24}{section.4.2}
+\contentsline {section}{\numberline {4.3}Architecture}{26}{section.4.3}
+\contentsline {section}{\numberline {4.4}Data structures}{27}{section.4.4}
+\contentsline {section}{\numberline {4.5}Optimization}{30}{section.4.5}
+\contentsline {section}{\numberline {4.6}Generating physical plan}{31}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Join order selecting algorithm}{32}{subsection.4.6.1}
+\contentsline {subsubsection}{Dynamic programing for selection join order}{32}{section*.37}
+\contentsline {subsubsection}{Greedy algorithm for selection join order}{33}{section*.38}
+\contentsline {subsection}{\numberline {4.6.2}Resolving sort parameters}{33}{subsection.4.6.2}
+\contentsline {chapter}{\numberline {5}Implementation}{34}{chapter.5}
+\contentsline {section}{\numberline {5.1}Input}{34}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Sort}{35}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Group}{35}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Selection}{36}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Join}{36}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Anti join}{38}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.6}Table}{39}{subsection.5.1.6}
+\contentsline {subsection}{\numberline {5.1.7}Union}{39}{subsection.5.1.7}
+\contentsline {subsection}{\numberline {5.1.8}Extended projection}{39}{subsection.5.1.8}
+\contentsline {section}{\numberline {5.2}Building relational algebra tree}{41}{section.5.2}
+\contentsline {section}{\numberline {5.3}Semantic analysis and node grouping}{42}{section.5.3}
+\contentsline {section}{\numberline {5.4}Algebra optimization}{43}{section.5.4}
+\contentsline {section}{\numberline {5.5}Generating plan}{44}{section.5.5}
+\contentsline {section}{\numberline {5.6}Resolving sort parameters}{46}{section.5.6}
+\contentsline {section}{\numberline {5.7}Output}{47}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Filters}{48}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Group}{48}{subsection.5.7.2}
+\contentsline {subsection}{\numberline {5.7.3}Column operations}{48}{subsection.5.7.3}
+\contentsline {subsection}{\numberline {5.7.4}Cross join}{49}{subsection.5.7.4}
+\contentsline {subsection}{\numberline {5.7.5}Hash join}{49}{subsection.5.7.5}
+\contentsline {subsection}{\numberline {5.7.6}Merge equijoin}{49}{subsection.5.7.6}
+\contentsline {subsection}{\numberline {5.7.7}Merge non equijoin}{50}{subsection.5.7.7}
+\contentsline {subsection}{\numberline {5.7.8}Hash anti join}{50}{subsection.5.7.8}
+\contentsline {subsection}{\numberline {5.7.9}Merge anti join}{50}{subsection.5.7.9}
+\contentsline {subsection}{\numberline {5.7.10}Table scan}{51}{subsection.5.7.10}
+\contentsline {subsection}{\numberline {5.7.11}Scan And Sort By Index}{51}{subsection.5.7.11}
+\contentsline {subsection}{\numberline {5.7.12}Index Scan}{51}{subsection.5.7.12}
+\contentsline {subsection}{\numberline {5.7.13}Sort}{51}{subsection.5.7.13}
+\contentsline {subsection}{\numberline {5.7.14}Union}{52}{subsection.5.7.14}
+\contentsline {chapter}{\numberline {6}Conclusion}{53}{chapter.6}
+\contentsline {chapter}{Bibliography}{54}{chapter*.39}
+\contentsline {chapter}{Attachments}{55}{chapter*.40}

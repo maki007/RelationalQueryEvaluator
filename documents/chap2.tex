@@ -59,67 +59,67 @@ Cartesian product of two sets $R$ and $S$ creates a set of pairs by choosing the
 The simplest join is called natural join of $R$ and $S$ ($R \Join S$). Let schema of $R$ be $R(r_1,r_2,..,r_n,c_1,c_2,...c_n)$ and schema of $S$ be  $S(s_1,s_2,..,s_n,c_1,c_2,...c_n)$. In natural join we pair tuple $r$ from relation $R$ to tuple $s$ from relation $S$ only if $r$ and $s$ agree on all attributes with the same name (in this case, $c_1,c_2,...c_n$).
 
 \subsubsection{Theta joins}
-Natural join forces us to use one specific condition. In may cases we want to join relation with some other condition. For this purpose we have theta-join. The notation for joining relation $R$ and $S$ based on condition $C$ is $R\Join_C S$. The result is constructed in following way:
+Natural join forces us to use one specific condition. In many cases we want to join relations with some other condition. The theta join serves for this purpose. The notation for joining the relations $R$ and $S$ based on the condition $C$ is $R\Join_C S$. The result is constructed in the following way:
 
 \begin{enumerate}
-\item Make Cartesian product of $R$ and $S$
+\item Make Cartesian product of $R$ and $S$.
 \item Use selection with condition $C$.
 \end{enumerate}
 
-Basically $R\Join_C S=\sigma_C(R \times S)$ Relations $R$ and $S$ have to have disjunct names of columns.
+In principle, $R\Join_C S=\sigma_C(R \times S)$. Relations $R$ and $S$ have to have disjunct names of columns.
 
 \subsubsection{Renaming}
 
-In order to control name of attributes or relation name we have renaming operator. We can use operator $\rho_{A_1=R_1,A_2=R_2,...,A_n=R_n}(R)$. Result will have the same tuples as $R$ and attributes ($R_1,R_2,...,R_n)$ will be renamed to $(A_1,A_2,...,A_n)$.
+In order to control name of attributes or relation name we have renaming operator $\rho_{A_1=R_1,A_2=R_2,...,A_n=R_n}(R)$. Result will have the same tuples as $R$ and attributes ($R_1,R_2,...,R_n)$ will be renamed as $(A_1,A_2,...,A_n)$.
 
 \subsection{Relational operations on bags}
 
-Commercial database system almost always are based on bags. Bag is a multi-set. Only operation that behave differently are intersection, union, difference and projection.
+Commercial database systems are almost always based on bags (multiset). The only operations that behave differently are intersection, union, difference and projection.
 
 \subsubsection{Union}
-Bag union of $R \cup_B S$ we just add all tuples from $S$ and $R$ together. If tuple $t$ appears in $R$ $m$-times and in $S$ $n$-times then in  $R \cup S$ will $t$ appear $m+n$ times. Both $m$ and $n$ can be zero.
+Bag union of $R \cup_B S$ adds all tuples from $S$ and $R$ together. If tuple $t$ appears $m$-times in $R$ and $n$-times in $S$, then in $R \cup_B S$ $t$ will appear $m+n$ times. Both $m$ and $n$ can be zero.
 
 \subsubsection{Intersection}
 
-Let's have tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times. In the Bag intersection $R \cap_B S$ will be $t$ $min(m,n)$-times.
+Assume we have tuple $t$ that appears $m$-times in $R$ and $n$-times in $S$. In the bag intersection $R \cap_B S$ $t$ will be $min(m,n)$-times.
 
 \subsubsection{Difference}
-Every tuple $t$ that appears in $R$ $m$-times and $S$ $n$-times, will appear $max(0,m-n)$ times in bag $R-_B S$.
+Every tuple $t$, that appears $m$-times in $R$ and $n$-times in $S$, will appear $max(0,m-n)$ times in bag $R-_B S$.
 
 \subsubsection{Projection}
-Bag version of projection $\pi_B$ behave like set version $\pi_S$ with one exception. Bag version doesn't eliminate duplicate tuples.
+Bag version of projection $\pi_B$ behaves like set version $\pi_S$ with one exception. Bag version does not eliminate duplicate tuples.
 
-\subsection{Extended operators of Relational algebra}
+\subsection{Extended operators of relational algebra}
 
 We will introduce extended operators that proved useful in many query languages like SQL.
 
 
 \subsubsection{Duplicate elimination}
-This operator $\delta(R)$ returns set consisting of one copy of every tuple that appears in bag R one or more times.
+Duplicate elimination operator $\delta(R)$ returns set consisting of one copy of every tuple that appears in bag $R$ one or more times.
 
 \subsubsection{Aggregate operations}
 
-Aggregate operators such as sum are not relational algebra operators but are used by grouping operators. They apply on column and produce one number as result. The standard operators are $SUM$, $AVG$(average), $MIN$, $MAX$ and $COUNT$.
+Aggregate operators such as sum are not relational algebra operators but are used by grouping operators. They are applied on column and produce one number as a result. The standard operators are $SUM$, $AVG$(average), $MIN$, $MAX$ and $COUNT$.
 
 
 \subsubsection{Grouping operator}
 
-We often don't want to compute aggregation function for entire column. We rather compute this function on for some group of columns. For example we can compute average salary for every person in database, or we can group them by companies and get average salary in every company. 
+Usually, it is not desirable to compute aggregation function for the entire column, i.e.~one rather computes this function only for some group of columns. For example, average salary for every person can be computed or the people can be grouped by companies and the average salary in every company is obtained. 
 
-For this purpose we have grouping operator $\gamma_L(R)$. $L$ is a list of:
+For this purpose we have grouping operator $\gamma_L(R)$, where $L$ is a list of:
 
 \begin{enumerate}
-\item Attributes of $R$ by which $R$ will be grouped.
-\item expression $x=f(y)$, where $x$ is new column name, $f$ is aggregation function and $y$ is attribute of relation. When we use function $COUNT$ we don't need to specify argument.
+\item attributes of $R$ by which $R$ will be grouped
+\item expression $x=f(y)$, where $x$ is new column name, $f$ is aggregation function and $y$ is attribute of relation. When we use function $COUNT$ we do not need to specify argument.
 \end{enumerate}
 
-Relation computed by expression $\gamma_L(R)$ is constructed:
+Relation computed by expression $\gamma_L(R)$ is constructed in the following way:
 
 \begin{enumerate}
-\item Relation will be partitioned into groups. Every group contains all tuples which have same value in all grouping attributes. If there is no grouping attributes, all tuples will be in one group.
-\item For each group operator produces one tuple consisting of:
+\item Relation will be partitioned into groups. Every group contains all tuples which have the same value in all grouping attributes. If there are no grouping attributes, all tuples are in one group.
+\item For each group, operator produces one tuple consisting of:
  \begin{enumerate}
- 	\item Grouping attributes values for group.
+ 	\item Values of grouping attributes.
  	\item Results of aggregations over all tuples of processed group.
  \end{enumerate}
 \end{enumerate}
@@ -128,93 +128,96 @@ Duplicate elimination operator is a special case of grouping operator. We can ex
 
 \subsubsection{Extended projection operator}
 
-We can extend classical bag projection operator $\pi_L(R)$ introduced in chapter \ref{projection}. We denote it also $\pi_L(R)$ but projection list can have following elements:
+We can extend classical bag projection operator $\pi_L(R)$ introduced in Chapter~\ref{projection}. It is also denoted as $\pi_L(R)$ but projection list can have following elements:
 
 \begin{enumerate}
-\item Attribute of R, which means attribute will appear in output.
+\item Attribute of $R$, which means attribute will appear in output.
 \item Expression $x = y$, attribute $y$ will be renamed to $x$.
-\item Expression $x = E$, where $E$ is an expression created from attributes from R, constants, arithmetic, string  and other operators. $x$ is new name. For example $x=e*(1-l)$.
+\item Expression $x = E$, where $E$ is an expression created from attributes from~$R$, constants and arithmetic, string and other operators. The new attribute name is $x$, for example $x=e*(1-l)$.
 \end{enumerate}
 
 
 
 \subsubsection{The sorting operator}
 
-In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation, $L$ is list of attributes with additional information about sort order, is relation with same tuples like $R$ but different order of tuples. Example:  $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with same $A_1$ value will be additionally sorted by their $A_2$ value descending. Result of this operator is not bag or set, since there is no sort order defined in bags or sets. Result is sorted relation and it make sense to use this operator only on top of algebra tree.
+In several situations we want the output of query to be sorted. Expression $\tau_L(R)$, where $R$ is relation and $L$ is list of attributes with additional information about sort order, is a relation with the same tuples like $R$ but with  different order of tuples. Example $\tau_{A_1:A,A_2:D}(R)$ will sort relation $R$ by attribute $A_1$ ascending and tuples with the same $A_1$ value will be additionally sorted by their $A_2$ value descending. Result of this operator is not bag or set  since there is no sort order defined in bags or sets. Result is sorted relation and it is essential to use this operator only on top of algebra tree.
 
 \subsubsection{Outer joins}
-Let's have join $R\Join_C S$. We call tuple $t$ from relation $R$ or $S$ $dangling$ if
-we didn't find any match in relation $S$ or $R$. Outer join $R\Join^\circ_C S$ is formed by creating $R\Join_C S$ and adding dangling tuples from $R$ and $S$. The added tuples must be filled with special $null$ value in all attributes they don't have but appear in join result.
+Assuming join $R\Join_C S$, we call tuple $t$ from relation $R$ or $S$ $dangling$ if
+we did not find any match in relation $S$ or $R$. Outer join $R\Join^\circ_C S$ is formed by creating $R\Join_C S$ and adding dangling tuples from $R$ and $S$. The added tuples must be filled with special $null$ value in all attributes they do not have but appear in the join result.
 
-Left/right outer join is outer join but we only add dangling tuples from left/right relation.
+Left or right outer join is an outer join where only dangling tuples from left or right relation are added, respectively.
 
 \section{Optimizations of relational algebra}
 
-After initial logical query plan is generated, we can apply some heuristics to improve it, using some algebraic laws that hold for relational algebra. 
+After generation of the initial logical query plan, some heuristics can be applied to improve it using some algebraic laws that hold for relational algebra. 
 
 
 \subsection{Commutative and associative laws}
-Commutative and associative operators are Cartesian product, natural join, union and intersection. Theta join is commutative but generally is not associative. But if the conditions makes sense where they were positioned, then theta join is associative.
-That means we can make following changes to algebra tree:
+Commutative and associative operators are Cartesian product, natural join, union and intersection. Theta join is commutative but generally not associative. If the conditions make sense where they were positioned, then theta join is associative.
+This implies that one can make following changes to algebra tree:
 
 \begin{itemize}
 \item $R \oplus S = S \oplus R$
 
-\item $(R \oplus S) \oplus T = R \oplus (S \oplus T)$
+\item $(R \oplus S) \oplus T = R \oplus (S \oplus T)$,
 \end{itemize}
-$\oplus$ stands for $\times$, $\cap$, $\cup$, $\Join$ or $\Join_C$.
+where $\oplus$ stands for $\times$, $\cap$, $\cup$, $\Join$ or $\Join_C$.
 
 \subsection{Laws involving selection}
 
-Selection are very important for improving logical plan. They usually reduce size of relation markedly so that's why we need to move them down the tree as far as possible.
+Selections are important for improving logical plan. Since they usually reduce the size of relation markedly we need to move them down the tree as much as possible.
 We can change order of selections:
 
 \begin{itemize}
 \item $\sigma_{C_1}(\sigma_C{_2}(R)) = \sigma_C{_2}(\sigma_C{_1}(R))$
 \end{itemize}
-Sometimes we cannot push whole condition but we can split it:
+Sometimes we cannot push the whole selection but we can split it:
 
 \begin{itemize}
 \item $\sigma_{C_1~AND~C_2}(R)=\sigma_{C_1}(\sigma_{C_2}(R))$
 
 \item $\sigma_{C_1~OR~C_2}(R)=\sigma_{C_1}(R) \cup_S \sigma_{C_2}(R)$
 \end{itemize}
-Last law works only when $R$ is a set. We can push selection down union, it has to be pushed to both branches:
+Last law works only when $R$ is a set. 
+
+When pushing selection through the union, it has to be pushed to both branches:
 \begin{itemize}
 \item $\sigma_{C}(R \cup S)=\sigma_{C}(R) \cup \sigma_{C}(S)$
 \end{itemize}
 
-When pushing selection through difference we must push it to first branch. Pushing to second branch optional. Laws for difference: 
+When pushing selection through the difference, we must push it to the first branch. Pushing to the second branch is optional. Laws for difference are: 
 \begin{itemize}
 \item $\sigma_{C}(R-S)=\sigma_{C}(R) - \sigma_{C}(S)$
 \item $\sigma_{C}(R-S)=\sigma_{C}(R) - S$
 \end{itemize}
 
-Following laws allow to push selection down both arguments. Let's have selection $\sigma_C$. We can push it to the branch, which contains all attributes used in $C$. If $C$ contains only attributes of $R$:
+The following laws allows to push selection down the both arguments. Assuming the selection $\sigma_C$, it can pushed to the branch, which contains all attributes used in $C$. If $C$ contains only attributes of $R$, then
 \begin{itemize}
-\item $\sigma_{C}(R \oplus S)=\sigma_{C}(R) \oplus S$
+\item $\sigma_{C}(R \oplus S)=\sigma_{C}(R) \oplus S$,
 \end{itemize}
-$\oplus$ stands for $\times$, $\Join$ or $\Join_C$. If relation $S$ and $R$ contains all attributes of $C$ we can also use following law:
+where $\oplus$ stands for $\times$, $\Join$ or $\Join_C$. If relations $S$ and $R$ contain all attributes of $C$, the following law can be also used:
 \begin{itemize}
 \item $\sigma_{C}(R \Join S)=\sigma_{C}(R) \Join  \sigma_{C}(S)$
 \end{itemize}
 
 
 \subsection{Laws involving projection}
-We can add projection anywhere in the tree as long as it only eliminates attributes, which are not used anymore and they aren't in query result.
+We can add projection anywhere in the tree as long as it only eliminates attributes, which are not used anymore and they are not in query result.
+
 \subsection{Laws involving joins and products}
 
-We have more laws involving selection that follow directly from definition of the join:
+We have more laws involving selection that follow directly from the definition of the join:
 \begin{itemize}
 \item $\sigma_{C}(R \times S)=R \Join_{C} S$
-\item $R \Join S=\pi_L(\sigma_{C}(\pi_X(R) \times \pi_Y(S)))$. $\pi_X(R)$ renames all attributes of relation $R$ from $attributename$ to $R\_attributename$ and $\pi_Y(S)$renames all attributes of relation $S$ from $attributename$ to $S\_attributename$. $C$ is condition that equates each pair of attributes of $R$ and $S$, which had the same name before renaming. $\pi_L$ keeps all columns not used in condition $C$ and renames them back by removing prefix $S\_$ or $R\_$. It also keeps all columns used in $C$ which came from relation $R$ and renames them by removing prefix $R\_$
+\item $R \Join S=\pi_L(\sigma_{C}(\pi_X(R) \times \pi_Y(S)))$. $\pi_A(B)$ renames all attributes of relation $B$ from $attributename$ to $B\_attributename$, where $A\in\{X,Y\}$ and $B\in\{R,S\}$. $C$ is condition that equates each pair of attributes of $R$ and $S$, which had the same name before renaming. $\pi_L$ keeps all columns not used in condition $C$ and renames them back by removing prefix $S\_$ or $R\_$. It also keeps all columns used in $C$ which came from relation $R$ and renames them by removing prefix~$R\_$.
 \end{itemize}
 
 
 
 \section{Physical plan generation}
 
-After we optimized logical plan, we need to create physical plan. We generate many physical plans a choose one with least estimated cost to run it. This approach is called cost-based enumeration.
+After the optimization of the logical plan, the physical plan has to be created. We generate many physical plans and choose one with least estimated cost to run it. This approach is called cost-based enumeration.
 
 For each physical plan we select 
 \begin{enumerate}
