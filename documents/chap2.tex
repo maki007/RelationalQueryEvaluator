@@ -217,21 +217,21 @@ We have more laws involving selection that follow directly from the definition o
 
 \section{Physical plan generation}
 
-After the optimization of the logical plan, the physical plan has to be created. We generate many physical plans and choose one with least estimated cost to run it. This approach is called cost-based enumeration.
+Physical plan will be created from optimized logical plan. We generate many physical plans and choose the one with least estimated cost (run time). This approach is called cost-based enumeration.
 
-For each physical plan we select 
+For every physical plan we select:
 \begin{enumerate}
-\item An order of grouping and joins.
-\item An algorithm for each operator. For example if we use join based on hashing or sorting.
-\item Additional operators which are not presented in logical plan. For example we can sort relation in order to user faster algorithm which assumes that it's input is sorted.
-\item The way in which arguments are pass to between operators. We can use iterators for it or store result on hard drive.
+\item an order of grouping and joins.
+\item an algorithm for each operator, for example usage of join based on hashing or sorting.
+\item additional operators which are not presented in logical plan, for example we can sort relation in order to user faster algorithm which assumes that it's input is sorted.
+\item the way in which arguments are pass to between operators. We can use iterators  or store result on hard drive.
 \end{enumerate}
 
 \subsection{Size estimations}
-Estimates used in this section are from book\cite{database}. 
-The costs of evaluating physical plan are based of estimated size of interme\-dia\-te relations. Ideally we want our estimation to be accurate, easy to compute and logically consistent(size of relation doesn't depend on how relation is computed). We will present simple rules, which will give us give us good estimations in most situations. Goal of estimating sizes is not predict exact size of relation, even an inaccurate size will help us with plan generation.
+Estimates used in this section are from Database systems~\cite{database}. 
+The costs of evaluating physical plan are based of estimated size of interme\-dia\-te relations. Ideally, we want our estimation to be accurate, easy to compute and logically consistent(size of relation doesn't depend on how relation is computed). We will present simple rules, which will give us give us good estimations in most situations. Goal of estimating sizes is not predict exact size of relation, even an inaccurate size will help us with plan generation.
 
-In this section we will use following conventions:
+In this section we will use the following conventions:
 
 \begin{itemize}
 \item $T(R)$ is number of tuples in relation R.
@@ -241,34 +241,35 @@ In this section we will use following conventions:
 
 \subsubsection{Estimating the size of projection}
 
-Bag projection is only operator which size of result is computable. It doesn't change number ot tuples, only their lengths change.
+Bag projection is only operator which size of result is computable. It doesn't change number of tuples but only their lengths.
 
 \subsubsection{Estimating the size of selection}
 
-Selection usually reduces number of tuples. Let's have $S=\sigma_{A=c}(R)$, where $A$ is a attribute of $R$ and $c$ is a constant. Recommended estimation is:
+Selection usually reduces number of tuples. For selection $S=\sigma_{A=c}(R)$, where $A$ is a attribute of $R$ and $c$ is a constant, we can use following estimation:
 \begin{itemize}
 \item $T(S)=T(R)/V(R,A)$
 \end{itemize}
 
-More problematic estimation is when selection involves inequality comparison Let's have $S=\sigma_{A<c}(R)$. In average half the tuple satisfies condition, but usually queries select only a small fraction from all tuples. Typical inequality will return about third of tuples. Therefore the estimation is:
+More problematic estimation is for selection involving inequality comparison:  $S=\sigma_{A<c}(R)$. In average half the tuple satisfies condition, but usually queries select only a small fraction from relation. Typical inequality will return about third of the original tuples. Therefore the recommended estimation is:
 \begin{itemize}
 \item $T(S)=T(R)/3$
 \end{itemize}
 
-For selection where condition is in form $C_1~and~C_2~and~...~and~C_N$ we can treat selection as a cascade of simple selections and estimate size for every simpler condition.
+Selection with condition form $C_1~and~C_2~and~...~and~C_N$ can be treated as a cascade of simple selections and we can used estimated size from simpler conditions to compute original selection estimation.
 
 In case we have following condition: $S=\sigma_{not(C)}(R)$, we use this estimation:
 \begin{itemize}
 \item $T(S)=T(R)-T(\sigma_C(R))$
 \end{itemize}
 
-Little more complicated is when condition involves logical disjunction. Lets have expression $S=\sigma_{C_1~or~C_2}(R)$. We assume that $C_1$ and $C_2$ are independent. Size of $S$ is:
+More complicated are estimations for selections with conditions involving logical disjunction. Recommended estimated size of relation $S=\sigma_{C_1~or~C_2}(R)$ is:
 
 \begin{itemize}
 \item $T(S)=T(R)(1-(1-\dfrac{m_1}{T(R)})(1-\dfrac{m_2}{T(R)}))$
 \end{itemize}
 
-$m_i=T(\sigma_{C_1}(R))$, where $i\in\{1,2\}$. Expression $1-\dfrac{m_1}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_1$ and $1-\dfrac{m_2}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_2$. Product of these numbers are the fraction of tuples from $R$ which are not in result. One minus the product gives us fraction of tuples in $S$.
+To use this estimate we assume that condition $C_1$ and $C_2$ are independent.
+Variable $m_i$ equals $T(\sigma_{C_1}(R))$, where $i\in\{1,2\}$. Expression $1-\dfrac{m_1}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_1$ and $1-\dfrac{m_2}{T(R)}$ is fraction of tuples which doesn't satisfy condition $C_2$. Product of these numbers are the fraction of tuples from $R$ which are not in result. One minus the product gives us fraction of tuples in $S$.
 
 \subsubsection{Estimating the size of join}
 \label{join}
@@ -278,7 +279,7 @@ We start with natural join. Let's have expression $A=R(X,Y)\Join S(Y,Z)$. We joi
 \item $T(A)=\dfrac{T(R)T(S)}{max(V(R,Y),V(S,Y))}$
 \end{itemize}
 
-We can generalize this rule for joining with multiple attributes. For join $R\Join S$, where we join $R$ and $S$ using following attributes $a_1,a_2,...a_n)$, we use this estimation:
+We can generalize this rule for joining with multiple attributes. For join $R\Join S$, where we join $R$ and $S$ using following attributes $(a_1,a_2,...a_n)$, we use this estimation:
 
 \begin{itemize}
 \item $T(R\Join S)=\dfrac{T(R)T(S)}{\prod_{k=1}^{n}{max(V(R,a_k),V(S,a_k))}}$
@@ -288,9 +289,9 @@ When we join using multiple attributes, than result of this estimation can be sm
 
 If we have other type of join (theta join), we can use following rules for it's estimation:
 \begin{enumerate}
-\item Size of product is product of sizes of relations involved.
+\item Size of Cartesian product is product of sizes of relations involved.
 \item Equality conditions can be estimated using techniques presented in natural joins.
-\item An inequality compassion can be handled like inequality comparison in expression $\sigma_{A<c}(R)$. We assume that $1/3$ of tuples will satisfy condition. 
+\item An inequality compassion can be handled like expression $\sigma_{A<c}(R)$. We assume that $1/3$ of the tuples will satisfy condition. 
 \end{enumerate}
 
 \subsubsection{Estimating the size of union}

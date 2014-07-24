@@ -228,8 +228,14 @@ RNDr. David Bednárek, Ph.D.
 % mimo MFF UK v angličtině
 
 Abstract:
-% abstrakt v rozsahu 80-200 slov v angličtině; nejedná se však o překlad
-% zadání diplomové práce
+This thesis deals with the design and implementation of optimizer and transformer of relational queries.
+Firstly, the thesis describes database compiler theory.
+Following chapter presents data structures and algorithm used in implemented tool. Final chapter specifies important implementation details.
+Part of the thesis was the selection of used relational algebra operators and design of appropriate input.
+Input of implemented software is query written in XML file in form of relational algebra.
+Query is optimized  and transformed into physical plan which will be executed in parallel framework Bobox.
+Developed compiler outputs physical plan written in Bobolang language, which serves as input for Bobox.
+
 
 Keywords:
 SQL, Compiler, Relational algebra, optimizer, Bobox
