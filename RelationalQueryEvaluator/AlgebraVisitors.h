@@ -10,7 +10,7 @@ namespace rafe {
 
 	/**
 	* Base class for algebra tree visitors.
-	* Every virtual method does nothing only visits node all children.
+	* Every virtual method does nothing only visits all children of the current node.
 	*/
 	class AlgebraVisitor
 	{
@@ -124,7 +124,7 @@ namespace rafe {
 		void generateText(std::string & label, UnaryAlgebraNodeBase * node);
 
 		/**
-		* Generates  string representation from node and calls iteself on it's childs. Then it connect created nodes.
+		* Generates string representation from node and calls iteself on it's childs. Then it connect created nodes.
 		* @param label for generated node
 		* @param node - on which to call children
 		*/
@@ -277,7 +277,7 @@ namespace rafe {
 	};
 
 	/**
-	* This algebra visitor groupes neighbour join into one groupped join.
+	* This algebra visitor groupes neighbour joins into one groupped join.
 	* It also calls GroupingExpressionVisitor on every condition.
 	*/
 	class GroupingVisitor : public AlgebraVisitor
@@ -300,8 +300,8 @@ namespace rafe {
 	private:
 		/**
 		* Hepler method, which merges join node to GroupedJoin and update all nedded parameters like condition and outputcolumns.
-		* @param node - node to merge
-		* @param groupedOperator - node to be merge to
+		* @param node - node to merge.
+		* @param groupedOperator - node to be merge to.
 		*/
 		void resolveJoins(Join * node, GroupedJoin * groupedOperator);
 	};
@@ -328,7 +328,7 @@ namespace rafe {
 	};
 
 	/**
-	* Structures storing information in selecting join order algoritm.
+	* Structures storing information in join order algoritm.
 	*/
 	class JoinInfo
 	{
@@ -344,9 +344,9 @@ namespace rafe {
 		/**
 		* Comparer for head in greedy join order algorirthm.
 		* Compares plans bases on timecomplexity of plans[0]. Greedy join order algorirthm uses this structure with only one plan.
-		* @param lhs - first plan to compare
-		* @param rhs - second plan to compare
-		* @return true if lsf is faster then rhs
+		* @param lhs - first plan to compare.
+		* @param rhs - second plan to compare.
+		* @return true if lsf is faster then rhs.
 		*/
 		static bool Comparator(const std::shared_ptr<JoinInfo> & lhs, const std::shared_ptr<JoinInfo> &rhs);
 
@@ -393,10 +393,10 @@ namespace rafe {
 		void visitGroupedJoin(GroupedJoin * node);
 
 		/**
-		* From possible paramers remove columns, which aren't in newColumns and stores them into newPlan.
-		* @param possibleSortParameters - parameters to update
-		* @param newPlan - PhysicalPlan, where to store result
-		* @param newColumns - columns which stays in parameters
+		* From possible paramers removes columns, which aren't in newColumns and stores them into newPlan.
+		* @param possibleSortParameters - parameters to update.
+		* @param newPlan - PhysicalPlan, where to store result.
+		* @param newColumns - columns which stays in parameters.
 		*/
 		static void updateSortParameters(const PossibleSortParameters & possibleSortParameters, std::shared_ptr<PhysicalPlan> & newPlan, std::map<int, ColumnInfo> & newColumns);
 
@@ -407,72 +407,72 @@ namespace rafe {
 		double size; /**< Size of relation computed after each subtree. */
 
 		/**
-		* Inserts physical plan into heap of physical plans and removes the slowest, if the heap size > NUMBER_OF_PLANS
-		* @param plans - heap of plans
-		* @param plan - new inserted plan
+		* Inserts physical plan into heap of physical plans and removes the slowest, if the heap size is less than NUMBER_OF_PLANS
+		* @param plans - heap of plans.
+		* @param plan - new inserted plan.
 		*/
 		void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
 		/**
-		* Generates new plan from old one and Sort, PartalSort or no sort plan.
-		* @param parameters - sort parameters
-		* @param result - processed plan
-		* @return new plan
+		* Generates new sorted plan from old one usinf sort or partalsort algorithm.
+		* @param parameters - sort parameters.
+		* @param result - processed plan.
+		* @returns new plan.
 		*/
 		std::shared_ptr<PhysicalPlan> generateSortParameters(const PossibleSortParameters & parameters, const std::shared_ptr<PhysicalPlan> & result);
 
 		/**
 		* Generates indexScan from current plan.
-		* @param name - name of the table
-		* @param plan - PhysicalPlan from which to generate indexScan
-		* @param condition - Expression what to use
-		* @param newResult - vector for storing possible plan
+		* @param name - name of the table.
+		* @param plan - PhysicalPlan from which to generate indexScan.
+		* @param condition - Expression what to use.
+		* @param newResult - vector for storing possible plan.
 		*/
 		void generateIndexScan(const std::string & tableName, std::vector<std::shared_ptr<PhysicalPlan> >::iterator plan, std::vector<std::shared_ptr<Expression> > & condition, std::vector<std::shared_ptr<PhysicalPlan>> & newResult);
 
 		/**
 		* Generates possible join plans. It is used in Greedy and Brute force algorithm.
-		* @param node - GroupedJoin beeing processed
-		* @param left - first inputs into join
-		* @param right - second inputs into join
-		* @param newPlan - for storing results
+		* @param node - GroupedJoin beeing processed.
+		* @param left - first inputs into join.
+		* @param right - second inputs into join.
+		* @param newPlan - for storing results.
 		*/
 		void join(GroupedJoin * node, const JoinInfo & left, const JoinInfo & right, JoinInfo & newPlan);
 
 		/**
 		* Generates vector containg all subsets. Subsests are binary coded in output.
-		* @param arr - input numbers
-		* @param n - size of input vector
-		* @param k - size of generated subsets
+		* @param arr - input numbers.
+		* @param n - size of input vector.
+		* @param k - size of generated subsets.
 		* @return vector containg all subsets. Subsests are binary coded in output.
 		*/
 		std::vector<ulong> getAllSubsets(std::vector<ulong> & arr, ulong n, ulong k) const;
 
 		/**
 		* Performs greedy join algorithm.
-		* @param node - GroupedJoin beeing processed
-		* @param it - first input
-		* @param it2 - second input
-		* @param plans - vector for second input
-		* @param heap for storing results
+		* @param node - GroupedJoin beeing processed.
+		* @param it - first input.
+		* @param it2 - second input.
+		* @param plans - vector for second input.
+		* @param heap for storing results.
 		*/
 		void greedyJoin(GroupedJoin * node, JoinInfo &it, std::set<ulong>::iterator &it2, std::vector<JoinInfo> & plans, std::vector<std::shared_ptr<JoinInfo >> & heap);
 
 		/**
 		* Creates PossibleSortParameters for sort before merge join algorithm
-		* @param sortParameters - for storing result
-		* @param conditions - join condition
-		* @param columns - columns from current input
+		* @param sortParameters - for storing result.
+		* @param conditions - join condition.
+		* @param columns - columns from current input.
 		*/
 		void generateSortParametersForMergeJoin(PossibleSortParameters & sortParameters, const std::vector<std::shared_ptr<ConditionInfo>> & conditions, const std::map<int, ColumnInfo> & columns);
 
 		/**
 		* For equal condition, it generates pairs, which columns are equal.
-		* @param conditions - condition to generate from
-		* equalPairs - result of the function
-		* equalPairsReverse - same structure like equalPairs, but key and value are reversed
-		* leftColumns - columns from left input
-		* rightColumns - columns from right input
+		* @param conditions - condition to generate from.
+		* @param equalPairs - result of the function.
+		* @param equalPairsReverse - same structure like equalPairs, but key and value are reversed.
+		* @param leftColumns - columns from left input.
+		* @param rightColumns - columns from right input.
 		*/
 		void getEqualPairsFromCondition(const std::vector<std::shared_ptr<ConditionInfo>> & conditions, std::map<int, int> & equalPairs, std::map<int, int> & equalPairsReverse, const std::map<int, ColumnInfo> & leftColumns, const std::map<int, ColumnInfo> & rightColumns);
 
@@ -545,7 +545,7 @@ namespace rafe {
 	};
 
 	/**
-	* Merges neighbouring selections into one selection and insert it into tree instred of original chain of selections.
+	* Merges neighbouring selections into one selection and insert it into tree.
 	*/
 	class SelectionFusingVisitor : public AlgebraVisitor
 	{
@@ -581,7 +581,7 @@ namespace rafe {
 
 		/**
 		* Creates new instance of PushSelectionDownVisitor.
-		* @param node - node to bu pushed down
+		* @param node - node to be pushed down.
 		*/
 		PushSelectionDownVisitor(Selection * node);
 

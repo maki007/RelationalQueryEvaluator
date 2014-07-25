@@ -312,7 +312,7 @@ namespace rafe {
 
 		std::string code; /**< Stores connections between bobox operators. */
 
-		ulong lastId; /**< Stores last generated uniwue id for node. */
+		ulong lastId; /**< Stores last generated unique id for node. */
 
 		std::string lastWrittenNode; /**< Stores last written node, so the next node can connect to it. */
 

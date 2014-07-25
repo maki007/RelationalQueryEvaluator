@@ -43,21 +43,21 @@ namespace rafe {
 		Expression * parent; /**< Stores pointer on the parent in expression tree. */
 
 		/**
-		* Method for calling visit[node] on given ExpressionVisitor
-		* @param v ExpressionVisitor, on which to call visit function
+		* Method for calling visit[node] on given ExpressionVisitor.
+		* @param v ExpressionVisitor, on which to call visit function.
 		*/
 		virtual void accept(ExpressionVisitorBase &v) = 0;
 
 		/**
-		* Helper function for choosing which node to conctruct from element.
-		* @param node - element containing information expression
+		* Helper function for choosing which node is going to conctructed from XML element.
+		* @param node - element containing information expression.
 		*/
 		static Expression * constructChildren(DOMElement * node);
 
 		/**
 		* Replaces child from this class with new expression tree.
-		* @param oldChild - child to replace
-		* @param newChild - child to be replaced
+		* @param oldChild - child to replace.
+		* @param newChild - child to be replaced.
 		*/
 		virtual void replaceChild(Expression * oldChild, std::shared_ptr<Expression> newChild) = 0;
 
@@ -69,7 +69,7 @@ namespace rafe {
 
 	/**
 	* Class representing unary expression (one child).
-	* Currently ony unary expresion is boolean not.
+	* Currently only unary expresion is negation.
 	*/
 	class UnaryExpression : public Expression
 	{
@@ -81,14 +81,14 @@ namespace rafe {
 		/**
 		* Creates new instance of UnaryExpression.
 		* @param node - domelement hoding information about node and its child nodes.
-		* @param op - type of unary operation
+		* @param op - type of unary operation.
 		*/
 		UnaryExpression(DOMElement * node, UnaryOperator op);
 
 		/**
 		* Creates new instance of UnaryExpression.
-		* @param node - new child node
-		* @param op - type of unary operation
+		* @param node - new child node.
+		* @param op - type of unary operation.
 		*/
 		UnaryExpression(std::shared_ptr<Expression> node, UnaryOperator op);
 
@@ -173,7 +173,7 @@ namespace rafe {
 	public:
 		ColumnIdentifier column; /**< Identifies column with name and unique id. */
 		std::string type; /**< Type of the values stored in the column. */
-		ulong input; /**< This field is used for identifing, which child, columns belong. */
+		ulong input; /**< This field is used for identifing relation of the columns. */
 
 		/**
 		* Creates new instance of Column.
@@ -185,8 +185,8 @@ namespace rafe {
 	};
 
 	/**
-	* Repressents grouped logical or aritmetic comutative expression.
-	* It has variable number of children. Currently it is used only for local AND and OR operations.
+	* Represents grouped logical or aritmetic comutative expression.
+	* It has variable number of children. Currently it is used only for AND and OR operations.
 	*/
 	class GroupedExpression : public Expression
 	{

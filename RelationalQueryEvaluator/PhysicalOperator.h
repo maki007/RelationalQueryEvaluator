@@ -172,7 +172,7 @@ namespace rafe {
 	/**
 	* Class representing filter physical algorithm.
 	* Operator filters given rows and output only rows satisfying condition.
-	* Output doesn't have to be sorted same way as input.
+	* Output does not have to be sorted same way as input.
 	*/
 	class Filter : public UnaryPhysicalOperator
 	{
@@ -200,7 +200,7 @@ namespace rafe {
 
 		/**
 		* Creates new instance of FilterKeepingOrder.
-		*  @param condition - filter condition.
+		* @param condition - filter condition.
 		*/
 		FilterKeepingOrder(const std::shared_ptr<Expression> & condition);
 
@@ -314,8 +314,8 @@ namespace rafe {
 		/**
 		* Creates new instance of HashAntiJoin.
 		* @param condition - join condition.
-		* @param leftPartOfCondition - condition columns from first input
-		* @param rightPartOfCondition - condition columns from second input
+		* @param leftPartOfCondition - condition columns from first input.
+		* @param rightPartOfCondition - condition columns from second input.
 		*/
 		HashAntiJoin(const std::shared_ptr<Expression> & condition, const std::vector<ColumnIdentifier> & leftPartOfCondition, const std::vector<ColumnIdentifier> & rightPartOfCondition);
 
@@ -323,8 +323,8 @@ namespace rafe {
 	};
 
 	/**
-	* Represents Merge equijoin.
-	* Operator computes equiantijoin from given sorted inputs.
+	* Represents Merge equi anti join.
+	* Operator computes equi anti join from given sorted inputs.
 	*/
 	class MergeAntiJoin : public BinaryPhysicalOperator
 	{
@@ -484,48 +484,48 @@ namespace rafe {
 
 		/**
 		* Creates new instance of PhysicalPlan.
-		* @param op - new tree root
-		* @param numberOfRows - new relation size
-		* @param time - time to execute op
-		* @param cols - new columns
+		* @param op - new tree root.
+		* @param numberOfRows - new relation size.
+		* @param time - time to execute op.
+		* @param cols - new columns.
 		*/
 		PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, std::vector<ColumnInfo> & cols);
 
 		/**
 		* Creates new instance of PhysicalPlan.
-		* @param op - new tree root
-		* @param numberOfRows - new relation size
-		* @param time - time to execute op
-		* @param newColumns - new columns
+		* @param op - new tree root.
+		* @param numberOfRows - new relation size.
+		* @param time - time to execute op.
+		* @param newColumns - new columns.
 		*/
 		PhysicalPlan(NullaryPhysicalOperator * op, double numberOfRows, double time, const std::map<int, ColumnInfo> & newColumns);
 
 		/**
 		* Creates new instance of PhysicalPlan. It connects op to operator tree.
-		* @param op - new tree root
-		* @param newSize - new relation size
-		* @param time - time to execute op
-		* @param newColumns - new columns
-		* @param oldPlan - new child for op
+		* @param op - new tree root.
+		* @param newSize - new relation size.
+		* @param time - time to execute op.
+		* @param newColumns - new columns.
+		* @param oldPlan - new child for op.
 		*/
 		PhysicalPlan(UnaryPhysicalOperator * op, double newSize, double time, const std::map<int, ColumnInfo> & newColumns, const std::shared_ptr<PhysicalPlan> & oldPlan);
 
 		/**
 		* Creates new instance of PhysicalPlan. It connects op to operator tree.
-		* @param op - new tree root
-		* @param newSize - new relation size
-		* @param time - time to execute op
-		* @param newColumns - new columns
-		* @param oldPlan1 - new left child for op
-		* @param oldPlan2 - new right child for op
+		* @param op - new tree root.
+		* @param newSize - new relation size.
+		* @param time - time to execute op.
+		* @param newColumns - new columns.
+		* @param oldPlan1 - new left child for op.
+		* @param oldPlan2 - new right child for op.
 		*/
 		PhysicalPlan(BinaryPhysicalOperator * op, double newSize, double time, const std::map<int, ColumnInfo> & newColumns, const std::shared_ptr<PhysicalPlan> & oldPlan1, const std::shared_ptr<PhysicalPlan> & oldPlan2);
 
 		/**
 		* Compares two plans. Operation less is defined: i < j <=> i.timeComplexity<j.timeComplexity
-		* @param i - first plan
-		* @param j - second plan
-		* @returns true if i<j
+		* @param i - first plan.
+		* @param j - second plan.
+		* @returns true if i<j.
 		*/
 		static bool Comparator(std::shared_ptr<PhysicalPlan> & i, std::shared_ptr<PhysicalPlan> & j);
 

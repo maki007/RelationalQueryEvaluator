@@ -33,7 +33,7 @@ std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \
 
 
 \subsection{Detailed Description}
-Class representing unary expression (one child). Currently ony unary expresion is boolean not. 
+Class representing unary expression (one child). Currently only unary expresion is negation. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classrafe_1_1_unary_expression_ad2440e66133fa32af4fc4a25606890df}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
@@ -48,7 +48,7 @@ Creates new instance of \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expres
 \begin{DoxyParams}{Parameters}
 {\em node} & -\/ domelement hoding information about node and its child nodes. \\
 \hline
-{\em op} & -\/ type of unary operation \\
+{\em op} & -\/ type of unary operation. \\
 \hline
 \end{DoxyParams}
 \hypertarget{classrafe_1_1_unary_expression_abf627e7d906dece74f1e30df756fba29}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
@@ -61,9 +61,9 @@ Creates new instance of \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expres
 )}}\label{classrafe_1_1_unary_expression_abf627e7d906dece74f1e30df756fba29}
 Creates new instance of \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression}. 
 \begin{DoxyParams}{Parameters}
-{\em node} & -\/ new child node \\
+{\em node} & -\/ new child node. \\
 \hline
-{\em op} & -\/ type of unary operation \\
+{\em op} & -\/ type of unary operation. \\
 \hline
 \end{DoxyParams}
 
@@ -76,9 +76,9 @@ Creates new instance of \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expres
 \item[{{\bf Expression\+Visitor\+Base} \&}]{v}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_unary_expression_a04214cead0edc977169fa157fc8d13e7}
-Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor. 
 \begin{DoxyParams}{Parameters}
-{\em v} & Expression\+Visitor, on which to call visit function \\
+{\em v} & Expression\+Visitor, on which to call visit function. \\
 \hline
 \end{DoxyParams}
 
@@ -95,9 +95,9 @@ Implements \hyperlink{classrafe_1_1_expression_a3b2e5bae8b99ea6c9a3c92a9b949b3cd
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_unary_expression_adef2ed922c3a5d6248469dc6e0b78842}
 Replaces child from this class with new expression tree. 
 \begin{DoxyParams}{Parameters}
-{\em old\+Child} & -\/ child to replace \\
+{\em old\+Child} & -\/ child to replace. \\
 \hline
-{\em new\+Child} & -\/ child to be replaced \\
+{\em new\+Child} & -\/ child to be replaced. \\
 \hline
 \end{DoxyParams}
 
