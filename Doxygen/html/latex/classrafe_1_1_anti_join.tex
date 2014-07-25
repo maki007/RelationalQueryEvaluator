@@ -1,0 +1,79 @@
+\hypertarget{classrafe_1_1_anti_join}{\section{rafe\+:\+:Anti\+Join Class Reference}
+\label{classrafe_1_1_anti_join}\index{rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Anti\+Join\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_anti_join}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_anti_join_a0f74edfc2442c9d091d15f4503702227}{Anti\+Join} (D\+O\+M\+Element $\ast$element)
+\item 
+void \hyperlink{classrafe_1_1_anti_join_a6f4599cefdf10f6966239a3307c98621}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_anti_join_a7eff7c54fb08dfefa4171080cd48fadc}{condition}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} $>$ \hyperlink{classrafe_1_1_anti_join_a46d9e31d624610f99d6708fd5aee68be}{output\+Join\+Columns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents algebraic operation antijoin. Antijoin is generalized difference and the columns of input do not have to be same. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_anti_join_a0f74edfc2442c9d091d15f4503702227}{\index{rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}!Anti\+Join@{Anti\+Join}}
+\index{Anti\+Join@{Anti\+Join}!rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}}
+\subsubsection[{Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Anti\+Join\+::\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_anti_join_a0f74edfc2442c9d091d15f4503702227}
+Creates the instance of \hyperlink{classrafe_1_1_anti_join}{Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_anti_join_a6f4599cefdf10f6966239a3307c98621}{\index{rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Anti\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_anti_join_a6f4599cefdf10f6966239a3307c98621}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_binary_algebra_node_base_a0c9c2fdbd7062bf0bf4587b9abc493b2}{rafe\+::\+Binary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_anti_join_a7eff7c54fb08dfefa4171080cd48fadc}{\index{rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Anti\+Join\+::condition}}\label{classrafe_1_1_anti_join_a7eff7c54fb08dfefa4171080cd48fadc}
+Condition for antijoin joining. \hypertarget{classrafe_1_1_anti_join_a46d9e31d624610f99d6708fd5aee68be}{\index{rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}!output\+Join\+Columns@{output\+Join\+Columns}}
+\index{output\+Join\+Columns@{output\+Join\+Columns}!rafe\+::\+Anti\+Join@{rafe\+::\+Anti\+Join}}
+\subsubsection[{output\+Join\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Join\+Column\+Info}$>$ rafe\+::\+Anti\+Join\+::output\+Join\+Columns}}\label{classrafe_1_1_anti_join_a46d9e31d624610f99d6708fd5aee68be}
+List of join's output columns. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

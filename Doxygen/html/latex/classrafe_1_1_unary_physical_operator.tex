@@ -1,0 +1,60 @@
+\hypertarget{classrafe_1_1_unary_physical_operator}{\section{rafe\+:\+:Unary\+Physical\+Operator Class Reference}
+\label{classrafe_1_1_unary_physical_operator}\index{rafe\+::\+Unary\+Physical\+Operator@{rafe\+::\+Unary\+Physical\+Operator}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Unary\+Physical\+Operator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.333333cm]{classrafe_1_1_unary_physical_operator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_physical_operator}{Physical\+Operator} $>$ \hyperlink{classrafe_1_1_unary_physical_operator_a4aecf29ff3b6c81c861cd5e57473fe4c}{child}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for operators with one input. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{\index{rafe\+::\+Unary\+Physical\+Operator@{rafe\+::\+Unary\+Physical\+Operator}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Unary\+Physical\+Operator@{rafe\+::\+Unary\+Physical\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void rafe\+::\+Unary\+Physical\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_physical_operator_a263a89f54604263cea897c5adf8944a3}{rafe\+::\+Physical\+Operator}.
+
+
+
+Implemented in \hyperlink{classrafe_1_1_columns_operations_operator_a4fd8d03b5fd03393ea72dd46f4c11504}{rafe\+::\+Columns\+Operations\+Operator}, \hyperlink{classrafe_1_1_sorted_group_a2b9f2fbbe54f301a7b54050a67e1a4a2}{rafe\+::\+Sorted\+Group}, \hyperlink{classrafe_1_1_hash_group_a91335ef36a07f6ab099785073e16786b}{rafe\+::\+Hash\+Group}, \hyperlink{classrafe_1_1_sort_operator_ad2d3e9864cd1876d417a66b220b8dcb6}{rafe\+::\+Sort\+Operator}, \hyperlink{classrafe_1_1_filter_keeping_order_afde88521596d848cde18c0468aeb6062}{rafe\+::\+Filter\+Keeping\+Order}, and \hyperlink{classrafe_1_1_filter_a27d15fd98afe3c03f05f5a4c5846b2a6}{rafe\+::\+Filter}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_unary_physical_operator_a4aecf29ff3b6c81c861cd5e57473fe4c}{\index{rafe\+::\+Unary\+Physical\+Operator@{rafe\+::\+Unary\+Physical\+Operator}!child@{child}}
+\index{child@{child}!rafe\+::\+Unary\+Physical\+Operator@{rafe\+::\+Unary\+Physical\+Operator}}
+\subsubsection[{child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Physical\+Operator}$>$ rafe\+::\+Unary\+Physical\+Operator\+::child}}\label{classrafe_1_1_unary_physical_operator_a4aecf29ff3b6c81c861cd5e57473fe4c}
+Stores input operator. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\end{DoxyCompactItemize}

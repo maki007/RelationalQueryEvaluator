@@ -1,0 +1,74 @@
+\hypertarget{classrafe_1_1_filter_keeping_order}{\section{rafe\+:\+:Filter\+Keeping\+Order Class Reference}
+\label{classrafe_1_1_filter_keeping_order}\index{rafe\+::\+Filter\+Keeping\+Order@{rafe\+::\+Filter\+Keeping\+Order}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Filter\+Keeping\+Order\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_filter_keeping_order}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_filter_keeping_order_a898792d39b2f5c7870111f859aecf0a4}{Filter\+Keeping\+Order} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \&\hyperlink{classrafe_1_1_filter_keeping_order_a94eced2ee1d9bcd744315548476fd292}{condition})
+\item 
+void \hyperlink{classrafe_1_1_filter_keeping_order_afde88521596d848cde18c0468aeb6062}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_filter_keeping_order_a94eced2ee1d9bcd744315548476fd292}{condition}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing filter physical algorithm. Operator filters given rows and output only rows satisfying condition. Output has to be sorted same way as input. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_filter_keeping_order_a898792d39b2f5c7870111f859aecf0a4}{\index{rafe\+::\+Filter\+Keeping\+Order@{rafe\+::\+Filter\+Keeping\+Order}!Filter\+Keeping\+Order@{Filter\+Keeping\+Order}}
+\index{Filter\+Keeping\+Order@{Filter\+Keeping\+Order}!rafe\+::\+Filter\+Keeping\+Order@{rafe\+::\+Filter\+Keeping\+Order}}
+\subsubsection[{Filter\+Keeping\+Order}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Filter\+Keeping\+Order\+::\+Filter\+Keeping\+Order (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_filter_keeping_order_a898792d39b2f5c7870111f859aecf0a4}
+Creates new instance of \hyperlink{classrafe_1_1_filter_keeping_order}{Filter\+Keeping\+Order}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ filter condition. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_filter_keeping_order_afde88521596d848cde18c0468aeb6062}{\index{rafe\+::\+Filter\+Keeping\+Order@{rafe\+::\+Filter\+Keeping\+Order}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Filter\+Keeping\+Order@{rafe\+::\+Filter\+Keeping\+Order}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Filter\+Keeping\+Order\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_filter_keeping_order_afde88521596d848cde18c0468aeb6062}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{rafe\+::\+Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_filter_keeping_order_a94eced2ee1d9bcd744315548476fd292}{\index{rafe\+::\+Filter\+Keeping\+Order@{rafe\+::\+Filter\+Keeping\+Order}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Filter\+Keeping\+Order@{rafe\+::\+Filter\+Keeping\+Order}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Filter\+Keeping\+Order\+::condition}}\label{classrafe_1_1_filter_keeping_order_a94eced2ee1d9bcd744315548476fd292}
+Condition for filtering relation. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

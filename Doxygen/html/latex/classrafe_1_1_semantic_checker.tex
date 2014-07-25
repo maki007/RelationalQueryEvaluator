@@ -1,0 +1,218 @@
+\hypertarget{classrafe_1_1_semantic_checker}{\section{rafe\+:\+:Semantic\+Checker Class Reference}
+\label{classrafe_1_1_semantic_checker}\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+}
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Semantic\+Checker\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_semantic_checker}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_semantic_checker_a629ac4fa1f597fdbb8100734542851a1}{Semantic\+Checker} ()
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_a05c36f62e97b763b6b5ba3faeb79d0bf}{visit\+Table} (\hyperlink{classrafe_1_1_table}{Table} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_adf3ce7d0f3aa6ae9630d561edc1b0348}{visit\+Sort} (\hyperlink{classrafe_1_1_sort}{Sort} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_a89e58cb0414ac7f9657f3d16940e43db}{visit\+Group} (\hyperlink{classrafe_1_1_group}{Group} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_a367226c2e23e15030e30bebb614df22d}{visit\+Column\+Operations} (\hyperlink{classrafe_1_1_column_operations}{Column\+Operations} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_ad595114561381dbadaa6f75fd553764b}{visit\+Selection} (\hyperlink{classrafe_1_1_selection}{Selection} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_a5723cd81b7f2ba5f425e6fccf49741bc}{visit\+Join} (\hyperlink{classrafe_1_1_join}{Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_a891dd859fe5e91bc5c62cf8deaf5dddd}{visit\+Anti\+Join} (\hyperlink{classrafe_1_1_anti_join}{Anti\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_a86d3f5970f8f0994411aef2410986a0c}{visit\+Union} (\hyperlink{classrafe_1_1_union}{Union} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_semantic_checker_a7cbba65715bdac55de4eef68a6698e17}{visit\+Grouped\+Join} (\hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} $\ast$node)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classrafe_1_1_semantic_checker_a2fd86b1075984031d5597e8b69820868}{contains\+Errors}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This visitor is checking\+:
+\begin{DoxyItemize}
+\item if all the requested columns exists
+\item if the columns are not declared multiple times. Then if error is reported, compilation cannot continue. It also gives columns unique identifier, so other vistors don't have to work with string names. 
+\end{DoxyItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_semantic_checker_a629ac4fa1f597fdbb8100734542851a1}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!Semantic\+Checker@{Semantic\+Checker}}
+\index{Semantic\+Checker@{Semantic\+Checker}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{Semantic\+Checker}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Semantic\+Checker\+::\+Semantic\+Checker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_semantic_checker_a629ac4fa1f597fdbb8100734542851a1}
+Creates new instance of \hyperlink{classrafe_1_1_semantic_checker}{Semantic\+Checker}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_semantic_checker_a891dd859fe5e91bc5c62cf8deaf5dddd}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Anti\+Join@{visit\+Anti\+Join}}
+\index{visit\+Anti\+Join@{visit\+Anti\+Join}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a891dd859fe5e91bc5c62cf8deaf5dddd}
+Visits \hyperlink{classrafe_1_1_anti_join}{Anti\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_anti_join}{Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a8b31789473135aff92e900a6a7765eda}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_a367226c2e23e15030e30bebb614df22d}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Column\+Operations@{visit\+Column\+Operations}}
+\index{visit\+Column\+Operations@{visit\+Column\+Operations}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Column\+Operations}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Column\+Operations (
+\begin{DoxyParamCaption}
+\item[{{\bf Column\+Operations} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a367226c2e23e15030e30bebb614df22d}
+Visits \hyperlink{classrafe_1_1_column_operations}{Column\+Operations} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_column_operations}{Column\+Operations}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a518ce4d12f874a6c2f1fb0bb961144f8}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_a89e58cb0414ac7f9657f3d16940e43db}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Group@{visit\+Group}}
+\index{visit\+Group@{visit\+Group}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Group}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Group (
+\begin{DoxyParamCaption}
+\item[{{\bf Group} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a89e58cb0414ac7f9657f3d16940e43db}
+Visits \hyperlink{classrafe_1_1_group}{Group} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_group}{Group}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a976d80987756215e71178f4c1863c6c7}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_a7cbba65715bdac55de4eef68a6698e17}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Grouped\+Join@{visit\+Grouped\+Join}}
+\index{visit\+Grouped\+Join@{visit\+Grouped\+Join}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Grouped\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Grouped\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Grouped\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a7cbba65715bdac55de4eef68a6698e17}
+Visits \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a0715ce3279fa1edc6e472667e7739b57}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_a5723cd81b7f2ba5f425e6fccf49741bc}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Join@{visit\+Join}}
+\index{visit\+Join@{visit\+Join}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a5723cd81b7f2ba5f425e6fccf49741bc}
+Visits \hyperlink{classrafe_1_1_join}{Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_join}{Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_ab499694bc7ccd718c6f7a5c4f3d33f1c}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_ad595114561381dbadaa6f75fd553764b}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_ad595114561381dbadaa6f75fd553764b}
+Visits \hyperlink{classrafe_1_1_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a81f691749cb29da00bee299c617b9044}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_adf3ce7d0f3aa6ae9630d561edc1b0348}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Sort@{visit\+Sort}}
+\index{visit\+Sort@{visit\+Sort}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Sort}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Sort (
+\begin{DoxyParamCaption}
+\item[{{\bf Sort} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_adf3ce7d0f3aa6ae9630d561edc1b0348}
+Visits \hyperlink{classrafe_1_1_sort}{Sort} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_sort}{Sort}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a836e2efd8ac77071ad2487f9a5ae772d}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_a05c36f62e97b763b6b5ba3faeb79d0bf}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Table@{visit\+Table}}
+\index{visit\+Table@{visit\+Table}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Table}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Table (
+\begin{DoxyParamCaption}
+\item[{{\bf Table} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a05c36f62e97b763b6b5ba3faeb79d0bf}
+Visits \hyperlink{classrafe_1_1_table}{Table} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_table}{Table}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a941798202c3a94d5b9884edc875ea88e}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_semantic_checker_a86d3f5970f8f0994411aef2410986a0c}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!visit\+Union@{visit\+Union}}
+\index{visit\+Union@{visit\+Union}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{visit\+Union}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Checker\+::visit\+Union (
+\begin{DoxyParamCaption}
+\item[{{\bf Union} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a86d3f5970f8f0994411aef2410986a0c}
+Visits \hyperlink{classrafe_1_1_union}{Union} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_union}{Union}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a1f8a7cae040f5918e562741a136bb096}{rafe\+::\+Algebra\+Visitor}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_semantic_checker_a2fd86b1075984031d5597e8b69820868}{\index{rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}!contains\+Errors@{contains\+Errors}}
+\index{contains\+Errors@{contains\+Errors}!rafe\+::\+Semantic\+Checker@{rafe\+::\+Semantic\+Checker}}
+\subsubsection[{contains\+Errors}]{\setlength{\rightskip}{0pt plus 5cm}bool rafe\+::\+Semantic\+Checker\+::contains\+Errors}}\label{classrafe_1_1_semantic_checker_a2fd86b1075984031d5597e8b69820868}
+Indicates if semantic checker has found any errors. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Semantic\+Checker.\+cpp\end{DoxyCompactItemize}

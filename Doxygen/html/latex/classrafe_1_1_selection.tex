@@ -1,0 +1,97 @@
+\hypertarget{classrafe_1_1_selection}{\section{rafe\+:\+:Selection Class Reference}
+\label{classrafe_1_1_selection}\index{rafe\+::\+Selection@{rafe\+::\+Selection}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Selection\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_selection}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_selection_a272335b08a2f8a590e922e41ea7cc151}{Selection} ()
+\item 
+\hyperlink{classrafe_1_1_selection_aa69f2e5072b24749451f34d0444844ce}{Selection} (D\+O\+M\+Element $\ast$element)
+\item 
+\hyperlink{classrafe_1_1_selection_a6fb6f1e1d896a7465584c798d126c3d9}{Selection} (std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \&cond)
+\item 
+void \hyperlink{classrafe_1_1_selection_a7304eb319db31a5c8ecb56b33d58e1e3}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_selection_ade262c53a6fdf72acd271ebb36ca394d}{condition}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the selection operation. It filters input rows and copies to output only rows satisfying given condition. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_selection_a272335b08a2f8a590e922e41ea7cc151}{\index{rafe\+::\+Selection@{rafe\+::\+Selection}!Selection@{Selection}}
+\index{Selection@{Selection}!rafe\+::\+Selection@{rafe\+::\+Selection}}
+\subsubsection[{Selection}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Selection\+::\+Selection (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_selection_a272335b08a2f8a590e922e41ea7cc151}
+Creates the instance of \hyperlink{classrafe_1_1_selection}{Selection}. \hypertarget{classrafe_1_1_selection_aa69f2e5072b24749451f34d0444844ce}{\index{rafe\+::\+Selection@{rafe\+::\+Selection}!Selection@{Selection}}
+\index{Selection@{Selection}!rafe\+::\+Selection@{rafe\+::\+Selection}}
+\subsubsection[{Selection}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Selection\+::\+Selection (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_selection_aa69f2e5072b24749451f34d0444844ce}
+Creates the instance of \hyperlink{classrafe_1_1_selection}{Selection}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_selection_a6fb6f1e1d896a7465584c798d126c3d9}{\index{rafe\+::\+Selection@{rafe\+::\+Selection}!Selection@{Selection}}
+\index{Selection@{Selection}!rafe\+::\+Selection@{rafe\+::\+Selection}}
+\subsubsection[{Selection}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Selection\+::\+Selection (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{cond}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_selection_a6fb6f1e1d896a7465584c798d126c3d9}
+Creates the instance of \hyperlink{classrafe_1_1_selection}{Selection}. 
+\begin{DoxyParams}{Parameters}
+{\em cond} & \hyperlink{classrafe_1_1_expression}{Expression} -\/ filter condition. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_selection_a7304eb319db31a5c8ecb56b33d58e1e3}{\index{rafe\+::\+Selection@{rafe\+::\+Selection}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Selection@{rafe\+::\+Selection}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Selection\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_selection_a7304eb319db31a5c8ecb56b33d58e1e3}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_algebra_node_base_a6f554aad7250a0f15730d10ae24e4a79}{rafe\+::\+Unary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_selection_ade262c53a6fdf72acd271ebb36ca394d}{\index{rafe\+::\+Selection@{rafe\+::\+Selection}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Selection@{rafe\+::\+Selection}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Selection\+::condition}}\label{classrafe_1_1_selection_ade262c53a6fdf72acd271ebb36ca394d}
+Condition for filtering given input. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

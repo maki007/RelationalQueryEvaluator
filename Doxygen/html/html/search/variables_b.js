@@ -1,12 +1,12 @@
 var searchData=
 [
-  ['operation',['operation',['../class_unary_expression.html#af585b4a298cc9b170e26bdc0809c5175',1,'UnaryExpression::operation()'],['../class_binary_expression.html#ac3926bbcc2ed7bb00eca10b4d4e590d2',1,'BinaryExpression::operation()'],['../class_grouped_expression.html#a018f4f129a3b9b0be45c8ed10ff21813',1,'GroupedExpression::operation()']]],
-  ['operations',['operations',['../class_column_operations.html#a31aab19a9f8b104f772c111e920dd682',1,'ColumnOperations::operations()'],['../class_columns_operations_operator.html#ae2384aeda586f5c60013dbe0cb5a3030',1,'ColumnsOperationsOperator::operations()']]],
-  ['order',['order',['../class_sort_parameter.html#a768e8eeb0a9857820c1596ed50c0c13a',1,'SortParameter']]],
-  ['others',['others',['../class_sort_parameter.html#ad898e5ea54ea4599db663b480af94cfd',1,'SortParameter']]],
-  ['output',['output',['../class_agregate_function.html#ae78c0ff39b17f1d341f89c6660d7f448',1,'AgregateFunction::output()'],['../class_group_column.html#a512e089dfed68312aeadfcbdd1b80a21',1,'GroupColumn::output()']]],
-  ['outputcolumns',['outputColumns',['../class_algebra_node_base.html#ac59c590aea4f109c7fab18f714c588c1',1,'AlgebraNodeBase']]],
-  ['outputcolumns0',['outputColumns0',['../class_semantic_expression_visitor.html#a38fc36443e4cabad8039ac58f9934780',1,'SemanticExpressionVisitor']]],
-  ['outputcolumns1',['outputColumns1',['../class_semantic_expression_visitor.html#aca4d42fbadc6310390ccdbe65a0356fd',1,'SemanticExpressionVisitor']]],
-  ['outputjoincolumns',['outputJoinColumns',['../class_join.html#ad0fbf6166d055f84e2a1e9ec5af9824a',1,'Join::outputJoinColumns()'],['../class_anti_join.html#af033e50994f2155c9f33926ec2ecd375',1,'AntiJoin::outputJoinColumns()'],['../class_grouped_join.html#ab4e436f7abb9990000a7f2ef0596960e',1,'GroupedJoin::outputJoinColumns()']]]
+  ['operation',['operation',['../classrafe_1_1_unary_expression.html#ac27d8c32f42597d66a2a59cf606d49b6',1,'rafe::UnaryExpression::operation()'],['../classrafe_1_1_binary_expression.html#a7180ae7c20f907d52a0f9c8521d5c111',1,'rafe::BinaryExpression::operation()'],['../classrafe_1_1_grouped_expression.html#a269644ee2565184c9386dd57d24e93bb',1,'rafe::GroupedExpression::operation()']]],
+  ['operations',['operations',['../classrafe_1_1_column_operations.html#adb374c76426222828c5b1a6b0f225246',1,'rafe::ColumnOperations::operations()'],['../classrafe_1_1_columns_operations_operator.html#a163a3eac6eb7336bda80ba844610880c',1,'rafe::ColumnsOperationsOperator::operations()']]],
+  ['order',['order',['../classrafe_1_1_sort_parameter.html#ac4bb3225464a463206abfc4ef7a4a875',1,'rafe::SortParameter']]],
+  ['others',['others',['../classrafe_1_1_sort_parameter.html#ae8a1dda682edec1b98e928590763ba85',1,'rafe::SortParameter']]],
+  ['output',['output',['../classrafe_1_1_agregate_function.html#ad01da78516417600b5fa40418a5d2cb6',1,'rafe::AgregateFunction::output()'],['../classrafe_1_1_group_column.html#a830dc7de4321328cc1aba736ca0e82fe',1,'rafe::GroupColumn::output()']]],
+  ['outputcolumns',['outputColumns',['../classrafe_1_1_algebra_node_base.html#aadae640fc5528efe6ce06c2171ba8075',1,'rafe::AlgebraNodeBase']]],
+  ['outputcolumns0',['outputColumns0',['../classrafe_1_1_semantic_expression_visitor.html#ae1fed8fcd45928b3a9479beb454f0b00',1,'rafe::SemanticExpressionVisitor']]],
+  ['outputcolumns1',['outputColumns1',['../classrafe_1_1_semantic_expression_visitor.html#ac36701c0aab42b76a14bfba6c5355b6c',1,'rafe::SemanticExpressionVisitor']]],
+  ['outputjoincolumns',['outputJoinColumns',['../classrafe_1_1_join.html#aea03cf876f6e1b4eab27c07492e103bf',1,'rafe::Join::outputJoinColumns()'],['../classrafe_1_1_anti_join.html#a46d9e31d624610f99d6708fd5aee68be',1,'rafe::AntiJoin::outputJoinColumns()'],['../classrafe_1_1_grouped_join.html#aae2b6f6d25f2b8467dacac459e0a8abb',1,'rafe::GroupedJoin::outputJoinColumns()']]]
 ];

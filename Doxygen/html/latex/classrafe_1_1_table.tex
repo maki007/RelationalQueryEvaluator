@@ -1,0 +1,89 @@
+\hypertarget{classrafe_1_1_table}{\section{rafe\+:\+:Table Class Reference}
+\label{classrafe_1_1_table}\index{rafe\+::\+Table@{rafe\+::\+Table}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Table\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_table}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_table_ae9d43a7f2832cf18bf9553904a959df0}{Table} (D\+O\+M\+Element $\ast$element)
+\item 
+void \hyperlink{classrafe_1_1_table_a2a807fb6c8921673ba7adb62dd0a9f7c}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classrafe_1_1_table_a398b089bc1b42a3ca61c21ebda706cc4}{name}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_column_info}{Column\+Info} $>$ \hyperlink{classrafe_1_1_table_af3a4fb3f52ae24f09a1073c27bd79a6a}{columns}
+\item 
+double \hyperlink{classrafe_1_1_table_aa9c9eecf04e1203cc1f6ac25ecbd2baa}{number\+Of\+Rows}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_index}{Index} $>$ \hyperlink{classrafe_1_1_table_aaad0b0fba6c76335a428b7e38df992b4}{indices}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the algebraic operation for reading table. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_table_ae9d43a7f2832cf18bf9553904a959df0}{\index{rafe\+::\+Table@{rafe\+::\+Table}!Table@{Table}}
+\index{Table@{Table}!rafe\+::\+Table@{rafe\+::\+Table}}
+\subsubsection[{Table}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Table\+::\+Table (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_table_ae9d43a7f2832cf18bf9553904a959df0}
+Create the instance of \hyperlink{classrafe_1_1_table}{Table}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_table_a2a807fb6c8921673ba7adb62dd0a9f7c}{\index{rafe\+::\+Table@{rafe\+::\+Table}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Table@{rafe\+::\+Table}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Table\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_table_a2a807fb6c8921673ba7adb62dd0a9f7c}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_nullary_algebra_node_base_a4e1bc16e76d9e41a8fb575008d8f15e5}{rafe\+::\+Nullary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_table_af3a4fb3f52ae24f09a1073c27bd79a6a}{\index{rafe\+::\+Table@{rafe\+::\+Table}!columns@{columns}}
+\index{columns@{columns}!rafe\+::\+Table@{rafe\+::\+Table}}
+\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Info}$>$ rafe\+::\+Table\+::columns}}\label{classrafe_1_1_table_af3a4fb3f52ae24f09a1073c27bd79a6a}
+List holding information about read columns. \hypertarget{classrafe_1_1_table_aaad0b0fba6c76335a428b7e38df992b4}{\index{rafe\+::\+Table@{rafe\+::\+Table}!indices@{indices}}
+\index{indices@{indices}!rafe\+::\+Table@{rafe\+::\+Table}}
+\subsubsection[{indices}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Index}$>$ rafe\+::\+Table\+::indices}}\label{classrafe_1_1_table_aaad0b0fba6c76335a428b7e38df992b4}
+Stores list of indices on this table. \hypertarget{classrafe_1_1_table_a398b089bc1b42a3ca61c21ebda706cc4}{\index{rafe\+::\+Table@{rafe\+::\+Table}!name@{name}}
+\index{name@{name}!rafe\+::\+Table@{rafe\+::\+Table}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Table\+::name}}\label{classrafe_1_1_table_a398b089bc1b42a3ca61c21ebda706cc4}
+Name of the table. \hypertarget{classrafe_1_1_table_aa9c9eecf04e1203cc1f6ac25ecbd2baa}{\index{rafe\+::\+Table@{rafe\+::\+Table}!number\+Of\+Rows@{number\+Of\+Rows}}
+\index{number\+Of\+Rows@{number\+Of\+Rows}!rafe\+::\+Table@{rafe\+::\+Table}}
+\subsubsection[{number\+Of\+Rows}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Table\+::number\+Of\+Rows}}\label{classrafe_1_1_table_aa9c9eecf04e1203cc1f6ac25ecbd2baa}
+Stores number of rows in current table. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

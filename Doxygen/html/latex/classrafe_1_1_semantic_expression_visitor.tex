@@ -1,0 +1,84 @@
+\hypertarget{classrafe_1_1_semantic_expression_visitor}{\section{rafe\+:\+:Semantic\+Expression\+Visitor Class Reference}
+\label{classrafe_1_1_semantic_expression_visitor}\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Semantic\+Expression\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_semantic_expression_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_semantic_expression_visitor_a65471bea6ff7fd492e6fa1007afd8a3f}{Semantic\+Expression\+Visitor} ()
+\item 
+void \hyperlink{classrafe_1_1_semantic_expression_visitor_a605cf8d023dc621ac96d0b82d19d1b42}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classrafe_1_1_semantic_expression_visitor_aa72ce27912618ac925527b410b35d2d8}{contains\+Errors}
+\item 
+std\+::string \hyperlink{classrafe_1_1_semantic_expression_visitor_ac50fe1acf73b917b780d2252d5ea1f69}{missing\+Column}
+\item 
+std\+::map$<$ std\+::string, \hyperlink{classrafe_1_1_column_info}{Column\+Info} $>$ \hyperlink{classrafe_1_1_semantic_expression_visitor_ae1fed8fcd45928b3a9479beb454f0b00}{output\+Columns0}
+\item 
+std\+::map$<$ std\+::string, \hyperlink{classrafe_1_1_column_info}{Column\+Info} $>$ \hyperlink{classrafe_1_1_semantic_expression_visitor_ac36701c0aab42b76a14bfba6c5355b6c}{output\+Columns1}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Checks if columns in expression exists. If not, it stores this information and missing column name. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_semantic_expression_visitor_a65471bea6ff7fd492e6fa1007afd8a3f}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}}
+\index{Semantic\+Expression\+Visitor@{Semantic\+Expression\+Visitor}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
+\subsubsection[{Semantic\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Semantic\+Expression\+Visitor\+::\+Semantic\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_semantic_expression_visitor_a65471bea6ff7fd492e6fa1007afd8a3f}
+Creates new instance of \hyperlink{classrafe_1_1_semantic_expression_visitor}{Semantic\+Expression\+Visitor}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_semantic_expression_visitor_a605cf8d023dc621ac96d0b82d19d1b42}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Semantic\+Expression\+Visitor\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_expression_visitor_a605cf8d023dc621ac96d0b82d19d1b42}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_semantic_expression_visitor_aa72ce27912618ac925527b410b35d2d8}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!contains\+Errors@{contains\+Errors}}
+\index{contains\+Errors@{contains\+Errors}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
+\subsubsection[{contains\+Errors}]{\setlength{\rightskip}{0pt plus 5cm}bool rafe\+::\+Semantic\+Expression\+Visitor\+::contains\+Errors}}\label{classrafe_1_1_semantic_expression_visitor_aa72ce27912618ac925527b410b35d2d8}
+Idicates if visitor found an error. \hypertarget{classrafe_1_1_semantic_expression_visitor_ac50fe1acf73b917b780d2252d5ea1f69}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!missing\+Column@{missing\+Column}}
+\index{missing\+Column@{missing\+Column}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
+\subsubsection[{missing\+Column}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Semantic\+Expression\+Visitor\+::missing\+Column}}\label{classrafe_1_1_semantic_expression_visitor_ac50fe1acf73b917b780d2252d5ea1f69}
+Stores name of first missing column. \hypertarget{classrafe_1_1_semantic_expression_visitor_ae1fed8fcd45928b3a9479beb454f0b00}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!output\+Columns0@{output\+Columns0}}
+\index{output\+Columns0@{output\+Columns0}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
+\subsubsection[{output\+Columns0}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$std\+::string, {\bf Column\+Info}$>$ rafe\+::\+Semantic\+Expression\+Visitor\+::output\+Columns0}}\label{classrafe_1_1_semantic_expression_visitor_ae1fed8fcd45928b3a9479beb454f0b00}
+Stores columns, which came from first childnode. Key is column name. \hypertarget{classrafe_1_1_semantic_expression_visitor_ac36701c0aab42b76a14bfba6c5355b6c}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!output\+Columns1@{output\+Columns1}}
+\index{output\+Columns1@{output\+Columns1}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
+\subsubsection[{output\+Columns1}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$std\+::string, {\bf Column\+Info}$>$ rafe\+::\+Semantic\+Expression\+Visitor\+::output\+Columns1}}\label{classrafe_1_1_semantic_expression_visitor_ac36701c0aab42b76a14bfba6c5355b6c}
+Stores columns, which came from second childnode if it has one. If not it stays empty. Key is column name. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,74 @@
+\hypertarget{classrafe_1_1_grouping_expression_visitor}{\section{rafe\+:\+:Grouping\+Expression\+Visitor Class Reference}
+\label{classrafe_1_1_grouping_expression_visitor}\index{rafe\+::\+Grouping\+Expression\+Visitor@{rafe\+::\+Grouping\+Expression\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Grouping\+Expression\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_grouping_expression_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_grouping_expression_visitor_ae171337286854c9bd3c3c5eb73c465c7}{Grouping\+Expression\+Visitor} (std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ $\ast$x)
+\item 
+void \hyperlink{classrafe_1_1_grouping_expression_visitor_a5ef6febb7f733f4adcf61bc83a6d10f8}{visit\+Binary\+Expression} (\hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ $\ast$ \hyperlink{classrafe_1_1_grouping_expression_visitor_a95a43ca2fdb2670f5407d7b38fff1e9e}{root}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This visitor merges all neighbouring A\+N\+D and O\+R binary expression into Grouped expression. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_grouping_expression_visitor_ae171337286854c9bd3c3c5eb73c465c7}{\index{rafe\+::\+Grouping\+Expression\+Visitor@{rafe\+::\+Grouping\+Expression\+Visitor}!Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}}
+\index{Grouping\+Expression\+Visitor@{Grouping\+Expression\+Visitor}!rafe\+::\+Grouping\+Expression\+Visitor@{rafe\+::\+Grouping\+Expression\+Visitor}}
+\subsubsection[{Grouping\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Grouping\+Expression\+Visitor\+::\+Grouping\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ $\ast$}]{x}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_grouping_expression_visitor_ae171337286854c9bd3c3c5eb73c465c7}
+Creates new instance of \hyperlink{classrafe_1_1_grouping_expression_visitor}{Grouping\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em x} & -\/ root of visited expression tree. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_grouping_expression_visitor_a5ef6febb7f733f4adcf61bc83a6d10f8}{\index{rafe\+::\+Grouping\+Expression\+Visitor@{rafe\+::\+Grouping\+Expression\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
+\index{visit\+Binary\+Expression@{visit\+Binary\+Expression}!rafe\+::\+Grouping\+Expression\+Visitor@{rafe\+::\+Grouping\+Expression\+Visitor}}
+\subsubsection[{visit\+Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouping\+Expression\+Visitor\+::visit\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouping_expression_visitor_a5ef6febb7f733f4adcf61bc83a6d10f8}
+Visits \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a63e53276af3a22d3592f34d05ba97014}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_grouping_expression_visitor_a95a43ca2fdb2670f5407d7b38fff1e9e}{\index{rafe\+::\+Grouping\+Expression\+Visitor@{rafe\+::\+Grouping\+Expression\+Visitor}!root@{root}}
+\index{root@{root}!rafe\+::\+Grouping\+Expression\+Visitor@{rafe\+::\+Grouping\+Expression\+Visitor}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$$\ast$ rafe\+::\+Grouping\+Expression\+Visitor\+::root}}\label{classrafe_1_1_grouping_expression_visitor_a95a43ca2fdb2670f5407d7b38fff1e9e}
+Root of expression tree. If the root is changed it root has to be rewritten. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,92 @@
+\hypertarget{classrafe_1_1_nullary_algebra_node_base}{\section{rafe\+:\+:Nullary\+Algebra\+Node\+Base Class Reference}
+\label{classrafe_1_1_nullary_algebra_node_base}\index{rafe\+::\+Nullary\+Algebra\+Node\+Base@{rafe\+::\+Nullary\+Algebra\+Node\+Base}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Nullary\+Algebra\+Node\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_nullary_algebra_node_base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_nullary_algebra_node_base_ad27b12a11492ddc6d3d07f1781e0dfcf}{Nullary\+Algebra\+Node\+Base} (D\+O\+M\+Element $\ast$element)
+\item 
+virtual void \hyperlink{classrafe_1_1_nullary_algebra_node_base_a4e1bc16e76d9e41a8fb575008d8f15e5}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)=0
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{classrafe_1_1_nullary_algebra_node_base_aa600eac4377bac4699834b0fbf1a4051}{replace\+Child} (\hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Abstract class for nullary algebraic operation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_nullary_algebra_node_base_ad27b12a11492ddc6d3d07f1781e0dfcf}{\index{rafe\+::\+Nullary\+Algebra\+Node\+Base@{rafe\+::\+Nullary\+Algebra\+Node\+Base}!Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}}
+\index{Nullary\+Algebra\+Node\+Base@{Nullary\+Algebra\+Node\+Base}!rafe\+::\+Nullary\+Algebra\+Node\+Base@{rafe\+::\+Nullary\+Algebra\+Node\+Base}}
+\subsubsection[{Nullary\+Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Nullary\+Algebra\+Node\+Base\+::\+Nullary\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_nullary_algebra_node_base_ad27b12a11492ddc6d3d07f1781e0dfcf}
+Creates the instance of \hyperlink{classrafe_1_1_nullary_algebra_node_base}{Nullary\+Algebra\+Node\+Base}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_nullary_algebra_node_base_a4e1bc16e76d9e41a8fb575008d8f15e5}{\index{rafe\+::\+Nullary\+Algebra\+Node\+Base@{rafe\+::\+Nullary\+Algebra\+Node\+Base}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Nullary\+Algebra\+Node\+Base@{rafe\+::\+Nullary\+Algebra\+Node\+Base}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void rafe\+::\+Nullary\+Algebra\+Node\+Base\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_nullary_algebra_node_base_a4e1bc16e76d9e41a8fb575008d8f15e5}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_algebra_node_base_a48e59b55cdb1c3d108343eb18920c1d1}{rafe\+::\+Algebra\+Node\+Base}.
+
+
+
+Implemented in \hyperlink{classrafe_1_1_table_a2a807fb6c8921673ba7adb62dd0a9f7c}{rafe\+::\+Table}.
+
+\hypertarget{classrafe_1_1_nullary_algebra_node_base_aa600eac4377bac4699834b0fbf1a4051}{\index{rafe\+::\+Nullary\+Algebra\+Node\+Base@{rafe\+::\+Nullary\+Algebra\+Node\+Base}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!rafe\+::\+Nullary\+Algebra\+Node\+Base@{rafe\+::\+Nullary\+Algebra\+Node\+Base}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ rafe\+::\+Nullary\+Algebra\+Node\+Base\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Node\+Base} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ \&}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_nullary_algebra_node_base_aa600eac4377bac4699834b0fbf1a4051}
+Replaces one child of this node with other one 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & node to be replaced \\
+\hline
+{\em new\+Child} & new node to replace the old one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+replaced child 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classrafe_1_1_algebra_node_base_ac6d722e739dd39c223bb129dfbd0ab45}{rafe\+::\+Algebra\+Node\+Base}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

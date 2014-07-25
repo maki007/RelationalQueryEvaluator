@@ -1,0 +1,82 @@
+\hypertarget{classrafe_1_1_hash_group}{\section{rafe\+:\+:Hash\+Group Class Reference}
+\label{classrafe_1_1_hash_group}\index{rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Hash\+Group\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_hash_group}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_hash_group_af175c50e75d33c109d3c2413501932b1}{Hash\+Group} (const std\+::vector$<$ \hyperlink{classrafe_1_1_group_column}{Group\+Column} $>$ \&\hyperlink{classrafe_1_1_hash_group_a440af6cd151c376aefb5385bbac54cb8}{group\+Columns}, const std\+::vector$<$ \hyperlink{classrafe_1_1_agregate_function}{Agregate\+Function} $>$ \&\hyperlink{classrafe_1_1_hash_group_a26ed49743b63ae86b803e9fe725e72c1}{agregate\+Functions})
+\item 
+void \hyperlink{classrafe_1_1_hash_group_a91335ef36a07f6ab099785073e16786b}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_group_column}{Group\+Column} $>$ \hyperlink{classrafe_1_1_hash_group_a440af6cd151c376aefb5385bbac54cb8}{group\+Columns}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_agregate_function}{Agregate\+Function} $>$ \hyperlink{classrafe_1_1_hash_group_a26ed49743b63ae86b803e9fe725e72c1}{agregate\+Functions}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represent hash group algorithm. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_hash_group_af175c50e75d33c109d3c2413501932b1}{\index{rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}!Hash\+Group@{Hash\+Group}}
+\index{Hash\+Group@{Hash\+Group}!rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}}
+\subsubsection[{Hash\+Group}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Hash\+Group\+::\+Hash\+Group (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Group\+Column} $>$ \&}]{group\+Columns, }
+\item[{const std\+::vector$<$ {\bf Agregate\+Function} $>$ \&}]{agregate\+Functions}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_hash_group_af175c50e75d33c109d3c2413501932b1}
+Creates new instance of \hyperlink{classrafe_1_1_hash_group}{Hash\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em group\+Columns} & -\/ group by columns. \\
+\hline
+{\em agregate\+Functions} & -\/ information about agreggate functions. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_hash_group_a91335ef36a07f6ab099785073e16786b}{\index{rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Hash\+Group\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_hash_group_a91335ef36a07f6ab099785073e16786b}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{rafe\+::\+Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_hash_group_a26ed49743b63ae86b803e9fe725e72c1}{\index{rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}!agregate\+Functions@{agregate\+Functions}}
+\index{agregate\+Functions@{agregate\+Functions}!rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}}
+\subsubsection[{agregate\+Functions}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Agregate\+Function}$>$ rafe\+::\+Hash\+Group\+::agregate\+Functions}}\label{classrafe_1_1_hash_group_a26ed49743b63ae86b803e9fe725e72c1}
+Information about agreggate functions. \hypertarget{classrafe_1_1_hash_group_a440af6cd151c376aefb5385bbac54cb8}{\index{rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}!group\+Columns@{group\+Columns}}
+\index{group\+Columns@{group\+Columns}!rafe\+::\+Hash\+Group@{rafe\+::\+Hash\+Group}}
+\subsubsection[{group\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Group\+Column}$>$ rafe\+::\+Hash\+Group\+::group\+Columns}}\label{classrafe_1_1_hash_group_a440af6cd151c376aefb5385bbac54cb8}
+\hyperlink{classrafe_1_1_group}{Group} by columns. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,65 @@
+\hypertarget{classrafe_1_1_binary_physical_operator}{\section{rafe\+:\+:Binary\+Physical\+Operator Class Reference}
+\label{classrafe_1_1_binary_physical_operator}\index{rafe\+::\+Binary\+Physical\+Operator@{rafe\+::\+Binary\+Physical\+Operator}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Binary\+Physical\+Operator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.297297cm]{classrafe_1_1_binary_physical_operator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classrafe_1_1_binary_physical_operator_a58ce0a14b970b2c932254419877a2e0e}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_physical_operator}{Physical\+Operator} $>$ \hyperlink{classrafe_1_1_binary_physical_operator_a3ca06613d63ed240f6306f0fb36a5d26}{left\+Child}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_physical_operator}{Physical\+Operator} $>$ \hyperlink{classrafe_1_1_binary_physical_operator_a0c90c9b14fd1e543cf721cdb54f658fd}{right\+Child}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for operators with two inputs. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_binary_physical_operator_a58ce0a14b970b2c932254419877a2e0e}{\index{rafe\+::\+Binary\+Physical\+Operator@{rafe\+::\+Binary\+Physical\+Operator}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Binary\+Physical\+Operator@{rafe\+::\+Binary\+Physical\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void rafe\+::\+Binary\+Physical\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_binary_physical_operator_a58ce0a14b970b2c932254419877a2e0e}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_physical_operator_a263a89f54604263cea897c5adf8944a3}{rafe\+::\+Physical\+Operator}.
+
+
+
+Implemented in \hyperlink{classrafe_1_1_union_operator_a5ae4b5f486376c816b10a81adbe784c7}{rafe\+::\+Union\+Operator}, \hyperlink{classrafe_1_1_merge_anti_join_aae93ebacaaed68ab8af8f38a09cfe8e7}{rafe\+::\+Merge\+Anti\+Join}, \hyperlink{classrafe_1_1_hash_anti_join_a3df56df88dd2e9280d6243cba23b4ac4}{rafe\+::\+Hash\+Anti\+Join}, \hyperlink{classrafe_1_1_hash_join_abd86be090582ddf7e87ac7d3dd2f60a7}{rafe\+::\+Hash\+Join}, \hyperlink{classrafe_1_1_merge_equi_join_a612f15e10eb741126e282b605fef0921}{rafe\+::\+Merge\+Equi\+Join}, \hyperlink{classrafe_1_1_merge_non_equi_join_a3accb9ad7ae5851370152885c23c6048}{rafe\+::\+Merge\+Non\+Equi\+Join}, and \hyperlink{classrafe_1_1_cross_join_a3d9272caf9e1f2394f0d384f2813258a}{rafe\+::\+Cross\+Join}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_binary_physical_operator_a3ca06613d63ed240f6306f0fb36a5d26}{\index{rafe\+::\+Binary\+Physical\+Operator@{rafe\+::\+Binary\+Physical\+Operator}!left\+Child@{left\+Child}}
+\index{left\+Child@{left\+Child}!rafe\+::\+Binary\+Physical\+Operator@{rafe\+::\+Binary\+Physical\+Operator}}
+\subsubsection[{left\+Child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Physical\+Operator}$>$ rafe\+::\+Binary\+Physical\+Operator\+::left\+Child}}\label{classrafe_1_1_binary_physical_operator_a3ca06613d63ed240f6306f0fb36a5d26}
+Stores left input operator. \hypertarget{classrafe_1_1_binary_physical_operator_a0c90c9b14fd1e543cf721cdb54f658fd}{\index{rafe\+::\+Binary\+Physical\+Operator@{rafe\+::\+Binary\+Physical\+Operator}!right\+Child@{right\+Child}}
+\index{right\+Child@{right\+Child}!rafe\+::\+Binary\+Physical\+Operator@{rafe\+::\+Binary\+Physical\+Operator}}
+\subsubsection[{right\+Child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Physical\+Operator}$>$ rafe\+::\+Binary\+Physical\+Operator\+::right\+Child}}\label{classrafe_1_1_binary_physical_operator_a0c90c9b14fd1e543cf721cdb54f658fd}
+Stores right input operator. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\end{DoxyCompactItemize}

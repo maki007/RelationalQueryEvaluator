@@ -1,0 +1,86 @@
+\hypertarget{classrafe_1_1_grouped_algebra_node}{\section{rafe\+:\+:Grouped\+Algebra\+Node Class Reference}
+\label{classrafe_1_1_grouped_algebra_node}\index{rafe\+::\+Grouped\+Algebra\+Node@{rafe\+::\+Grouped\+Algebra\+Node}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Grouped\+Algebra\+Node\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_grouped_algebra_node}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classrafe_1_1_grouped_algebra_node_abdb48442900d5560f815f4eb33ebeb04}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)=0
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{classrafe_1_1_grouped_algebra_node_a3e19a9a32840f4deebec342963955634}{replace\+Child} (\hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ $>$ \hyperlink{classrafe_1_1_grouped_algebra_node_ad7fdddb444ed50c118cece4fc1dd6783}{children}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for n-\/nary algebraic operation. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_grouped_algebra_node_abdb48442900d5560f815f4eb33ebeb04}{\index{rafe\+::\+Grouped\+Algebra\+Node@{rafe\+::\+Grouped\+Algebra\+Node}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Grouped\+Algebra\+Node@{rafe\+::\+Grouped\+Algebra\+Node}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void rafe\+::\+Grouped\+Algebra\+Node\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_grouped_algebra_node_abdb48442900d5560f815f4eb33ebeb04}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_algebra_node_base_a48e59b55cdb1c3d108343eb18920c1d1}{rafe\+::\+Algebra\+Node\+Base}.
+
+
+
+Implemented in \hyperlink{classrafe_1_1_grouped_join_a36b56821dc719728f1f9294e3f8d8849}{rafe\+::\+Grouped\+Join}.
+
+\hypertarget{classrafe_1_1_grouped_algebra_node_a3e19a9a32840f4deebec342963955634}{\index{rafe\+::\+Grouped\+Algebra\+Node@{rafe\+::\+Grouped\+Algebra\+Node}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!rafe\+::\+Grouped\+Algebra\+Node@{rafe\+::\+Grouped\+Algebra\+Node}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ rafe\+::\+Grouped\+Algebra\+Node\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Node\+Base} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ \&}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouped_algebra_node_a3e19a9a32840f4deebec342963955634}
+Replaces one child of this node with other one 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & node to be replaced \\
+\hline
+{\em new\+Child} & new node to replace the old one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+replaced child 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classrafe_1_1_algebra_node_base_ac6d722e739dd39c223bb129dfbd0ab45}{rafe\+::\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_grouped_algebra_node_ad7fdddb444ed50c118cece4fc1dd6783}{\index{rafe\+::\+Grouped\+Algebra\+Node@{rafe\+::\+Grouped\+Algebra\+Node}!children@{children}}
+\index{children@{children}!rafe\+::\+Grouped\+Algebra\+Node@{rafe\+::\+Grouped\+Algebra\+Node}}
+\subsubsection[{children}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Algebra\+Node\+Base}$>$ $>$ rafe\+::\+Grouped\+Algebra\+Node\+::children}}\label{classrafe_1_1_grouped_algebra_node_ad7fdddb444ed50c118cece4fc1dd6783}
+Stores list containg children of this node. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,113 @@
+\hypertarget{classrafe_1_1_grouping_visitor}{\section{rafe\+:\+:Grouping\+Visitor Class Reference}
+\label{classrafe_1_1_grouping_visitor}\index{rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Grouping\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_grouping_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_grouping_visitor_a33accac3eae9e1ecb557acf7c7867d45}{Grouping\+Visitor} ()
+\item 
+void \hyperlink{classrafe_1_1_grouping_visitor_acb0f1d2cd1d7432d812191841efc6f60}{visit\+Column\+Operations} (\hyperlink{classrafe_1_1_column_operations}{Column\+Operations} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_grouping_visitor_a7287bb0601e55028ef362604144eae23}{visit\+Selection} (\hyperlink{classrafe_1_1_selection}{Selection} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_grouping_visitor_a519732d6b549b84cd543ab61aa7630f1}{visit\+Join} (\hyperlink{classrafe_1_1_join}{Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_grouping_visitor_aa5f7889f7fc5ec289d7ee1107b441c0c}{visit\+Anti\+Join} (\hyperlink{classrafe_1_1_anti_join}{Anti\+Join} $\ast$node)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This algebra visitor groupes neighbour join into one groupped join. It also calls \hyperlink{classrafe_1_1_grouping_expression_visitor}{Grouping\+Expression\+Visitor} on every condition. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_grouping_visitor_a33accac3eae9e1ecb557acf7c7867d45}{\index{rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}!Grouping\+Visitor@{Grouping\+Visitor}}
+\index{Grouping\+Visitor@{Grouping\+Visitor}!rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}}
+\subsubsection[{Grouping\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Grouping\+Visitor\+::\+Grouping\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_grouping_visitor_a33accac3eae9e1ecb557acf7c7867d45}
+Creates new instance of \hyperlink{classrafe_1_1_grouping_visitor}{Grouping\+Visitor}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_grouping_visitor_aa5f7889f7fc5ec289d7ee1107b441c0c}{\index{rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}!visit\+Anti\+Join@{visit\+Anti\+Join}}
+\index{visit\+Anti\+Join@{visit\+Anti\+Join}!rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}}
+\subsubsection[{visit\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouping\+Visitor\+::visit\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouping_visitor_aa5f7889f7fc5ec289d7ee1107b441c0c}
+Visits \hyperlink{classrafe_1_1_anti_join}{Anti\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_anti_join}{Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a8b31789473135aff92e900a6a7765eda}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_grouping_visitor_acb0f1d2cd1d7432d812191841efc6f60}{\index{rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}!visit\+Column\+Operations@{visit\+Column\+Operations}}
+\index{visit\+Column\+Operations@{visit\+Column\+Operations}!rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}}
+\subsubsection[{visit\+Column\+Operations}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouping\+Visitor\+::visit\+Column\+Operations (
+\begin{DoxyParamCaption}
+\item[{{\bf Column\+Operations} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouping_visitor_acb0f1d2cd1d7432d812191841efc6f60}
+Visits \hyperlink{classrafe_1_1_column_operations}{Column\+Operations} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_column_operations}{Column\+Operations}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a518ce4d12f874a6c2f1fb0bb961144f8}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_grouping_visitor_a519732d6b549b84cd543ab61aa7630f1}{\index{rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}!visit\+Join@{visit\+Join}}
+\index{visit\+Join@{visit\+Join}!rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}}
+\subsubsection[{visit\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouping\+Visitor\+::visit\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouping_visitor_a519732d6b549b84cd543ab61aa7630f1}
+Visits \hyperlink{classrafe_1_1_join}{Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_join}{Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_ab499694bc7ccd718c6f7a5c4f3d33f1c}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_grouping_visitor_a7287bb0601e55028ef362604144eae23}{\index{rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!rafe\+::\+Grouping\+Visitor@{rafe\+::\+Grouping\+Visitor}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouping\+Visitor\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouping_visitor_a7287bb0601e55028ef362604144eae23}
+Visits \hyperlink{classrafe_1_1_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a81f691749cb29da00bee299c617b9044}{rafe\+::\+Algebra\+Visitor}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+cpp\end{DoxyCompactItemize}

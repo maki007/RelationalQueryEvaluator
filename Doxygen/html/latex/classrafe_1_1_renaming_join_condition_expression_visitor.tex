@@ -1,0 +1,82 @@
+\hypertarget{classrafe_1_1_renaming_join_condition_expression_visitor}{\section{rafe\+:\+:Renaming\+Join\+Condition\+Expression\+Visitor Class Reference}
+\label{classrafe_1_1_renaming_join_condition_expression_visitor}\index{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Renaming\+Join\+Condition\+Expression\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_renaming_join_condition_expression_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_renaming_join_condition_expression_visitor_a8ece3014ff37b853468ce79d9ec30b5c}{Renaming\+Join\+Condition\+Expression\+Visitor} (ulong i, std\+::vector$<$ \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} $>$ $\ast$\hyperlink{classrafe_1_1_renaming_join_condition_expression_visitor_a5bda93a30172d4f098a6d4063175d730}{input\+Columns})
+\item 
+void \hyperlink{classrafe_1_1_renaming_join_condition_expression_visitor_a5e8310c5df8f8f36c96958fbcee0edd3}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ulong \hyperlink{classrafe_1_1_renaming_join_condition_expression_visitor_a1802743c1bde8346e752011ccd1810d2}{input}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} $>$ $\ast$ \hyperlink{classrafe_1_1_renaming_join_condition_expression_visitor_a5bda93a30172d4f098a6d4063175d730}{input\+Columns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor is used for renaming join condition while grouping joins. \hyperlink{classrafe_1_1_join}{Join} can rename column and in this case can happen, that condition in groupped join doesn't have correct column name. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_renaming_join_condition_expression_visitor_a8ece3014ff37b853468ce79d9ec30b5c}{\index{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}!Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}}
+\index{Renaming\+Join\+Condition\+Expression\+Visitor@{Renaming\+Join\+Condition\+Expression\+Visitor}!rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}}
+\subsubsection[{Renaming\+Join\+Condition\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor\+::\+Renaming\+Join\+Condition\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{ulong}]{i, }
+\item[{std\+::vector$<$ {\bf Join\+Column\+Info} $>$ $\ast$}]{input\+Columns}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_renaming_join_condition_expression_visitor_a8ece3014ff37b853468ce79d9ec30b5c}
+Creates new instance of \hyperlink{classrafe_1_1_renaming_join_condition_expression_visitor}{Renaming\+Join\+Condition\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em i} & -\/ input number. \\
+\hline
+{\em input\+Columns} & -\/ Possible columns to rename. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_renaming_join_condition_expression_visitor_a5e8310c5df8f8f36c96958fbcee0edd3}{\index{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_renaming_join_condition_expression_visitor_a5e8310c5df8f8f36c96958fbcee0edd3}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_renaming_join_condition_expression_visitor_a1802743c1bde8346e752011ccd1810d2}{\index{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}!input@{input}}
+\index{input@{input}!rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}}
+\subsubsection[{input}]{\setlength{\rightskip}{0pt plus 5cm}ulong rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor\+::input}}\label{classrafe_1_1_renaming_join_condition_expression_visitor_a1802743c1bde8346e752011ccd1810d2}
+Information which input is beeing processed. \hypertarget{classrafe_1_1_renaming_join_condition_expression_visitor_a5bda93a30172d4f098a6d4063175d730}{\index{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}!input\+Columns@{input\+Columns}}
+\index{input\+Columns@{input\+Columns}!rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor@{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}}
+\subsubsection[{input\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Join\+Column\+Info}$>$$\ast$ rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor\+::input\+Columns}}\label{classrafe_1_1_renaming_join_condition_expression_visitor_a5bda93a30172d4f098a6d4063175d730}
+Possible columns to rename. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,82 @@
+\hypertarget{classrafe_1_1_scan_and_sort_by_index}{\section{rafe\+:\+:Scan\+And\+Sort\+By\+Index Class Reference}
+\label{classrafe_1_1_scan_and_sort_by_index}\index{rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Scan\+And\+Sort\+By\+Index\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_scan_and_sort_by_index}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_scan_and_sort_by_index_a375abca591223d619fe86074e4e72d47}{Scan\+And\+Sort\+By\+Index} (const std\+::string \&name, const \hyperlink{classrafe_1_1_index}{Index} \&\hyperlink{classrafe_1_1_scan_and_sort_by_index_a098de983bcb2456f2b904bea0dbd2bb8}{index})
+\item 
+void \hyperlink{classrafe_1_1_scan_and_sort_by_index_aabb5d931b679a14bde40a1928ac10a52}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classrafe_1_1_scan_and_sort_by_index_abdcff33645fc0806646167276cc3c46f}{table\+Name}
+\item 
+\hyperlink{classrafe_1_1_index}{Index} \hyperlink{classrafe_1_1_scan_and_sort_by_index_a098de983bcb2456f2b904bea0dbd2bb8}{index}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents operator, which reads whole table using index. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_scan_and_sort_by_index_a375abca591223d619fe86074e4e72d47}{\index{rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}!Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}}
+\index{Scan\+And\+Sort\+By\+Index@{Scan\+And\+Sort\+By\+Index}!rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{Scan\+And\+Sort\+By\+Index}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Scan\+And\+Sort\+By\+Index\+::\+Scan\+And\+Sort\+By\+Index (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{name, }
+\item[{const {\bf Index} \&}]{index}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_scan_and_sort_by_index_a375abca591223d619fe86074e4e72d47}
+Creates new instance of \hyperlink{classrafe_1_1_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & of table to read. \\
+\hline
+{\em index} & -\/ index to user for reading. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_scan_and_sort_by_index_aabb5d931b679a14bde40a1928ac10a52}{\index{rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Scan\+And\+Sort\+By\+Index\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_scan_and_sort_by_index_aabb5d931b679a14bde40a1928ac10a52}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_nullary_physical_operator_a0810fc4b368521ebe847fa48fcdcf948}{rafe\+::\+Nullary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_scan_and_sort_by_index_a098de983bcb2456f2b904bea0dbd2bb8}{\index{rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}!index@{index}}
+\index{index@{index}!rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Index} rafe\+::\+Scan\+And\+Sort\+By\+Index\+::index}}\label{classrafe_1_1_scan_and_sort_by_index_a098de983bcb2456f2b904bea0dbd2bb8}
+\hyperlink{classrafe_1_1_table}{Table} index to use. \hypertarget{classrafe_1_1_scan_and_sort_by_index_abdcff33645fc0806646167276cc3c46f}{\index{rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}!table\+Name@{table\+Name}}
+\index{table\+Name@{table\+Name}!rafe\+::\+Scan\+And\+Sort\+By\+Index@{rafe\+::\+Scan\+And\+Sort\+By\+Index}}
+\subsubsection[{table\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Scan\+And\+Sort\+By\+Index\+::table\+Name}}\label{classrafe_1_1_scan_and_sort_by_index_abdcff33645fc0806646167276cc3c46f}
+\hyperlink{classrafe_1_1_table}{Table} to read. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

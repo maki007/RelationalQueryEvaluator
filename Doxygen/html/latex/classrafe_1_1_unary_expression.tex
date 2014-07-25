@@ -1,0 +1,121 @@
+\hypertarget{classrafe_1_1_unary_expression}{\section{rafe\+:\+:Unary\+Expression Class Reference}
+\label{classrafe_1_1_unary_expression}\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}}
+}
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Unary\+Expression\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_unary_expression}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_unary_expression_ad2440e66133fa32af4fc4a25606890df}{Unary\+Expression} (D\+O\+M\+Element $\ast$node, Unary\+Operator op)
+\item 
+\hyperlink{classrafe_1_1_unary_expression_abf627e7d906dece74f1e30df756fba29}{Unary\+Expression} (std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ node, Unary\+Operator op)
+\item 
+void \hyperlink{classrafe_1_1_unary_expression_a04214cead0edc977169fa157fc8d13e7}{accept} (\hyperlink{classrafe_1_1_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
+\item 
+void \hyperlink{classrafe_1_1_unary_expression_adef2ed922c3a5d6248469dc6e0b78842}{replace\+Child} (\hyperlink{classrafe_1_1_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ new\+Child)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Unary\+Operator \hyperlink{classrafe_1_1_unary_expression_ac27d8c32f42597d66a2a59cf606d49b6}{operation}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_unary_expression_aba41338159e0516aa56d0017fc221210}{child}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Class representing unary expression (one child). Currently ony unary expresion is boolean not. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_unary_expression_ad2440e66133fa32af4fc4a25606890df}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
+\index{Unary\+Expression@{Unary\+Expression}!rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}}
+\subsubsection[{Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Unary\+Expression\+::\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node, }
+\item[{Unary\+Operator}]{op}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_unary_expression_ad2440e66133fa32af4fc4a25606890df}
+Creates new instance of \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ domelement hoding information about node and its child nodes. \\
+\hline
+{\em op} & -\/ type of unary operation \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_unary_expression_abf627e7d906dece74f1e30df756fba29}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!Unary\+Expression@{Unary\+Expression}}
+\index{Unary\+Expression@{Unary\+Expression}!rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}}
+\subsubsection[{Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Unary\+Expression\+::\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{node, }
+\item[{Unary\+Operator}]{op}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_unary_expression_abf627e7d906dece74f1e30df756fba29}
+Creates new instance of \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ new child node \\
+\hline
+{\em op} & -\/ type of unary operation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_unary_expression_a04214cead0edc977169fa157fc8d13e7}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Unary\+Expression\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_unary_expression_a04214cead0edc977169fa157fc8d13e7}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a3b2e5bae8b99ea6c9a3c92a9b949b3cd}{rafe\+::\+Expression}.
+
+\hypertarget{classrafe_1_1_unary_expression_adef2ed922c3a5d6248469dc6e0b78842}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Unary\+Expression\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_unary_expression_adef2ed922c3a5d6248469dc6e0b78842}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a841879e8eb85f4bb68cfeec24231a701}{rafe\+::\+Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_unary_expression_aba41338159e0516aa56d0017fc221210}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!child@{child}}
+\index{child@{child}!rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}}
+\subsubsection[{child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Unary\+Expression\+::child}}\label{classrafe_1_1_unary_expression_aba41338159e0516aa56d0017fc221210}
+Stores pointer to child tree node. \hypertarget{classrafe_1_1_unary_expression_ac27d8c32f42597d66a2a59cf606d49b6}{\index{rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}!operation@{operation}}
+\index{operation@{operation}!rafe\+::\+Unary\+Expression@{rafe\+::\+Unary\+Expression}}
+\subsubsection[{operation}]{\setlength{\rightskip}{0pt plus 5cm}Unary\+Operator rafe\+::\+Unary\+Expression\+::operation}}\label{classrafe_1_1_unary_expression_ac27d8c32f42597d66a2a59cf606d49b6}
+Stores infromation about type of unary operation. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+cpp\end{DoxyCompactItemize}

@@ -523,14 +523,14 @@ namespace rafe {
 		* @param plan for processing
 		* @param condition for filter
 		*/
-		std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition);
+		std::shared_ptr<PhysicalPlan> generateFilterAfterJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition);
 
 		/**
 		* Generates FilteKeepingOrder operator after mergeJoin
 		* @param plan for processing
 		* @param condition for filter
 		*/
-		std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterMergeJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition);
+		std::shared_ptr<PhysicalPlan> generateFilterAfterMergeJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition);
 
 	};
 

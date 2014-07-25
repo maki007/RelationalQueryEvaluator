@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_3c',['operator&lt;',['../class_column_identifier.html#a07e32ed45a2b7c8e09f0358fd31a1f74',1,'ColumnIdentifier']]],
-  ['operator_3d_3d',['operator==',['../class_column_identifier.html#a3833af96f5281573cae9a70c440c1cce',1,'ColumnIdentifier']]]
+  ['operator_3c',['operator&lt;',['../classrafe_1_1_column_identifier.html#a2bfacd7aa1922c35ea93127e3f4b290f',1,'rafe::ColumnIdentifier']]],
+  ['operator_3d_3d',['operator==',['../classrafe_1_1_column_identifier.html#aa0d0f99b98e2d48b9dacfc3a430a9e52',1,'rafe::ColumnIdentifier']]]
 ];

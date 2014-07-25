@@ -1,0 +1,101 @@
+\hypertarget{classrafe_1_1_constant}{\section{rafe\+:\+:Constant Class Reference}
+\label{classrafe_1_1_constant}\index{rafe\+::\+Constant@{rafe\+::\+Constant}}
+}
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Constant\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_constant}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_constant_a7eacc43b2d938e477496dc8c01b8ead3}{Constant} (D\+O\+M\+Element $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_constant_a867e7b315f6501bb88b33d2277b570ae}{accept} (\hyperlink{classrafe_1_1_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
+\item 
+void \hyperlink{classrafe_1_1_constant_a5c74a0f6230626f3e49ecaae189c7a7f}{replace\+Child} (\hyperlink{classrafe_1_1_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ new\+Child)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classrafe_1_1_constant_a22ad86666bbc772993f1f5a84dd209d7}{value}
+\item 
+std\+::string \hyperlink{classrafe_1_1_constant_a4fcd257fe94e9dcdf3115703904fa001}{type}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Represents constant expression. It doesnt have any child expressions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_constant_a7eacc43b2d938e477496dc8c01b8ead3}{\index{rafe\+::\+Constant@{rafe\+::\+Constant}!Constant@{Constant}}
+\index{Constant@{Constant}!rafe\+::\+Constant@{rafe\+::\+Constant}}
+\subsubsection[{Constant}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Constant\+::\+Constant (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_constant_a7eacc43b2d938e477496dc8c01b8ead3}
+Creates new instance of \hyperlink{classrafe_1_1_constant}{Constant}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ element containing infromation about constant. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_constant_a867e7b315f6501bb88b33d2277b570ae}{\index{rafe\+::\+Constant@{rafe\+::\+Constant}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Constant@{rafe\+::\+Constant}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Constant\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_constant_a867e7b315f6501bb88b33d2277b570ae}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a3b2e5bae8b99ea6c9a3c92a9b949b3cd}{rafe\+::\+Expression}.
+
+\hypertarget{classrafe_1_1_constant_a5c74a0f6230626f3e49ecaae189c7a7f}{\index{rafe\+::\+Constant@{rafe\+::\+Constant}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!rafe\+::\+Constant@{rafe\+::\+Constant}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Constant\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_constant_a5c74a0f6230626f3e49ecaae189c7a7f}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a841879e8eb85f4bb68cfeec24231a701}{rafe\+::\+Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_constant_a4fcd257fe94e9dcdf3115703904fa001}{\index{rafe\+::\+Constant@{rafe\+::\+Constant}!type@{type}}
+\index{type@{type}!rafe\+::\+Constant@{rafe\+::\+Constant}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Constant\+::type}}\label{classrafe_1_1_constant_a4fcd257fe94e9dcdf3115703904fa001}
+Stores constant type. \hypertarget{classrafe_1_1_constant_a22ad86666bbc772993f1f5a84dd209d7}{\index{rafe\+::\+Constant@{rafe\+::\+Constant}!value@{value}}
+\index{value@{value}!rafe\+::\+Constant@{rafe\+::\+Constant}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Constant\+::value}}\label{classrafe_1_1_constant_a22ad86666bbc772993f1f5a84dd209d7}
+Stores constant value. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,66 @@
+\hypertarget{classrafe_1_1_physical_operator}{\section{rafe\+:\+:Physical\+Operator Class Reference}
+\label{classrafe_1_1_physical_operator}\index{rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Physical\+Operator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classrafe_1_1_physical_operator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classrafe_1_1_physical_operator_a263a89f54604263cea897c5adf8944a3}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classrafe_1_1_physical_operator_a7b1bec2ef31be7b9c85ab32f543e23af}{time\+Complexity}
+\item 
+double \hyperlink{classrafe_1_1_physical_operator_a91df60e6935353504d02b9534a16eb4c}{size}
+\item 
+std\+::map$<$ int, \hyperlink{classrafe_1_1_column_info}{Column\+Info} $>$ \hyperlink{classrafe_1_1_physical_operator_a4056113435af85657e5b61d397db5165}{columns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for physical algorithms. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_physical_operator_a263a89f54604263cea897c5adf8944a3}{\index{rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void rafe\+::\+Physical\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_physical_operator_a263a89f54604263cea897c5adf8944a3}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classrafe_1_1_index_scan_a5e4e26317258097176b3b3b241653302}{rafe\+::\+Index\+Scan}, \hyperlink{classrafe_1_1_table_scan_a87cd9f9b093f153bd95b39bc3ea18678}{rafe\+::\+Table\+Scan}, \hyperlink{classrafe_1_1_scan_and_sort_by_index_aabb5d931b679a14bde40a1928ac10a52}{rafe\+::\+Scan\+And\+Sort\+By\+Index}, \hyperlink{classrafe_1_1_columns_operations_operator_a4fd8d03b5fd03393ea72dd46f4c11504}{rafe\+::\+Columns\+Operations\+Operator}, \hyperlink{classrafe_1_1_sorted_group_a2b9f2fbbe54f301a7b54050a67e1a4a2}{rafe\+::\+Sorted\+Group}, \hyperlink{classrafe_1_1_hash_group_a91335ef36a07f6ab099785073e16786b}{rafe\+::\+Hash\+Group}, \hyperlink{classrafe_1_1_union_operator_a5ae4b5f486376c816b10a81adbe784c7}{rafe\+::\+Union\+Operator}, \hyperlink{classrafe_1_1_merge_anti_join_aae93ebacaaed68ab8af8f38a09cfe8e7}{rafe\+::\+Merge\+Anti\+Join}, \hyperlink{classrafe_1_1_hash_anti_join_a3df56df88dd2e9280d6243cba23b4ac4}{rafe\+::\+Hash\+Anti\+Join}, \hyperlink{classrafe_1_1_hash_join_abd86be090582ddf7e87ac7d3dd2f60a7}{rafe\+::\+Hash\+Join}, \hyperlink{classrafe_1_1_merge_equi_join_a612f15e10eb741126e282b605fef0921}{rafe\+::\+Merge\+Equi\+Join}, \hyperlink{classrafe_1_1_merge_non_equi_join_a3accb9ad7ae5851370152885c23c6048}{rafe\+::\+Merge\+Non\+Equi\+Join}, \hyperlink{classrafe_1_1_cross_join_a3d9272caf9e1f2394f0d384f2813258a}{rafe\+::\+Cross\+Join}, \hyperlink{classrafe_1_1_sort_operator_ad2d3e9864cd1876d417a66b220b8dcb6}{rafe\+::\+Sort\+Operator}, \hyperlink{classrafe_1_1_filter_keeping_order_afde88521596d848cde18c0468aeb6062}{rafe\+::\+Filter\+Keeping\+Order}, \hyperlink{classrafe_1_1_filter_a27d15fd98afe3c03f05f5a4c5846b2a6}{rafe\+::\+Filter}, \hyperlink{classrafe_1_1_binary_physical_operator_a58ce0a14b970b2c932254419877a2e0e}{rafe\+::\+Binary\+Physical\+Operator}, \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{rafe\+::\+Unary\+Physical\+Operator}, and \hyperlink{classrafe_1_1_nullary_physical_operator_a0810fc4b368521ebe847fa48fcdcf948}{rafe\+::\+Nullary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_physical_operator_a4056113435af85657e5b61d397db5165}{\index{rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}!columns@{columns}}
+\index{columns@{columns}!rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}}
+\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf Column\+Info}$>$ rafe\+::\+Physical\+Operator\+::columns}}\label{classrafe_1_1_physical_operator_a4056113435af85657e5b61d397db5165}
+Stores information about output columns from this operator. \hypertarget{classrafe_1_1_physical_operator_a91df60e6935353504d02b9534a16eb4c}{\index{rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}!size@{size}}
+\index{size@{size}!rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Physical\+Operator\+::size}}\label{classrafe_1_1_physical_operator_a91df60e6935353504d02b9534a16eb4c}
+Stores size of output relation. \hypertarget{classrafe_1_1_physical_operator_a7b1bec2ef31be7b9c85ab32f543e23af}{\index{rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}!time\+Complexity@{time\+Complexity}}
+\index{time\+Complexity@{time\+Complexity}!rafe\+::\+Physical\+Operator@{rafe\+::\+Physical\+Operator}}
+\subsubsection[{time\+Complexity}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Physical\+Operator\+::time\+Complexity}}\label{classrafe_1_1_physical_operator_a7b1bec2ef31be7b9c85ab32f543e23af}
+Stores information about how much time algorithm will need. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\end{DoxyCompactItemize}

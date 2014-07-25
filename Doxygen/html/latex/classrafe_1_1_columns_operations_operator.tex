@@ -1,0 +1,74 @@
+\hypertarget{classrafe_1_1_columns_operations_operator}{\section{rafe\+:\+:Columns\+Operations\+Operator Class Reference}
+\label{classrafe_1_1_columns_operations_operator}\index{rafe\+::\+Columns\+Operations\+Operator@{rafe\+::\+Columns\+Operations\+Operator}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Columns\+Operations\+Operator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_columns_operations_operator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_columns_operations_operator_a2fabdd215667318465dcd75d878db071}{Columns\+Operations\+Operator} (const std\+::vector$<$ \hyperlink{classrafe_1_1_column_operation}{Column\+Operation} $>$ \&\hyperlink{classrafe_1_1_columns_operations_operator_a163a3eac6eb7336bda80ba844610880c}{operations})
+\item 
+void \hyperlink{classrafe_1_1_columns_operations_operator_a4fd8d03b5fd03393ea72dd46f4c11504}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_column_operation}{Column\+Operation} $>$ \hyperlink{classrafe_1_1_columns_operations_operator_a163a3eac6eb7336bda80ba844610880c}{operations}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is extended projection operator, it eliminates certain columns and computes new ones. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_columns_operations_operator_a2fabdd215667318465dcd75d878db071}{\index{rafe\+::\+Columns\+Operations\+Operator@{rafe\+::\+Columns\+Operations\+Operator}!Columns\+Operations\+Operator@{Columns\+Operations\+Operator}}
+\index{Columns\+Operations\+Operator@{Columns\+Operations\+Operator}!rafe\+::\+Columns\+Operations\+Operator@{rafe\+::\+Columns\+Operations\+Operator}}
+\subsubsection[{Columns\+Operations\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Columns\+Operations\+Operator\+::\+Columns\+Operations\+Operator (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Column\+Operation} $>$ \&}]{operations}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_columns_operations_operator_a2fabdd215667318465dcd75d878db071}
+Creates new instance of \hyperlink{classrafe_1_1_columns_operations_operator}{Columns\+Operations\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em operations} & -\/ information about output and new computed columns. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_columns_operations_operator_a4fd8d03b5fd03393ea72dd46f4c11504}{\index{rafe\+::\+Columns\+Operations\+Operator@{rafe\+::\+Columns\+Operations\+Operator}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Columns\+Operations\+Operator@{rafe\+::\+Columns\+Operations\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Columns\+Operations\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_columns_operations_operator_a4fd8d03b5fd03393ea72dd46f4c11504}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{rafe\+::\+Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_columns_operations_operator_a163a3eac6eb7336bda80ba844610880c}{\index{rafe\+::\+Columns\+Operations\+Operator@{rafe\+::\+Columns\+Operations\+Operator}!operations@{operations}}
+\index{operations@{operations}!rafe\+::\+Columns\+Operations\+Operator@{rafe\+::\+Columns\+Operations\+Operator}}
+\subsubsection[{operations}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Operation}$>$ rafe\+::\+Columns\+Operations\+Operator\+::operations}}\label{classrafe_1_1_columns_operations_operator_a163a3eac6eb7336bda80ba844610880c}
+Information about output and new computed columns. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

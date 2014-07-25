@@ -1,0 +1,74 @@
+\hypertarget{classrafe_1_1_rename_columns_visitor}{\section{rafe\+:\+:Rename\+Columns\+Visitor Class Reference}
+\label{classrafe_1_1_rename_columns_visitor}\index{rafe\+::\+Rename\+Columns\+Visitor@{rafe\+::\+Rename\+Columns\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Rename\+Columns\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_rename_columns_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_rename_columns_visitor_a0ed46d425721f07089df6722c8e48542}{Rename\+Columns\+Visitor} (std\+::map$<$ int, int $>$ $\ast$\hyperlink{classrafe_1_1_rename_columns_visitor_a39a19156a5b795544046cf3c933b1148}{pairs})
+\item 
+void \hyperlink{classrafe_1_1_rename_columns_visitor_af7ca189c54c24f4460f5b79860d0149c}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ int, int $>$ $\ast$ \hyperlink{classrafe_1_1_rename_columns_visitor_a39a19156a5b795544046cf3c933b1148}{pairs}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor changes column identifiers in \hyperlink{classrafe_1_1_column}{Column} nodes. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_rename_columns_visitor_a0ed46d425721f07089df6722c8e48542}{\index{rafe\+::\+Rename\+Columns\+Visitor@{rafe\+::\+Rename\+Columns\+Visitor}!Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}}
+\index{Rename\+Columns\+Visitor@{Rename\+Columns\+Visitor}!rafe\+::\+Rename\+Columns\+Visitor@{rafe\+::\+Rename\+Columns\+Visitor}}
+\subsubsection[{Rename\+Columns\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Rename\+Columns\+Visitor\+::\+Rename\+Columns\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::map$<$ int, int $>$ $\ast$}]{pairs}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_rename_columns_visitor_a0ed46d425721f07089df6722c8e48542}
+Creates new instance of \hyperlink{classrafe_1_1_rename_columns_visitor}{Rename\+Columns\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em pairs} & -\/ structure mapping old column id to new id. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_rename_columns_visitor_af7ca189c54c24f4460f5b79860d0149c}{\index{rafe\+::\+Rename\+Columns\+Visitor@{rafe\+::\+Rename\+Columns\+Visitor}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Rename\+Columns\+Visitor@{rafe\+::\+Rename\+Columns\+Visitor}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Rename\+Columns\+Visitor\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_rename_columns_visitor_af7ca189c54c24f4460f5b79860d0149c}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_rename_columns_visitor_a39a19156a5b795544046cf3c933b1148}{\index{rafe\+::\+Rename\+Columns\+Visitor@{rafe\+::\+Rename\+Columns\+Visitor}!pairs@{pairs}}
+\index{pairs@{pairs}!rafe\+::\+Rename\+Columns\+Visitor@{rafe\+::\+Rename\+Columns\+Visitor}}
+\subsubsection[{pairs}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, int$>$$\ast$ rafe\+::\+Rename\+Columns\+Visitor\+::pairs}}\label{classrafe_1_1_rename_columns_visitor_a39a19156a5b795544046cf3c933b1148}
+Structure mapping old id to new id. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

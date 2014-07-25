@@ -1,0 +1,111 @@
+\hypertarget{classrafe_1_1_unary_algebra_node_base}{\section{rafe\+:\+:Unary\+Algebra\+Node\+Base Class Reference}
+\label{classrafe_1_1_unary_algebra_node_base}\index{rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Unary\+Algebra\+Node\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.258065cm]{classrafe_1_1_unary_algebra_node_base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_unary_algebra_node_base_a26d7a253735fefa024015a6f2dc91052}{Unary\+Algebra\+Node\+Base} ()
+\item 
+\hyperlink{classrafe_1_1_unary_algebra_node_base_ace21dbea5b5612e87017caeb2cb86681}{Unary\+Algebra\+Node\+Base} (D\+O\+M\+Element $\ast$element)
+\item 
+virtual void \hyperlink{classrafe_1_1_unary_algebra_node_base_a6f554aad7250a0f15730d10ae24e4a79}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)=0
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{classrafe_1_1_unary_algebra_node_base_a32662d50e21fdc214d8acceb7e1029cc}{replace\+Child} (\hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \&new\+Child)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{classrafe_1_1_unary_algebra_node_base_a8f7f43824366a5efbc9c169293a998d3}{child}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for unary algebraic operation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_unary_algebra_node_base_a26d7a253735fefa024015a6f2dc91052}{\index{rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}!Unary\+Algebra\+Node\+Base@{Unary\+Algebra\+Node\+Base}}
+\index{Unary\+Algebra\+Node\+Base@{Unary\+Algebra\+Node\+Base}!rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}}
+\subsubsection[{Unary\+Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Unary\+Algebra\+Node\+Base\+::\+Unary\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_unary_algebra_node_base_a26d7a253735fefa024015a6f2dc91052}
+Creates the instance of \hyperlink{classrafe_1_1_unary_algebra_node_base}{Unary\+Algebra\+Node\+Base}. \hypertarget{classrafe_1_1_unary_algebra_node_base_ace21dbea5b5612e87017caeb2cb86681}{\index{rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}!Unary\+Algebra\+Node\+Base@{Unary\+Algebra\+Node\+Base}}
+\index{Unary\+Algebra\+Node\+Base@{Unary\+Algebra\+Node\+Base}!rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}}
+\subsubsection[{Unary\+Algebra\+Node\+Base}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Unary\+Algebra\+Node\+Base\+::\+Unary\+Algebra\+Node\+Base (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_unary_algebra_node_base_ace21dbea5b5612e87017caeb2cb86681}
+Creates the instance of \hyperlink{classrafe_1_1_unary_algebra_node_base}{Unary\+Algebra\+Node\+Base}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_unary_algebra_node_base_a6f554aad7250a0f15730d10ae24e4a79}{\index{rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void rafe\+::\+Unary\+Algebra\+Node\+Base\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_unary_algebra_node_base_a6f554aad7250a0f15730d10ae24e4a79}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_algebra_node_base_a48e59b55cdb1c3d108343eb18920c1d1}{rafe\+::\+Algebra\+Node\+Base}.
+
+
+
+Implemented in \hyperlink{classrafe_1_1_selection_a7304eb319db31a5c8ecb56b33d58e1e3}{rafe\+::\+Selection}, \hyperlink{classrafe_1_1_column_operations_a3418a59f4befbb949bf14e08d9c7d895}{rafe\+::\+Column\+Operations}, \hyperlink{classrafe_1_1_group_ac2ef050b2a4c52f38cd7d5ab4bf52dfe}{rafe\+::\+Group}, and \hyperlink{classrafe_1_1_sort_a275b43c089710e24876f332177ca49c5}{rafe\+::\+Sort}.
+
+\hypertarget{classrafe_1_1_unary_algebra_node_base_a32662d50e21fdc214d8acceb7e1029cc}{\index{rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ rafe\+::\+Unary\+Algebra\+Node\+Base\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Node\+Base} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ \&}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_unary_algebra_node_base_a32662d50e21fdc214d8acceb7e1029cc}
+Replaces one child of this node with other one 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & node to be replaced \\
+\hline
+{\em new\+Child} & new node to replace the old one \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+replaced child 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classrafe_1_1_algebra_node_base_ac6d722e739dd39c223bb129dfbd0ab45}{rafe\+::\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_unary_algebra_node_base_a8f7f43824366a5efbc9c169293a998d3}{\index{rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}!child@{child}}
+\index{child@{child}!rafe\+::\+Unary\+Algebra\+Node\+Base@{rafe\+::\+Unary\+Algebra\+Node\+Base}}
+\subsubsection[{child}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Algebra\+Node\+Base}$>$ rafe\+::\+Unary\+Algebra\+Node\+Base\+::child}}\label{classrafe_1_1_unary_algebra_node_base_a8f7f43824366a5efbc9c169293a998d3}
+stores pointer to child tree node 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,90 @@
+\hypertarget{classrafe_1_1_hash_anti_join}{\section{rafe\+:\+:Hash\+Anti\+Join Class Reference}
+\label{classrafe_1_1_hash_anti_join}\index{rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Hash\+Anti\+Join\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_hash_anti_join}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_hash_anti_join_a1682f3847d042fe0c3ed5782d94f972d}{Hash\+Anti\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \&\hyperlink{classrafe_1_1_hash_anti_join_a23275305fdc386ac5cd85a72e3cf35b5}{condition}, const std\+::vector$<$ \hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} $>$ \&\hyperlink{classrafe_1_1_hash_anti_join_aee96d4c1b6379eddfce548a5ad0733f0}{left\+Part\+Of\+Condition}, const std\+::vector$<$ \hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} $>$ \&\hyperlink{classrafe_1_1_hash_anti_join_a3d1f9f90ff58e9af2c24cf432a5c8508}{right\+Part\+Of\+Condition})
+\item 
+void \hyperlink{classrafe_1_1_hash_anti_join_a3df56df88dd2e9280d6243cba23b4ac4}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_hash_anti_join_a23275305fdc386ac5cd85a72e3cf35b5}{condition}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} $>$ \hyperlink{classrafe_1_1_hash_anti_join_aee96d4c1b6379eddfce548a5ad0733f0}{left\+Part\+Of\+Condition}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} $>$ \hyperlink{classrafe_1_1_hash_anti_join_a3d1f9f90ff58e9af2c24cf432a5c8508}{right\+Part\+Of\+Condition}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents hash antijoin physical operator. Operator computes equijoin using hash table. First input will be stored in hash table. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_hash_anti_join_a1682f3847d042fe0c3ed5782d94f972d}{\index{rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}!Hash\+Anti\+Join@{Hash\+Anti\+Join}}
+\index{Hash\+Anti\+Join@{Hash\+Anti\+Join}!rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}}
+\subsubsection[{Hash\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Hash\+Anti\+Join\+::\+Hash\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition, }
+\item[{const std\+::vector$<$ {\bf Column\+Identifier} $>$ \&}]{left\+Part\+Of\+Condition, }
+\item[{const std\+::vector$<$ {\bf Column\+Identifier} $>$ \&}]{right\+Part\+Of\+Condition}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_hash_anti_join_a1682f3847d042fe0c3ed5782d94f972d}
+Creates new instance of \hyperlink{classrafe_1_1_hash_anti_join}{Hash\+Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ join condition. \\
+\hline
+{\em left\+Part\+Of\+Condition} & -\/ condition columns from first input \\
+\hline
+{\em right\+Part\+Of\+Condition} & -\/ condition columns from second input \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_hash_anti_join_a3df56df88dd2e9280d6243cba23b4ac4}{\index{rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Hash\+Anti\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_hash_anti_join_a3df56df88dd2e9280d6243cba23b4ac4}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_binary_physical_operator_a58ce0a14b970b2c932254419877a2e0e}{rafe\+::\+Binary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_hash_anti_join_a23275305fdc386ac5cd85a72e3cf35b5}{\index{rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Hash\+Anti\+Join\+::condition}}\label{classrafe_1_1_hash_anti_join_a23275305fdc386ac5cd85a72e3cf35b5}
+Anti join condition. \hypertarget{classrafe_1_1_hash_anti_join_aee96d4c1b6379eddfce548a5ad0733f0}{\index{rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}!left\+Part\+Of\+Condition@{left\+Part\+Of\+Condition}}
+\index{left\+Part\+Of\+Condition@{left\+Part\+Of\+Condition}!rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}}
+\subsubsection[{left\+Part\+Of\+Condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Identifier}$>$ rafe\+::\+Hash\+Anti\+Join\+::left\+Part\+Of\+Condition}}\label{classrafe_1_1_hash_anti_join_aee96d4c1b6379eddfce548a5ad0733f0}
+Stores columns from left input, which belongs to condition. \hypertarget{classrafe_1_1_hash_anti_join_a3d1f9f90ff58e9af2c24cf432a5c8508}{\index{rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}!right\+Part\+Of\+Condition@{right\+Part\+Of\+Condition}}
+\index{right\+Part\+Of\+Condition@{right\+Part\+Of\+Condition}!rafe\+::\+Hash\+Anti\+Join@{rafe\+::\+Hash\+Anti\+Join}}
+\subsubsection[{right\+Part\+Of\+Condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column\+Identifier}$>$ rafe\+::\+Hash\+Anti\+Join\+::right\+Part\+Of\+Condition}}\label{classrafe_1_1_hash_anti_join_a3d1f9f90ff58e9af2c24cf432a5c8508}
+Stores columns from right input, which belongs to condition. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

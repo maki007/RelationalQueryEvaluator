@@ -1,0 +1,97 @@
+\hypertarget{classrafe_1_1_join_info}{\section{rafe\+:\+:Join\+Info Class Reference}
+\label{classrafe_1_1_join_info}\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+}
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classrafe_1_1_join_info_aef77063546aef0986b17dde67e89a581}{Remove\+Unnecessary\+Columns} (std\+::vector$<$ \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} $>$ \&output\+Columns)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classrafe_1_1_join_info_aae492a171e8a72940722e35a30027e72}{Comparator} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_join_info}{Join\+Info} $>$ \&lhs, const std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_join_info}{Join\+Info} $>$ \&rhs)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{classrafe_1_1_physical_plan}{Physical\+Plan} $>$ $>$ \hyperlink{classrafe_1_1_join_info_a1708cd5a22856820424f962b09066971}{plans}
+\item 
+std\+::set$<$ ulong $>$ \hyperlink{classrafe_1_1_join_info_aac96010c2f7c715f90e85e5ac25b31df}{processed\+Plans}
+\item 
+std\+::set$<$ ulong $>$ \hyperlink{classrafe_1_1_join_info_a430413badd7d9bd9c1d4bd27645ad98e}{un\+Processed\+Plans}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{classrafe_1_1_condition_info}{Condition\+Info} $>$ $>$ \hyperlink{classrafe_1_1_join_info_a129f469fae807daf5195e930587050eb}{condition}
+\item 
+std\+::map$<$ int, \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} $>$ \hyperlink{classrafe_1_1_join_info_a368a23397966ad965bf6de58d4471760}{columns}
+\item 
+double \hyperlink{classrafe_1_1_join_info_a3e362e7ce03809986b095b731119afc9}{size}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Structures storing information in selecting join order algoritm. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_join_info_aae492a171e8a72940722e35a30027e72}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!Comparator@{Comparator}}
+\index{Comparator@{Comparator}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{Comparator}]{\setlength{\rightskip}{0pt plus 5cm}bool rafe\+::\+Join\+Info\+::\+Comparator (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Join\+Info} $>$ \&}]{lhs, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Join\+Info} $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_join_info_aae492a171e8a72940722e35a30027e72}
+Comparer for head in greedy join order algorirthm. Compares plans bases on timecomplexity of plans\mbox{[}0\mbox{]}. Greedy join order algorirthm uses this structure with only one plan. 
+\begin{DoxyParams}{Parameters}
+{\em lhs} & -\/ first plan to compare \\
+\hline
+{\em rhs} & -\/ second plan to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if lsf is faster then rhs 
+\end{DoxyReturn}
+\hypertarget{classrafe_1_1_join_info_aef77063546aef0986b17dde67e89a581}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!Remove\+Unnecessary\+Columns@{Remove\+Unnecessary\+Columns}}
+\index{Remove\+Unnecessary\+Columns@{Remove\+Unnecessary\+Columns}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{Remove\+Unnecessary\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Join\+Info\+::\+Remove\+Unnecessary\+Columns (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Join\+Column\+Info} $>$ \&}]{output\+Columns}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_join_info_aef77063546aef0986b17dde67e89a581}
+Remove unecessary columns from current plans. Unnecessary columns are the one, which are not in condition out in output of procesed Group\+Join. 
+\begin{DoxyParams}{Parameters}
+{\em output\+Columns} & columns which are necessary. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_join_info_a368a23397966ad965bf6de58d4471760}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!columns@{columns}}
+\index{columns@{columns}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf Join\+Column\+Info}$>$ rafe\+::\+Join\+Info\+::columns}}\label{classrafe_1_1_join_info_a368a23397966ad965bf6de58d4471760}
+Output columns from current plans. \hypertarget{classrafe_1_1_join_info_a129f469fae807daf5195e930587050eb}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Condition\+Info}$>$ $>$ rafe\+::\+Join\+Info\+::condition}}\label{classrafe_1_1_join_info_a129f469fae807daf5195e930587050eb}
+\hyperlink{classrafe_1_1_join}{Join} condition to be processed. \hypertarget{classrafe_1_1_join_info_a1708cd5a22856820424f962b09066971}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!plans@{plans}}
+\index{plans@{plans}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{plans}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Physical\+Plan}$>$ $>$ rafe\+::\+Join\+Info\+::plans}}\label{classrafe_1_1_join_info_a1708cd5a22856820424f962b09066971}
+Generated plans. \hypertarget{classrafe_1_1_join_info_aac96010c2f7c715f90e85e5ac25b31df}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!processed\+Plans@{processed\+Plans}}
+\index{processed\+Plans@{processed\+Plans}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{processed\+Plans}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$ulong$>$ rafe\+::\+Join\+Info\+::processed\+Plans}}\label{classrafe_1_1_join_info_aac96010c2f7c715f90e85e5ac25b31df}
+Numbers of processed inputs. \hypertarget{classrafe_1_1_join_info_a3e362e7ce03809986b095b731119afc9}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!size@{size}}
+\index{size@{size}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Join\+Info\+::size}}\label{classrafe_1_1_join_info_a3e362e7ce03809986b095b731119afc9}
+Size of the processed relation. \hypertarget{classrafe_1_1_join_info_a430413badd7d9bd9c1d4bd27645ad98e}{\index{rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}!un\+Processed\+Plans@{un\+Processed\+Plans}}
+\index{un\+Processed\+Plans@{un\+Processed\+Plans}!rafe\+::\+Join\+Info@{rafe\+::\+Join\+Info}}
+\subsubsection[{un\+Processed\+Plans}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$ulong$>$ rafe\+::\+Join\+Info\+::un\+Processed\+Plans}}\label{classrafe_1_1_join_info_a430413badd7d9bd9c1d4bd27645ad98e}
+Numbers of unprocessed inputs. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Compiler.\+cpp\end{DoxyCompactItemize}

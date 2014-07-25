@@ -1,0 +1,74 @@
+\hypertarget{classrafe_1_1_filter}{\section{rafe\+:\+:Filter Class Reference}
+\label{classrafe_1_1_filter}\index{rafe\+::\+Filter@{rafe\+::\+Filter}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Filter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_filter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_filter_af4f33192eef0626cf16fc9cb51b3e3de}{Filter} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \&\hyperlink{classrafe_1_1_filter_ac57844e611bd2d1951d1d4089135ddb9}{condition})
+\item 
+void \hyperlink{classrafe_1_1_filter_a27d15fd98afe3c03f05f5a4c5846b2a6}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_filter_ac57844e611bd2d1951d1d4089135ddb9}{condition}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing filter physical algorithm. Operator filters given rows and output only rows satisfying condition. Output doesn't have to be sorted same way as input. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_filter_af4f33192eef0626cf16fc9cb51b3e3de}{\index{rafe\+::\+Filter@{rafe\+::\+Filter}!Filter@{Filter}}
+\index{Filter@{Filter}!rafe\+::\+Filter@{rafe\+::\+Filter}}
+\subsubsection[{Filter}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Filter\+::\+Filter (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_filter_af4f33192eef0626cf16fc9cb51b3e3de}
+Creates new instance of \hyperlink{classrafe_1_1_filter}{Filter}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ filter condition. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_filter_a27d15fd98afe3c03f05f5a4c5846b2a6}{\index{rafe\+::\+Filter@{rafe\+::\+Filter}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Filter@{rafe\+::\+Filter}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Filter\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_filter_a27d15fd98afe3c03f05f5a4c5846b2a6}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{rafe\+::\+Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_filter_ac57844e611bd2d1951d1d4089135ddb9}{\index{rafe\+::\+Filter@{rafe\+::\+Filter}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Filter@{rafe\+::\+Filter}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Filter\+::condition}}\label{classrafe_1_1_filter_ac57844e611bd2d1951d1d4089135ddb9}
+Condition for filtering relation. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

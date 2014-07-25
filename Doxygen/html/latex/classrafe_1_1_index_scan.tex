@@ -1,0 +1,90 @@
+\hypertarget{classrafe_1_1_index_scan}{\section{rafe\+:\+:Index\+Scan Class Reference}
+\label{classrafe_1_1_index_scan}\index{rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Index\+Scan\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_index_scan}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_index_scan_acda9bef1fc1996fa1a51dd4965c902c1}{Index\+Scan} (const std\+::string \&name, const std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \&\hyperlink{classrafe_1_1_index_scan_a3ea0ae237e08c4a601529929f6d80052}{condition}, const \hyperlink{classrafe_1_1_index}{Index} \&\hyperlink{classrafe_1_1_index_scan_a95bd35c11302e772572cb37df93cc3a7}{index})
+\item 
+void \hyperlink{classrafe_1_1_index_scan_a5e4e26317258097176b3b3b241653302}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classrafe_1_1_index_scan_a10d1f881994a96dee8e9e29f367626e9}{table\+Name}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_index_scan_a3ea0ae237e08c4a601529929f6d80052}{condition}
+\item 
+\hyperlink{classrafe_1_1_index}{Index} \hyperlink{classrafe_1_1_index_scan_a95bd35c11302e772572cb37df93cc3a7}{index}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents operator, which reads part of the table using index. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_index_scan_acda9bef1fc1996fa1a51dd4965c902c1}{\index{rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}!Index\+Scan@{Index\+Scan}}
+\index{Index\+Scan@{Index\+Scan}!rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}}
+\subsubsection[{Index\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Index\+Scan\+::\+Index\+Scan (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{name, }
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition, }
+\item[{const {\bf Index} \&}]{index}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_index_scan_acda9bef1fc1996fa1a51dd4965c902c1}
+Creates new instance of \hyperlink{classrafe_1_1_index_scan}{Index\+Scan}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & of table to read. \\
+\hline
+{\em condition} & to apply while reading. \\
+\hline
+{\em index} & -\/ index to user for reading. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_index_scan_a5e4e26317258097176b3b3b241653302}{\index{rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Index\+Scan\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_index_scan_a5e4e26317258097176b3b3b241653302}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_nullary_physical_operator_a0810fc4b368521ebe847fa48fcdcf948}{rafe\+::\+Nullary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_index_scan_a3ea0ae237e08c4a601529929f6d80052}{\index{rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Index\+Scan\+::condition}}\label{classrafe_1_1_index_scan_a3ea0ae237e08c4a601529929f6d80052}
+Condition to apply while reading. \hypertarget{classrafe_1_1_index_scan_a95bd35c11302e772572cb37df93cc3a7}{\index{rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}!index@{index}}
+\index{index@{index}!rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Index} rafe\+::\+Index\+Scan\+::index}}\label{classrafe_1_1_index_scan_a95bd35c11302e772572cb37df93cc3a7}
+\hyperlink{classrafe_1_1_table}{Table} index to use. \hypertarget{classrafe_1_1_index_scan_a10d1f881994a96dee8e9e29f367626e9}{\index{rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}!table\+Name@{table\+Name}}
+\index{table\+Name@{table\+Name}!rafe\+::\+Index\+Scan@{rafe\+::\+Index\+Scan}}
+\subsubsection[{table\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Index\+Scan\+::table\+Name}}\label{classrafe_1_1_index_scan_a10d1f881994a96dee8e9e29f367626e9}
+\hyperlink{classrafe_1_1_table}{Table} to read. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

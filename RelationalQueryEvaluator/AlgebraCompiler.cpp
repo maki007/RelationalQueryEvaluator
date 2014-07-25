@@ -1050,7 +1050,7 @@ namespace rafe {
 		}
 	}
 
-	shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterJoin(const shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition)
+	std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition)
 	{
 		double time = TimeComplexity::filter(plan->plan->size);
 		std::map<int, ColumnInfo> newColumns = plan->plan->columns;
@@ -1067,7 +1067,7 @@ namespace rafe {
 		return filterPlan;
 	}
 
-	shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterMergeJoin(const shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition)
+	std::shared_ptr<PhysicalPlan> AlgebraCompiler::generateFilterAfterMergeJoin(const std::shared_ptr<PhysicalPlan> & plan, std::shared_ptr<Expression> & condition)
 	{
 		double time = TimeComplexity::filterKeppeingOrder(plan->plan->size);
 		std::map<int, ColumnInfo> newColumns = plan->plan->columns;

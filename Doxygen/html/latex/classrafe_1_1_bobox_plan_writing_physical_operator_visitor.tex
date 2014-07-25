@@ -1,0 +1,345 @@
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor}{\section{rafe\+:\+:Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor Class Reference}
+\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor}\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator\+Visitor.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_bobox_plan_writing_physical_operator_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_afa5e686be89010277091a1d2f1f06dc2}{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor} ()
+\item 
+std\+::string \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ae1b065e58edaf26fa63ce0ad6e7d4acd}{write\+Plan} (std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_physical_operator}{Physical\+Operator} $>$ \&plan)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a729ee192bceef48ed5221447427be2a4}{visit\+Filter} (\hyperlink{classrafe_1_1_filter}{Filter} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a34f3d494a32fdc1e694ea4568f09db28}{visit\+Filter\+Keeping\+Order} (\hyperlink{classrafe_1_1_filter_keeping_order}{Filter\+Keeping\+Order} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a63be13a7222bfdb4a317334b0b2f892d}{visit\+Sort\+Operator} (\hyperlink{classrafe_1_1_sort_operator}{Sort\+Operator} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a424e82f02063f08ec2849a4728f49b83}{visit\+Merge\+Equi\+Join} (\hyperlink{classrafe_1_1_merge_equi_join}{Merge\+Equi\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_af9342d338c7b1f83e4c6bb2250915adc}{visit\+Merge\+Non\+Equi\+Join} (\hyperlink{classrafe_1_1_merge_non_equi_join}{Merge\+Non\+Equi\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_af8ff4c17855ea7872ed2871aa317591d}{visit\+Cross\+Join} (\hyperlink{classrafe_1_1_cross_join}{Cross\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ad0924de22102447e0e6c38a90432f3c6}{visit\+Hash\+Join} (\hyperlink{classrafe_1_1_hash_join}{Hash\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a4c75cb58ec95bc07e9923a3b7c0c2175}{visit\+Hash\+Anti\+Join} (\hyperlink{classrafe_1_1_hash_anti_join}{Hash\+Anti\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a44f741c5e3ad55bdb934641371057000}{visit\+Merge\+Anti\+Join} (\hyperlink{classrafe_1_1_merge_anti_join}{Merge\+Anti\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a20fc58d77f1fba7b536bd8c0920641c5}{visit\+Union\+Operator} (\hyperlink{classrafe_1_1_union_operator}{Union\+Operator} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a8f9890744b4a3a64e1d574d4d12bc1ca}{visit\+Hash\+Group} (\hyperlink{classrafe_1_1_hash_group}{Hash\+Group} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ab0f53218eefa3103840afe5bf7fcf9ab}{visit\+Sorted\+Group} (\hyperlink{classrafe_1_1_sorted_group}{Sorted\+Group} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a38591cef68b9a97fc8e854827d33103b}{visit\+Columns\+Operations\+Operator} (\hyperlink{classrafe_1_1_columns_operations_operator}{Columns\+Operations\+Operator} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a747d8a89471bcf19b29d4eb8f9be5196}{visit\+Scan\+And\+Sort\+By\+Index} (\hyperlink{classrafe_1_1_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ab7918b1aa4d801ec86d42b3cbb6d0fe1}{visit\+Table\+Scan} (\hyperlink{classrafe_1_1_table_scan}{Table\+Scan} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a600bfeaec99ab68049069543bad70908}{visit\+Index\+Scan} (\hyperlink{classrafe_1_1_index_scan}{Index\+Scan} $\ast$node)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Generates bobox string output. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_afa5e686be89010277091a1d2f1f06dc2}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\index{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_afa5e686be89010277091a1d2f1f06dc2}
+Creates new instace of \hyperlink{classrafe_1_1_bobox_plan_writing_physical_operator_visitor}{Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a38591cef68b9a97fc8e854827d33103b}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}}
+\index{visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Columns\+Operations\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Columns\+Operations\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Columns\+Operations\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a38591cef68b9a97fc8e854827d33103b}
+Visits physical operator \hyperlink{classrafe_1_1_columns_operations_operator}{Columns\+Operations\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_columns_operations_operator}{Columns\+Operations\+Operator}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ab69b85d7a2c8f89986d84cbcce6f2f89}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_af8ff4c17855ea7872ed2871aa317591d}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Cross\+Join@{visit\+Cross\+Join}}
+\index{visit\+Cross\+Join@{visit\+Cross\+Join}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Cross\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Cross\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Cross\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_af8ff4c17855ea7872ed2871aa317591d}
+Visits physical operator \hyperlink{classrafe_1_1_cross_join}{Cross\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_cross_join}{Cross\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_acc39509ae79aa6848ec928cc4f616d61}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a729ee192bceef48ed5221447427be2a4}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Filter@{visit\+Filter}}
+\index{visit\+Filter@{visit\+Filter}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Filter (
+\begin{DoxyParamCaption}
+\item[{{\bf Filter} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a729ee192bceef48ed5221447427be2a4}
+Visits physical operator \hyperlink{classrafe_1_1_filter}{Filter}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_filter}{Filter}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a516a84d305910f3e1b9d1ae2cb184b24}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a34f3d494a32fdc1e694ea4568f09db28}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Filter\+Keeping\+Order@{visit\+Filter\+Keeping\+Order}}
+\index{visit\+Filter\+Keeping\+Order@{visit\+Filter\+Keeping\+Order}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Filter\+Keeping\+Order}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Filter\+Keeping\+Order (
+\begin{DoxyParamCaption}
+\item[{{\bf Filter\+Keeping\+Order} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a34f3d494a32fdc1e694ea4568f09db28}
+Visits physical operator \hyperlink{classrafe_1_1_filter_keeping_order}{Filter\+Keeping\+Order}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_filter_keeping_order}{Filter\+Keeping\+Order}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a7b581054d167c71fa5443570a6808740}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a4c75cb58ec95bc07e9923a3b7c0c2175}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Hash\+Anti\+Join@{visit\+Hash\+Anti\+Join}}
+\index{visit\+Hash\+Anti\+Join@{visit\+Hash\+Anti\+Join}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Hash\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Hash\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Hash\+Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a4c75cb58ec95bc07e9923a3b7c0c2175}
+Visits physical operator \hyperlink{classrafe_1_1_hash_anti_join}{Hash\+Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_hash_anti_join}{Hash\+Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a9415b5939da4948ac922e63fbece1135}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a8f9890744b4a3a64e1d574d4d12bc1ca}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Hash\+Group@{visit\+Hash\+Group}}
+\index{visit\+Hash\+Group@{visit\+Hash\+Group}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Hash\+Group}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Hash\+Group (
+\begin{DoxyParamCaption}
+\item[{{\bf Hash\+Group} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a8f9890744b4a3a64e1d574d4d12bc1ca}
+Visits physical operator \hyperlink{classrafe_1_1_hash_group}{Hash\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_hash_group}{Hash\+Group}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ab6a2b2b02f2237fd41e6c44f5b2ede9b}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ad0924de22102447e0e6c38a90432f3c6}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Hash\+Join@{visit\+Hash\+Join}}
+\index{visit\+Hash\+Join@{visit\+Hash\+Join}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Hash\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Hash\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Hash\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ad0924de22102447e0e6c38a90432f3c6}
+Visits physical operator \hyperlink{classrafe_1_1_hash_join}{Hash\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_hash_join}{Hash\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ae36c9ef817768f134d35fe5b3834855c}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a600bfeaec99ab68049069543bad70908}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Index\+Scan@{visit\+Index\+Scan}}
+\index{visit\+Index\+Scan@{visit\+Index\+Scan}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Index\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Index\+Scan (
+\begin{DoxyParamCaption}
+\item[{{\bf Index\+Scan} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a600bfeaec99ab68049069543bad70908}
+Visits physical operator \hyperlink{classrafe_1_1_index_scan}{Index\+Scan}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_index_scan}{Index\+Scan}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ac33ea100cdb3e642a58a82c4367de3fd}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a44f741c5e3ad55bdb934641371057000}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Merge\+Anti\+Join@{visit\+Merge\+Anti\+Join}}
+\index{visit\+Merge\+Anti\+Join@{visit\+Merge\+Anti\+Join}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Merge\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Merge\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Merge\+Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a44f741c5e3ad55bdb934641371057000}
+Visits physical operator \hyperlink{classrafe_1_1_merge_anti_join}{Merge\+Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_merge_anti_join}{Merge\+Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a0f3496aaac992756bbb8f18c1000ed75}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a424e82f02063f08ec2849a4728f49b83}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Merge\+Equi\+Join@{visit\+Merge\+Equi\+Join}}
+\index{visit\+Merge\+Equi\+Join@{visit\+Merge\+Equi\+Join}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Merge\+Equi\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Merge\+Equi\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Merge\+Equi\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a424e82f02063f08ec2849a4728f49b83}
+Visits physical operator \hyperlink{classrafe_1_1_merge_equi_join}{Merge\+Equi\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_merge_equi_join}{Merge\+Equi\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a9fd16981e6fbb9b545b7edeaabcf97bf}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_af9342d338c7b1f83e4c6bb2250915adc}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Merge\+Non\+Equi\+Join@{visit\+Merge\+Non\+Equi\+Join}}
+\index{visit\+Merge\+Non\+Equi\+Join@{visit\+Merge\+Non\+Equi\+Join}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Merge\+Non\+Equi\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Merge\+Non\+Equi\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Merge\+Non\+Equi\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_af9342d338c7b1f83e4c6bb2250915adc}
+Visits physical operator \hyperlink{classrafe_1_1_merge_non_equi_join}{Merge\+Non\+Equi\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_merge_non_equi_join}{Merge\+Non\+Equi\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a1d4af9c73ece300d7a90c65481cd8e06}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a747d8a89471bcf19b29d4eb8f9be5196}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Scan\+And\+Sort\+By\+Index@{visit\+Scan\+And\+Sort\+By\+Index}}
+\index{visit\+Scan\+And\+Sort\+By\+Index@{visit\+Scan\+And\+Sort\+By\+Index}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Scan\+And\+Sort\+By\+Index}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Scan\+And\+Sort\+By\+Index (
+\begin{DoxyParamCaption}
+\item[{{\bf Scan\+And\+Sort\+By\+Index} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a747d8a89471bcf19b29d4eb8f9be5196}
+Visits physical operator \hyperlink{classrafe_1_1_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a4f8cbef9d1c5a58fceb44deb4a7d998c}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ab0f53218eefa3103840afe5bf7fcf9ab}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Sorted\+Group@{visit\+Sorted\+Group}}
+\index{visit\+Sorted\+Group@{visit\+Sorted\+Group}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Sorted\+Group}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Sorted\+Group (
+\begin{DoxyParamCaption}
+\item[{{\bf Sorted\+Group} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ab0f53218eefa3103840afe5bf7fcf9ab}
+Visits physical operator \hyperlink{classrafe_1_1_sorted_group}{Sorted\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_sorted_group}{Sorted\+Group}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_afb1b6786bf12f12e3b1c2895bf77e874}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a63be13a7222bfdb4a317334b0b2f892d}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Sort\+Operator@{visit\+Sort\+Operator}}
+\index{visit\+Sort\+Operator@{visit\+Sort\+Operator}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Sort\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Sort\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Sort\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a63be13a7222bfdb4a317334b0b2f892d}
+Visits physical operator \hyperlink{classrafe_1_1_sort_operator}{Sort\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_sort_operator}{Sort\+Operator}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_adaee48b1ef175226c860c7b2d70ba15d}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ab7918b1aa4d801ec86d42b3cbb6d0fe1}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Table\+Scan@{visit\+Table\+Scan}}
+\index{visit\+Table\+Scan@{visit\+Table\+Scan}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Table\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Table\+Scan (
+\begin{DoxyParamCaption}
+\item[{{\bf Table\+Scan} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ab7918b1aa4d801ec86d42b3cbb6d0fe1}
+Visits physical operator \hyperlink{classrafe_1_1_table_scan}{Table\+Scan}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_table_scan}{Table\+Scan}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ae3d5b2b56e9465713c5ecd4e5fcea9c9}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a20fc58d77f1fba7b536bd8c0920641c5}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!visit\+Union\+Operator@{visit\+Union\+Operator}}
+\index{visit\+Union\+Operator@{visit\+Union\+Operator}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Union\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::visit\+Union\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Union\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_a20fc58d77f1fba7b536bd8c0920641c5}
+Visits physical operator \hyperlink{classrafe_1_1_union_operator}{Union\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_union_operator}{Union\+Operator}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a01eb10e07cc1fbe7622bc1eb01fa3b79}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ae1b065e58edaf26fa63ce0ad6e7d4acd}{\index{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}!write\+Plan@{write\+Plan}}
+\index{write\+Plan@{write\+Plan}!rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor@{rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor}}
+\subsubsection[{write\+Plan}]{\setlength{\rightskip}{0pt plus 5cm}string rafe\+::\+Bobox\+Plan\+Writing\+Physical\+Operator\+Visitor\+::write\+Plan (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Physical\+Operator} $>$ \&}]{plan}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_bobox_plan_writing_physical_operator_visitor_ae1b065e58edaf26fa63ce0ad6e7d4acd}
+Generates bobox output of physical plan. 
+\begin{DoxyParams}{Parameters}
+{\em plan} & -\/ plan to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bobox plan representation 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator\+Visitor.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Bobox\+Output.\+cpp\end{DoxyCompactItemize}

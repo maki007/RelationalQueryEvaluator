@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['pairs',['pairs',['../class_rename_columns_visitor.html#a40542b4f59af34a28e298d719ca426c1',1,'RenameColumnsVisitor']]],
-  ['parameter',['parameter',['../class_agregate_function.html#ad37427d3dee4bc5dc7a76d5997bb22fc',1,'AgregateFunction']]],
-  ['parameters',['parameters',['../class_sort.html#abc86726752639b928cd08812538a251a',1,'Sort::parameters()'],['../class_possible_sort_parameters.html#ac7cd94ff83acacceb9adee62c4228e7f',1,'PossibleSortParameters::parameters()']]],
-  ['parent',['parent',['../class_algebra_node_base.html#a5b2834cce900dec172763d4ef4b38f66',1,'AlgebraNodeBase::parent()'],['../class_expression.html#a36284ba467eae6aa796985ed909a6958',1,'Expression::parent()']]],
-  ['plan',['plan',['../class_physical_plan.html#a97349262f468410057d66f00334003a5',1,'PhysicalPlan']]],
-  ['plans',['plans',['../class_join_info.html#acbddcf9cd01e91396492b94a627bdf69',1,'JoinInfo']]],
-  ['processedplans',['processedPlans',['../class_join_info.html#a584f1ea54151c8e0c506911a6595c7cb',1,'JoinInfo']]]
+  ['pairs',['pairs',['../classrafe_1_1_rename_columns_visitor.html#a39a19156a5b795544046cf3c933b1148',1,'rafe::RenameColumnsVisitor']]],
+  ['parameter',['parameter',['../classrafe_1_1_agregate_function.html#ab7cc5507a807035e2a35fbba2fc650d6',1,'rafe::AgregateFunction']]],
+  ['parameters',['parameters',['../classrafe_1_1_sort.html#a56fff2e57e874999e0bc44772b090129',1,'rafe::Sort::parameters()'],['../classrafe_1_1_possible_sort_parameters.html#ace90bc0923cc964b0206542af29a49dc',1,'rafe::PossibleSortParameters::parameters()']]],
+  ['parent',['parent',['../classrafe_1_1_algebra_node_base.html#a7dbfa2771e290b5e72bfe5c5177b7888',1,'rafe::AlgebraNodeBase::parent()'],['../classrafe_1_1_expression.html#ae6f0ee539cc324899c34926733fe33b1',1,'rafe::Expression::parent()']]],
+  ['plan',['plan',['../classrafe_1_1_physical_plan.html#ac90f368fe33c419642571aa4573856c1',1,'rafe::PhysicalPlan']]],
+  ['plans',['plans',['../classrafe_1_1_join_info.html#a1708cd5a22856820424f962b09066971',1,'rafe::JoinInfo']]],
+  ['processedplans',['processedPlans',['../classrafe_1_1_join_info.html#aac96010c2f7c715f90e85e5ac25b31df',1,'rafe::JoinInfo']]]
 ];

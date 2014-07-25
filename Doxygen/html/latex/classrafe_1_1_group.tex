@@ -1,0 +1,79 @@
+\hypertarget{classrafe_1_1_group}{\section{rafe\+:\+:Group Class Reference}
+\label{classrafe_1_1_group}\index{rafe\+::\+Group@{rafe\+::\+Group}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Group\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_group}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_group_a5536d2d9b3d8ce746697afc5eff32911}{Group} (D\+O\+M\+Element $\ast$element)
+\item 
+void \hyperlink{classrafe_1_1_group_ac2ef050b2a4c52f38cd7d5ab4bf52dfe}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_group_column}{Group\+Column} $>$ \hyperlink{classrafe_1_1_group_a1b65b4d24bf834d05beb6ec00d9ed15b}{group\+Columns}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_agregate_function}{Agregate\+Function} $>$ \hyperlink{classrafe_1_1_group_a774b152485b449b377745da5967a598d}{agregate\+Functions}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the algebraic operation group. It groups by given columns and also computes agregate functions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_group_a5536d2d9b3d8ce746697afc5eff32911}{\index{rafe\+::\+Group@{rafe\+::\+Group}!Group@{Group}}
+\index{Group@{Group}!rafe\+::\+Group@{rafe\+::\+Group}}
+\subsubsection[{Group}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Group\+::\+Group (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_group_a5536d2d9b3d8ce746697afc5eff32911}
+Creates the instance of \hyperlink{classrafe_1_1_group}{Group}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_group_ac2ef050b2a4c52f38cd7d5ab4bf52dfe}{\index{rafe\+::\+Group@{rafe\+::\+Group}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Group@{rafe\+::\+Group}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Group\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_group_ac2ef050b2a4c52f38cd7d5ab4bf52dfe}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_algebra_node_base_a6f554aad7250a0f15730d10ae24e4a79}{rafe\+::\+Unary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_group_a774b152485b449b377745da5967a598d}{\index{rafe\+::\+Group@{rafe\+::\+Group}!agregate\+Functions@{agregate\+Functions}}
+\index{agregate\+Functions@{agregate\+Functions}!rafe\+::\+Group@{rafe\+::\+Group}}
+\subsubsection[{agregate\+Functions}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Agregate\+Function}$>$ rafe\+::\+Group\+::agregate\+Functions}}\label{classrafe_1_1_group_a774b152485b449b377745da5967a598d}
+Stores aggregate function information associated with this group node. \hypertarget{classrafe_1_1_group_a1b65b4d24bf834d05beb6ec00d9ed15b}{\index{rafe\+::\+Group@{rafe\+::\+Group}!group\+Columns@{group\+Columns}}
+\index{group\+Columns@{group\+Columns}!rafe\+::\+Group@{rafe\+::\+Group}}
+\subsubsection[{group\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Group\+Column}$>$ rafe\+::\+Group\+::group\+Columns}}\label{classrafe_1_1_group_a1b65b4d24bf834d05beb6ec00d9ed15b}
+Determines by which columns should current relation by grouped by. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

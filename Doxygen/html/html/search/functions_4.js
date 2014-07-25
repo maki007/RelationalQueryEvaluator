@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error',['error',['../class_parser_error_handler.html#aa636e61f4f0fb47f38151e09c3711ee7',1,'ParserErrorHandler']]]
+  ['error',['error',['../classrafe_1_1_parser_error_handler.html#a974066afd1bef8087e80b4f075b7f0c2',1,'rafe::ParserErrorHandler']]]
 ];

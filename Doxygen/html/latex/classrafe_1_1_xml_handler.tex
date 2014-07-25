@@ -1,0 +1,58 @@
+\hypertarget{classrafe_1_1_xml_handler}{\section{rafe\+:\+:Xml\+Handler Class Reference}
+\label{classrafe_1_1_xml_handler}\index{rafe\+::\+Xml\+Handler@{rafe\+::\+Xml\+Handler}}
+}
+
+
+{\ttfamily \#include $<$Xml\+Handler.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::unique\+\_\+ptr\\*
+$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{classrafe_1_1_xml_handler_ab1edfc4be74e2553cfa96bbc92ad91c3}{Validate\+Schema} (const char $\ast$xml\+File\+Path)
+\item 
+static std\+::unique\+\_\+ptr\\*
+$<$ \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} $>$ \hyperlink{classrafe_1_1_xml_handler_a4045f6c818eb92e84fc902f3057717a7}{Generate\+Relational\+Algebra} (const char $\ast$filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Static class for generating relation algebra from dom xml. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_xml_handler_a4045f6c818eb92e84fc902f3057717a7}{\index{rafe\+::\+Xml\+Handler@{rafe\+::\+Xml\+Handler}!Generate\+Relational\+Algebra@{Generate\+Relational\+Algebra}}
+\index{Generate\+Relational\+Algebra@{Generate\+Relational\+Algebra}!rafe\+::\+Xml\+Handler@{rafe\+::\+Xml\+Handler}}
+\subsubsection[{Generate\+Relational\+Algebra}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ rafe\+::\+Xml\+Handler\+::\+Generate\+Relational\+Algebra (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_xml_handler_a4045f6c818eb92e84fc902f3057717a7}
+Generates relation algebra tree from dom xml. Xml will be valiadated. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/ name of file containing xml \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+root of algebra tree 
+\end{DoxyReturn}
+\hypertarget{classrafe_1_1_xml_handler_ab1edfc4be74e2553cfa96bbc92ad91c3}{\index{rafe\+::\+Xml\+Handler@{rafe\+::\+Xml\+Handler}!Validate\+Schema@{Validate\+Schema}}
+\index{Validate\+Schema@{Validate\+Schema}!rafe\+::\+Xml\+Handler@{rafe\+::\+Xml\+Handler}}
+\subsubsection[{Validate\+Schema}]{\setlength{\rightskip}{0pt plus 5cm}std\+::unique\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ rafe\+::\+Xml\+Handler\+::\+Validate\+Schema (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{xml\+File\+Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_xml_handler_ab1edfc4be74e2553cfa96bbc92ad91c3}
+Generates relation algebra tree from dom xml. Xml will be valiadated. Does not initlialize or cleans dom parser. This is done in Generate\+Relational\+Algebra. 
+\begin{DoxyParams}{Parameters}
+{\em xml\+File\+Path} & -\/ name of file containing xml \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+root of algebra tree 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Xml\+Handler.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Xml\+Handler.\+cpp\end{DoxyCompactItemize}

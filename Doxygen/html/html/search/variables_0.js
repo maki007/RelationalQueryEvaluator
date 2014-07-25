@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['aggregate',['AGGREGATE',['../class_time_complexity.html#a9bb16133f1284faf24bd901d8947b896',1,'TimeComplexity']]],
-  ['agregatefunctions',['agregateFunctions',['../class_group.html#afd02ca31d700990cddc2860d562635c2',1,'Group::agregateFunctions()'],['../class_hash_group.html#a8a813f6713413f2bd401bfa77be774de',1,'HashGroup::agregateFunctions()'],['../class_sorted_group.html#ab3d59776a6c7516df046d09b0bcd2f4e',1,'SortedGroup::agregateFunctions()']]],
-  ['arguments',['arguments',['../class_nnary_expression.html#ae70d24059bba49f089137557e18f41a9',1,'NnaryExpression']]]
+  ['aggregate',['AGGREGATE',['../classrafe_1_1_time_complexity.html#a4a637f321994988a43c70987319deeb0',1,'rafe::TimeComplexity']]],
+  ['agregatefunctions',['agregateFunctions',['../classrafe_1_1_group.html#a774b152485b449b377745da5967a598d',1,'rafe::Group::agregateFunctions()'],['../classrafe_1_1_hash_group.html#a26ed49743b63ae86b803e9fe725e72c1',1,'rafe::HashGroup::agregateFunctions()'],['../classrafe_1_1_sorted_group.html#a42df796f73825622fda8d4ff9d2b14eb',1,'rafe::SortedGroup::agregateFunctions()']]],
+  ['arguments',['arguments',['../classrafe_1_1_nnary_expression.html#af78598eb1a4c75a90204a85aa2292313',1,'rafe::NnaryExpression']]]
 ];

@@ -1,0 +1,243 @@
+\hypertarget{classrafe_1_1_algebra_compiler}{\section{rafe\+:\+:Algebra\+Compiler Class Reference}
+\label{classrafe_1_1_algebra_compiler}\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+}
+
+
+{\ttfamily \#include $<$Algebra\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Algebra\+Compiler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_algebra_compiler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_a43a2ccba61cff72a175c2fbd9c504c1d}{visit\+Table} (\hyperlink{classrafe_1_1_table}{Table} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_a429613557ab8740d498228cadeaee07b}{visit\+Sort} (\hyperlink{classrafe_1_1_sort}{Sort} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_ab910050702462e1437d148260d002e83}{visit\+Group} (\hyperlink{classrafe_1_1_group}{Group} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_a89500aa1af613d82e231cba44eb0ccae}{visit\+Column\+Operations} (\hyperlink{classrafe_1_1_column_operations}{Column\+Operations} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_ac74f4470af37f3a4d499bbfddf7aac9e}{visit\+Selection} (\hyperlink{classrafe_1_1_selection}{Selection} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_a630e5f3fa963acae177df4f04fe99f1c}{visit\+Join} (\hyperlink{classrafe_1_1_join}{Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_a605497973056e78786cdcf9ea621041c}{visit\+Anti\+Join} (\hyperlink{classrafe_1_1_anti_join}{Anti\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_a325833b8f33d540a299df55def890d12}{visit\+Union} (\hyperlink{classrafe_1_1_union}{Union} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_algebra_compiler_ab4eb22755e22796bf56cd03c0066b8b5}{visit\+Grouped\+Join} (\hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} $\ast$node)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classrafe_1_1_algebra_compiler_a022cd6fb926e97863aa302d8c85ba07c}{update\+Sort\+Parameters} (const \hyperlink{classrafe_1_1_possible_sort_parameters}{Possible\+Sort\+Parameters} \&possible\+Sort\+Parameters, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_physical_plan}{Physical\+Plan} $>$ \&new\+Plan, std\+::map$<$ int, \hyperlink{classrafe_1_1_column_info}{Column\+Info} $>$ \&new\+Columns)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{classrafe_1_1_physical_plan}{Physical\+Plan} $>$ $>$ \hyperlink{classrafe_1_1_algebra_compiler_a10ef60b632a1f593c0bbe3bbf5c3263c}{result}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const ulong \hyperlink{classrafe_1_1_algebra_compiler_afe381cc19b6dc860178b4a8783b51237}{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S} = 5
+\item 
+static const ulong \hyperlink{classrafe_1_1_algebra_compiler_a576956fab718e7571201ffa24934b000}{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M} = 5
+\item 
+static const ulong \hyperlink{classrafe_1_1_algebra_compiler_a19d056b84b6ee3621cf98d0d32bce141}{M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M} = 20
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which compiles relational algebra into physical plan. It uses from down to up method and it saves costant number of best plans for current subtree. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_algebra_compiler_a022cd6fb926e97863aa302d8c85ba07c}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!update\+Sort\+Parameters@{update\+Sort\+Parameters}}
+\index{update\+Sort\+Parameters@{update\+Sort\+Parameters}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{update\+Sort\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::update\+Sort\+Parameters (
+\begin{DoxyParamCaption}
+\item[{const {\bf Possible\+Sort\+Parameters} \&}]{possible\+Sort\+Parameters, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Physical\+Plan} $>$ \&}]{new\+Plan, }
+\item[{std\+::map$<$ int, {\bf Column\+Info} $>$ \&}]{new\+Columns}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_algebra_compiler_a022cd6fb926e97863aa302d8c85ba07c}
+From possible paramers remove columns, which aren't in new\+Columns and stores them into new\+Plan. 
+\begin{DoxyParams}{Parameters}
+{\em possible\+Sort\+Parameters} & -\/ parameters to update \\
+\hline
+{\em new\+Plan} & -\/ \hyperlink{classrafe_1_1_physical_plan}{Physical\+Plan}, where to store result \\
+\hline
+{\em new\+Columns} & -\/ columns which stays in parameters \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_algebra_compiler_a605497973056e78786cdcf9ea621041c}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Anti\+Join@{visit\+Anti\+Join}}
+\index{visit\+Anti\+Join@{visit\+Anti\+Join}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_a605497973056e78786cdcf9ea621041c}
+Visits \hyperlink{classrafe_1_1_anti_join}{Anti\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_anti_join}{Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a8b31789473135aff92e900a6a7765eda}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_a89500aa1af613d82e231cba44eb0ccae}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Column\+Operations@{visit\+Column\+Operations}}
+\index{visit\+Column\+Operations@{visit\+Column\+Operations}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Column\+Operations}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Column\+Operations (
+\begin{DoxyParamCaption}
+\item[{{\bf Column\+Operations} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_a89500aa1af613d82e231cba44eb0ccae}
+Visits \hyperlink{classrafe_1_1_column_operations}{Column\+Operations} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_column_operations}{Column\+Operations}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a518ce4d12f874a6c2f1fb0bb961144f8}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_ab910050702462e1437d148260d002e83}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Group@{visit\+Group}}
+\index{visit\+Group@{visit\+Group}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Group}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Group (
+\begin{DoxyParamCaption}
+\item[{{\bf Group} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_ab910050702462e1437d148260d002e83}
+Visits \hyperlink{classrafe_1_1_group}{Group} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_group}{Group}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a976d80987756215e71178f4c1863c6c7}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_ab4eb22755e22796bf56cd03c0066b8b5}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Grouped\+Join@{visit\+Grouped\+Join}}
+\index{visit\+Grouped\+Join@{visit\+Grouped\+Join}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Grouped\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Grouped\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Grouped\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_ab4eb22755e22796bf56cd03c0066b8b5}
+Visits \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a0715ce3279fa1edc6e472667e7739b57}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_a630e5f3fa963acae177df4f04fe99f1c}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Join@{visit\+Join}}
+\index{visit\+Join@{visit\+Join}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_a630e5f3fa963acae177df4f04fe99f1c}
+Visits \hyperlink{classrafe_1_1_join}{Join} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_join}{Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_ab499694bc7ccd718c6f7a5c4f3d33f1c}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_ac74f4470af37f3a4d499bbfddf7aac9e}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Selection@{visit\+Selection}}
+\index{visit\+Selection@{visit\+Selection}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Selection}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Selection (
+\begin{DoxyParamCaption}
+\item[{{\bf Selection} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_ac74f4470af37f3a4d499bbfddf7aac9e}
+Visits \hyperlink{classrafe_1_1_selection}{Selection} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_selection}{Selection}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a81f691749cb29da00bee299c617b9044}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_a429613557ab8740d498228cadeaee07b}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Sort@{visit\+Sort}}
+\index{visit\+Sort@{visit\+Sort}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Sort}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Sort (
+\begin{DoxyParamCaption}
+\item[{{\bf Sort} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_a429613557ab8740d498228cadeaee07b}
+Visits \hyperlink{classrafe_1_1_sort}{Sort} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_sort}{Sort}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a836e2efd8ac77071ad2487f9a5ae772d}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_a43a2ccba61cff72a175c2fbd9c504c1d}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Table@{visit\+Table}}
+\index{visit\+Table@{visit\+Table}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Table}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Table (
+\begin{DoxyParamCaption}
+\item[{{\bf Table} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_a43a2ccba61cff72a175c2fbd9c504c1d}
+Visits \hyperlink{classrafe_1_1_table}{Table} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_table}{Table}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a941798202c3a94d5b9884edc875ea88e}{rafe\+::\+Algebra\+Visitor}.
+
+\hypertarget{classrafe_1_1_algebra_compiler_a325833b8f33d540a299df55def890d12}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!visit\+Union@{visit\+Union}}
+\index{visit\+Union@{visit\+Union}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{visit\+Union}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Algebra\+Compiler\+::visit\+Union (
+\begin{DoxyParamCaption}
+\item[{{\bf Union} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_compiler_a325833b8f33d540a299df55def890d12}
+Visits \hyperlink{classrafe_1_1_union}{Union} element. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_union}{Union}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a1f8a7cae040f5918e562741a136bb096}{rafe\+::\+Algebra\+Visitor}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_algebra_compiler_a576956fab718e7571201ffa24934b000}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}}
+\index{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}]{\setlength{\rightskip}{0pt plus 5cm}const ulong rafe\+::\+Algebra\+Compiler\+::\+L\+I\+M\+I\+T\+\_\+\+F\+O\+R\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+J\+O\+I\+N\+\_\+\+O\+R\+D\+E\+R\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M = 5\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_algebra_compiler_a576956fab718e7571201ffa24934b000}
+Determines maximal number of inputs in group join to uses brute force join order algorithm. Otherwise greedy algorithm is used. \hypertarget{classrafe_1_1_algebra_compiler_a19d056b84b6ee3621cf98d0d32bce141}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}}
+\index{M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M@{M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M}]{\setlength{\rightskip}{0pt plus 5cm}const ulong rafe\+::\+Algebra\+Compiler\+::\+M\+A\+X\+\_\+\+H\+E\+A\+P\+\_\+\+S\+I\+Z\+E\+\_\+\+I\+N\+\_\+\+G\+R\+E\+E\+D\+Y\+\_\+\+A\+L\+G\+O\+R\+I\+T\+H\+M = 20\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_algebra_compiler_a19d056b84b6ee3621cf98d0d32bce141}
+Determines how many plans can be stored in greddy join algorithm. \hypertarget{classrafe_1_1_algebra_compiler_afe381cc19b6dc860178b4a8783b51237}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S}}
+\index{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S@{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S}]{\setlength{\rightskip}{0pt plus 5cm}const ulong rafe\+::\+Algebra\+Compiler\+::\+N\+U\+M\+B\+E\+R\+\_\+\+O\+F\+\_\+\+P\+L\+A\+N\+S = 5\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_algebra_compiler_afe381cc19b6dc860178b4a8783b51237}
+Determines what number of plans are used from visited subtree. \hypertarget{classrafe_1_1_algebra_compiler_a10ef60b632a1f593c0bbe3bbf5c3263c}{\index{rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}!result@{result}}
+\index{result@{result}!rafe\+::\+Algebra\+Compiler@{rafe\+::\+Algebra\+Compiler}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Physical\+Plan}$>$ $>$ rafe\+::\+Algebra\+Compiler\+::result}}\label{classrafe_1_1_algebra_compiler_a10ef60b632a1f593c0bbe3bbf5c3263c}
+Stores plans after processing subtree. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Compiler.\+cpp\end{DoxyCompactItemize}

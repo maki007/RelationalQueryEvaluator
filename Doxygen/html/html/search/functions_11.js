@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['unaryalgebranodebase',['UnaryAlgebraNodeBase',['../class_unary_algebra_node_base.html#a61929152fac70f4ee299452bcae9ce7d',1,'UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()'],['../class_unary_algebra_node_base.html#a557e3eb8be4cc10c3febe5c3d8918c86',1,'UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement *element)']]],
-  ['unaryexpression',['UnaryExpression',['../class_unary_expression.html#aca5476e9c2604e9d4a9d3f7bf5d8e024',1,'UnaryExpression::UnaryExpression(DOMElement *node, UnaryOperator op)'],['../class_unary_expression.html#a4a5ac8375de2f7bdf2e787bd4d19363c',1,'UnaryExpression::UnaryExpression(std::shared_ptr&lt; Expression &gt; node, UnaryOperator op)']]],
-  ['unclusteredscan',['unClusteredScan',['../class_time_complexity.html#a9b9a3434b75473198bf7e2c0c4ec2e80',1,'TimeComplexity']]],
-  ['union',['Union',['../class_union.html#a092a85229eefb0a218bec53bd12b9433',1,'Union::Union()'],['../class_time_complexity.html#a72b8fafa9b22122ef78b68deb09678e1',1,'TimeComplexity::Union()']]],
-  ['updatesortparameters',['updateSortParameters',['../class_algebra_compiler.html#a64b17061a41e21787cb35572b60d826d',1,'AlgebraCompiler']]]
+  ['unaryalgebranodebase',['UnaryAlgebraNodeBase',['../classrafe_1_1_unary_algebra_node_base.html#a26d7a253735fefa024015a6f2dc91052',1,'rafe::UnaryAlgebraNodeBase::UnaryAlgebraNodeBase()'],['../classrafe_1_1_unary_algebra_node_base.html#ace21dbea5b5612e87017caeb2cb86681',1,'rafe::UnaryAlgebraNodeBase::UnaryAlgebraNodeBase(DOMElement *element)']]],
+  ['unaryexpression',['UnaryExpression',['../classrafe_1_1_unary_expression.html#ad2440e66133fa32af4fc4a25606890df',1,'rafe::UnaryExpression::UnaryExpression(DOMElement *node, UnaryOperator op)'],['../classrafe_1_1_unary_expression.html#abf627e7d906dece74f1e30df756fba29',1,'rafe::UnaryExpression::UnaryExpression(std::shared_ptr&lt; Expression &gt; node, UnaryOperator op)']]],
+  ['unclusteredscan',['unClusteredScan',['../classrafe_1_1_time_complexity.html#ac1a90dbd5e6bc85cf86cc068163be63d',1,'rafe::TimeComplexity']]],
+  ['union',['Union',['../classrafe_1_1_union.html#ac5bceb1e05418567ffbcdb8dd5ad7baf',1,'rafe::Union::Union()'],['../classrafe_1_1_time_complexity.html#a1c726c82563a19dc05320c2c9fd9895f',1,'rafe::TimeComplexity::Union()']]],
+  ['updatesortparameters',['updateSortParameters',['../classrafe_1_1_algebra_compiler.html#a022cd6fb926e97863aa302d8c85ba07c',1,'rafe::AlgebraCompiler']]]
 ];

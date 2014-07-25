@@ -404,7 +404,7 @@ namespace rafe {
 		* Creates new instance of ColumnsOperationsOperator.
 		* @param operations - information about output and new computed columns.
 		*/
-		ColumnsOperationsOperator::ColumnsOperationsOperator(const std::vector<ColumnOperation> & operations);
+		ColumnsOperationsOperator(const std::vector<ColumnOperation> & operations);
 
 		void accept(PhysicalOperatorVisitor &v);
 	};
@@ -423,7 +423,7 @@ namespace rafe {
 		* @param name of table to read.
 		* @param index - index to user for reading.
 		*/
-		ScanAndSortByIndex::ScanAndSortByIndex(const std::string & name, const Index & index);
+		ScanAndSortByIndex(const std::string & name, const Index & index);
 
 		void accept(PhysicalOperatorVisitor &v);
 	};

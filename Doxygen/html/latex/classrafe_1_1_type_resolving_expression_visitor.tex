@@ -1,0 +1,147 @@
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor}{\section{rafe\+:\+:Type\+Resolving\+Expression\+Visitor Class Reference}
+\label{classrafe_1_1_type_resolving_expression_visitor}\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Type\+Resolving\+Expression\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_type_resolving_expression_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classrafe_1_1_type_resolving_expression_visitor_ae14bae4b659f64615fc38c996828e19d}{visit\+Unary\+Expression} (\hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a3a46e7e142337f41960395c8e1fc773a}{visit\+Binary\+Expression} (\hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a78e0e725ec8c3add1156949df6a86252}{visit\+Nnary\+Expression} (\hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_type_resolving_expression_visitor_af4d0c76b55893e462c12ce165dcb4275}{visit\+Constant} (\hyperlink{classrafe_1_1_constant}{Constant} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a89cc0145ce0d723da377fac1996067bf}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a08c282c4872c03ee57f361e1f0843566}{visit\+Grouped\+Expression} (\hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a89f5d454f299419db21ba84e283c6229}{result\+Type}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor make simple type analysis. It assumes that all types are correct and after expression visit, there will be stored type of whole expression in variable result\+Type. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor_a3a46e7e142337f41960395c8e1fc773a}{\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
+\index{visit\+Binary\+Expression@{visit\+Binary\+Expression}!rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{visit\+Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Type\+Resolving\+Expression\+Visitor\+::visit\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_type_resolving_expression_visitor_a3a46e7e142337f41960395c8e1fc773a}
+Visits \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a63e53276af3a22d3592f34d05ba97014}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor_a89cc0145ce0d723da377fac1996067bf}{\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Type\+Resolving\+Expression\+Visitor\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_type_resolving_expression_visitor_a89cc0145ce0d723da377fac1996067bf}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor_af4d0c76b55893e462c12ce165dcb4275}{\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}!visit\+Constant@{visit\+Constant}}
+\index{visit\+Constant@{visit\+Constant}!rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{visit\+Constant}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Type\+Resolving\+Expression\+Visitor\+::visit\+Constant (
+\begin{DoxyParamCaption}
+\item[{{\bf Constant} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_type_resolving_expression_visitor_af4d0c76b55893e462c12ce165dcb4275}
+Visits \hyperlink{classrafe_1_1_constant}{Constant} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_constant}{Constant}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_af934111c6881f9f6c3ef3aa51425b9ff}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor_a08c282c4872c03ee57f361e1f0843566}{\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}!visit\+Grouped\+Expression@{visit\+Grouped\+Expression}}
+\index{visit\+Grouped\+Expression@{visit\+Grouped\+Expression}!rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{visit\+Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Type\+Resolving\+Expression\+Visitor\+::visit\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Grouped\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_type_resolving_expression_visitor_a08c282c4872c03ee57f361e1f0843566}
+Visits \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a76226ab9d571ed7eaf80d2ed7153791c}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor_a78e0e725ec8c3add1156949df6a86252}{\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}!visit\+Nnary\+Expression@{visit\+Nnary\+Expression}}
+\index{visit\+Nnary\+Expression@{visit\+Nnary\+Expression}!rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{visit\+Nnary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Type\+Resolving\+Expression\+Visitor\+::visit\+Nnary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Nnary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_type_resolving_expression_visitor_a78e0e725ec8c3add1156949df6a86252}
+Visits \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a32f89977f780ccb8aabe5afa1fa42d45}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor_ae14bae4b659f64615fc38c996828e19d}{\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}!visit\+Unary\+Expression@{visit\+Unary\+Expression}}
+\index{visit\+Unary\+Expression@{visit\+Unary\+Expression}!rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{visit\+Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Type\+Resolving\+Expression\+Visitor\+::visit\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_type_resolving_expression_visitor_ae14bae4b659f64615fc38c996828e19d}
+Visits \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a439348ee979dff26c30707f1ef499e8c}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_type_resolving_expression_visitor_a89f5d454f299419db21ba84e283c6229}{\index{rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}!result\+Type@{result\+Type}}
+\index{result\+Type@{result\+Type}!rafe\+::\+Type\+Resolving\+Expression\+Visitor@{rafe\+::\+Type\+Resolving\+Expression\+Visitor}}
+\subsubsection[{result\+Type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Type\+Resolving\+Expression\+Visitor\+::result\+Type}}\label{classrafe_1_1_type_resolving_expression_visitor_a89f5d454f299419db21ba84e283c6229}
+Visited expression type. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

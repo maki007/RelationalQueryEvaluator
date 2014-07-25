@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['index',['Index',['../class_index.html',1,'']]],
-  ['indexscan',['IndexScan',['../class_index_scan.html',1,'']]]
+  ['index',['Index',['../classrafe_1_1_index.html',1,'rafe']]],
+  ['indexscan',['IndexScan',['../classrafe_1_1_index_scan.html',1,'rafe']]]
 ];

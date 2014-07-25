@@ -1,0 +1,50 @@
+\hypertarget{classrafe_1_1_nullary_physical_operator}{\section{rafe\+:\+:Nullary\+Physical\+Operator Class Reference}
+\label{classrafe_1_1_nullary_physical_operator}\index{rafe\+::\+Nullary\+Physical\+Operator@{rafe\+::\+Nullary\+Physical\+Operator}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Nullary\+Physical\+Operator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.962963cm]{classrafe_1_1_nullary_physical_operator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classrafe_1_1_nullary_physical_operator_a0810fc4b368521ebe847fa48fcdcf948}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)=0
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Base class for operators with no input. It is used for leafs like read table, read table by index and index scan. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_nullary_physical_operator_a0810fc4b368521ebe847fa48fcdcf948}{\index{rafe\+::\+Nullary\+Physical\+Operator@{rafe\+::\+Nullary\+Physical\+Operator}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Nullary\+Physical\+Operator@{rafe\+::\+Nullary\+Physical\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}virtual void rafe\+::\+Nullary\+Physical\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_nullary_physical_operator_a0810fc4b368521ebe847fa48fcdcf948}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_physical_operator_a263a89f54604263cea897c5adf8944a3}{rafe\+::\+Physical\+Operator}.
+
+
+
+Implemented in \hyperlink{classrafe_1_1_index_scan_a5e4e26317258097176b3b3b241653302}{rafe\+::\+Index\+Scan}, \hyperlink{classrafe_1_1_table_scan_a87cd9f9b093f153bd95b39bc3ea18678}{rafe\+::\+Table\+Scan}, and \hyperlink{classrafe_1_1_scan_and_sort_by_index_aabb5d931b679a14bde40a1928ac10a52}{rafe\+::\+Scan\+And\+Sort\+By\+Index}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\end{DoxyCompactItemize}

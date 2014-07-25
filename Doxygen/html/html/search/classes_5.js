@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['filter',['Filter',['../class_filter.html',1,'']]],
-  ['filterkeepingorder',['FilterKeepingOrder',['../class_filter_keeping_order.html',1,'']]]
+  ['filter',['Filter',['../classrafe_1_1_filter.html',1,'rafe']]],
+  ['filterkeepingorder',['FilterKeepingOrder',['../classrafe_1_1_filter_keeping_order.html',1,'rafe']]]
 ];

@@ -24,14 +24,14 @@ XERCES_CPP_NAMESPACE_USE
 namespace rafe {
 
 	/**
-	* Static class providing methods for helping reading dom.
+	* Static class providing methods for helping reading DOM tree.
 	*/
 	class XmlUtils
 	{
 	public:
 
 		/**
-		* Return elemenet child, which name matches given value.
+		* Returns elemenet child, which name matches given value.
 		* @param element - element, which return child from
 		* @param elementName - child element name
 		* @returns child element matching elementName

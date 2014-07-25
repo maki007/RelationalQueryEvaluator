@@ -1,0 +1,315 @@
+\hypertarget{classrafe_1_1_time_complexity}{\section{rafe\+:\+:Time\+Complexity Class Reference}
+\label{classrafe_1_1_time_complexity}\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a92e530c62d1ea5131658ad8b75ce269c}{sort} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a213521a1bd8902f5a6bafd8272444b69}{filter} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a8e1059138aa9347020503e3efaaf1d2e}{filter\+Keppeing\+Order} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a13baf21bbf65cb0eaba96da279794747}{clustered\+Scan} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_ac1a90dbd5e6bc85cf86cc068163be63d}{un\+Clustered\+Scan} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a6a18620dfff08ab4c5e917ec8f2e1cc3}{index\+Search} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_aa7bd60f08b00b9a7f63f0ee6f3c17443}{hash} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a2d5b4abf7cb451d1bad4495228b407e7}{sorted\+Group} (double size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_addebc0edb7658eff5e4ddb8624339277}{aggregate} (double size, ulong number\+Ofagregate\+Functions)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a141b78f3bc3303bc16c25a052d86c7ab}{hash\+Join} (double hash\+Size, double read\+Size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a8cf14789777cd6cd1cd1a982613d6250}{merge\+Equi\+Join} (double left\+Size, double right\+Size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a9c03ff5156a8f8c2c9f6102d6099a5aa}{merge\+Equi\+Non\+Join} (double left\+Size, double right\+Size, double final\+Size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a1c726c82563a19dc05320c2c9fd9895f}{Union} (double left\+Size, double right\+Size)
+\item 
+static double \hyperlink{classrafe_1_1_time_complexity_a5737c1cc857b5c74a6598e1f87b6ca83}{cross\+Join} (double left\+Size, double right\+Size)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a7fbcf1745878b423e54d5d42efe13154}{U\+N\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N} = 3.\+0
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a9801e942ee0c40046ceb756c07dc92cc}{C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N} = 1.\+0
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a4400cd269924110e53d97b3e074de846}{S\+O\+R\+T} = 2.\+0
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a0a177ac807f6258a6e2b53e0fb86a482}{S\+O\+R\+T\+E\+D\+\_\+\+G\+R\+O\+U\+P} = 1
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_acc03b3c0cae3944fbb8d93db0c668eea}{H\+A\+S\+H} = 10
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_aa0625dabba1b84acbfd3bccb292e4ff6}{F\+I\+L\+T\+E\+R} = 1
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a0e8e454747c5a1bacc5f0d0753c54819}{F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+I\+N\+G\+\_\+\+O\+R\+D\+E\+R} = 1.\+3
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_aa0e26e3055e00e90b601428b0ad74e7e}{I\+N\+D\+E\+X\+\_\+\+S\+E\+A\+R\+C\+H} = 6
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a4a637f321994988a43c70987319deeb0}{A\+G\+G\+R\+E\+G\+A\+T\+E} = 0.\+3
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a61e08b141c8e61b50a980efc48d05cc2}{R\+E\+A\+D\+\_\+\+H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E} = 8
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a80c58870ea145943f70db0d09375efda}{U\+N\+I\+O\+N} = 0.\+3
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_af640f31f8fa80c928f0a1cd6c819443c}{C\+R\+O\+S\+S\+\_\+\+J\+O\+I\+N} = 1
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_a68dde40140a8dfc63a2b74308c6884cd}{M\+E\+R\+G\+E\+\_\+\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N} = 0.\+2
+\item 
+static const double \hyperlink{classrafe_1_1_time_complexity_aed73c88d72629bb341ed639edf5e255b}{M\+E\+R\+G\+E\+\_\+\+N\+O\+N\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Static class, which contains only constants and functions for computing time complexity of physical operators. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_time_complexity_addebc0edb7658eff5e4ddb8624339277}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!aggregate@{aggregate}}
+\index{aggregate@{aggregate}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{aggregate}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::aggregate (
+\begin{DoxyParamCaption}
+\item[{double}]{size, }
+\item[{ulong}]{number\+Ofagregate\+Functions}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_addebc0edb7658eff5e4ddb8624339277}
+Computes time complexity of computing agregate functions. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of relation. \\
+\hline
+{\em number\+Ofagregate\+Functions} & -\/ number of functions to compute. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a13baf21bbf65cb0eaba96da279794747}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!clustered\+Scan@{clustered\+Scan}}
+\index{clustered\+Scan@{clustered\+Scan}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{clustered\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::clustered\+Scan (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a13baf21bbf65cb0eaba96da279794747}
+Computes time complexity of scanning table with clusstered index. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of table or part of table to scan. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a5737c1cc857b5c74a6598e1f87b6ca83}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!cross\+Join@{cross\+Join}}
+\index{cross\+Join@{cross\+Join}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{cross\+Join}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::cross\+Join (
+\begin{DoxyParamCaption}
+\item[{double}]{left\+Size, }
+\item[{double}]{right\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a5737c1cc857b5c74a6598e1f87b6ca83}
+Computes time complexity of cross join. 
+\begin{DoxyParams}{Parameters}
+{\em left\+Size} & -\/ size of first input. \\
+\hline
+{\em right\+Size} & -\/ size of second input. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a213521a1bd8902f5a6bafd8272444b69}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!filter@{filter}}
+\index{filter@{filter}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{filter}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::filter (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a213521a1bd8902f5a6bafd8272444b69}
+Computes time complexity of filter operator. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of relation to filter. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a8e1059138aa9347020503e3efaaf1d2e}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!filter\+Keppeing\+Order@{filter\+Keppeing\+Order}}
+\index{filter\+Keppeing\+Order@{filter\+Keppeing\+Order}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{filter\+Keppeing\+Order}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::filter\+Keppeing\+Order (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a8e1059138aa9347020503e3efaaf1d2e}
+Computes time complexity of filter\+Keeping\+Order operator. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of relation to filter. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_aa7bd60f08b00b9a7f63f0ee6f3c17443}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!hash@{hash}}
+\index{hash@{hash}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{hash}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::hash (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_aa7bd60f08b00b9a7f63f0ee6f3c17443}
+Computes time complexity of hashing table. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of relation to hash. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a141b78f3bc3303bc16c25a052d86c7ab}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!hash\+Join@{hash\+Join}}
+\index{hash\+Join@{hash\+Join}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{hash\+Join}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::hash\+Join (
+\begin{DoxyParamCaption}
+\item[{double}]{hash\+Size, }
+\item[{double}]{read\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a141b78f3bc3303bc16c25a052d86c7ab}
+Computes time complexity of hashequijoin. 
+\begin{DoxyParams}{Parameters}
+{\em hash\+Size} & -\/ size of hashed input. \\
+\hline
+{\em read\+Size} & -\/ size of not hashed input. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a6a18620dfff08ab4c5e917ec8f2e1cc3}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!index\+Search@{index\+Search}}
+\index{index\+Search@{index\+Search}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{index\+Search}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::index\+Search (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a6a18620dfff08ab4c5e917ec8f2e1cc3}
+Computes time complexity of finding row with index. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of table or part of table to search. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a8cf14789777cd6cd1cd1a982613d6250}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!merge\+Equi\+Join@{merge\+Equi\+Join}}
+\index{merge\+Equi\+Join@{merge\+Equi\+Join}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{merge\+Equi\+Join}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::merge\+Equi\+Join (
+\begin{DoxyParamCaption}
+\item[{double}]{left\+Size, }
+\item[{double}]{right\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a8cf14789777cd6cd1cd1a982613d6250}
+Computes time complexity of mergeequijoin. 
+\begin{DoxyParams}{Parameters}
+{\em left\+Size} & -\/ size of first input. \\
+\hline
+{\em right\+Size} & -\/ size of second input. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a9c03ff5156a8f8c2c9f6102d6099a5aa}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!merge\+Equi\+Non\+Join@{merge\+Equi\+Non\+Join}}
+\index{merge\+Equi\+Non\+Join@{merge\+Equi\+Non\+Join}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{merge\+Equi\+Non\+Join}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::merge\+Equi\+Non\+Join (
+\begin{DoxyParamCaption}
+\item[{double}]{left\+Size, }
+\item[{double}]{right\+Size, }
+\item[{double}]{final\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a9c03ff5156a8f8c2c9f6102d6099a5aa}
+Computes time of merge join evaluation condition a1$<$b$<$a2, where a belongs to first input and b to second input. 
+\begin{DoxyParams}{Parameters}
+{\em left\+Size} & -\/ size of first input. \\
+\hline
+{\em right\+Size} & -\/ size of second input. \\
+\hline
+{\em final\+Size} & -\/ size of result. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a92e530c62d1ea5131658ad8b75ce269c}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!sort@{sort}}
+\index{sort@{sort}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{sort}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::sort (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a92e530c62d1ea5131658ad8b75ce269c}
+Computes time complexity of sort operator. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of relation to sort. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a2d5b4abf7cb451d1bad4495228b407e7}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!sorted\+Group@{sorted\+Group}}
+\index{sorted\+Group@{sorted\+Group}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{sorted\+Group}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::sorted\+Group (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a2d5b4abf7cb451d1bad4495228b407e7}
+Computes time complexity of grouping sorted table. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of intput relation. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_ac1a90dbd5e6bc85cf86cc068163be63d}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!un\+Clustered\+Scan@{un\+Clustered\+Scan}}
+\index{un\+Clustered\+Scan@{un\+Clustered\+Scan}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{un\+Clustered\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::un\+Clustered\+Scan (
+\begin{DoxyParamCaption}
+\item[{double}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_ac1a90dbd5e6bc85cf86cc068163be63d}
+Computes time complexity of scanning table with unclusstered index. 
+\begin{DoxyParams}{Parameters}
+{\em size} & -\/ size of table or part of table to scan. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_time_complexity_a1c726c82563a19dc05320c2c9fd9895f}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!Union@{Union}}
+\index{Union@{Union}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{Union}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Time\+Complexity\+::\+Union (
+\begin{DoxyParamCaption}
+\item[{double}]{left\+Size, }
+\item[{double}]{right\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a1c726c82563a19dc05320c2c9fd9895f}
+Computes time complexity of union. 
+\begin{DoxyParams}{Parameters}
+{\em left\+Size} & -\/ size of first input. \\
+\hline
+{\em right\+Size} & -\/ size of second input. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_time_complexity_a4a637f321994988a43c70987319deeb0}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!A\+G\+G\+R\+E\+G\+A\+T\+E@{A\+G\+G\+R\+E\+G\+A\+T\+E}}
+\index{A\+G\+G\+R\+E\+G\+A\+T\+E@{A\+G\+G\+R\+E\+G\+A\+T\+E}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{A\+G\+G\+R\+E\+G\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+A\+G\+G\+R\+E\+G\+A\+T\+E = 0.\+3\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a4a637f321994988a43c70987319deeb0}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of computing agregate functions. \hypertarget{classrafe_1_1_time_complexity_a9801e942ee0c40046ceb756c07dc92cc}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N@{C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N}}
+\index{C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N@{C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N = 1.\+0\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a9801e942ee0c40046ceb756c07dc92cc}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of clustered scan. \hypertarget{classrafe_1_1_time_complexity_af640f31f8fa80c928f0a1cd6c819443c}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!C\+R\+O\+S\+S\+\_\+\+J\+O\+I\+N@{C\+R\+O\+S\+S\+\_\+\+J\+O\+I\+N}}
+\index{C\+R\+O\+S\+S\+\_\+\+J\+O\+I\+N@{C\+R\+O\+S\+S\+\_\+\+J\+O\+I\+N}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{C\+R\+O\+S\+S\+\_\+\+J\+O\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+C\+R\+O\+S\+S\+\_\+\+J\+O\+I\+N = 1\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_af640f31f8fa80c928f0a1cd6c819443c}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of cross join. \hypertarget{classrafe_1_1_time_complexity_aa0625dabba1b84acbfd3bccb292e4ff6}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!F\+I\+L\+T\+E\+R@{F\+I\+L\+T\+E\+R}}
+\index{F\+I\+L\+T\+E\+R@{F\+I\+L\+T\+E\+R}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{F\+I\+L\+T\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+F\+I\+L\+T\+E\+R = 1\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_aa0625dabba1b84acbfd3bccb292e4ff6}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of filter. \hypertarget{classrafe_1_1_time_complexity_a0e8e454747c5a1bacc5f0d0753c54819}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+I\+N\+G\+\_\+\+O\+R\+D\+E\+R@{F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+I\+N\+G\+\_\+\+O\+R\+D\+E\+R}}
+\index{F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+I\+N\+G\+\_\+\+O\+R\+D\+E\+R@{F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+I\+N\+G\+\_\+\+O\+R\+D\+E\+R}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+I\+N\+G\+\_\+\+O\+R\+D\+E\+R}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+F\+I\+L\+T\+E\+R\+\_\+\+K\+E\+E\+P\+I\+N\+G\+\_\+\+O\+R\+D\+E\+R = 1.\+3\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a0e8e454747c5a1bacc5f0d0753c54819}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of filter keeping order. \hypertarget{classrafe_1_1_time_complexity_acc03b3c0cae3944fbb8d93db0c668eea}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!H\+A\+S\+H@{H\+A\+S\+H}}
+\index{H\+A\+S\+H@{H\+A\+S\+H}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{H\+A\+S\+H}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+H\+A\+S\+H = 10\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_acc03b3c0cae3944fbb8d93db0c668eea}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of hashing relation. \hypertarget{classrafe_1_1_time_complexity_aa0e26e3055e00e90b601428b0ad74e7e}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!I\+N\+D\+E\+X\+\_\+\+S\+E\+A\+R\+C\+H@{I\+N\+D\+E\+X\+\_\+\+S\+E\+A\+R\+C\+H}}
+\index{I\+N\+D\+E\+X\+\_\+\+S\+E\+A\+R\+C\+H@{I\+N\+D\+E\+X\+\_\+\+S\+E\+A\+R\+C\+H}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{I\+N\+D\+E\+X\+\_\+\+S\+E\+A\+R\+C\+H}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+I\+N\+D\+E\+X\+\_\+\+S\+E\+A\+R\+C\+H = 6\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_aa0e26e3055e00e90b601428b0ad74e7e}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of index search. \hypertarget{classrafe_1_1_time_complexity_a68dde40140a8dfc63a2b74308c6884cd}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!M\+E\+R\+G\+E\+\_\+\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N@{M\+E\+R\+G\+E\+\_\+\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N}}
+\index{M\+E\+R\+G\+E\+\_\+\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N@{M\+E\+R\+G\+E\+\_\+\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{M\+E\+R\+G\+E\+\_\+\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+M\+E\+R\+G\+E\+\_\+\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N = 0.\+2\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a68dde40140a8dfc63a2b74308c6884cd}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of merge equi join. \hypertarget{classrafe_1_1_time_complexity_aed73c88d72629bb341ed639edf5e255b}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!M\+E\+R\+G\+E\+\_\+\+N\+O\+N\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N@{M\+E\+R\+G\+E\+\_\+\+N\+O\+N\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N}}
+\index{M\+E\+R\+G\+E\+\_\+\+N\+O\+N\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N@{M\+E\+R\+G\+E\+\_\+\+N\+O\+N\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{M\+E\+R\+G\+E\+\_\+\+N\+O\+N\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+M\+E\+R\+G\+E\+\_\+\+N\+O\+N\+E\+Q\+U\+I\+\_\+\+J\+O\+I\+N = 1\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_aed73c88d72629bb341ed639edf5e255b}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of mergejoin joining by condition a1$<$b$<$a2. \hypertarget{classrafe_1_1_time_complexity_a61e08b141c8e61b50a980efc48d05cc2}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!R\+E\+A\+D\+\_\+\+H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E@{R\+E\+A\+D\+\_\+\+H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E}}
+\index{R\+E\+A\+D\+\_\+\+H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E@{R\+E\+A\+D\+\_\+\+H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+R\+E\+A\+D\+\_\+\+H\+A\+S\+H\+\_\+\+T\+A\+B\+L\+E = 8\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a61e08b141c8e61b50a980efc48d05cc2}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of reading hash table. \hypertarget{classrafe_1_1_time_complexity_a4400cd269924110e53d97b3e074de846}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!S\+O\+R\+T@{S\+O\+R\+T}}
+\index{S\+O\+R\+T@{S\+O\+R\+T}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{S\+O\+R\+T}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+S\+O\+R\+T = 2.\+0\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a4400cd269924110e53d97b3e074de846}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of sort. \hypertarget{classrafe_1_1_time_complexity_a0a177ac807f6258a6e2b53e0fb86a482}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!S\+O\+R\+T\+E\+D\+\_\+\+G\+R\+O\+U\+P@{S\+O\+R\+T\+E\+D\+\_\+\+G\+R\+O\+U\+P}}
+\index{S\+O\+R\+T\+E\+D\+\_\+\+G\+R\+O\+U\+P@{S\+O\+R\+T\+E\+D\+\_\+\+G\+R\+O\+U\+P}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{S\+O\+R\+T\+E\+D\+\_\+\+G\+R\+O\+U\+P}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+S\+O\+R\+T\+E\+D\+\_\+\+G\+R\+O\+U\+P = 1\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a0a177ac807f6258a6e2b53e0fb86a482}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of grouping sorted relation. \hypertarget{classrafe_1_1_time_complexity_a7fbcf1745878b423e54d5d42efe13154}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!U\+N\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N@{U\+N\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N}}
+\index{U\+N\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N@{U\+N\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{U\+N\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+U\+N\+C\+L\+U\+S\+T\+E\+R\+E\+D\+\_\+\+S\+C\+A\+N = 3.\+0\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a7fbcf1745878b423e54d5d42efe13154}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of unclustered scan. \hypertarget{classrafe_1_1_time_complexity_a80c58870ea145943f70db0d09375efda}{\index{rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}!U\+N\+I\+O\+N@{U\+N\+I\+O\+N}}
+\index{U\+N\+I\+O\+N@{U\+N\+I\+O\+N}!rafe\+::\+Time\+Complexity@{rafe\+::\+Time\+Complexity}}
+\subsubsection[{U\+N\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}const double rafe\+::\+Time\+Complexity\+::\+U\+N\+I\+O\+N = 0.\+3\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_time_complexity_a80c58870ea145943f70db0d09375efda}
+\hyperlink{classrafe_1_1_constant}{Constant} determining speed of unin. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

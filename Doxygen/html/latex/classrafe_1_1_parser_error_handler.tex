@@ -1,0 +1,116 @@
+\hypertarget{classrafe_1_1_parser_error_handler}{\section{rafe\+:\+:Parser\+Error\+Handler Class Reference}
+\label{classrafe_1_1_parser_error_handler}\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+}
+
+
+{\ttfamily \#include $<$Xml\+Handler.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Parser\+Error\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_parser_error_handler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_parser_error_handler_a875a6ac56b59145378d4b2685f84ecb9}{Parser\+Error\+Handler} ()
+\item 
+void \hyperlink{classrafe_1_1_parser_error_handler_ab9807d119bb60ca2252ccdeac17637b8}{report\+Parse\+Exception} (const S\+A\+X\+Parse\+Exception \&ex)
+\item 
+void \hyperlink{classrafe_1_1_parser_error_handler_ab14d4e9a800f22af2698f13a3801a280}{warning} (const S\+A\+X\+Parse\+Exception \&ex)
+\item 
+void \hyperlink{classrafe_1_1_parser_error_handler_a974066afd1bef8087e80b4f075b7f0c2}{error} (const S\+A\+X\+Parse\+Exception \&ex)
+\item 
+void \hyperlink{classrafe_1_1_parser_error_handler_a55b044feacb8f734c08509be5d02c29d}{fatal\+Error} (const S\+A\+X\+Parse\+Exception \&ex)
+\item 
+void \hyperlink{classrafe_1_1_parser_error_handler_a02398bf9ec9b0bb9e772b5ffed1a3cdb}{reset\+Errors} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classrafe_1_1_parser_error_handler_aee43a1438f6c79430cad5776220938ce}{errors}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Doma parser error handler. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_parser_error_handler_a875a6ac56b59145378d4b2685f84ecb9}{\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}!Parser\+Error\+Handler@{Parser\+Error\+Handler}}
+\index{Parser\+Error\+Handler@{Parser\+Error\+Handler}!rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+\subsubsection[{Parser\+Error\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Parser\+Error\+Handler\+::\+Parser\+Error\+Handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_parser_error_handler_a875a6ac56b59145378d4b2685f84ecb9}
+Creates new instance of \hyperlink{classrafe_1_1_parser_error_handler}{Parser\+Error\+Handler}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_parser_error_handler_a974066afd1bef8087e80b4f075b7f0c2}{\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}!error@{error}}
+\index{error@{error}!rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Parser\+Error\+Handler\+::error (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_parser_error_handler_a974066afd1bef8087e80b4f075b7f0c2}
+Reports error. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported error. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_parser_error_handler_a55b044feacb8f734c08509be5d02c29d}{\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}!fatal\+Error@{fatal\+Error}}
+\index{fatal\+Error@{fatal\+Error}!rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+\subsubsection[{fatal\+Error}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Parser\+Error\+Handler\+::fatal\+Error (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_parser_error_handler_a55b044feacb8f734c08509be5d02c29d}
+Reports fatal error. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported error. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_parser_error_handler_ab9807d119bb60ca2252ccdeac17637b8}{\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}!report\+Parse\+Exception@{report\+Parse\+Exception}}
+\index{report\+Parse\+Exception@{report\+Parse\+Exception}!rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+\subsubsection[{report\+Parse\+Exception}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Parser\+Error\+Handler\+::report\+Parse\+Exception (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_parser_error_handler_ab9807d119bb60ca2252ccdeac17637b8}
+Reports S\+A\+X\+Parse\+Exception. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported exception \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_parser_error_handler_a02398bf9ec9b0bb9e772b5ffed1a3cdb}{\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}!reset\+Errors@{reset\+Errors}}
+\index{reset\+Errors@{reset\+Errors}!rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+\subsubsection[{reset\+Errors}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Parser\+Error\+Handler\+::reset\+Errors (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_parser_error_handler_a02398bf9ec9b0bb9e772b5ffed1a3cdb}
+Resets reported errors. \hypertarget{classrafe_1_1_parser_error_handler_ab14d4e9a800f22af2698f13a3801a280}{\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}!warning@{warning}}
+\index{warning@{warning}!rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+\subsubsection[{warning}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Parser\+Error\+Handler\+::warning (
+\begin{DoxyParamCaption}
+\item[{const S\+A\+X\+Parse\+Exception \&}]{ex}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_parser_error_handler_ab14d4e9a800f22af2698f13a3801a280}
+Reports warning. 
+\begin{DoxyParams}{Parameters}
+{\em ex} & -\/ reported warning. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_parser_error_handler_aee43a1438f6c79430cad5776220938ce}{\index{rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}!errors@{errors}}
+\index{errors@{errors}!rafe\+::\+Parser\+Error\+Handler@{rafe\+::\+Parser\+Error\+Handler}}
+\subsubsection[{errors}]{\setlength{\rightskip}{0pt plus 5cm}int rafe\+::\+Parser\+Error\+Handler\+::errors}}\label{classrafe_1_1_parser_error_handler_aee43a1438f6c79430cad5776220938ce}
+Stores number of errors. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Xml\+Handler.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Xml\+Handler.\+cpp\end{DoxyCompactItemize}

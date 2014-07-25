@@ -1,0 +1,79 @@
+\hypertarget{classrafe_1_1_join}{\section{rafe\+:\+:Join Class Reference}
+\label{classrafe_1_1_join}\index{rafe\+::\+Join@{rafe\+::\+Join}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Join\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_join}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_join_a5fb8f205a20616da647526b62d7e75d4}{Join} (D\+O\+M\+Element $\ast$element)
+\item 
+void \hyperlink{classrafe_1_1_join_a980b203f7b31b44fc564c996fcf28e98}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_join_a77107b49ea977bec841828886bbad392}{condition}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} $>$ \hyperlink{classrafe_1_1_join_aea03cf876f6e1b4eab27c07492e103bf}{output\+Join\+Columns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents binary join operation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_join_a5fb8f205a20616da647526b62d7e75d4}{\index{rafe\+::\+Join@{rafe\+::\+Join}!Join@{Join}}
+\index{Join@{Join}!rafe\+::\+Join@{rafe\+::\+Join}}
+\subsubsection[{Join}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Join\+::\+Join (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_join_a5fb8f205a20616da647526b62d7e75d4}
+Creates the instance of \hyperlink{classrafe_1_1_join}{Join}. 
+\begin{DoxyParams}{Parameters}
+{\em element} & representing input node. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_join_a980b203f7b31b44fc564c996fcf28e98}{\index{rafe\+::\+Join@{rafe\+::\+Join}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Join@{rafe\+::\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_join_a980b203f7b31b44fc564c996fcf28e98}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_binary_algebra_node_base_a0c9c2fdbd7062bf0bf4587b9abc493b2}{rafe\+::\+Binary\+Algebra\+Node\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_join_a77107b49ea977bec841828886bbad392}{\index{rafe\+::\+Join@{rafe\+::\+Join}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Join@{rafe\+::\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Join\+::condition}}\label{classrafe_1_1_join_a77107b49ea977bec841828886bbad392}
+\hyperlink{classrafe_1_1_join}{Join} condition. \hypertarget{classrafe_1_1_join_aea03cf876f6e1b4eab27c07492e103bf}{\index{rafe\+::\+Join@{rafe\+::\+Join}!output\+Join\+Columns@{output\+Join\+Columns}}
+\index{output\+Join\+Columns@{output\+Join\+Columns}!rafe\+::\+Join@{rafe\+::\+Join}}
+\subsubsection[{output\+Join\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Join\+Column\+Info}$>$ rafe\+::\+Join\+::output\+Join\+Columns}}\label{classrafe_1_1_join_aea03cf876f6e1b4eab27c07492e103bf}
+List of output columns from join operator. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

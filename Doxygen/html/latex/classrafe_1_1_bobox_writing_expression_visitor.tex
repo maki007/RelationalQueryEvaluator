@@ -1,0 +1,169 @@
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor}{\section{rafe\+:\+:Bobox\+Writing\+Expression\+Visitor Class Reference}
+\label{classrafe_1_1_bobox_writing_expression_visitor}\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Bobox\+Writing\+Expression\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_bobox_writing_expression_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a212bf9dc5e42e80474f33bc3c2476020}{Bobox\+Writing\+Expression\+Visitor} (std\+::map$<$ int, int $>$ \&\hyperlink{classrafe_1_1_bobox_writing_expression_visitor_af77757b532d04695137bfa1a4e408f5c}{cols})
+\item 
+void \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_aa2ebbdd925b785deb29d0ee1f326d917}{visit\+Unary\+Expression} (\hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a4bf6fe93d12d89e40d30ef811442e666}{visit\+Binary\+Expression} (\hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a4d004f836ea9b45c8a08de32cb72bdb3}{visit\+Nnary\+Expression} (\hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a2228a1d5a64ae2ef765f5360b5eb9a30}{visit\+Constant} (\hyperlink{classrafe_1_1_constant}{Constant} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a7c431ef8456be3affdb17692b99d8e50}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a5c00ebe39e50c4e6ad35f35a1248ef8e}{visit\+Grouped\+Expression} (\hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_ad9c0ae8342d28bd95bdcec73ff55f6d9}{result}
+\item 
+std\+::map$<$ int, int $>$ $\ast$ \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_af77757b532d04695137bfa1a4e408f5c}{cols}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor writes expression in infix for bobox output. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_a212bf9dc5e42e80474f33bc3c2476020}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}}
+\index{Bobox\+Writing\+Expression\+Visitor@{Bobox\+Writing\+Expression\+Visitor}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{Bobox\+Writing\+Expression\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::\+Bobox\+Writing\+Expression\+Visitor (
+\begin{DoxyParamCaption}
+\item[{std\+::map$<$ int, int $>$ \&}]{cols}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_bobox_writing_expression_visitor_a212bf9dc5e42e80474f33bc3c2476020}
+Creates new instance of \hyperlink{classrafe_1_1_bobox_writing_expression_visitor}{Bobox\+Writing\+Expression\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em cols} & -\/ structure mapping column unique identifier to number of column in processed bobox operator \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_a4bf6fe93d12d89e40d30ef811442e666}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
+\index{visit\+Binary\+Expression@{visit\+Binary\+Expression}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{visit\+Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::visit\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_writing_expression_visitor_a4bf6fe93d12d89e40d30ef811442e666}
+Visits \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a63e53276af3a22d3592f34d05ba97014}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_a7c431ef8456be3affdb17692b99d8e50}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_writing_expression_visitor_a7c431ef8456be3affdb17692b99d8e50}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_a2228a1d5a64ae2ef765f5360b5eb9a30}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!visit\+Constant@{visit\+Constant}}
+\index{visit\+Constant@{visit\+Constant}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{visit\+Constant}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::visit\+Constant (
+\begin{DoxyParamCaption}
+\item[{{\bf Constant} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_writing_expression_visitor_a2228a1d5a64ae2ef765f5360b5eb9a30}
+Visits \hyperlink{classrafe_1_1_constant}{Constant} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_constant}{Constant}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_af934111c6881f9f6c3ef3aa51425b9ff}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_a5c00ebe39e50c4e6ad35f35a1248ef8e}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!visit\+Grouped\+Expression@{visit\+Grouped\+Expression}}
+\index{visit\+Grouped\+Expression@{visit\+Grouped\+Expression}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{visit\+Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::visit\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Grouped\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_writing_expression_visitor_a5c00ebe39e50c4e6ad35f35a1248ef8e}
+Visits \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a76226ab9d571ed7eaf80d2ed7153791c}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_a4d004f836ea9b45c8a08de32cb72bdb3}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!visit\+Nnary\+Expression@{visit\+Nnary\+Expression}}
+\index{visit\+Nnary\+Expression@{visit\+Nnary\+Expression}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{visit\+Nnary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::visit\+Nnary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Nnary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_writing_expression_visitor_a4d004f836ea9b45c8a08de32cb72bdb3}
+Visits \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a32f89977f780ccb8aabe5afa1fa42d45}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_aa2ebbdd925b785deb29d0ee1f326d917}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!visit\+Unary\+Expression@{visit\+Unary\+Expression}}
+\index{visit\+Unary\+Expression@{visit\+Unary\+Expression}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{visit\+Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::visit\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_bobox_writing_expression_visitor_aa2ebbdd925b785deb29d0ee1f326d917}
+Visits \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a439348ee979dff26c30707f1ef499e8c}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_bobox_writing_expression_visitor_af77757b532d04695137bfa1a4e408f5c}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!cols@{cols}}
+\index{cols@{cols}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{cols}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, int$>$$\ast$ rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::cols}}\label{classrafe_1_1_bobox_writing_expression_visitor_af77757b532d04695137bfa1a4e408f5c}
+Structure mapping column unique identifier to number of column in processed bobox operator. \hypertarget{classrafe_1_1_bobox_writing_expression_visitor_ad9c0ae8342d28bd95bdcec73ff55f6d9}{\index{rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}!result@{result}}
+\index{result@{result}!rafe\+::\+Bobox\+Writing\+Expression\+Visitor@{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}}
+\subsubsection[{result}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Bobox\+Writing\+Expression\+Visitor\+::result}}\label{classrafe_1_1_bobox_writing_expression_visitor_ad9c0ae8342d28bd95bdcec73ff55f6d9}
+Stores tree infix representation. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Bobox\+Output.\+cpp\end{DoxyCompactItemize}

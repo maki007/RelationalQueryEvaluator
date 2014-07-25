@@ -31,7 +31,7 @@ XERCES_CPP_NAMESPACE_USE
 namespace rafe {
 
 	/**
-	* Doma parser error handler.
+	* Dom parser error handler.
 	*/
 	class ParserErrorHandler : public ErrorHandler
 	{
@@ -75,7 +75,7 @@ namespace rafe {
 	};
 
 	/**
-	* Static class for generating relation algebra from dom xml.
+	* Static class for generating relation algebra from DOM XML.
 	*/
 	class XmlHandler
 	{
@@ -87,7 +87,7 @@ namespace rafe {
 		* @param xmlFilePath - name of file containing xml
 		* @return root of algebra tree
 		*/
-		static std::unique_ptr<AlgebraNodeBase> XmlHandler::ValidateSchema(const char* xmlFilePath);
+		static std::unique_ptr<AlgebraNodeBase> ValidateSchema(const char* xmlFilePath);
 
 		/**
 		* Generates relation algebra tree from dom xml. Xml will be valiadated.
@@ -98,7 +98,7 @@ namespace rafe {
 	};
 
 	/**
-	* Custom dom parser which creates dom and adds information about line number to every element.
+	* Custom DOM parser which creates dom and adds information about line number to every element.
 	*/
 	class DOMParser : public XercesDOMParser
 	{
@@ -106,7 +106,7 @@ namespace rafe {
 		/**
 		* Overriden method startElement, where parser adds information about line number to processed element.
 		*/
-		void DOMParser::startElement(const XMLElementDecl& elemDecl, const unsigned int urlId, const XMLCh* const elemPrefix, const RefVectorOf<XMLAttr>& attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot);
+		void startElement(const XMLElementDecl& elemDecl, const unsigned int urlId, const XMLCh* const elemPrefix, const RefVectorOf<XMLAttr>& attrList, const XMLSize_t attrCount, const bool isEmpty, const bool isRoot);
 
 
 	};

@@ -1,0 +1,57 @@
+\hypertarget{classrafe_1_1_get_columns_nodes_visitor}{\section{rafe\+:\+:Get\+Columns\+Nodes\+Visitor Class Reference}
+\label{classrafe_1_1_get_columns_nodes_visitor}\index{rafe\+::\+Get\+Columns\+Nodes\+Visitor@{rafe\+::\+Get\+Columns\+Nodes\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Get\+Columns\+Nodes\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_get_columns_nodes_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classrafe_1_1_get_columns_nodes_visitor_a60dd06cf2b318397476a9eba5e32a078}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_column}{Column} $\ast$ $>$ \hyperlink{classrafe_1_1_get_columns_nodes_visitor_a33e85438a4b6d2474edb7ba51732c773}{nodes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor, which stores pointer of every column into vector. This visitor doesn't change expression tree. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_get_columns_nodes_visitor_a60dd06cf2b318397476a9eba5e32a078}{\index{rafe\+::\+Get\+Columns\+Nodes\+Visitor@{rafe\+::\+Get\+Columns\+Nodes\+Visitor}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Get\+Columns\+Nodes\+Visitor@{rafe\+::\+Get\+Columns\+Nodes\+Visitor}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Get\+Columns\+Nodes\+Visitor\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_get_columns_nodes_visitor_a60dd06cf2b318397476a9eba5e32a078}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_get_columns_nodes_visitor_a33e85438a4b6d2474edb7ba51732c773}{\index{rafe\+::\+Get\+Columns\+Nodes\+Visitor@{rafe\+::\+Get\+Columns\+Nodes\+Visitor}!nodes@{nodes}}
+\index{nodes@{nodes}!rafe\+::\+Get\+Columns\+Nodes\+Visitor@{rafe\+::\+Get\+Columns\+Nodes\+Visitor}}
+\subsubsection[{nodes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Column} $\ast$$>$ rafe\+::\+Get\+Columns\+Nodes\+Visitor\+::nodes}}\label{classrafe_1_1_get_columns_nodes_visitor_a33e85438a4b6d2474edb7ba51732c773}
+Vector for saving column pointers. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

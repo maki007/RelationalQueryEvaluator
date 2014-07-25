@@ -1,0 +1,327 @@
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor}{\section{rafe\+:\+:Sort\+Resolving\+Physical\+Operator\+Visitor Class Reference}
+\label{classrafe_1_1_sort_resolving_physical_operator_visitor}\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator\+Visitor.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Sort\+Resolving\+Physical\+Operator\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_sort_resolving_physical_operator_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a925504a20a6cbe1d5fd4e1ffb2ed2c56}{visit\+Filter} (\hyperlink{classrafe_1_1_filter}{Filter} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a1d2b21ae0c554fa5dc3953c144de2bbd}{visit\+Filter\+Keeping\+Order} (\hyperlink{classrafe_1_1_filter_keeping_order}{Filter\+Keeping\+Order} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_aa7eb1c55a79f893f09c6e32ebaae3175}{visit\+Sort\+Operator} (\hyperlink{classrafe_1_1_sort_operator}{Sort\+Operator} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_af3c9ea7f184b65db3c23122732c40a1c}{visit\+Merge\+Equi\+Join} (\hyperlink{classrafe_1_1_merge_equi_join}{Merge\+Equi\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_aa9fa7d5ee61fadf7e4a9c36be172b0f2}{visit\+Merge\+Non\+Equi\+Join} (\hyperlink{classrafe_1_1_merge_non_equi_join}{Merge\+Non\+Equi\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a5c99705870fc4476ed1130d9d947270d}{visit\+Cross\+Join} (\hyperlink{classrafe_1_1_cross_join}{Cross\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a8a19661db996874c0f3ab97e0dbf57c0}{visit\+Hash\+Join} (\hyperlink{classrafe_1_1_hash_join}{Hash\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_aa40215b7f2fd2fba9b6d82198e256972}{visit\+Hash\+Anti\+Join} (\hyperlink{classrafe_1_1_hash_anti_join}{Hash\+Anti\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_aea8f22d3c2f4e3f13012c577c5f74e3a}{visit\+Merge\+Anti\+Join} (\hyperlink{classrafe_1_1_merge_anti_join}{Merge\+Anti\+Join} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_ac04fc55c4e6ba70e29f2bf43fb2912dc}{visit\+Union\+Operator} (\hyperlink{classrafe_1_1_union_operator}{Union\+Operator} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_ab2ed3da0ba8c7ba6c6f57af128b93979}{visit\+Hash\+Group} (\hyperlink{classrafe_1_1_hash_group}{Hash\+Group} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a236a97d59e960a5612758f97342758c8}{visit\+Sorted\+Group} (\hyperlink{classrafe_1_1_sorted_group}{Sorted\+Group} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a6ad430ddefd7a5f9f5a393d76dabc6db}{visit\+Columns\+Operations\+Operator} (\hyperlink{classrafe_1_1_columns_operations_operator}{Columns\+Operations\+Operator} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a14698876ca3eae58a6f40f1e0d0dca13}{visit\+Scan\+And\+Sort\+By\+Index} (\hyperlink{classrafe_1_1_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a5d481f69e9982db492fc899693cf1714}{visit\+Table\+Scan} (\hyperlink{classrafe_1_1_table_scan}{Table\+Scan} $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a751dc6fc9c39542497d85b866549c895}{visit\+Index\+Scan} (\hyperlink{classrafe_1_1_index_scan}{Index\+Scan} $\ast$node)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{classrafe_1_1_sort_resolving_physical_operator_visitor_a47bd7f1cd17bf27e8313f77683413929}{sort\+Parameters}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+After physical plan is generated some sort parameters can be unknown (direciotn or order of columns). This visitor visits whole tree from top a set this parameters to known values. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a6ad430ddefd7a5f9f5a393d76dabc6db}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}}
+\index{visit\+Columns\+Operations\+Operator@{visit\+Columns\+Operations\+Operator}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Columns\+Operations\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Columns\+Operations\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Columns\+Operations\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a6ad430ddefd7a5f9f5a393d76dabc6db}
+Visits physical operator \hyperlink{classrafe_1_1_columns_operations_operator}{Columns\+Operations\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_columns_operations_operator}{Columns\+Operations\+Operator}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ab69b85d7a2c8f89986d84cbcce6f2f89}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a5c99705870fc4476ed1130d9d947270d}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Cross\+Join@{visit\+Cross\+Join}}
+\index{visit\+Cross\+Join@{visit\+Cross\+Join}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Cross\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Cross\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Cross\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a5c99705870fc4476ed1130d9d947270d}
+Visits physical operator \hyperlink{classrafe_1_1_cross_join}{Cross\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_cross_join}{Cross\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_acc39509ae79aa6848ec928cc4f616d61}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a925504a20a6cbe1d5fd4e1ffb2ed2c56}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Filter@{visit\+Filter}}
+\index{visit\+Filter@{visit\+Filter}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Filter (
+\begin{DoxyParamCaption}
+\item[{{\bf Filter} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a925504a20a6cbe1d5fd4e1ffb2ed2c56}
+Visits physical operator \hyperlink{classrafe_1_1_filter}{Filter}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_filter}{Filter}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a516a84d305910f3e1b9d1ae2cb184b24}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a1d2b21ae0c554fa5dc3953c144de2bbd}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Filter\+Keeping\+Order@{visit\+Filter\+Keeping\+Order}}
+\index{visit\+Filter\+Keeping\+Order@{visit\+Filter\+Keeping\+Order}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Filter\+Keeping\+Order}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Filter\+Keeping\+Order (
+\begin{DoxyParamCaption}
+\item[{{\bf Filter\+Keeping\+Order} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a1d2b21ae0c554fa5dc3953c144de2bbd}
+Visits physical operator \hyperlink{classrafe_1_1_filter_keeping_order}{Filter\+Keeping\+Order}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_filter_keeping_order}{Filter\+Keeping\+Order}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a7b581054d167c71fa5443570a6808740}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_aa40215b7f2fd2fba9b6d82198e256972}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Hash\+Anti\+Join@{visit\+Hash\+Anti\+Join}}
+\index{visit\+Hash\+Anti\+Join@{visit\+Hash\+Anti\+Join}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Hash\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Hash\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Hash\+Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_aa40215b7f2fd2fba9b6d82198e256972}
+Visits physical operator \hyperlink{classrafe_1_1_hash_anti_join}{Hash\+Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_hash_anti_join}{Hash\+Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a9415b5939da4948ac922e63fbece1135}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_ab2ed3da0ba8c7ba6c6f57af128b93979}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Hash\+Group@{visit\+Hash\+Group}}
+\index{visit\+Hash\+Group@{visit\+Hash\+Group}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Hash\+Group}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Hash\+Group (
+\begin{DoxyParamCaption}
+\item[{{\bf Hash\+Group} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_ab2ed3da0ba8c7ba6c6f57af128b93979}
+Visits physical operator \hyperlink{classrafe_1_1_hash_group}{Hash\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_hash_group}{Hash\+Group}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ab6a2b2b02f2237fd41e6c44f5b2ede9b}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a8a19661db996874c0f3ab97e0dbf57c0}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Hash\+Join@{visit\+Hash\+Join}}
+\index{visit\+Hash\+Join@{visit\+Hash\+Join}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Hash\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Hash\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Hash\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a8a19661db996874c0f3ab97e0dbf57c0}
+Visits physical operator \hyperlink{classrafe_1_1_hash_join}{Hash\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_hash_join}{Hash\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ae36c9ef817768f134d35fe5b3834855c}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a751dc6fc9c39542497d85b866549c895}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Index\+Scan@{visit\+Index\+Scan}}
+\index{visit\+Index\+Scan@{visit\+Index\+Scan}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Index\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Index\+Scan (
+\begin{DoxyParamCaption}
+\item[{{\bf Index\+Scan} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a751dc6fc9c39542497d85b866549c895}
+Visits physical operator \hyperlink{classrafe_1_1_index_scan}{Index\+Scan}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_index_scan}{Index\+Scan}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ac33ea100cdb3e642a58a82c4367de3fd}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_aea8f22d3c2f4e3f13012c577c5f74e3a}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Merge\+Anti\+Join@{visit\+Merge\+Anti\+Join}}
+\index{visit\+Merge\+Anti\+Join@{visit\+Merge\+Anti\+Join}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Merge\+Anti\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Merge\+Anti\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Merge\+Anti\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_aea8f22d3c2f4e3f13012c577c5f74e3a}
+Visits physical operator \hyperlink{classrafe_1_1_merge_anti_join}{Merge\+Anti\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_merge_anti_join}{Merge\+Anti\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a0f3496aaac992756bbb8f18c1000ed75}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_af3c9ea7f184b65db3c23122732c40a1c}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Merge\+Equi\+Join@{visit\+Merge\+Equi\+Join}}
+\index{visit\+Merge\+Equi\+Join@{visit\+Merge\+Equi\+Join}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Merge\+Equi\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Merge\+Equi\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Merge\+Equi\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_af3c9ea7f184b65db3c23122732c40a1c}
+Visits physical operator \hyperlink{classrafe_1_1_merge_equi_join}{Merge\+Equi\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_merge_equi_join}{Merge\+Equi\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a9fd16981e6fbb9b545b7edeaabcf97bf}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_aa9fa7d5ee61fadf7e4a9c36be172b0f2}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Merge\+Non\+Equi\+Join@{visit\+Merge\+Non\+Equi\+Join}}
+\index{visit\+Merge\+Non\+Equi\+Join@{visit\+Merge\+Non\+Equi\+Join}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Merge\+Non\+Equi\+Join}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Merge\+Non\+Equi\+Join (
+\begin{DoxyParamCaption}
+\item[{{\bf Merge\+Non\+Equi\+Join} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_aa9fa7d5ee61fadf7e4a9c36be172b0f2}
+Visits physical operator \hyperlink{classrafe_1_1_merge_non_equi_join}{Merge\+Non\+Equi\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_merge_non_equi_join}{Merge\+Non\+Equi\+Join}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a1d4af9c73ece300d7a90c65481cd8e06}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a14698876ca3eae58a6f40f1e0d0dca13}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Scan\+And\+Sort\+By\+Index@{visit\+Scan\+And\+Sort\+By\+Index}}
+\index{visit\+Scan\+And\+Sort\+By\+Index@{visit\+Scan\+And\+Sort\+By\+Index}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Scan\+And\+Sort\+By\+Index}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Scan\+And\+Sort\+By\+Index (
+\begin{DoxyParamCaption}
+\item[{{\bf Scan\+And\+Sort\+By\+Index} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a14698876ca3eae58a6f40f1e0d0dca13}
+Visits physical operator \hyperlink{classrafe_1_1_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_scan_and_sort_by_index}{Scan\+And\+Sort\+By\+Index}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a4f8cbef9d1c5a58fceb44deb4a7d998c}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a236a97d59e960a5612758f97342758c8}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Sorted\+Group@{visit\+Sorted\+Group}}
+\index{visit\+Sorted\+Group@{visit\+Sorted\+Group}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Sorted\+Group}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Sorted\+Group (
+\begin{DoxyParamCaption}
+\item[{{\bf Sorted\+Group} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a236a97d59e960a5612758f97342758c8}
+Visits physical operator \hyperlink{classrafe_1_1_sorted_group}{Sorted\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_sorted_group}{Sorted\+Group}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_afb1b6786bf12f12e3b1c2895bf77e874}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_aa7eb1c55a79f893f09c6e32ebaae3175}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Sort\+Operator@{visit\+Sort\+Operator}}
+\index{visit\+Sort\+Operator@{visit\+Sort\+Operator}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Sort\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Sort\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Sort\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_aa7eb1c55a79f893f09c6e32ebaae3175}
+Visits physical operator \hyperlink{classrafe_1_1_sort_operator}{Sort\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_sort_operator}{Sort\+Operator}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_adaee48b1ef175226c860c7b2d70ba15d}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a5d481f69e9982db492fc899693cf1714}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Table\+Scan@{visit\+Table\+Scan}}
+\index{visit\+Table\+Scan@{visit\+Table\+Scan}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Table\+Scan}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Table\+Scan (
+\begin{DoxyParamCaption}
+\item[{{\bf Table\+Scan} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a5d481f69e9982db492fc899693cf1714}
+Visits physical operator \hyperlink{classrafe_1_1_table_scan}{Table\+Scan}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_table_scan}{Table\+Scan}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_ae3d5b2b56e9465713c5ecd4e5fcea9c9}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_ac04fc55c4e6ba70e29f2bf43fb2912dc}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!visit\+Union\+Operator@{visit\+Union\+Operator}}
+\index{visit\+Union\+Operator@{visit\+Union\+Operator}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{visit\+Union\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::visit\+Union\+Operator (
+\begin{DoxyParamCaption}
+\item[{{\bf Union\+Operator} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_ac04fc55c4e6ba70e29f2bf43fb2912dc}
+Visits physical operator \hyperlink{classrafe_1_1_union_operator}{Union\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & visited \hyperlink{classrafe_1_1_union_operator}{Union\+Operator}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_physical_operator_visitor_a01eb10e07cc1fbe7622bc1eb01fa3b79}{rafe\+::\+Physical\+Operator\+Visitor}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_sort_resolving_physical_operator_visitor_a47bd7f1cd17bf27e8313f77683413929}{\index{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}!sort\+Parameters@{sort\+Parameters}}
+\index{sort\+Parameters@{sort\+Parameters}!rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor@{rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor}}
+\subsubsection[{sort\+Parameters}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ rafe\+::\+Sort\+Resolving\+Physical\+Operator\+Visitor\+::sort\+Parameters}}\label{classrafe_1_1_sort_resolving_physical_operator_visitor_a47bd7f1cd17bf27e8313f77683413929}
+Current sorted state. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator\+Visitor.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator\+Visitor.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,87 @@
+\hypertarget{classrafe_1_1_number_columns_in_join_visitor}{\section{rafe\+:\+:Number\+Columns\+In\+Join\+Visitor Class Reference}
+\label{classrafe_1_1_number_columns_in_join_visitor}\index{rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Number\+Columns\+In\+Join\+Visitor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_number_columns_in_join_visitor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_number_columns_in_join_visitor_a7139834faf5f6814ff8d48c05ec0f260}{Number\+Columns\+In\+Join\+Visitor} ()
+\item 
+void \hyperlink{classrafe_1_1_number_columns_in_join_visitor_a0a9ea8d0e184365f7f869452e13b8a63}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\item 
+void \hyperlink{classrafe_1_1_number_columns_in_join_visitor_a56c533c28f9948a6fcc0e8856a7b19e4}{visit\+Binary\+Expression} (\hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} $\ast$expression)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classrafe_1_1_number_columns_in_join_visitor_a332114b3e616548b03a47c34e65f386a}{last\+Numbered\+Column}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Visitor which assign inout number to every column node. It is used in join and antijoin for identifying columns. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_number_columns_in_join_visitor_a7139834faf5f6814ff8d48c05ec0f260}{\index{rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}!Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}}
+\index{Number\+Columns\+In\+Join\+Visitor@{Number\+Columns\+In\+Join\+Visitor}!rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}}
+\subsubsection[{Number\+Columns\+In\+Join\+Visitor}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Number\+Columns\+In\+Join\+Visitor\+::\+Number\+Columns\+In\+Join\+Visitor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_number_columns_in_join_visitor_a7139834faf5f6814ff8d48c05ec0f260}
+Creates new instance of \hyperlink{classrafe_1_1_number_columns_in_join_visitor}{Number\+Columns\+In\+Join\+Visitor} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_number_columns_in_join_visitor_a56c533c28f9948a6fcc0e8856a7b19e4}{\index{rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
+\index{visit\+Binary\+Expression@{visit\+Binary\+Expression}!rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}}
+\subsubsection[{visit\+Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Number\+Columns\+In\+Join\+Visitor\+::visit\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_number_columns_in_join_visitor_a56c533c28f9948a6fcc0e8856a7b19e4}
+Visits \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a63e53276af3a22d3592f34d05ba97014}{rafe\+::\+Expression\+Visitor\+Base}.
+
+\hypertarget{classrafe_1_1_number_columns_in_join_visitor_a0a9ea8d0e184365f7f869452e13b8a63}{\index{rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Number\+Columns\+In\+Join\+Visitor\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_number_columns_in_join_visitor_a0a9ea8d0e184365f7f869452e13b8a63}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{rafe\+::\+Expression\+Visitor\+Base}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_number_columns_in_join_visitor_a332114b3e616548b03a47c34e65f386a}{\index{rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}!last\+Numbered\+Column@{last\+Numbered\+Column}}
+\index{last\+Numbered\+Column@{last\+Numbered\+Column}!rafe\+::\+Number\+Columns\+In\+Join\+Visitor@{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}}
+\subsubsection[{last\+Numbered\+Column}]{\setlength{\rightskip}{0pt plus 5cm}int rafe\+::\+Number\+Columns\+In\+Join\+Visitor\+::last\+Numbered\+Column}}\label{classrafe_1_1_number_columns_in_join_visitor_a332114b3e616548b03a47c34e65f386a}
+Contains only 0or 1. Columns from left join input are numbered 0, and from right join input are numbered 1. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

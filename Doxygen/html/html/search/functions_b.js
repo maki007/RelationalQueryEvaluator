@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['nnaryexpression',['NnaryExpression',['../class_nnary_expression.html#a38f44966213fd5d674aaff3ef9de37da',1,'NnaryExpression']]],
-  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../class_nullary_algebra_node_base.html#a73108e19c00005dcda32af0b05060ea0',1,'NullaryAlgebraNodeBase']]],
-  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../class_number_columns_in_join_visitor.html#a5d09cffa1e191e46b312a3bcebc01b60',1,'NumberColumnsInJoinVisitor']]]
+  ['nnaryexpression',['NnaryExpression',['../classrafe_1_1_nnary_expression.html#ab136f6b504e0c3523bd2e6a929022d58',1,'rafe::NnaryExpression']]],
+  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../classrafe_1_1_nullary_algebra_node_base.html#ad27b12a11492ddc6d3d07f1781e0dfcf',1,'rafe::NullaryAlgebraNodeBase']]],
+  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../classrafe_1_1_number_columns_in_join_visitor.html#a7139834faf5f6814ff8d48c05ec0f260',1,'rafe::NumberColumnsInJoinVisitor']]]
 ];

@@ -155,7 +155,7 @@ namespace rafe {
 		* @param agregateFunctions - agregate function information
 		* @returns string representation of group paramaters
 		*/
-		std::string PhysicalOperatorDrawingVisitor::writeGroupParameters(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
+		std::string writeGroupParameters(const std::vector<GroupColumn> & groupColumns, const std::vector<AgregateFunction> & agregateFunctions);
 
 	public:
 		void visitFilter(Filter * node);
@@ -362,7 +362,7 @@ namespace rafe {
 		* @param columns - in parameter
 		* @param result - out parameter
 		*/
-		void BoboxPlanWritingPhysicalOperatorVisitor::convertColumns(const std::map<int, ColumnInfo> & columns, std::map<int, int> & result);
+		void convertColumns(const std::map<int, ColumnInfo> & columns, std::map<int, int> & result);
 
 		/**
 		* Writes daclaration of nullary operator to variable declarations.
@@ -405,7 +405,7 @@ namespace rafe {
 		* @param node - Join node
 		* @returns string representation of columns
 		*/
-		std::string BoboxPlanWritingPhysicalOperatorVisitor::writeJoinParameters(BinaryPhysicalOperator * node);
+		std::string writeJoinParameters(BinaryPhysicalOperator * node);
 
 		/**
 		* Generates information about condition in hash equijoin.

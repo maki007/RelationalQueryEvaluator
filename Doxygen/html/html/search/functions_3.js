@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deserializeexpression',['deserializeExpression',['../class_algebra_visitor.html#a20d1215ba30361d19d0317a939a9b860',1,'AlgebraVisitor']]]
+  ['deserializeexpression',['deserializeExpression',['../classrafe_1_1_algebra_visitor.html#aee992f1216f75570dc7073f5031ecf7f',1,'rafe::AlgebraVisitor']]]
 ];

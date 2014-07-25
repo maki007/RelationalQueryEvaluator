@@ -1,0 +1,136 @@
+\hypertarget{classrafe_1_1_expression_visitor_base}{\section{rafe\+:\+:Expression\+Visitor\+Base Class Reference}
+\label{classrafe_1_1_expression_visitor_base}\index{rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}}
+}
+
+
+{\ttfamily \#include $<$Expression\+Visitors.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Expression\+Visitor\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{classrafe_1_1_expression_visitor_base}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classrafe_1_1_expression_visitor_base_a439348ee979dff26c30707f1ef499e8c}{visit\+Unary\+Expression} (\hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} $\ast$expression)
+\item 
+virtual void \hyperlink{classrafe_1_1_expression_visitor_base_a63e53276af3a22d3592f34d05ba97014}{visit\+Binary\+Expression} (\hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} $\ast$expression)
+\item 
+virtual void \hyperlink{classrafe_1_1_expression_visitor_base_a32f89977f780ccb8aabe5afa1fa42d45}{visit\+Nnary\+Expression} (\hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} $\ast$expression)
+\item 
+virtual void \hyperlink{classrafe_1_1_expression_visitor_base_af934111c6881f9f6c3ef3aa51425b9ff}{visit\+Constant} (\hyperlink{classrafe_1_1_constant}{Constant} $\ast$expression)
+\item 
+virtual void \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{visit\+Column} (\hyperlink{classrafe_1_1_column}{Column} $\ast$expression)
+\item 
+virtual void \hyperlink{classrafe_1_1_expression_visitor_base_a76226ab9d571ed7eaf80d2ed7153791c}{visit\+Grouped\+Expression} (\hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} $\ast$expression)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class for expression visitors. Every virtual method does nothing only visits node all children. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_expression_visitor_base_a63e53276af3a22d3592f34d05ba97014}{\index{rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}!visit\+Binary\+Expression@{visit\+Binary\+Expression}}
+\index{visit\+Binary\+Expression@{visit\+Binary\+Expression}!rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}}
+\subsubsection[{visit\+Binary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Expression\+Visitor\+Base\+::visit\+Binary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Binary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_expression_visitor_base_a63e53276af3a22d3592f34d05ba97014}
+Visits \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classrafe_1_1_cloning_expression_visitor_a021e146e191a9fce4b7b82f0c4b4efd4}{rafe\+::\+Cloning\+Expression\+Visitor}, \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a4bf6fe93d12d89e40d30ef811442e666}{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}, \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a3a46e7e142337f41960395c8e1fc773a}{rafe\+::\+Type\+Resolving\+Expression\+Visitor}, \hyperlink{classrafe_1_1_join_info_reading_expression_visitor_a3fe9a23de3b525cc967c0f8b1c2c81eb}{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor}, \hyperlink{classrafe_1_1_size_estimating_expression_visitor_ae6dad0b04f4eb3e201a9677124f9577c}{rafe\+::\+Size\+Estimating\+Expression\+Visitor}, \hyperlink{classrafe_1_1_grouping_expression_visitor_a5ef6febb7f733f4adcf61bc83a6d10f8}{rafe\+::\+Grouping\+Expression\+Visitor}, \hyperlink{classrafe_1_1_number_columns_in_join_visitor_a56c533c28f9948a6fcc0e8856a7b19e4}{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}, and \hyperlink{classrafe_1_1_writing_expression_visitor_ab4cb67967bc57450d891a87bcebde472}{rafe\+::\+Writing\+Expression\+Visitor}.
+
+\hypertarget{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}{\index{rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}!visit\+Column@{visit\+Column}}
+\index{visit\+Column@{visit\+Column}!rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}}
+\subsubsection[{visit\+Column}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Expression\+Visitor\+Base\+::visit\+Column (
+\begin{DoxyParamCaption}
+\item[{{\bf Column} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_expression_visitor_base_a4eaa77bf4105d1cbdde4feb047228255}
+Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classrafe_1_1_rename_columns_visitor_af7ca189c54c24f4460f5b79860d0149c}{rafe\+::\+Rename\+Columns\+Visitor}, \hyperlink{classrafe_1_1_cloning_expression_visitor_a0182fb9588af653201a5450935cf0b87}{rafe\+::\+Cloning\+Expression\+Visitor}, \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a7c431ef8456be3affdb17692b99d8e50}{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}, \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a89cc0145ce0d723da377fac1996067bf}{rafe\+::\+Type\+Resolving\+Expression\+Visitor}, \hyperlink{classrafe_1_1_max_of_unique_values_expression_visitor_af7018ac8dc1f162aa263d16e0c9f757a}{rafe\+::\+Max\+Of\+Unique\+Values\+Expression\+Visitor}, \hyperlink{classrafe_1_1_renaming_join_condition_expression_visitor_a5e8310c5df8f8f36c96958fbcee0edd3}{rafe\+::\+Renaming\+Join\+Condition\+Expression\+Visitor}, \hyperlink{classrafe_1_1_join_info_reading_expression_visitor_a791b1f98544255f24c39b77286b459d9}{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor}, \hyperlink{classrafe_1_1_semantic_expression_visitor_a605cf8d023dc621ac96d0b82d19d1b42}{rafe\+::\+Semantic\+Expression\+Visitor}, \hyperlink{classrafe_1_1_get_columns_nodes_visitor_a60dd06cf2b318397476a9eba5e32a078}{rafe\+::\+Get\+Columns\+Nodes\+Visitor}, \hyperlink{classrafe_1_1_number_columns_in_join_visitor_a0a9ea8d0e184365f7f869452e13b8a63}{rafe\+::\+Number\+Columns\+In\+Join\+Visitor}, and \hyperlink{classrafe_1_1_writing_expression_visitor_a29f80e3c4267e05e49e48f44abd8cc94}{rafe\+::\+Writing\+Expression\+Visitor}.
+
+\hypertarget{classrafe_1_1_expression_visitor_base_af934111c6881f9f6c3ef3aa51425b9ff}{\index{rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}!visit\+Constant@{visit\+Constant}}
+\index{visit\+Constant@{visit\+Constant}!rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}}
+\subsubsection[{visit\+Constant}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Expression\+Visitor\+Base\+::visit\+Constant (
+\begin{DoxyParamCaption}
+\item[{{\bf Constant} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_expression_visitor_base_af934111c6881f9f6c3ef3aa51425b9ff}
+Visits \hyperlink{classrafe_1_1_constant}{Constant} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_constant}{Constant}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classrafe_1_1_cloning_expression_visitor_a1fc965624f46b446b7836fc274962f02}{rafe\+::\+Cloning\+Expression\+Visitor}, \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a2228a1d5a64ae2ef765f5360b5eb9a30}{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}, \hyperlink{classrafe_1_1_type_resolving_expression_visitor_af4d0c76b55893e462c12ce165dcb4275}{rafe\+::\+Type\+Resolving\+Expression\+Visitor}, \hyperlink{classrafe_1_1_join_info_reading_expression_visitor_aa08dee45829be99a6c6b3961c8cf081d}{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor}, and \hyperlink{classrafe_1_1_writing_expression_visitor_a30b82d54f29dc7a1ffc4ba67581dc680}{rafe\+::\+Writing\+Expression\+Visitor}.
+
+\hypertarget{classrafe_1_1_expression_visitor_base_a76226ab9d571ed7eaf80d2ed7153791c}{\index{rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}!visit\+Grouped\+Expression@{visit\+Grouped\+Expression}}
+\index{visit\+Grouped\+Expression@{visit\+Grouped\+Expression}!rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}}
+\subsubsection[{visit\+Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Expression\+Visitor\+Base\+::visit\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Grouped\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_expression_visitor_base_a76226ab9d571ed7eaf80d2ed7153791c}
+Visits \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classrafe_1_1_cloning_expression_visitor_a54f879bde3c538a907782a32e1eee492}{rafe\+::\+Cloning\+Expression\+Visitor}, \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a5c00ebe39e50c4e6ad35f35a1248ef8e}{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}, \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a08c282c4872c03ee57f361e1f0843566}{rafe\+::\+Type\+Resolving\+Expression\+Visitor}, \hyperlink{classrafe_1_1_join_info_reading_expression_visitor_acfd9c7c62dfac50b0ac6d1c314f7f395}{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor}, \hyperlink{classrafe_1_1_size_estimating_expression_visitor_a56a98bed6c990f2a71ab18ca59ded1eb}{rafe\+::\+Size\+Estimating\+Expression\+Visitor}, and \hyperlink{classrafe_1_1_writing_expression_visitor_a4e57643ee4d25bc3a75e8a045524329d}{rafe\+::\+Writing\+Expression\+Visitor}.
+
+\hypertarget{classrafe_1_1_expression_visitor_base_a32f89977f780ccb8aabe5afa1fa42d45}{\index{rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}!visit\+Nnary\+Expression@{visit\+Nnary\+Expression}}
+\index{visit\+Nnary\+Expression@{visit\+Nnary\+Expression}!rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}}
+\subsubsection[{visit\+Nnary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Expression\+Visitor\+Base\+::visit\+Nnary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Nnary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_expression_visitor_base_a32f89977f780ccb8aabe5afa1fa42d45}
+Visits \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classrafe_1_1_cloning_expression_visitor_ad40e5659edc1098b8465ea64eaeea7cd}{rafe\+::\+Cloning\+Expression\+Visitor}, \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_a4d004f836ea9b45c8a08de32cb72bdb3}{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}, \hyperlink{classrafe_1_1_type_resolving_expression_visitor_a78e0e725ec8c3add1156949df6a86252}{rafe\+::\+Type\+Resolving\+Expression\+Visitor}, \hyperlink{classrafe_1_1_join_info_reading_expression_visitor_a57a8dedf4fa06ff27c71cf36ee7a4b3b}{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor}, \hyperlink{classrafe_1_1_size_estimating_expression_visitor_a1f1f7587679efcba503a794558980c1a}{rafe\+::\+Size\+Estimating\+Expression\+Visitor}, and \hyperlink{classrafe_1_1_writing_expression_visitor_a7b7d99dfe5f882b1282b451909838929}{rafe\+::\+Writing\+Expression\+Visitor}.
+
+\hypertarget{classrafe_1_1_expression_visitor_base_a439348ee979dff26c30707f1ef499e8c}{\index{rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}!visit\+Unary\+Expression@{visit\+Unary\+Expression}}
+\index{visit\+Unary\+Expression@{visit\+Unary\+Expression}!rafe\+::\+Expression\+Visitor\+Base@{rafe\+::\+Expression\+Visitor\+Base}}
+\subsubsection[{visit\+Unary\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Expression\+Visitor\+Base\+::visit\+Unary\+Expression (
+\begin{DoxyParamCaption}
+\item[{{\bf Unary\+Expression} $\ast$}]{expression}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_expression_visitor_base_a439348ee979dff26c30707f1ef499e8c}
+Visits \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} element. 
+\begin{DoxyParams}{Parameters}
+{\em expression} & visited \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression}. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classrafe_1_1_cloning_expression_visitor_a3b71db5c48bc772a4b8bf52a79ff1e83}{rafe\+::\+Cloning\+Expression\+Visitor}, \hyperlink{classrafe_1_1_bobox_writing_expression_visitor_aa2ebbdd925b785deb29d0ee1f326d917}{rafe\+::\+Bobox\+Writing\+Expression\+Visitor}, \hyperlink{classrafe_1_1_type_resolving_expression_visitor_ae14bae4b659f64615fc38c996828e19d}{rafe\+::\+Type\+Resolving\+Expression\+Visitor}, \hyperlink{classrafe_1_1_join_info_reading_expression_visitor_a27ebab51d1b63683004f2ec45d15869f}{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor}, \hyperlink{classrafe_1_1_size_estimating_expression_visitor_aafce8eb508a6b022d4247f14680ba472}{rafe\+::\+Size\+Estimating\+Expression\+Visitor}, and \hyperlink{classrafe_1_1_writing_expression_visitor_af95c4c680abc9663fbc5ca7e0e419723}{rafe\+::\+Writing\+Expression\+Visitor}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expression\+Visitors.\+cpp\end{DoxyCompactItemize}

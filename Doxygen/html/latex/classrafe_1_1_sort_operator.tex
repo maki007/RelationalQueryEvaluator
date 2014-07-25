@@ -1,0 +1,82 @@
+\hypertarget{classrafe_1_1_sort_operator}{\section{rafe\+:\+:Sort\+Operator Class Reference}
+\label{classrafe_1_1_sort_operator}\index{rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Sort\+Operator\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_sort_operator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_sort_operator_a52c1e06b77fe1e15a32a99fe5c58209a}{Sort\+Operator} (const \hyperlink{classrafe_1_1_possible_sort_parameters}{Possible\+Sort\+Parameters} \&\hyperlink{classrafe_1_1_sort_operator_a5fc719069fac1fa039542a994f3bf516}{sorted\+By}, const \hyperlink{classrafe_1_1_possible_sort_parameters}{Possible\+Sort\+Parameters} \&\hyperlink{classrafe_1_1_sort_operator_a9fcd0871eb338c0c589e557993ffe7d3}{sort\+By})
+\item 
+void \hyperlink{classrafe_1_1_sort_operator_ad2d3e9864cd1876d417a66b220b8dcb6}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_possible_sort_parameters}{Possible\+Sort\+Parameters} \hyperlink{classrafe_1_1_sort_operator_a5fc719069fac1fa039542a994f3bf516}{sorted\+By}
+\item 
+\hyperlink{classrafe_1_1_possible_sort_parameters}{Possible\+Sort\+Parameters} \hyperlink{classrafe_1_1_sort_operator_a9fcd0871eb338c0c589e557993ffe7d3}{sort\+By}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents physical sort operator. \hyperlink{classrafe_1_1_sort}{Sort} can be also partial sort when input is partially sorted by desired columns. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_sort_operator_a52c1e06b77fe1e15a32a99fe5c58209a}{\index{rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}!Sort\+Operator@{Sort\+Operator}}
+\index{Sort\+Operator@{Sort\+Operator}!rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}}
+\subsubsection[{Sort\+Operator}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Sort\+Operator\+::\+Sort\+Operator (
+\begin{DoxyParamCaption}
+\item[{const {\bf Possible\+Sort\+Parameters} \&}]{sorted\+By, }
+\item[{const {\bf Possible\+Sort\+Parameters} \&}]{sort\+By}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_sort_operator_a52c1e06b77fe1e15a32a99fe5c58209a}
+Creates new instance of \hyperlink{classrafe_1_1_sort_operator}{Sort\+Operator}. 
+\begin{DoxyParams}{Parameters}
+{\em sorted\+By} & -\/ columns -\/ which the relation is sorted by. \\
+\hline
+{\em sort\+By} & -\/ columns -\/ which the relation should be sorted by. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_sort_operator_ad2d3e9864cd1876d417a66b220b8dcb6}{\index{rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sort\+Operator\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sort_operator_ad2d3e9864cd1876d417a66b220b8dcb6}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{rafe\+::\+Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_sort_operator_a9fcd0871eb338c0c589e557993ffe7d3}{\index{rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}!sort\+By@{sort\+By}}
+\index{sort\+By@{sort\+By}!rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}}
+\subsubsection[{sort\+By}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Possible\+Sort\+Parameters} rafe\+::\+Sort\+Operator\+::sort\+By}}\label{classrafe_1_1_sort_operator_a9fcd0871eb338c0c589e557993ffe7d3}
+Stores colums, which the relation should be sorted by. \hypertarget{classrafe_1_1_sort_operator_a5fc719069fac1fa039542a994f3bf516}{\index{rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}!sorted\+By@{sorted\+By}}
+\index{sorted\+By@{sorted\+By}!rafe\+::\+Sort\+Operator@{rafe\+::\+Sort\+Operator}}
+\subsubsection[{sorted\+By}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Possible\+Sort\+Parameters} rafe\+::\+Sort\+Operator\+::sorted\+By}}\label{classrafe_1_1_sort_operator_a5fc719069fac1fa039542a994f3bf516}
+Stores columns, which the relation is sorted by. Can be empty. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

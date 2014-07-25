@@ -1,0 +1,129 @@
+\hypertarget{classrafe_1_1_column_info}{\section{rafe\+:\+:Column\+Info Class Reference}
+\label{classrafe_1_1_column_info}\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+}
+
+
+{\ttfamily \#include $<$Algebra\+Structures.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Column\+Info\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_column_info}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_column_info_a7b8526771896d312ac4329592fe85f73}{Column\+Info} (std\+::string name, std\+::string \hyperlink{classrafe_1_1_column_info_a22fd355567e1d07f30fd1deae721577f}{type})
+\item 
+\hyperlink{classrafe_1_1_column_info_a7002d12c04ff1acb398f01b09b3f9297}{Column\+Info} ()
+\item 
+\hyperlink{classrafe_1_1_column_info_af1b1e671898270d7cd905860297a1707}{Column\+Info} (std\+::string name, double \hyperlink{classrafe_1_1_column_info_a3925986dda2c3385a512d6491e282aae}{number\+Of\+Unique\+Values}, std\+::string \hyperlink{classrafe_1_1_column_info_a22fd355567e1d07f30fd1deae721577f}{type})
+\item 
+\hyperlink{classrafe_1_1_column_info_a2a9a69f1dfc6a40b2effb352887acba0}{Column\+Info} (const \hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} \&\hyperlink{classrafe_1_1_column_info_a446710a3a03b249da265a785aff1ee18}{column}, double \hyperlink{classrafe_1_1_column_info_a3925986dda2c3385a512d6491e282aae}{number\+Of\+Unique\+Values}, std\+::string \hyperlink{classrafe_1_1_column_info_a22fd355567e1d07f30fd1deae721577f}{type})
+\item 
+\hyperlink{classrafe_1_1_column_info_a8e4ca4421d5c611b689421e0feca1114}{Column\+Info} (const \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} \&info)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} \hyperlink{classrafe_1_1_column_info_a446710a3a03b249da265a785aff1ee18}{column}
+\item 
+std\+::string \hyperlink{classrafe_1_1_column_info_a22fd355567e1d07f30fd1deae721577f}{type}
+\item 
+double \hyperlink{classrafe_1_1_column_info_a3925986dda2c3385a512d6491e282aae}{number\+Of\+Unique\+Values}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Stored information about column, like identifier, number of unique values and type. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_column_info_a7b8526771896d312ac4329592fe85f73}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{std\+::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_column_info_a7b8526771896d312ac4329592fe85f73}
+Create the instance of \hyperlink{classrafe_1_1_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ column name \\
+\hline
+{\em type} & -\/ column type \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_column_info_a7002d12c04ff1acb398f01b09b3f9297}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_column_info_a7002d12c04ff1acb398f01b09b3f9297}
+Create the instance of \hyperlink{classrafe_1_1_column_info}{Column\+Info}. \hypertarget{classrafe_1_1_column_info_af1b1e671898270d7cd905860297a1707}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{name, }
+\item[{double}]{number\+Of\+Unique\+Values, }
+\item[{std\+::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_column_info_af1b1e671898270d7cd905860297a1707}
+Create the instance of \hyperlink{classrafe_1_1_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ column name \\
+\hline
+{\em number\+Of\+Unique\+Values} & \\
+\hline
+{\em type} & -\/ type of column \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_column_info_a2a9a69f1dfc6a40b2effb352887acba0}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{const {\bf Column\+Identifier} \&}]{column, }
+\item[{double}]{number\+Of\+Unique\+Values, }
+\item[{std\+::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_column_info_a2a9a69f1dfc6a40b2effb352887acba0}
+Create the instance of \hyperlink{classrafe_1_1_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em column} & -\/ \hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} of the column \\
+\hline
+{\em number\+Of\+Unique\+Values} & \\
+\hline
+{\em type} & -\/ type of column \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrafe_1_1_column_info_a8e4ca4421d5c611b689421e0feca1114}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!Column\+Info@{Column\+Info}}
+\index{Column\+Info@{Column\+Info}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{Column\+Info}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Column\+Info\+::\+Column\+Info (
+\begin{DoxyParamCaption}
+\item[{const {\bf Join\+Column\+Info} \&}]{info}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_column_info_a8e4ca4421d5c611b689421e0feca1114}
+Create the instance of \hyperlink{classrafe_1_1_column_info}{Column\+Info}. 
+\begin{DoxyParams}{Parameters}
+{\em info} & -\/ \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_column_info_a446710a3a03b249da265a785aff1ee18}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!column@{column}}
+\index{column@{column}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{column}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Column\+Identifier} rafe\+::\+Column\+Info\+::column}}\label{classrafe_1_1_column_info_a446710a3a03b249da265a785aff1ee18}
+Columns identifier. \hypertarget{classrafe_1_1_column_info_a3925986dda2c3385a512d6491e282aae}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!number\+Of\+Unique\+Values@{number\+Of\+Unique\+Values}}
+\index{number\+Of\+Unique\+Values@{number\+Of\+Unique\+Values}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{number\+Of\+Unique\+Values}]{\setlength{\rightskip}{0pt plus 5cm}double rafe\+::\+Column\+Info\+::number\+Of\+Unique\+Values}}\label{classrafe_1_1_column_info_a3925986dda2c3385a512d6491e282aae}
+Stores number of unique values for joining purposes. \hypertarget{classrafe_1_1_column_info_a22fd355567e1d07f30fd1deae721577f}{\index{rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}!type@{type}}
+\index{type@{type}!rafe\+::\+Column\+Info@{rafe\+::\+Column\+Info}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Column\+Info\+::type}}\label{classrafe_1_1_column_info_a22fd355567e1d07f30fd1deae721577f}
+Type of the column. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Structures.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra\+Structures.\+cpp\end{DoxyCompactItemize}

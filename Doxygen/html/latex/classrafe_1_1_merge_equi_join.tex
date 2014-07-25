@@ -1,0 +1,84 @@
+\hypertarget{classrafe_1_1_merge_equi_join}{\section{rafe\+:\+:Merge\+Equi\+Join Class Reference}
+\label{classrafe_1_1_merge_equi_join}\index{rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Merge\+Equi\+Join\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_merge_equi_join}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_merge_equi_join_ab51232a08c11f2f8402fffeafa7b4ea5}{Merge\+Equi\+Join} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \&\hyperlink{classrafe_1_1_merge_equi_join_a7b3cbe4e5b568582281f89de0eee0460}{condition})
+\item 
+void \hyperlink{classrafe_1_1_merge_equi_join_a612f15e10eb741126e282b605fef0921}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_merge_equi_join_a7b3cbe4e5b568582281f89de0eee0460}{condition}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{classrafe_1_1_merge_equi_join_adff0e135df404e746d1ddfac4ac25a8d}{left}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_sort_parameter}{Sort\+Parameter} $>$ \hyperlink{classrafe_1_1_merge_equi_join_a3d77a9923ebd3aafe2aaf87fdf81bf6e}{right}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents merge equi join. Operator computes equijoin from given sorted inputs. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_merge_equi_join_ab51232a08c11f2f8402fffeafa7b4ea5}{\index{rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}!Merge\+Equi\+Join@{Merge\+Equi\+Join}}
+\index{Merge\+Equi\+Join@{Merge\+Equi\+Join}!rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}}
+\subsubsection[{Merge\+Equi\+Join}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Merge\+Equi\+Join\+::\+Merge\+Equi\+Join (
+\begin{DoxyParamCaption}
+\item[{const std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ \&}]{condition}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_merge_equi_join_ab51232a08c11f2f8402fffeafa7b4ea5}
+Creates new instance of \hyperlink{classrafe_1_1_merge_equi_join}{Merge\+Equi\+Join}. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & -\/ join condition. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_merge_equi_join_a612f15e10eb741126e282b605fef0921}{\index{rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Merge\+Equi\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_merge_equi_join_a612f15e10eb741126e282b605fef0921}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_binary_physical_operator_a58ce0a14b970b2c932254419877a2e0e}{rafe\+::\+Binary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_merge_equi_join_a7b3cbe4e5b568582281f89de0eee0460}{\index{rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Merge\+Equi\+Join\+::condition}}\label{classrafe_1_1_merge_equi_join_a7b3cbe4e5b568582281f89de0eee0460}
+\hyperlink{classrafe_1_1_join}{Join} condition. \hypertarget{classrafe_1_1_merge_equi_join_adff0e135df404e746d1ddfac4ac25a8d}{\index{rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}!left@{left}}
+\index{left@{left}!rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}}
+\subsubsection[{left}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ rafe\+::\+Merge\+Equi\+Join\+::left}}\label{classrafe_1_1_merge_equi_join_adff0e135df404e746d1ddfac4ac25a8d}
+Stored information how first input is sorted. \hypertarget{classrafe_1_1_merge_equi_join_a3d77a9923ebd3aafe2aaf87fdf81bf6e}{\index{rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}!right@{right}}
+\index{right@{right}!rafe\+::\+Merge\+Equi\+Join@{rafe\+::\+Merge\+Equi\+Join}}
+\subsubsection[{right}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sort\+Parameter}$>$ rafe\+::\+Merge\+Equi\+Join\+::right}}\label{classrafe_1_1_merge_equi_join_a3d77a9923ebd3aafe2aaf87fdf81bf6e}
+Stored information how second input is sorted. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

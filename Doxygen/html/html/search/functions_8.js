@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['indexscan',['IndexScan',['../class_index_scan.html#a25eeb21a925a19209af7100de3f42ef5',1,'IndexScan']]],
-  ['indexsearch',['indexSearch',['../class_time_complexity.html#ae6fc889627b5bd1d513998729e8e2b08',1,'TimeComplexity']]],
-  ['insertselection',['insertSelection',['../class_algebra_visitor.html#adbcb61f031cfc4808d150b076f6aa63d',1,'AlgebraVisitor']]],
-  ['isknown',['isKnown',['../class_sort_parameters.html#aa29d3a50f026c0d840c16af26f8d7b07',1,'SortParameters']]]
+  ['indexscan',['IndexScan',['../classrafe_1_1_index_scan.html#acda9bef1fc1996fa1a51dd4965c902c1',1,'rafe::IndexScan']]],
+  ['indexsearch',['indexSearch',['../classrafe_1_1_time_complexity.html#a6a18620dfff08ab4c5e917ec8f2e1cc3',1,'rafe::TimeComplexity']]],
+  ['insertselection',['insertSelection',['../classrafe_1_1_algebra_visitor.html#a4eb384d25bff8d19c3d0d7310d33bf81',1,'rafe::AlgebraVisitor']]],
+  ['isknown',['isKnown',['../classrafe_1_1_sort_parameters.html#aeaa22b9a988f59b71c52dc01b09601e0',1,'rafe::SortParameters']]]
 ];

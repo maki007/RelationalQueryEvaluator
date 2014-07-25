@@ -1,0 +1,114 @@
+\hypertarget{classrafe_1_1_grouped_expression}{\section{rafe\+:\+:Grouped\+Expression Class Reference}
+\label{classrafe_1_1_grouped_expression}\index{rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}}
+}
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Grouped\+Expression\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_grouped_expression}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_grouped_expression_a0f8325955c030168ab4590f631bcb0cf}{Grouped\+Expression} ()
+\item 
+\hyperlink{classrafe_1_1_grouped_expression_ab057facf61cab70b5a8e7aeb5438a55d}{Grouped\+Expression} (Grouped\+Operator \hyperlink{classrafe_1_1_grouped_expression_a269644ee2565184c9386dd57d24e93bb}{operation}, const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$$>$ \&\hyperlink{classrafe_1_1_grouped_expression_af31df501bd0d3e5ee9ce28ab4c71c4ee}{children})
+\item 
+void \hyperlink{classrafe_1_1_grouped_expression_a7f7e2cb9efd9457d80dc6365339957f6}{accept} (\hyperlink{classrafe_1_1_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
+\item 
+void \hyperlink{classrafe_1_1_grouped_expression_ab770657757c0b374e4eacc8112ba9c4f}{replace\+Child} (\hyperlink{classrafe_1_1_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ new\+Child)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Grouped\+Operator \hyperlink{classrafe_1_1_grouped_expression_a269644ee2565184c9386dd57d24e93bb}{operation}
+\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr\\*
+$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ $>$ \hyperlink{classrafe_1_1_grouped_expression_af31df501bd0d3e5ee9ce28ab4c71c4ee}{children}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Repressents grouped logical or aritmetic comutative expression. It has variable number of children. Currently it is used only for local A\+N\+D and O\+R operations. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_grouped_expression_a0f8325955c030168ab4590f631bcb0cf}{\index{rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}!Grouped\+Expression@{Grouped\+Expression}}
+\index{Grouped\+Expression@{Grouped\+Expression}!rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}}
+\subsubsection[{Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Grouped\+Expression\+::\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_grouped_expression_a0f8325955c030168ab4590f631bcb0cf}
+Creates new instance of Groupped\+Expression. \hypertarget{classrafe_1_1_grouped_expression_ab057facf61cab70b5a8e7aeb5438a55d}{\index{rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}!Grouped\+Expression@{Grouped\+Expression}}
+\index{Grouped\+Expression@{Grouped\+Expression}!rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}}
+\subsubsection[{Grouped\+Expression}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Grouped\+Expression\+::\+Grouped\+Expression (
+\begin{DoxyParamCaption}
+\item[{Grouped\+Operator}]{operation, }
+\item[{const std\+::vector$<$ std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$$>$ \&}]{children}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_grouped_expression_ab057facf61cab70b5a8e7aeb5438a55d}
+Creates new instance of Groupped\+Expression. 
+\begin{DoxyParams}{Parameters}
+{\em operation} & -\/ type of operation. \\
+\hline
+{\em children} & -\/ child nodes. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_grouped_expression_a7f7e2cb9efd9457d80dc6365339957f6}{\index{rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouped\+Expression\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouped_expression_a7f7e2cb9efd9457d80dc6365339957f6}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a3b2e5bae8b99ea6c9a3c92a9b949b3cd}{rafe\+::\+Expression}.
+
+\hypertarget{classrafe_1_1_grouped_expression_ab770657757c0b374e4eacc8112ba9c4f}{\index{rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouped\+Expression\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouped_expression_ab770657757c0b374e4eacc8112ba9c4f}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a841879e8eb85f4bb68cfeec24231a701}{rafe\+::\+Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_grouped_expression_af31df501bd0d3e5ee9ce28ab4c71c4ee}{\index{rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}!children@{children}}
+\index{children@{children}!rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}}
+\subsubsection[{children}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::shared\+\_\+ptr$<${\bf Expression}$>$ $>$ rafe\+::\+Grouped\+Expression\+::children}}\label{classrafe_1_1_grouped_expression_af31df501bd0d3e5ee9ce28ab4c71c4ee}
+Stores call arguments. Arguments are also expression trees. \hypertarget{classrafe_1_1_grouped_expression_a269644ee2565184c9386dd57d24e93bb}{\index{rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}!operation@{operation}}
+\index{operation@{operation}!rafe\+::\+Grouped\+Expression@{rafe\+::\+Grouped\+Expression}}
+\subsubsection[{operation}]{\setlength{\rightskip}{0pt plus 5cm}Grouped\+Operator rafe\+::\+Grouped\+Expression\+::operation}}\label{classrafe_1_1_grouped_expression_a269644ee2565184c9386dd57d24e93bb}
+Identifies column with name and unique id. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+cpp\end{DoxyCompactItemize}

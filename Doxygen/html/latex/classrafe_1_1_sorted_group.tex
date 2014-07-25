@@ -1,0 +1,82 @@
+\hypertarget{classrafe_1_1_sorted_group}{\section{rafe\+:\+:Sorted\+Group Class Reference}
+\label{classrafe_1_1_sorted_group}\index{rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}}
+}
+
+
+{\ttfamily \#include $<$Physical\+Operator.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Sorted\+Group\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_sorted_group}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_sorted_group_aa151ec63afeb0fa158d2cf2175c51ff6}{Sorted\+Group} (const std\+::vector$<$ \hyperlink{classrafe_1_1_group_column}{Group\+Column} $>$ \&\hyperlink{classrafe_1_1_sorted_group_a67bdbc2a6fda7e3f148e24c8fe44a169}{group\+Columns}, const std\+::vector$<$ \hyperlink{classrafe_1_1_agregate_function}{Agregate\+Function} $>$ \&\hyperlink{classrafe_1_1_sorted_group_a42df796f73825622fda8d4ff9d2b14eb}{agregate\+Functions})
+\item 
+void \hyperlink{classrafe_1_1_sorted_group_a2b9f2fbbe54f301a7b54050a67e1a4a2}{accept} (\hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_group_column}{Group\+Column} $>$ \hyperlink{classrafe_1_1_sorted_group_a67bdbc2a6fda7e3f148e24c8fe44a169}{group\+Columns}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_agregate_function}{Agregate\+Function} $>$ \hyperlink{classrafe_1_1_sorted_group_a42df796f73825622fda8d4ff9d2b14eb}{agregate\+Functions}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents group algorithm, which groups input sorted by group columns. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_sorted_group_aa151ec63afeb0fa158d2cf2175c51ff6}{\index{rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}!Sorted\+Group@{Sorted\+Group}}
+\index{Sorted\+Group@{Sorted\+Group}!rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}}
+\subsubsection[{Sorted\+Group}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Sorted\+Group\+::\+Sorted\+Group (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Group\+Column} $>$ \&}]{group\+Columns, }
+\item[{const std\+::vector$<$ {\bf Agregate\+Function} $>$ \&}]{agregate\+Functions}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_sorted_group_aa151ec63afeb0fa158d2cf2175c51ff6}
+Creates new instance of \hyperlink{classrafe_1_1_hash_group}{Hash\+Group}. 
+\begin{DoxyParams}{Parameters}
+{\em group\+Columns} & -\/ group by columns. \\
+\hline
+{\em agregate\+Functions} & -\/ information about agreggate functions. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_sorted_group_a2b9f2fbbe54f301a7b54050a67e1a4a2}{\index{rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Sorted\+Group\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Physical\+Operator\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_sorted_group_a2b9f2fbbe54f301a7b54050a67e1a4a2}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_physical_operator_visitor}{Physical\+Operator\+Visitor}, on which to call function. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_unary_physical_operator_a56a160698a78f8a0aa44e47e0804f45e}{rafe\+::\+Unary\+Physical\+Operator}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_sorted_group_a42df796f73825622fda8d4ff9d2b14eb}{\index{rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}!agregate\+Functions@{agregate\+Functions}}
+\index{agregate\+Functions@{agregate\+Functions}!rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}}
+\subsubsection[{agregate\+Functions}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Agregate\+Function}$>$ rafe\+::\+Sorted\+Group\+::agregate\+Functions}}\label{classrafe_1_1_sorted_group_a42df796f73825622fda8d4ff9d2b14eb}
+Information about agreggate functions. \hypertarget{classrafe_1_1_sorted_group_a67bdbc2a6fda7e3f148e24c8fe44a169}{\index{rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}!group\+Columns@{group\+Columns}}
+\index{group\+Columns@{group\+Columns}!rafe\+::\+Sorted\+Group@{rafe\+::\+Sorted\+Group}}
+\subsubsection[{group\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Group\+Column}$>$ rafe\+::\+Sorted\+Group\+::group\+Columns}}\label{classrafe_1_1_sorted_group_a67bdbc2a6fda7e3f148e24c8fe44a169}
+\hyperlink{classrafe_1_1_group}{Group} by columns. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Physical\+Operator.\+cpp\end{DoxyCompactItemize}

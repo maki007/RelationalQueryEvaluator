@@ -45,9 +45,9 @@ namespace rafe {
 	{
 	public:
 
-		std::string name; /**< Stores name of the column. */
+		std::string name; /**< Stores the name of the column. */
 
-		int id; /**< Stores unique identifier of a column. */
+		int id; /**< Stores the unique identifier of a column. */
 
 		/**
 		* Create the instance of ColumnIdentifier.
@@ -57,13 +57,13 @@ namespace rafe {
 		ColumnIdentifier(std::string name, int id);
 
 		/**
-		* Create the instance of ColumnIdentifier.
+		* Creates new instance of ColumnIdentifier.
 		* @param name - column name.
 		*/
 		ColumnIdentifier(std::string name);
 
 		/**
-		* Create the instance of ColumnIdentifier.
+		* Creates new instance of ColumnIdentifier.
 		*/
 		ColumnIdentifier();
 
@@ -73,12 +73,14 @@ namespace rafe {
 		std::string toString() const;
 
 		/**
-		* Compares id of ColumnIdentifier so it can be stored in map and set.
+		* Compares id of ColumnIdentifier.
+		* @param other - ColumnIdentifier for comparision.
 		*/
 		bool operator<(const ColumnIdentifier& other) const;
 
 		/**
 		* Overload opeartor == and compares only ids.
+		* @param other - ColumnIdentifier for comparision.
 		*/
 		bool operator ==(const ColumnIdentifier& other) const;
 
@@ -96,26 +98,26 @@ namespace rafe {
 
 	/**
 	* Represents how the relation is sorted.
-	* Stores one columns and sort order.
+	* Stores one column and its sort order.
 	*/
 	class SortParameter
 	{
 	public:
 		ColumnIdentifier column; /**< Identifies by what column should the relation be sorted by. */
 
-		std::set<ColumnIdentifier> others; /**< Identifiers of columns which equals column. */
+		std::set<ColumnIdentifier> others; /**< Set of identifiers of columns which equals property column. */
 
-		SortOrder order; /**< Order how to sort column.*/
+		SortOrder order; /**< Order how to sort the column.*/
 
 		/**
-		* Create the instance of SortParameter.
+		* Creates new instance of SortParameter.
 		* @param column - column identifier.
 		* @param order - sortOrder.
 		*/
 		SortParameter(const ColumnIdentifier & column, SortOrder order);
 
 		/**
-		* Create the instance of SortParameter.
+		* Creates new instance of SortParameter.
 		* @param column - column identifier.
 		* @param other - order column which equals column.
 		* @param order - sortOrder.
@@ -123,7 +125,7 @@ namespace rafe {
 		SortParameter(const ColumnIdentifier & column, const ColumnIdentifier & other, SortOrder order);
 
 		/**
-		* Create the instance of SortParameter.
+		* Creates new instance of SortParameter.
 		*/
 		SortParameter();
 
@@ -137,27 +139,27 @@ namespace rafe {
 	{
 	public:
 
-		std::list<SortParameter> values; /**< Vector of SortParameter. */
+		std::list<SortParameter> values; /**< Vector storing SortParameter. */
 
 		/**
-		* Create the instance of SortParameters.
+		* Creates new instance of SortParameters.
 		* @param value
 		*/
 		SortParameters(const SortParameter & value);
 
 		/**
-		* Create the instance of SortParameters.
+		* Creates new instance of SortParameters.
 		* @param values
 		*/
 		SortParameters(const std::vector<SortParameter> & values);
 
 		/**
-		* Create the instance of SortParameters.
+		* Creates new instance of SortParameters.
 		*/
 		SortParameters();
 
 		/**
-		* Indicates if there is only one option.
+		* Indicates if there is only one sort possibility.
 		*/
 		bool isKnown() const;
 
@@ -175,19 +177,19 @@ namespace rafe {
 		std::vector<SortParameters> parameters; /**< Vector of SortParameters. */
 
 		/**
-		* Create the instance of PossibleSortParameters.
+		* Creates the instance of PossibleSortParameters.
 		* @param parameters - vector<SortParameters>.
 		*/
 		PossibleSortParameters(const std::vector<SortParameters> & parameters);
 
 		/**
-		* Create the instance of PossibleSortParameters.
-		* @param parameters - vector<SortParameter.
+		* Creates the instance of PossibleSortParameters.
+		* @param parameters - vector<SortParameter>.
 		*/
 		PossibleSortParameters(const std::vector<SortParameter> & parameters);
 
 		/**
-		* Create the instance of PossibleSortParameters.
+		* Creates the instance of PossibleSortParameters.
 		*/
 		PossibleSortParameters();
 
@@ -209,12 +211,12 @@ namespace rafe {
 	public:
 		AgregateFunctionType function; /**< Agregate function. */
 		std::string functionName; /**< Function name, stored only for debuging purposes. */
-		ColumnIdentifier parameter; /**< Column identifier of parameter fo function. Count function doesn't have any parameter. */
-		ColumnIdentifier output;  /**< Id of the output column, where agregate function results will be stored. */
+		ColumnIdentifier parameter; /**< Column identifier of parameter fo function. Count function does not have any parameter. */
+		ColumnIdentifier output;  /**< Identifier of the output column storing function result. */
 	};
 
 	/**
-	* Enum for type of index.
+	* Enum for index type.
 	*/
 	enum IndexType
 	{
@@ -258,12 +260,12 @@ namespace rafe {
 		ColumnInfo(std::string name, std::string type);
 
 		/**
-		* Create the instance of ColumnInfo.
+		* Creates new instance of ColumnInfo.
 		*/
 		ColumnInfo();
 
 		/**
-		* Create the instance of ColumnInfo.
+		* Creates new instance of ColumnInfo.
 		* @param name - column name
 		* @param numberOfUniqueValues
 		* @param type - type of column
@@ -271,7 +273,7 @@ namespace rafe {
 		ColumnInfo(std::string name, double numberOfUniqueValues, std::string type);
 
 		/**
-		* Create the instance of ColumnInfo.
+		* Creates new instance of ColumnInfo.
 		* @param column - ColumnIdentifier of the column
 		* @param numberOfUniqueValues
 		* @param type - type of column
@@ -279,7 +281,7 @@ namespace rafe {
 		ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues, std::string type);
 
 		/**
-		* Create the instance of ColumnInfo.
+		* Creates new instance of ColumnInfo.
 		* @param info - JoinColumnInfo
 		*/
 		ColumnInfo(const JoinColumnInfo & info);
@@ -296,13 +298,13 @@ namespace rafe {
 		std::string newColumn; /**< New column name. */
 
 		/**
-		* Create the instance of JoinColumnInfo.
+		* Creates new instance of JoinColumnInfo.
 		* @param col - ColumnInfo
 		*/
 		JoinColumnInfo(const ColumnInfo & col);
 
 		/**
-		* Create the instance of JoinColumnInfo.
+		* Creates new the instance of JoinColumnInfo.
 		*/
 		JoinColumnInfo();
 
@@ -315,7 +317,7 @@ namespace rafe {
 	{
 	public:
 		ColumnIdentifier result; /**< Identifier of output column. */
-		std::shared_ptr <Expression> expression; /**< Expression to compute new column. If it is null column is only copied to output. */
+		std::shared_ptr <Expression> expression; /**< Expression to compute new column. If it is null, then the column is only copied to output. */
 		std::string type; /**< Type of the column. */
 	};
 
@@ -329,7 +331,7 @@ namespace rafe {
 		ColumnIdentifier output; /**< Identifier of output column. Input and output are same but they have different id. */
 
 		/**
-		* Create the instance of GroupColumn using ColumnIdentifier.
+		* Creates new instance of GroupColumn using ColumnIdentifier.
 		* @param input - ColumnIdentifier of the column
 		*/
 		GroupColumn(const ColumnIdentifier & input);

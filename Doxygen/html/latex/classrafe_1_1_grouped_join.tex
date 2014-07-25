@@ -1,0 +1,62 @@
+\hypertarget{classrafe_1_1_grouped_join}{\section{rafe\+:\+:Grouped\+Join Class Reference}
+\label{classrafe_1_1_grouped_join}\index{rafe\+::\+Grouped\+Join@{rafe\+::\+Grouped\+Join}}
+}
+
+
+{\ttfamily \#include $<$Algebra.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Grouped\+Join\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classrafe_1_1_grouped_join}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classrafe_1_1_grouped_join_a36b56821dc719728f1f9294e3f8d8849}{accept} (\hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} \&v)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ \hyperlink{classrafe_1_1_grouped_join_a9217fbe67d211897dca2d54d0825e86b}{condition}
+\item 
+std\+::vector$<$ \hyperlink{classrafe_1_1_join_column_info}{Join\+Column\+Info} $>$ \hyperlink{classrafe_1_1_grouped_join_aae2b6f6d25f2b8467dacac459e0a8abb}{output\+Join\+Columns}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents the algebraic operation join on multiple tables. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_grouped_join_a36b56821dc719728f1f9294e3f8d8849}{\index{rafe\+::\+Grouped\+Join@{rafe\+::\+Grouped\+Join}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Grouped\+Join@{rafe\+::\+Grouped\+Join}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Grouped\+Join\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Algebra\+Visitor} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_grouped_join_a36b56821dc719728f1f9294e3f8d8849}
+Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
+\begin{DoxyParams}{Parameters}
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_grouped_algebra_node_abdb48442900d5560f815f4eb33ebeb04}{rafe\+::\+Grouped\+Algebra\+Node}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_grouped_join_a9217fbe67d211897dca2d54d0825e86b}{\index{rafe\+::\+Grouped\+Join@{rafe\+::\+Grouped\+Join}!condition@{condition}}
+\index{condition@{condition}!rafe\+::\+Grouped\+Join@{rafe\+::\+Grouped\+Join}}
+\subsubsection[{condition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::shared\+\_\+ptr$<${\bf Expression}$>$ rafe\+::\+Grouped\+Join\+::condition}}\label{classrafe_1_1_grouped_join_a9217fbe67d211897dca2d54d0825e86b}
+Condition for joining. \hypertarget{classrafe_1_1_grouped_join_aae2b6f6d25f2b8467dacac459e0a8abb}{\index{rafe\+::\+Grouped\+Join@{rafe\+::\+Grouped\+Join}!output\+Join\+Columns@{output\+Join\+Columns}}
+\index{output\+Join\+Columns@{output\+Join\+Columns}!rafe\+::\+Grouped\+Join@{rafe\+::\+Grouped\+Join}}
+\subsubsection[{output\+Join\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Join\+Column\+Info}$>$ rafe\+::\+Grouped\+Join\+::output\+Join\+Columns}}\label{classrafe_1_1_grouped_join_aae2b6f6d25f2b8467dacac459e0a8abb}
+List of output columns from join 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Algebra.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,106 @@
+\hypertarget{classrafe_1_1_column}{\section{rafe\+:\+:Column Class Reference}
+\label{classrafe_1_1_column}\index{rafe\+::\+Column@{rafe\+::\+Column}}
+}
+
+
+{\ttfamily \#include $<$Expressions.\+h$>$}
+
+Inheritance diagram for rafe\+:\+:Column\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classrafe_1_1_column}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_column_a040c4db6ffc5c18a2df387beacdcddc8}{Column} (D\+O\+M\+Element $\ast$node)
+\item 
+void \hyperlink{classrafe_1_1_column_addd58ca5abdbba013b744ee6a96de75d}{accept} (\hyperlink{classrafe_1_1_expression_visitor_base}{Expression\+Visitor\+Base} \&v)
+\item 
+void \hyperlink{classrafe_1_1_column_a420f51cd25221b94cbc0dcb7391ee950}{replace\+Child} (\hyperlink{classrafe_1_1_expression}{Expression} $\ast$old\+Child, std\+::shared\+\_\+ptr$<$ \hyperlink{classrafe_1_1_expression}{Expression} $>$ new\+Child)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrafe_1_1_column_identifier}{Column\+Identifier} \hyperlink{classrafe_1_1_column_a7d991e6ad44729235c31910dcc885c5d}{column}
+\item 
+std\+::string \hyperlink{classrafe_1_1_column_a3e812878630c51153a69f372b1472ce6}{type}
+\item 
+ulong \hyperlink{classrafe_1_1_column_a1d4d38a6c74a83602c193c5a51f20780}{input}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Represents table column in expression tree. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrafe_1_1_column_a040c4db6ffc5c18a2df387beacdcddc8}{\index{rafe\+::\+Column@{rafe\+::\+Column}!Column@{Column}}
+\index{Column@{Column}!rafe\+::\+Column@{rafe\+::\+Column}}
+\subsubsection[{Column}]{\setlength{\rightskip}{0pt plus 5cm}rafe\+::\+Column\+::\+Column (
+\begin{DoxyParamCaption}
+\item[{D\+O\+M\+Element $\ast$}]{node}
+\end{DoxyParamCaption}
+)}}\label{classrafe_1_1_column_a040c4db6ffc5c18a2df387beacdcddc8}
+Creates new instance of \hyperlink{classrafe_1_1_column}{Column}. 
+\begin{DoxyParams}{Parameters}
+{\em node} & -\/ element storing information about column. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrafe_1_1_column_addd58ca5abdbba013b744ee6a96de75d}{\index{rafe\+::\+Column@{rafe\+::\+Column}!accept@{accept}}
+\index{accept@{accept}!rafe\+::\+Column@{rafe\+::\+Column}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Column\+::accept (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression\+Visitor\+Base} \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_column_addd58ca5abdbba013b744ee6a96de75d}
+Method for calling visit\mbox{[}node\mbox{]} on given Expression\+Visitor 
+\begin{DoxyParams}{Parameters}
+{\em v} & Expression\+Visitor, on which to call visit function \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a3b2e5bae8b99ea6c9a3c92a9b949b3cd}{rafe\+::\+Expression}.
+
+\hypertarget{classrafe_1_1_column_a420f51cd25221b94cbc0dcb7391ee950}{\index{rafe\+::\+Column@{rafe\+::\+Column}!replace\+Child@{replace\+Child}}
+\index{replace\+Child@{replace\+Child}!rafe\+::\+Column@{rafe\+::\+Column}}
+\subsubsection[{replace\+Child}]{\setlength{\rightskip}{0pt plus 5cm}void rafe\+::\+Column\+::replace\+Child (
+\begin{DoxyParamCaption}
+\item[{{\bf Expression} $\ast$}]{old\+Child, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$}]{new\+Child}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_column_a420f51cd25221b94cbc0dcb7391ee950}
+Replaces child from this class with new expression tree. 
+\begin{DoxyParams}{Parameters}
+{\em old\+Child} & -\/ child to replace \\
+\hline
+{\em new\+Child} & -\/ child to be replaced \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classrafe_1_1_expression_a841879e8eb85f4bb68cfeec24231a701}{rafe\+::\+Expression}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrafe_1_1_column_a7d991e6ad44729235c31910dcc885c5d}{\index{rafe\+::\+Column@{rafe\+::\+Column}!column@{column}}
+\index{column@{column}!rafe\+::\+Column@{rafe\+::\+Column}}
+\subsubsection[{column}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Column\+Identifier} rafe\+::\+Column\+::column}}\label{classrafe_1_1_column_a7d991e6ad44729235c31910dcc885c5d}
+Identifies column with name and unique id. \hypertarget{classrafe_1_1_column_a1d4d38a6c74a83602c193c5a51f20780}{\index{rafe\+::\+Column@{rafe\+::\+Column}!input@{input}}
+\index{input@{input}!rafe\+::\+Column@{rafe\+::\+Column}}
+\subsubsection[{input}]{\setlength{\rightskip}{0pt plus 5cm}ulong rafe\+::\+Column\+::input}}\label{classrafe_1_1_column_a1d4d38a6c74a83602c193c5a51f20780}
+This field is used for identifing, which child, columns belong. \hypertarget{classrafe_1_1_column_a3e812878630c51153a69f372b1472ce6}{\index{rafe\+::\+Column@{rafe\+::\+Column}!type@{type}}
+\index{type@{type}!rafe\+::\+Column@{rafe\+::\+Column}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string rafe\+::\+Column\+::type}}\label{classrafe_1_1_column_a3e812878630c51153a69f372b1472ce6}
+Type of the values stored in the column. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+h\item 
+C\+:/\+Users/\+Marcel/\+Documents/\+Visual Studio 2012/\+Projects/\+Relational\+Query\+Evaluator/\+Relational\+Query\+Evaluator/Expressions.\+cpp\end{DoxyCompactItemize}

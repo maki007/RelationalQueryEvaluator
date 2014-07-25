@@ -1,14 +1,17 @@
 var searchData=
 [
-  ['name',['name',['../class_table.html#a776e2cab59507b3b59d475a964e347b8',1,'Table::name()'],['../class_column_identifier.html#af401adcef91c0fb4087102182dddb6ea',1,'ColumnIdentifier::name()'],['../class_index.html#af557cb673e8298bc13d74e369f050084',1,'Index::name()'],['../class_nnary_expression.html#ab21462327a70e8955c74cd8cc3fc428f',1,'NnaryExpression::name()']]],
-  ['newcolumn',['newColumn',['../class_join_column_info.html#a4fdb28a84e69012cdb314463f9c0d674',1,'JoinColumnInfo']]],
-  ['nnaryexpression',['NnaryExpression',['../class_nnary_expression.html',1,'NnaryExpression'],['../class_nnary_expression.html#a38f44966213fd5d674aaff3ef9de37da',1,'NnaryExpression::NnaryExpression()']]],
-  ['nodecounter',['nodeCounter',['../class_graph_drawing_visitor.html#a0761312fb1e24b1951c0b263b19f268c',1,'GraphDrawingVisitor::nodeCounter()'],['../class_physical_operator_drawing_visitor.html#a75aa4987d070c40a3ec2e4e9c950c9e0',1,'PhysicalOperatorDrawingVisitor::nodeCounter()']]],
-  ['nodes',['nodes',['../class_get_columns_nodes_visitor.html#ac68ee0c1090596d4e25a5dc5a478533b',1,'GetColumnsNodesVisitor']]],
-  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../class_nullary_algebra_node_base.html',1,'NullaryAlgebraNodeBase'],['../class_nullary_algebra_node_base.html#a73108e19c00005dcda32af0b05060ea0',1,'NullaryAlgebraNodeBase::NullaryAlgebraNodeBase()']]],
-  ['nullaryphysicaloperator',['NullaryPhysicalOperator',['../class_nullary_physical_operator.html',1,'']]],
-  ['number_5fof_5fplans',['NUMBER_OF_PLANS',['../class_algebra_compiler.html#ab1a348c2daa3ca8f805f7cec2b35e29d',1,'AlgebraCompiler']]],
-  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../class_number_columns_in_join_visitor.html',1,'NumberColumnsInJoinVisitor'],['../class_number_columns_in_join_visitor.html#a5d09cffa1e191e46b312a3bcebc01b60',1,'NumberColumnsInJoinVisitor::NumberColumnsInJoinVisitor()']]],
-  ['numberofrows',['numberOfRows',['../class_table.html#ae85736953b357d0d44a50fd4a47de796',1,'Table']]],
-  ['numberofuniquevalues',['numberOfUniqueValues',['../class_column_info.html#add402bfa7bed26aa6072c5da9b06dda9',1,'ColumnInfo']]]
+  ['name',['name',['../classrafe_1_1_table.html#a398b089bc1b42a3ca61c21ebda706cc4',1,'rafe::Table::name()'],['../classrafe_1_1_column_identifier.html#a65aaf13619c20f17be5f8bdda2c6d28f',1,'rafe::ColumnIdentifier::name()'],['../classrafe_1_1_index.html#adfba6ba7d75003d44df8b92d6e232346',1,'rafe::Index::name()'],['../classrafe_1_1_nnary_expression.html#a14fbf6f0dd20a40e6ea647a1223e5362',1,'rafe::NnaryExpression::name()']]],
+  ['newcolumn',['newColumn',['../classrafe_1_1_join_column_info.html#af79ae87d9170139440abfac3fd89e199',1,'rafe::JoinColumnInfo']]],
+  ['nnaryexpression',['NnaryExpression',['../classrafe_1_1_nnary_expression.html',1,'rafe']]],
+  ['nnaryexpression',['NnaryExpression',['../classrafe_1_1_nnary_expression.html#ab136f6b504e0c3523bd2e6a929022d58',1,'rafe::NnaryExpression']]],
+  ['nodecounter',['nodeCounter',['../classrafe_1_1_graph_drawing_visitor.html#a826fb63b5690180f6cf3c1f7fd0300b4',1,'rafe::GraphDrawingVisitor::nodeCounter()'],['../classrafe_1_1_physical_operator_drawing_visitor.html#a657ec262f628b93a56bb9ed016d02568',1,'rafe::PhysicalOperatorDrawingVisitor::nodeCounter()']]],
+  ['nodes',['nodes',['../classrafe_1_1_get_columns_nodes_visitor.html#a33e85438a4b6d2474edb7ba51732c773',1,'rafe::GetColumnsNodesVisitor']]],
+  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../classrafe_1_1_nullary_algebra_node_base.html#ad27b12a11492ddc6d3d07f1781e0dfcf',1,'rafe::NullaryAlgebraNodeBase']]],
+  ['nullaryalgebranodebase',['NullaryAlgebraNodeBase',['../classrafe_1_1_nullary_algebra_node_base.html',1,'rafe']]],
+  ['nullaryphysicaloperator',['NullaryPhysicalOperator',['../classrafe_1_1_nullary_physical_operator.html',1,'rafe']]],
+  ['number_5fof_5fplans',['NUMBER_OF_PLANS',['../classrafe_1_1_algebra_compiler.html#afe381cc19b6dc860178b4a8783b51237',1,'rafe::AlgebraCompiler']]],
+  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../classrafe_1_1_number_columns_in_join_visitor.html',1,'rafe']]],
+  ['numbercolumnsinjoinvisitor',['NumberColumnsInJoinVisitor',['../classrafe_1_1_number_columns_in_join_visitor.html#a7139834faf5f6814ff8d48c05ec0f260',1,'rafe::NumberColumnsInJoinVisitor']]],
+  ['numberofrows',['numberOfRows',['../classrafe_1_1_table.html#aa9c9eecf04e1203cc1f6ac25ecbd2baa',1,'rafe::Table']]],
+  ['numberofuniquevalues',['numberOfUniqueValues',['../classrafe_1_1_column_info.html#a3925986dda2c3385a512d6491e282aae',1,'rafe::ColumnInfo']]]
 ];
