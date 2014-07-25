@@ -31,23 +31,23 @@
 \contentsline {subsection}{\numberline {3.2.4}Laws involving joins and products}{14}{subsection.3.2.4}
 \contentsline {section}{\numberline {3.3}Physical plan generation}{14}{section.3.3}
 \contentsline {subsection}{\numberline {3.3.1}Size estimations}{15}{subsection.3.3.1}
-\contentsline {subsubsection}{Estimating the size of projection}{15}{section*.19}
-\contentsline {subsubsection}{Estimating the size of selection}{15}{section*.20}
-\contentsline {subsubsection}{Estimating the size of join}{16}{section*.21}
-\contentsline {subsubsection}{Estimating the size of union}{17}{section*.22}
+\contentsline {subsubsection}{Estimating the size of a projection}{15}{section*.19}
+\contentsline {subsubsection}{Estimating the size of a selection}{15}{section*.20}
+\contentsline {subsubsection}{Estimating the size of a join}{16}{section*.21}
+\contentsline {subsubsection}{Estimating the size of an union}{17}{section*.22}
 \contentsline {subsubsection}{Estimating the size of intersection}{17}{section*.23}
-\contentsline {subsubsection}{Estimating the size of difference}{17}{section*.24}
-\contentsline {subsubsection}{Estimating the size of grouping}{17}{section*.25}
+\contentsline {subsubsection}{Estimating the size of a difference}{17}{section*.24}
+\contentsline {subsubsection}{Estimating the size of a grouping}{17}{section*.25}
 \contentsline {subsection}{\numberline {3.3.2}Enumerating plans}{17}{subsection.3.3.2}
 \contentsline {subsubsection}{Heuristic selection}{18}{section*.26}
-\contentsline {subsubsection}{Branch-and-bound plan enumeration}{18}{section*.27}
+\contentsline {subsubsection}{Branch--and--bound plan enumeration}{18}{section*.27}
 \contentsline {subsubsection}{Hill climbing}{18}{section*.28}
 \contentsline {subsubsection}{Dynamic programming}{18}{section*.29}
-\contentsline {subsubsection}{Selinger-Style Optimization}{18}{section*.30}
-\contentsline {subsection}{\numberline {3.3.3}Choosing join order}{19}{subsection.3.3.3}
-\contentsline {subsubsection}{Dynamic programing to select a join order}{19}{section*.31}
-\contentsline {subsubsection}{Greedy algorithm for selecting a join order}{20}{section*.32}
-\contentsline {subsection}{\numberline {3.3.4}Choosing physical algorithms}{20}{subsection.3.3.4}
+\contentsline {subsubsection}{Selinger--Style Optimization}{18}{section*.30}
+\contentsline {subsection}{\numberline {3.3.3}Choosing the join order}{19}{subsection.3.3.3}
+\contentsline {subsubsection}{Dynamic programming algorithm}{19}{section*.31}
+\contentsline {subsubsection}{Greedy algorithm}{20}{section*.32}
+\contentsline {subsection}{\numberline {3.3.4}Choosing physical algorithms}{21}{subsection.3.3.4}
 \contentsline {subsubsection}{Choosing selection algorithms}{21}{section*.33}
 \contentsline {subsubsection}{Choosing join algorithms}{21}{section*.34}
 \contentsline {subsubsection}{Choosing scanning algorithms}{21}{section*.35}
