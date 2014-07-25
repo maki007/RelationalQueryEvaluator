@@ -21,49 +21,52 @@
 
 XERCES_CPP_NAMESPACE_USE
 
-/**
-* Static class providing methods for helping reading dom. 
-*/
-class XmlUtils
-{
-public:
+namespace rafe {
 
 	/**
-	* Return elemenet child, which name matches given value.
-	* @param element - element, which return child from
-	* @param elementName - child element name
- 	* @returns child element matching elementName
+	* Static class providing methods for helping reading dom.
 	*/
-	static DOMElement * GetChildElementByName(DOMElement * element, const char * elementName);
+	class XmlUtils
+	{
+	public:
 
-	/**
-	* Returns first child element from given element.
-	* @param element - element node
-	* @returns first child element from given element 
-	*/
-	static DOMElement * GetFirstChildElement(DOMElement * element);
+		/**
+		* Return elemenet child, which name matches given value.
+		* @param element - element, which return child from
+		* @param elementName - child element name
+		* @returns child element matching elementName
+		*/
+		static DOMElement * GetChildElementByName(DOMElement * element, const char * elementName);
 
-	/**
-	* Return all child elements of element node.
-	* @param element - element node
-	* @returns all child elements
-	*/
-	static std::vector<DOMElement *> GetChildElements(DOMElement * element);
+		/**
+		* Returns first child element from given element.
+		* @param element - element node
+		* @returns first child element from given element
+		*/
+		static DOMElement * GetFirstChildElement(DOMElement * element);
 
-	/**
-	* Reads atrribute and returns attribute values as string.
-	* @param element - dom element
-	* @param attribute - attribute name
-	* @returns attribude value.
-	*/
-	static std::string ReadAttribute(DOMElement * element, const char * attribute);
+		/**
+		* Return all child elements of element node.
+		* @param element - element node
+		* @returns all child elements
+		*/
+		static std::vector<DOMElement *> GetChildElements(DOMElement * element);
 
-	/**
-	* Return element name as string.
-	* @param element 
-	* @returns element name as string.
-	*/
-	static std::string GetElementName(DOMElement * element);
+		/**
+		* Reads atrribute and returns attribute values as string.
+		* @param element - dom element
+		* @param attribute - attribute name
+		* @returns attribude value.
+		*/
+		static std::string ReadAttribute(DOMElement * element, const char * attribute);
 
+		/**
+		* Return element name as string.
+		* @param element
+		* @returns element name as string.
+		*/
+		static std::string GetElementName(DOMElement * element);
+
+	};
 };
 #endif

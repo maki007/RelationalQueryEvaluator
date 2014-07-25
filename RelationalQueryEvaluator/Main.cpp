@@ -15,7 +15,7 @@
 #include "PhysicalOperatorVisitor.h"
 
 using namespace std;
-
+using namespace rafe;
 void writeOutput(string & fileName, string & content)
 {
 	ofstream myfile;
