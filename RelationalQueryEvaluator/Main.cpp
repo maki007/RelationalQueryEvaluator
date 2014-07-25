@@ -77,6 +77,14 @@ void boboxPlan(std::vector<std::shared_ptr<PhysicalOperator> > & result, string 
 	}
 }
 
+std::string dirnameOf(const std::string& fname)
+{
+	size_t pos = fname.find_last_of("\\/");
+	return (std::string::npos == pos)
+		? ""
+		: fname.substr(0, pos);
+}
+
 int main(int argc, const char *argv[])
 {
 	try
@@ -101,7 +109,8 @@ int main(int argc, const char *argv[])
 				if (line.size() == 0)
 					continue;
 
-				line = "data/" + line;
+				string dir = dirnameOf(argv[1]);
+				line = dir + "\\" + line;
 				shared_ptr<AlgebraNodeBase> algebraRoot = XmlHandler::GenerateRelationalAlgebra(line.c_str());
 				if (algebraRoot == 0)
 				{
