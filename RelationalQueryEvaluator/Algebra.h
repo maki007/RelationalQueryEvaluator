@@ -35,7 +35,6 @@ namespace rafe {
 
 	class AlgebraVisitor;
 
-
 	/**
 	* Abstract class for algebraic operation.
 	*/
@@ -43,42 +42,42 @@ namespace rafe {
 	{
 	public:
 		/**
-		* Stores ouput columns of this node. Key is unique column identifier and value stores information about column.
+		* Stores ouput columns of this node. Key is unique column identifier and map stores information about column.
 		*/
 		std::map<int, ColumnInfo> outputColumns;
 
-		ulong lineNumber = 0; /**< Stores the line number of input element of this node. */
+		ulong lineNumber = 0; /**< Stores the line number of input element for this node. */
 
-		AlgebraNodeBase * parent; /**< Stores the parent in algebra tree. */
+		AlgebraNodeBase * parent; /**< Stores the parent pointer in algebra tree. */
 
 		/**
-		* Create the instance of AlgebraNodeBase.
+		* Creates the instance of AlgebraNodeBase.
 		*/
 		AlgebraNodeBase::AlgebraNodeBase();
 
 		/**
-		* Create the instance of AlgebraNodeBase.
+		* Creates the instance of AlgebraNodeBase.
 		* @param element representing input node.
 		*/
 		AlgebraNodeBase(DOMElement * element);
 
 		/**
-		* Helper method for creating algebra tree from dom.
+		* Helper method for creating algebra tree from DOM tree.
 		* @param node representing input node.
-		* @return newely created Algebra node
+		* @return newely created Algebra node.
 		*/
 		AlgebraNodeBase * constructChildren(DOMElement * node);
 
 		/**
-		* Method for calling visit[node] on given AlgebraVisitor
-		* @param v AlgebraVisitor, on which to call function
+		* Method for calling visit[node] on given AlgebraVisitor.
+		* @param v AlgebraVisitor which to call function on
 		*/
 		virtual void accept(AlgebraVisitor &v) = 0;
 
 		/**
 		* Replaces one child of this node with other one
 		* @param oldChild node to be replaced
-		* @param newChild new node to replace old one
+		* @param newChild new node to replace the old one
 		* @return replaced child
 		*/
 		virtual std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild) = 0;
@@ -93,12 +92,12 @@ namespace rafe {
 		std::shared_ptr <AlgebraNodeBase> child;  /**< stores pointer to child tree node */
 
 		/**
-		* Create the instance of UnaryAlgebraNodeBase.
+		* Creates the instance of UnaryAlgebraNodeBase.
 		*/
 		UnaryAlgebraNodeBase();
 
 		/**
-		* Create the instance of UnaryAlgebraNodeBase.
+		* Creates the instance of UnaryAlgebraNodeBase.
 		* @param element representing input node.
 		*/
 		UnaryAlgebraNodeBase(DOMElement * element);
@@ -113,22 +112,25 @@ namespace rafe {
 	class BinaryAlgebraNodeBase : public AlgebraNodeBase
 	{
 	public:
-		std::shared_ptr <AlgebraNodeBase> leftChild;  /**< Stores pointer to left child node. */
-		std::shared_ptr <AlgebraNodeBase> rightChild;  /**< Stores pointer to right child node. */
+		std::shared_ptr <AlgebraNodeBase> leftChild;  /**< Stores pointer to the left child node. */
+		std::shared_ptr <AlgebraNodeBase> rightChild;  /**< Stores pointer to the right child node. */
 
 		/**
-		* Create the instance of BinaryAlgebraNodeBase.
+		* Creates the instance of BinaryAlgebraNodeBase.
 		*/
 		BinaryAlgebraNodeBase();
 
 		/**
-		* Create the instance of UnaryAlgebraNodeBase.
+		* Creates the instance of UnaryAlgebraNodeBase.
 		* @param element representing input node.
 		*/
 		BinaryAlgebraNodeBase(DOMElement * element);
 
 		/**
-		* Helper method for join and antijoin. Reeds all needed parameters from dom tree.
+		* Helper method for join and antijoin. Reads all needed parameters from DOM tree.
+		* @param node - input DOM element.
+		* @param condition - output join condition.
+		* @param outputColumns - join output columns.
 		*/
 		void constructJoinParameters(DOMElement * node, std::shared_ptr<Expression> & condition, std::vector<JoinColumnInfo> & outputColumns);
 
@@ -142,7 +144,7 @@ namespace rafe {
 	class GroupedAlgebraNode : public AlgebraNodeBase
 	{
 	public:
-		std::vector<std::shared_ptr<AlgebraNodeBase>> children; /**< Stores list of this node children. */
+		std::vector<std::shared_ptr<AlgebraNodeBase>> children; /**< Stores list containg children of this node. */
 		virtual void accept(AlgebraVisitor &v) = 0;
 		std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild);
 	};
@@ -154,7 +156,7 @@ namespace rafe {
 	{
 	public:
 		/**
-		* Create the instance of NullaryAlgebraNodeBase.
+		* Creates the instance of NullaryAlgebraNodeBase.
 		* @param element representing input node.
 		*/
 		NullaryAlgebraNodeBase(DOMElement * element);
@@ -163,15 +165,15 @@ namespace rafe {
 	};
 
 	/**
-	* Represents algebraic operation reading table.
+	* Represents the algebraic operation for reading table.
 	*/
 	class Table : public NullaryAlgebraNodeBase
 	{
 	public:
 		std::string name;  /**< Name of the table. */
-		std::vector<ColumnInfo> columns; /**< List holding column information. */
+		std::vector<ColumnInfo> columns; /**< List holding information about read columns. */
 		double numberOfRows;  /**< Stores number of rows in current table. */
-		std::vector<Index> indices; /**< Stores list of indices  on this table. */
+		std::vector<Index> indices; /**< Stores list of indices on this table. */
 
 		/**
 		* Create the instance of Table.
@@ -187,10 +189,10 @@ namespace rafe {
 	class Sort : public UnaryAlgebraNodeBase
 	{
 	public:
-		std::vector<SortParameter> parameters;  /**< Determines by which columns and what direction should Sort sort current relation. */
+		std::vector<SortParameter> parameters;  /**< Determines by which columns and what direction should the sort operator sort the current relation. */
 
 		/**
-		* Create the instance of Sort.
+		* Creates the instance of Sort.
 		* @param element representing input node.
 		*/
 		Sort(DOMElement * element);
@@ -199,16 +201,16 @@ namespace rafe {
 	};
 
 	/**
-	* Represents algebraic operation group. It groups by given columns and also computes agregate functions.
+	* Represents the algebraic operation group. It groups by given columns and also computes agregate functions.
 	*/
 	class Group : public UnaryAlgebraNodeBase
 	{
 	public:
 		std::vector<GroupColumn> groupColumns;  /**< Determines by which columns should current relation by grouped by.*/
-		std::vector<AgregateFunction> agregateFunctions; /**< Stores agregate function information associated with this group node. */
+		std::vector<AgregateFunction> agregateFunctions; /**< Stores aggregate function information associated with this group node. */
 
 		/**
-		* Create the instance of Group.
+		* Creates the instance of Group.
 		* @param element representing input node.
 		*/
 		Group(DOMElement * element);
@@ -216,7 +218,7 @@ namespace rafe {
 		void accept(AlgebraVisitor &v);
 	};
 	/**
-	* Represents algebraic operation extended projection.
+	* Represents the extended projection.
 	* It eliminates some columns and computes new ones using simple operation like +,-,*,/ or other functions.
 	*/
 	class ColumnOperations : public UnaryAlgebraNodeBase
@@ -225,7 +227,7 @@ namespace rafe {
 		std::vector<ColumnOperation> operations;  /**< Stores list of to be performed operations on columns.*/
 
 		/**
-		* Create the instance of ColumnOperations.
+		* Creates the instance of ColumnOperations.
 		* @param element representing input node.
 		*/
 		ColumnOperations(DOMElement * element);
@@ -234,7 +236,7 @@ namespace rafe {
 	};
 
 	/**
-	*  Represents algebraic operation selection.
+	*  Represents the selection operation.
 	*  It filters input rows and copies to output only rows satisfying given condition.
 	*/
 	class Selection : public UnaryAlgebraNodeBase
@@ -243,19 +245,19 @@ namespace rafe {
 		std::shared_ptr<Expression> condition; /**< Condition for filtering given input.*/
 
 		/**
-		* Create the instance of Selection.
+		* Creates the instance of Selection.
 		*/
 		Selection();
 
 		/**
-		* Create the instance of Selection.
+		* Creates the instance of Selection.
 		* @param element representing input node.
 		*/
 		Selection(DOMElement * element);
 
 		/**
-		* Create the instance of Selection.
-		* @param cond Expression - filter condition
+		* Creates the instance of Selection.
+		* @param cond Expression - filter condition.
 		*/
 		Selection(std::shared_ptr<Expression> & cond);
 
@@ -263,18 +265,18 @@ namespace rafe {
 	};
 
 	/**
-	* Represents algebraic operation join on two tables
+	* Represents binary join operation.
 	*/
 	class Join : public BinaryAlgebraNodeBase
 	{
 	public:
 
-		std::shared_ptr<Expression> condition;  /**< Condition for joining.*/
+		std::shared_ptr<Expression> condition;  /**< Join condition.*/
 
-		std::vector<JoinColumnInfo> outputJoinColumns; /**< List of output columns from join*/
+		std::vector<JoinColumnInfo> outputJoinColumns; /**< List of output columns from join operator.*/
 
 		/**
-		* Create the instance of Join.
+		* Creates the instance of Join.
 		* @param element representing input node.
 		*/
 		Join(DOMElement * element);
@@ -284,7 +286,7 @@ namespace rafe {
 
 	/**
 	* Represents algebraic operation antijoin.
-	* Antijoin is basicly generalized difference but the columns doesn't have to be same.
+	* Antijoin is generalized difference and the columns of input do not have to be same.
 	*/
 	class AntiJoin : public BinaryAlgebraNodeBase
 	{
@@ -292,10 +294,10 @@ namespace rafe {
 
 		std::shared_ptr<Expression> condition; /**< Condition for antijoin joining.*/
 
-		std::vector<JoinColumnInfo> outputJoinColumns;  /**< list of output columns from join*/
+		std::vector<JoinColumnInfo> outputJoinColumns;  /**< List of join's output columns. */
 
 		/**
-		* Create the instance of AntiJoin.
+		* Creates the instance of AntiJoin.
 		* @param element representing input node.
 		*/
 		AntiJoin(DOMElement * element);
@@ -304,14 +306,14 @@ namespace rafe {
 	};
 
 	/**
-	* Represents algebraic operation set union.
+	* Represents algebraic operation bag union.
 	* Rows from second input will be appended to rows from first input.
 	*/
 	class Union : public BinaryAlgebraNodeBase
 	{
 	public:
 		/**
-		* Create the instance of Union.
+		* Creates the instance of Union.
 		* @param element representing input node.
 		*/
 		Union(DOMElement * element);
@@ -319,7 +321,7 @@ namespace rafe {
 	};
 
 	/**
-	* Represents algebraic operation join on multiple tables
+	* Represents the algebraic operation join on multiple tables.
 	*/
 	class GroupedJoin : public GroupedAlgebraNode
 	{
