@@ -1,16 +1,16 @@
-\chapter{Conclusion}
+\chapter{Conclusions}
+
+We described Bobox architecture and Bobolang language in Chapter~\ref{boboxarchitecture}. Chapter~\ref{relatedwork} contains theory used to implement the query transformer. Chapter Analysis~\ref{analysis} deals with description of used algorithms and important data structures used in the implemented tool. Final chapter~\ref{implementation} presents some implementation details of created program.
+
+The aim of this thesis was to implement part of the SQL compiler. Created program reads input relational algebra which is optimized. We implemented very effective optimization of logical plan: pushing selections down the tree. Possible physical plans were enumerated using Selinger--Style Optimization method. In this phase, we replaced algebra operators with physical plan. We implemented two different algorithms for choosing the order of joins. Asymptotically slower algorithm based on dynamic programming is used for estimated order of joins on smaller amount of relations. 
+A faster greedy algorithm, which can generate less optimal join tree is provide for larger amount of joined relations. While choosing order of joins, we assigned physical algorithms. Merging of the assignment of physical algorithms and chose of join order can result in faster physical plan, in case we do not have information about sizes of input relations. Physical plan is written to output in the Bobolang language. Implemented compiler provides possibility to write algebra tree and physical plan to language Dot for debugging purposes.
 
 
-The aim of this thesis was to implement part of the SQL compiler. Created program reads input relational algebra, which is optimized. We implemented very effective logical plan optimization: pushing selections down the tree. Possible physical plans we enumerated using Selinger--Style Optimization method. In this phase we replaces algebra operators with physical plan. For estimated order of joins we implemented two different algorithms. Asymptoticly slower algorithm based on dynamic programming is used for estimated order of joins on smaller amount of relations. For larger amount of joined relations we provide faster greedy algorithm, which can generates less optimal join tree. While choosing order of joins we assigned physical algorithms. Merging assignment of physical algorithms and chose of join order can result in faster physical plan, in case we do not have informations about sizes of input relations. Physical plan is written to output in Bobolang language. Implemented compiler provides possibility to write algebra tree and physical plan to language Dot for debugging purposes.
+Created software is a first part of planned SQL compiler. Front end, which transforms text query to the relational algebra, has not yet been implemented. At the time of submitting this thesis, compiler was successfully connected to Bobox. However not all of the physical operators have been implemented. Therefore we were not able to evaluate any queries to prove that generated plans are correct.
 
-After the introduction we described Bobox architecture and Bobolang language. Next chapter contains theory used to implement query transformer. Chapter analysis deals with description of used algorithms and important data structures used in implemented tool. Final chapter presents some implementation details of created program.
-
-Created software is a first part of planed SQL compiler. Front end, which transforms text query to relational algebra, is not yet implemented. At the time of submitting this thesis, compiler was succesfully connected to Bobox, but not all of physical operators are implemented. We couldn't evaluate any queries to prove that generated plans are correct.
-
-We tested software by transforming some simple queries and queries from benchmark\cite{benchmark} to physical plans. We can check generated plans by looking generated debug outputs. From this results we can say that generated plans are correct and also optimal. and this thesis fulfilled it's aim. 
-
+We tested software by transforming some simple queries and queries from TPC benchmark~\cite{benchmark} to physical plans. We are able to check generated plans by looking at generated debug outputs. Based on this results we onclude that generated plans are correct and also optimal. 
 
 Implemented tool can be improved by adding more logical plan optimizations.
-After we run queries and measure their run time we can improve compiler time estimations used for selection of physical algorithms. 
-We can add also support for more physical algorithms like nested loop joins.
+After queries are run and their run time is measured, compiler time estimations, used for selection of physical algorithms, can be improved. 
+We can also add support for more physical algorithms like nested loop joins.
 

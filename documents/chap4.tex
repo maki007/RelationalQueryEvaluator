@@ -1,6 +1,6 @@
 \chapter{Implementation}
 \label{implementation}
-In this chapter we describe implementation details in developed software and describe it's functionality on examples. More implementation details can be found in generated doxygen\cite{doxygen} documentation in attachment on CD. We will use following example to describe optimizations and plan generation:
+In this chapter we describe implementation details in developed software it's functionality using examples. More implementation details can be found on the CD in generated doxygen\cite{doxygen} documentation. We will use following example to describe optimizations and plan generation:
 
 
 \begin{verbatim}
@@ -28,17 +28,17 @@ order by
     o_orderdate;
 \end{verbatim}
 
-This example is taken from benchmark\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. In this benchmark there are no indexes on tables. Columns which starts wit o\_ are from table order, columns which beginning with l\_ are from table lineitem and columns starting with c\_ belongs table customers.
+This example is taken from benchmark\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. Tables do not have any indices in this benchmark. Columns starting with o\_ are from table order, columns beginning with l\_ are from table lineitem and columns with prefix c\_ belongs table customers.
 
 
 
 \section{Input}
 
-As mentioned input is XML file containing logical query plan. In this section we describe it's structure. 
+Input is XML file containing logical query plan. In this section we describe its structure. 
 
 \subsection{Sort}
 
-On root of every tree is sort, even if output hasn't been sorted. In this case it has empty parameters. This is an example of sort in algebra tree:
+On root of every tree is sort operator, even if output does not have to sorted. In this case sort has empty parameters. Example of sort in algebra tree:
 
 
 \lstset{

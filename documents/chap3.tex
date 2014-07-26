@@ -1,83 +1,79 @@
 \chapter{Analysis}
-Used data structures and algorithms in implemented compiler are discussed in this chapter.
+\label{analysis}
+Used data structures and algorithms in the implemented compiler are discussed in this chapter.
 \section{Format of relational algebra}
 
-In this section we present relation algebra operators which are used as input of the compiler.
+In this section we present relation algebra operators which are input of the compiler. Our relational algebra contains the following operators:
 \begin{enumerate}
-\item Projection -- we used extended projection $\pi_L$, which remove columns, compute new columns using expressions and renames columns.
+\item Projection -- we used extended projection $\pi_L$, which removes columns, computes new ones from expressions and renames attributes.
 
-\item Table reading operator is a leaf of algebra tree. For this operator we need to provide the following arguments:
+\item Table reading operator which is a leaf of the algebra tree. For this operator we need to provide the following arguments:
 \begin{itemize}
 \item table name.
-\item information about index(name, columns and sort order).
+\item information about indices (name, columns and sort order).
 \item read columns.
 \end{itemize}
-\item Join - we used theta join $\Join_C$ operator where $C$ condition having following format:
+\item Join - we used theta join $\Join_C$ operator where $C$ is condition having following format:
 \begin{itemize}
-\item Condition can be empty and in this case join represent Cartesian product.
-\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belong to first relation and $b_k$ belongs to other relation.
-\item $a_1\oplus b \ominus a_2$, where $a_1$ and $a_2$ belong one input and $b$ belongs to second input. $\oplus$ and $\ominus$ can be $<$ or $\leq$.
+\item Condition can be empty and in this case join represents Cartesian product.
+\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belongs to the first relation and $b_k$ belongs to the other relation.
+\item $a_1\oplus b \ominus a_2$, where $a_1$ and $a_2$ belongs to one input and $b$ belongs to second input. Signs $\oplus$ and $\ominus$ mean $<$ or $\leq$.
 
 \end{itemize}
 
-In addition to condition we need to specify output attributes of join. They can be from both input and we can optionally assign them new name, in case we need to work with two attributes but they have same name.
+In addition to condition, we need to specify output attributes of join. These attributes can come from both inputs and we can optionally assign them new name. Assigning new attribute name is useful when some of the attributes have the same name.
 
-Other types or joins are not directly supported, but can be replaced with cross join with following selection.
-\item Anti join wasn't presented with other join algorithms. We denote it $\ltimes_C$ where $C$ is anti join condition. Output of expression $R \ltimes_C S$ is relation with tuples from $R$, for which doesn't exist any tuple is $S$ that satisfy condition. We can us join and anti join to express outer join:
-\begin{itemize}
-\item 
- $R\Join^\circ_C S= (R\Join_C S)\cup (R\ltimes_C S)$
-\end{itemize}
-To be precise we need to add columns form $S$ containing $null$ to result of anti join.
+The other types of joins are not directly supported, but they can be replaced with the cross join followed by desired selection.
+\item Anti join operator which was not presented with other join algorithms. Output of expression $R \ltimes_C S$ is relation with tuples from $R$, for which do not exist any tuple from $S$ that satisfies condition $C$. We can use join and anti join can be used to express outer join.
  
-Other use is to compute difference $R-S$. This can be rewritten as $R \ltimes_C S$, where $C$ equates attributes from $R$ with same called attributes in $S$. 
+The anti join can replace difference operator. The expression $R-S$ equals $R \ltimes_C S$, where $C$ is condition that equates each pair of attributes of $R$ and $S$, which had have same name.
  
-Advantages of using this attribute is, that we don't need outer join and difference, which will make working with algebra a little easier.
+Including the anti join in our relation algebra eliminates the need of usage the outer join and the difference and our relational algebra si simpler.
 
-In implemented tool condition $C$ of anti join can be in following format:
+Condition $C$ of anti join $R \ltimes_C S$ has the following format:
 \begin{itemize}
-\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belong to first relation and $b_k$ belongs to other relation.
+\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belong to first the relation and $b_k$ belongs to the other relation.
 \end{itemize}
-In addition to that, we also need to specify output attributes of anti join and optionally assign them a new name. They can be only from first input relation.
-\item Group operator $\gamma_L$, where L is non empty list of group attributes and aggregate functions. Supported aggregate functions are $min$, $max$, $sum$ and $count$. Function $avg$ is not supported but it can easily computed from $sum$ and $count$. All mentioned functions except $count$ take one attribute as input, function $count$ has empty input. 
+In every anti join we need to specify its output attributes with optional new name. The anti join can output only columns from first relation. 
+\item Group operator $\gamma_L$, where L is non empty list of group attributes and aggregate functions. Supported aggregate functions are $min$, $max$, $sum$ and $count$. The function $avg$ is not supported but it can easily computed using $sum$ and $count$. All mentioned functions except $count$ take one input attribute and function $count$ has empty input. 
 
-As we mentioned before, group operator is more general version of duplicate elimination. That's why we don't include duplicate elimination in our algebra.
+As mentioned before, group operator is more general version of the duplicate elimination which is not included in our algebra.
 \item Sort operator $\tau_L$, where $L$ is a non empty list of attributes with sort directions.
-\item Union - $\cup$ is set union. In case we want to bag union we can compute set union and eliminate duplicate using grouping operator. Requirement is that both relations have same number of columns and they have same name.
-\item Selection - we used selection as described in classic relational algebra.
+\item Bag union $\cup$. Both input relations has to have same names and types of attributes. The set union can be computed using bag union and grouping operator for duplicate elimination.
+\item Selection used in our algebra does not differ from selection from classical relational algebra.
 
 \end{enumerate}
 
-Used relational algebra works with bags.
+Designed relational algebra works with bags.
 
 \section{Physical algorithms}
 
-In this section we enumerate and describe algorithms which are generated to output. We assume that queries have enough memory and physical operators doesn't have to store intermediate result on hard drive.
+In this section we enumerate and describe compiler's output algorithms. We assume that execution environment has enough memory and physical operators do not have to store intermediate result on hard drive.
 
 Here is a list on algorithms:
 \begin{itemize}
-\item $Filter$ - this algorithm reads input tuples and outputs tuple satisfying given condition. Output doesn't have to be sorted same way as input.
-\item $Filter~keeping~order$ - this algorithm reads input tuples and outputs tuple satisfying given condition. Output has to be sorted same way as input.
-\item $Hash~group$ - operator group tuples and computes aggregate functions. Grouping is performed using hash table.
-\item $Sorted~group$ - operator groups tuples and computes aggregate functions. Input has to be sorted by group attributes.
-\item $Column~operations$ - this is an implementation of extended projection algebra operator. 
-\item $Cross~join$ - this operator computes product of two relations.
-\item $Hash~join$ - computes join with equal conditions using hash table. 
-\item $Merge~equijoin$ - this algorithm computes join with equal conditions. Input relations has to be sorted by join attributes. Algorithm creates join result merging sorted relations.
-\item $Merge~non~equijoin$ - operator computes theta join with condition $a_1\oplus b \ominus a_2$, where $a_1$ and $a_2$ belong one input and $b$ belongs to second input. Signs $\oplus$ and $\ominus$ can be $<$ or $\leq$. Input relations has to be sorted by join attributes. Algorithm computes join merging relations.
-\item $Hash~anti~join$ -  algorithm computes anti join with equal conditions of two relations using hash table.
-\item $Merge~anti~join$ - algorithm computes anti join with equal conditions. Input relations has to be sorted by join attributes.
-\item $Table~scan$ - operator scans whole table from hard drive.
-\item $Scan~and~sort~by~index$ - operator scans whole table from hard drive using index. Output will be sorted by columns on given index.
-\item $Index~Scan$ - this algorithm uses index to read only tuples satisfying given condition.
-\item $Sort$ - this algorithm sorts input. Input can be presorted, in this case operator uses this information and sorts only by not yet sorted attributes.
-\item $Union$ - this operator is bag union, it only append tuples from one relation to another.
+\item \texttt{Filter} - this algorithm reads input tuples and outputs tuples satisfying given condition. Output does not have to be sorted the same way as input.
+\item \texttt{Filter~keeping~order} - this algorithm reads input tuples and outputs tuples satisfying given condition. Output has to be sorted the same way as input.
+\item \texttt{Hash~group} - operator groups tuples using hash table and for every group of tuples aggregate functions are computed.
+\item \texttt{Sorted~group} - operator groups sorted tuples and computes aggregate functions. Input has to be sorted by group attributes.
+\item \texttt{Column~operations} - this is an implementation of extended projection algebra operator. 
+\item \texttt{Cross~join} - operator computes Cartesian product of two relations.
+\item \texttt{Hash~join} - operator uses hash table to compute join of two relations $R$ and $S$ with condition $C$, where $C$ has the following format: $r_1=s_1 and r_2=s_2 and ... r_n=s_n$. Attributes $(r_1,r_2,...,r_n)$ belong to the relation $R$ and $(s_1,s_2,...,s_n)$ are from the relation $S$.
+\item \texttt{Merge~equijoin} - algorithm takes advantage of sorted inputs to compute join with condition $C$, where $C$ has same format like condition in \texttt{Hash~join}. 
+\item \texttt{Merge~non~equijoin} - operator computes theta join with condition $a_1\oplus b \ominus a_2$, where $a_1$ and $a_2$ belong the first input and $b$ belongs to the second input. Signs $\oplus$ and $\ominus$ means $<$ or $\leq$. Input relations has to be sorted by the attributes in the join condition.
+\item \texttt{Hash~anti~join} -  algorithm computes anti join with condition $C$  using hash table. Condition $C$ have the same format like condition in \texttt{Hash~join}
+\item \texttt{Merge~anti~join} - operator takes advantage of sorted inputs to compute anti join with condition $C$, where $C$ has same format like condition in \texttt{Hash~join}. 
+\item \texttt{Table~scan} - operator scans whole table from hard drive.
+\item \texttt{Scan~and~sort~by~index} - operator scans whole table from hard drive using index. Output will be sorted by columns on used index.
+\item \texttt{Index~Scan} - this algorithm uses index to read tuples satisfying given condition.
+\item \texttt{Sort} - this algorithm sorts input. Input can be presorted and in this case operator sorts only by not yet sorted attributes.
+\item \texttt{Union} - algorithm is an implementation of bag union.
 
 \end{itemize}
 
 
 \section{Architecture}
-The architecture of implemented tool is displayed in figure~\ref{fig:compilerarchitecture}.
+The architecture of implemented tool is displayed in the figure~\ref{fig:compilerarchitecture}.
 
 \begin{figure}[h!]
   \centering
@@ -87,16 +83,15 @@ The architecture of implemented tool is displayed in figure~\ref{fig:compilerarc
           \label{fig:compilerarchitecture}
 \end{figure}
 
-Relational algebra is read from input. the input is in XML format. For this format we decided for following reasons:
+The relational algebra tree is read XML file. For this format we decided for the following reasons:
 \begin{itemize}
-\item XML has tree like structure exactly like relational algebra.
+\item XML has tree--like structure exactly like relational algebra.
 \item For validation we only need to write schema.
 \item There are already implemented tools for parsing.
 \item There is no need to write input parser.
 \end{itemize}
 
-After that relational algebra tree is checked in component called semantic checker. Semantic checker checks if all of used attributes are on input of operator or if there are no duplicate operators. 
-
+The relational algebra tree is checked in component called \texttt{Semantic analyzer}, which checks if all of used the attributes are in the input relation. Component searches for attributes which are in the same relation with the same name and reports it as an error.
 Semantically correct tree is processed by component that groups neighboring joins into one. This is done so we can choose fastest way to join multiple relations.
 
 Algebra tree with grouped joins is optimized. We implemented one most important optimizations pushing selections down the tree. This component also pushes selection to join if selection contains equal condition, where one argument is from first and second argument is from second input.
