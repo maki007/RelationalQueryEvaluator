@@ -91,8 +91,8 @@ int main(int argc, const char *argv[])
 	{
 		if (argc != 2)
 		{
-			printf("SchemaValidator <file containg xml file>\n");
-			return 0;
+			printf("RelationalQueryEvaluator <file containg xml file>\n");
+			return 1;
 		}
 
 		ifstream reader;

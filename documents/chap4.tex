@@ -1,5 +1,5 @@
 \chapter{Implementation}
-
+\label{implementation}
 In this chapter we describe implementation details in developed software and describe it's functionality on examples. More implementation details can be found in generated doxygen\cite{doxygen} documentation in attachment on CD. We will use following example to describe optimizations and plan generation:
 
 
@@ -371,7 +371,7 @@ Physical plan is represented as polymorphic tree.
 
 In figure \ref{fig:physicalplan} we can see best generated physical plan for query presented on the beginning of this chapter. Every operator contains estimated size and time. Below that we can see output columns with their unique identifiers and estimated number of unique values for each column. Since read tables doesn't contain any indexes, we have to read all the tables and filter results. After that we can only use hash join, because sorting relations for merge join would be to expressive and nested loop join is not supported by runtime or compiler. From the result we compute new columns and use hash group algorithm. We didn't use sorted group, because input is not sorted and output has to be sorted by other than group column.
 
-Physical operators are chosen based on their estimated time complexity. It is computed from estimated size. In class \texttt{TimeComplexity} we have static functions which compute time complexity for each operation. It also contains constants used in this functions. We assume, that this constants or while function need to be improved. This improvement can be done base on testing and measuring evaluation queries in Bobox. At the time of submitting thesis runtime environment is not fully functional.
+Physical operators are chosen based on their estimated time complexity. It is computed from estimated size. In class \texttt{TimeComplexity} we have static functions which compute time complexity for each operation. It also contains constants used in this functions. We assume, that this constants or whole functions need to be improved. This improvement can be done base on testing and measuring evaluation queries in Bobox. At the time of submitting thesis runtime environment is not fully functional.
 
 
 

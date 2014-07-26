@@ -1,14 +1,16 @@
 \chapter{Conclusion}
 
 
-The aim of this thesis was to implement part of the SQL compiler. Created program reads input relational algebra, optimizes it and generated physical plan from it. Output is written in Bobolang.
+The aim of this thesis was to implement part of the SQL compiler. Created program reads input relational algebra, which is optimized. We implemented very effective logical plan optimization: pushing selections down the tree. Possible physical plans we enumerated using Selinger--Style Optimization method. In this phase we replaces algebra operators with physical plan. For estimated order of joins we implemented two different algorithms. Asymptoticly slower algorithm based on dynamic programming is used for estimated order of joins on smaller amount of relations. For larger amount of joined relations we provide faster greedy algorithm, which can generates less optimal join tree. While choosing order of joins we assigned physical algorithms. Merging assignment of physical algorithms and chose of join order can result in faster physical plan, in case we do not have informations about sizes of input relations. Physical plan is written to output in Bobolang language. Implemented compiler provides possibility to write algebra tree and physical plan to language Dot for debugging purposes.
 
-After the introduction we described Bobox and Bobolang. Next chapter contains theory used to implement query transformer. Chapter analysis contains description of used algorithms and important data structures used in implemented tool. Final chapter describe some implementation details of created program.
+After the introduction we described Bobox architecture and Bobolang language. Next chapter contains theory used to implement query transformer. Chapter analysis deals with description of used algorithms and important data structures used in implemented tool. Final chapter presents some implementation details of created program.
 
-Created software is a first part of planed SQL compiler. Front end, which transforms text query to relational algebra, is not yet implemented. At the time of submitting this thesis, not all Bobox runtime operators implemented. That's why we couldn't evaluate any queries to prove that generated plans are correct.
+Created software is a first part of planed SQL compiler. Front end, which transforms text query to relational algebra, is not yet implemented. At the time of submitting this thesis, compiler was succesfully connected to Bobox, but not all of physical operators are implemented. We couldn't evaluate any queries to prove that generated plans are correct.
 
-We tested software by transforming some simple queries and queries from benchmark\cite{benchmark} to physical plans. We can only check generated plans by looking generated debug outputs. From the results we can say that generated plans look correct and also optimal. Based on this result we can say, that this thesis fulfilled it's aim. 
+We tested software by transforming some simple queries and queries from benchmark\cite{benchmark} to physical plans. We can check generated plans by looking generated debug outputs. From this results we can say that generated plans are correct and also optimal. and this thesis fulfilled it's aim. 
 
 
-Implemented tool can be improved by adding more logical plan optimizations. We can add also support for more algorithms like nested loop joins.
+Implemented tool can be improved by adding more logical plan optimizations.
+After we run queries and measure their run time we can improve compiler time estimations used for selection of physical algorithms. 
+We can add also support for more physical algorithms like nested loop joins.
 
