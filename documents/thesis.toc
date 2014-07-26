@@ -57,7 +57,7 @@
 \contentsline {section}{\numberline {4.2}Physical algorithms}{24}{section.4.2}
 \contentsline {section}{\numberline {4.3}Architecture}{26}{section.4.3}
 \contentsline {section}{\numberline {4.4}Data structures}{27}{section.4.4}
-\contentsline {section}{\numberline {4.5}Optimization}{30}{section.4.5}
+\contentsline {section}{\numberline {4.5}Optimization}{31}{section.4.5}
 \contentsline {section}{\numberline {4.6}Generating physical plan}{31}{section.4.6}
 \contentsline {subsection}{\numberline {4.6.1}Join order selecting algorithm}{32}{subsection.4.6.1}
 \contentsline {subsubsection}{Dynamic programing for selection join order}{32}{section*.37}

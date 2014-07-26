@@ -3,9 +3,9 @@
 Used data structures and algorithms in the implemented compiler are discussed in this chapter.
 \section{Format of relational algebra}
 
-In this section we present relation algebra operators which are input of the compiler. Our relational algebra contains the following operators:
+In this section we present relation algebra operators which are the input of the compiler. Our relational algebra contains the following operators:
 \begin{enumerate}
-\item Projection -- we used extended projection $\pi_L$, which removes columns, computes new ones from expressions and renames attributes.
+\item Projection -- we used extended projection $\pi_L$ which removes columns, computes new ones from expressions and renames attributes.
 
 \item Table reading operator which is a leaf of the algebra tree. For this operator we need to provide the following arguments:
 \begin{itemize}
@@ -65,7 +65,7 @@ Here is a list on algorithms:
 \item \texttt{Merge~anti~join} - operator takes advantage of sorted inputs to compute anti join with condition $C$, where $C$ has same format like condition in \texttt{Hash~join}. 
 \item \texttt{Table~scan} - operator scans whole table from hard drive.
 \item \texttt{Scan~and~sort~by~index} - operator scans whole table from hard drive using index. Output will be sorted by columns on used index.
-\item \texttt{Index~Scan} - this algorithm uses index to read tuples satisfying given condition.
+\item \texttt{Index~Scan} - this algorithm uses index to read tuples from table satisfying given condition.
 \item \texttt{Sort} - this algorithm sorts input. Input can be presorted and in this case operator sorts only by not yet sorted attributes.
 \item \texttt{Union} - algorithm is an implementation of bag union.
 
@@ -83,32 +83,31 @@ The architecture of implemented tool is displayed in the figure~\ref{fig:compile
           \label{fig:compilerarchitecture}
 \end{figure}
 
-The relational algebra tree is read XML file. For this format we decided for the following reasons:
+The relational algebra tree is read from XML file. For this format we decided for the following reasons:
 \begin{itemize}
-\item XML has tree--like structure exactly like relational algebra.
+\item XML has tree--like structure.
 \item For validation we only need to write schema.
 \item There are already implemented tools for parsing.
 \item There is no need to write input parser.
 \end{itemize}
 
-The relational algebra tree is checked in component called \texttt{Semantic analyzer}, which checks if all of used the attributes are in the input relation. Component searches for attributes which are in the same relation with the same name and reports it as an error.
-Semantically correct tree is processed by component that groups neighboring joins into one. This is done so we can choose fastest way to join multiple relations.
+The relational algebra tree is checked in the \texttt{Semantic analyzer}. This component checks if all of used the attributes are in the input relation. Semantic analyzer searches for duplicate named attributes and reports it as an error. 
 
-Algebra tree with grouped joins is optimized. We implemented one most important optimizations pushing selections down the tree. This component also pushes selection to join if selection contains equal condition, where one argument is from first and second argument is from second input.
+Semantically correct tree is processed by component \texttt{Algebra grouper} that groups neighboring joins into one. Thanks to this operation so we can later choose fastest way to join multiple relations.
 
-Optimized algebra tree is processed by compiler, which generates physical plan which. This plan is not final. It's sort operator's parameters doesn't have to be final. For example if we want to sort relation before grouping we can sort it in different directions and than later decide what direction is better.
+Algebra tree with grouped joins is optimized. We implemented one most important optimization: pushing selections down the tree. This component pushes selections to the join node if selection contains condition $C$ where $C$ is in the following format $a=b$. Attribute $a$ is from the first join relation and $b$ belongs to the second join relation.
 
-Final plan is output of component named Sort resolver. This component decides unknown sort order of sort operators.
+Optimized algebra tree is processed by compiler, which generates physical plan, which is not final. Its sort operator's parameters does not have to be final. For example if we want to sort relation before grouping we can sort it in different directions and than later decide what direction is better.
 
-Final plan is then converted to Bobolang in Output writer.
+Final plan is an output of the component named \texttt{Sort resolver}. This component resolved unknown sort order of sort operators and produces final plan, which is converted too Bobolang language.
 
-Implemented tool doesn't check types. Since it will be back end of compiler, the assumption is that front end parsing text will handle types. Types are only copied to output and we assume that there are no errors in types.
+Implemented tool does not check types because it will be the back end of the compiler. We assume that the front end parsing the text will handle types. Types of columns are only copied to the output and we assume that column types do not contain any errors.
 
 \section{Data structures}
 
-In this chapter we describe data structures used in implementing tool.
+Data structures used in implementing tool are presented in this section.
 
-Relational algebra si stored in polymorphic tree. Every node stores it's parameters pointer on parent in the tree and zero or more pointers on children node. No other structure was considered for this representation since this is efficient way to store logical plan. It allows easily to add new types of relational algebra operators and it is not hard to manipulate with the tree. We can remove or add new node very easily. 
+Relational algebra si stored in polymorphic tree. Every node stores its parameters pointer on parent in the tree and zero or more pointers on children node. No other structure was considered for this representation since this is efficient way to store logical plan. It allows easily to add new types of relational algebra operators and it is not hard to manipulate with the tree. We can remove or add new node very easily. 
 Example of this representation can be found in figure \ref{fig:groupalgebra}. It's representing simple query reading whole table, then grouping it and computing some aggregation functions. The result is sorted at the end. Leaf of the tree also stores some information about indexes on read table, list of columns with their types and number of unique values. Other important parameter is size of relation which is displayed in number of rows parameter.
 
 \begin{figure}[h!]
