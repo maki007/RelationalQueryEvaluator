@@ -5,7 +5,7 @@ Used data structures and algorithms in the implemented compiler are discussed in
 
 In this section we present relation algebra operators which are the input of the compiler. Our relational algebra contains the following operators:
 \begin{enumerate}
-\item Projection -- we used extended projection $\pi_L$ which removes columns, computes new ones from expressions and renames attributes.
+\item Projection -- we used extended projection $\pi_L$ which removes columns, computes new ones using expressions and renames attributes.
 
 \item Table reading operator which is a leaf of the algebra tree. For this operator we need to provide the following arguments:
 \begin{itemize}
@@ -21,25 +21,25 @@ In this section we present relation algebra operators which are the input of the
 
 \end{itemize}
 
-In addition to condition, we need to specify output attributes of join. These attributes can come from both inputs and we can optionally assign them new name. Assigning new attribute name is useful when some of the attributes have the same name.
+In addition to condition, we need to specify output attributes of the join. These attributes can come from both inputs and we can optionally assign them a new name. Assigning new attribute name is useful when some of the attributes have the same name.
 
-The other types of joins are not directly supported, but they can be replaced with the cross join followed by desired selection.
-\item Anti join operator which was not presented with other join algorithms. Output of expression $R \ltimes_C S$ is relation with tuples from $R$, for which do not exist any tuple from $S$ that satisfies condition $C$. We can use join and anti join can be used to express outer join.
+The other types of joins are not directly supported, but they can be replaced with the cross join followed by selection.
+\item Anti join operator which was not presented with other algebra join operators. Output of the expression $R \ltimes_C S$ is relation with tuples from $R$, for which do not exist any tuple from $S$ that satisfies condition $C$. We can use join and anti join to express outer join.
  
-The anti join can replace difference operator. The expression $R-S$ equals $R \ltimes_C S$, where $C$ is condition that equates each pair of attributes of $R$ and $S$, which had have same name.
+The anti join can replace difference operator. The expression $R-S$ equals $R \ltimes_C S$, where $C$ is condition that equates each pair of attributes of $R$ and $S$ with the same name.
  
-Including the anti join in our relation algebra eliminates the need of usage the outer join and the difference and our relational algebra si simpler.
+Including the anti join in our relation algebra eliminates the need of usage the outer join and the difference and our relational algebra is simpler.
 
 Condition $C$ of anti join $R \ltimes_C S$ has the following format:
 \begin{itemize}
-\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belong to first the relation and $b_k$ belongs to the other relation.
+\item $a_1=b_1~and~a_2=b_2~and~a_3=b_3~and...and~a_n=b_n$, where $a_k$ belongs to first the relation and $b_k$ belongs to the other relation.
 \end{itemize}
-In every anti join we need to specify its output attributes with optional new name. The anti join can output only columns from first relation. 
-\item Group operator $\gamma_L$, where L is non empty list of group attributes and aggregate functions. Supported aggregate functions are $min$, $max$, $sum$ and $count$. The function $avg$ is not supported but it can easily computed using $sum$ and $count$. All mentioned functions except $count$ take one input attribute and function $count$ has empty input. 
+In every anti join we need to specify its output attributes with optional new name. The anti join can output only columns from the first relation. 
+\item Group operator $\gamma_L$, where L is non empty list of group attributes and aggregate functions. Supported aggregate functions are $min$, $max$, $sum$ and $count$. The function $avg$ is not supported but it can easily computed using $sum$ and $count$. All mentioned functions except $count$ take one input attribute and the function $count$ has empty input. 
 
 As mentioned before, group operator is more general version of the duplicate elimination which is not included in our algebra.
 \item Sort operator $\tau_L$, where $L$ is a non empty list of attributes with sort directions.
-\item Bag union $\cup$. Both input relations has to have same names and types of attributes. The set union can be computed using bag union and grouping operator for duplicate elimination.
+\item Bag union $\cup$. Both input relations has to have the same names and types of attributes. The set union can be computed using bag union and grouping operator for duplicates elimination.
 \item Selection used in our algebra does not differ from selection from classical relational algebra.
 
 \end{enumerate}
@@ -50,24 +50,24 @@ Designed relational algebra works with bags.
 
 In this section we enumerate and describe compiler's output algorithms. We assume that execution environment has enough memory and physical operators do not have to store intermediate result on hard drive.
 
-Here is a list on algorithms:
+The following algorithms are generated by the compiler:
 \begin{itemize}
 \item \texttt{Filter} - this algorithm reads input tuples and outputs tuples satisfying given condition. Output does not have to be sorted the same way as input.
 \item \texttt{Filter~keeping~order} - this algorithm reads input tuples and outputs tuples satisfying given condition. Output has to be sorted the same way as input.
 \item \texttt{Hash~group} - operator groups tuples using hash table and for every group of tuples aggregate functions are computed.
-\item \texttt{Sorted~group} - operator groups sorted tuples and computes aggregate functions. Input has to be sorted by group attributes.
+\item \texttt{Sorted~group} - operator groups sorted tuples and computes aggregate functions. The input has to be sorted by group attributes.
 \item \texttt{Column~operations} - this is an implementation of extended projection algebra operator. 
 \item \texttt{Cross~join} - operator computes Cartesian product of two relations.
-\item \texttt{Hash~join} - operator uses hash table to compute join of two relations $R$ and $S$ with condition $C$, where $C$ has the following format: $r_1=s_1 and r_2=s_2 and ... r_n=s_n$. Attributes $(r_1,r_2,...,r_n)$ belong to the relation $R$ and $(s_1,s_2,...,s_n)$ are from the relation $S$.
-\item \texttt{Merge~equijoin} - algorithm takes advantage of sorted inputs to compute join with condition $C$, where $C$ has same format like condition in \texttt{Hash~join}. 
+\item \texttt{Hash~join} - operator uses hash table to compute join of two relations $R$ and $S$ with condition $C$, where $C$ has the following format: $r_1=s_1~and~r_2=s_2~and~...~r_n=s_n$. Attributes $(r_1,r_2,...,r_n)$ belong to the relation $R$ and $(s_1,s_2,...,s_n)$ are from the relation $S$.
+\item \texttt{Merge~equijoin} - algorithm takes advantage of sorted inputs to compute join with condition $C$, where $C$ has the same format like condition in \texttt{Hash~join}. 
 \item \texttt{Merge~non~equijoin} - operator computes theta join with condition $a_1\oplus b \ominus a_2$, where $a_1$ and $a_2$ belong the first input and $b$ belongs to the second input. Signs $\oplus$ and $\ominus$ means $<$ or $\leq$. Input relations has to be sorted by the attributes in the join condition.
 \item \texttt{Hash~anti~join} -  algorithm computes anti join with condition $C$  using hash table. Condition $C$ have the same format like condition in \texttt{Hash~join}
 \item \texttt{Merge~anti~join} - operator takes advantage of sorted inputs to compute anti join with condition $C$, where $C$ has same format like condition in \texttt{Hash~join}. 
 \item \texttt{Table~scan} - operator scans whole table from hard drive.
 \item \texttt{Scan~and~sort~by~index} - operator scans whole table from hard drive using index. Output will be sorted by columns on used index.
 \item \texttt{Index~Scan} - this algorithm uses index to read tuples from table satisfying given condition.
-\item \texttt{Sort} - this algorithm sorts input. Input can be presorted and in this case operator sorts only by not yet sorted attributes.
-\item \texttt{Union} - algorithm is an implementation of bag union.
+\item \texttt{Sort} - this algorithm sorts input. Input can be presorted and in this case, operator does only partial sorting.
+\item \texttt{Union} - an implementation of bag union.
 
 \end{itemize}
 
@@ -91,25 +91,32 @@ The relational algebra tree is read from XML file. For this format we decided fo
 \item There is no need to write input parser.
 \end{itemize}
 
-The relational algebra tree is checked in the \texttt{Semantic analyzer}. This component checks if all of used the attributes are in the input relation. Semantic analyzer searches for duplicate named attributes and reports it as an error. 
+The relational algebra tree is checked in the \texttt{Semantic analyzer}. This component checks if all of the used attributes are in the input relation. \texttt{Semantic analyzer} searches for duplicate named attributes and reports them as an error. 
 
-Semantically correct tree is processed by component \texttt{Algebra grouper} that groups neighboring joins into one. Thanks to this operation so we can later choose fastest way to join multiple relations.
+Semantically correct tree is processed by component \texttt{Algebra grouper} that groups neighboring joins into one. Thanks to this operation we can later choose the fastest way to join multiple relations.
 
-Algebra tree with grouped joins is optimized. We implemented one most important optimization: pushing selections down the tree. This component pushes selections to the join node if selection contains condition $C$ where $C$ is in the following format $a=b$. Attribute $a$ is from the first join relation and $b$ belongs to the second join relation.
+Algebra tree with grouped joins is optimized. \texttt{Algebra optimizer} pushes the selections down the tree. This component also applies following operation:
+\begin{itemize}
+\item  $\sigma_C(R\Join_D S)= R\Join_{D~and~C} S$, where $C$ has the following format: $r=s$, $r$ belong to $R$ and $s$ belongs to $S$.
+\end{itemize}
 
-Optimized algebra tree is processed by compiler, which generates physical plan, which is not final. Its sort operator's parameters does not have to be final. For example if we want to sort relation before grouping we can sort it in different directions and than later decide what direction is better.
+Optimized algebra tree is processed by \texttt{Algebra compiler}, which generates physical plan. This physical plan is not yet final. Its sort operator's parameters can represent multiple ways of sorting relation. When sorting relation before grouping, we have multiple possibilities how to sort current relation and we can decide later which way is the best.
 
-Final plan is an output of the component named \texttt{Sort resolver}. This component resolved unknown sort order of sort operators and produces final plan, which is converted too Bobolang language.
+Final plan is an output of the component named \texttt{Sort resolver}. This component resolved unknown sort order in sort operators and produces final plan, which is converted to Bobolang language.
 
-Implemented tool does not check types because it will be the back end of the compiler. We assume that the front end parsing the text will handle types. Types of columns are only copied to the output and we assume that column types do not contain any errors.
+Implemented tool  will be the back end of the compiler and it does not check column. We assume that the front end parsing the text will handle types. Types of columns are only copied to the output and we assume that column types do not contain any errors.
 
 \section{Data structures}
 
-Data structures used in implementing tool are presented in this section.
+Data structures used in implemented tool are presented in this section.
 
-Relational algebra si stored in polymorphic tree. Every node stores its parameters pointer on parent in the tree and zero or more pointers on children node. No other structure was considered for this representation since this is efficient way to store logical plan. It allows easily to add new types of relational algebra operators and it is not hard to manipulate with the tree. We can remove or add new node very easily. 
-Example of this representation can be found in figure \ref{fig:groupalgebra}. It's representing simple query reading whole table, then grouping it and computing some aggregation functions. The result is sorted at the end. Leaf of the tree also stores some information about indexes on read table, list of columns with their types and number of unique values. Other important parameter is size of relation which is displayed in number of rows parameter.
-
+Relational algebra is stored in the polymorphic tree. Every node stores its parameters, pointer on the parent in the tree and pointers on its children node. No other structure was considered for this representation since this is efficient way to store logical plan. It allows to easily add and remove relational algebra operators.
+The example of this representation can be found in the Figure~\ref{fig:groupalgebra}. It is representing simple query reading whole table. Read relation is grouped and aggregation functions are computed. The result is sorted at the end. Leaf of the tree stores the following information:
+\begin{itemize}
+\item List of indices on this table.
+\item List of columns with their names, types and number of unique values
+\item Size of the relation.
+\end{itemize}
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.8\textwidth]{groupalgebra}
@@ -118,7 +125,7 @@ Example of this representation can be found in figure \ref{fig:groupalgebra}. It
           \label{fig:groupalgebra}
 \end{figure}
 
-We choose same structure for physical plan. Physical plan usually doesn't have to change. The advantage of storing it into polymorphic tree is to ability to easily add new root node. Example of this representation can be found in figure \ref{fig:groupplan}. This figure contains one of possible physical plans for relational algebra in figure  \ref{fig:groupalgebra}. For reading we used algorithm table scan, then we hashed input by requested columns and at the end, we sorted it using sort operator. Every nodes stores additional information like output attributes, estimated time and size of output relation.
+We chose the same structure for physical plan. The advantage of storing physical plan into polymorphic tree is to ability to easily add new root node. The example of this representation can be found in the Figure~\ref{fig:groupplan}. This Figure contains one of the possible physical plans for relational algebra shown in the Figure~\ref{fig:groupalgebra}. For reading table we used algorithm \texttt{Table scan}, then we hashed input by requested columns. Result is sorted in \texttt{Sort} operator. Every nodes stores additional informations like output attributes, estimated run time and size of output relation.
 
 \begin{figure}[h!]
   \centering
@@ -128,18 +135,18 @@ We choose same structure for physical plan. Physical plan usually doesn't have t
           \label{fig:groupplan}
 \end{figure}
 
-Physical and logical plan also contain expressions. Expressions are stored in polymorphic expression tree. We have example of this structure in figure~\ref*{fig:expressiontree}. This structure represents expression $X*Y+874$.
+Physical and logical plans also contain expressions. The expressions are stored in polymorphic expression tree. Example of this structure can be found in the~Figure~\ref*{fig:expressiontree}.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.6\textwidth]{expressiontree}
 
-      \caption{Example expression tree.}
+      \caption{Example expression tree representing expression  $X*Y+874$.}
           \label{fig:expressiontree}
 \end{figure}
 
-More complicated structure was used to storing parameters. This structure is stored in every sort physical operator to determine what columns should relation be sorted by. 
+More complicated structure was used for storing sort parameters. This structure is stored in every physical sort operator to determine how the relation can be sorted. 
 
-If we want to use group operator based on sort and it groups by three columns, we don't know which sort direction to use. Let's have expression $\gamma_{x,y}(R)$. There is four way to sort expression before calling group operator. This ways are:
+If we want to use sort based group operator and it groups by two columns, we have multiple possibilities for sorting relation. To use sort based algorithm for evaluating expression $\gamma_{x,y}(R)$ we can sort relation in four possible ways:
 \begin{itemize}
 \item $x:A,y:A$
 \item $x:A,y:D$
@@ -148,16 +155,14 @@ If we want to use group operator based on sort and it groups by three columns, w
 \end{itemize}
 $A$ means ascending and $D$ is abbreviation for descending.
 
-If we want to use merge join, joining on two attributes, we don't know direction and also which column should be first and which second. For example let's have $R\Join_{r_1=s_1~and~r_2=s_2} S$. In this case we can sort relation $R$ following way:
+There are multiple possibilities of sorting relation $R$ before applying  $R\Join_{r_1=s_1~and~r_2=s_2} S$. Relation $R$ can be sorted the following ways:
 \begin{itemize}
 \item $r_1,r_2$
 \item $r_2,r_1$
 \end{itemize}
-Order, how to sort columns is also unknown.
+Order, how to sort columns is arbitrary.
 
-We also want to store information about equality of sort column. After merge join $R\Join_{r_1=s_1} S$ is result sorted by $r_1$ or $s_1$.
-
-All this requirements were use to design structure to store sort parameter without enumerating all possible sort orders.
+We also want to store information about equality of sort column. After applying merge join $R\Join_{r_1=s_1} S$, the result can sorted by $r_1$ or $s_1$. All this requirements were use to design structure for store sort parameters without enumerating all possible sort orders.
 
 \begin{figure}[h!]
   \centering
@@ -167,9 +172,8 @@ All this requirements were use to design structure to store sort parameter witho
           \label{fig:sortparameters}
 \end{figure}
 
-In figure \ref{fig:sortparameters} we display an example of sort parameters, which sorts by 6 columns. It usually contains from 1 or more columns group. The order of columns groups cannot be changed. Order of columns in groups is arbitrary. It means that $F$ has to be on sixth place, but column $E$ can be on forth of fifth. Every column contains information about sort order: $ASC$ (ascending), $Desc$ (descending) or $UNK$ (unknown - can be ascending or descending). Every column also can be list of attributes which are equal to it. If we for example in projection remove attribute $A$, we still have attributes $X$, $Y$ and $Z$ which are equal to it, so one can take it's place.
-
-Figure \ref{fig:sortparameters} represents many sort order possibilities we enumerate only some of them:
+In figure \ref{fig:sortparameters} we display an example of sort parameters, which sorts by 6 columns. It contains one or more columns group. The order of columns groups cannot be changed. Order of columns in groups is arbitrary. It means that $F$ has to be on sixth place, but column $E$ can be on forth of fifth place. Every column contain information about sort order: $ASC$ (ascending), $Desc$ (descending) or $UNK$ (unknown - can be ascending or descending). We store list of equal attributes for every column. In case a projection operator removes columns $A$ from relation we can replace removed with attributes $X$, $Y$ or $Z$ in sort parameters.
+The Figure~\ref{fig:sortparameters} represents many sort order possibilities, we enumerate only some of them:
 \begin{enumerate}
 \item $A:ASC,C:DESC,B:ASC,H:DESC,D:ASC,F:DESC$
 \item $C:DESC,B:ASC,Z:ASC,H:DESC,D:DESC,F:DESC$
@@ -181,74 +185,67 @@ Figure \ref{fig:sortparameters} represents many sort order possibilities we enum
 
 \section{Optimization}
 
-In this section we describe algebra optimization, which wes implemented to improve logical plan.
+In this section we describe algebra optimization, which was implemented to improve logical plan.
 
-Before we start with optimizations we need to prepare logical plan for it. We group joins algebra nodes and expressions connected with $and$ and $or$.
+Before we start with optimizations we need to prepare logical plan. We group joins algebra nodes and expressions connected with $and$ and $or$. We work down the algebra tree. If we find join we convert to it grouped join. If one of its children is join, then we merge it with grouped join. This representation is used for choosing faster order join. Conditions are grouped the same way. From expression tree $a=2~and~(b=2~and~c=2)$ we create $AND(a=2,b=2,c=2)$. This representation is useful for splitting condition into simpler conditions.
 
-Basically we go from top of the tree. If we find join we convert to it grouped join. If on of it's children is join we merge it. This representation is used for choosing faster way to order join. We do the same thing for conditions. From expression tree $a=2~and~(b=2~and~c=2)$ we create $AND(a=2,b=2,c=2)$. This representation is useful for splitting condition into simpler conditions.
-
-We implemented very important optimization: pushing selection down the tree. Every selection is spitted into selections with simpler conditions. For every such selection we try to move it down the tree as much as possible. In this phase we used following rules ($\sigma_C$ is being pushed down):
+We implemented very important optimization: pushing selection down the tree. Every selection is spitted into selections with simpler conditions. Every selection is moved down the tree as much as possible. In this phase we used the following rules ($\sigma_C$ is being pushed down):
 \begin{enumerate}
 \item $\sigma_C(\sigma_D(R))=\sigma_D(\sigma_C(R))$
-\item $\sigma_C(\pi_L(R))=\pi_L(\sigma_C(R))$, it works only if $C$ doesn't contains new computed columns in extended projection. We also need to rename columns in condition $C$ in case there was some renaming.
+\item $\sigma_C(\pi_L(R))=\pi_L(\sigma_C(R))$, it works only if $C$ does not contain new computed columns in extended projection. We also need to rename columns in condition $C$ in case projection renamed some of the condition columns.
 \item  $\sigma_C(R \Join_D S)$ can be rewritten as
 \begin{enumerate}
 \item $\sigma_C(R) \Join_D S$ if $C$ contains only columns from $R$.
 \item $R \Join_D \sigma_C(S)$ if $C$ contains only columns from $R$.
-\item $R \Join_{D~and~C} S$ if $C$ is in form $a=b$ where $a$ is from $R$ and $b$ is from $S$.
+\item $R \Join_{D~and~C} S$ if $C$ is in form $a=b$ where $a$ belong the relation $R$ and $b$ comes from the relation $S$.
 \end{enumerate}
-\item $\sigma_C(R \ltimes_C S)=\sigma_C(R)\ltimes_C S$ if $C$  contains only columns from $R$, which is always because output of $R \ltimes_C S$ can contain only columns $R$.
+\item $\sigma_C(R \ltimes_C S)=\sigma_C(R)\ltimes_C S$
 \item $\sigma_C(R\cup S)=\sigma_C(R)\cup \sigma_C(S)$
 \end{enumerate}
 
 \section{Generating physical plan}
 
-We try to choose easiest method for generating plans. The decision was between heuristic method and dynamic programming. From amount of code it was probably the same. We chose dynamic programming, because it can give better results. We just generate all possible plans for each node and choose the fastest.
+We try to choose easiest method for generating plans. The decision was between heuristic method and dynamic programming. It would be probably the same amount of source code. We chose dynamic programming, because it can give better results. Using this method, we generate all possible plans for each node and choose the fastest plan.
 
-We process logical plan from leafs. For every leafs we generate all possible physical algorithms and we insert resulting plans into heap, where we keep $c$ fastest plans for current node, where $c$ is constant set in compiler.
+We process logical plan from leafs. For every leaf we generate all possible physical algorithms and we insert resulting plans into heap, where we keep $c$ fastest plans for current node. Variable $c$ is a constant set in compiler.
+For every algebra node we used plans generated in its children to generate new plan. This way we continue up the algebra tree to the root.
 
-For every node we use plans generated in it's children to generate new plan. This way we go up the logical plan tree up to the root.
+Physical plans are compared based on estimated run time. Every operator stores its estimated run time. The sum of run times of all the operators is estimated run time of the whole physical plan.
+Very important are equations, which compute estimated time for physical algorithm. They depend on size of input relation. Modifying them can resolve in getting better physical plans. For example, if physical algorithm \texttt{Hash join} takes too much time because it accesses random parts of memory, we can modify estimated times so sort with merge join will be preferred.
 
-For comparing physical plans we estimated run time. For every node we store how long it will run. Estimated time for plan is sum of estimated times of all nodes.
-
-Very important are equations, which compute estimated time for nodes. They depend from size of input relation. Modifying them can resolve in getting better physical plans. For example if physical algorithm hash join takes too much time because of lot random accessing memory, we can modify estimated time so sort with merge join will be preferred.
-
-Crucial are informations about size of tables. If they are not in input we use default value and physical plan will be probably worse. Other important parameter is number of unique values in table column. Size of join depends on it and since joins usually takes significant amount of time, it is important to have as precise values as possible. 
+Crucial are informations about size of tables. If they are not provided in the input we use default value and physical plan will be probably worse. Other important parameter is number of unique values attribute. Size of join depends on it and since joins usually takes significant amount of time, it is important to have as precise values as possible. 
 
 \subsection{Join order selecting algorithm}
 
 
-In section \ref{joinOrder} we presented algorithm choosing join order. We should choose this order and then assign join algorithms. We do it in one phase for following reason. In case we don't have information about table sizes, we cannot determine join order because all are the same. In this situation we can first join relations which are sorted some way to get a faster plan.
+In section \ref{joinOrder} we presented algorithm choosing join order. We should choose order of joins and then assign join algorithms. These operations are done in one phase for the following reason: In case we do not have information about table sizes, we cannot determine join order because all orders have the same estimated run time. In this situation we can start by joining relations which are sorted to get a faster plan.
 
-In this section we describe algorithm for selecting join order. We are using Two algorithms dynamic programming and greedy algorithm. For dynamic programming we use version where we enumerate all possible trees. This algorithm can give us very good plans but has exponential complexity and that's why we use it only if number of joined relations in grouped join node is small. If we join more relations we use greedy algorithm, which only generated left or right deep trees but it's complexity is not exponential only polynomial.
+We are using two algorithms dynamic programming and greedy algorithm. Version of used dynamic programming algorithm is enumerating all possible trees. This algorithm can output us very good plans but has exponential complexity. We use it only if number of joined relations in grouped join node is small. For joining more relations we use faster greedy algorithm which generated only left or right deep trees. Time complexity of greedy algorithm is not exponential but only polynomial.
 
-Input in both algorithm are set of plans for every input join relation.
+Input in both algorithm is set of plans for every input join relation.
 
 \subsubsection{Dynamic programing for selection join order}
 
-We use a variation of algorithm described in section \ref{dymanicalgorithm}. We number then input relations from $1$ to $n$. For actual computation we use table, where we store plans. Key of the table is non empty subset of set $1..n$.
+We use a variation of algorithm described in section \ref{dymanicalgorithm}. Input relations are numbered from $1$ to $n$. We used table for storing plans, which key is non empty subset of the set ${1..n}$.
 
-For every table entry we only store $k$ best plans. It represents best plans for, that were created by joining input in key of table.
+We only store $k$ best plans in every table cell, where $k$ is constant set in the compiler. It represents best plans that were created by joining inputs stored in the key of table entry.
 
-In begin we store input plans into table entry identified by set containing input number. In first iterator we fill tables entries, which key have two values by combining plans from entries with key size $1$.
+We begin by storing input plans into table entry identified by the set containing number of input relation. In first iteration we fill tables entries, which key has two values, by combining plans from entries with key size $1$.
 
-Then we compute plans for entries, which have key size $3,4...n$. We do so by spiting set in key of the entry in all possible pairs of non empty disjunctive subsets. We take plans from this subsets and we generate new plans combining them. We only store $k$ fastest plans.
+We continue by computing plans for entries, with key size $3,4...n$. Key of the current entry is spited in all possible pairs of non empty disjunctive subsets. We take plans from table entries identified with subsets and we generate new plans combining them. We only store $k$ fastest plans in the current table cell.
+We continue until we compute plans for table entry identified by key ${1..n}$ These plans are our result.
 
-We do this until we compute plans for table entry ${1..n}$. This is our result.
-
-Time complexity is at least exponential since we generate all subsets of $n$ relations, this number is $2^n$.
+Time complexity is at least exponential since we generate all subsets of $n$ relations, this value is $2^n$.
 
 
 \subsubsection{Greedy algorithm for selection join order}
- This is also a variation of algorithm described in section \ref{greedyalgorithm}. It beginning we create joins of every pair of relations. From them we choose best $k$ trees.
+ This is a variation of algorithm described in section \ref{greedyalgorithm}. We begin by creating joins for every pair of relations. From created pairs we choose the fastest $k$ trees.
  
- In every following iteration for every tree we generate new trees by adding new relation to tree. In following iteration we continue only with best $k$ join trees. At the end we have maximal $k$ plans.
+ In every iteration we generate new trees by adding new relation to every tree. Only $k$ best trees are chosen to continue to the following iteration. We iterate until we create join tree containing every input relation.
  
- Time complexity is $O(n^2)$. In every iteration we generate from every tree maximal $n$ new trees, but we keep only $k$ of them for next iteration. Number of iteration is $n-1$, because all trees grow by one in every iteration. Number $k$ is a constant so it doesn't change time complexity.
+ Time complexity is $O(n^2)$. In every iteration we generate from every tree maximal $n$ new trees, but we keep only $k$ of them for next iteration. Number of iterations is $n-1$, because all trees grow by one in every iteration. Number $k$ is a constant so it does not change time complexity.
  
 \subsection{Resolving sort parameters}
 
-After we generated physical plan we need to decide what sort parameters in sort operator to use.
-
-To do this we go down the tree and store information about how relations is sorted. Based on that we adjust sort parameters or just choose arbitrary order if possible.
+After we generated physical plan we need to decide what sort parameters in sort operator to use. We work down the tree and store information about sort order of the relation. Based on that, we adjust sort parameters or just choose the arbitrary sort order if possible.
 
