@@ -28,7 +28,7 @@ order by
     o_orderdate;
 \end{verbatim}
 
-This example is taken from TPC benchmark\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. Tables do not have any indices in this benchmark. Columns starting with o\_ are from table order, columns beginning with l\_ are from table lineitem and columns with prefix c\_ belongs table customers.
+This example is taken from TPC benchmark\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. Tables do not contain any indices in this benchmark. Columns starting with o\_ are from table order, columns beginning with l\_ are from table lineitem and columns with prefix c\_ belongs table customers.
 
 
 
@@ -38,7 +38,7 @@ Input is XML file containing logical query plan. In this section we describe its
 
 \subsection{Sort}
 
-On root of every tree is sort operator, even if output does not have to sorted. In this case sort has empty parameters. Example of sort in algebra tree:
+The root of every tree contain the sort operator, even if output does not have to be sorted. In this case sort has empty parameters.The following example displays sort operator structure:
 
 
 \lstset{
@@ -60,11 +60,11 @@ On root of every tree is sort operator, even if output does not have to sorted. 
 </sort>
 \end{lstlisting}
 
-Sort is a root element of XML file. Inside parameters is specified how to sort relation. In this example we have sort $\tau_{revenue:desc,o\_orderdate:asc}(...)$. In element input there should be one other algebra tree node.
+The sort is a root element of XML file. Inside the parameters there is specified how to sort relation. This example represents sort $\tau_{revenue:desc,o\_orderdate:asc}(...)$. The element $input$ should contain other algebra tree node.
 
 \subsection{Group}
 
-Next example contains group node:
+Next example displays the group node:
 
 \begin{lstlisting}
 <group>
@@ -80,11 +80,11 @@ Next example contains group node:
 </group>
 \end{lstlisting}
 
-This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element has to have at least one group by parameter or at least one aggregate function. Inside element input there should be one other operator.
+This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element has to have at least one group by parameter or at least one aggregate function. Inside the element $input$ there should be an other operator.
 
 \subsection{Selection}
 
-This is an example of selection:
+The selection presented in the following example:
 
 \begin{lstlisting}
 
@@ -102,7 +102,7 @@ This is an example of selection:
   </input>
 </selection>
 \end{lstlisting}
-This example represent following expression: $\sigma_{today<l\_shipdate}$. In condition element we can have multiple conditions connected by $and$ or $or$ elements. Input algebra supports operators $=$,$<$ and $\leq$. In the leafs of expression tree there can be only column or constant element. We also can call a boolean function from condition, which is represented in following example.
+This example represents following expression: $\sigma_{today<l\_shipdate}$. The condition element we can contain multiple conditions connected by $and$ or $or$ elements. Input algebra supports operators $=$,$<$ and $\leq$. In the leafs of expression tree there can be only column or constant element. We also can call a boolean function from selection and this call is presented in the following example:
 
 \begin{lstlisting}
 <condition>
@@ -117,11 +117,11 @@ This example represent following expression: $\sigma_{today<l\_shipdate}$. In co
 </condition>
 \end{lstlisting}
 
-Using boolean predicate it has to be supported by runtime(Bobox operators). Compile doesn't check it's existence.
+Using boolean predicate it has to be supported by runtime (Bobox operators). The compilee does not check if called predicate does exist.
 
 \subsection{Join}
 
-Join without condition is considered to be cross join. We can use join with multiple equal conditions or with simple unequal condition. First example contains equal conditions:
+The join operator without condition represents cross join. We can use join with multiple equal conditions or with one simple unequal condition. The first example contains equal conditions:
 
 \begin{lstlisting}
 <join>
@@ -146,9 +146,9 @@ Join without condition is considered to be cross join. We can use join with mult
 </input>
 \end{lstlisting}
 
-This example represents join with condition $a=b~and~c=d$. In join equal conditions has to be first column from first relation and second column from second relation. In example $a$ and $c$ are from first input and $b$ and $d$ are from the other one. Joins doesn't copy to output all column from both input relations. After condition we have to specify non empty sequence of columns. In every column we specify it's name and number of input. We can also rename join output column by using attribute $newName$. In example we renamed column $d$ to $e$.
+This example represents join with condition $a=b~and~c=d$. In join equal conditions of this join, first column has to be from the first relation and second column comes from the second relation. The columns $a$ and $c$ are from the first input and $b$ and $d$ are from the other one. Joins does not copy all columns to output. We have to specify non empty sequence of output columns. For every column we have to specify name and the input number. We can also rename join output column by using attribute $newName$. In last example we renamed output column $d$ to $e$.
 
-Next example shows also join but with inequality condition:
+Next example shows join with inequality condition:
 
 \begin{lstlisting}
 <join>
@@ -174,9 +174,7 @@ Next example shows also join but with inequality condition:
 </input>
 </join>
 \end{lstlisting}
-This example represents join with condition $a1\leq b\leq a2$. In first sub condition first column has to be from first input, but in second sub condition first column has to be from second input. Also instead $lower\_or\_equals$ we can use just $lower$ condition. Rules for output column are same like in join with equal conditions.
-
-In element $input$ there have to be two operators.
+This example represents join with condition $a1\leq b\leq a2$. First element $lower\_or\_equals$ has to contain the column from first relation followed by column from the second relation. On the other hand the second element $lower\_or\_equals$ needs to specify these columns in reversed order. The element $lower\_or\_equals$ can be replace by the element $lower$. The rules for specifying output column are the same like in the join with equal conditions. The element $input$ should contain two algebra operators.
 
 \subsection{Anti join}
 
@@ -196,10 +194,10 @@ In element $input$ there have to be two operators.
 <input>
 </antijoin>
 \end{lstlisting}
-This is an example of antijoin with simple condition $d=b$. Structure is the almost same like join. Output columns can be only from first relation and we can also rename this columns.
+This is an example of antijoin with simple condition $d=b$. The structure is almost the same like in the join. Output columns can be only from the first relation and we can rename these columns.
 
 \subsection{Table}
-This is a leaf of algebra tree. It specifies name of read table, its columns and indexes. We can specify number of rows in the table to get better plans. If it is not specified we will assume that table has 1000 tuples. For every column we have to specify name and it's type. Other optional parameter is $number\_of\_unique\_values$. This number is important for estimating size of join. If it is not given, we will assume, that $number\_of\_unique\_values$ is size of table to power of $\frac{4}{5}$. This assumption is only experimental, since number of unique values can be from $0$ to size of table. Index can be clustered or unclustered. Table can have only one clustered index. In every index we specify on what attribute it is created. Here is an example of table algebra node:
+Table operator is the leaf of the algebra tree. We specify here the name of read table, its columns and indexes in table operator. The number of rows can be given in order to get better plans. If we do not have that information, we assume that a table has 1000 tuples. For every column we have to specify its name and type. Other optional parameter is $number\_of\_unique\_values$. This number is important for estimating size of join. If this information is missing, we will assume, that $number\_of\_unique\_values$ is size of table to power of $\frac{4}{5}$. This assumption is only experimental, since the number of unique values is from interval $\langle 0, table~size\rangle$. There are two types of indices. clustered and  unclustered. Table can have only one clustered index. For every index, we have to specify attributes and sort order. The following example contain table algebra node:
  
 \begin{lstlisting}
 <table name="orders" numberOfRows="1500000">
@@ -216,7 +214,7 @@ This is a leaf of algebra tree. It specifies name of read table, its columns and
 \end{lstlisting}
 
 \subsection{Union}
-Union doesn't have any parameters, but columns from both input have to have the same names. Here is an example:
+The union operator does not have any parameters but columns from both inputs have to have the same names, for example:
 \begin{lstlisting}
 <union>
   <input>
@@ -226,7 +224,7 @@ Union doesn't have any parameters, but columns from both input have to have the 
 \end{lstlisting}
 
 \subsection{Extended projection}
-Following example of extended projection represents expression \\ $\pi_{l\_orderkey,o\_orderdate,o\_shippriority,x=l\_extendedprice*(1-l\_discount)}(...)$.
+Following example of extended projection represents expression \\ $\pi_{l\_orderkey,o\_orderdate,o\_shippriority,x=l\_extendedprice*(1-l\_discount)}(...)$:
 \begin{lstlisting}
 <column_operations>
   <parameters>
@@ -251,7 +249,7 @@ Following example of extended projection represents expression \\ $\pi_{l\_order
 </column_operations>
 \end{lstlisting}
 
-Extended projection contains list of columns. If columns is new computed values it contains elements representing expression tree. It can also contain function call, which has to be supported by Bobox operators. Following example displays function call:
+The extended projection contains a list of columns. Newly computed columns contains element $equals$ with expression. Expression tree can contain arbitrary function call which has to be supported by Bobox operators. Following example displays function call:
 
 
 \begin{lstlisting}
@@ -273,30 +271,28 @@ Extended projection contains list of columns. If columns is new computed values 
 </column_operations>
 \end{lstlisting}
  
- We compute new column named $x$ with values $\sqrt{2}$.
+ We computed new column named $x$ with values $\sqrt{2}$.
  
 \section{Building relational algebra tree} 
 
-In this section we describe in more details structure storing logical plan and it's building.
-
-Relational algebra operators are represented by children of abstract class \texttt{AlgebraNodeBase}. It has following abstract subclasses:
+In this section we describe in more details structure storing logical plan and its building. Relational algebra operators are represented by children of the abstract class \texttt{AlgebraNodeBase}. It has following abstract subclasses:
 \begin{itemize}
 
-\item \texttt{UnaryAlgebraNodeBase} - abstract class for algebra operator with one input
+\item \texttt{UnaryAlgebraNodeBase} - abstract class for algebra operator with one input.
 
-\item \texttt{BinaryAlgebraNodeBase}  - abstract class for algebra operator with two inputs
+\item \texttt{BinaryAlgebraNodeBase}  - abstract class for algebra operator with two inputs.
 
-\item \texttt{GroupedAlgebraNode} - abstract class for algebra operator with variable number inputs
+\item \texttt{GroupedAlgebraNode} - abstract class for algebra operator with variable number inputs.
 
-\item \texttt{NullaryAlgebraNodeBase} -  abstract class for algebra tree leafs
+\item \texttt{NullaryAlgebraNodeBase} -  abstract class for algebra tree leafs.
 
 \end{itemize}
 
-All operators are children of one of mentioned classes. Every operator has pointer to it's parent in tree and smart pointers to it's children if it has any. 
+All algebra operators are children of one of the mentioned classes. Every operator has pointer to its parent in the tree and smart pointers to its children if it has any. 
 
 Expressions in nodes are represented by polymorphic trees. All expression nodes are children of class \texttt{Expression}.
 
-For manipulating and reading expression and algebra tree we used visitor pattern. All nodes (algebra and expression) contains method \texttt{accept}. This method calls visitor method on class \texttt{AlgebraVisitor}/\texttt{ExpressionVisitor}. All classes, which manipulate algebra tree, are children of class \texttt{AlgebraVisitor}.
+For manipulating and reading expression and algebra tree we used the visitor pattern. All nodes (algebra and expression) contains method \texttt{accept}. This method calls visitor method on class \texttt{AlgebraVisitor}/\texttt{ExpressionVisitor}. All classes, which manipulate algebra tree, are children then of class \texttt{AlgebraVisitor}.
 
 
 \begin{figure}[h!]
@@ -307,19 +303,19 @@ For manipulating and reading expression and algebra tree we used visitor pattern
           \label{fig:algebratree1}
 \end{figure}
 
-In figure~\ref{fig:algebratree1} we have example of algebra tree of query presented in beginning in this chapter. We have rewritten it as cross join of tree tables. After that we apply selection with condition in where clause. From the result we compute new column. After that we apply grouping compute aggregate functions and sort the result. In table reading operator we can see that they store additional information, like name of table. Every attribute has $\_-1$, behind name. It is it's unique identifier but after building tree from XML it is not assigned yet and that's why it contains default value $-1$. Columns in expressions also contains number in parenthesis. This number stores information from which input this columns it. Inputs are numbered from $0$. Here we can see that all columns in selection are from $0^{th}$ input. This information is useful mainly in joins.
+In figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in where clause. From the result we compute new column and apply grouping operator computing aggregate functions. Output of the query is sorted. In table reading operator we can see additional informations like name of table. Every attribute has the sufix $\_-1$ which is column's unique identifier. After the algebra tree is build from XML, unique identifiers are not assigned yet and they contain default value $-1$. The columns used in expressions contains number in parenthesis, which stores information which input does it belongs. Input operators are numbered from $0$. All columns used selection come from the $0^th$ input.
 
-For parsing and validating input XML file we used library Xerces version 3.1.1\cite{xerces}. It parses input file and create DOM tree. This tree has to be validated so we know it contains valid relational algebra tree. All this functionality is in class \texttt{XmlHandler}.
+For parsing and validating input XML file we used library Xerces version 3.1.1~\cite{xerces}. It parses input file and creates DOM tree. This tree has to be validated against XML schema. Parsing and validation of XML is performed in the class \texttt{XmlHandler}.
 
-We know that every tree has to have sort operator on the top. We call \texttt{Sort} constructor on it. This method takes all information from DOM tree and call method, which decide that constructor to call next on it's children. This way we recursively build algebra tree.
+Every algebra tree has to have sort operator on the top. We call \texttt{Sort} constructor with root element as an argument. This method copies all information from DOM tree and calls method \texttt{AlgebraNodeBase::constructChildren}, which decides what constructor to call on current node's children. This way we recursively build algebra tree.
 
 
 
 \section{Semantic analysis and node grouping}
 
-This phase in processed by class \texttt{SemanticChecker}. It checks columns used in expression exist. It also checks if output columns of operator has unique name. During this checking we assign unique identifier to every column. After this phase we don't need attribute names only this identifier.
+Semantic checking is processed by the class \texttt{SemanticChecker}, which checks if columns used in expression exist and if the output columns of operator have unique name. During this checking we assign unique identifier to every column. After this phase we do not need attribute names we use only the unique identifier.
 
-Logical plan is after that visited by \texttt{GroupingVisitor}. In this phase are replaced joins represented by class \texttt{Join} by \texttt{grouped join} with two or more input relations. This node is represented by class \texttt{GroupedJoin}. Also in every expression we apply \texttt{GroupingExpressionVisitor}. It groups expression with $and$ and $or$ operators. This is done for simplifying splitting condition into sub conditions.
+Logical plan is after that visited by \texttt{GroupingVisitor}. In this phase are replaced joins represented by class \texttt{Join} by grouped join with two or more input relations. This node is represented by class \texttt{GroupedJoin}. For every expression we apply \texttt{GroupingExpressionVisitor}, which groups expressions with $and$ and $or$ operators. This step simplifies splitting condition into sub conditions.
 
 \section{Algebra optimization}
 

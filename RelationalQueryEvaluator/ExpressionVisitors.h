@@ -12,44 +12,44 @@ namespace rafe {
 
 	/**
 	* Base class for expression visitors.
-	* Every virtual method does nothing only visits node all children.
+	* Every virtual method does nothing only visits all children of visited node.
 	*/
 	class ExpressionVisitorBase
 	{
 	public:
 
 		/**
-		* Visits UnaryExpression element.
+		* Visits UnaryExpression node.
 		* @param expression visited UnaryExpression.
 		*/
 		virtual void visitUnaryExpression(UnaryExpression * expression);
 
 		/**
-		* Visits BinaryExpression element.
+		* Visits BinaryExpression node.
 		* @param expression visited BinaryExpression.
 		*/
 		virtual void visitBinaryExpression(BinaryExpression * expression);
 
 		/**
-		* Visits NnaryExpression element.
+		* Visits NnaryExpression node.
 		* @param expression visited NnaryExpression.
 		*/
 		virtual void visitNnaryExpression(NnaryExpression * expression);
 
 		/**
-		* Visits Constant element.
+		* Visits Constant node.
 		* @param expression visited Constant.
 		*/
 		virtual void visitConstant(Constant * expression);
 
 		/**
-		* Visits Column element.
+		* Visits Column node.
 		* @param expression visited Column.
 		*/
 		virtual void visitColumn(Column * expression);
 
 		/**
-		* Visits GroupedExpression element.
+		* Visits GroupedExpression node.
 		* @param expression visited GroupedExpression.
 		*/
 		virtual void visitGroupedExpression(GroupedExpression * expression);
@@ -77,16 +77,16 @@ namespace rafe {
 	};
 
 	/**
-	* Visitor which assign inout number to every column node.
+	* Visitor which assign number of input to every column node.
 	* It is used in join and antijoin for identifying columns.
 	*/
 	class NumberColumnsInJoinVisitor : public ExpressionVisitorBase
 	{
 	public:
-		int lastNumberedColumn; /**< Contains only 0or 1. Columns from left join input are numbered 0, and from right join input are numbered 1. */
+		int lastNumberedColumn; /**< Contains only 0 or 1. Columns from left join input are numbered 0, and from right join input are numbered 1. */
 
 		/**
-		* Creates new instance of NumberColumnsInJoinVisitor
+		* Creates new instance of NumberColumnsInJoinVisitor.
 		*/
 		NumberColumnsInJoinVisitor();
 		void visitColumn(Column * expression);
@@ -94,7 +94,7 @@ namespace rafe {
 	};
 
 	/**
-	* Visitor, which stores pointer of every column into vector. This visitor doesn't change expression tree.
+	* Visitor, which stores pointer of every column into vector. This visitor does not change expression tree.
 	*/
 	class GetColumnsNodesVisitor : public ExpressionVisitorBase
 	{
@@ -110,7 +110,7 @@ namespace rafe {
 	{
 	public:
 
-		std::shared_ptr<Expression> * root; /**< Root of expression tree. If the root is changed it root has to be rewritten. */
+		std::shared_ptr<Expression> * root; /**< Root of expression tree. If the root is changed, then root variable has to be rewritten. */
 
 		/**
 		* Creates new instance of GroupingExpressionVisitor.
@@ -131,9 +131,9 @@ namespace rafe {
 
 		std::string missingColumn; /**< Stores name of first missing column.*/
 
-		std::map<std::string, ColumnInfo> outputColumns0; /**< Stores columns, which came from first childnode. Key is column name. */
+		std::map<std::string, ColumnInfo> outputColumns0; /**< Stores columns, which came from first child node. Key is column name. */
 
-		std::map<std::string, ColumnInfo> outputColumns1; /**< Stores columns, which came from second childnode if it has one. If not it stays empty. Key is column name. */
+		std::map<std::string, ColumnInfo> outputColumns1; /**< Stores columns, which came from second child node if visited algebra node has one. Otherwise it is empty. Key is column name. */
 
 		/**
 		* Creates new instance of SemanticExpressionVisitor.
@@ -143,8 +143,8 @@ namespace rafe {
 	};
 
 	/**
-	* Visitor coputes new size of relation after applying current condition.
-	* Estimation is made based on number of unique values in columns.
+	* Visitor copmutes new size of relation after filtering with given condition.
+	* Estimation is made based on number of unique values in the columns.
 	*/
 	class SizeEstimatingExpressionVisitor : public ExpressionVisitorBase
 	{
@@ -171,7 +171,7 @@ namespace rafe {
 
 	/**
 	* Reads all columns identifiers from expression and determing what kind of condition is expression representing.
-	* It can be equal condition a=b or le condition a1<b<a2. Other conditions should not be in joins.
+	* It can be equal condition a=b or condition a1<b<a2. Other conditions should not be in joins.
 	*/
 	class JoinInfoReadingExpressionVisitor : public ExpressionVisitorBase
 	{
@@ -202,7 +202,6 @@ namespace rafe {
 
 	/**
 	* Visitor is used for renaming join condition while grouping joins.
-	* Join can rename column and in this case can happen, that condition in groupped join doesn't have correct column name.
 	*/
 	class RenamingJoinConditionExpressionVisitor : public ExpressionVisitorBase
 	{
@@ -242,7 +241,7 @@ namespace rafe {
 	};
 
 	/**
-	* Visitor make simple type analysis. It assumes that all types are correct and after expression visit,
+	* Visitor make simple type analysis. It assumes that all types are correct and after the expression visit,
 	* there will be stored type of whole expression in variable resultType.
 	*/
 	class TypeResolvingExpressionVisitor : public ExpressionVisitorBase
@@ -292,7 +291,7 @@ namespace rafe {
 	};
 
 	/**
-	* Visitor maked a copy from visited tree. All nodes are copied.
+	* Visitor makes a copy from visited tree. All nodes are copied.
 	*/
 	class CloningExpressionVisitor : public ExpressionVisitorBase
 	{

@@ -38,7 +38,7 @@ Condition\+Type $\ast$ \hyperlink{classrafe_1_1_join_info_reading_expression_vis
 
 
 \subsection{Detailed Description}
-Reads all columns identifiers from expression and determing what kind of condition is expression representing. It can be equal condition a=b or le condition a1$<$b$<$a2. Other conditions should not be in joins. 
+Reads all columns identifiers from expression and determing what kind of condition is expression representing. It can be equal condition a=b or condition a1$<$b$<$a2. Other conditions should not be in joins. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classrafe_1_1_join_info_reading_expression_visitor_a964f1d36e020a9099314400c1b400754}{\index{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor@{rafe\+::\+Join\+Info\+Reading\+Expression\+Visitor}!Join\+Info\+Reading\+Expression\+Visitor@{Join\+Info\+Reading\+Expression\+Visitor}}
@@ -66,7 +66,7 @@ Creates new instance of \hyperlink{classrafe_1_1_join_info_reading_expression_vi
 \item[{{\bf Binary\+Expression} $\ast$}]{expression}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_join_info_reading_expression_visitor_a3fe9a23de3b525cc967c0f8b1c2c81eb}
-Visits \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} element. 
+Visits \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression} node. 
 \begin{DoxyParams}{Parameters}
 {\em expression} & visited \hyperlink{classrafe_1_1_binary_expression}{Binary\+Expression}. \\
 \hline
@@ -82,7 +82,7 @@ Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a63e53276af3
 \item[{{\bf Column} $\ast$}]{expression}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_join_info_reading_expression_visitor_a791b1f98544255f24c39b77286b459d9}
-Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+Visits \hyperlink{classrafe_1_1_column}{Column} node. 
 \begin{DoxyParams}{Parameters}
 {\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
 \hline
@@ -98,7 +98,7 @@ Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a4eaa77bf410
 \item[{{\bf Constant} $\ast$}]{expression}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_join_info_reading_expression_visitor_aa08dee45829be99a6c6b3961c8cf081d}
-Visits \hyperlink{classrafe_1_1_constant}{Constant} element. 
+Visits \hyperlink{classrafe_1_1_constant}{Constant} node. 
 \begin{DoxyParams}{Parameters}
 {\em expression} & visited \hyperlink{classrafe_1_1_constant}{Constant}. \\
 \hline
@@ -114,7 +114,7 @@ Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_af934111c688
 \item[{{\bf Grouped\+Expression} $\ast$}]{expression}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_join_info_reading_expression_visitor_acfd9c7c62dfac50b0ac6d1c314f7f395}
-Visits \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} element. 
+Visits \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression} node. 
 \begin{DoxyParams}{Parameters}
 {\em expression} & visited \hyperlink{classrafe_1_1_grouped_expression}{Grouped\+Expression}. \\
 \hline
@@ -130,7 +130,7 @@ Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a76226ab9d57
 \item[{{\bf Nnary\+Expression} $\ast$}]{expression}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_join_info_reading_expression_visitor_a57a8dedf4fa06ff27c71cf36ee7a4b3b}
-Visits \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} element. 
+Visits \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression} node. 
 \begin{DoxyParams}{Parameters}
 {\em expression} & visited \hyperlink{classrafe_1_1_nnary_expression}{Nnary\+Expression}. \\
 \hline
@@ -146,7 +146,7 @@ Reimplemented from \hyperlink{classrafe_1_1_expression_visitor_base_a32f89977f78
 \item[{{\bf Unary\+Expression} $\ast$}]{expression}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_join_info_reading_expression_visitor_a27ebab51d1b63683004f2ec45d15869f}
-Visits \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} element. 
+Visits \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression} node. 
 \begin{DoxyParams}{Parameters}
 {\em expression} & visited \hyperlink{classrafe_1_1_unary_expression}{Unary\+Expression}. \\
 \hline

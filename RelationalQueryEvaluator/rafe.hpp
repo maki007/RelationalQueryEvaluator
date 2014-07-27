@@ -21,7 +21,7 @@ namespace rafe {
 		rafe_query();
 
 		/**
-		* Creates new instance of ScanAndSortByIndex.
+		* Compile query stored in file name.
 		* @param fname - name of XML file with query. 
 		* @param err - ostream used for writing error messages.
 		* @returns true if the function completed operation successfully, false otherwise.

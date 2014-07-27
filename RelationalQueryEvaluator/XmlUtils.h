@@ -32,7 +32,7 @@ namespace rafe {
 
 		/**
 		* Returns elemenet child, which name matches given value.
-		* @param element - element, which return child from
+		* @param element - element which child will be returned 
 		* @param elementName - child element name
 		* @returns child element matching elementName
 		*/

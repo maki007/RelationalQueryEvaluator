@@ -39,7 +39,7 @@ namespace rafe {
 	};
 
 	/**
-	* Stres unique indetification of a column.
+	* Stores unique indetification of a column.
 	*/
 	class ColumnIdentifier
 	{
@@ -68,18 +68,18 @@ namespace rafe {
 		ColumnIdentifier();
 
 		/**
-		* @return String representation of this class.
+		* @returns String representation of this class.
 		*/
 		std::string toString() const;
 
 		/**
-		* Compares id of ColumnIdentifier.
+		* Compares ids of ColumnIdentifier class.
 		* @param other - ColumnIdentifier for comparision.
 		*/
 		bool operator<(const ColumnIdentifier& other) const;
 
 		/**
-		* Overload opeartor == and compares only ids.
+		* Overload of opeartor ==, function compares only ids.
 		* @param other - ColumnIdentifier for comparision.
 		*/
 		bool operator ==(const ColumnIdentifier& other) const;
@@ -87,7 +87,7 @@ namespace rafe {
 	};
 
 	/**
-	* Represents sort order of relation.
+	* Represents sort order of the relation.
 	*/
 	enum SortOrder
 	{
@@ -105,7 +105,7 @@ namespace rafe {
 	public:
 		ColumnIdentifier column; /**< Identifies by what column should the relation be sorted by. */
 
-		std::set<ColumnIdentifier> others; /**< Set of identifiers of columns which equals property column. */
+		std::set<ColumnIdentifier> others; /**< Set of column identifiers which are equal to the property column. */
 
 		SortOrder order; /**< Order how to sort the column.*/
 
@@ -133,7 +133,7 @@ namespace rafe {
 
 	/**
 	* Represents sort parameters.
-	* If there is more that one value in values vector than means that the actual order can change.
+	* If there is more that one value in vector values, then the actual order of columns can change.
 	*/
 	class SortParameters
 	{
@@ -168,8 +168,8 @@ namespace rafe {
 	/**
 	* Represents all possibilities how relation can be sorted.
 	* It contains vector of list of SortParameter.
-	* The list inside of vector means that the order of columns is not determined.
-	* The vector order is set and will not change.
+	* The list inside of vector represents group of columns with arbitrary order.
+	* The order in the vector is set and will not change.
 	*/
 	class PossibleSortParameters
 	{
@@ -196,7 +196,7 @@ namespace rafe {
 	};
 
 	/**
-	* Enum for agregation function types.
+	* Enum for aggregation types of functions.
 	*/
 	enum AgregateFunctionType
 	{
@@ -211,7 +211,7 @@ namespace rafe {
 	public:
 		AgregateFunctionType function; /**< Agregate function. */
 		std::string functionName; /**< Function name, stored only for debuging purposes. */
-		ColumnIdentifier parameter; /**< Column identifier of parameter fo function. Count function does not have any parameter. */
+		ColumnIdentifier parameter; /**< Column identifier of parameter for function. The function Count does not have any parameters. */
 		ColumnIdentifier output;  /**< Identifier of the output column storing function result. */
 	};
 
@@ -232,7 +232,7 @@ namespace rafe {
 	public:
 		IndexType type; /**< Type of index: clustered or unclustered. */
 		std::string name; /**< Index name.*/
-		std::vector<SortParameter> columns; /**< Columns on wwhich is index created. It also stores sort order of every column in index.*/
+		std::vector<SortParameter> columns; /**< Index columns with their sort order.*/
 
 		/**
 		* @return String representation of this class.
@@ -248,12 +248,12 @@ namespace rafe {
 	class ColumnInfo
 	{
 	public:
-		ColumnIdentifier column;  /**< Columns identifier. */
+		ColumnIdentifier column;  /**< Identifier of the column. */
 		std::string type; /**< Type of the column. */
 		double numberOfUniqueValues; /**< Stores number of unique values for joining purposes. */
 
 		/**
-		* Create the instance of ColumnInfo.
+		* Creates new instance of ColumnInfo.
 		* @param name - column name
 		* @param type - column type
 		*/
@@ -267,7 +267,7 @@ namespace rafe {
 		/**
 		* Creates new instance of ColumnInfo.
 		* @param name - column name
-		* @param numberOfUniqueValues
+		* @param numberOfUniqueValues - number of unique values in this column
 		* @param type - type of column
 		*/
 		ColumnInfo(std::string name, double numberOfUniqueValues, std::string type);
@@ -275,7 +275,7 @@ namespace rafe {
 		/**
 		* Creates new instance of ColumnInfo.
 		* @param column - ColumnIdentifier of the column
-		* @param numberOfUniqueValues
+		* @param numberOfUniqueValues - number of unique values in this column
 		* @param type - type of column
 		*/
 		ColumnInfo(const ColumnIdentifier & column, double numberOfUniqueValues, std::string type);
@@ -289,7 +289,7 @@ namespace rafe {
 	};
 
 	/**
-	* Inherits from ColumnInfo and stores information which input is column from and new column name.
+	* Inherits from ColumnInfo and stores additional information about optional column renaming.
 	*/
 	class JoinColumnInfo : public ColumnInfo
 	{
@@ -311,12 +311,12 @@ namespace rafe {
 	};
 
 	/**
-	* Stores information about operation on columns from extended projection operator.
+	* Stores information about operations on the columns. It is used in extended projection operator.
 	*/
 	class ColumnOperation
 	{
 	public:
-		ColumnIdentifier result; /**< Identifier of output column. */
+		ColumnIdentifier result; /**< Identifier of an output column. */
 		std::shared_ptr <Expression> expression; /**< Expression to compute new column. If it is null, then the column is only copied to output. */
 		std::string type; /**< Type of the column. */
 	};
@@ -328,7 +328,7 @@ namespace rafe {
 	{
 	public:
 		ColumnIdentifier input; /**< Identifier of input column. */
-		ColumnIdentifier output; /**< Identifier of output column. Input and output are same but they have different id. */
+		ColumnIdentifier output; /**< Identifier of output column. Input and output are the same but they have different id. */
 
 		/**
 		* Creates new instance of GroupColumn using ColumnIdentifier.

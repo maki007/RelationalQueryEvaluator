@@ -7,7 +7,7 @@
 namespace rafe {
 
 	/**
-	* Base class for physical operator tree visitors.
+	* Base class for physical operators tree visitors.
 	* Every virtual method does nothing only visits node all children.
 	*/
 	class PhysicalOperatorVisitor
@@ -112,7 +112,7 @@ namespace rafe {
 	};
 
 	/**
-	* Vsitor generates serialize physical tree to dot code.
+	* Vsitor generates physical tree to the dot language.
 	*/
 	class PhysicalOperatorDrawingVisitor : public PhysicalOperatorVisitor
 	{
@@ -135,7 +135,7 @@ namespace rafe {
 
 		/**
 		* Generates node representation in dot.
-		* Calls this visitor on child and connects generated nodes.
+		* Calls this visitor on nodes child and connects generated nodes.
 		* @param label - label for newly generated node
 		* @param node  processed node
 		*/
@@ -143,7 +143,7 @@ namespace rafe {
 
 		/**
 		* Generates node representation in dot.
-		* Calls this visitor on children and connects generated nodes.
+		* Calls this visitor on nodes children and connects generated nodes.
 		* @param label - label for newly generated node
 		* @param node - processed node
 		*/
@@ -249,7 +249,7 @@ namespace rafe {
 	};
 
 	/**
-	* After physical plan is generated some sort parameters can be unknown (direciotn or order of columns).
+	* After physical plan is generated some sort parameters can be unknown (direction or order of columns).
 	* This visitor visits whole tree from top a set this parameters to known values.
 	*/
 	class SortResolvingPhysicalOperatorVisitor : public PhysicalOperatorVisitor
@@ -291,8 +291,8 @@ namespace rafe {
 	};
 
 	/**
-	* Visitor generates serialize physical tree to dot code.
-	* It is equal to PhysicalOperatorDrawingVisitor except it doens't write sorts, which output and input are sorted same size.
+	* Visitor generates physical tree to dot code.
+	* Visitor does the same as PhysicalOperatorDrawingVisitor, except it does not write sorts, which output and input are sorted same size.
 	*/
 	class PhysicalOperatorDrawingVisitorWithouSorts : public PhysicalOperatorDrawingVisitor
 	{

@@ -64,7 +64,7 @@ Creates the instance of \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Nod
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_algebra_node_base_a48e59b55cdb1c3d108343eb18920c1d1}
 Method for calling visit\mbox{[}node\mbox{]} on given \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor}. 
 \begin{DoxyParams}{Parameters}
-{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} which to call function on \\
+{\em v} & \hyperlink{classrafe_1_1_algebra_visitor}{Algebra\+Visitor} on which to call function. \\
 \hline
 \end{DoxyParams}
 
@@ -101,15 +101,15 @@ newely created Algebra node.
 \item[{std\+::shared\+\_\+ptr$<$ {\bf Algebra\+Node\+Base} $>$ \&}]{new\+Child}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classrafe_1_1_algebra_node_base_ac6d722e739dd39c223bb129dfbd0ab45}
-Replaces one child of this node with other one 
+Replaces one child of this node with other one. 
 \begin{DoxyParams}{Parameters}
-{\em old\+Child} & node to be replaced \\
+{\em old\+Child} & node to be replaced. \\
 \hline
-{\em new\+Child} & new node to replace the old one \\
+{\em new\+Child} & new node to replace the old one. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-replaced child 
+replaced child. 
 \end{DoxyReturn}
 
 
@@ -121,13 +121,13 @@ Implemented in \hyperlink{classrafe_1_1_nullary_algebra_node_base_aa600eac4377ba
 \hypertarget{classrafe_1_1_algebra_node_base_a9ad122f37de5260754daaf517d3d5ed0}{\index{rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}!line\+Number@{line\+Number}}
 \index{line\+Number@{line\+Number}!rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}}
 \subsubsection[{line\+Number}]{\setlength{\rightskip}{0pt plus 5cm}ulong rafe\+::\+Algebra\+Node\+Base\+::line\+Number = 0}}\label{classrafe_1_1_algebra_node_base_a9ad122f37de5260754daaf517d3d5ed0}
-Stores the line number of input element for this node. \hypertarget{classrafe_1_1_algebra_node_base_aadae640fc5528efe6ce06c2171ba8075}{\index{rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}!output\+Columns@{output\+Columns}}
+Stores the line number of the input element for this node. \hypertarget{classrafe_1_1_algebra_node_base_aadae640fc5528efe6ce06c2171ba8075}{\index{rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}!output\+Columns@{output\+Columns}}
 \index{output\+Columns@{output\+Columns}!rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}}
 \subsubsection[{output\+Columns}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf Column\+Info}$>$ rafe\+::\+Algebra\+Node\+Base\+::output\+Columns}}\label{classrafe_1_1_algebra_node_base_aadae640fc5528efe6ce06c2171ba8075}
-Stores ouput columns of this node. Key is unique column identifier and map stores information about column. \hypertarget{classrafe_1_1_algebra_node_base_a7dbfa2771e290b5e72bfe5c5177b7888}{\index{rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}!parent@{parent}}
+Stores ouput columns of this node. Map key is unique column identifier and map stores the information about column. \hypertarget{classrafe_1_1_algebra_node_base_a7dbfa2771e290b5e72bfe5c5177b7888}{\index{rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}!parent@{parent}}
 \index{parent@{parent}!rafe\+::\+Algebra\+Node\+Base@{rafe\+::\+Algebra\+Node\+Base}}
 \subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Algebra\+Node\+Base}$\ast$ rafe\+::\+Algebra\+Node\+Base\+::parent}}\label{classrafe_1_1_algebra_node_base_a7dbfa2771e290b5e72bfe5c5177b7888}
-Stores the parent pointer in algebra tree. 
+Stores the pointer on parent in the algebra tree. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

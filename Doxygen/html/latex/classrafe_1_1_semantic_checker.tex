@@ -46,7 +46,7 @@ bool \hyperlink{classrafe_1_1_semantic_checker_a2fd86b1075984031d5597e8b69820868
 This visitor is checking\+:
 \begin{DoxyItemize}
 \item if all the requested columns exists
-\item if the columns are not declared multiple times. Then if error is reported, compilation cannot continue. It also gives columns unique identifier, so other vistors don't have to work with string names. 
+\item if the columns are not declared multiple times. If error is reported, then the compilation cannot continue. It also gives columns unique identifier, so other vistors do not have to work with string names. 
 \end{DoxyItemize}
 
 \subsection{Constructor \& Destructor Documentation}
@@ -67,7 +67,7 @@ Creates new instance of \hyperlink{classrafe_1_1_semantic_checker}{Semantic\+Che
 \item[{{\bf Anti\+Join} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a891dd859fe5e91bc5c62cf8deaf5dddd}
-Visits \hyperlink{classrafe_1_1_anti_join}{Anti\+Join} element. 
+Visits \hyperlink{classrafe_1_1_anti_join}{Anti\+Join} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_anti_join}{Anti\+Join}. \\
 \hline
@@ -83,7 +83,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a8b31789473135aff92e
 \item[{{\bf Column\+Operations} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a367226c2e23e15030e30bebb614df22d}
-Visits \hyperlink{classrafe_1_1_column_operations}{Column\+Operations} element. 
+Visits \hyperlink{classrafe_1_1_column_operations}{Column\+Operations} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_column_operations}{Column\+Operations}. \\
 \hline
@@ -99,7 +99,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a518ce4d12f874a6c2f1
 \item[{{\bf Group} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a89e58cb0414ac7f9657f3d16940e43db}
-Visits \hyperlink{classrafe_1_1_group}{Group} element. 
+Visits \hyperlink{classrafe_1_1_group}{Group} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_group}{Group}. \\
 \hline
@@ -115,7 +115,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a976d80987756215e711
 \item[{{\bf Grouped\+Join} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a7cbba65715bdac55de4eef68a6698e17}
-Visits \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} element. 
+Visits \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join}. \\
 \hline
@@ -131,7 +131,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a0715ce3279fa1edc6e4
 \item[{{\bf Join} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a5723cd81b7f2ba5f425e6fccf49741bc}
-Visits \hyperlink{classrafe_1_1_join}{Join} element. 
+Visits \hyperlink{classrafe_1_1_join}{Join} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_join}{Join}. \\
 \hline
@@ -147,7 +147,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_ab499694bc7ccd718c6f
 \item[{{\bf Selection} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_ad595114561381dbadaa6f75fd553764b}
-Visits \hyperlink{classrafe_1_1_selection}{Selection} element. 
+Visits \hyperlink{classrafe_1_1_selection}{Selection} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_selection}{Selection}. \\
 \hline
@@ -163,7 +163,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a81f691749cb29da00be
 \item[{{\bf Sort} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_adf3ce7d0f3aa6ae9630d561edc1b0348}
-Visits \hyperlink{classrafe_1_1_sort}{Sort} element. 
+Visits \hyperlink{classrafe_1_1_sort}{Sort} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_sort}{Sort}. \\
 \hline
@@ -179,7 +179,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a836e2efd8ac77071ad2
 \item[{{\bf Table} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a05c36f62e97b763b6b5ba3faeb79d0bf}
-Visits \hyperlink{classrafe_1_1_table}{Table} element. 
+Visits \hyperlink{classrafe_1_1_table}{Table} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_table}{Table}. \\
 \hline
@@ -195,7 +195,7 @@ Reimplemented from \hyperlink{classrafe_1_1_algebra_visitor_a941798202c3a94d5b98
 \item[{{\bf Union} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_checker_a86d3f5970f8f0994411aef2410986a0c}
-Visits \hyperlink{classrafe_1_1_union}{Union} element. 
+Visits \hyperlink{classrafe_1_1_union}{Union} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_union}{Union}. \\
 \hline

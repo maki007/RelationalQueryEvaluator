@@ -83,7 +83,7 @@ namespace rafe {
 
 		/**
 		* Generates relation algebra tree from dom xml. Xml will be valiadated.
-		* Does not initlialize or cleans dom parser. This is done in GenerateRelationalAlgebra.
+		* Function does not initlialize or cleans dom parser. This is done in function GenerateRelationalAlgebra.
 		* @param xmlFilePath - name of file containing xml
 		* @return root of algebra tree
 		*/

@@ -146,7 +146,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a4eb384d25bff8d19c3d0d7310d33bf81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for algebra tree visitors. Every virtual method does nothing only visits all children of the current node. </p>
+<div class="textblock"><p>Base class for algebra tree visitors. Every virtual method does nothing, it only visits all children of the current node. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aee992f1216f75570dc7073f5031ecf7f"></a>
 <div class="memitem">
@@ -210,7 +210,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Insert selection into tree. New node will be inserted as parent from first argument. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Insert selection into the tree. New node will be inserted as parent of the first argument. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td><a class="el" href="classrafe_1_1_algebra_node_base.html">AlgebraNodeBase</a> where new node will be inserted </td></tr>
     <tr><td class="paramname">selection</td><td>- <a class="el" href="classrafe_1_1_selection.html">Selection</a> to be inserted </td></tr>
@@ -241,7 +241,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Remove selection node from tree. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Remove selection node from the tree. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td><a class="el" href="classrafe_1_1_selection.html">Selection</a> to be removed </td></tr>
   </table>
@@ -281,7 +281,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Convert expresion from tree to vector of subconditions. Condition will be splited into subconditions which are connected with and. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Convert expresion from tree to the vector of subconditions. Condition will be split into subconditions which are connected with and. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">condition</td><td><a class="el" href="classrafe_1_1_expression.html">Expression</a> to convert. </td></tr>
     <tr><td class="paramname">result</td><td>vector of <a class="el" href="classrafe_1_1_expression.html">Expression</a>. Result of the function will be stored in this variable. Input needs to be empty. </td></tr>
@@ -312,7 +312,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_anti_join.html">AntiJoin</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_anti_join.html">AntiJoin</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_anti_join.html">AntiJoin</a>. </td></tr>
   </table>
@@ -344,7 +344,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_column_operations.html">ColumnOperations</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_column_operations.html">ColumnOperations</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_column_operations.html">ColumnOperations</a>. </td></tr>
   </table>
@@ -376,7 +376,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_group.html">Group</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_group.html">Group</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_group.html">Group</a>. </td></tr>
   </table>
@@ -408,7 +408,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_grouped_join.html">GroupedJoin</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_grouped_join.html">GroupedJoin</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_grouped_join.html">GroupedJoin</a>. </td></tr>
   </table>
@@ -440,7 +440,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_join.html">Join</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_join.html">Join</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_join.html">Join</a>. </td></tr>
   </table>
@@ -472,7 +472,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_selection.html">Selection</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_selection.html">Selection</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_selection.html">Selection</a>. </td></tr>
   </table>
@@ -504,7 +504,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_sort.html">Sort</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_sort.html">Sort</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_sort.html">Sort</a>. </td></tr>
   </table>
@@ -536,7 +536,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_table.html">Table</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_table.html">Table</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_table.html">Table</a>. </td></tr>
   </table>
@@ -568,7 +568,7 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Visits <a class="el" href="classrafe_1_1_union.html">Union</a> element. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Visits <a class="el" href="classrafe_1_1_union.html">Union</a> node. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>visited <a class="el" href="classrafe_1_1_union.html">Union</a>. </td></tr>
   </table>
@@ -586,7 +586,7 @@ Static Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 25 2014 21:41:53 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 27 2014 23:10:29 for RelationalQueryEvaluator by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -14,47 +14,47 @@ namespace rafe {
 	class TimeComplexity
 	{
 	public:
-		static const double UNCLUSTERED_SCAN; /**< Constant determining speed of unclustered scan. */
-		static const double CLUSTERED_SCAN; /**< Constant determining speed of clustered scan. */
-		static const double SORT; /**< Constant determining speed of sort. */
+		static const double UNCLUSTERED_SCAN; /**< Constant determining speed of the unclustered scan. */
+		static const double CLUSTERED_SCAN; /**< Constant determining speed of the clustered scan. */
+		static const double SORT; /**< Constant determining speed of the sort. */
 		static const double SORTED_GROUP; /**< Constant determining speed of grouping sorted relation. */
 		static const double HASH; /**< Constant determining speed of hashing relation. */
-		static const double FILTER; /**< Constant determining speed of filter. */
-		static const double FILTER_KEEPING_ORDER; /**< Constant determining speed of filter keeping order. */
-		static const double INDEX_SEARCH; /**< Constant determining speed of index search. */
-		static const double AGGREGATE; /**< Constant determining speed of computing agregate functions. */
-		static const double READ_HASH_TABLE; /**< Constant determining speed of reading hash table. */
-		static const double UNION; /**< Constant determining speed of unin. */
-		static const double CROSS_JOIN; /**< Constant determining speed of cross join. */
-		static const double MERGE_EQUI_JOIN; /**< Constant determining speed of merge equi join. */
-		static const double MERGE_NONEQUI_JOIN; /**< Constant determining speed of mergejoin joining by condition a1<b<a2. */
+		static const double FILTER; /**< Constant determining speed of the filter. */
+		static const double FILTER_KEEPING_ORDER; /**< Constant determining speed of the filter keeping order. */
+		static const double INDEX_SEARCH; /**< Constant determining speed of the index search. */
+		static const double AGGREGATE; /**< Constant determining speed of computing aggregate functions. */
+		static const double READ_HASH_TABLE; /**< Constant determining speed of the reading hash table. */
+		static const double UNION; /**< Constant determining speed of the union. */
+		static const double CROSS_JOIN; /**< Constant determining speed of the cross join. */
+		static const double MERGE_EQUI_JOIN; /**< Constant determining speed of the merge equi join. */
+		static const double MERGE_NONEQUI_JOIN; /**< Constant determining speed of the mergejoin joining by condition a1<b<a2. */
 
 		/**
-		* Computes time complexity of sort operator.
+		* Computes time complexity of the sort operator.
 		* @param size - size of relation to sort.
 		*/
 		static double sort(double size);
 
 		/**
-		* Computes time complexity of filter operator.
+		* Computes time complexity of the filter operator.
 		* @param size - size of relation to filter.
 		*/
 		static double filter(double size);
 
 		/**
-		* Computes time complexity of filterKeepingOrder operator.
+		* Computes time complexity of the filterKeepingOrder operator.
 		* @param size - size of relation to filter.
 		*/
 		static double filterKeppeingOrder(double size);
 
 		/**
-		* Computes time complexity of scanning table with clusstered index.
+		* Computes time complexity of the scanning table operator using clusstered index.
 		* @param size - size of table or part of table to scan.
 		*/
 		static double clusteredScan(double size);
 
 		/**
-		* Computes time complexity of scanning table with unclusstered index.
+		* Computes time complexity of the scanning table operator using unclusstered index.
 		* @param size - size of table or part of table to scan.
 		*/
 		static double unClusteredScan(double size);
@@ -85,14 +85,14 @@ namespace rafe {
 		static double aggregate(double size, ulong numberOfagregateFunctions);
 
 		/**
-		* Computes time complexity of hashequijoin.
+		* Computes time complexity of the hash join.
 		* @param hashSize - size of hashed input.
 		* @param readSize - size of not hashed input.
 		*/
 		static double hashJoin(double hashSize, double readSize);
 
 		/**
-		* Computes time complexity of mergeequijoin.
+		* Computes time complexity of the merge join.
 		* @param leftSize - size of first input.
 		* @param rightSize - size of second input.
 		*/
@@ -107,14 +107,14 @@ namespace rafe {
 		static double mergeEquiNonJoin(double leftSize, double rightSize, double finalSize);
 
 		/**
-		* Computes time complexity of union.
+		* Computes time complexity of the union.
 		* @param leftSize - size of first input.
 		* @param rightSize - size of second input.
 		*/
 		static double Union(double leftSize, double rightSize);
 
 		/**
-		* Computes time complexity of cross join.
+		* Computes time complexity of the cross join.
 		* @param leftSize - size of first input.
 		* @param rightSize - size of second input.
 		*/
@@ -128,7 +128,7 @@ namespace rafe {
 	class PhysicalOperator
 	{
 	public:
-		double timeComplexity;  /**< Stores information about how much time algorithm will need.  */
+		double timeComplexity;  /**< Stores estimated run time of the operator.  */
 		double size;  /**< Stores size of output relation. */
 		std::map<int, ColumnInfo> columns;  /**< Stores information about output columns from this operator. */
 
@@ -172,7 +172,7 @@ namespace rafe {
 	/**
 	* Class representing filter physical algorithm.
 	* Operator filters given rows and output only rows satisfying condition.
-	* Output does not have to be sorted same way as input.
+	* Output does not have to be sorted the same way as input.
 	*/
 	class Filter : public UnaryPhysicalOperator
 	{
@@ -190,8 +190,8 @@ namespace rafe {
 
 	/**
 	* Class representing filter physical algorithm.
-	* Operator filters given rows and output only rows satisfying condition.
-	* Output has to be sorted same way as input.
+	* Operator filters given rows and outputs only rows satisfying condition.
+	* Output has to be sorted the same way as input.
 	*/
 	class FilterKeepingOrder : public UnaryPhysicalOperator
 	{
@@ -209,7 +209,7 @@ namespace rafe {
 
 	/**
 	* Represents physical sort operator.
-	* Sort can be also partial sort when input is partially sorted by desired columns.
+	* Algorithm can perform partial sort when input is partially sorted by desired columns.
 	*/
 	class SortOperator : public UnaryPhysicalOperator
 	{
@@ -258,7 +258,7 @@ namespace rafe {
 
 	/**
 	* Represents merge equi join.
-	* Operator computes equijoin from given sorted inputs.
+	* Operator computes equi join from given sorted inputs.
 	*/
 	class MergeEquiJoin : public BinaryPhysicalOperator
 	{
@@ -278,7 +278,7 @@ namespace rafe {
 
 	/**
 	* Represents hash join physical operator.
-	* Operator computes equijoin using hash table.
+	* Operator computes equi join using hash table.
 	* First input will be stored in hash table.
 	*/
 	class HashJoin : public BinaryPhysicalOperator
@@ -301,8 +301,8 @@ namespace rafe {
 
 	/**
 	* Represents hash antijoin physical operator.
-	* Operator computes equijoin using hash table.
-	* First input will be stored in hash table.
+	* Operator computes equi join using hash table.
+	* First input will be stored in a hash table.
 	*/
 	class HashAntiJoin : public BinaryPhysicalOperator
 	{
@@ -323,8 +323,8 @@ namespace rafe {
 	};
 
 	/**
-	* Represents Merge equi anti join.
-	* Operator computes equi anti join from given sorted inputs.
+	* Represents merge anti join.
+	* Operator computes anti join from given sorted inputs.
 	*/
 	class MergeAntiJoin : public BinaryPhysicalOperator
 	{
@@ -345,7 +345,7 @@ namespace rafe {
 
 	/**
 	* Represets set union.
-	* Operator copies the rst input to output and append the data from second input.
+	* Operator copies the first input to output and append the data from second input.
 	*/
 	class UnionOperator : public BinaryPhysicalOperator
 	{
@@ -410,7 +410,7 @@ namespace rafe {
 	};
 
 	/**
-	* Represents operator, which reads whole table using index.
+	* Represents operator, which reads the whole table using index.
 	*/
 	class ScanAndSortByIndex : public NullaryPhysicalOperator
 	{
@@ -429,7 +429,7 @@ namespace rafe {
 	};
 
 	/**
-	* Represents operator, which reads whole table.
+	* Represents operator which reads the whole table.
 	*/
 	class TableScan : public NullaryPhysicalOperator
 	{
@@ -446,7 +446,7 @@ namespace rafe {
 	};
 
 	/**
-	* Represents operator, which reads part of the table using index.
+	* Represents operator which reads part of the table using index.
 	*/
 	class IndexScan : public NullaryPhysicalOperator
 	{
@@ -467,7 +467,7 @@ namespace rafe {
 	};
 
 	/**
-	* Class representing whole physical plan, that means operator tree and aditional informations.
+	* Class representing whole physical plan that means operator tree and aditional informations(size estimated run time).
 	*/
 	class PhysicalPlan
 	{

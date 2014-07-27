@@ -29,10 +29,9 @@ XERCES_CPP_NAMESPACE_USE
 namespace rafe {
 
 	typedef unsigned long long int ulong;
-
-
-
+		
 	class ExpressionVisitorBase;
+
 	/**
 	* Base class for expression in expression tree.
 	* Expression trees are used in algebra nodes like selection, join, antijoin or column operations.
@@ -49,7 +48,7 @@ namespace rafe {
 		virtual void accept(ExpressionVisitorBase &v) = 0;
 
 		/**
-		* Helper function for choosing which node is going to conctructed from XML element.
+		* Helper function for choosing which node is going to be constructed from XML element.
 		* @param node - element containing information expression.
 		*/
 		static Expression * constructChildren(DOMElement * node);
@@ -75,8 +74,8 @@ namespace rafe {
 	{
 	public:
 
-		UnaryOperator operation; /**< Stores infromation about type of unary operation. */
-		std::shared_ptr<Expression> child; /**< Stores pointer to child tree node.  */
+		UnaryOperator operation; /**< Stores information about type of unary operation. */
+		std::shared_ptr<Expression> child; /**< Stores pointer to the child tree node.  */
 
 		/**
 		* Creates new instance of UnaryExpression.
@@ -109,7 +108,7 @@ namespace rafe {
 
 		/**
 		* Creates new instance of BinaryExpression
-		* @param node - domelement hoding information about node and its child nodes.
+		* @param node - dom element hoding information about node and its child nodes.
 		* @param op - type of binary operation
 		*/
 		BinaryExpression(DOMElement * node, BinaryOperator op);
@@ -126,8 +125,8 @@ namespace rafe {
 	};
 
 	/**
-	* Represents co called n-nary expresion, it is a function call with variable argument number.
-	* N-nary expression can be for expample sql function like or date or arithmetic function sqrt
+	* Represents co called n-nary expresion, it is a function call with variable numbers of arguments.
+	* N-nary expression can be for expample sql function like or date or arithmetic function sqrt.
 	*/
 	class NnaryExpression : public Expression
 	{
@@ -148,7 +147,7 @@ namespace rafe {
 	};
 
 	/**
-	* Represents constant expression. It doesnt have any child expressions.
+	* Represents constant expression. It does not have any child expressions.
 	*/
 	class Constant : public Expression
 	{
@@ -173,7 +172,7 @@ namespace rafe {
 	public:
 		ColumnIdentifier column; /**< Identifies column with name and unique id. */
 		std::string type; /**< Type of the values stored in the column. */
-		ulong input; /**< This field is used for identifing relation of the columns. */
+		ulong input; /**< This field is used for identifing relation of the column. */
 
 		/**
 		* Creates new instance of Column.
@@ -186,7 +185,7 @@ namespace rafe {
 
 	/**
 	* Represents grouped logical or aritmetic comutative expression.
-	* It has variable number of children. Currently it is used only for AND and OR operations.
+	* It has variable number of children. It is currently used for AND and OR operations.
 	*/
 	class GroupedExpression : public Expression
 	{

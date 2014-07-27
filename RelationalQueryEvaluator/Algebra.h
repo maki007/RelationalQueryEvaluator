@@ -42,13 +42,13 @@ namespace rafe {
 	{
 	public:
 		/**
-		* Stores ouput columns of this node. Key is unique column identifier and map stores information about column.
+		* Stores ouput columns of this node. Map key is unique column identifier and map stores the information about column.
 		*/
 		std::map<int, ColumnInfo> outputColumns;
 
-		ulong lineNumber = 0; /**< Stores the line number of input element for this node. */
+		ulong lineNumber = 0; /**< Stores the line number of the input element for this node. */
 
-		AlgebraNodeBase * parent; /**< Stores the parent pointer in algebra tree. */
+		AlgebraNodeBase * parent; /**< Stores the pointer on parent in the algebra tree. */
 
 		/**
 		* Creates the instance of AlgebraNodeBase.
@@ -70,15 +70,15 @@ namespace rafe {
 
 		/**
 		* Method for calling visit[node] on given AlgebraVisitor.
-		* @param v AlgebraVisitor which to call function on
+		* @param v AlgebraVisitor on which to call function.
 		*/
 		virtual void accept(AlgebraVisitor &v) = 0;
 
 		/**
-		* Replaces one child of this node with other one
-		* @param oldChild node to be replaced
-		* @param newChild new node to replace the old one
-		* @return replaced child
+		* Replaces one child of this node with other one.
+		* @param oldChild node to be replaced.
+		* @param newChild new node to replace the old one.
+		* @return replaced child.
 		*/
 		virtual std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild) = 0;
 	};
@@ -89,7 +89,7 @@ namespace rafe {
 	class UnaryAlgebraNodeBase : public AlgebraNodeBase
 	{
 	public:
-		std::shared_ptr <AlgebraNodeBase> child;  /**< stores pointer to child tree node */
+		std::shared_ptr <AlgebraNodeBase> child;  /**< Stores pointer to child node. */
 
 		/**
 		* Creates the instance of UnaryAlgebraNodeBase.
@@ -144,7 +144,7 @@ namespace rafe {
 	class GroupedAlgebraNode : public AlgebraNodeBase
 	{
 	public:
-		std::vector<std::shared_ptr<AlgebraNodeBase>> children; /**< Stores list containg children of this node. */
+		std::vector<std::shared_ptr<AlgebraNodeBase>> children; /**< Stores list containg the children of this node. */
 		virtual void accept(AlgebraVisitor &v) = 0;
 		std::shared_ptr<AlgebraNodeBase> replaceChild(AlgebraNodeBase * oldChild, std::shared_ptr<AlgebraNodeBase> & newChild);
 	};
@@ -172,11 +172,11 @@ namespace rafe {
 	public:
 		std::string name;  /**< Name of the table. */
 		std::vector<ColumnInfo> columns; /**< List holding information about read columns. */
-		double numberOfRows;  /**< Stores number of rows in current table. */
+		double numberOfRows;  /**< Stores number of rows in the current table. */
 		std::vector<Index> indices; /**< Stores list of indices on this table. */
 
 		/**
-		* Create the instance of Table.
+		* Creates the instance of Table.
 		* @param element representing input node.
 		*/
 		Table(DOMElement * element);
@@ -189,7 +189,7 @@ namespace rafe {
 	class Sort : public UnaryAlgebraNodeBase
 	{
 	public:
-		std::vector<SortParameter> parameters;  /**< Determines by which columns and what direction should the sort operator sort the current relation. */
+		std::vector<SortParameter> parameters;  /**< Determines how should the sort operator sort the current relation. */
 
 		/**
 		* Creates the instance of Sort.
@@ -237,7 +237,7 @@ namespace rafe {
 
 	/**
 	*  Represents the selection operation.
-	*  It filters input rows and copies to output only rows satisfying given condition.
+	*  It filters input rows and copies only rows satisfying given condition to output.
 	*/
 	class Selection : public UnaryAlgebraNodeBase
 	{
@@ -286,7 +286,7 @@ namespace rafe {
 
 	/**
 	* Represents algebraic operation antijoin.
-	* Antijoin is generalized difference and the columns of input do not have to be same.
+	* Antijoin is generalized difference.
 	*/
 	class AntiJoin : public BinaryAlgebraNodeBase
 	{
@@ -327,7 +327,7 @@ namespace rafe {
 	{
 	public:
 		std::shared_ptr<Expression> condition;  /**< Condition for joining.*/
-		std::vector<JoinColumnInfo> outputJoinColumns; /**< List of output columns from join*/
+		std::vector<JoinColumnInfo> outputJoinColumns; /**< List of output columns from join operator. */
 		void accept(AlgebraVisitor &v);
 	};
 };

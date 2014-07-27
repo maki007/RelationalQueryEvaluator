@@ -72,13 +72,13 @@
 \contentsline {subsection}{\numberline {5.1.5}Anti join}{38}{subsection.5.1.5}
 \contentsline {subsection}{\numberline {5.1.6}Table}{39}{subsection.5.1.6}
 \contentsline {subsection}{\numberline {5.1.7}Union}{39}{subsection.5.1.7}
-\contentsline {subsection}{\numberline {5.1.8}Extended projection}{39}{subsection.5.1.8}
+\contentsline {subsection}{\numberline {5.1.8}Extended projection}{40}{subsection.5.1.8}
 \contentsline {section}{\numberline {5.2}Building relational algebra tree}{41}{section.5.2}
 \contentsline {section}{\numberline {5.3}Semantic analysis and node grouping}{42}{section.5.3}
 \contentsline {section}{\numberline {5.4}Algebra optimization}{43}{section.5.4}
-\contentsline {section}{\numberline {5.5}Generating plan}{44}{section.5.5}
+\contentsline {section}{\numberline {5.5}Generating plan}{43}{section.5.5}
 \contentsline {section}{\numberline {5.6}Resolving sort parameters}{46}{section.5.6}
-\contentsline {section}{\numberline {5.7}Output}{47}{section.5.7}
+\contentsline {section}{\numberline {5.7}Output}{48}{section.5.7}
 \contentsline {subsection}{\numberline {5.7.1}Filters}{48}{subsection.5.7.1}
 \contentsline {subsection}{\numberline {5.7.2}Group}{48}{subsection.5.7.2}
 \contentsline {subsection}{\numberline {5.7.3}Column operations}{48}{subsection.5.7.3}
@@ -91,7 +91,7 @@
 \contentsline {subsection}{\numberline {5.7.10}Table scan}{51}{subsection.5.7.10}
 \contentsline {subsection}{\numberline {5.7.11}Scan And Sort By Index}{51}{subsection.5.7.11}
 \contentsline {subsection}{\numberline {5.7.12}Index Scan}{51}{subsection.5.7.12}
-\contentsline {subsection}{\numberline {5.7.13}Sort}{51}{subsection.5.7.13}
+\contentsline {subsection}{\numberline {5.7.13}Sort}{52}{subsection.5.7.13}
 \contentsline {subsection}{\numberline {5.7.14}Union}{52}{subsection.5.7.14}
 \contentsline {chapter}{\numberline {6}Conclusions}{53}{chapter.6}
 \contentsline {chapter}{Bibliography}{54}{chapter*.39}

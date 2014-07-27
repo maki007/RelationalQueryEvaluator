@@ -10,69 +10,69 @@ namespace rafe {
 
 	/**
 	* Base class for algebra tree visitors.
-	* Every virtual method does nothing only visits all children of the current node.
+	* Every virtual method does nothing, it only visits all children of the current node.
 	*/
 	class AlgebraVisitor
 	{
 	public:
 
 		/**
-		* Visits Table element.
+		* Visits Table node.
 		* @param node visited Table.
 		*/
 		virtual void visitTable(Table * node);
 
 		/**
-		* Visits Sort element.
+		* Visits Sort node.
 		* @param node visited Sort.
 		*/
 		virtual void visitSort(Sort * node);
 
 		/**
-		* Visits Group element.
+		* Visits Group node.
 		* @param node visited Group.
 		*/
 		virtual void visitGroup(Group * node);
 
 		/**
-		* Visits ColumnOperations element.
+		* Visits ColumnOperations node.
 		* @param node visited ColumnOperations.
 		*/
 		virtual void visitColumnOperations(ColumnOperations * node);
 
 		/**
-		* Visits Selection element.
+		* Visits Selection node.
 		* @param node visited Selection.
 		*/
 		virtual void visitSelection(Selection * node);
 
 		/**
-		* Visits Join element.
+		* Visits Join node.
 		* @param node visited Join.
 		*/
 		virtual void visitJoin(Join * node);
 
 		/**
-		* Visits AntiJoin element.
+		* Visits AntiJoin node.
 		* @param node visited AntiJoin.
 		*/
 		virtual void visitAntiJoin(AntiJoin * node);
 
 		/**
-		* Visits Union element.
+		* Visits Union node.
 		* @param node visited Union.
 		*/
 		virtual void visitUnion(Union * node);
 
 		/**
-		* Visits GroupedJoin element.
+		* Visits GroupedJoin node.
 		* @param node visited GroupedJoin.
 		*/
 		virtual void visitGroupedJoin(GroupedJoin * node);
 
 		/**
-		* Convert expresion from tree to vector of subconditions.
-		* Condition will be splited into subconditions which are connected with and.
+		* Convert expresion from tree to the vector of subconditions.
+		* Condition will be split into subconditions which are connected with and.
 		* @param condition Expression to convert.
 		* @param result vector of Expression. Result of the function will be stored in this variable. Input needs to be empty.
 		*/
@@ -86,14 +86,14 @@ namespace rafe {
 		static std::shared_ptr<Expression> deserializeExpression(const std::vector<std::shared_ptr<Expression> > & condition);
 
 		/**
-		* Remove selection node from tree.
+		* Remove selection node from the tree.
 		* @param node Selection to be removed
 		*/
 		static void removeSelection(Selection * node);
 
 		/**
-		* Insert selection into tree.
-		* New node will be inserted as parent from first argument.
+		* Insert selection into the tree.
+		* New node will be inserted as parent of the first argument.
 		* @param node AlgebraNodeBase where new node will be inserted
 		* @param selection - Selection to be inserted
 		*/
@@ -108,7 +108,7 @@ namespace rafe {
 	{
 	public:
 		std::string result; /**< Stores final text representation. */
-		int nodeCounter; /**< Hellping variable for numbering tree. */
+		int nodeCounter; /**< Helping variable for numbering tree. */
 
 		/**
 		* Creates new instance of GraphDrawingVisitor.
@@ -117,23 +117,23 @@ namespace rafe {
 
 	private:
 		/**
-		* Generates string representation from node and calls iteself on child. Then it connect created nodes.
+		* Generates string representation from node and calls iteself on child. Then it connects created nodes.
 		* @param label for generated node
-		* @param node - on which to call children
+		* @param node - to call its children
 		*/
 		void generateText(std::string & label, UnaryAlgebraNodeBase * node);
 
 		/**
-		* Generates string representation from node and calls iteself on it's childs. Then it connect created nodes.
+		* Generates string representation from node and calls iteself on its children. Then it connects created nodes.
 		* @param label for generated node
-		* @param node - on which to call children
+		* @param node - to call its children
 		*/
 		void generateText(std::string & label, BinaryAlgebraNodeBase * node);
 
 		/**
-		* Generates  string representation from node and calls iteself on it's childs. Then it connect created nodes.
+		* Generates  string representation from node and calls iteself on its children. Then it connects created nodes.
 		* @param label for generated node
-		* @param node - on which to call children
+		* @param node - to call its children
 		*/
 		void generateText(std::string & label, GroupedAlgebraNode * node);
 
@@ -162,8 +162,8 @@ namespace rafe {
 	* This visitor is checking:
 	* - if all the requested columns exists
 	* - if the columns are not declared multiple times.
-	* Then if error is reported, compilation cannot continue.
-	* It also gives columns unique identifier, so other vistors don't have to work with string names.
+	* If error is reported, then the compilation cannot continue.
+	* It also gives columns unique identifier, so other vistors do not have to work with string names.
 	*/
 	class SemanticChecker : public AlgebraVisitor
 	{
@@ -181,8 +181,8 @@ namespace rafe {
 		/**
 		* Reports found errors.
 		* @param error found error
-		* @param nodeName name of algebra node, where the error was found.
-		* @param lineNumber number of line, where error was found.
+		* @param nodeName name of the algebra node, where the error was found.
+		* @param lineNumber number of the line, where the error was found.
 		*/
 		void ReportError(const std::string error, std::string nodeName, ulong lineNumber);
 
@@ -277,7 +277,7 @@ namespace rafe {
 	};
 
 	/**
-	* This algebra visitor groupes neighbour joins into one groupped join.
+	* This algebra visitor groupes neighbouring joins into one groupped join.
 	* It also calls GroupingExpressionVisitor on every condition.
 	*/
 	class GroupingVisitor : public AlgebraVisitor
@@ -299,9 +299,9 @@ namespace rafe {
 
 	private:
 		/**
-		* Hepler method, which merges join node to GroupedJoin and update all nedded parameters like condition and outputcolumns.
+		* Hepler method, which merges join node to GroupedJoin and updates all needed parameters like condition and output columns.
 		* @param node - node to merge.
-		* @param groupedOperator - node to be merge to.
+		* @param groupedOperator - node to be merged to.
 		*/
 		void resolveJoins(Join * node, GroupedJoin * groupedOperator);
 	};
@@ -342,7 +342,7 @@ namespace rafe {
 
 
 		/**
-		* Comparer for head in greedy join order algorirthm.
+		* Comparer for heap in greedy join order algorirthm.
 		* Compares plans bases on timecomplexity of plans[0]. Greedy join order algorirthm uses this structure with only one plan.
 		* @param lhs - first plan to compare.
 		* @param rhs - second plan to compare.
@@ -393,7 +393,7 @@ namespace rafe {
 		void visitGroupedJoin(GroupedJoin * node);
 
 		/**
-		* From possible paramers removes columns, which aren't in newColumns and stores them into newPlan.
+		* From possible parameters removes columns, which are not in newColumns and stores them into newPlan.
 		* @param possibleSortParameters - parameters to update.
 		* @param newPlan - PhysicalPlan, where to store result.
 		* @param newColumns - columns which stays in parameters.
@@ -402,9 +402,9 @@ namespace rafe {
 
 	private:
 
-		std::map<int, ColumnInfo> columns; /**< Columns containing plans after each subtree. */
+		std::map<int, ColumnInfo> columns; /**< Generated plan output columns. */
 
-		double size; /**< Size of relation computed after each subtree. */
+		double size; /**< Size of output relation of generated plan. */
 
 		/**
 		* Inserts physical plan into heap of physical plans and removes the slowest, if the heap size is less than NUMBER_OF_PLANS
@@ -414,7 +414,7 @@ namespace rafe {
 		void insertPlan(std::vector<std::shared_ptr<PhysicalPlan> > & plans, std::shared_ptr<PhysicalPlan> & plan);
 
 		/**
-		* Generates new sorted plan from old one usinf sort or partalsort algorithm.
+		* Generates new sorted plan from old one using sort or partalsort algorithm.
 		* @param parameters - sort parameters.
 		* @param result - processed plan.
 		* @returns new plan.
@@ -519,7 +519,7 @@ namespace rafe {
 		}
 
 		/**
-		* Generates Filte operator after mergeJoin
+		* Generates Filter operator after mergeJoin
 		* @param plan for processing
 		* @param condition for filter
 		*/
@@ -586,7 +586,7 @@ namespace rafe {
 		PushSelectionDownVisitor(Selection * node);
 
 		/**
-		* Removes selection and push it down the tree.
+		* Removes selection and pushes it down the tree.
 		*/
 		void pushDown();
 

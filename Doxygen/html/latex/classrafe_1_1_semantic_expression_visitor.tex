@@ -52,7 +52,7 @@ Creates new instance of \hyperlink{classrafe_1_1_semantic_expression_visitor}{Se
 \item[{{\bf Column} $\ast$}]{expression}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_semantic_expression_visitor_a605cf8d023dc621ac96d0b82d19d1b42}
-Visits \hyperlink{classrafe_1_1_column}{Column} element. 
+Visits \hyperlink{classrafe_1_1_column}{Column} node. 
 \begin{DoxyParams}{Parameters}
 {\em expression} & visited \hyperlink{classrafe_1_1_column}{Column}. \\
 \hline
@@ -73,10 +73,10 @@ Idicates if visitor found an error. \hypertarget{classrafe_1_1_semantic_expressi
 Stores name of first missing column. \hypertarget{classrafe_1_1_semantic_expression_visitor_ae1fed8fcd45928b3a9479beb454f0b00}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!output\+Columns0@{output\+Columns0}}
 \index{output\+Columns0@{output\+Columns0}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
 \subsubsection[{output\+Columns0}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$std\+::string, {\bf Column\+Info}$>$ rafe\+::\+Semantic\+Expression\+Visitor\+::output\+Columns0}}\label{classrafe_1_1_semantic_expression_visitor_ae1fed8fcd45928b3a9479beb454f0b00}
-Stores columns, which came from first childnode. Key is column name. \hypertarget{classrafe_1_1_semantic_expression_visitor_ac36701c0aab42b76a14bfba6c5355b6c}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!output\+Columns1@{output\+Columns1}}
+Stores columns, which came from first child node. Key is column name. \hypertarget{classrafe_1_1_semantic_expression_visitor_ac36701c0aab42b76a14bfba6c5355b6c}{\index{rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}!output\+Columns1@{output\+Columns1}}
 \index{output\+Columns1@{output\+Columns1}!rafe\+::\+Semantic\+Expression\+Visitor@{rafe\+::\+Semantic\+Expression\+Visitor}}
 \subsubsection[{output\+Columns1}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$std\+::string, {\bf Column\+Info}$>$ rafe\+::\+Semantic\+Expression\+Visitor\+::output\+Columns1}}\label{classrafe_1_1_semantic_expression_visitor_ac36701c0aab42b76a14bfba6c5355b6c}
-Stores columns, which came from second childnode if it has one. If not it stays empty. Key is column name. 
+Stores columns, which came from second child node if visited algebra node has one. Otherwise it is empty. Key is column name. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

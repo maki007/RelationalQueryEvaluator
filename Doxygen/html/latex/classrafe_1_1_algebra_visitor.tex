@@ -47,7 +47,7 @@ static void \hyperlink{classrafe_1_1_algebra_visitor_a4eb384d25bff8d19c3d0d7310d
 
 
 \subsection{Detailed Description}
-Base class for algebra tree visitors. Every virtual method does nothing only visits all children of the current node. 
+Base class for algebra tree visitors. Every virtual method does nothing, it only visits all children of the current node. 
 
 \subsection{Member Function Documentation}
 \hypertarget{classrafe_1_1_algebra_visitor_aee992f1216f75570dc7073f5031ecf7f}{\index{rafe\+::\+Algebra\+Visitor@{rafe\+::\+Algebra\+Visitor}!deserialize\+Expression@{deserialize\+Expression}}
@@ -73,7 +73,7 @@ tree condition
 \item[{std\+::shared\+\_\+ptr$<$ {\bf Selection} $>$ \&}]{selection}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_algebra_visitor_a4eb384d25bff8d19c3d0d7310d33bf81}
-Insert selection into tree. New node will be inserted as parent from first argument. 
+Insert selection into the tree. New node will be inserted as parent of the first argument. 
 \begin{DoxyParams}{Parameters}
 {\em node} & \hyperlink{classrafe_1_1_algebra_node_base}{Algebra\+Node\+Base} where new node will be inserted \\
 \hline
@@ -87,7 +87,7 @@ Insert selection into tree. New node will be inserted as parent from first argum
 \item[{{\bf Selection} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_algebra_visitor_a1de5a4866096b3da07f921d351f437e7}
-Remove selection node from tree. 
+Remove selection node from the tree. 
 \begin{DoxyParams}{Parameters}
 {\em node} & \hyperlink{classrafe_1_1_selection}{Selection} to be removed \\
 \hline
@@ -100,7 +100,7 @@ Remove selection node from tree.
 \item[{std\+::vector$<$ std\+::shared\+\_\+ptr$<$ {\bf Expression} $>$ $>$ \&}]{result}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{classrafe_1_1_algebra_visitor_a9d363c344928367680e60d1f7606ad06}
-Convert expresion from tree to vector of subconditions. Condition will be splited into subconditions which are connected with and. 
+Convert expresion from tree to the vector of subconditions. Condition will be split into subconditions which are connected with and. 
 \begin{DoxyParams}{Parameters}
 {\em condition} & \hyperlink{classrafe_1_1_expression}{Expression} to convert. \\
 \hline
@@ -114,7 +114,7 @@ Convert expresion from tree to vector of subconditions. Condition will be splite
 \item[{{\bf Anti\+Join} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a8b31789473135aff92e900a6a7765eda}
-Visits \hyperlink{classrafe_1_1_anti_join}{Anti\+Join} element. 
+Visits \hyperlink{classrafe_1_1_anti_join}{Anti\+Join} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_anti_join}{Anti\+Join}. \\
 \hline
@@ -130,7 +130,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_ab291a0f8f
 \item[{{\bf Column\+Operations} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a518ce4d12f874a6c2f1fb0bb961144f8}
-Visits \hyperlink{classrafe_1_1_column_operations}{Column\+Operations} element. 
+Visits \hyperlink{classrafe_1_1_column_operations}{Column\+Operations} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_column_operations}{Column\+Operations}. \\
 \hline
@@ -146,7 +146,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_a4e6aa3675
 \item[{{\bf Group} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a976d80987756215e71178f4c1863c6c7}
-Visits \hyperlink{classrafe_1_1_group}{Group} element. 
+Visits \hyperlink{classrafe_1_1_group}{Group} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_group}{Group}. \\
 \hline
@@ -162,7 +162,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_adc69a8ddf
 \item[{{\bf Grouped\+Join} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a0715ce3279fa1edc6e472667e7739b57}
-Visits \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} element. 
+Visits \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_grouped_join}{Grouped\+Join}. \\
 \hline
@@ -178,7 +178,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_ab3b99f6ca
 \item[{{\bf Join} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_ab499694bc7ccd718c6f7a5c4f3d33f1c}
-Visits \hyperlink{classrafe_1_1_join}{Join} element. 
+Visits \hyperlink{classrafe_1_1_join}{Join} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_join}{Join}. \\
 \hline
@@ -194,7 +194,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_a97825d74e
 \item[{{\bf Selection} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a81f691749cb29da00bee299c617b9044}
-Visits \hyperlink{classrafe_1_1_selection}{Selection} element. 
+Visits \hyperlink{classrafe_1_1_selection}{Selection} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_selection}{Selection}. \\
 \hline
@@ -210,7 +210,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_a437c6c29c
 \item[{{\bf Sort} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a836e2efd8ac77071ad2487f9a5ae772d}
-Visits \hyperlink{classrafe_1_1_sort}{Sort} element. 
+Visits \hyperlink{classrafe_1_1_sort}{Sort} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_sort}{Sort}. \\
 \hline
@@ -226,7 +226,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_a4ea8d60b4
 \item[{{\bf Table} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a941798202c3a94d5b9884edc875ea88e}
-Visits \hyperlink{classrafe_1_1_table}{Table} element. 
+Visits \hyperlink{classrafe_1_1_table}{Table} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_table}{Table}. \\
 \hline
@@ -242,7 +242,7 @@ Reimplemented in \hyperlink{classrafe_1_1_push_selection_down_visitor_a22d4efbe1
 \item[{{\bf Union} $\ast$}]{node}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrafe_1_1_algebra_visitor_a1f8a7cae040f5918e562741a136bb096}
-Visits \hyperlink{classrafe_1_1_union}{Union} element. 
+Visits \hyperlink{classrafe_1_1_union}{Union} node. 
 \begin{DoxyParams}{Parameters}
 {\em node} & visited \hyperlink{classrafe_1_1_union}{Union}. \\
 \hline
