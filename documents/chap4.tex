@@ -304,7 +304,7 @@ We used the visitor pattern for manipulating and reading expression and algebra 
           \label{fig:algebratree1}
 \end{figure}
 
-In the Figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in the \verb|where| clause. The obtained result was used to compute new column and to apply grouping operator computing aggregate functions. Output of the query was sorted. In table reading operator, we can see additional information like the name of the table. Every attribute has the suffix $\_-1$ which is the unique identifier of the column. After the algebra tree is built from XML, the unique identifiers are not assigned and they contain default value $-1$. The inputs, from which the columns originate, are represented by the numbers in parentheses. Input operators are numbered from $0$. All columns in used selection come from the zeroth input.
+In Figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in the \verb|where| clause. The obtained result was used to compute new column and to apply grouping operator computing aggregate functions. Output of the query was sorted. In table reading operator, we can see additional information like the name of the table. Every attribute has the suffix $\_-1$ which is the unique identifier of the column. After the algebra tree is built from XML, the unique identifiers are not assigned and they contain default value $-1$. The inputs, from which the columns originate, are represented by the numbers in parentheses. Input operators are numbered from $0$. All columns in used selection come from the zeroth input.
 
 We used library Xerces version 3.1.1~\cite{xerces} for parsing and validating the input XML file. It parses the input file and creates the DOM tree. This tree has to be validated against XML schema. Parsing and validation of XML is performed in the class \texttt{XmlHandler}.
 
@@ -339,7 +339,7 @@ At this moment, we have optimized tree but it still contains the selection chain
 \item $\sigma_{A}(\sigma_{B}(R))=\sigma_{A~and~B}(R)$
 \end{itemize}
 
-Optimized algebra tree is depicted in the Figure~\ref{fig:algebratree2}. Contrary to the case of Figure~\ref{fig:algebratree1}, this tree has grouped join with three input relations. The selection above joins was split and moved down the tree. Some parts of the condition became parts of the join condition, others were pushed down to one of the branches of grouped join. It can be seen that new tree has columns with assigned unique identifiers which eliminate the need of the input number for each column.
+Optimized algebra tree is depicted in Figure~\ref{fig:algebratree2}. Contrary to the case of Figure~\ref{fig:algebratree1}, this tree has grouped join with three input relations. The selection above joins was split and moved down the tree. Some parts of the condition became parts of the join condition, others were pushed down to one of the branches of grouped join. It can be seen that new tree has columns with assigned unique identifiers which eliminate the need of the input number for each column.
 
 This output is optimized algebra tree. Needless to say, more optimizations can be implemented in order to improve logical plan.
 
