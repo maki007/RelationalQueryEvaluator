@@ -69,7 +69,7 @@
 \contentsline {subsection}{\numberline {5.1.2}Group}{35}{subsection.5.1.2}
 \contentsline {subsection}{\numberline {5.1.3}Selection}{36}{subsection.5.1.3}
 \contentsline {subsection}{\numberline {5.1.4}Join}{36}{subsection.5.1.4}
-\contentsline {subsection}{\numberline {5.1.5}Anti join}{38}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.5}Anti--join}{38}{subsection.5.1.5}
 \contentsline {subsection}{\numberline {5.1.6}Table}{39}{subsection.5.1.6}
 \contentsline {subsection}{\numberline {5.1.7}Union}{39}{subsection.5.1.7}
 \contentsline {subsection}{\numberline {5.1.8}Extended projection}{40}{subsection.5.1.8}
@@ -84,10 +84,10 @@
 \contentsline {subsection}{\numberline {5.7.3}Column operations}{48}{subsection.5.7.3}
 \contentsline {subsection}{\numberline {5.7.4}Cross join}{49}{subsection.5.7.4}
 \contentsline {subsection}{\numberline {5.7.5}Hash join}{49}{subsection.5.7.5}
-\contentsline {subsection}{\numberline {5.7.6}Merge equijoin}{49}{subsection.5.7.6}
-\contentsline {subsection}{\numberline {5.7.7}Merge non equijoin}{50}{subsection.5.7.7}
-\contentsline {subsection}{\numberline {5.7.8}Hash anti join}{50}{subsection.5.7.8}
-\contentsline {subsection}{\numberline {5.7.9}Merge anti join}{50}{subsection.5.7.9}
+\contentsline {subsection}{\numberline {5.7.6}Merge equi--join}{49}{subsection.5.7.6}
+\contentsline {subsection}{\numberline {5.7.7}Merge non equi--join}{50}{subsection.5.7.7}
+\contentsline {subsection}{\numberline {5.7.8}Hash anti--join}{50}{subsection.5.7.8}
+\contentsline {subsection}{\numberline {5.7.9}Merge anti--join}{50}{subsection.5.7.9}
 \contentsline {subsection}{\numberline {5.7.10}Table scan}{51}{subsection.5.7.10}
 \contentsline {subsection}{\numberline {5.7.11}Scan And Sort By Index}{51}{subsection.5.7.11}
 \contentsline {subsection}{\numberline {5.7.12}Index Scan}{51}{subsection.5.7.12}

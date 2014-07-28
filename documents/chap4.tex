@@ -1,6 +1,6 @@
 \chapter{Implementation}
 \label{implementation}
-In this chapter we describe implementation details in the developed software and its functionality using examples. More implementation details can be found on the CD in generated doxygen\cite{doxygen} documentation. We will use following example to describe optimizations and plan generation:
+In this chapter we describe implementation details in the developed software and its functionality using examples. More implementation details can be found on CD in the generated doxygen\cite{doxygen} documentation. We will use following example to describe optimizations and plan generation:
 
 
 \begin{verbatim}
@@ -28,17 +28,17 @@ order by
     o_orderdate;
 \end{verbatim}
 
-This example is taken from TPC benchmark\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. Tables do not contain any indices in this benchmark. Columns starting with o\_ are from table order, columns beginning with l\_ are from table lineitem and columns with prefix c\_ belongs table customers.
+This example is taken from TPC benchmark TM H\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. Tables do not contain any indices in this benchmark. Columns starting with \verb|o\_| are from the table \verb|order|, columns beginning with \verb|l\_| are from the table \verb|lineitem| and columns with prefix \verb|c\_| belong to the table \verb|customers|.
 
 
 
 \section{Input}
 
-Input is XML file containing logical query plan. In this section we describe its structure. 
+The input is XML file containing logical query plan. In this section we describe its structure. 
 
 \subsection{Sort}
 
-The root of every tree contain the sort operator, even if output does not have to be sorted. In this case sort has empty parameters.The following example displays sort operator structure:
+The root of every algebra tree contain the sort operator, even if output does not have to be sorted. In this case sort has empty parameters. The following example displays the sort operator structure:
 
 
 \lstset{
@@ -60,7 +60,7 @@ The root of every tree contain the sort operator, even if output does not have t
 </sort>
 \end{lstlisting}
 
-The sort is a root element of XML file. Inside the parameters there is specified how to sort relation. This example represents sort $\tau_{revenue:desc,o\_orderdate:asc}(...)$. The element $input$ should contain other algebra tree node.
+The sort is the root element of XML file. Inside the parameters element, we can find sort parameters specifying columns and sort order. This example represents sort $\tau_{revenue:desc,o\_orderdate:asc}(...)$. The element $input$ should contain other algebra tree node.
 
 \subsection{Group}
 
@@ -80,7 +80,7 @@ Next example displays the group node:
 </group>
 \end{lstlisting}
 
-This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element has to have at least one group by parameter or at least one aggregate function. Inside the element $input$ there should be an other operator.
+This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element must have at least one group by parameter or at least one aggregate function. Inside the element $input$ there should be an other operator.
 
 \subsection{Selection}
 
@@ -102,11 +102,11 @@ The selection presented in the following example:
   </input>
 </selection>
 \end{lstlisting}
-This example represents following expression: $\sigma_{today<l\_shipdate}$. The condition element we can contain multiple conditions connected by $and$ or $or$ elements. Input algebra supports operators $=$,$<$ and $\leq$. In the leafs of expression tree there can be only column or constant element. We also can call a boolean function from selection and this call is presented in the following example:
+This example represents the following expression: $\sigma_{today<l\_shipdate}$. The condition element we can contain multiple conditions connected by $and$ or $or$ elements. Input algebra supports operators $=$,$<$ and $\leq$. In the leafs of expression tree there can be only column or constant element. We also can call a boolean function from selection and this call is presented in the following example:
 
 \begin{lstlisting}
 <condition>
-  <boolean_predicate  name="like">
+  <boolean_predicate name="like">
     <argument>
       <column name="x"/>
     </argument>
@@ -117,7 +117,7 @@ This example represents following expression: $\sigma_{today<l\_shipdate}$. The 
 </condition>
 \end{lstlisting}
 
-Using boolean predicate it has to be supported by runtime (Bobox operators). The compilee does not check if called predicate does exist.
+Used boolean predicate has to be supported by runtime (Bobox operators). The compiler does not check if called predicate does exist.
 
 \subsection{Join}
 
@@ -146,9 +146,9 @@ The join operator without condition represents cross join. We can use join with 
 </input>
 \end{lstlisting}
 
-This example represents join with condition $a=b~and~c=d$. In join equal conditions of this join, first column has to be from the first relation and second column comes from the second relation. The columns $a$ and $c$ are from the first input and $b$ and $d$ are from the other one. Joins does not copy all columns to output. We have to specify non empty sequence of output columns. For every column we have to specify name and the input number. We can also rename join output column by using attribute $newName$. In last example we renamed output column $d$ to $e$.
+This example represents join with condition $a=b~and~c=d$. In join equal condition, the first column has to be from the first relation and second column comes from the second relation. The columns $a$ and $c$ are from the first input and $b$ and $d$ are from the other one. Joins does not copy all columns to output. We have to specify non empty sequence of output columns. For every column we have to provide name and the input number. We can also rename join output column by using attribute $newName$. In last example we renamed output column $d$ to $e$.
 
-Next example shows join with inequality condition:
+The next example shows join with inequality condition:
 
 \begin{lstlisting}
 <join>
@@ -174,9 +174,9 @@ Next example shows join with inequality condition:
 </input>
 </join>
 \end{lstlisting}
-This example represents join with condition $a1\leq b\leq a2$. First element $lower\_or\_equals$ has to contain the column from first relation followed by column from the second relation. On the other hand the second element $lower\_or\_equals$ needs to specify these columns in reversed order. The element $lower\_or\_equals$ can be replace by the element $lower$. The rules for specifying output column are the same like in the join with equal conditions. The element $input$ should contain two algebra operators.
+This example represents join with condition $a1\leq b\leq a2$. First element $lower\_\-or\_\-equals$ has to contain the column from first relation followed by column from the second relation. On the other hand, the second element $lower\_or\_equals$ needs must have these columns in the reversed order. The element $lower\_or\_equals$ can be replace by the element $lower$. The rules for specifying output column are the same like in the join with equal conditions. The element $input$ should contain two algebra operators.
 
-\subsection{Anti join}
+\subsection{Anti--join}
 
 \begin{lstlisting}
 <antijoin>
@@ -194,10 +194,10 @@ This example represents join with condition $a1\leq b\leq a2$. First element $lo
 <input>
 </antijoin>
 \end{lstlisting}
-This is an example of antijoin with simple condition $d=b$. The structure is almost the same like in the join. Output columns can be only from the first relation and we can rename these columns.
+This is an example of anti--join with simple condition $d=b$. The structure is almost the same as join with equal conditions. We can output columns only from the first relation and these columns can be renamed.
 
 \subsection{Table}
-Table operator is the leaf of the algebra tree. We specify here the name of read table, its columns and indexes in table operator. The number of rows can be given in order to get better plans. If we do not have that information, we assume that a table has 1000 tuples. For every column we have to specify its name and type. Other optional parameter is $number\_of\_unique\_values$. This number is important for estimating size of join. If this information is missing, we will assume, that $number\_of\_unique\_values$ is size of table to power of $\frac{4}{5}$. This assumption is only experimental, since the number of unique values is from interval $\langle 0, table~size\rangle$. There are two types of indices. clustered and  unclustered. Table can have only one clustered index. For every index, we have to specify attributes and sort order. The following example contain table algebra node:
+Table operator is the leaf of the algebra tree. We specify here the name of read table, its columns and indexes. The number of rows can be given in order to get a better plan. If we do not have that information, we assume that a table has 1000 tuples. For every column we have to specify its name and type. Other optional parameter is $number\_of\_unique\_values$. This number is important for estimating size of join. If this information is missing, we will assume, that $number\_of\_unique\_values$ is size of table to the power of $\frac{4}{5}$. This assumption is only experimental, since the number of unique values belong to the interval $\langle 0, table~size\rangle$. There are two types of indices: clustered and  unclustered. Every table can have only one clustered index. For every index, we have to provide the attribute names and the sort order. The following example contain table algebra node:
  
 \begin{lstlisting}
 <table name="orders" numberOfRows="1500000">
@@ -214,7 +214,7 @@ Table operator is the leaf of the algebra tree. We specify here the name of read
 \end{lstlisting}
 
 \subsection{Union}
-The union operator does not have any parameters but columns from both inputs have to have the same names, for example:
+The union operator does not have any parameters but columns from both inputs have to have the same names. Example:
 \begin{lstlisting}
 <union>
   <input>
@@ -249,7 +249,7 @@ Following example of extended projection represents expression \\ $\pi_{l\_order
 </column_operations>
 \end{lstlisting}
 
-The extended projection contains a list of columns. Newly computed columns contains element $equals$ with expression. Expression tree can contain arbitrary function call which has to be supported by Bobox operators. Following example displays function call:
+The extended projection contains a list of columns. Newly computed columns contain element $equals$ with expression. Expression tree can contain arbitrary function call which has to be supported by Bobox operators. Following example displays function call:
 
 
 \begin{lstlisting}
@@ -271,24 +271,24 @@ The extended projection contains a list of columns. Newly computed columns conta
 </column_operations>
 \end{lstlisting}
  
- We computed new column named $x$ with values $\sqrt{2}$.
+Last example computes new column named $x$ with values $\sqrt{2}$.
  
 \section{Building relational algebra tree} 
 
-In this section we describe in more details structure storing logical plan and its building. Relational algebra operators are represented by children of the abstract class \texttt{AlgebraNodeBase}. It has following abstract subclasses:
+In this section we describe structure storing logical plan and building of algebra tree. Relational algebra operators are represented by children of the abstract class \texttt{AlgebraNodeBase}. It has following abstract subclasses:
 \begin{itemize}
 
 \item \texttt{UnaryAlgebraNodeBase} - abstract class for algebra operator with one input.
 
 \item \texttt{BinaryAlgebraNodeBase}  - abstract class for algebra operator with two inputs.
 
-\item \texttt{GroupedAlgebraNode} - abstract class for algebra operator with variable number inputs.
+\item \texttt{GroupedAlgebraNode} - abstract class for algebra operator with the variable number inputs.
 
 \item \texttt{NullaryAlgebraNodeBase} -  abstract class for algebra tree leafs.
 
 \end{itemize}
 
-All algebra operators are children of one of the mentioned classes. Every operator has pointer to its parent in the tree and smart pointers to its children if it has any. 
+All algebra operators are children of one of the mentioned classes. Every operator has pointer to its parent and smart pointers to its children, if it has any. 
 
 Expressions in nodes are represented by polymorphic trees. All expression nodes are children of class \texttt{Expression}.
 
@@ -303,19 +303,19 @@ For manipulating and reading expression and algebra tree we used the visitor pat
           \label{fig:algebratree1}
 \end{figure}
 
-In figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in where clause. From the result we compute new column and apply grouping operator computing aggregate functions. Output of the query is sorted. In table reading operator we can see additional informations like name of table. Every attribute has the sufix $\_-1$ which is column's unique identifier. After the algebra tree is build from XML, unique identifiers are not assigned yet and they contain default value $-1$. The columns used in expressions contains number in parenthesis, which stores information which input does it belongs. Input operators are numbered from $0$. All columns used selection come from the $0^th$ input.
+In figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in where clause. From the result we compute new column and apply grouping operator computing aggregate functions. Output of the query is sorted. In table reading operator we can see additional informations like name of table. Every attribute has the sufix $\_-1$ which is column's unique identifier. After the algebra tree is build from XML, unique identifiers are not assigned yet and they contain default value $-1$. The columns used in expressions contains number in parenthesis, which stores information which input does it belongs to. Input operators are numbered from $0$. All columns in used selection come from the $0^th$ input.
 
-For parsing and validating input XML file we used library Xerces version 3.1.1~\cite{xerces}. It parses input file and creates DOM tree. This tree has to be validated against XML schema. Parsing and validation of XML is performed in the class \texttt{XmlHandler}.
+For parsing and validating input XML file we used library Xerces version 3.1.1~\cite{xerces}. It parses the input file and creates DOM tree. This tree has to be validated against XML schema. Parsing and validation of XML is performed in the class \texttt{XmlHandler}.
 
-Every algebra tree has to have sort operator on the top. We call \texttt{Sort} constructor with root element as an argument. This method copies all information from DOM tree and calls method \texttt{AlgebraNodeBase::constructChildren}, which decides what constructor to call on current node's children. This way we recursively build algebra tree.
+Every algebra tree has to have sort operator on the top. We call \texttt{Sort} constructor with root element as an argument and this method copies all the information from DOM tree and calls method \texttt{AlgebraNodeBase::constructChildren}, which decides what constructor to call on current node's children. This way we recursively build algebra tree.
 
 
 
 \section{Semantic analysis and node grouping}
 
-Semantic checking is processed by the class \texttt{SemanticChecker}, which checks if columns used in expression exist and if the output columns of operator have unique name. During this checking we assign unique identifier to every column. After this phase we do not need attribute names we use only the unique identifier.
+Semantic checking is processed by the class \texttt{SemanticChecker}, which checks if columns used in expression exist and if the output columns of operator have unique name. During this checking we assign unique identifier to every column. After this phase we do not need attribute names anymore, we use only the unique identifiers.
 
-Logical plan is after that visited by \texttt{GroupingVisitor}. In this phase are replaced joins represented by class \texttt{Join} by grouped join with two or more input relations. This node is represented by class \texttt{GroupedJoin}. For every expression we apply \texttt{GroupingExpressionVisitor}, which groups expressions with $and$ and $or$ operators. This step simplifies splitting condition into sub conditions.
+Logical plan is visited by \texttt{GroupingVisitor}. In this phase are replaced joins represented by class \texttt{Join} by the grouped join,represented by class \texttt{GroupedJoin}, with two or more input relations. We apply \texttt{GroupingExpressionVisitor} on every expression. The \texttt{GroupingExpressionVisitor} groups expressions with $and$ and $or$ operators. This step simplifies splitting condition into sub conditions.
 
 \section{Algebra optimization}
 
@@ -471,7 +471,7 @@ leftPartOfCondition="0,1","rightPartOfCondition="5,2");
 Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. This operators works only with equal condition, which is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$. Relation in first input should be stored in hash table, because it's estimated size is smaller. This example computes join with condition:\\
  $(column~0=column~5)~and~(column~1=column~2)$.
 
-\subsection{Merge equijoin}
+\subsection{Merge equi--join}
 Example:
 \begin{lstlisting}
 MergeEquiJoin(int),(int)->(int,int))
@@ -480,7 +480,7 @@ rightPartOfCondition="1:D");
 \end{lstlisting}
 Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$, and they also contain information how are inputs sorted. This example computes join with condition $(0==1)$. First input is sorted by column number $0$ descending and the second input is sorted by column $1$ descending.
 
-\subsection{Merge non equijoin}
+\subsection{Merge non equi--join}
 Example:
 \begin{lstlisting}
 MergeNonEquiJoin(date,date),(date)->(date,date,date)
@@ -492,7 +492,7 @@ condition="OP_AND(OP_LOWER_OR_EQUAL(0,2)
 
 This operator joins sorted relations. Numbering from left(first) and right(second) input is specified in parameters $left$ and $right$. Parameters $leftInputSortedBy$ and $rightInputSortedBy$ store information about how are input relations sorted. Join condition is in parameter $condition$. Operator in this example joins by condition $column~0 \leq column~2\leq column~1$. First input is sorted by column $0$ ascending and column $1$ ascending and second input is sorted by column $2$ ascending.
 
-\subsection{Hash anti join}
+\subsection{Hash anti--join}
 Example:
 \begin{lstlisting}
 HashAntiJoin(int),(int)->(int)
@@ -501,9 +501,9 @@ rightPartOfCondition="1");
 \end{lstlisting}
 
 Column number from first input is specified in $left$ parameter and columns numbers from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Parameter $out$ can only contains columns from first input. Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$.
-Relation in first input should be stored in hash table, because it's estimated size is smaller. This example computes anti join with condition $(column~0==column~1)$.
+Relation in first input should be stored in hash table, because it's estimated size is smaller. This example computes anti--join with condition $(column~0==column~1)$.
 
-\subsection{Merge anti join}
+\subsection{Merge anti--join}
 Example:
 \begin{lstlisting}
 $MergeAntiJoin(int),(int)->(int)
