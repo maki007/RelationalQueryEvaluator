@@ -1,6 +1,6 @@
 \chapter{Implementation}
 \label{implementation}
-In this chapter we describe implementation details in the developed software and its functionality using examples. More implementation details can be found on CD in the generated doxygen\cite{doxygen} documentation. We will use following example to describe optimizations and plan generation:
+Here, we present implementation details in the developed software. Its functionality is described on a selected example. More implementation details can be found on CD in the generated doxygen~\cite{doxygen} documentation. We will use the following example to describe optimizations and plan generation:
 
 
 \begin{verbatim}
@@ -28,17 +28,17 @@ order by
     o_orderdate;
 \end{verbatim}
 
-This example is taken from TPC benchmark TM H\cite{benchmark}. $[DATE]$ and $[SEGMENT]$ are constants. Tables do not contain any indices in this benchmark. Columns starting with \verb|o\_| are from the table \verb|order|, columns beginning with \verb|l\_| are from the table \verb|lineitem| and columns with prefix \verb|c\_| belong to the table \verb|customers|.
+This example was taken from TPC benchmark TM H~\cite{benchmark}. Parameters $[DATE]$ and $[SEGMENT]$ are constants. Tables do not contain any indices in this benchmark. Columns starting with \verb|o_| are from the table \verb|order|, columns beginning with \verb|l_| are from the table \verb|lineitem| and columns with prefix \verb|c_| belong to the table \verb|customers|.
 
 
 
 \section{Input}
 
-The input is XML file containing logical query plan. In this section we describe its structure. 
+The input is XML file containing logical query plan. In this section, we describe its structure. 
 
 \subsection{Sort}
 
-The root of every algebra tree contain the sort operator, even if output does not have to be sorted. In this case sort has empty parameters. The following example displays the sort operator structure:
+The root of every algebra tree contains the sort operator, even if the output does not have to be sorted. In this case, sort has empty parameters. The following example displays the sort operator structure:
 
 
 \lstset{
@@ -60,11 +60,11 @@ The root of every algebra tree contain the sort operator, even if output does no
 </sort>
 \end{lstlisting}
 
-The sort is the root element of XML file. Inside the parameters element, we can find sort parameters specifying columns and sort order. This example represents sort $\tau_{revenue:desc,o\_orderdate:asc}(...)$. The element $input$ should contain other algebra tree node.
+The sort is the root element of XML file. Inside the $<$parameters$>$ element, we can find sort parameters specifying columns and the sort order. This example represents sort $\tau_{revenue:desc,o\_orderdate:asc}(...)$. The element $<$input$>$ should contain other algebra tree node.
 
 \subsection{Group}
 
-Next example displays the group node:
+Next example shows the group node:
 
 \begin{lstlisting}
 <group>
@@ -80,11 +80,11 @@ Next example displays the group node:
 </group>
 \end{lstlisting}
 
-This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element must have at least one group by parameter or at least one aggregate function. Inside the element $input$ there should be an other operator.
+This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element must have at least one $<$group\_by$>$  parameter or at least one aggregate function.  Another algebra operator should be inside the element $<$input$>$.
 
 \subsection{Selection}
 
-The selection presented in the following example:
+The selection is presented in the following example:
 
 \begin{lstlisting}
 
@@ -102,7 +102,7 @@ The selection presented in the following example:
   </input>
 </selection>
 \end{lstlisting}
-This example represents the following expression: $\sigma_{today<l\_shipdate}$. The condition element we can contain multiple conditions connected by $and$ or $or$ elements. Input algebra supports operators $=$,$<$ and $\leq$. In the leafs of expression tree there can be only column or constant element. We also can call a boolean function from selection and this call is presented in the following example:
+This example represents the following expression: $\sigma_{today<l\_shipdate}$. The $<$condition$>$ element can contain multiple conditions connected by $<$and$>$ or $<$or$>$ elements. Input algebra supports operators $=$, $<$ and $\leq$.  Only $<$column$>$ or $<$constant$>$ element can be present in the leafs of the expression tree. Possible call of a boolean function from the selection is presented in the following example:
 
 \begin{lstlisting}
 <condition>
@@ -146,7 +146,7 @@ The join operator without condition represents cross join. We can use join with 
 </input>
 \end{lstlisting}
 
-This example represents join with condition $a=b~and~c=d$. In join equal condition, the first column has to be from the first relation and second column comes from the second relation. The columns $a$ and $c$ are from the first input and $b$ and $d$ are from the other one. Joins does not copy all columns to output. We have to specify non empty sequence of output columns. For every column we have to provide name and the input number. We can also rename join output column by using attribute $newName$. In last example we renamed output column $d$ to $e$.
+This example represents join with condition $a=b~and~c=d$. In join equal condition, the first column has to be from the first relation and the second column comes from the second relation. The columns $a$ and $c$ are from the first input and $b$ and $d$ are from the other one. Joins do not copy all columns to the output. We have to specify non--empty sequence of output columns. For every column we have to provide the name and the input number. We can also rename the join output column by using the attribute $newName$. In the last example we renamed the output column $d$ to $e$.
 
 The next example shows join with inequality condition:
 
@@ -174,7 +174,7 @@ The next example shows join with inequality condition:
 </input>
 </join>
 \end{lstlisting}
-This example represents join with condition $a1\leq b\leq a2$. First element $lower\_\-or\_\-equals$ has to contain the column from first relation followed by column from the second relation. On the other hand, the second element $lower\_or\_equals$ needs must have these columns in the reversed order. The element $lower\_or\_equals$ can be replace by the element $lower$. The rules for specifying output column are the same like in the join with equal conditions. The element $input$ should contain two algebra operators.
+This example represents join with the condition $a1\leq b\leq a2$. First element $<$lower\_or\_equals$>$ has to contain the column from the first relation followed by the column from the second relation. On the other hand, the second element $<$lower\_or\_equals$>$ must have these columns in the reversed order. The element $<$lower\_or\_equals$>$ can be replaced by the element $<$lower$>$. The rules for specifying the output column are the same as in the join with equal conditions. The element $<$input$>$ should contain two algebra operators.
 
 \subsection{Anti--join}
 
@@ -194,10 +194,11 @@ This example represents join with condition $a1\leq b\leq a2$. First element $lo
 <input>
 </antijoin>
 \end{lstlisting}
-This is an example of anti--join with simple condition $d=b$. The structure is almost the same as join with equal conditions. We can output columns only from the first relation and these columns can be renamed.
 
+This is an example of anti--join with the simple condition $d=b$. The structure is almost the same as join with equal conditions. We can output columns only from the first relation and these columns can be renamed.
+\\
 \subsection{Table}
-Table operator is the leaf of the algebra tree. We specify here the name of read table, its columns and indexes. The number of rows can be given in order to get a better plan. If we do not have that information, we assume that a table has 1000 tuples. For every column we have to specify its name and type. Other optional parameter is $number\_of\_unique\_values$. This number is important for estimating size of join. If this information is missing, we will assume, that $number\_of\_unique\_values$ is size of table to the power of $\frac{4}{5}$. This assumption is only experimental, since the number of unique values belong to the interval $\langle 0, table~size\rangle$. There are two types of indices: clustered and  unclustered. Every table can have only one clustered index. For every index, we have to provide the attribute names and the sort order. The following example contain table algebra node:
+Table operator is the leaf of the algebra tree. We specify here the name of read table, its columns and indices. The number of rows can be given in order to get a better plan. If we do not have that information, we assume that a table has 1000 tuples. For every column we have to specify its name and type. Other optional parameter is $number\_of\_unique\_values$ which is important for estimating the size of join. If this information is missing, we will assume that $number\_of\_unique\_values$ is the size of the table to the power of $\frac{4}{5}$. This assumption is only experimental since the number of unique values comes from the interval $\langle 0, table~size\rangle$. There are two types of indices: clustered and  unclustered. Every table can have only one clustered index. For each index, we have to provide the attribute names and the sort order. The following example contains the table algebra node:
  
 \begin{lstlisting}
 <table name="orders" numberOfRows="1500000">
@@ -214,7 +215,7 @@ Table operator is the leaf of the algebra tree. We specify here the name of read
 \end{lstlisting}
 
 \subsection{Union}
-The union operator does not have any parameters but columns from both inputs have to have the same names. Example:
+The union operator does not have any parameters and the columns from both inputs must have the same names. Example:
 \begin{lstlisting}
 <union>
   <input>
@@ -224,7 +225,7 @@ The union operator does not have any parameters but columns from both inputs hav
 \end{lstlisting}
 
 \subsection{Extended projection}
-Following example of extended projection represents expression \\ $\pi_{l\_orderkey,o\_orderdate,o\_shippriority,x=l\_extendedprice*(1-l\_discount)}(...)$:
+The following example of an extended projection represents expression \\ $\pi_{l\_orderkey,o\_orderdate,o\_shippriority,x=l\_extendedprice*(1-l\_discount)}(...)$:
 \begin{lstlisting}
 <column_operations>
   <parameters>
@@ -249,7 +250,7 @@ Following example of extended projection represents expression \\ $\pi_{l\_order
 </column_operations>
 \end{lstlisting}
 
-The extended projection contains a list of columns. Newly computed columns contain element $equals$ with expression. Expression tree can contain arbitrary function call which has to be supported by Bobox operators. Following example displays function call:
+The extended projection contains a list of columns. Newly computed columns contain element $<$equals$>$ with expression. Expression tree can contain arbitrary function call which has to be supported by Bobox operators. Function call is explained in the following example:
 
 
 \begin{lstlisting}
@@ -275,24 +276,24 @@ Last example computes new column named $x$ with values $\sqrt{2}$.
  
 \section{Building relational algebra tree} 
 
-In this section we describe structure storing logical plan and building of algebra tree. Relational algebra operators are represented by children of the abstract class \texttt{AlgebraNodeBase}. It has following abstract subclasses:
+In this section, we describe the construction of logical plan as well as the structure for its storage. Relational algebra operators are represented by children of the abstract class \texttt{AlgebraNodeBase}. It has the following abstract subclasses:
 \begin{itemize}
 
-\item \texttt{UnaryAlgebraNodeBase} - abstract class for algebra operator with one input.
+\item \texttt{UnaryAlgebraNodeBase} -- abstract class for algebra operator with one input.
 
-\item \texttt{BinaryAlgebraNodeBase}  - abstract class for algebra operator with two inputs.
+\item \texttt{BinaryAlgebraNodeBase}  -- abstract class for algebra operator with two inputs.
 
-\item \texttt{GroupedAlgebraNode} - abstract class for algebra operator with the variable number inputs.
+\item \texttt{GroupedAlgebraNode} -- abstract class for algebra operator with the variable number of inputs.
 
-\item \texttt{NullaryAlgebraNodeBase} -  abstract class for algebra tree leafs.
+\item \texttt{NullaryAlgebraNodeBase} --  abstract class for algebra tree leafs.
 
 \end{itemize}
 
-All algebra operators are children of one of the mentioned classes. Every operator has pointer to its parent and smart pointers to its children, if it has any. 
+All algebra operators are children of one of the mentioned classes. Every operator has pointer to its parent and smart pointers to its children, if they exist. 
 
-Expressions in nodes are represented by polymorphic trees. All expression nodes are children of class \texttt{Expression}.
+Expressions in algebra nodes are represented by polymorphic trees. All expression nodes are children of the class \texttt{Expression}.
 
-For manipulating and reading expression and algebra tree we used the visitor pattern. All nodes (algebra and expression) contains method \texttt{accept}. This method calls visitor method on class \texttt{AlgebraVisitor}/\texttt{ExpressionVisitor}. All classes, which manipulate algebra tree, are children then of class \texttt{AlgebraVisitor}.
+We used the visitor pattern for manipulating and reading expression and algebra tree. All nodes (algebra and expression) contain the method \texttt{accept} which calls visitor method on the class \texttt{AlgebraVisitor}/\texttt{ExpressionVisitor}. All classes, which manipulate the algebra tree, are children of class \texttt{AlgebraVisitor}.
 
 
 \begin{figure}[h!]
@@ -303,29 +304,29 @@ For manipulating and reading expression and algebra tree we used the visitor pat
           \label{fig:algebratree1}
 \end{figure}
 
-In figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in where clause. From the result we compute new column and apply grouping operator computing aggregate functions. Output of the query is sorted. In table reading operator we can see additional informations like name of table. Every attribute has the sufix $\_-1$ which is column's unique identifier. After the algebra tree is build from XML, unique identifiers are not assigned yet and they contain default value $-1$. The columns used in expressions contains number in parenthesis, which stores information which input does it belongs to. Input operators are numbered from $0$. All columns in used selection come from the $0^th$ input.
+In the Figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in the \verb|where| clause. The obtained result was used to compute new column and to apply grouping operator computing aggregate functions. Output of the query was sorted. In table reading operator, we can see additional information like the name of the table. Every attribute has the suffix $\_-1$ which is the unique identifier of the column. After the algebra tree is built from XML, the unique identifiers are not assigned and they contain default value $-1$. The inputs, from which the columns originate, are represented by the numbers in parentheses. Input operators are numbered from $0$. All columns in used selection come from the zeroth input.
 
-For parsing and validating input XML file we used library Xerces version 3.1.1~\cite{xerces}. It parses the input file and creates DOM tree. This tree has to be validated against XML schema. Parsing and validation of XML is performed in the class \texttt{XmlHandler}.
+We used library Xerces version 3.1.1~\cite{xerces} for parsing and validating the input XML file. It parses the input file and creates the DOM tree. This tree has to be validated against XML schema. Parsing and validation of XML is performed in the class \texttt{XmlHandler}.
 
-Every algebra tree has to have sort operator on the top. We call \texttt{Sort} constructor with root element as an argument and this method copies all the information from DOM tree and calls method \texttt{AlgebraNodeBase::constructChildren}, which decides what constructor to call on current node's children. This way we recursively build algebra tree.
+Every algebra tree has to have the sort operator on the top. We call \texttt{Sort} constructor with root element as an argument. This method copies all the information from DOM tree and calls the method \texttt{AlgebraNodeBase::constructChildren} which decides what constructor to call on children of processed node. This way we recursively build the algebra tree.
 
 
 
 \section{Semantic analysis and node grouping}
 
-Semantic checking is processed by the class \texttt{SemanticChecker}, which checks if columns used in expression exist and if the output columns of operator have unique name. During this checking we assign unique identifier to every column. After this phase we do not need attribute names anymore, we use only the unique identifiers.
+Semantic checking is processed by the class \texttt{SemanticChecker}, which checks if columns used in expressions exist and if the output columns of each operator have unique name. During this checking we assign unique identifier to every column. After this phase, we do not need attribute names anymore, we use only the unique identifiers.
 
-Logical plan is visited by \texttt{GroupingVisitor}. In this phase are replaced joins represented by class \texttt{Join} by the grouped join,represented by class \texttt{GroupedJoin}, with two or more input relations. We apply \texttt{GroupingExpressionVisitor} on every expression. The \texttt{GroupingExpressionVisitor} groups expressions with $and$ and $or$ operators. This step simplifies splitting condition into sub conditions.
+Logical plan is visited by \texttt{GroupingVisitor}. In this phase, joins represented by the class \texttt{Join} are replaced by the grouped join represented by the class \texttt{GroupedJoin} with two or more input relations. We apply \texttt{GroupingExpressionVisitor} on every expression. The \texttt{GroupingExpressionVisitor} groups expressions with $and$ and $or$ operators. This step simplifies splitting condition into sub conditions.
 
 \section{Algebra optimization}
 
-We need to prepare logical tree for optimizing it by pushing down selections. To do this we split selection into smaller conditions using rule:
+We need to prepare logical tree for optimizing it by pushing down selections. To do this, we split selection into smaller conditions using the rule:
 \begin{itemize}
 \item $\sigma_{A~and~B}(R)=\sigma_{A}(\sigma_{B}(R))$
 \end{itemize}
-From every selection we created chain of selections. This operation is done by \texttt{SelectionSpitingVisitor}.
+A chain of selections is created from every selection. This operation performed by \texttt{SelectionSpitingVisitor}.
 
-After that we call \texttt{SelectionColectingVisitor}. This visitor stores pointer of all selection in relational algebra tree. This pointers are input into \texttt{Push\-Selection\-Down\-Visitor}. It pushes all selections down the tree as much as possible and also converts cross joins into regular joins if we have selection with equal condition.
+Afterwards, we apply \texttt{SelectionColectingVisitor} which stores pointers of all selections in the relational algebra tree. These pointers are input into \texttt{Push\-Selection\-Down\-Visitor}. It pushes all selections down the tree as much as possible and also converts cross joins into regular joins if we have selection with equal condition.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=1.0\textwidth]{algebratree2}
@@ -333,24 +334,24 @@ After that we call \texttt{SelectionColectingVisitor}. This visitor stores point
       \caption{Example of optimized algebra tree.}
           \label{fig:algebratree2}
 \end{figure}
-At this moment we have optimized tree, but we can find selection chains in it. To resolve this problem we apply \texttt{SelectionFusingVisitor}. This visitor applies following rule to tree:
+At this moment, we have optimized tree but it still contains the selection chains. To resolve this problem, we apply \texttt{SelectionFusingVisitor} that applies the following rule to the tree:
 \begin{itemize}
 \item $\sigma_{A}(\sigma_{B}(R))=\sigma_{A~and~B}(R)$
 \end{itemize}
 
-In figure~\ref{fig:algebratree2} we can see optimizes algebra tree. In comparison figure~\ref{fig:algebratree1}, this tree has grouped join with three input relations. Also big selection about joins has been split and moved down the tree. Some part of condition became join condition other were pushed down on of branches of grouped join. Then we can see that new tree has columns with assigned unique identifiers. Because we have this identifiers we don't need to know number of input for each column.
+Optimized algebra tree is depicted in the Figure~\ref{fig:algebratree2}. Contrary to the case of Figure~\ref{fig:algebratree1}, this tree has grouped join with three input relations. The selection above joins was split and moved down the tree. Some parts of the condition became parts of the join condition, others were pushed down to one of the branches of grouped join. It can be seen that new tree has columns with assigned unique identifiers which eliminate the need of the input number for each column.
 
-This output is optimized algebra tree. We can of course implement more optimizations to improve logical plan.
+This output is optimized algebra tree. Needless to say, more optimizations can be implemented in order to improve logical plan.
 
 \section{Generating plan}
 
-Final logical plan will be processed by \texttt{AlgebraCompiler}, which outputs $n$ best plans. $n$ is a constant in  \texttt{AlgebraCompiler} represented by variable \texttt{NUM\-BER\_\-OF\_\-PLANS}. 
+Final logical plan will be processed by \texttt{AlgebraCompiler} which outputs $n$ best plans. Parameter $n$ is a constant in  \texttt{AlgebraCompiler} represented by variable \texttt{NUM\-BER\_\-OF\_\-PLANS}. 
 
-This visitor visits node of algebra tree, the it calls itself on its children. We use generated plans for child nodes to create plans for current node. After that we store best plans in variable \texttt{result}, relation size in variable \texttt{size} and output columns in variable \texttt{outputColumns}. 
+This visitor visits node of algebra tree, then it calls itself on its children. We use generated plans for child nodes to create plans for the current node. After that, we store the best plans in the variable \texttt{result}, relation size in the variable \texttt{size} and output columns in the variable \texttt{outputColumns}. 
 
-For every node we generate all possible algorithms. Generated plans are stored in variable \texttt{result}. This variables stored a max-heap, where plans are compared by their overall time complexity. This time complexity is computed as sum of time complexity in all physical operators in current plan. This heap has maximal size of $n$. If there are more than $n$ plans we remove plan in root of the heap.
+For each algebra node we generate all possible algorithms. Generated plans are stored in the variable \texttt{result}. This variable stores a max--heap, where plans are compared by their overall time complexity. This time complexity is computed as a sum of time complexities in all physical operators in the current plan. Maximal size of the heap is $n$. If there are more than $n$ plans in the heap, we remove plan in the root of the heap.
 
-Both join order algorithms can be found in method \texttt{visitGroupedJoin}. If number of join relations is smaller than $k$ we used dynamic programing algorithm to estimate order of join. If we have more relations to join we use greedy algorithm. Constant $k$ is represented in variable \texttt{LI\-MIT\_\-FOR\_\-GREEDY\_\-JOIN\_\-ORDER\_\-ALGORITHM}. Both join algorithm call method \texttt{join}. This method combines plans and generates all possible plans.
+Both join order algorithms can be found in the method \texttt{visitGroupedJoin}. If the number of join relations is smaller than $k$, we use the dynamic programing algorithm to estimate order of join. If we have more relations to join, we use the greedy algorithm. Constant $k$ is represented in the variable \texttt{LI\-MIT\_\-FOR\_\-GREEDY\_\-JOIN\_\-ORDER\_\-ALGORITHM}. Both join algorithms call the method \texttt{join} which combines plans and generates all possible plans.
 
 
 Physical plan is represented as polymorphic tree. 
@@ -365,22 +366,21 @@ Physical plan is represented as polymorphic tree.
 \end{figure}
 
 
-In figure \ref{fig:physicalplan} we can see best generated physical plan for query presented on the beginning of this chapter. Every operator contains estimated size and time. Below that we can see output columns with their unique identifiers and estimated number of unique values for each column. Since read tables doesn't contain any indexes, we have to read all the tables and filter results. After that we can only use hash join, because sorting relations for merge join would be to expressive and nested loop join is not supported by runtime or compiler. From the result we compute new columns and use hash group algorithm. We didn't use sorted group, because input is not sorted and output has to be sorted by other than group column.
+The best generated physical plan for query presented in the beginning of this chapter is drawn in Figure \ref{fig:physicalplan}. Each operator contains estimated size and run time. Output columns with their unique identifiers and estimated number of unique values are given on the bottom of the physical operators. Since read tables do not contain any indices we have to read all the tables and filter the results. After that, we can only use hash join because sorting relations for merge join would be to expensive and nested loop join is not supported by runtime or compiler. From the result we compute new columns and use the hash group algorithm. We did not use sorted group as input is not sorted and output has to be sorted by other than group column.
 
-Physical operators are chosen based on their estimated time complexity. It is computed from estimated size. In class \texttt{TimeComplexity} we have static functions which compute time complexity for each operation. It also contains constants used in this functions. We assume, that this constants or whole functions need to be improved. This improvement can be done base on testing and measuring evaluation queries in Bobox. At the time of submitting thesis runtime environment is not fully functional.
+Physical operators are chosen according to their estimated time complexity which is computed from the estimated size of relation. In the class \texttt{TimeComplexity}, we have static functions which compute time complexity for each operation. It also contains constants used in these functions. We assume that this constants or whole functions need to be improved. This improvement can be achieved in the future if the tests and measurements of the evaluation queries in Bobox are performed. At the time of submitting this thesis, the runtime environment is not fully functional.
 
 
 
 
 \section{Resolving sort parameters}
 
-Sort parameters structure~\ref{fig:sortparameters} is represented by class \texttt{PossibleSortParameters}. Every columns group is stored in class \texttt{SortParameters}. Class \texttt{SortParameter} is used to store column name, sort direction.
+Sort parameters structure in Figure~\ref{fig:sortparameters} is represented by the class \texttt{Possible\-Sort\-Parameters}. Every group of columns is stored in the class \texttt{SortParameters}. The class \texttt{SortParameter} is used to store column name and sort direction.
 
 
-We take generated plans from class \texttt{AlgebraCompiler}. Sort parameters of sort nodes need to be resolved. Two plans also can contain same physical operator. That's why need to clone plans, to assure that no algorithm representing object are used in two or more plans.
+We take generated plans from the class \texttt{AlgebraCompiler}. Sort parameters of sort nodes need to be resolved. Two plans also can contain the same physical operator. Hence, we need to clone plans in order to assure that no algorithm object is used in two or more plans.
 
-For cloning we used \texttt{CloningPhysicalOperatorVisitor}. Than we resolve generated plans in \texttt{SortResolvingPhysicalOperatorVisitor}. In figure~\ref{fig:plansortunresolved} we can see physical plan with unresolved sort parameters. 
-
+We used \texttt{CloningPhysicalOperatorVisitor} for cloning and we resolve generated plans in \texttt{SortResolvingPhysicalOperatorVisitor}. Physical plan with unresolved sort parameters can be seen in Figure~\ref{fig:plansortunresolved}.
 \begin{figure}[h!]
   \centering
     \includegraphics[width=0.6\textwidth]{plansortunresolved}
@@ -388,23 +388,22 @@ For cloning we used \texttt{CloningPhysicalOperatorVisitor}. Than we resolve gen
       \caption{Example of physical plan.}
           \label{fig:plansortunresolved}
 \end{figure}
-
-It contains two sort algorithms. Left one has following possible parameters:
+\noindent
+It contains two sort algorithms. Left one has the following possible parameters:
 
 \begin{itemize}
 \item $a:both, c:both$
 \item $c:both, a:both$
 \end{itemize}
-
-Right sort algorithm has sort parameters:
+Right sort algorithm has these sort parameters:
 \begin{itemize}
 \item $b:both, d:both$
 \item $d:both, b:both$
 \end{itemize}
 
-At the time of generating this algorithm, we didn't know that order was the best to choose. After merge join plan has to be sorted by $d:desc,a:asc$. At the top of the tree we generated partial sort. It doesn't do anything because relation is already sorted. It only indicates, that from all sort parameter possibilities we chose $d:desc,a:asc$ and we don't have to do any additional sorting.
+At the time of generating this algorithm, we did not know what order was the best to choose. After merge join, the plan has to be sorted by $d:desc,a:asc$. At the top of the tree, we generated partial sort which does not do anything because relation is already sorted. It only indicates that we choose $d:desc,a:asc$ from all sort parameter possibilities and we do not have to do any additional sorting.
 
-\texttt{SortResolvingPhysicalOperatorVisitor} works down tree. It uses variable \texttt{sortParameters}. We store there information how the input has been sorted before input of visited node. Using this variable we adjust sort parameters of sort algorithm. Adjusted plan is in figure~\ref{fig:plansortresolved}.
+\texttt{SortResolvingPhysicalOperatorVisitor} works down the tree. Variable \texttt{sortParameters} is used for storage of information how the input of current node was sorted. We adjust sort parameters of the sort algorithm using this variable. The adjusted plan is drawn in Figure~\ref{fig:plansortresolved}.
 
 \begin{figure}[h!]
   \centering
@@ -414,14 +413,13 @@ At the time of generating this algorithm, we didn't know that order was the best
           \label{fig:plansortresolved}
 \end{figure}
 
-Output od the query has to be sorted by $d:desc,a:asc$. Visitor sets that input of partial sort has to be sorted by $d:desc,a:asc$. After that we resolve in merge join that left input has to be sorted by and right input has to be sorted by $c:desc,a:asc$ $d:desc,b:asc$. Using this information we choose correct sort parameters in sort algorithms. 
-
-There can be situations where we use sort based algorithm but output doesn't been sorted, we can choose arbitrary order of sort parameters. 
+Output of the query has to be sorted by $d:desc,a:asc$. Visitor sets that input of partial sort has to be sorted by $d:desc,a:asc$. In the merge join we compute that left input has to be sorted by $c:desc,a:asc$ and right input has to be sorted by $d:desc,b:asc$. We choose correct sort parameters in the sort algorithms using this information. 
+There can be situations where we use sort based algorithm but output does not have to be sorted and thus we can choose arbitrary order of sort parameters. 
 
 
 \section{Output}
 
- Output in Bobolang is generated by \texttt{BoboxPlanWritingPhysicalOperatorVisitor}. We can also generate output from algebra tree. Visitor \texttt{GraphDrawingVisitor} can generate output in dot language. Physical plan's output can be generated in dot language using \texttt{Physical\-Operator\-Drawing\-Visitor}. \texttt{Physical\-Operator\-Drawing\-Visitor\-WithouSorts} provides dot output without partial sorts with empty sort by parameters. In following chapters we text output generated by implemented compiler.
+ Output in Bobolang is generated by \texttt{BoboxPlanWritingPhysicalOperatorVisitor}. We can also generate output from the algebra tree. Visitor \texttt{GraphDrawingVisitor} can generate output in dot language. Output of physical plan can be written in dot language using \texttt{Physical\-Operator\-Drawing\-Visitor}. \texttt{Physical\-Operator\-Drawing\-Visitor\-WithouSorts} provides dot output without partial sorts with empty sort parameters. In the following sections, we present text output generated by the implemented compiler.
 
 \subsection{Filters}
 Example: 
@@ -430,8 +428,8 @@ Filter(double,double,int)->(double,double,int)
 f(condition="OP_LOWER(OP_double_CONSTANT(4.8),1)"); 
 \end{lstlisting}
 
-Input and output columns are same. Both are numbered from 0.
-This operator takes input of two double streams and integer stream and it filters by condition $4.8<(column~number~1)$. Columns $0$ and $1$ are streams of doubles and column $2$ is stream of ints. We have also another version of this operator, which guaranteers that input and output are sorted the same way. To use it we write $FilterKeepingOrder$ instead of $Filter$ in operator declaration. 
+Input and output columns are the same and they are both numbered from $0$.
+This filter operator takes input of two double streams and integer stream and it filters by condition $4.8<(column~number~1)$. Columns $0$ and $1$ are streams of doubles and column $2$ is stream of integers. We have also another version of this operator which guarantees that the input and the output are sorted in the same way. In order to use it, we write $FilterKeepingOrder$ instead of $Filter$ in the operator declaration. 
 
 \subsection{Group}
 Example: 
@@ -439,10 +437,10 @@ Example:
 HashGroup(string,string,int)->(string,int,int)
 g(groupBy="1",functions="count(),max(2)");
 \end{lstlisting}
-Input columns are numbered from 0. Output columns consists from grouped columns and computed aggregate functions in the same order as in parameters. 
-This example groups by column number 1 and computes aggregate function $COUNT$ and $MAX$. $MAX$ has as parameter column number 2. 
+Input columns are numbered from $0$. Output columns consist of grouped columns and computed aggregate functions in the same order as specified in parameters. 
+This example groups by column number $1$ and computes aggregate functions $COUNT$ and $MAX$. The parameter of the function $MAX$ is column number $2$. 
 
-We have also sorted version of this operator. It assumes that input is sorted by group columns. To use it we write $SortedGroup$ instead of $HashGroup$ in declaration.
+We have also sorted version of this operator. It assumes that input is sorted by group columns. In order to use it, we write $SortedGroup$ instead of $HashGroup$ in the declaration.
 
 \subsection{Column operations}
 Example: 
@@ -450,8 +448,8 @@ Example:
 ColumnsOperations(int,int,int,int,int)->(int,int,int,double)
 c(out="0,3,4,OP_TIMES(2,OP_MINUS(OP_double_CONSTANT(1),2))"); 
 \end{lstlisting}
-Input columns are numbered from 0. Output is specified in parameter $out$. If it contains number operator, it copies input to output, otherwise it computes new column. 
-This example copies columns number $0,3,4$ to output and computes new column with expression: $2*(1-(column~number~2))$.
+Input columns are numbered from $0$. Output is specified in the parameter $out$. If it contains the column number, it copies input to output, otherwise it computes a new column. 
+This example copies columns labeled with $0,3,4$ to output and computes a new column with the expression: $(column~number~2)*(1-(column~number~2))$.
 
 \subsection{Cross join}
 Example:
@@ -459,7 +457,7 @@ Example:
 CrossJoin(string,int),(int,string)->(string,string)
 c(left="0,1",right="2,3",out="0,3");
 \end{lstlisting}
-$left$ parameter specifies how are columns from first input numbered. $right$ parameter specifies numbering columns from second input. Join outputs only columns given in $out$ argument. 
+Parameters $left$ and $right$ specify how the columns are numbered from the first and second input, respectively. The join outputs only the columns given in the $out$ argument. 
 
 \subsection{Hash join}
 Example:
@@ -468,7 +466,7 @@ HashJoin(int,int),(int,int,int,int)->(int,int,int,int,int,int)
 h(left="0,1",right="2,3,4,5",out="0,1,2,3,4,5",
 leftPartOfCondition="0,1","rightPartOfCondition="5,2"); 
 \end{lstlisting}
-Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. This operators works only with equal condition, which is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$. Relation in first input should be stored in hash table, because it's estimated size is smaller. This example computes join with condition:\\
+Numbering of columns from the first and second input is specified in the $left$ and $right$ parameter, respectively. The join outputs only the columns given in the $out$ argument. This operator works only with equal condition which is given in the parameters $leftPartOfCondition$ and $rightPartOfCondition$. Relation in the first input should be stored in a hash table since its estimated size is smaller than the size of the second relation. This example computes join with the condition:\\
  $(column~0=column~5)~and~(column~1=column~2)$.
 
 \subsection{Merge equi--join}
@@ -478,7 +476,7 @@ MergeEquiJoin(int),(int)->(int,int))
 m(left="0",right="1",out="0,1",leftPartOfCondition="0:D",
 rightPartOfCondition="1:D");
 \end{lstlisting}
-Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$, and they also contain information how are inputs sorted. This example computes join with condition $(0==1)$. First input is sorted by column number $0$ descending and the second input is sorted by column $1$ descending.
+Numbering of columns from the first and second input is specified in the $left$ and $right$ parameter, respectively. The join outputs only the columns given in the $out$ argument. Condition is given in the parameters $leftPartOfCondition$ and $rightPartOfCondition$, and these parameters contain information about the sorting of the inputs. This example computes join with condition $(0==1)$. The first input is sorted by the column number $0$ descending and the second input is sorted by the column $1$ descending.
 
 \subsection{Merge non equi--join}
 Example:
@@ -490,7 +488,7 @@ condition="OP_AND(OP_LOWER_OR_EQUAL(0,2)
 ,OP_LOWER_OR_EQUAL(2,1))");
 \end{lstlisting}
 
-This operator joins sorted relations. Numbering from left(first) and right(second) input is specified in parameters $left$ and $right$. Parameters $leftInputSortedBy$ and $rightInputSortedBy$ store information about how are input relations sorted. Join condition is in parameter $condition$. Operator in this example joins by condition $column~0 \leq column~2\leq column~1$. First input is sorted by column $0$ ascending and column $1$ ascending and second input is sorted by column $2$ ascending.
+This operator joins sorted relations. Numbering of columns from the first and second input is specified in the $left$ and $right$ parameter, respectively. Parameters $leftInputSortedBy$ and $rightInputSortedBy$ store information about the sorting of the input relations. Join condition is in the parameter $condition$. Operator in this example joins by condition $column~0 \leq column~2\leq column~1$. The first input is sorted by the column $0$ ascending and the column $1$ ascending and the second input is sorted by the column $2$ ascending.
 
 \subsection{Hash anti--join}
 Example:
@@ -500,19 +498,19 @@ h(left="0",right="1",out="0",leftPartOfCondition="0",
 rightPartOfCondition="1"); 
 \end{lstlisting}
 
-Column number from first input is specified in $left$ parameter and columns numbers from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Parameter $out$ can only contains columns from first input. Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$.
-Relation in first input should be stored in hash table, because it's estimated size is smaller. This example computes anti--join with condition $(column~0==column~1)$.
+Numbering of columns from the first and second input is specified in the $left$ and $right$ parameter, respectively. The join outputs only the columns given in the $out$ argument. Parameter $out$ can only contain columns from the first input. Condition is given in the parameters $leftPartOfCondition$ and $rightPartOfCondition$.
+Relation in the first input should be stored in the hash table since its estimated size is smaller than the size of the second relation. This example computes the anti--join with the condition $(column~0==column~1)$.
 
 \subsection{Merge anti--join}
 Example:
 \begin{lstlisting}
-$MergeAntiJoin(int),(int)->(int)
-$m(left="0",right="1",out="0",leftPartOfCondition="0:D",
+MergeAntiJoin(int),(int)->(int)
+m(left="0",right="1",out="0",leftPartOfCondition="0:D",
 rightPartOfCondition="1:D");
 \end{lstlisting}
 
-Numbering columns from first input is specified in $left$ parameter and numbering columns from second input is specified in $right$ parameter. Join outputs only columns given in $out$ argument. Operator copies to output only rows from first input for which doesn't exist row in second input satisfying given condition.
-Condition is given in parameters $leftPartOfCondition$ and $rightPartOfCondition$ and they also contain information how are inputs sorted. This example computes join with condition $(column~0==column~1)$. First input is sorted by column number 0 descending and the second input is sorted by 1 descending.
+Numbering of columns from the first and second input is specified in the $left$ and $right$ parameter, respectively. The join outputs only the columns given in the $out$ argument. Operator copies to the output only  the rows from the first input for which no row in the second input satisfying given condition exists.
+Condition is given in the parameters $leftPartOfCondition$ and $rightPartOfCondition$ and they also contain information about the sorting of inputs. This example computes join with the condition $(column~0==column~1)$. The first input is sorted by the column $0$ descending and the second input is sorted by the column $1$ descending.
 
 \subsection{Table scan}
 Example:
@@ -521,7 +519,7 @@ TableScan()->(int,int,int,int)
 t(name="lineitem",
 columns="l_orderkey,l_shipdate,l_extendedprice,l_discount");
 \end{lstlisting}
-This operator scans table specified in parameter $name$ and reads only columns given in parameter $columns$.
+This operator scans the table specified in the parameter $name$ and reads only columns given in the parameter $columns$.
 
 \subsection{Scan And Sort By Index}
 Example:
@@ -530,7 +528,7 @@ ScanAndSortByIndexScan()->(string,string,int)
 s(name="people",index="index",
 columns="user_name,country,parameter"); 
 \end{lstlisting}
-Operator reads whole table given in $name$ using $index$ and reads columns specified in attribute $columns$.
+Scan And Sort operator reads the whole table given in the $name$ using the $index$ and reads the columns specified in the attribute $columns$.
 
 \subsection{Index Scan}
 
@@ -540,7 +538,7 @@ IndexScan()->(int,int)
 i(name="customer",index="index2",columns="c_custkey,c_mktsegment",
 condition="OP_EQUALS(1,OP_string_CONSTANT(SEGMENT))");
 \end{lstlisting}
-Operator reads part of table given in $name$ using $index$ and reads columns specified in attribute $columns$. Operator reads only rows satisfying condition given in attribute $condtion$.
+Index Scan operator reads part of the table given in the $name$ using the $index$ and reads the columns specified in the attribute $columns$. Operator reads only the rows satisfying the condition given in the attribute $condtion$.
 
 
 
@@ -550,7 +548,7 @@ Example:
 SortOperator(int,int)->(int,int)
 s(sortedBy="0",sortBy="1:D");
 \end{lstlisting}
-Input and output columns are the same and they are numbered from 0. Parameter $sortedBy$ specifies by which columns is table sorted and parameter $sortBy$ specifies by which columns should table be sorted. Example is already sorted by $colum~0$ and will be sorted by $column~1$ descending.
+Input and output columns are the same and they are numbered from $0$. Parameter $sortedBy$ specifies by which columns is the table sorted and parameter $sortBy$ specifies by which columns should the table be sorted. Example is already sorted by the column~$0$ and will be sorted by the column $1$ descending.
 
 
 \subsection{Union}
@@ -559,5 +557,5 @@ Example:
 Union(int,string)(string,int)->(int,string)
 u(left="0,1",right="1,0",out="0,1");
 \end{lstlisting}
-Numbering columns from the first input is given in the $left$ parameter. Second input uses same number of columns like first output. This information is specified in parameter $right$. Operator appends columns from input $1$ to columns from input $0$. Order of output columns is specified in parameter $out$. Operator unites columns with same numbers.
+Numbering of columns from the first input is given in the $left$ parameter. Second input uses the same number of columns as the first output. This information is specified in the parameter $right$. Operator appends the rows from the input $1$ to the rows from input $0$. The order of the output columns is specified in the parameter $out$. Operator unites columns with the same numbers.
 
