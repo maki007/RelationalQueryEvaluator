@@ -128,7 +128,7 @@ The example of this representation can be found in Figure~\ref{fig:groupalgebra}
           \label{fig:groupalgebra}
 \end{figure}
 
-We chose the same structure for physical plan. The advantage of storing physical plan into polymorphic tree is the ability to easily add a new root node. The example of this representation can be found in Figure~\ref{fig:groupplan}. This Figure contains one of the possible physical plans for relational algebra shown in Figure~\ref{fig:groupalgebra}. We used the algorithm \texttt{Table} scan for reading the table. Afterwards, the input was hashed by requested columns. Result was sorted in the \texttt{Sort} operator. All of the node store additional information like output attributes, estimated run time and size of the output relation.
+We chose the same structure for physical plan. The advantage of storing physical plan into polymorphic tree is the ability to easily add a new root node. The example of this representation can be found in Figure~\ref{fig:groupplan}. This Figure contains one of the possible physical plans for relational algebra shown in Figure~\ref{fig:groupalgebra}. We used the algorithm \texttt{Table} scan for reading the table. Afterwards, the input is hashed by requested columns. Result is sorted in the \texttt{Sort} operator. All of the node store additional information like output attributes, estimated run time and size of the output relation.
 
 \begin{figure}[h!]
   \centering
@@ -158,14 +158,14 @@ If one wants to use sort based group operator grouping by two columns, multiple 
 \end{itemize}
 $A$ means ascending and $D$ is the abbreviation for descending.
 
-There are multiple possibilities of sorting relation $R$ before applying  $R\Join_{r_1=s_1~and~r_2=s_2} S$. Relation $R$ can be sorted in the following ways:
+There are multiple possibilities of sorting relation $R$ before applying \\$R \Join_{r_1=s_1~and~r_2=s_2}S$. Relation $R$ can be sorted in the following ways:
 \begin{itemize}
 \item $r_1,r_2$
 \item $r_2,r_1$
 \end{itemize}
 The order for sorting columns is arbitrary.
 
-We also want to store information about equality of sort column. After the application of merge join $R\Join_{r_1=s_1} S$, the result can be sorted by $r_1$ or $s_1$. All these requirements were use to design structure for storing sort parameters without enumerating all possible sort orders.
+We also want to store information about equality of sort column. After the application of merge join $R\Join_{r_1=s_1} S$, the result can be sorted by $r_1$ or $s_1$. All these requirements were used to design structure for storing sort parameters without enumerating all possible sort orders.
 
 \begin{figure}[h!]
   \centering
@@ -210,8 +210,8 @@ An important optimization was implemented: pushing selection down the tree. Ever
 
 We tried to choose the easiest method for generating plans. The two options were the heuristic method and dynamic programming which, we assume, would probably need the same amount of the source code.The dynamic programming was chosen since it is expected to give better results. Using this method, we generated all possible plans for each node and chose the fastest plan.
 
-We process logical plan from leafs. For every leaf, we generated all possible physical algorithms and we inserted resulting plans into heap, where we kept $c$ fastest plans for current node. Variable $c$ is a constant set in compiler.
-For every algebra node we used plans generated in its children to generate new plan. This way we continued up the algebra tree to the root.
+We process logical plan from leafs. For every leaf, we generate all possible physical algorithms and we insert resulting plans into heap, where we keep $c$ fastest plans for current node. Variable $c$ is a constant set in compiler.
+For every algebra node we use plans generated in its children to generate new plan. This way we continue up the algebra tree to the root.
 
 Physical plans are compared based on estimated run time. Every operator stores its estimated run time. The sum of run times of all the operators is estimated run time of the whole physical plan.
 Among the most important are those equations which compute estimated time for physical algorithm. These equations depend on size of input relation. Modifying them can result in getting better physical plans. For example, if physical algorithm \texttt{Hash join} takes too much time due to accessing random parts of memory, we can modify estimated times so sort with merge join will be preferred.

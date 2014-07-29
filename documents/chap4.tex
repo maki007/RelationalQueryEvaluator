@@ -80,7 +80,7 @@ Next example shows the group node:
 </group>
 \end{lstlisting}
 
-This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. Group element must have at least one $<$group\_by$>$  parameter or at least one aggregate function.  Another algebra operator should be inside the element $<$input$>$.
+This node represents expression $\gamma_{l\_orderkey,o\_orderdate,o\_shippriority,x=sum(x)}(...)$. \\Group element must have at least one $<$group\_by$>$  parameter or at least one aggregate function.  Another algebra operator should be inside the element $<$input$>$.
 
 \subsection{Selection}
 
@@ -102,7 +102,7 @@ The selection is presented in the following example:
   </input>
 </selection>
 \end{lstlisting}
-This example represents the following expression: $\sigma_{today<l\_shipdate}$. The $<$condition$>$ element can contain multiple conditions connected by $<$and$>$ or $<$or$>$ elements. Input algebra supports operators $=$, $<$ and $\leq$.  Only $<$column$>$ or $<$constant$>$ element can be present in the leafs of the expression tree. Possible call of a boolean function from the selection is presented in the following example:
+This example represents the following expression: $\sigma_{today<l\_shipdate}$. The element $<$condition$>$ can contain multiple conditions connected by $<$and$>$ or $<$or$>$ elements. Input algebra supports operators $=$, $<$ and $\leq$.  Only $<$column$>$ or $<$constant$>$ element can be present in the leafs of the expression tree. Possible call of a boolean function from the selection is presented in the following example:
 
 \begin{lstlisting}
 <condition>
@@ -258,7 +258,8 @@ The extended projection contains a list of columns. Newly computed columns conta
   <parameters>
     <column name="x">
       <equals>
-        <aritmetic_function name ="sqrt" returnType="double">
+        <aritmetic_function name ="sqrt" 
+        returnType="double">
           <argument>
             <constant type="double" value="2"/>
           </argument>
@@ -304,7 +305,7 @@ We used the visitor pattern for manipulating and reading expression and algebra 
           \label{fig:algebratree1}
 \end{figure}
 
-In Figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we applied selection with condition located in the \verb|where| clause. The obtained result was used to compute new column and to apply grouping operator computing aggregate functions. Output of the query was sorted. In table reading operator, we can see additional information like the name of the table. Every attribute has the suffix $\_-1$ which is the unique identifier of the column. After the algebra tree is built from XML, the unique identifiers are not assigned and they contain default value $-1$. The inputs, from which the columns originate, are represented by the numbers in parentheses. Input operators are numbered from $0$. All columns in used selection come from the zeroth input.
+In Figure~\ref{fig:algebratree1} we presented the example of algebra tree of the query presented in the beginning of this chapter. We have transformed it to cross joins of three tables. After cross joins we apply selection with condition located in the \verb|where| clause. The obtained result is used to compute new column and to apply grouping operator computing aggregate functions. Output of the query is sorted. In table reading operator, we can see additional information like the name of the table. Every attribute has the suffix $\_-1$ which is the unique identifier of the column. After the algebra tree is built from XML, the unique identifiers are not assigned and they contain default value $-1$. The inputs, from which the columns originate, are represented by the numbers in parentheses. Input operators are numbered from $0$. All columns in used selection come from the zeroth input.
 
 We used library Xerces version 3.1.1~\cite{xerces} for parsing and validating the input XML file. It parses the input file and creates the DOM tree. This tree has to be validated against XML schema. Parsing and validation of XML is performed in the class \texttt{XmlHandler}.
 
@@ -316,7 +317,7 @@ Every algebra tree has to have the sort operator on the top. We call \texttt{Sor
 
 Semantic checking is processed by the class \texttt{SemanticChecker}, which checks if columns used in expressions exist and if the output columns of each operator have unique name. During this checking we assign unique identifier to every column. After this phase, we do not need attribute names anymore, we use only the unique identifiers.
 
-Logical plan is visited by \texttt{GroupingVisitor}. In this phase, joins represented by the class \texttt{Join} are replaced by the grouped join represented by the class \texttt{GroupedJoin} with two or more input relations. We apply \texttt{GroupingExpressionVisitor} on every expression. The \texttt{GroupingExpressionVisitor} groups expressions with $and$ and $or$ operators. This step simplifies splitting condition into sub conditions.
+Logical plan is visited by \texttt{GroupingVisitor}. In this phase, joins represented by the class \texttt{Join} are replaced by the grouped join represented by the class \texttt{GroupedJoin} with two or more input relations. We apply \texttt{Grouping\-Expression\-Visitor} on every expression. The \texttt{GroupingExpressionVisitor} groups expressions with $and$ and $or$ operators. This step simplifies splitting condition into sub conditions.
 
 \section{Algebra optimization}
 
@@ -368,7 +369,7 @@ Physical plan is represented as polymorphic tree.
 
 The best generated physical plan for query presented in the beginning of this chapter is drawn in Figure \ref{fig:physicalplan}. Each operator contains estimated size and run time. Output columns with their unique identifiers and estimated number of unique values are given on the bottom of the physical operators. Since read tables do not contain any indices we have to read all the tables and filter the results. After that, we can only use hash join because sorting relations for merge join would be to expensive and nested loop join is not supported by runtime or compiler. From the result we compute new columns and use the hash group algorithm. We did not use sorted group as input is not sorted and output has to be sorted by other than group column.
 
-Physical operators are chosen according to their estimated time complexity which is computed from the estimated size of relation. In the class \texttt{TimeComplexity}, we have static functions which compute time complexity for each operation. It also contains constants used in these functions. We assume that this constants or whole functions need to be improved. This improvement can be achieved in the future if the tests and measurements of the evaluation queries in Bobox are performed. At the time of submitting this thesis, the runtime environment is not fully functional.
+Physical operators are chosen according to their estimated time complexity which is computed from the estimated size of relation. In the class \texttt{Ti\-me\-Com\-ple\-xi\-ty}, we have static functions which compute time complexity for each operation. It also contains constants used in these functions. We assume that this constants or whole functions need to be improved. This improvement can be achieved in the future if the tests and measurements of the evaluation queries in Bobox are performed. At the time of submitting this thesis, the runtime environment is not fully functional.
 
 
 
@@ -445,8 +446,10 @@ We have also sorted version of this operator. It assumes that input is sorted by
 \subsection{Column operations}
 Example: 
 \begin{lstlisting} 
-ColumnsOperations(int,int,int,int,int)->(int,int,int,double)
-c(out="0,3,4,OP_TIMES(2,OP_MINUS(OP_double_CONSTANT(1),2))"); 
+ColumnsOperations(int,int,int,int,int)->
+(int,int,int,double)
+c(out="0,3,4,
+OP_TIMES(2,OP_MINUS(OP_double_CONSTANT(1),2))"); 
 \end{lstlisting}
 Input columns are numbered from $0$. Output is specified in the parameter $out$. If it contains the number of column, it copies input to output, otherwise it computes a new column. 
 This example copies columns labeled with $0,3,4$ to output and computes a new column with the expression: $(column~2)*(1-(column~2))$.
@@ -470,7 +473,8 @@ The other join operators have the same $left$, $right$ and $out$ parameters. The
 \subsection{Hash join}
 Example:
 \begin{lstlisting}
-HashJoin(int,int),(int,int,int,int)->(int,int,int,int,int,int)
+HashJoin(int,int),(int,int,int,int)->
+(int,int,int,int,int,int)
 h(left="0,1",right="2,3,4,5",out="0,1,2,3,4,5",
 leftPartOfCondition="0,1","rightPartOfCondition="5,2"); 
 \end{lstlisting}
@@ -543,7 +547,8 @@ Scan And Sort operator reads the whole table given in the $name$ using the $inde
 Example:
 \begin{lstlisting}
 IndexScan()->(int,int)
-i(name="customer",index="index2",columns="c_custkey,c_mktsegment",
+i(name="customer",index="index2",columns="c_custkey,
+c_mktsegment",
 condition="OP_EQUALS(1,OP_string_CONSTANT(SEGMENT))");
 \end{lstlisting}
 Index Scan operator reads part of the table given in the $name$ using the $index$ and reads the columns specified in the attribute $columns$. Operator reads only the rows satisfying the condition given in the attribute $condtion$.
