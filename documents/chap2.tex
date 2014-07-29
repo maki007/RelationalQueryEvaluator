@@ -82,7 +82,7 @@ Bag union of $R \cup_B S$ adds all tuples from $S$ and $R$ together. If tuple $t
 
 \subsubsection{Intersection}
 
-Assume we have tuple $t$ that appears $m$-times in $R$ and $n$-times in $S$. In the bag intersection $R \cap_B S$ $t$ will be $min(m,n)$-times.
+Assuming we have tuple $t$ that appears $m$-times in $R$ and $n$-times in $S$. In the bag intersection $R \cap_B S$ $t$ will be $min(m,n)$-times.
 
 \subsubsection{Difference}
 Every tuple $t$, that appears $m$-times in $R$ and $n$-times in $S$, will appear $max(0,m-n)$ times in bag $R-_B S$.
@@ -321,7 +321,7 @@ Estimation of duplicate elimination can be handled exactly like grouping.
 \subsection{Enumerating plans}
 For every logical plan there is an exponential number of physical plans. This section presents ways to enumerate physical plans such that the plan with the least estimated cost can be chosen. There are two broad approaches:
 \begin{itemize}
-\item Top--down: We work down the algebra tree from the root. For each possible implementation for algebra operation at the root, we consider best possible algorithms to evaluate its subtrees. We compute costs of every combination and choose the best one.
+\item Top--down: We work down the algebra tree from the root. For each possible implementation for algebra operation at the root, we consider the best possible algorithms to evaluate its subtrees. We compute costs of every combination and choose the best one.
 \item Bottom--up: We proceed up the algebra tree and we enumerate plans based on the plans generated for its subexpressions.
 \end{itemize}
 These approaches do not differ considerably. However, one method eliminates plans that other method cannot and vice versa.

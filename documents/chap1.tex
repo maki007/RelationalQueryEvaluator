@@ -1,9 +1,9 @@
 \chapter{Bobox architecture}
 \label{boboxarchitecture}
-The purpose of this chapter is description of Bobox framework and Bobolang language.
+The purpose of this chapter is the description of Bobox framework and Bobolang language.
 \section{Bobox}
 
-The purpose of this chapter is description of basic architecture of Bobox. The main source of information for this chapter is the doctoral thesis by Falt~\cite{faltthesis}. 
+This chapter describes basic architecture of Bobox. The main source of information for this chapter is the doctoral thesis by Falt~\cite{faltthesis}. 
 
 Overall Bobox architecture is displayed in Figure~\ref{fig:bobox}. Framework consists of Boxes which are C++ classes containing implementation of data processing algorithm. Boxes can be also created as a set of connected boxes. Boxes can have arbitrary number of inputs and outputs. All boxes are connected to a directed acyclic graph.  
 
@@ -34,7 +34,7 @@ There are two special boxes, which have to be in every execution plan:
 
 \end{itemize}
 
-Evaluation starts with scheduling $init$ box, which sends poisoned pills to all of its output boxes that will be scheduled. They can read data from the hard drive or network, process it and send it to other boxes for further processing. Other boxes usually receive data in envelopes in their inputs. Box $term$ waits to receive for its every input to receive poisoned pill and then 
+Evaluation starts with scheduling $init$ box, which sends poisoned pills to all of its output boxes that will be scheduled. They can read data from the hard drive or network, process it and send it to other boxes for further processing. Other boxes usually receive data in envelopes in their inputs. 
 The evaluation ends when the box $term$ receives poisoned pill from each of its inputs.
 
 \section{Bobolang}
@@ -57,7 +57,7 @@ operator main()->()
 }
 \end{verbatim}
 
-In the first part, we declare operators and define type of input and output. We provide identifier for every declared operator. Second part specifies connection between declared operators. Code \verb|op1 -> op2| indicates that output of \verb|op1| is connected to input of operator \verb|op2|. In this case, the output type of \verb|op1| has to be equal to the input type of \verb|op2|. Bobolang syntax also allows to create chains of operators like \verb|op1 -> op2 -> op3| with following semantics: \verb|op1 -> op2| and \verb|op2 -> op3|. 
+In the first part, we declare operators and define type of input and output. We provide identifier for every declared operator. Second part specifies connection between declared operators. Code \verb|op1 -> op2| indicates that output of \verb|op1| is connected to input of operator \verb|op2|. In this case, the output type of \verb|op1| has to be equal to the input type of \verb|op2|. Bobolang syntax also allows to create chains of operators like \verb|op1 -> op2 -> op3| with the following semantics: \verb|op1 -> op2| and \verb|op2 -> op3|. 
 
 There are explicitly defined operators called \verb|input| and \verb|output|. The line \verb|input -> src;| means that input of the operator \verb|main| is connected to the output of operator \verb|src|.
 

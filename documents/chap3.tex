@@ -128,7 +128,7 @@ The example of this representation can be found in Figure~\ref{fig:groupalgebra}
           \label{fig:groupalgebra}
 \end{figure}
 
-We chose the same structure for physical plan. The advantage of storing physical plan into polymorphic tree is the ability to easily add a new root node. The example of this representation can be found in Figure~\ref{fig:groupplan}. This Figure contains one of the possible physical plans for relational algebra shown in Figure~\ref{fig:groupalgebra}. We used the algorithm \texttt{Table} scan for reading the table. Afterwards, the input is hashed by requested columns. Result is sorted in the \texttt{Sort} operator. All of the node store additional information like output attributes, estimated run time and size of the output relation.
+We chose the same structure for physical plan. The advantage of storing physical plan into polymorphic tree is the ability to easily add a new root node. The example of this representation can be found in Figure~\ref{fig:groupplan}. This Figure contains one of the possible physical plans for relational algebra shown in Figure~\ref{fig:groupalgebra}. We used the algorithm \texttt{Table scan} for reading the table. Afterwards, the input is hashed by requested columns. Result is sorted in the \texttt{Sort} operator. All of the node store additional information like output attributes, estimated run time and size of the output relation.
 
 \begin{figure}[h!]
   \centering
@@ -208,7 +208,7 @@ An important optimization was implemented: pushing selection down the tree. Ever
 
 \section{Generating physical plan}
 
-We tried to choose the easiest method for generating plans. The two options were the heuristic method and dynamic programming which, we assume, would probably need the same amount of the source code.The dynamic programming was chosen since it is expected to give better results. Using this method, we generated all possible plans for each node and chose the fastest plan.
+We tried to choose the easiest method for generating plans. The two options were the heuristic method and dynamic programming which, we assume, would probably need the same amount of the source code. The dynamic programming was chosen since it is expected to give better results. Using this method, we generated all possible plans for each node and chose the fastest plan.
 
 We process logical plan from leafs. For every leaf, we generate all possible physical algorithms and we insert resulting plans into heap, where we keep $c$ fastest plans for current node. Variable $c$ is a constant set in compiler.
 For every algebra node we use plans generated in its children to generate new plan. This way we continue up the algebra tree to the root.
